@@ -1,0 +1,52 @@
+$notice: $dark-green;
+$error: $pink;
+$alert: $error;
+$text-color: $white;
+$border-color: $brown;
+
+%flash-heading {
+  font-weight: normal;
+}
+
+// Flash
+.flash-message {
+  border: 1px solid $border-color;
+  color: $text-color;
+  font-size: rem-calc(16px);
+  padding: rem-calc(5px);
+  margin: 0 0 rem-calc(20px);
+
+  h2 {
+    @extend %flash-heading;
+  }
+
+  ul {
+    font-weight: normal;
+  }
+
+  &.notice {
+    background: $notice;
+    font-weight: bold;
+  }
+
+  &.error {
+    background: $error;
+    font-weight: bold;
+  }
+
+  &.alert {
+    background: $alert;
+    font-weight: bold;
+  }
+}
+
+.error_messages,
+#error_explanation {
+  h2 {
+    @extend %flash-heading;
+  }
+
+  ul {
+    font-weight: normal;
+  }
+}
