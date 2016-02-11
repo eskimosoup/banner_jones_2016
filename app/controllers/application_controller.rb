@@ -2,8 +2,11 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  before_action :global_site_settings
+
+  before_action :global_site_settings, :load_menu_items
+
   include Optimadmin::AdminSessionsHelper
+
   helper_method :current_administrator
 
   unless Rails.application.config.consider_all_requests_local
@@ -16,6 +19,11 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def load_menu_items
+    @header_aside_menu = Optimadmin::Menu.new(name: "header_aside")
+    @primary_header_menu = Optimadmin::Menu.new(name: "primary_header")
+  end
 
   def global_site_settings
     @global_site_settings ||= Optimadmin::SiteSetting.current_environment

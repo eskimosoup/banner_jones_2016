@@ -1,0 +1,23 @@
+<header class="primary-header">
+  <div class="branding">
+    <%= link_to root_url, title: site_setting('Name'), class: 'logo' do %>
+      <%= image_tag 'layout/header/logo.png', alt: site_setting('Name') %>
+    <% end %>
+
+    <%= image_tag 'layout/header/legal-500.png', alt: 'Legal 500',
+                                                 class: 'the-legal-500' %>
+  </div>
+
+  <div class="contact">
+    <ul class="header-aside">
+      <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
+    </ul>
+
+    <div class="header-telephone">
+      <span class="header-telephone-accent">
+        t:
+      </span>
+      <%= site_setting('Telephone') %>
+    </div>
+  </div>
+</header>
