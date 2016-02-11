@@ -1,0 +1,140 @@
+.meganav-dropdown {
+  display: none;
+  left: 0;
+  position: absolute;
+  text-align: left;
+  width: 100%;
+  z-index: 2;
+}
+
+.meganav-dropdown-wrap {
+  margin-top: rem(31px);
+}
+
+.meganav-dropdown-content {
+  @include grid-row;
+  background: $white;
+  border-bottom: 7px solid $orange;
+}
+
+.meganav-dropdown-primary-list {
+  @include grid-column(
+    $columns: 3,
+    $gutter: (
+      small: 0,
+      medium: 0,
+      large: 0,
+      xlarge: 0,
+      xxlarge: 0,
+    )
+  );
+  background: $light-grey;
+  padding: rem(40px) 0 rem(75px);
+}
+
+.meganav-dropdown-secondary-list {
+  @include grid-column(6);
+  padding: rem(40px) 0 rem(75px);
+}
+
+.meganav-dropdown-team-member-wrap {
+  @include grid-column(2);
+  @include grid-column-offset(1);
+  padding: rem(40px) 0 rem(75px);
+  text-align: right;
+}
+
+.meganav-primary-title {
+  font-size: rem(18px);
+  font-weight: $myriad-pro-semibold;
+  color: $dark-slate-blue;
+  margin: 0 0 rem(25px) rem(25px);
+}
+
+.meganav-links {
+  list-style: none;
+
+  a {
+    display: block;
+    font-size: rem(14px);
+    padding: 0 rem(10px);
+    margin: rem(8px) 0;
+
+    &:visited,
+    &:link {
+      color: $grey;
+    }
+
+    &:hover,
+    &:active {
+      color: $red;
+    }
+  }
+}
+
+.meganav-primary-links {
+  a {
+    padding-bottom: rem(3px);
+    padding-left: rem(25px);
+    padding-top: rem(3px);
+
+    &:hover,
+    &.active {
+      background: $white;
+    }
+  }
+}
+
+.meganav-secondary-title-area {
+  @include clearfix;
+}
+
+.meganav-secondary-title {
+  float: left;
+  font-size: rem(18px);
+  font-weight: 400;
+  margin: 0 0 rem(25px) rem(25px);
+}
+
+// Let's just look over this
+.menu-item .meganav-button {
+  background: $orange;
+  border-radius: 5px;
+  color: $white;
+  display: inline-block;
+  float: right;
+  font-size: rem(12px);
+  padding: rem(5px) rem(20px);
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:active {
+    background: $red;
+    color: $white;
+  }
+}
+
+.meganav-dropdown-team-member {
+  border: 2px solid $orange;
+}
+
+.meganav-dropdown-team-member-name {
+  border-bottom: 2px solid $accent-grey;
+  font-size: rem(14px);
+  font-weight: $myriad-pro-semibold;
+  line-height: 1;
+  margin: rem(16px) 0 rem(16px) rem(62px);
+  padding: 0 0 rem(16px);
+  text-align: left;
+}
+
+.meganav-dropdown-team-member-role,
+.meganav-dropdown-team-member-location {
+  font-size: rem(14px);
+  text-align: left;
+  margin: 0 0 0 rem(62px);
+}

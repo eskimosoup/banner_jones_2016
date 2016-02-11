@@ -1,6 +1,8 @@
+<% # TODO: Add sticky email area %>
+
 <header class="primary-header">
-  <div class="branding">
-    <%= link_to root_url, title: site_setting('Name'), class: 'logo' do %>
+  <div class="header-branding">
+    <%= link_to root_url, title: site_setting('Name'), class: 'header-logo' do %>
       <%= image_tag 'layout/header/logo.png', alt: site_setting('Name') %>
     <% end %>
 
@@ -8,16 +10,54 @@
                                                  class: 'the-legal-500' %>
   </div>
 
-  <div class="contact">
-    <ul class="header-aside">
+  <div class="header-contact">
+    <ul class="header-aside-navigation">
       <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
+
+      <li class="menu-item">
+        <%= link_to '#', class: 'header-locations', title: 'Locations' do %>
+          <%= image_tag 'components/icons/header/map.png', alt: '' %>
+        <% end %>
+      </li>
     </ul>
 
     <div class="header-telephone">
       <span class="header-telephone-accent">
         t:
       </span>
-      <%= site_setting('Telephone') %>
+      <%= site_setting('Phone') %>
     </div>
   </div>
 </header>
+
+<div class="primary-navigation-wrap">
+  <nav class="header-navigation">
+    <div class="primary-navigation">
+      <ul class="primary-navigation-links">
+        <li class="menu-item">
+          <%= link_to '#', class: 'primary-navigation-home', title: 'Home' do %>
+            <%= image_tag 'components/icons/navigation/home.png', alt: '' %>
+          <% end %>
+        </li>
+
+        <li class="menu-item">
+          <%= link_to 'For you & your family', '#' %>
+
+          <%= render 'menu_items/meganav' %>
+        </li>
+
+        <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
+      </ul>
+    </div>
+
+    <div class="primary-navigation-search">
+      <%= form_tag '', method: :get, class: 'header-search-form' do %>
+        <%= text_field_tag :search, params[:search],
+                                    placeholder: 'Search',
+                                    class: 'header-search-input' %>
+
+        <%= submit_tag 'Search', class: 'header-search-submit' %>
+      <% end %>
+    </div>
+  </nav>
+</div>

@@ -1,0 +1,84 @@
+.hero-banner-navigation {
+  @include grid-row;
+  position: relative;
+}
+
+.hero-banner-department-type {
+  bottom: 0;
+  position: absolute;
+  right: 30px;
+  width: grid-column(3);
+}
+
+.hero-banner-department-select {
+  list-style: none;
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    background: rgba($white, .33);
+    color: $white;
+    display: block;
+    font-family: $ubuntu;
+    font-size: rem(16px);
+    font-weight: $ubuntu-light;
+    margin: 0 0 0 rem(4px);
+    padding: rem(11px) rem(30px);
+
+    &:visited,
+    &:link {
+      color: $white;
+    }
+
+    &:hover,
+    &.active {
+      background: $white;
+      color: $dark-slate-blue;
+    }
+  }
+}
+
+.hero-banner-department-services {
+  background: $white;
+  height: 334px;
+  padding: rem(34px) rem(50px);
+}
+
+.hero-banner-department-title {
+  color: $dark-slate-blue;
+  font-family: $myriad-pro;
+  font-size: rem(23px);
+  font-weight: $myriad-pro-light;
+  margin: 0 0 rem(27px);
+}
+
+.hero-banner-department-services-list {
+  list-style-image: image-url('components/icons/right-chevron.png');
+
+  li {
+    margin: rem(7px) 0;
+
+    &:before {
+      content: '';
+      padding: 0 0 0 rem(15px);
+    }
+  }
+
+  a {
+    color: $dark-slate-blue;
+
+    &:visited,
+    &:link,
+    &:hover,
+    &:active {
+      color: $dark-slate-blue;
+    }
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.primary-navigation-wrap {
+  border-bottom: 2px solid $red;
+}
+
+.primary-navigation-links {
+  list-style: none;
+  padding: 0 0 rem(26px);
+
+  .menu-item {
+    display: inline-block;
+
+    &:hover .meganav-dropdown {
+      display: block;
+    }
+  }
+
+  a {
+    display: block;
+    font-size: rem(14px);
+    padding: 0 rem(22px);
+
+    &:visited,
+    &:link {
+      color: $light-slate-blue;
+    }
+
+    &:hover,
+    &:active {
+      color: $red;
+    }
+  }
+}

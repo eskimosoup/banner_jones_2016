@@ -1,0 +1,32 @@
+.content {
+  background: $offset-white;
+  padding: rem(55px) 0;
+}
+
+.content-box-wrap {
+  @include grid-row;
+  margin: 0 auto rem(35px);
+}
+
+.content-box {
+  background: $white;
+  box-shadow: 0 6px 15px 1px rgba($dark-purple, .33);
+  padding-bottom: rem(60px);
+  padding-top: rem(60px);
+  position: relative;
+}
+
+.content-box-title {
+  color: $dark-purple;
+  font-family: $montserrat;
+  font-size: rem(21px);
+  font-weight: $montserrat-semibold;
+  margin: 0 0 rem(40px);
+  text-align: center;
+}
+
+.content-box-previous,
+.content-box-next {
+  display: inline-block;
+  margin: 0 em(4px) 0;
+}

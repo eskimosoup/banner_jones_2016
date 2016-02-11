@@ -1,0 +1,21 @@
+.team-member-search-form {
+  @include grid-row;
+  width: grid-column(8);
+}
+
+.team-member-search-field {
+  @include grid-column(6,
+  $gutter: (
+      small: 14,
+      medium: 14,
+      large: 14,
+      xlarge: 14,
+      xxlarge: 14,
+    ));
+}
+
+.team-member-search-name,
+.team-member-search-service {
+  border: 1px solid $accent-grey;
+  border-radius: 6px;
+}

@@ -9,6 +9,11 @@
   @return (strip-unit($target-px) / strip-unit($basefont)) * 1em;
 }
 
+// Lazy man's rem-calc
+@function rem($num) {
+  @return rem-calc($num);
+}
+
 // Useful mixins: be sure to use!
 // https://web-design-weekly.com/2013/05/12/handy-sass-mixins/
 @mixin opacity($opacity) {
@@ -83,6 +88,18 @@
 
 // Not quite mixins, but placeholder classes
 %clearfix {
+  &::before,
+  &::after {
+    content: '';
+    display: table;
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+@mixin clearfix {
   &::before,
   &::after {
     content: '';

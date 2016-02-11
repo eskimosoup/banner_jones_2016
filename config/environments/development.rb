@@ -1,5 +1,10 @@
 Rails.application.configure do
-    Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+
+  Rack::MiniProfiler.config.position = 'right'
+  Rack::MiniProfiler.config.start_hidden = true # use ALT + P to toggle
+
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   config.web_console.whitelisted_ips = '192.168.0.0/16'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {

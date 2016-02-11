@@ -1,0 +1,38 @@
+<%= content_for :javascripts do %>
+  <script>
+  $(function() {
+    $('.meganav-dropdown-primary-list, .meganav-dropdown-secondary-list, .meganav-dropdown-team-member-wrap').matchHeight();
+  });
+  </script>
+<% end %>
+
+<div class="meganav-dropdown">
+  <div class="meganav-dropdown-wrap">
+    <div class="meganav-dropdown-content">
+      <!-- Departments -->
+      <div class="meganav-dropdown-primary-list">
+        <h2 class="meganav-primary-title">Departments</h2>
+
+        <ul class="meganav-links meganav-primary-links">
+          <li>
+            <%= link_to 'Commercial', '#', class: 'hover-toggle', data: { container: 'meganav-dropdown-content-1' } %>
+          </li>
+          <li>
+            <%= link_to 'Commercial Litigation', '#', class: 'hover-toggle', data: { container: 'meganav-dropdown-content-2' } %>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <% # TODO: Add little triangle to hovered item in the main nav %>
+      <div>
+        <div class="meganav-dropdown-content-inner meganav-dropdown-content-1">
+          <%= render 'menu_items/meganav_content', name: 'Commercial', person_name: 'Kate Skelton' %>
+        </div>
+        <div class="meganav-dropdown-content-inner meganav-dropdown-content-2 hide">
+          <%= render 'menu_items/meganav_content', name: 'Commercial Litigation', person_name: 'Another Name' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

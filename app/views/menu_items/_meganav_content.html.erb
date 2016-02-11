@@ -1,0 +1,38 @@
+<div class="meganav-dropdown-secondary-list">
+  <div class="meganav-secondary-title-area">
+    <h3 class="meganav-secondary-title">
+      Services
+    </h3>
+
+    <%= link_to 'View full department page', '#', class: 'meganav-button' %>
+  </div>
+
+  <ul class="meganav-links meganav-secondary-links">
+    <li>
+      <%= link_to name, '#' %>
+    </li>
+    <li>
+      <%= link_to name, '#' %>
+    </li>
+  </ul>
+</div>
+
+<!-- Team Member -->
+<div class="meganav-dropdown-team-member-wrap">
+  <%= image_tag 'http://placehold.it/130x195',
+                alt: '',
+                class: 'meganav-dropdown-team-member'
+  %>
+
+  <div class="meganav-dropdown-team-member-name">
+    <%= person_name %>
+  </div>
+
+  <div class="meganav-dropdown-team-member-role">
+    Solicitor
+  </div>
+
+  <div class="meganav-dropdown-team-member-location">
+    Glumangate
+  </div>
+</div>
