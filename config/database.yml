@@ -88,6 +88,6 @@ test:
 #
 production:
   <<: *default
-  database: banner_jones_2016_production
-  username: banner_jones_2016
+  database: banner_jones_production
+  username: banner_jones
   password: <%= ENV['BANNER_JONES_2016_DATABASE_PASSWORD'] %>
