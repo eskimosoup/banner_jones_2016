@@ -16,6 +16,8 @@ class ApplicationController < ActionController::Base
   end
 
   def index
+    @testimonials = Testimonial.displayed
+    @articles = Article.home_page_highlight
   end
 
   private
@@ -23,6 +25,7 @@ class ApplicationController < ActionController::Base
   def load_menu_items
     @header_aside_menu = Optimadmin::Menu.new(name: "header_aside")
     @primary_header_menu = Optimadmin::Menu.new(name: "primary_header")
+    @footer_menu = Optimadmin::Menu.new(name: "footer")
   end
 
   def global_site_settings

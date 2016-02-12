@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :articles, only: [:index, :show]
+
   %w( 403 404 422 500 ).each do |code|
     get code, to: 'errors#show', code: code
   end
@@ -65,4 +67,25 @@ Rails.application.routes.draw do
   #   end
 end
 Optimadmin::Engine.routes.draw do
+  resources :articles, except: [:show] do
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
+  resources :testimonials, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
 end

@@ -24,6 +24,8 @@
       </div>
 
       <ul id="modules" class="content-category-list">
+        <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
+        <%= module_link(content: "Articles", model: Article, path: articles_path) %>
         <% if can? :manage, Optimadmin::MenuItem %>
           <li><%= link_to 'Site Navigation', menu_items_path %></li>
         <% end %>

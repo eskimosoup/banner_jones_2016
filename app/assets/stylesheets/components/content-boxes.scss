@@ -11,9 +11,11 @@
 .content-box {
   background: $white;
   box-shadow: 0 6px 15px 1px rgba($dark-purple, .33);
-  padding-bottom: rem(60px);
-  padding-top: rem(60px);
   position: relative;
+
+  &.inner {
+    padding: rem(60px) 0;
+  }
 }
 
 .content-box-title {

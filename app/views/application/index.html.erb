@@ -157,7 +157,7 @@
 
 <div class="content">
   <section class="content-box-wrap">
-    <div class="content-box">
+    <div class="content-box inner">
       <div class="helpful-guide-content-box-slider-controls">
         <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
           <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
@@ -186,9 +186,10 @@
   </section>
 
   <%= content_for :javascripts do %>
+  <!--
     <script>
     $(function() {
-      $('.helpful-guides-slick').slick({
+      $('.team-members-slick').slick({
         nextArrow: '.team-members-content-box-slider-controls .content-box-next',
         prevArrow: '.team-members-content-box-slider-controls .content-box-previous',
         slidesToShow: 12,
@@ -196,10 +197,11 @@
       })
     })
     </script>
+  -->
   <% end %>
 
   <section class="content-box-wrap">
-    <div class="content-box">
+    <div class="content-box team-members">
       <h2 class="content-box-title">
         Find People By
       </h2>
@@ -215,6 +217,8 @@
                                    prompt: 'Service',
                                    class: 'team-member-search-service' %>
         </div>
+
+        <%= submit_tag 'Search', class: 'team-member-search-button' %>
       <% end %>
 
       <div class="team-members-content-box-slider-controls">
@@ -224,6 +228,73 @@
         <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
           <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
         <% end %>
+      </div>
+
+      <% # TODO: Code this! %>
+      <div class="team-members-profiles">
+        <div class="team-members-slick">
+          <%= image_tag 'placeholders/team-members.jpg', alt: '' %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%= content_for :javascripts do %>
+    <script>
+    $(function() {
+      $('.testimonials-slick').slick({
+        arrows: false,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 6000
+      })
+    })
+    </script>
+  <% end %>
+
+  <section class="content-box-wrap">
+    <div class="content-box inner testimonials">
+      <h2 class="content-box-title testimonials-title">
+        A People Business
+      </h2>
+
+      <div class="testimonials-slick">
+        <%= render @testimonials %>
+      </div>
+    </div>
+  </section>
+
+  <%= content_for :javascripts do %>
+  <script>
+  $(function() {
+    $('.article-title').matchHeight();
+
+    $('.articles-slick').slick({
+      nextArrow: '.articles-content-box-slider-controls .content-box-previous',
+      prevArrow: '.articles-content-box-slider-controls .content-box-next',
+      slidesToShow: 4
+    });
+  });
+  </script>
+  <% end %>
+
+  <section class="content-box-wrap">
+    <div class="content-box inner">
+      <div class="articles-content-box-slider-controls">
+        <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
+          <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
+        <% end %>
+        <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
+          <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
+        <% end %>
+      </div>
+
+      <h2 class="content-box-title">
+        News
+      </h2>
+
+      <div class="articles-slick">
+        <%= render @articles %>
       </div>
     </div>
   </section>

@@ -1,16 +1,17 @@
+.content-box.team-members {
+  padding: rem(55px) 0 0 0;
+}
+
 .team-member-search-form {
   @include grid-row;
   width: grid-column(8);
+  text-align: center;
 }
 
 .team-member-search-field {
   @include grid-column(6,
   $gutter: (
-      small: 14,
-      medium: 14,
-      large: 14,
-      xlarge: 14,
-      xxlarge: 14,
+      small: 14
     ));
 }
 
@@ -18,4 +19,29 @@
 .team-member-search-service {
   border: 1px solid $accent-grey;
   border-radius: 6px;
+}
+
+.team-members-content-box-slider-controls {
+  text-align: right;
+  margin: 0 rem(35px) 0 0;
+}
+
+.team-members-profiles {
+  margin: rem(25px) 0 0;
+}
+
+.team-member-search-button {
+  background: $dark-purple;
+  border-radius: 6px;
+  color: $white;
+  font-family: $ubuntu;
+  font-size: rem(18px);
+  font-weight: $ubuntu-light;
+  line-height: 1;
+  padding: rem(19px) rem(90px);
+
+  &:focus {
+    background: $slate-purple;
+    outline: 0;
+  }
 }

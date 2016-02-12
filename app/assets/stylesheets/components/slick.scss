@@ -1,0 +1,19 @@
+.slick-slider {
+  .slick-dots li {
+    height: 10px;
+    width: 10px;
+
+    &.slick-active button::before {
+      background: $orange;
+    }
+
+    button::before {
+      background: $pastel-purple;
+      border-radius: 50%;
+      content: ' ';
+      height: 10px;
+      opacity: 1;
+      width: 10px;
+    }
+  }
+}

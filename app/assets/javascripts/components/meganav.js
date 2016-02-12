@@ -1,7 +1,3 @@
-$(document).on('mouseover', '.hover-toggle', function() {
-  var contentSection = $(this).data('container');
-  $(this).parent().parent().find('.active').removeClass('active');
-  $(this).addClass('active');
-  $('.' + contentSection).siblings().addClass('hide');
-  $('.' + contentSection).removeClass('hide');
+$(function() {
+  $('.meganav-dropdown-primary-list, .meganav-dropdown-secondary-list, .meganav-dropdown-team-member-wrap').matchHeight();
 });

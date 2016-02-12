@@ -1,4 +1,13 @@
-<% # TODO: Add sticky email area %>
+<%= link_to '#', class: 'toggle-class sticky-sidebar-toggle',
+            title: 'Toggle contact sidebar',
+            data: { container: '.sticky-sidebar', class: 'hide' } do
+%>
+  <%= image_tag 'components/icons/header/email.png', alt: '' %>
+<% end %>
+
+<div class="sticky-sidebar hide">
+
+</div>
 
 <header class="primary-header">
   <div class="header-branding">

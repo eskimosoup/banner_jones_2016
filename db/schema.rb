@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160210143824) do
+ActiveRecord::Schema.define(version: 20160212154702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title",                                   null: false
+    t.text     "summary",                                 null: false
+    t.text     "content",                                 null: false
+    t.string   "image"
+    t.string   "social_share_title"
+    t.string   "social_share_image"
+    t.string   "social_share_description"
+    t.date     "date",                                    null: false
+    t.string   "suggested_url"
+    t.boolean  "display",                  default: true
+    t.boolean  "home_page_highlight",      default: true
+    t.string   "slug"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -111,6 +128,17 @@ ActiveRecord::Schema.define(version: 20160210143824) do
     t.string "key"
     t.string "value"
     t.string "environment"
+  end
+
+  create_table "testimonials", force: :cascade do |t|
+    t.text     "content",                       null: false
+    t.string   "author_name",                   null: false
+    t.string   "author_company"
+    t.string   "image"
+    t.boolean  "display",        default: true
+    t.integer  "position"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
 end

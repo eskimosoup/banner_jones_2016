@@ -1,0 +1,11 @@
+<% present testimonial do |testimonial_presenter| %>
+  <div class="testimonial">
+    <%= testimonial_presenter.content %>
+
+    <div class="testimonial-author">
+      <%= testimonial_presenter.author %>
+    </div>
+
+    <%= testimonial_presenter.show_image(alt: testimonial_presenter.author, class: 'testimonial-photo') %>
+  </div>
+<% end %>

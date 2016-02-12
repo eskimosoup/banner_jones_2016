@@ -1,0 +1,20 @@
+<div>
+  <div class="article">
+    <% present article do |article_presenter| %>
+      <%= article_presenter.linked_text(article_presenter.title, class: 'article-title') %>
+
+      <%= article_presenter.linked_text((article_presenter.index_image(alt: article_presenter.title, class: 'article-image'))) %>
+
+      <div class="article-author">
+        <div class="article-author-photo">
+          <%= image_tag 'http://placehold.it/44x45', alt: '' %>
+        </div>
+
+        <div class="article-author-details">
+          <%= link_to 'Holly Bennett', '#', class: 'article-author-name' %>
+          <%= link_to 'Family Law', '#', class: 'article-author-department' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
