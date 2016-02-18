@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218133117) do
+ActiveRecord::Schema.define(version: 20160218161601) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,37 @@ ActiveRecord::Schema.define(version: 20160218133117) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "office_locations", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string   "name"
+    t.string   "building_name"
+    t.string   "building_number"
+    t.string   "street",                            null: false
+    t.string   "town",                              null: false
+    t.string   "county",                            null: false
+    t.string   "postcode",                          null: false
+    t.string   "phone_number"
+    t.string   "fax_number"
+    t.string   "email"
+    t.string   "dx_number"
+    t.text     "details"
+    t.string   "image"
+    t.integer  "office_location_id"
+    t.boolean  "display",            default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "offices", ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
 
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
@@ -184,4 +215,5 @@ ActiveRecord::Schema.define(version: 20160218133117) do
     t.datetime "updated_at",                    null: false
   end
 
+  add_foreign_key "offices", "office_locations"
 end
