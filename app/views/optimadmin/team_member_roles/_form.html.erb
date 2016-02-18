@@ -1,10 +1,10 @@
-<%= form_for(@testimonial) do |f| %>
-<% if @testimonial.errors.any? %>
+<%= form_for(@team_member_role) do |f| %>
+<% if @team_member_role.errors.any? %>
   <div id="error_explanation">
-    <h2><%= pluralize(@testimonial.errors.count, "error") %> prohibited this testimonial from being saved:</h2>
+    <h2><%= pluralize(@team_member_role.errors.count, "error") %> prohibited this team_member_role from being saved:</h2>
 
     <ul>
-      <% @testimonial.errors.full_messages.each do |message| %>
+      <% @team_member_role.errors.full_messages.each do |message| %>
       <li><%= message %></li>
       <% end %>
     </ul>
@@ -16,7 +16,6 @@
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
-      <li><a href="#tabs-2">Media</a></li>
       <li><a href="#tabs-3">Settings</a></li>
       <li>
         <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
@@ -27,23 +26,10 @@
 
     <%= field_set_tag nil, id: 'tabs-1' do %>
             <div class="field">
-        <%= f.label :content %><br>
-        <%= f.text_area :content, class: 'tinymce' %>
-      </div>
-            <div class="field">
-        <%= f.label :author_name %><br>
-        <%= f.text_field :author_name %>
-      </div>
-            <div class="field">
-        <%= f.label :author_company %><br>
-        <%= f.text_field :author_company %>
+        <%= f.label :name %><br>
+        <%= f.text_field :name %>
       </div>
 
-
-          <% end %>
-
-    <%= field_set_tag nil, id: 'tabs-2' do %>
-            <%= f.image_field :image %>
 
           <% end %>
 

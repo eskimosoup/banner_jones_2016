@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212154702) do
+ActiveRecord::Schema.define(version: 20160218133117) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,13 @@ ActiveRecord::Schema.define(version: 20160212154702) do
     t.string   "slug"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -129,6 +136,42 @@ ActiveRecord::Schema.define(version: 20160212154702) do
     t.string "value"
     t.string "environment"
   end
+
+  create_table "team_member_roles", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.integer  "position"
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "forename",                           null: false
+    t.string   "surname",                            null: false
+    t.string   "image"
+    t.string   "primary_telephone"
+    t.string   "secondary_telephone"
+    t.string   "email_address"
+    t.datetime "display_from"
+    t.datetime "display_until"
+    t.boolean  "display",             default: true
+    t.text     "specialisms"
+    t.boolean  "has_vcard_download"
+    t.text     "profile"
+    t.string   "google_plus"
+    t.string   "twitter_link"
+    t.string   "facebook_link"
+    t.string   "mobile_number"
+    t.string   "dx_number"
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.integer  "team_member_role_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "team_members", ["team_member_role_id"], name: "index_team_members_on_team_member_role_id", using: :btree
 
   create_table "testimonials", force: :cascade do |t|
     t.text     "content",                       null: false

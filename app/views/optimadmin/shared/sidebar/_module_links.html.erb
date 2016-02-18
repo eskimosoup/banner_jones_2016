@@ -26,9 +26,15 @@
       <ul id="modules" class="content-category-list">
         <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
         <%= module_link(content: "Articles", model: Article, path: articles_path) %>
-        <% if can? :manage, Optimadmin::MenuItem %>
-          <li><%= link_to 'Site Navigation', menu_items_path %></li>
-        <% end %>
+        <%= content_tag :li, (link_to 'Site Navigation', menu_items_path) if can? :manage, Optimadmin::MenuItem %>
+      </ul>
+
+      <div class="content-category-type">
+        Team Members
+      </div>
+      <ul class="content-category-list">
+        <%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
+        <%= module_link(content: "Team Member Roles", model: TeamMemberRole, path: team_member_roles_path) %>
       </ul>
     </div>
   </div>
