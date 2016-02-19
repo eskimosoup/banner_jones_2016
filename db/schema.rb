@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212154702) do
+ActiveRecord::Schema.define(version: 20160219125944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_categories", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",                                   null: false
@@ -31,6 +40,43 @@ ActiveRecord::Schema.define(version: 20160212154702) do
     t.string   "slug"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.integer  "article_category_id"
+    t.integer  "team_member_id"
+  end
+
+  add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
+  add_index "articles", ["team_member_id"], name: "index_articles_on_team_member_id", using: :btree
+
+  create_table "download_categories", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "downloads", force: :cascade do |t|
+    t.string   "name",                                null: false
+    t.text     "summary",                             null: false
+    t.text     "description"
+    t.string   "file",                                null: false
+    t.string   "image"
+    t.integer  "download_category_id"
+    t.boolean  "display",              default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
+
+  create_table "features", force: :cascade do |t|
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -45,6 +91,37 @@ ActiveRecord::Schema.define(version: 20160212154702) do
   add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "office_locations", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "offices", force: :cascade do |t|
+    t.string   "name"
+    t.string   "building_name"
+    t.string   "building_number"
+    t.string   "street",                            null: false
+    t.string   "town",                              null: false
+    t.string   "county",                            null: false
+    t.string   "postcode",                          null: false
+    t.string   "phone_number"
+    t.string   "fax_number"
+    t.string   "email"
+    t.string   "dx_number"
+    t.text     "details"
+    t.string   "image"
+    t.integer  "office_location_id"
+    t.boolean  "display",            default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "offices", ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
 
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
@@ -130,6 +207,52 @@ ActiveRecord::Schema.define(version: 20160212154702) do
     t.string "environment"
   end
 
+  create_table "team_member_offices", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "office_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "team_member_offices", ["office_id"], name: "index_team_member_offices_on_office_id", using: :btree
+  add_index "team_member_offices", ["team_member_id"], name: "index_team_member_offices_on_team_member_id", using: :btree
+
+  create_table "team_member_roles", force: :cascade do |t|
+    t.string   "name",                      null: false
+    t.integer  "position"
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "team_members", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "forename",                           null: false
+    t.string   "surname",                            null: false
+    t.string   "image"
+    t.string   "primary_telephone"
+    t.string   "secondary_telephone"
+    t.string   "email_address"
+    t.datetime "display_from"
+    t.datetime "display_until"
+    t.boolean  "display",             default: true
+    t.text     "specialisms"
+    t.boolean  "has_vcard_download"
+    t.text     "profile"
+    t.string   "google_plus"
+    t.string   "twitter_link"
+    t.string   "facebook_link"
+    t.string   "mobile_number"
+    t.string   "dx_number"
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.integer  "team_member_role_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  add_index "team_members", ["team_member_role_id"], name: "index_team_members_on_team_member_role_id", using: :btree
+
   create_table "testimonials", force: :cascade do |t|
     t.text     "content",                       null: false
     t.string   "author_name",                   null: false
@@ -141,4 +264,10 @@ ActiveRecord::Schema.define(version: 20160212154702) do
     t.datetime "updated_at",                    null: false
   end
 
+  add_foreign_key "articles", "article_categories"
+  add_foreign_key "articles", "team_members"
+  add_foreign_key "downloads", "download_categories"
+  add_foreign_key "offices", "office_locations"
+  add_foreign_key "team_member_offices", "offices"
+  add_foreign_key "team_member_offices", "team_members"
 end

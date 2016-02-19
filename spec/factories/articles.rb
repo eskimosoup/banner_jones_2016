@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :article do
+    article_category
     title 'Title'
     summary 'MyText'
     content '<p>MyText</p>'

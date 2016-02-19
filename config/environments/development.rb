@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  # config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
 
   Rack::MiniProfiler.config.position = 'right'
   Rack::MiniProfiler.config.start_hidden = true # use ALT + P to toggle

@@ -16,4 +16,3 @@
 //= require components/meganav
 //= require components/hover-toggle
 //= require components/footer-awards
-//= require_tree .

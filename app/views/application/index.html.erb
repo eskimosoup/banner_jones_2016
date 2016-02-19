@@ -1,36 +1,17 @@
-<%= content_for :head do %>
-  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css' %>
-  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css' %>
-<% end %>
-
 <%= content_for :javascripts do %>
-  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js' %>
-  <script>
-  $(function() {
-    $('.hero-banner-slick').slick({
-      autoplay: true,
-      autoplaySpeed: 5000,
-      nextArrow: '.hero-banner-next',
-      prevArrow: '.hero-banner-previous',
-      fade: true
-    })
-  })
-  </script>
+  <%= javascript_include_tag 'components/home-components.js' %>
 <% end %>
-
 <section class="hero-banner">
   <div class="hero-banner-controls-wrap">
     <%= link_to '#', class: 'hero-banner-controls hero-banner-previous',
                      title: 'Previous slide' do %>
       <%= image_tag 'components/icons/hero/previous.png', alt: '' %>
     <% end %>
-
     <%= link_to '#', class: 'hero-banner-controls hero-banner-next',
                      title: 'Next slide' do %>
       <%= image_tag 'components/icons/hero/next.png', alt: '' %>
     <% end %>
   </div>
-
   <div class="hero-banner-slick">
     <div class="hero-banner-item">
       <div class="hero-banner-item-wrap">
@@ -38,47 +19,39 @@
           <h1 class="hero-banner-item-title">
             A plan for when life doesn’t have one.
           </h1>
-
           <div class="hero-banner-item-summary">
             <p>
               Protect your families future, with our Lasting<br />
               Power of Attorney and Will writing service.
             </p>
           </div>
-
           <%= link_to 'Find out more', '#', class: 'hero-banner-item-button' %>
         </div>
       </div>
-
       <%= image_tag 'placeholders/lifebuoy.jpg',
                     alt: '',
                     class: 'hero-banner-image' %>
     </div>
-
     <div class="hero-banner-item">
       <div class="hero-banner-item-wrap">
         <div class="hero-banner-item-content">
           <h1 class="hero-banner-item-title">
             Suffered an injury that was not your fault?
           </h1>
-
           <div class="hero-banner-item-summary">
             <p>
               Full no win, no fee support from<br />
               our expert personal injury team
             </p>
           </div>
-
           <%= link_to 'Find out more', '#', class: 'hero-banner-item-button' %>
         </div>
       </div>
-
       <%= image_tag 'placeholders/poorly-dog.jpg',
                     alt: '',
                     class: 'hero-banner-image' %>
     </div>
   </div>
-
   <div class="hero-banner-navigation">
     <div class="hero-banner-department-type">
       <ul class="hero-banner-department-select">
@@ -97,28 +70,22 @@
                       } %>
         </li>
       </ul>
-
       <div>
         <div class="hero-banner-department-services hero-banner-department-services-personal">
           <h3 class="hero-banner-department-title">We can help...</h3>
-
           <ul class="hero-banner-department-services-list">
             <li>
               <%= link_to 'Sell or buy a property', '#' %>
             </li>
-
             <li>
               <%= link_to 'Write a Will', '#' %>
             </li>
-
             <li>
               <%= link_to 'Relationship breakdowns', '#' %>
             </li>
-
             <li>
               <%= link_to 'Had an accident?', '#' %>
             </li>
-
             <li>
               <%= link_to 'Supporting family members', '#' %>
             </li>
@@ -126,7 +93,6 @@
         </div>
         <div class="hero-banner-department-services hero-banner-department-services-business hide">
           <h3 class="hero-banner-department-title">We can help...</h3>
-
           <ul class="hero-banner-department-services-list">
             <li>
               <%= link_to 'Business', '#' %>
@@ -137,24 +103,6 @@
     </div>
   </div>
 </section>
-
-<%= content_for :javascripts do %>
-  <script>
-  $(document).on('click', '.content-box-next, .content-box-previous', function() {
-    return false;
-  })
-
-  $(function() {
-    $('.helpful-guides-slick').slick({
-      nextArrow: '.helpful-guide-content-box-slider-controls .content-box-next',
-      prevArrow: '.helpful-guide-content-box-slider-controls .content-box-previous',
-      slidesToShow: 4,
-      slidesToScroll: 1
-    })
-  })
-  </script>
-<% end %>
-
 <div class="content">
   <section class="content-box-wrap">
     <div class="content-box inner">
@@ -166,62 +114,33 @@
           <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
         <% end %>
       </div>
-
       <h2 class="content-box-title">
         Our Helpful Guides
       </h2>
-
       <div class="helpful-guides-slick">
-        <div class="helpful-guide">
-          <%= link_to '#', class: 'helpful-guide-title', title: 'Download..' do %>
-            Guide to Lasting Power Of Attorney
-          <% end %>
-
-          <%= link_to '#', class: 'helpful-guide-image', title: 'Download...' do %>
-            <%= image_tag 'placeholders/helpful-guide.png', alt: '' %>
-          <% end %>
-        </div>
+        <%= render partial: 'downloads/download_shelf',
+                  collection: @downloads, as: :download if @downloads.present? %>
       </div>
     </div>
   </section>
-
-  <%= content_for :javascripts do %>
-  <!--
-    <script>
-    $(function() {
-      $('.team-members-slick').slick({
-        nextArrow: '.team-members-content-box-slider-controls .content-box-next',
-        prevArrow: '.team-members-content-box-slider-controls .content-box-previous',
-        slidesToShow: 12,
-        slidesToScroll: 1
-      })
-    })
-    </script>
-  -->
-  <% end %>
-
   <section class="content-box-wrap">
-    <div class="content-box team-members">
+    <div class="content-box home-team-members">
       <h2 class="content-box-title">
         Find People By
       </h2>
-
-      <%= form_tag '', method: :post, remote: true, class: 'team-member-search-form' do %>
-        <div class="team-member-search-field">
+      <%= form_tag '', method: :post, remote: true, class: 'home-team-member-search-form' do %>
+        <div class="home-team-member-search-field">
           <%= text_field_tag :name, '', placeholder: 'Name',
-                                        class: 'team-member-search-name' %>
+                                        class: 'home-team-member-search-name' %>
         </div>
-
-        <div class="team-member-search-field">
+        <div class="home-team-member-search-field">
           <%= select_tag :service, options_for_select(['Service name']),
                                    prompt: 'Service',
-                                   class: 'team-member-search-service' %>
+                                   class: 'home-team-member-search-service' %>
         </div>
-
-        <%= submit_tag 'Search', class: 'team-member-search-button' %>
+        <%= submit_tag 'Search', class: 'home-team-member-search-button' %>
       <% end %>
-
-      <div class="team-members-content-box-slider-controls">
+      <div class="home-team-members-content-box-slider-controls">
         <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
           <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
         <% end %>
@@ -229,73 +148,42 @@
           <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
         <% end %>
       </div>
-
-      <% # TODO: Code this! %>
-      <div class="team-members-profiles">
-        <div class="team-members-slick">
-          <%= image_tag 'placeholders/team-members.jpg', alt: '' %>
+      <div class="home-team-members-profiles">
+        <div class="home-team-members-slick">
+          <%= render partial: 'team_members/home_team_member',
+                    collection: @team_members, as: :team_member if @team_members.present? %>
+        </div>
+        <div class="home-team-members-slick-profile">
+          <%= render 'team_members/profile_card', team_member: @team_members.first if @team_members.present? %>
         </div>
       </div>
-    </div>
-  </section>
-
-  <%= content_for :javascripts do %>
-    <script>
-    $(function() {
-      $('.testimonials-slick').slick({
-        arrows: false,
-        dots: true,
-        autoplay: true,
-        autoplaySpeed: 6000
-      })
-    })
-    </script>
-  <% end %>
-
-  <section class="content-box-wrap">
-    <div class="content-box inner testimonials">
-      <h2 class="content-box-title testimonials-title">
-        A People Business
+    </section>
+    <section class="content-box-wrap">
+      <div class="content-box inner testimonials">
+        <h2 class="content-box-title testimonials-title">
+          A People Business
       </h2>
-
-      <div class="testimonials-slick">
-        <%= render @testimonials %>
+        <div class="testimonials-slick">
+          <%= render @testimonials %>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <%= content_for :javascripts do %>
-  <script>
-  $(function() {
-    $('.article-title').matchHeight();
-
-    $('.articles-slick').slick({
-      nextArrow: '.articles-content-box-slider-controls .content-box-previous',
-      prevArrow: '.articles-content-box-slider-controls .content-box-next',
-      slidesToShow: 4
-    });
-  });
-  </script>
-  <% end %>
-
-  <section class="content-box-wrap">
-    <div class="content-box inner">
-      <div class="articles-content-box-slider-controls">
-        <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
-          <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
-        <% end %>
-        <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
-          <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
-        <% end %>
-      </div>
-
-      <h2 class="content-box-title">
-        News
+    </section>
+    <section class="content-box-wrap">
+      <div class="content-box inner">
+        <div class="articles-content-box-slider-controls">
+          <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
+            <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
+          <% end %>
+          <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
+            <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
+          <% end %>
+        </div>
+        <h2 class="content-box-title">
+          News
       </h2>
-
-      <div class="articles-slick">
-        <%= render @articles %>
+        <div class="articles-slick">
+          <%= render @articles %>
+        </div>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
+  </div>

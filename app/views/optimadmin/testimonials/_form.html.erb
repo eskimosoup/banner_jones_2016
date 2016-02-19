@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-  
+
 
   <div class="tabs prevent-flash">
     <ul class="tab-list">
@@ -38,17 +38,13 @@
         <%= f.label :author_company %><br>
         <%= f.text_field :author_company %>
       </div>
-            <div class="field">
-        <%= f.label :position %><br>
-        <%= f.number_field :position %>
-      </div>
-      
-      
+
+
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
             <%= f.image_field :image %>
-      
+
           <% end %>
 
     <%= field_set_tag nil, id: 'tabs-3' do %>

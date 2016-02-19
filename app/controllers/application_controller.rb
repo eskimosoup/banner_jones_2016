@@ -18,14 +18,16 @@ class ApplicationController < ActionController::Base
   def index
     @testimonials = Testimonial.displayed
     @articles = Article.home_page_highlight
+    @downloads = Download.displayed
+    @team_members = TeamMember.displayed
   end
 
   private
 
   def load_menu_items
-    @header_aside_menu = Optimadmin::Menu.new(name: "header_aside")
-    @primary_header_menu = Optimadmin::Menu.new(name: "primary_header")
-    @footer_menu = Optimadmin::Menu.new(name: "footer")
+    @header_aside_menu = Optimadmin::Menu.new(name: 'header_aside')
+    @primary_header_menu = Optimadmin::Menu.new(name: 'primary_header')
+    @footer_menu = Optimadmin::Menu.new(name: 'footer')
   end
 
   def global_site_settings
