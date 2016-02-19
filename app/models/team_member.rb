@@ -18,7 +18,7 @@ class TeamMember < ActiveRecord::Base
   scope :displayed, lambda {
     where('(display_from <= :today OR display_from IS NULL) AND
            (display_until >= :today OR display_until IS NULL) AND
-           (display = :true)', today: Time.now, true: true)
+           (display = :true)', today: Time.now, true: true).positioned
   }
 
   scope :name_search, lambda { |keywords|

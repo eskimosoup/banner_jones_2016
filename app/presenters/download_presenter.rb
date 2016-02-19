@@ -1,6 +1,6 @@
 class DownloadPresenter < BasePresenter
   presents :download
-  delegate :title, to: :download
+  delegate :name, to: :download
 
   def linked_text(text = 'View', options = {})
     h.link_to text, download, options

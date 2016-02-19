@@ -4,6 +4,10 @@ RSpec.describe DownloadPresenter, type: :presenter, download: true do
   let(:download) { build(:download) }
   subject(:download_presenter) { DownloadPresenter.new(object: download, view_template: view) }
 
+  describe 'delegations', :delegation do
+    it { should delegate_method(:name).to(:download_category) }
+  end
+
   describe 'standard download' do
     it 'returns the linked name' do
       expect(download_presenter.linked_text(download.name)).to eq(link_to download.name, download)

@@ -4,7 +4,12 @@ module Optimadmin
 
     edit_images_for Download,
                     [
-                      [:image, { show: ['fit', 200, 200], index: ['fill', 200, 200] }]
+                      [
+                        :image, {
+                          show: ['fit', 251, 153],
+                          index: ['fill', 200, 200]
+                        }
+                      ]
                     ]
 
     def index

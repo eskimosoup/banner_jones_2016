@@ -1,13 +1,22 @@
 class TeamMemberPresenter < BasePresenter
   presents :team_member
-  delegate :forename, :surname, :role, :primary_telephone, :secondary_telephone, :email_address, to: :team_member
+  delegate :forename, :surname, :primary_telephone, :secondary_telephone,
+           :email_address, to: :team_member
 
   def full_name
     [forename, surname].join(' ')
   end
 
-  def linked_email_address
-    h.mail_to team_member.email_address
+  def role
+    team_member.team_member_role.name
+  end
+
+  def office_locations
+    team_member.offices.map { |x| x.office_location.name }.join(', ')
+  end
+
+  def linked_email_address(content = '')
+    h.mail_to team_member.email_address, content
   end
 
   def specialisms

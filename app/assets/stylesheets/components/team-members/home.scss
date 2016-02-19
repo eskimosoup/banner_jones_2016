@@ -1,36 +1,36 @@
-.content-box.team-members {
-  padding: rem(55px) 0 0 0;
+.content-box.home-team-members {
+  padding: rem(55px) 0 0;
 }
 
-.team-member-search-form {
+.home-team-member-search-form {
   @include grid-row;
-  width: grid-column(8);
   text-align: center;
+  width: grid-column(8);
 }
 
-.team-member-search-field {
+.home-team-member-search-field {
   @include grid-column(6,
   $gutter: (
       small: 14
     ));
 }
 
-.team-member-search-name,
-.team-member-search-service {
+.home-team-member-search-name,
+.home-team-member-search-service {
   border: 1px solid $accent-grey;
   border-radius: 6px;
 }
 
-.team-members-content-box-slider-controls {
-  text-align: right;
+.home-team-members-content-box-slider-controls {
   margin: 0 rem(35px) 0 0;
+  text-align: right;
 }
 
-.team-members-profiles {
+.home-team-members-profiles {
   margin: rem(25px) 0 0;
 }
 
-.team-member-search-button {
+.home-team-member-search-button {
   background: $dark-purple;
   border-radius: 6px;
   color: $white;
@@ -44,4 +44,71 @@
     background: $slate-purple;
     outline: 0;
   }
+}
+
+.home-team-members-slick.slick-slider {
+  border-left: 3px solid $orange;
+  border-top: 3px solid $orange;
+  margin: 0;
+
+  .slick-active:last-of-type {
+    border-right: 0;
+  }
+}
+
+.home-team-member {
+  border-right: 3px solid $orange;
+}
+
+.home-team-member-profile-card-update {
+  display: block;
+}
+
+.home-team-member-profile {
+  @include clearfix;
+  background: $orange;
+  color: $white;
+  padding: rem(50px) rem(40px) rem(40px);
+}
+
+.home-team-member-profile-name,
+.home-team-member-profile-service-name {
+  color: $offset-black;
+  font-size: rem(16px);
+  font-weight: $myriad-pro-semibold;
+  margin: 0 rem(14px) 0 0;
+}
+
+.home-team-member-profile-information {
+  float: left;
+  width: grid-column(8);
+}
+
+.home-team-member-profile-services {
+  float: right;
+  text-align: right;
+  width: grid-column(4);
+}
+
+.home-team-member-role {
+  display: inline-block;
+  margin: 0 0 0 rem(14px);
+  text-transform: uppercase;
+}
+
+.home-team-member-profile-details {
+  display: inline-block;
+  list-style: none;
+  margin: 0 0 0 rem(20px);
+
+  li {
+    display: inline-block;
+    margin: 0 rem(20px) 0 0;
+  }
+}
+
+.home-team-member-office-location {
+  background: image-url('components/icons/team-member/map.png') no-repeat left center;
+  min-height: 27px;
+  padding: 0 0 0 rem(30px);
 }

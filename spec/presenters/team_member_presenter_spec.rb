@@ -17,7 +17,7 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
   end
 
   let(:team_member) { build(:team_member) }
-  subject(:team_member_presenter) { TeamMemberPresenter.new(object: team_member, view_template: view)}
+  subject(:team_member_presenter) { TeamMemberPresenter.new(object: team_member, view_template: view) }
 
   describe 'delegations', :delegation do
     it { should delegate_method(:forename).to(:team_member) }
@@ -40,19 +40,19 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
 
     it 'returns the Google Plus link' do
       if Flip.team_member_google_plus?
-        expect(team_member_presenter.linked_google_plus('Google+', { title: 'Google+', target: '_blank' })).to eq(link_to 'Google+', team_member.google_plus, title: 'Google+', target: '_blank')
+        expect(team_member_presenter.linked_google_plus('Google+', title: 'Google+', target: '_blank')).to eq(link_to 'Google+', team_member.google_plus, title: 'Google+', target: '_blank')
       end
     end
 
     it 'returns the Twitter link' do
       if Flip.team_member_twitter_link?
-        expect(team_member_presenter.linked_twitter('Follow me on Twitter', { title: 'Follow me on Twitter', target: '_blank' })).to eq(link_to 'Follow me on Twitter', team_member.twitter_link, title: 'Follow me on Twitter',  target: '_blank')
+        expect(team_member_presenter.linked_twitter('Follow me on Twitter', title: 'Follow me on Twitter', target: '_blank')).to eq(link_to 'Follow me on Twitter', team_member.twitter_link, title: 'Follow me on Twitter', target: '_blank')
       end
     end
 
     it 'returns the Facebook link' do
       if Flip.team_member_facebook_link?
-        expect(team_member_presenter.linked_facebook('Add me on Facebook', { title: 'Add me on Facebook', target: '_blank' })).to eq(link_to 'Add me on Facebook', team_member.facebook_link, title: 'Add me on Facebook',  target: '_blank')
+        expect(team_member_presenter.linked_facebook('Add me on Facebook', title: 'Add me on Facebook', target: '_blank')).to eq(link_to 'Add me on Facebook', team_member.facebook_link, title: 'Add me on Facebook', target: '_blank')
       end
     end
 
@@ -62,6 +62,10 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
 
     it 'returns the html formatted specialisms' do
       expect(team_member_presenter.specialisms).to eq(raw team_member.specialisms)
+    end
+
+    it 'returns the role' do
+      expect(team_member_presenter.role).to eq(team_member.team_member_role.name)
     end
 
     it 'returns the mail_to email' do
@@ -89,7 +93,7 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
 
     describe 'has image' do
       let(:team_member) { build(:team_member_with_image) }
-      subject(:team_member_presenter) { TeamMemberPresenter.new(object: team_member, view_template: view)}
+      subject(:team_member_presenter) { TeamMemberPresenter.new(object: team_member, view_template: view) }
 
       it 'show_image should not return nil' do
         expect(team_member_presenter.show_image(alt: team_member_presenter.full_name)).to eq(image_tag(team_member.image.show, alt: [team_member.forename, team_member.surname].join(' ')))

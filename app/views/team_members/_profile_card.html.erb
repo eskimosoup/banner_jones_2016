@@ -1,0 +1,28 @@
+<div class="home-team-member-profile">
+  <div class="home-team-member-profile-information">
+    <% present team_member do |team_member_presenter| %>
+      <strong class="home-team-member-profile-name">
+        <%= team_member_presenter.full_name %>
+      </strong>
+      /
+      <span class="home-team-member-role">
+        <%= team_member_presenter.role %>
+      </span>
+      <ul class="home-team-member-profile-details">
+        <li class="home-team-member-office-location">
+          <%= team_member_presenter.office_locations %>
+        </li>
+        <li>
+          <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email') %>
+        </li>
+        <li>
+        </li>
+      </ul>
+    <% end %>
+  </div>
+  <div class="home-team-member-profile-services">
+    <strong class="home-team-member-profile-service-name">
+      <% # TODO: Service name %>
+    </strong>
+  </div>
+</div>
