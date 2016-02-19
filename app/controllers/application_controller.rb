@@ -19,8 +19,7 @@ class ApplicationController < ActionController::Base
     @testimonials = Testimonial.displayed
     @articles = Article.home_page_highlight
     @downloads = Download.displayed
-    @team_member = TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed
-    @team_members = @team_member + @team_member
+    @team_members = TeamMember.displayed
   end
 
   private
