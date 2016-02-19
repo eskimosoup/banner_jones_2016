@@ -21,7 +21,7 @@ module Optimadmin
     def create
       @team_member = TeamMember.new(team_member_params)
       if @team_member.save
-        redirect_to team_members_url, notice: 'Team member was successfully created.'
+        redirect_to_index_or_continue_editing(@team_member)
       else
         render :new
       end
@@ -29,7 +29,7 @@ module Optimadmin
 
     def update
       if @team_member.update(team_member_params)
-        redirect_to team_members_url, notice: 'Team member was successfully updated.'
+        redirect_to_index_or_continue_editing(@team_member)
       else
         render :edit
       end
@@ -56,7 +56,7 @@ module Optimadmin
                                   :display_from, :display_until, :display,
                                   :specialisms, :has_vcard_download, :profile,
                                   :google_plus, :twitter_link, :facebook_link,
-                                  :mobile_number, :dx_number)
+                                  :mobile_number, :dx_number, office_ids: [])
     end
   end
 end

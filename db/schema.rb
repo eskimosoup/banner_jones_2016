@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218161601) do
+ActiveRecord::Schema.define(version: 20160219125944) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "article_categories", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",                                   null: false
@@ -31,7 +40,37 @@ ActiveRecord::Schema.define(version: 20160218161601) do
     t.string   "slug"
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
+    t.integer  "article_category_id"
+    t.integer  "team_member_id"
   end
+
+  add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
+  add_index "articles", ["team_member_id"], name: "index_articles_on_team_member_id", using: :btree
+
+  create_table "download_categories", force: :cascade do |t|
+    t.string   "name",                         null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "downloads", force: :cascade do |t|
+    t.string   "name",                                null: false
+    t.text     "summary",                             null: false
+    t.text     "description"
+    t.string   "file",                                null: false
+    t.string   "image"
+    t.integer  "download_category_id"
+    t.boolean  "display",              default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "key",                        null: false
@@ -168,6 +207,16 @@ ActiveRecord::Schema.define(version: 20160218161601) do
     t.string "environment"
   end
 
+  create_table "team_member_offices", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "office_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "team_member_offices", ["office_id"], name: "index_team_member_offices_on_office_id", using: :btree
+  add_index "team_member_offices", ["team_member_id"], name: "index_team_member_offices_on_team_member_id", using: :btree
+
   create_table "team_member_roles", force: :cascade do |t|
     t.string   "name",                      null: false
     t.integer  "position"
@@ -215,5 +264,10 @@ ActiveRecord::Schema.define(version: 20160218161601) do
     t.datetime "updated_at",                    null: false
   end
 
+  add_foreign_key "articles", "article_categories"
+  add_foreign_key "articles", "team_members"
+  add_foreign_key "downloads", "download_categories"
   add_foreign_key "offices", "office_locations"
+  add_foreign_key "team_member_offices", "offices"
+  add_foreign_key "team_member_offices", "team_members"
 end

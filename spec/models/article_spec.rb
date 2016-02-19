@@ -3,12 +3,16 @@ require 'rails_helper'
 RSpec.describe Article, type: :model, article: true do
   describe 'validations', :validation do
     subject(:article) { build(:article) }
-    # or for validating carrierwave items: let(:article) { create(:article) }
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:summary) }
     it { should validate_presence_of(:content) }
     it { should validate_presence_of(:date) }
     it { should validate_uniqueness_of(:suggested_url).allow_blank.case_insensitive.with_message('is already taken, leave blank to generate automatically') }
+  end
+
+  describe 'associations', :association do
+    it { should belong_to(:article_category) }
+    it { should belong_to(:team_member) }
   end
 
   describe 'custom validation', :validation do

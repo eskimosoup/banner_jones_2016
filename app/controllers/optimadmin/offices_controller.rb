@@ -55,7 +55,7 @@ module Optimadmin
       :street, :town, :county, :postcode, :phone_number, :fax_number, :email,
       :remote_image_url, :image_cache, :remove_image,
       :dx_number, :details, :image, :office_location_id, :display,
-      :suggested_url)
+      :suggested_url, team_member_ids: [])
     end
   end
 end

@@ -10,6 +10,9 @@ RSpec.describe TeamMember, type: :model, team_member: true do
 
   describe 'associations', :association do
     it { should belong_to(:team_member_role) }
+    it { should have_many(:team_member_offices).dependent(:destroy) }
+    it { should have_many(:offices).through(:team_member_offices) }
+    it { should have_many(:articles).dependent(:nullify) }
   end
 
   describe 'scopes', :scope do

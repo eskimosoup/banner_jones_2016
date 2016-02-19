@@ -19,8 +19,8 @@
   color: $dark-purple;
   display: block;
   font-family: $montserrat;
-  font-weight: $montserrat-semibold;
   font-size: rem(14px);
+  font-weight: $montserrat-semibold;
   padding: rem(35px) rem(37px);
 
   &:hover,
@@ -38,8 +38,8 @@
 
 .article-author-photo {
   @include grid-column(
-    $columns: 3,
-    $gutter: (
+  $columns: 3,
+  $gutter: (
       small: 10
     )
   );
@@ -53,8 +53,8 @@
 
 .article-author-details {
   @include grid-column(
-    $columns: 9,
-    $gutter: (
+  $columns: 9,
+  $gutter: (
       small: 0
     )
   );
@@ -65,8 +65,8 @@
   color: $dark-purple;
   display: block;
   font-family: $montserrat;
-  font-weight: $montserrat-semibold;
   font-size: rem(12px);
+  font-weight: $montserrat-semibold;
   line-height: 1;
   margin: rem(9px) 0 0;
 

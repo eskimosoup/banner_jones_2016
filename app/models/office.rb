@@ -7,16 +7,24 @@ class Office < ActiveRecord::Base
   belongs_to :office_location
   # has_many :service_offices, dependent: :destroy
   # has_many :services, through: :service_offices
-  # has_many :team_member_offices, dependent: :destroy
-  # has_many :team_members, through: :team_member_offices
+
+  has_many :team_member_offices, dependent: :destroy
+  has_many :team_members, through: :team_member_offices
 
   delegate :name, to: :office_location, prefix: true
 
   validates :name, :office_location, :postcode, presence: true
   validates :name, uniqueness: { scope: :office_location_id }
-  validates :suggested_url, uniqueness: true, allow_blank: true, case_sensitive: false
+  validates :suggested_url, uniqueness: {
+    allow_blank: true,
+    case_sensitive: false
+  }
 
-  scope :displayed, -> { joins(:office_location).where(display: true).merge(OfficeLocation.displayed) }
+  scope :displayed, lambda {
+    joins(:office_location)
+      .where(display: true)
+      .merge(OfficeLocation.displayed)
+  }
 
   def slug_candidates
     [

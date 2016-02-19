@@ -52,10 +52,15 @@ module Optimadmin
 
     def article_params
       params.require(:article).permit(:title, :summary, :content, :image,
-      :image_cache, :remote_image_url, :remote_image, :social_share_image_cache,
-      :remove_social_share_image, :remote_social_share_image_url,
-      :social_share_title, :social_share_image, :social_share_description,
-      :date, :suggested_url, :display, :home_page_highlight)
+                                      :image_cache, :remote_image_url,
+                                      :remote_image, :social_share_image_cache,
+                                      :remove_social_share_image,
+                                      :remote_social_share_image_url,
+                                      :social_share_title, :social_share_image,
+                                      :social_share_description,
+                                      :article_category_id, :date,
+                                      :suggested_url, :display, :team_member_id,
+                                      :home_page_highlight)
     end
   end
 end
