@@ -9,6 +9,7 @@ RSpec.describe Department, type: :model, department: true do
 
   describe 'associations', :association do
     it { should belong_to(:audience).counter_cache }
+    it { should have_many(:services).dependent(:destroy) }
   end
 
   describe 'scopes', :scope do

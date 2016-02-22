@@ -15,6 +15,7 @@ class Audience < ActiveRecord::Base
   scope :search, ->(title) { where(title: title) }
 
   has_many :departments, -> { displayed }, dependent: :destroy
+  has_many :services, -> { displayed }, through: :departments
 
   def slug_candidates
     [

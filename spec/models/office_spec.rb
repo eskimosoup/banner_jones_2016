@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Office, type: :model do
+RSpec.describe Office, type: :model, office: true do
   subject(:office) { build(:office) }
 
   describe 'validations', :validation do
@@ -19,12 +19,27 @@ RSpec.describe Office, type: :model do
     it { should have_many(:team_members).through(:team_member_offices) }
   end
 
+  describe 'scopes', :scope do
+    let(:office) { create(:office) }
+    let(:hidden_office) { create(:office, display: false) }
+
+    describe 'displayed' do
+      it 'excludes hidden records' do
+        expect(Office.displayed).not_to include hidden_office
+      end
+
+      it 'returns displayed records' do
+        expect(Office.displayed).to include office
+      end
+    end
+  end
+
   describe 'delegations', :delegation do
     it { should delegate_method(:name).to(:office_location).with_prefix }
   end
 
   describe 'friendly_id' do
-    subject(:office) { build(:office) }
+    let(:office) { create(:office) }
 
     it 'creates a slug if title changed' do
       office.name = 'My new title'

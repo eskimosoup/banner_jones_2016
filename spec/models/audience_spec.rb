@@ -10,6 +10,7 @@ RSpec.describe Audience, type: :model, audience: true do
 
   describe 'associations', :association do
     it { should have_many(:departments).dependent(:destroy) }
+    it { should have_many(:services).through(:departments) }
   end
 
   describe 'scopes', :scope do

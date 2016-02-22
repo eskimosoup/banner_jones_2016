@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :global_site_settings, :load_menu_items
+  before_action :global_site_settings, :load_global_objects
 
   include Optimadmin::AdminSessionsHelper
 
@@ -20,14 +20,16 @@ class ApplicationController < ActionController::Base
     @articles = Article.home_page_highlight
     @downloads = Download.displayed
     @team_members = TeamMember.displayed
+    @services = Service.displayed.pluck(:title, :id)
   end
 
   private
 
-  def load_menu_items
+  def load_global_objects
     @header_aside_menu = Optimadmin::Menu.new(name: 'header_aside')
     @primary_header_menu = Optimadmin::Menu.new(name: 'primary_header')
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
+    @awards = Award.displayed
   end
 
   def global_site_settings

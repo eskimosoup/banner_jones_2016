@@ -14,7 +14,7 @@ class ArticleCategory < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
 
-  has_many :articles, dependent: :nullify
+  has_many :articles, -> { displayed }, dependent: :nullify
 
   def slug_candidates
     [

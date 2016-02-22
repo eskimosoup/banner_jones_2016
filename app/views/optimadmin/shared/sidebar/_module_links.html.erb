@@ -22,9 +22,11 @@
         Manage Your Content
       </div>
       <ul id="modules" class="content-category-list">
+        <%= module_link(content: "Awards", model: Award, path: awards_path) %>
         <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
         <%= content_tag :li, (link_to 'Site Navigation', menu_items_path) if can? :manage, Optimadmin::MenuItem %>
       </ul>
+      
       <div class="content-category-type">
         Team Members
       </div>
@@ -32,6 +34,7 @@
         <%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
         <%= module_link(content: "Team Member Roles", model: TeamMemberRole, path: team_member_roles_path) %>
       </ul>
+
       <div class="content-category-type">
         Offices
       </div>
@@ -39,6 +42,7 @@
         <%= module_link(content: "Offices", model: Office, path: offices_path) %>
         <%= module_link(content: "Office Locations", model: OfficeLocation, path: office_locations_path) %>
       </ul>
+
       <div class="content-category-type">
         Articles
       </div>
@@ -46,6 +50,7 @@
         <%= module_link(content: "Articles", model: Article, path: articles_path) %>
         <%= module_link(content: "Article Categories", model: ArticleCategory, path: article_categories_path) %>
       </ul>
+
       <div class="content-category-type">
         Downloads
       </div>
@@ -53,6 +58,7 @@
         <%= module_link(content: "Downloads", model: Download, path: downloads_path) %>
         <%= module_link(content: "Download Categories", model: DownloadCategory, path: download_categories_path) %>
       </ul>
+
       <div class="content-category-type">
         Services
       </div>

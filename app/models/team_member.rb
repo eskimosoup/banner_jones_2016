@@ -16,9 +16,12 @@ class TeamMember < ActiveRecord::Base
 
   # http://stackoverflow.com/a/11219778
   scope :displayed, lambda {
-    where('(display_from <= :today OR display_from IS NULL) AND
+    joins(:team_member_role)
+      .where('(display_from <= :today OR display_from IS NULL) AND
            (display_until >= :today OR display_until IS NULL) AND
-           (display = :true)', today: Time.now, true: true).positioned
+           (team_members.display = :true)', today: Time.now, true: true)
+      .positioned
+      .merge(TeamMemberRole.displayed)
   }
 
   scope :name_search, lambda { |keywords|

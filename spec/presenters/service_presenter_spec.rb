@@ -70,7 +70,11 @@ RSpec.describe ServicePresenter, type: :presenter, service: true do
   describe 'social share images' do
     describe 'no image' do
       it 'show_image should return nil' do
-        expect(service_presenter.show_image).to eq(nil)
+        expect(service_presenter.show_social_share_image).to eq(nil)
+      end
+
+      it 'returns nil for social share image' do
+        expect(service_presenter.social_share_image_url).to eq(nil)
       end
     end
 
@@ -78,8 +82,12 @@ RSpec.describe ServicePresenter, type: :presenter, service: true do
       let(:service) { build(:service_with_image) }
       subject(:service_presenter) { ServicePresenter.new(object: service, view_template: view) }
 
+      it 'returns social share image url' do
+        expect(service_presenter.social_share_image_url).to eq(root_url[0..-2] + service.social_share_image.show.url)
+      end
+
       it 'show_image should not return nil' do
-        expect(service_presenter.show_image(alt: service.title)).to eq(image_tag(service.image.show, alt: service.title))
+        expect(service_presenter.show_social_share_image(alt: service.title)).to eq(image_tag(service.social_share_image.show, alt: service.title))
       end
     end
   end

@@ -14,7 +14,11 @@ class Service < ActiveRecord::Base
     message: 'is already taken, leave blank to generate automatically'
   }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, lambda {
+    joins(:department)
+      .where(display: true)
+      .merge(Department.displayed)
+  }
 
   belongs_to :department, counter_cache: true
 

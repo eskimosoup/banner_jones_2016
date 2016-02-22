@@ -28,6 +28,18 @@ Rails.application.routes.draw do
   match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
 end
 Optimadmin::Engine.routes.draw do
+  resources :awards, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
   resources :services, except: [:show] do
     collection do
       post 'order'

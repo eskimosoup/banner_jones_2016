@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :team_member do
     team_member_role
-    forename 'MyString'
-    surname 'MyString'
+    forename 'Forename'
+    surname 'Surname'
     primary_telephone 'MyString'
     secondary_telephone 'MyString'
     email_address 'MyString'

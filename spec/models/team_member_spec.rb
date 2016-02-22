@@ -21,16 +21,36 @@ RSpec.describe TeamMember, type: :model, team_member: true do
     let(:future_team_member) { create(:team_member, display_from: (Time.now + 7.days)) }
     let(:past_team_member) { create(:team_member, display_until: (Time.now - 7.days)) }
 
-    it 'only returns displayed' do
-      expect(TeamMember.displayed).not_to include hidden_team_member
+    describe 'displayed' do
+      it 'only returns displayed' do
+        expect(TeamMember.displayed).not_to include hidden_team_member
+      end
+
+      it 'does not return future team members' do
+        expect(TeamMember.displayed).not_to include future_team_member
+      end
+
+      it 'does not return past team members' do
+        expect(TeamMember.displayed).not_to include past_team_member
+      end
     end
 
-    it 'does not return future team members' do
-      expect(TeamMember.displayed).not_to include future_team_member
-    end
+    describe 'name_search' do
+      it 'includes forename in name search' do
+        expect(TeamMember.name_search('Forename')).to include team_member
+      end
 
-    it 'does not return past team members' do
-      expect(TeamMember.displayed).not_to include past_team_member
+      it 'includes surname in name search' do
+        expect(TeamMember.name_search('Surname')).to include team_member
+      end
+
+      it 'includes forename and surname in name search' do
+        expect(TeamMember.name_search('Forename Surname')).to include team_member
+      end
+
+      it 'name search returns nil for non-existant records' do
+        expect(TeamMember.name_search('Joe Bloggs')).to_not include team_member
+      end
     end
   end
 

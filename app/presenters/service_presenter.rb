@@ -14,8 +14,8 @@ class ServicePresenter < BasePresenter
     h.raw service.content
   end
 
-  def social_share_image
-    h.root_url[0..-2] + service.social_share_image.url if service.social_share_image
+  def social_share_image_url
+    h.root_url[0..-2] + service.social_share_image.show.url if service.social_share_image.present?
   end
 
   def social_share_title

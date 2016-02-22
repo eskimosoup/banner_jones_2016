@@ -14,8 +14,8 @@ class ArticlePresenter < BasePresenter
     h.raw article.content
   end
 
-  def social_share_image
-    h.root_url[0..-2] + article.social_share_image.url if article.social_share_image
+  def social_share_image_url
+    h.root_url[0..-2] + article.social_share_image.show.url if article.social_share_image.present?
   end
 
   def social_share_title

@@ -31,27 +31,7 @@
 <footer class="primary-footer">
   <div class="awards-and-accreditations">
     <div class="awards-and-accreditations-slick">
-      <div>
-        <%= image_tag 'http://placehold.it/192x139' %>
-      </div>
-      <div>
-        <%= image_tag 'http://placehold.it/192x139' %>
-      </div>
-      <div>
-        <%= image_tag 'http://placehold.it/192x139' %>
-      </div>
-      <div>
-        <%= image_tag 'http://placehold.it/192x139' %>
-      </div>
-      <div>
-        <%= image_tag 'http://placehold.it/192x139' %>
-      </div>
-      <div>
-        <%= image_tag 'http://placehold.it/192x139' %>
-      </div>
-      <div>
-        <%= image_tag 'http://placehold.it/192x139' %>
-      </div>
+      <%= render partial: 'awards/footer_awards', collection: @awards, as: :award if @awards.present? %>
     </div>
   </div>
 

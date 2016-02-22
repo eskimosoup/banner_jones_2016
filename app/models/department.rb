@@ -14,9 +14,14 @@ class Department < ActiveRecord::Base
     message: 'is already taken, leave blank to generate automatically'
   }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, lambda {
+    joins(:audience)
+      .where(display: true)
+      .merge(Audience.displayed)
+  }
 
   belongs_to :audience, counter_cache: true
+  has_many :services, -> { displayed }, dependent: :destroy
 
   def slug_candidates
     [
