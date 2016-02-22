@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe DownloadCategory, type: :model, download_category: true do
   describe 'validations', :validation do
     subject(:download_category) { build(:download_category) }
-    it { should validate_presence_of(:name) }
-    it { should validate_uniqueness_of(:name).case_insensitive }
+    it { should validate_presence_of(:title) }
+    it { should validate_uniqueness_of(:title).case_insensitive }
     it { should validate_uniqueness_of(:suggested_url).allow_blank.case_insensitive.with_message('is already taken, leave blank to generate automatically') }
   end
 
@@ -29,7 +29,7 @@ RSpec.describe DownloadCategory, type: :model, download_category: true do
     let(:download_category) { create(:download_category) }
 
     it 'creates a slug if title changed' do
-      download_category.name = 'My new title'
+      download_category.title = 'My new title'
       expect(download_category.should_generate_new_friendly_id?).to be true
     end
 

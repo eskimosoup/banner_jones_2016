@@ -22,8 +22,8 @@
     </ul>
     <%= field_set_tag nil, id: 'tabs-1' do %>
       <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
       </div>
       <div class="field">
         <%= f.label :summary %><br>
@@ -41,7 +41,7 @@
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <div class="field">
         <%= f.label :download_category_id %><br>
-        <%= f.select :download_category_id, DownloadCategory.pluck(:name, :id) %>
+        <%= f.select :download_category_id, DownloadCategory.pluck(:title, :id) %>
       </div>
       <div class="field">
         <%= f.label :suggested_url %> <%= render 'optimadmin/shared/suggested_url_field' %><br>

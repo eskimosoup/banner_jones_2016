@@ -5,6 +5,6 @@ RSpec.describe ArticleCategoryPresenter, type: :presenter, article_category: tru
   subject(:article_category_presenter) { ArticleCategoryPresenter.new(object: article_category, view_template: view) }
 
   describe 'delegations', :delegation do
-    it { should delegate_method(:name).to(:article_category) }
+    it { should delegate_method(:title).to(:article_category) }
   end
 end

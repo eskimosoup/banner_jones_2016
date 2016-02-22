@@ -61,7 +61,7 @@
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <div class="field">
         <%= f.label :article_category_id %><br>
-        <%= f.select :article_category_id, ArticleCategory.pluck(:name, :id), prompt: 'Please select' %>
+        <%= f.select :article_category_id, ArticleCategory.pluck(:title, :id), prompt: 'Please select' %>
       </div>
       <div class="field">
         <%= f.label :team_member_id %><br>

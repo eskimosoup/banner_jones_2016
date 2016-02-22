@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_team_member_role, only: [:show, :edit, :update, :destroy]
 
     def index
-      @team_member_roles = Optimadmin::BaseCollectionPresenter.new(collection: TeamMemberRole.where('name ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).positioned, view_template: view_context, presenter: Optimadmin::TeamMemberRolePresenter)
+      @team_member_roles = Optimadmin::BaseCollectionPresenter.new(collection: TeamMemberRole.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15).positioned, view_template: view_context, presenter: Optimadmin::TeamMemberRolePresenter)
     end
 
     def show
@@ -38,15 +38,14 @@ module Optimadmin
       redirect_to team_member_roles_url, notice: 'Team member role was successfully destroyed.'
     end
 
-  private
-
+    private
 
     def set_team_member_role
       @team_member_role = TeamMemberRole.find(params[:id])
     end
 
     def team_member_role_params
-      params.require(:team_member_role).permit(:name, :position, :display)
+      params.require(:team_member_role).permit(:title, :position, :display)
     end
   end
 end

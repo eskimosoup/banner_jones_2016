@@ -5,12 +5,12 @@ RSpec.describe DownloadPresenter, type: :presenter, download: true do
   subject(:download_presenter) { DownloadPresenter.new(object: download, view_template: view) }
 
   describe 'delegations', :delegation do
-    it { should delegate_method(:name).to(:download_category) }
+    it { should delegate_method(:title).to(:download) }
   end
 
   describe 'standard download' do
-    it 'returns the linked name' do
-      expect(download_presenter.linked_text(download.name)).to eq(link_to download.name, download)
+    it 'returns the linked title' do
+      expect(download_presenter.linked_text(download.title)).to eq(link_to download.title, download)
     end
 
     it 'returns the summary - html formatted' do
@@ -38,11 +38,11 @@ RSpec.describe DownloadPresenter, type: :presenter, download: true do
       subject(:download_presenter) { DownloadPresenter.new(object: download, view_template: view) }
 
       it 'show_image should not return nil' do
-        expect(download_presenter.show_image(alt: download.name)).to eq(image_tag(download.image.show, alt: download.name))
+        expect(download_presenter.show_image(alt: download.title)).to eq(image_tag(download.image.show, alt: download.title))
       end
 
       it 'index image should not return nil' do
-        expect(download_presenter.index_image(alt: download.name)).to eq(image_tag(download.image.index, alt: download.name))
+        expect(download_presenter.index_image(alt: download.title)).to eq(image_tag(download.image.index, alt: download.title))
       end
     end
   end

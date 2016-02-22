@@ -10,7 +10,7 @@
 
 .home-team-member-search-field {
   @include grid-column(6,
-  $gutter: (
+    $gutter: (
       small: 14
     ));
 }
@@ -48,7 +48,6 @@
 
 .home-team-members-slick.slick-slider {
   border-left: 3px solid $orange;
-  border-top: 3px solid $orange;
   margin: 0;
 
   .slick-active:last-of-type {
@@ -61,14 +60,35 @@
 }
 
 .home-team-member-profile-card-update {
+  border-top: 3px solid $orange;
   display: block;
+
+  &::after {
+    background: $orange;
+    content: '';
+    display: block;
+    height: 19px;
+    width: 100%;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  &.active {
+    border-top-color: $white;
+
+    &::after {
+      background: $orange image-url('components/icons/team-member/active-slider-background.png') no-repeat center;
+    }
+  }
 }
 
 .home-team-member-profile {
   @include clearfix;
   background: $orange;
   color: $white;
-  padding: rem(50px) rem(40px) rem(40px);
+  padding: rem(29px) rem(40px) rem(40px);
 }
 
 .home-team-member-profile-name,

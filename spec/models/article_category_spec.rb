@@ -6,8 +6,8 @@ require 'rails_helper'
 RSpec.describe ArticleCategory, type: :model, article_category: true do
   describe 'validations', :validation do
     subject(:article_category) { build(:article_category) }
-    it { should validate_presence_of(:name) }
-    it { should validate_uniqueness_of(:name).case_insensitive }
+    it { should validate_presence_of(:title) }
+    it { should validate_uniqueness_of(:title).case_insensitive }
     it { should validate_uniqueness_of(:suggested_url).allow_blank.case_insensitive.with_message('is already taken, leave blank to generate automatically') }
   end
 
@@ -32,7 +32,7 @@ RSpec.describe ArticleCategory, type: :model, article_category: true do
     let(:article_category) { create(:article_category) }
 
     it 'creates a slug if title changed' do
-      article_category.name = 'My new title'
+      article_category.title = 'My new title'
       expect(article_category.should_generate_new_friendly_id?).to be true
     end
 

@@ -6,10 +6,10 @@
       <% present article.team_member do |team_member_presenter| %>
         <div class="article-author">
           <div class="article-author-photo">
-            <%= article_presenter.linked_text(team_member_presenter.small_image(alt: team_member_presenter.full_name)) %>
+            <%= article_presenter.linked_text(team_member_presenter.small_image(alt: team_member_presenter.full_title)) %>
           </div>
           <div class="article-author-details">
-            <%= article_presenter.linked_text(team_member_presenter.full_name, class: 'article-author-name') %>
+            <%= article_presenter.linked_text(team_member_presenter.full_title, class: 'article-author-title') %>
             <% # TODO: Update to service %>
             <%= article_presenter.linked_text('Family Law', class: 'article-author-department') %>
           </div>

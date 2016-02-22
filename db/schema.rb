@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219125944) do
+ActiveRecord::Schema.define(version: 20160222093640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "article_categories", force: :cascade do |t|
-    t.string   "name",                         null: false
+    t.string   "title",                        null: false
     t.string   "suggested_url"
     t.string   "slug"
     t.boolean  "display",       default: true
@@ -47,8 +47,15 @@ ActiveRecord::Schema.define(version: 20160219125944) do
   add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
   add_index "articles", ["team_member_id"], name: "index_articles_on_team_member_id", using: :btree
 
+  create_table "audiences", force: :cascade do |t|
+    t.string   "title"
+    t.boolean  "display"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "download_categories", force: :cascade do |t|
-    t.string   "name",                         null: false
+    t.string   "title",                        null: false
     t.string   "suggested_url"
     t.string   "slug"
     t.boolean  "display",       default: true
@@ -57,7 +64,7 @@ ActiveRecord::Schema.define(version: 20160219125944) do
   end
 
   create_table "downloads", force: :cascade do |t|
-    t.string   "name",                                null: false
+    t.string   "title",                               null: false
     t.text     "summary",                             null: false
     t.text     "description"
     t.string   "file",                                null: false
@@ -218,7 +225,7 @@ ActiveRecord::Schema.define(version: 20160219125944) do
   add_index "team_member_offices", ["team_member_id"], name: "index_team_member_offices_on_team_member_id", using: :btree
 
   create_table "team_member_roles", force: :cascade do |t|
-    t.string   "name",                      null: false
+    t.string   "title",                     null: false
     t.integer  "position"
     t.boolean  "display",    default: true
     t.datetime "created_at",                null: false
