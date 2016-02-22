@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :downloads, only: [:index, :show]
   resources :download_categories, only: :show
 
+  resources :departments, only: :show
+
   %w( 403 404 422 500 ).each do |code|
     get code, to: 'errors#show', code: code
   end
