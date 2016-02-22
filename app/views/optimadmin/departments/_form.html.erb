@@ -1,14 +1,18 @@
-<%= form_for(@download) do |f| %>
-  <% if @download.errors.any? %>
+<%= form_for(@department) do |f| %>
+  <% if @department.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@download.errors.count, "error") %> prohibited this download from being saved:</h2>
+      <h2><%= pluralize(@department.errors.count, "error") %> prohibited this department from being saved:</h2>
       <ul>
-        <% @download.errors.full_messages.each do |message| %>
+        <% @department.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
@@ -22,27 +26,15 @@
     </ul>
     <%= field_set_tag nil, id: 'tabs-1' do %>
       <div class="field">
-        <%= f.label :title %><br>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
         <%= f.label :summary %><br>
-        <%= f.text_area :summary %>
-      </div>
-      <div class="field">
-        <%= f.label :description %><br>
-        <%= f.text_area :description, class: 'tinymce' %>
+        <%= f.text_area :summary, class: 'tinymce' %>
       </div>
     <% end %>
     <%= field_set_tag nil, id: 'tabs-2' do %>
       <%= f.image_field :image %>
-      <%= f.document_field :file %>
+      <%= f.image_field :social_share_image %>
     <% end %>
     <%= field_set_tag nil, id: 'tabs-3' do %>
-      <div class="field">
-        <%= f.label :download_category_id %><br>
-        <%= f.select :download_category_id, DownloadCategory.pluck(:title, :id) %>
-      </div>
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
       <div class="field">
         <%= f.label :display %><br>
@@ -51,6 +43,7 @@
     <% end %>
   </div>
   <div class="actions">
+    <%= f.hidden_field :audience_id, value: @audience.id %>
     <%= f.submit %>
   </div>
 <% end %>

@@ -1,20 +1,22 @@
-# Audience
-class Audience < ActiveRecord::Base
-  default_scope { order(position: :asc) }
+# Department
+class Department < ActiveRecord::Base
+  default_scope { order(title: :asc) }
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
-  validates :title, presence: true, uniqueness: { case_sensitive: false }
+  mount_uploader :image, DepartmentUploader
+  mount_uploader :social_share_image, SocialImageUploader
+
+  validates :title, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: {
     case_sensitive: false,
     message: 'is already taken, leave blank to generate automatically'
   }
 
   scope :displayed, -> { where(display: true) }
-  scope :search, ->(title) { where(title: title) }
 
-  has_many :departments, -> { displayed }, dependent: :destroy
+  belongs_to :audience, counter_cache: true
 
   def slug_candidates
     [

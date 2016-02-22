@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222093640) do
+ActiveRecord::Schema.define(version: 20160222104212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,11 +48,30 @@ ActiveRecord::Schema.define(version: 20160222093640) do
   add_index "articles", ["team_member_id"], name: "index_articles_on_team_member_id", using: :btree
 
   create_table "audiences", force: :cascade do |t|
-    t.string   "title"
-    t.boolean  "display"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",                            null: false
+    t.boolean  "display",           default: true
+    t.integer  "position"
+    t.integer  "departments_count"
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "title",                             null: false
+    t.text     "summary"
+    t.string   "image"
+    t.string   "social_share_image"
+    t.boolean  "display",            default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.integer  "audience_id"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "departments", ["audience_id"], name: "index_departments_on_audience_id", using: :btree
 
   create_table "download_categories", force: :cascade do |t|
     t.string   "title",                        null: false
@@ -273,6 +292,7 @@ ActiveRecord::Schema.define(version: 20160222093640) do
 
   add_foreign_key "articles", "article_categories"
   add_foreign_key "articles", "team_members"
+  add_foreign_key "departments", "audiences"
   add_foreign_key "downloads", "download_categories"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "team_member_offices", "offices"
