@@ -10,7 +10,7 @@ RSpec.describe DepartmentPresenter, type: :presenter, department: true do
 
   describe 'standard department' do
     it 'returns the linked title' do
-      expect(department_presenter.linked_text(department.title, title: department.title)).to eq(link_to department.title, view.department_path(department), title: department.title)
+      expect(department_presenter.linked_text(department.title, title: department.title)).to eq(link_to department.title, audience_department_path(department.audience, department), title: department.title)
     end
 
     it 'returns the summary - html formatted' do

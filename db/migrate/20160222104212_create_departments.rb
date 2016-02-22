@@ -9,6 +9,7 @@ class CreateDepartments < ActiveRecord::Migration
       t.string :suggested_url, null: true, unique: true
       t.string :slug, null: true, unique: true
       t.belongs_to :audience, index: true, foreign_key: true
+      t.integer :services_count
 
       t.timestamps null: false
     end

@@ -14,5 +14,11 @@ module Optimadmin
     def optimadmin_summary
       h.simple_format department.summary
     end
+
+    def services
+      h.link_to h.services_path(department_id: department.id) do
+        h.pluralize(department.services_count, 'service')
+      end
+    end
   end
 end

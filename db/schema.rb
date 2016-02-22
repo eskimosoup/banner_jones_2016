@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222104212) do
+ActiveRecord::Schema.define(version: 20160222124602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160222104212) do
     t.string   "suggested_url"
     t.string   "slug"
     t.integer  "audience_id"
+    t.integer  "services_count"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end
@@ -233,6 +234,27 @@ ActiveRecord::Schema.define(version: 20160222104212) do
     t.string "environment"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.integer  "department_id"
+    t.integer  "parent_id"
+    t.string   "title",                    limit: 150,                null: false
+    t.text     "summary",                                             null: false
+    t.text     "content"
+    t.string   "social_share_title"
+    t.text     "social_share_description"
+    t.string   "image"
+    t.string   "social_share_image"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",                              default: true
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+  end
+
+  add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
+  add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
+  add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", unique: true, using: :btree
+
   create_table "team_member_offices", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "office_id"
@@ -295,6 +317,7 @@ ActiveRecord::Schema.define(version: 20160222104212) do
   add_foreign_key "departments", "audiences"
   add_foreign_key "downloads", "download_categories"
   add_foreign_key "offices", "office_locations"
+  add_foreign_key "services", "departments"
   add_foreign_key "team_member_offices", "offices"
   add_foreign_key "team_member_offices", "team_members"
 end
