@@ -10,7 +10,7 @@ module Optimadmin
                     ]
 
     def index
-      @departments = Optimadmin::BaseCollectionPresenter.new(collection: Department.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::DepartmentPresenter)
+      @departments = Optimadmin::BaseCollectionPresenter.new(collection: Department.where('title ILIKE ? AND audience_id = ?', "%#{params[:search]}%", @audience.id).page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::DepartmentPresenter)
     end
 
     def show

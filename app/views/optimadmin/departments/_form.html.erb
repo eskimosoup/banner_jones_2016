@@ -42,8 +42,11 @@
       </div>
     <% end %>
   </div>
+
+  <%= f.hidden_field :audience_id, value: @audience.id %>
+
   <div class="actions">
-    <%= f.hidden_field :audience_id, value: @audience.id %>
-    <%= f.submit %>
+    <%= f.submit "Save" %>
+    <%= f.submit "Save and continue editing" %>
   </div>
 <% end %>
