@@ -1,9 +1,9 @@
 <% present download do |download_presenter| %>
   <div class="helpful-guide">
-    <%= download_presenter.linked_text(download_presenter.name,
-        class: 'helpful-guide-title', title: download_presenter.name) %>
+    <%= download_presenter.linked_text(download_presenter.title,
+        class: 'helpful-guide-title', title: download_presenter.title) %>
     <%= download_presenter.linked_text(
-          download_presenter.index_image(alt: download_presenter.name),
-          class: 'helpful-guide-image', title: download_presenter.name) %>
+          download_presenter.index_image(alt: download_presenter.title),
+          class: 'helpful-guide-image', title: download_presenter.title) %>
   </div>
 <% end %>
