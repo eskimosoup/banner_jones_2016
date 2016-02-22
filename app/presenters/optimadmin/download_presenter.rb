@@ -1,10 +1,10 @@
 module Optimadmin
   class DownloadPresenter < Optimadmin::BasePresenter
     presents :download
-    delegate :id, :name, to: :download
+    delegate :id, :title, to: :download
 
     def toggle_title
-      inline_detail_toggle_link(name)
+      inline_detail_toggle_link(title)
     end
 
     def optimadmin_summary

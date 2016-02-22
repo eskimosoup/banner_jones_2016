@@ -22,7 +22,7 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
   describe 'delegations', :delegation do
     it { should delegate_method(:forename).to(:team_member) }
     it { should delegate_method(:surname).to(:team_member) }
-    it { should delegate_method(:role).to(:team_member) }
+    # it { should delegate_method(:role).to(:team_member) }
     it { should delegate_method(:primary_telephone).to(:team_member) }
     it { should delegate_method(:secondary_telephone).to(:team_member) }
   end
@@ -30,6 +30,10 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
   describe 'standard team_member' do
     it 'returns the name' do
       expect(team_member_presenter.full_name).to eq([team_member.forename, team_member.surname].join(' '))
+    end
+
+    it 'returns office locations' do
+      expect(team_member_presenter.office_locations).to eq(team_member.offices.map { |x| x.office_location.name }.join(', '))
     end
 
     it 'returns the vcard link' do
@@ -65,7 +69,7 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
     end
 
     it 'returns the role' do
-      expect(team_member_presenter.role).to eq(team_member.team_member_role.name)
+      expect(team_member_presenter.role).to eq(team_member.team_member_role.title)
     end
 
     it 'returns the mail_to email' do

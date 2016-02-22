@@ -8,7 +8,7 @@ class TeamMemberPresenter < BasePresenter
   end
 
   def role
-    team_member.team_member_role.name
+    team_member.team_member_role.title
   end
 
   def office_locations
@@ -16,7 +16,7 @@ class TeamMemberPresenter < BasePresenter
   end
 
   def linked_email_address(content = '')
-    h.mail_to team_member.email_address, content
+    h.mail_to team_member.email_address, (content.present? ? content : team_member.email_address)
   end
 
   def specialisms

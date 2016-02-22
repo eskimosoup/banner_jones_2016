@@ -1,12 +1,12 @@
 # ArticleCategory
 class ArticleCategory < ActiveRecord::Base
-  default_scope { order(name: :asc) }
+  default_scope { order(title: :asc) }
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
-  validates :name, presence: true
-  validates :name, uniqueness: { case_sensitive: false }
+  validates :title, presence: true
+  validates :title, uniqueness: { case_sensitive: false }
   validates :suggested_url, allow_blank: true, uniqueness: {
     case_sensitive: false,
     message: 'is already taken, leave blank to generate automatically'
@@ -14,17 +14,17 @@ class ArticleCategory < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
 
-  has_many :articles, dependent: :nullify
+  has_many :articles, -> { displayed }, dependent: :nullify
 
   def slug_candidates
     [
       :suggested_url,
-      :name,
-      [:suggested_url, :name]
+      :title,
+      [:suggested_url, :title]
     ]
   end
 
   def should_generate_new_friendly_id?
-    slug.blank? || suggested_url_changed? || name_changed?
+    slug.blank? || suggested_url_changed? || title_changed?
   end
 end

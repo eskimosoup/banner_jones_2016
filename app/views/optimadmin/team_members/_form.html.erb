@@ -36,7 +36,7 @@
 
       <div class="field">
         <%= f.label :team_member_role_id, "Role" %><br>
-        <%= f.select :team_member_role_id, TeamMemberRole.displayed.pluck(:name, :id), prompt: 'Please select' %>
+        <%= f.select :team_member_role_id, TeamMemberRole.displayed.pluck(:title, :id), prompt: 'Please select' %>
       </div>
 
       <div class="field">
@@ -132,6 +132,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save" %>
+    <%= f.submit "Save and continue editing" %>
   </div>
 <% end %>

@@ -1,0 +1,28 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Audiences' %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Audience', object: Audience, path: new_audience_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @audiences.size, path: root_url %>
+  </div>
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    <%= list_item 'large-4 small-4' do %>
+      Title
+    <% end %>
+    <%= list_item 'large-3 small-4' do %>
+      Departments
+    <% end %>
+    <%= list_item { 'Display' } %>
+    <%= list_item { 'View' } %>
+    <%= list_item { 'Edit' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
+  </div>
+  <div class='module-sortable' data-module="Audience">
+  <%= render partial: 'audience', collection: @audiences, as: :audience_presenter %>
+  </div>
+  <%= paginate @audiences %>
+</div>

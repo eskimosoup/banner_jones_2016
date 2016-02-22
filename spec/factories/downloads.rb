@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :download do
-    name 'MyString'
+    title 'MyString'
     summary 'MyText'
     description 'MyText'
     file { File.open(File.join(Rails.root, 'spec/support/images/landscape_image.jpg')) }

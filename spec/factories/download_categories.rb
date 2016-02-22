@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :download_category do
-    name 'MyString'
+    title 'MyString'
     suggested_url 'MyString'
     display true
   end

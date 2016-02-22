@@ -6,8 +6,8 @@ require 'rails_helper'
 RSpec.describe TeamMemberRole, type: :model, team_member_role: true do
   describe 'validations', :validation do
     subject(:team_member_role) { build(:team_member_role) }
-    it { should validate_presence_of(:name) }
-    it { should validate_uniqueness_of(:name).case_insensitive }
+    it { should validate_presence_of(:title) }
+    it { should validate_uniqueness_of(:title).case_insensitive }
   end
 
   describe 'associations', :association do

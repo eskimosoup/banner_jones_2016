@@ -45,7 +45,7 @@ RSpec.describe ArticlePresenter, type: :presenter, article: true do
   end
 
   describe 'article without social share fields' do
-    let(:article) { build(:article, social_share_title: nil, social_share_description: nil )}
+    let(:article) { build(:article, social_share_title: nil, social_share_description: nil) }
 
     it 'returns the social share title' do
       expect(article_presenter.social_share_title).to eq(article.title)
@@ -77,6 +77,31 @@ RSpec.describe ArticlePresenter, type: :presenter, article: true do
 
       it 'index image should not return nil' do
         expect(article_presenter.index_image(alt: article.title)).to eq(image_tag(article.image.index, alt: article.title))
+      end
+    end
+  end
+
+  describe 'social share images' do
+    describe 'no image' do
+      it 'show_image should return nil' do
+        expect(article_presenter.show_image).to eq(nil)
+      end
+
+      it 'returns nil for social share image' do
+        expect(article_presenter.social_share_image_url).to eq(nil)
+      end
+    end
+
+    describe 'has image' do
+      let(:article) { build(:article_with_image) }
+      subject(:article_presenter) { ArticlePresenter.new(object: article, view_template: view) }
+
+      it 'returns social share image url' do
+        expect(article_presenter.social_share_image_url).to eq(root_url[0..-2] + article.social_share_image.show.url)
+      end
+
+      it 'show_image should not return nil' do
+        expect(article_presenter.show_image(alt: article.title)).to eq(image_tag(article.image.show, alt: article.title))
       end
     end
   end

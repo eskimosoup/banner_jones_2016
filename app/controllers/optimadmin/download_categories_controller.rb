@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_download_category, only: [:show, :edit, :update, :destroy]
 
     def index
-      @download_categories = Optimadmin::BaseCollectionPresenter.new(collection: DownloadCategory.where('name ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::DownloadCategoryPresenter)
+      @download_categories = Optimadmin::BaseCollectionPresenter.new(collection: DownloadCategory.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::DownloadCategoryPresenter)
     end
 
     def show
@@ -45,7 +45,7 @@ module Optimadmin
     end
 
     def download_category_params
-      params.require(:download_category).permit(:name, :display, :suggested_url)
+      params.require(:download_category).permit(:title, :display, :suggested_url)
     end
   end
 end

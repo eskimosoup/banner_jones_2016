@@ -7,6 +7,6 @@ RSpec.describe TeamMemberRolePresenter, type: :presenter, team_member_role: true
   subject(:team_member_role_presenter) { TeamMemberRolePresenter.new(object: team_member_role, view_template: view) }
 
   describe 'delegations', :delegation do
-    it { should delegate_method(:name).to(:team_member_role) }
+    it { should delegate_method(:title).to(:team_member_role) }
   end
 end

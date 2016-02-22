@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160219125944) do
+ActiveRecord::Schema.define(version: 20160222142502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "article_categories", force: :cascade do |t|
-    t.string   "name",                         null: false
+    t.string   "title",                        null: false
     t.string   "suggested_url"
     t.string   "slug"
     t.boolean  "display",       default: true
@@ -47,8 +47,45 @@ ActiveRecord::Schema.define(version: 20160219125944) do
   add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
   add_index "articles", ["team_member_id"], name: "index_articles_on_team_member_id", using: :btree
 
+  create_table "audiences", force: :cascade do |t|
+    t.string   "title",                            null: false
+    t.boolean  "display",           default: true
+    t.integer  "position"
+    t.integer  "departments_count"
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+  end
+
+  create_table "awards", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title",                     null: false
+    t.string   "image",                     null: false
+    t.string   "link"
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "departments", force: :cascade do |t|
+    t.string   "title",                             null: false
+    t.text     "summary"
+    t.string   "image"
+    t.string   "social_share_image"
+    t.boolean  "display",            default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.integer  "audience_id"
+    t.integer  "services_count"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "departments", ["audience_id"], name: "index_departments_on_audience_id", using: :btree
+
   create_table "download_categories", force: :cascade do |t|
-    t.string   "name",                         null: false
+    t.string   "title",                        null: false
     t.string   "suggested_url"
     t.string   "slug"
     t.boolean  "display",       default: true
@@ -57,7 +94,7 @@ ActiveRecord::Schema.define(version: 20160219125944) do
   end
 
   create_table "downloads", force: :cascade do |t|
-    t.string   "name",                                null: false
+    t.string   "title",                               null: false
     t.text     "summary",                             null: false
     t.text     "description"
     t.string   "file",                                null: false
@@ -207,6 +244,27 @@ ActiveRecord::Schema.define(version: 20160219125944) do
     t.string "environment"
   end
 
+  create_table "services", force: :cascade do |t|
+    t.integer  "department_id"
+    t.integer  "parent_id"
+    t.string   "title",                    limit: 150,                null: false
+    t.text     "summary",                                             null: false
+    t.text     "content"
+    t.string   "social_share_title"
+    t.text     "social_share_description"
+    t.string   "image"
+    t.string   "social_share_image"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",                              default: true
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+  end
+
+  add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
+  add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
+  add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", unique: true, using: :btree
+
   create_table "team_member_offices", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "office_id"
@@ -218,7 +276,7 @@ ActiveRecord::Schema.define(version: 20160219125944) do
   add_index "team_member_offices", ["team_member_id"], name: "index_team_member_offices_on_team_member_id", using: :btree
 
   create_table "team_member_roles", force: :cascade do |t|
-    t.string   "name",                      null: false
+    t.string   "title",                     null: false
     t.integer  "position"
     t.boolean  "display",    default: true
     t.datetime "created_at",                null: false
@@ -266,8 +324,10 @@ ActiveRecord::Schema.define(version: 20160219125944) do
 
   add_foreign_key "articles", "article_categories"
   add_foreign_key "articles", "team_members"
+  add_foreign_key "departments", "audiences"
   add_foreign_key "downloads", "download_categories"
   add_foreign_key "offices", "office_locations"
+  add_foreign_key "services", "departments"
   add_foreign_key "team_member_offices", "offices"
   add_foreign_key "team_member_offices", "team_members"
 end

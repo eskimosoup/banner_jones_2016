@@ -13,7 +13,7 @@ module Optimadmin
                     ]
 
     def index
-      @downloads = Optimadmin::BaseCollectionPresenter.new(collection: Download.where('name ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::DownloadPresenter)
+      @downloads = Optimadmin::BaseCollectionPresenter.new(collection: Download.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::DownloadPresenter)
     end
 
     def show
@@ -55,7 +55,7 @@ module Optimadmin
     end
 
     def download_params
-      params.require(:download).permit(:name, :summary, :description, :file,
+      params.require(:download).permit(:title, :summary, :description, :file,
                                        :remote_image_url, :image_cache, :remove_image,
                                        :remote_file_url, :file_cache, :remove_file,
                                        :image, :download_category_id, :suggested_url, :display)

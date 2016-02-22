@@ -5,6 +5,6 @@ RSpec.describe DownloadCategoryPresenter, type: :presenter, download_category: t
   subject(:download_category_presenter) { DownloadCategoryPresenter.new(object: download_category, view_template: view) }
 
   describe 'delegations', :delegation do
-    it { should delegate_method(:name).to(:download_category) }
+    it { should delegate_method(:title).to(:download_category) }
   end
 end

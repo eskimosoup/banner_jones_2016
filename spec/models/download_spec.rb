@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Download, type: :model, download: true do
   describe 'validations', :validation do
     let!(:download) { create(:download) }
-    it { should validate_presence_of(:name) }
+    it { should validate_presence_of(:title) }
     it { should validate_presence_of(:summary) }
     it { should validate_presence_of(:file) }
     it { validate_uniqueness_of(:suggested_url).allow_blank.case_insensitive.with_message('is already taken, leave blank to generate automatically') }
@@ -30,7 +30,7 @@ RSpec.describe Download, type: :model, download: true do
     let(:download) { create(:download) }
 
     it 'creates a slug if title changed' do
-      download.name = 'My new title'
+      download.title = 'My new title'
       expect(download.should_generate_new_friendly_id?).to be true
     end
 

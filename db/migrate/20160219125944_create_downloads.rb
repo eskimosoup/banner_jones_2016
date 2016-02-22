@@ -1,7 +1,7 @@
 class CreateDownloads < ActiveRecord::Migration
   def change
     create_table :downloads do |t|
-      t.string :name, null: false
+      t.string :title, null: false
       t.text :summary, null: false
       t.text :description, null: true
       t.string :file, null: false

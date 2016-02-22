@@ -42,6 +42,8 @@ $(function() {
 $(document).on('click', '.home-team-member-profile-card-update', function() {
   var $teamMemberProfileCard = $($(this).data('container'));
   $('.home-team-members-slick-profile').html($teamMemberProfileCard.html());
+  $('.home-team-member-profile-card-update.active').removeClass('active');
+  $(this).addClass('active');
   return false;
 });
 

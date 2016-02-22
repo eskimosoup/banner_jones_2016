@@ -1,5 +1,5 @@
 class Download < ActiveRecord::Base
-  default_scope { order(name: :asc) }
+  default_scope { order(title: :asc) }
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
@@ -7,7 +7,7 @@ class Download < ActiveRecord::Base
   mount_uploader :image, DownloadUploader
   mount_uploader :file, Optimadmin::DocumentUploader
 
-  validates :name, :summary, :file, presence: true
+  validates :title, :summary, :file, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: {
     case_sensitive: false,
     message: 'is already taken, leave blank to generate automatically'
@@ -25,12 +25,12 @@ class Download < ActiveRecord::Base
   def slug_candidates
     [
       :suggested_url,
-      :name,
-      [:suggested_url, :name]
+      :title,
+      [:suggested_url, :title]
     ]
   end
 
   def should_generate_new_friendly_id?
-    slug.blank? || suggested_url_changed? || name_changed?
+    slug.blank? || suggested_url_changed? || title_changed?
   end
 end
