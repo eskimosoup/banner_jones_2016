@@ -78,4 +78,11 @@ RSpec.describe TeamMember, type: :model, team_member: true do
       expect(team_member.should_generate_new_friendly_id?).to be false
     end
   end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:team_member) { create(:team_member) }
+
+    it { expect(team_member).to callback(:set_slug).before(:validation) }
+  end
 end

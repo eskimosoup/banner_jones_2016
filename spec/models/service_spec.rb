@@ -44,4 +44,11 @@ RSpec.describe Service, type: :model, service: true do
       expect(service.should_generate_new_friendly_id?).to be false
     end
   end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:service) { create(:service) }
+
+    it { expect(service).to callback(:set_slug).before(:validation) }
+  end
 end

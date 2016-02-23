@@ -19,7 +19,6 @@ class Article < ActiveRecord::Base
       .merge(ArticleCategory.displayed)
   }
   scope :home_page_highlight, -> { where(home_page_highlight: true).displayed }
-  scope :search, ->(title) { where(title: title) }
 
   belongs_to :article_category
   belongs_to :team_member

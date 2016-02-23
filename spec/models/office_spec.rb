@@ -57,4 +57,11 @@ RSpec.describe Office, type: :model, office: true do
       expect(office.should_generate_new_friendly_id?).to be false
     end
   end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:office) { create(:office) }
+
+    it { expect(office).to callback(:set_slug).before(:validation) }
+  end
 end

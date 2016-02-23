@@ -63,4 +63,11 @@ RSpec.describe Article, type: :model, article: true do
       expect(article.should_generate_new_friendly_id?).to be false
     end
   end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:article) { create(:article) }
+
+    it { expect(article).to callback(:set_slug).before(:validation) }
+  end
 end

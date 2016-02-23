@@ -45,4 +45,11 @@ RSpec.describe Download, type: :model, download: true do
       expect(download.should_generate_new_friendly_id?).to be false
     end
   end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:download) { create(:download) }
+
+    it { expect(download).to callback(:set_slug).before(:validation) }
+  end
 end

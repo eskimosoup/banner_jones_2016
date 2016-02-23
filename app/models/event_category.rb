@@ -1,6 +1,6 @@
-# Audience
-class Audience < ActiveRecord::Base
-  default_scope { order(position: :asc) }
+# EventCategory
+class EventCategory < ActiveRecord::Base
+  default_scope { order(title: :asc) }
 
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
@@ -13,8 +13,7 @@ class Audience < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
 
-  has_many :departments, -> { displayed }, dependent: :destroy
-  has_many :services, -> { displayed }, through: :departments
+  has_many :events, -> { displayed }, dependent: :nullify
 
   def slug_candidates
     [

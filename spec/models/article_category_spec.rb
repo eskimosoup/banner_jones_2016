@@ -41,4 +41,10 @@ RSpec.describe ArticleCategory, type: :model, article_category: true do
       expect(article_category.should_generate_new_friendly_id?).to be true
     end
   end
+
+  context 'callbacks' do
+    let(:article_category) { create(:article_category) }
+
+    it { expect(article_category).to callback(:set_slug).before(:validation) }
+  end
 end

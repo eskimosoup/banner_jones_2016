@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160222142502) do
+ActiveRecord::Schema.define(version: 20160223091746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,56 @@ ActiveRecord::Schema.define(version: 20160222142502) do
   end
 
   add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
+
+  create_table "event_categories", force: :cascade do |t|
+    t.string   "title",                        null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "event_categories", ["slug"], name: "index_event_categories_on_slug", unique: true, using: :btree
+  add_index "event_categories", ["suggested_url"], name: "index_event_categories_on_suggested_url", unique: true, using: :btree
+
+  create_table "event_locations", force: :cascade do |t|
+    t.string   "building_name",  null: false
+    t.string   "address_line_1", null: false
+    t.string   "address_line_2"
+    t.string   "city",           null: false
+    t.string   "postcode",       null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title",                    limit: 150,                null: false
+    t.text     "summary",                                             null: false
+    t.text     "content"
+    t.datetime "event_start",                                         null: false
+    t.datetime "event_end",                                           null: false
+    t.string   "booking_link"
+    t.datetime "booking_deadline"
+    t.string   "image"
+    t.string   "social_share_title",       limit: 150
+    t.string   "social_share_description"
+    t.string   "social_share_image"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",                              default: true
+    t.integer  "event_category_id"
+    t.integer  "event_location_id"
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+  end
+
+  add_index "events", ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
+  add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
+  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
+  add_index "events", ["suggested_url"], name: "index_events_on_suggested_url", unique: true, using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "key",                        null: false
@@ -326,6 +376,8 @@ ActiveRecord::Schema.define(version: 20160222142502) do
   add_foreign_key "articles", "team_members"
   add_foreign_key "departments", "audiences"
   add_foreign_key "downloads", "download_categories"
+  add_foreign_key "events", "event_categories"
+  add_foreign_key "events", "event_locations"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "services", "departments"
   add_foreign_key "team_member_offices", "offices"

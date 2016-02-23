@@ -44,4 +44,11 @@ RSpec.describe Department, type: :model, department: true do
       expect(department.should_generate_new_friendly_id?).to be false
     end
   end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:department) { create(:department) }
+
+    it { expect(department).to callback(:set_slug).before(:validation) }
+  end
 end
