@@ -23,6 +23,9 @@ class Article < ActiveRecord::Base
   belongs_to :article_category
   belongs_to :team_member
 
+  has_many :service_articles, dependent: :destroy
+  has_many :services, through: :service_articles
+
   def future_date
     errors.add(:date, "can't be in the past") if date < Date.today
   end

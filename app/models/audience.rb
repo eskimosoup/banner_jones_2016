@@ -13,8 +13,8 @@ class Audience < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
 
-  has_many :departments, -> { displayed }, dependent: :destroy
-  has_many :services, -> { displayed }, through: :departments
+  has_many :departments, dependent: :destroy
+  has_many :services, through: :departments
 
   def slug_candidates
     [

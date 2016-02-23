@@ -1,0 +1,30 @@
+<% present department do |department_presenter| %>
+  <div class="meganav-dropdown-content-inner meganav-dropdown-content-<%= department_presenter.id %> <%= 'hide' unless department_counter == 0 %>">
+    <div class="meganav-dropdown-secondary-list">
+      <div class="meganav-secondary-title-area">
+        <h3 class="meganav-secondary-title">
+          Services
+        </h3>
+        <%= department_presenter.linked_text('View full department page', { title: department_presenter.title, class: 'meganav-button' }) %>
+      </div>
+      <ul class="meganav-links meganav-secondary-links">
+        <%= department_presenter.render_root_service_links %>
+      </ul>
+    </div>
+<% end %>
+
+  <% present department.team_member do |team_member_presenter| %>
+    <div class="meganav-dropdown-team-member-wrap">
+      <%= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member') %>
+      <div class="meganav-dropdown-team-member-name">
+        <%= team_member_presenter.full_name %>
+      </div>
+      <div class="meganav-dropdown-team-member-role">
+        <%= team_member_presenter.role %>
+      </div>
+      <div class="meganav-dropdown-team-member-location">
+        <%= team_member_presenter.office_locations %>
+      </div>
+    </div>
+  <% end %>
+  </div>

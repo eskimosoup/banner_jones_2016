@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :service do
-    id 1
+    sequence(:id) { |n| n }
     department
     title 'MyString'
     summary 'MyText'

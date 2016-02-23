@@ -22,6 +22,30 @@ class Service < ActiveRecord::Base
 
   belongs_to :department, counter_cache: true
 
+  has_many :service_articles, dependent: :destroy
+  has_many :articles, through: :service_articles
+
+  has_many :service_downloads, dependent: :destroy
+  has_many :downloads, through: :service_downloads
+
+  has_many :service_events, dependent: :destroy
+  has_many :events, through: :service_events
+
+  has_many :service_faqs, dependent: :destroy
+  has_many :frequently_asked_questions, through: :service_faqs
+
+  has_many :service_offices, dependent: :destroy
+  has_many :offices, through: :service_offices
+
+  has_many :service_team_members, dependent: :destroy
+  has_many :team_members, through: :service_team_members
+
+  has_many :service_testimonials, dependent: :destroy
+  has_many :testimonials, through: :service_testimonials
+
+  has_many :service_related_services, dependent: :destroy
+  has_many :related_services, through: :service_related_services
+
   def slug_candidates
     [
       :suggested_url,

@@ -6,24 +6,18 @@
         <h2 class="meganav-primary-title">Departments</h2>
 
         <ul class="meganav-links meganav-primary-links">
-          <li>
-            <%= link_to 'Commercial', '#', class: 'hover-toggle', data: { container: 'meganav-dropdown-content-1' } %>
-          </li>
-          <li>
-            <%= link_to 'Commercial Litigation', '#', class: 'hover-toggle', data: { container: 'meganav-dropdown-content-2' } %>
-          </li>
+          <% present audience do |audience_presenter| %>
+            <%= audience_presenter.render_department_links %>
+          <% end %>
         </ul>
       </div>
 
       <!-- Services -->
       <% # TODO: Add little triangle to hovered item in the main nav %>
       <div>
-        <div class="meganav-dropdown-content-inner meganav-dropdown-content-1">
-          <%= render 'menu_items/meganav_content', title: 'Commercial', person_name: 'Kate Skelton' %>
-        </div>
-        <div class="meganav-dropdown-content-inner meganav-dropdown-content-2 hide">
-          <%= render 'menu_items/meganav_content', title: 'Commercial Litigation', person_name: 'Another Name' %>
-        </div>
+        <% present audience do |audience_presenter| %>
+          <%= audience_presenter.render_department_contents %>
+        <% end %>
       </div>
     </div>
   </div>

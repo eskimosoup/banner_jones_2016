@@ -56,8 +56,10 @@ module Optimadmin
                                     :remote_image_url, :remove_image, :image_cache,
                                     :event_end, :booking_link, :booking_deadline,
                                     :event_category_id, :event_location_id,
-                                    :image, :social_share_title, :social_share_description,
-                                    :social_share_image, :slug, :suggested_url, :display)
+                                    :image, :social_share_title,
+                                    :social_share_description,
+                                    :social_share_image, :slug, :suggested_url, :display,
+                                    service_ids: [])
     end
   end
 end

@@ -8,7 +8,7 @@ module Optimadmin
                     ]
 
     def index
-      @offices = Optimadmin::BaseCollectionPresenter.new(collection: Office.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::OfficePresenter)
+      @offices = Optimadmin::BaseCollectionPresenter.new(collection: Office.where('name ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::OfficePresenter)
     end
 
     def show
@@ -50,11 +50,11 @@ module Optimadmin
     end
 
     def office_params
-      params.require(:office).permit(:title, :building_name, :building_number,
+      params.require(:office).permit(:name, :building_name, :building_number,
                                      :street, :town, :county, :postcode, :phone_number, :fax_number, :email,
                                      :remote_image_url, :image_cache, :remove_image,
                                      :dx_number, :details, :image, :office_location_id, :display,
-                                     :suggested_url, team_member_ids: [])
+                                     :suggested_url, team_member_ids: [], service_ids: [])
     end
   end
 end

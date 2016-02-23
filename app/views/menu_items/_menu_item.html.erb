@@ -1,7 +1,8 @@
-<li class="menu-item">
+<li class="menu-item <%= ' has-children' if sub_menu_items.present? %>">
   <%= menu_item_presenter.link_to_webpage %>
+  <%= menu_item_presenter.meganav %>
   <% if sub_menu_items.present? %>
-    <%= content_tag :ul, class: "dropdown depth-#{ depth }" do %>
+    <%= content_tag :ul, class: "dropdown depth-#{ depth } #{menu_item_presenter.menu_name}" do %>
       <%= nested_menu_items(menu_items: sub_menu_items, depth: depth + 1) %>
     <% end %>
   <% end %>

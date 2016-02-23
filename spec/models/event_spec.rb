@@ -65,6 +65,8 @@ RSpec.describe Event, type: :model, event: true do
   describe 'associations', :association do
     it { should belong_to(:event_category) }
     it { should belong_to(:event_location) }
+    it { should have_many(:service_events).dependent(:destroy) }
+    it { should have_many(:events).through(:service_events) }
   end
 
   describe 'scopes', :scope do

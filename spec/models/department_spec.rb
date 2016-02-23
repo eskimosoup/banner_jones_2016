@@ -4,24 +4,40 @@ RSpec.describe Department, type: :model, department: true do
   describe 'validations', :validation do
     subject(:department) { build(:department) }
     it { should validate_presence_of(:title) }
+    it { should validate_presence_of(:team_member) }
     it { should validate_uniqueness_of(:suggested_url).allow_blank.case_insensitive.with_message('is already taken, leave blank to generate automatically') }
   end
 
   describe 'associations', :association do
+    it { should belong_to(:team_member) }
     it { should belong_to(:audience).counter_cache }
     it { should have_many(:services).dependent(:destroy) }
   end
 
   describe 'scopes', :scope do
     let(:department) { create(:department) }
+    let!(:service) { create(:service, department: department) }
+    let!(:child_service) { create(:service, parent_id: service.id, department: department) }
     let(:hidden_department) { create(:department, display: false) }
 
-    it 'excludes hidden records' do
-      expect(Department.displayed).not_to include hidden_department
+    describe 'displayed' do
+      it 'excludes hidden records' do
+        expect(Department.displayed).not_to include hidden_department
+      end
+
+      it 'returns displayed records' do
+        expect(Department.displayed).to include department
+      end
     end
 
-    it 'returns displayed records' do
-      expect(Department.displayed).to include department
+    describe 'root services' do
+      it 'excludes child records' do
+        expect(department.root_services).not_to include child_service
+      end
+
+      it 'returns root records' do
+        expect(department.root_services).to include service
+      end
     end
   end
 

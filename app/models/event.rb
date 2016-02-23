@@ -29,6 +29,9 @@ class Event < ActiveRecord::Base
   belongs_to :event_category
   belongs_to :event_location
 
+  has_many :service_events, dependent: :destroy
+  has_many :events, through: :service_events
+
   def end_after_start
     errors.add(:event_end, "can't be before event start") if event_start > event_end
   end

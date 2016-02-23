@@ -35,6 +35,11 @@ class TeamMember < ActiveRecord::Base
   has_many :team_member_offices, dependent: :destroy
   has_many :articles, dependent: :nullify
 
+  has_many :service_team_members, dependent: :destroy
+  has_many :services, through: :service_team_members
+
+  has_many :departments
+
   def slug_candidates
     [
       :suggested_url,

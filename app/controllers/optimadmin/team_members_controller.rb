@@ -7,6 +7,7 @@ module Optimadmin
                       [:image, {
                         small: ['fill', 45, 45],
                         slider: ['fill', 117, 146],
+                        navigation: ['fill', 130, 195],
                         show: ['fill', 200, 200],
                         index: ['fill', 200, 200]
                       }]
@@ -63,7 +64,8 @@ module Optimadmin
                                           :display_from, :display_until, :display,
                                           :specialisms, :has_vcard_download, :profile,
                                           :google_plus, :twitter_link, :facebook_link,
-                                          :mobile_number, :dx_number, office_ids: [])
+                                          :mobile_number, :dx_number,
+                                          service_ids: [], office_ids: [])
     end
   end
 end

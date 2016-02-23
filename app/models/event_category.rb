@@ -13,7 +13,7 @@ class EventCategory < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
 
-  has_many :events, -> { displayed }, dependent: :nullify
+  has_many :events, dependent: :nullify
 
   def slug_candidates
     [

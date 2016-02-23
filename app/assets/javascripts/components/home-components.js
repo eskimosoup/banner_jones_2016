@@ -36,6 +36,8 @@ $(function() {
     prevArrow: '.articles-content-box-slider-controls .content-box-next',
     slidesToShow: 4
   });
+
+  $('.hero-banner-department-select .has-children:first-of-type > a').addClass('active');
 });
 
 
@@ -50,3 +52,26 @@ $(document).on('click', '.home-team-member-profile-card-update', function() {
 $(document).on('click', '.content-box-next, .content-box-previous', function() {
   return false;
 });
+
+/*
+$(document).on('click', '.hero-banner-department-select .has-children > a', function() {
+  $('.hero-banner-department-select [data-active]').removeAttr('data-active').removeClass('active');
+  $(this).attr('data-active', 'true');
+});
+
+$(document).on({
+  mouseenter: function (e) {
+    $('.hero-banner-department-select .active').removeClass('active');
+  },
+  mouseleave: function () {
+    $('.hero-banner-department-select [data-active=true]').addClass('active');
+  }
+}, '.hero-banner-department-select .has-children > a');
+*/
+
+$(document).on({
+  mouseenter: function (e) {
+    $('.hero-banner-department-select .active').removeClass('active');
+    $(this).addClass('active');
+  }
+}, '.hero-banner-department-select .has-children > a');

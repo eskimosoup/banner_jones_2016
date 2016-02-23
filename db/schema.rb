@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223091746) do
+ActiveRecord::Schema.define(version: 20160223142837) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,9 +80,11 @@ ActiveRecord::Schema.define(version: 20160223091746) do
     t.integer  "services_count"
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.integer  "team_member_id"
   end
 
   add_index "departments", ["audience_id"], name: "index_departments_on_audience_id", using: :btree
+  add_index "departments", ["team_member_id"], name: "index_departments_on_team_member_id", using: :btree
 
   create_table "download_categories", force: :cascade do |t|
     t.string   "title",                        null: false
@@ -164,6 +166,15 @@ ActiveRecord::Schema.define(version: 20160223091746) do
     t.boolean  "enabled",    default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+  end
+
+  create_table "frequently_asked_questions", force: :cascade do |t|
+    t.string   "question",                  null: false
+    t.text     "answer",                    null: false
+    t.integer  "position"
+    t.boolean  "display",    default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -294,6 +305,87 @@ ActiveRecord::Schema.define(version: 20160223091746) do
     t.string "environment"
   end
 
+  create_table "service_articles", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "service_articles", ["article_id"], name: "index_service_articles_on_article_id", using: :btree
+  add_index "service_articles", ["service_id"], name: "index_service_articles_on_service_id", using: :btree
+
+  create_table "service_downloads", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "download_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "service_downloads", ["download_id"], name: "index_service_downloads_on_download_id", using: :btree
+  add_index "service_downloads", ["service_id"], name: "index_service_downloads_on_service_id", using: :btree
+
+  create_table "service_events", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "service_events", ["event_id"], name: "index_service_events_on_event_id", using: :btree
+  add_index "service_events", ["service_id"], name: "index_service_events_on_service_id", using: :btree
+
+  create_table "service_faqs", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "frequently_asked_question_id"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "service_faqs", ["frequently_asked_question_id"], name: "index_service_faqs_on_frequently_asked_question_id", using: :btree
+  add_index "service_faqs", ["service_id"], name: "index_service_faqs_on_service_id", using: :btree
+
+  create_table "service_offices", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "office_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "service_offices", ["office_id"], name: "index_service_offices_on_office_id", using: :btree
+  add_index "service_offices", ["service_id"], name: "index_service_offices_on_service_id", using: :btree
+
+  create_table "service_related_services", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "related_service_id"
+    t.integer  "position"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "service_related_services", ["related_service_id"], name: "index_service_related_services_on_related_service_id", using: :btree
+  add_index "service_related_services", ["service_id"], name: "index_service_related_services_on_service_id", using: :btree
+
+  create_table "service_team_members", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "team_member_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "service_team_members", ["service_id"], name: "index_service_team_members_on_service_id", using: :btree
+  add_index "service_team_members", ["team_member_id"], name: "index_service_team_members_on_team_member_id", using: :btree
+
+  create_table "service_testimonials", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "testimonial_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "service_testimonials", ["service_id"], name: "index_service_testimonials_on_service_id", using: :btree
+  add_index "service_testimonials", ["testimonial_id"], name: "index_service_testimonials_on_testimonial_id", using: :btree
+
   create_table "services", force: :cascade do |t|
     t.integer  "department_id"
     t.integer  "parent_id"
@@ -375,10 +467,26 @@ ActiveRecord::Schema.define(version: 20160223091746) do
   add_foreign_key "articles", "article_categories"
   add_foreign_key "articles", "team_members"
   add_foreign_key "departments", "audiences"
+  add_foreign_key "departments", "team_members"
   add_foreign_key "downloads", "download_categories"
   add_foreign_key "events", "event_categories"
   add_foreign_key "events", "event_locations"
   add_foreign_key "offices", "office_locations"
+  add_foreign_key "service_articles", "articles"
+  add_foreign_key "service_articles", "services"
+  add_foreign_key "service_downloads", "downloads"
+  add_foreign_key "service_downloads", "services"
+  add_foreign_key "service_events", "events"
+  add_foreign_key "service_events", "services"
+  add_foreign_key "service_faqs", "frequently_asked_questions"
+  add_foreign_key "service_faqs", "services"
+  add_foreign_key "service_offices", "offices"
+  add_foreign_key "service_offices", "services"
+  add_foreign_key "service_related_services", "services"
+  add_foreign_key "service_team_members", "services"
+  add_foreign_key "service_team_members", "team_members"
+  add_foreign_key "service_testimonials", "services"
+  add_foreign_key "service_testimonials", "testimonials"
   add_foreign_key "services", "departments"
   add_foreign_key "team_member_offices", "offices"
   add_foreign_key "team_member_offices", "team_members"

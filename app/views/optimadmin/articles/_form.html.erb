@@ -67,6 +67,7 @@
         <%= f.label :team_member_id %><br>
         <%= f.select :team_member_id, TeamMember.all.map{|x| ["#{x.forename} #{x.surname}", x.id]}, prompt: 'Please select' %>
       </div>
+      <%= render 'optimadmin/shared/service_select_field', f: f %>
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
       <div class="field">
         <%= f.label :display %><br>

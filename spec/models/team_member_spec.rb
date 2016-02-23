@@ -13,6 +13,11 @@ RSpec.describe TeamMember, type: :model, team_member: true do
     it { should have_many(:team_member_offices).dependent(:destroy) }
     it { should have_many(:offices).through(:team_member_offices) }
     it { should have_many(:articles).dependent(:nullify) }
+
+    it { should have_many(:service_team_members).dependent(:destroy) }
+    it { should have_many(:services).through(:service_team_members) }
+
+    it { should have_many(:departments) }
   end
 
   describe 'scopes', :scope do

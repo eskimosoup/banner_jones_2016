@@ -54,7 +54,6 @@
       </div>
     <% end %>
     <%= field_set_tag nil, id: 'tabs-3' do %>
-      <%= render 'optimadmin/shared/suggested_url_field', f: f %>
       <div class="field">
         <%= f.label :event_category_id %><br>
         <%= f.select :event_category_id, EventCategory.pluck(:title, :id), prompt: 'Please select' %>
@@ -63,6 +62,8 @@
         <%= f.label :event_location_id %><br>
         <%= f.select :event_location_id, EventLocation.all.map{ |x| [x.address_fields, x.id] }, prompt: 'Please select' %>
       </div>
+      <%= render 'optimadmin/shared/service_select_field', f: f %>
+      <%= render 'optimadmin/shared/suggested_url_field', f: f %>
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>

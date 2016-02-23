@@ -1,6 +1,14 @@
 FactoryGirl.define do
   factory :audience do
-    title 'MyString'
+    sequence(:id) { |n| n }
+    sequence(:title) { |n| "Audience #{n}" }
     display true
+
+    trait :with_departments do
+      after(:build) do |audience|
+        audience.departments = build_list(:department, 2, audience: audience)
+      end
+    end
+    factory :audience_with_departments, traits: [:with_departments]
   end
 end

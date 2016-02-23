@@ -55,59 +55,7 @@
     </div>
   </div>
 
-  <div class="hero-banner-navigation">
-    <div class="hero-banner-department-type">
-      <ul class="hero-banner-department-select">
-        <li>
-          <%= link_to 'Personal', '#',
-                      class: 'hover-toggle active',
-                      data: {
-                        container: 'hero-banner-department-services-personal'
-                      } %>
-        </li>
-        <li>
-          <%= link_to 'Business', '#',
-                      class: 'hover-toggle',
-                      data: {
-                        container: 'hero-banner-department-services-business'
-                      } %>
-        </li>
-      </ul>
-
-      <div>
-        <div class="hero-banner-department-services hero-banner-department-services-personal">
-          <h3 class="hero-banner-department-title">We can help...</h3>
-
-          <ul class="hero-banner-department-services-list">
-            <li>
-              <%= link_to 'Sell or buy a property', '#' %>
-            </li>
-            <li>
-              <%= link_to 'Write a Will', '#' %>
-            </li>
-            <li>
-              <%= link_to 'Relationship breakdowns', '#' %>
-            </li>
-            <li>
-              <%= link_to 'Had an accident?', '#' %>
-            </li>
-            <li>
-              <%= link_to 'Supporting family members', '#' %>
-            </li>
-          </ul>
-        </div>
-
-        <div class="hero-banner-department-services hero-banner-department-services-business hide">
-          <h3 class="hero-banner-department-title">We can help...</h3>
-          <ul class="hero-banner-department-services-list">
-            <li>
-              <%= link_to 'Business', '#' %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+  <%= render 'application/shared/hero_banner_navigation' %>  
 </section>
 
 <div class="content">

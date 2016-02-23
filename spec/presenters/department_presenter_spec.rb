@@ -1,10 +1,11 @@
 require 'rails_helper'
 #  rspec --tag 'department'
 RSpec.describe DepartmentPresenter, type: :presenter, department: true do
-  let(:department) { build(:department) }
+  let(:department) { create(:department_with_services) }
   subject(:department_presenter) { DepartmentPresenter.new(object: department, view_template: view) }
 
   describe 'delegations', :delegation do
+    it { should delegate_method(:id).to(:department) }
     it { should delegate_method(:title).to(:department) }
   end
 
@@ -14,7 +15,11 @@ RSpec.describe DepartmentPresenter, type: :presenter, department: true do
     end
 
     it 'returns the summary - html formatted' do
-      expect(department_presenter.summary).to eq(simple_format department.summary)
+      expect(department_presenter.summary).to eq(simple_format(department.summary))
+    end
+
+    it 'returns the root services partial' do
+      expect(department_presenter.render_root_service_links).to eq(render(partial: 'services/navigation_link', collection: department.root_services, as: :service))
     end
   end
 

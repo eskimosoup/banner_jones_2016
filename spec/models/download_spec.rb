@@ -11,6 +11,8 @@ RSpec.describe Download, type: :model, download: true do
 
   describe 'associations', :association do
     it { should belong_to(:download_category) }
+    it { should have_many(:service_downloads).dependent(:destroy) }
+    it { should have_many(:services).through(:service_downloads) }
   end
 
   describe 'scopes', :scope do

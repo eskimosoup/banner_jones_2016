@@ -6,5 +6,5 @@ class TeamMemberRole < ActiveRecord::Base
   scope :positioned, -> { order(:position) }
   scope :displayed, -> { where(display: true) }
 
-  has_many :team_members, -> { displayed }, dependent: :nullify
+  has_many :team_members, dependent: :nullify
 end

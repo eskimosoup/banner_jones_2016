@@ -49,12 +49,6 @@
           <% end %>
         </li>
 
-        <li class="menu-item">
-          <%= link_to 'For you & your family', '#' %>
-
-          <%= render 'menu_items/meganav' %>
-        </li>
-
         <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
       </ul>
     </div>

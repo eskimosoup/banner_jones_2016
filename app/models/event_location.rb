@@ -4,15 +4,15 @@ class EventLocation < ActiveRecord::Base
 
   validates :building_name, :address_line_1, :city, :postcode, presence: true
 
-  has_many :events, -> { displayed }, dependent: :nullify
+  has_many :events, dependent: :nullify
 
   geocoded_by :address_fields
   # after_validation :geocode, if: lambda { |obj|
-  #  obj.longitude.blank? ||
-  #  (obj.address_line_1.present? && obj.address_line_1_changed?) ||
-  #  (obj.address_line_2.present? && obj.address_line_2_changed?) ||
-  #  (obj.city.present? && obj.city_changed?) ||
-  #  (obj.postcode.present? && obj.postcode_changed?)
+  #   obj.longitude.blank? ||
+  #   (
+  #     obj.changed.present? &&
+  #     obj.changed.to_set.intersect?(%w(address_line_1 address_line_2 city postcode).to_set)
+  #   )
   # }
 
   def address_fields
