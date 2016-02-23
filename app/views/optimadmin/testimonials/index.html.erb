@@ -1,5 +1,4 @@
 <%= render 'optimadmin/shared/header/main_title', title: 'Manage Testimonials' %>
-
 <div class="main-content">
   <div class="row module-header collapse">
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Testimonial', object: Testimonial, path: new_testimonial_path %>
@@ -10,33 +9,23 @@
     -->
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @testimonials.size, path: root_url %>
   </div>
-
   <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
 
-      <%= list_item 'large-1 hide-for-medium-down' do %>
-        <%= link_to octicon('settings') %>
-      <% end %>
+    <%= list_item 'large-6 small-8' do %>
+      <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+      Author (name and company, if applicable)
+    <% end %>
 
-
-
-
-
-      <%= list_item 'large-6 small-8' do %>
-        <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
-        Author (name and company, if applicable)
-      <% end %>
-
-
-
-    <%= list_item('large-2 hide-for-medium-down'){ 'Image' } %>
-
+    <%= list_item('large-2 hide-for-medium-down') { 'Image' } %>
 
     <%= list_item { 'Display' } %>
     <%= list_item { 'Edit' } %>
 
-    <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
+    <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
   </div>
-
   <!-- <div class='module-sortable' data-module="Testimonial"> -->
   <%= render partial: 'testimonial', collection: @testimonials, as: :testimonial_presenter %>
   <!-- </div> -->

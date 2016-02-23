@@ -10,6 +10,30 @@ RSpec.describe Service, type: :model, service: true do
 
   describe 'associations', :association do
     it { should belong_to(:department).counter_cache }
+
+    it { should have_many(:service_articles).dependent(:destroy) }
+    it { should have_many(:articles).through(:service_articles) }
+
+    it { should have_many(:service_downloads).dependent(:destroy) }
+    it { should have_many(:downloads).through(:service_downloads) }
+
+    it { should have_many(:service_events).dependent(:destroy) }
+    it { should have_many(:events).through(:service_events) }
+
+    it { should have_many(:service_faqs).dependent(:destroy) }
+    it { should have_many(:frequently_asked_questions).through(:service_faqs) }
+
+    it { should have_many(:service_offices).dependent(:destroy) }
+    it { should have_many(:offices).through(:service_offices) }
+
+    it { should have_many(:service_team_members).dependent(:destroy) }
+    it { should have_many(:team_members).through(:service_team_members) }
+
+    it { should have_many(:service_testimonials).dependent(:destroy) }
+    it { should have_many(:testimonials).through(:service_testimonials) }
+
+    it { should have_many(:service_related_services).dependent(:destroy) }
+    it { should have_many(:related_services).through(:service_related_services) }
   end
 
   describe 'scopes', :scope do
@@ -43,5 +67,12 @@ RSpec.describe Service, type: :model, service: true do
       service.content = 'Gobbledegook'
       expect(service.should_generate_new_friendly_id?).to be false
     end
+  end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:service) { create(:service) }
+
+    it { expect(service).to callback(:set_slug).before(:validation) }
   end
 end

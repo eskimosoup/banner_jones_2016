@@ -13,8 +13,10 @@ RSpec.describe Office, type: :model, office: true do
 
   describe 'associations', :association do
     it { should belong_to(:office_location) }
-    # it { should have_many(:service_offices).dependent(:destroy) }
-    # it { should have_many(:services).through(:service_offices) }
+
+    it { should have_many(:service_offices).dependent(:destroy) }
+    it { should have_many(:services).through(:service_offices) }
+
     it { should have_many(:team_member_offices).dependent(:destroy) }
     it { should have_many(:team_members).through(:team_member_offices) }
   end
@@ -56,5 +58,12 @@ RSpec.describe Office, type: :model, office: true do
       office.postcode = 'Gobbledegook'
       expect(office.should_generate_new_friendly_id?).to be false
     end
+  end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:office) { create(:office) }
+
+    it { expect(office).to callback(:set_slug).before(:validation) }
   end
 end

@@ -38,4 +38,10 @@ RSpec.describe DownloadCategory, type: :model, download_category: true do
       expect(download_category.should_generate_new_friendly_id?).to be true
     end
   end
+
+  context 'callbacks' do
+    let(:download_category) { create(:download_category) }
+
+    it { expect(download_category).to callback(:set_slug).before(:validation) }
+  end
 end

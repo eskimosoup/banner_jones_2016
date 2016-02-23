@@ -8,7 +8,7 @@ class Department < ActiveRecord::Base
   mount_uploader :image, DepartmentUploader
   mount_uploader :social_share_image, SocialImageUploader
 
-  validates :title, presence: true
+  validates :title, :team_member, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: {
     case_sensitive: false,
     message: 'is already taken, leave blank to generate automatically'
@@ -20,8 +20,13 @@ class Department < ActiveRecord::Base
       .merge(Audience.displayed)
   }
 
+  belongs_to :team_member
   belongs_to :audience, counter_cache: true
-  has_many :services, -> { displayed }, dependent: :destroy
+  has_many :services, dependent: :destroy
+
+  def root_services
+    services.displayed.where(parent_id: nil)
+  end
 
   def slug_candidates
     [

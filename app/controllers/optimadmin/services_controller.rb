@@ -28,6 +28,7 @@ module Optimadmin
       if @service.save
         redirect_to_index_or_continue_editing(@service, department_id: @service.department.id)
       else
+        @department = @service.department
         render :new
       end
     end
@@ -66,7 +67,8 @@ module Optimadmin
                                       :remote_social_share_image_url, :social_share_image_cache,
                                       :remove_social_share_image,
                                       :social_share_title, :social_share_description,
-                                      :slug, :suggested_url, :display)
+                                      :slug, :suggested_url, :display,
+                                      related_service_ids: [])
     end
   end
 end

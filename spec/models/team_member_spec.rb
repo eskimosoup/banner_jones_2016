@@ -13,6 +13,11 @@ RSpec.describe TeamMember, type: :model, team_member: true do
     it { should have_many(:team_member_offices).dependent(:destroy) }
     it { should have_many(:offices).through(:team_member_offices) }
     it { should have_many(:articles).dependent(:nullify) }
+
+    it { should have_many(:service_team_members).dependent(:destroy) }
+    it { should have_many(:services).through(:service_team_members) }
+
+    it { should have_many(:departments) }
   end
 
   describe 'scopes', :scope do
@@ -77,5 +82,12 @@ RSpec.describe TeamMember, type: :model, team_member: true do
       team_member.specialisms = 'Gobbledegook'
       expect(team_member.should_generate_new_friendly_id?).to be false
     end
+  end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:team_member) { create(:team_member) }
+
+    it { expect(team_member).to callback(:set_slug).before(:validation) }
   end
 end

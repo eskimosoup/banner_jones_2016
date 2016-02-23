@@ -3,64 +3,21 @@
   position: relative;
 }
 
-.hero-banner-department-type {
-  bottom: 0;
-  position: absolute;
-  right: 30px;
-  width: grid-column(3);
-}
-
-.hero-banner-department-select {
-  list-style: none;
-
-  li {
-    display: inline-block;
-  }
-
-  a {
-    background: rgba($white, .33);
-    color: $white;
-    display: block;
-    font-family: $ubuntu;
-    font-size: rem(16px);
-    font-weight: $ubuntu-light;
-    margin: 0 0 0 rem(4px);
-    padding: rem(11px) rem(30px);
-
-    &:visited,
-    &:link {
-      color: $white;
-    }
-
-    &:hover,
-    &.active {
-      background: $white;
-      color: $dark-slate-blue;
-    }
-  }
-}
-
-.hero-banner-department-services {
+.home-page-banner-dropdown {
   background: $white;
-  height: 334px;
-  padding: rem(34px) rem(50px);
-}
-
-.hero-banner-department-title {
-  color: $dark-slate-blue;
-  font-family: $myriad-pro;
-  font-size: rem(23px);
-  font-weight: $myriad-pro-light;
-  margin: 0 0 rem(27px);
-}
-
-.hero-banner-department-services-list {
+  display: none;
+  height: 100%;
+  left: 0;
   list-style-image: image-url('components/icons/right-chevron.png');
+  margin: 0;
+  padding: rem(34px) rem(50px);
+  position: absolute;
+  width: 100%;
 
   li {
     margin: rem(7px) 0;
 
-    &:before {
+    &::before {
       content: '';
       padding: 0 0 0 rem(15px);
     }
@@ -81,4 +38,51 @@
       text-decoration: underline;
     }
   }
+}
+
+.hero-banner-department-select {
+  bottom: 0;
+  height: 334px;
+  list-style: none;
+  position: absolute;
+  right: 30px;
+  width: grid-column(3);
+
+  .has-children {
+    display: inline-block;
+
+    > a {
+      background: rgba($white, .33);
+      color: $white;
+      display: block;
+      font-family: $ubuntu;
+      font-size: rem(16px);
+      font-weight: $ubuntu-light;
+      margin: 0 0 0 rem(4px);
+      padding: rem(11px) rem(30px);
+
+      &:visited,
+      &:link {
+        color: $white;
+      }
+
+      &:hover,
+      &.active {
+        background: $white;
+        color: $dark-slate-blue;
+
+        + .dropdown {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.hero-banner-department-title {
+  color: $dark-slate-blue;
+  font-family: $myriad-pro;
+  font-size: rem(23px);
+  font-weight: $myriad-pro-light;
+  margin: 0 0 rem(27px);
 }

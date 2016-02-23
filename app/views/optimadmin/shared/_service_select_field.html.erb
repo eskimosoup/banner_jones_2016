@@ -1,0 +1,9 @@
+<div class="field">
+  <%= f.label :service_ids, 'Services' %><br />
+  <%= f.select :service_ids,
+    grouped_options_for_select(Service.includes(:department)
+              .group_by(&:department)
+              .map{|x| ["#{x[0].title}", x[1].map{|y| [y.title, y.id]}]},
+              selected: f.object.services.pluck(:id)),
+      {  }, { multiple: true, class: 'multiple-select' } %>
+</div>

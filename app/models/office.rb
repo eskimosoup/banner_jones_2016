@@ -5,8 +5,9 @@ class Office < ActiveRecord::Base
   mount_uploader :image, OfficeUploader
 
   belongs_to :office_location
-  # has_many :service_offices, dependent: :destroy
-  # has_many :services, through: :service_offices
+
+  has_many :service_offices, dependent: :destroy
+  has_many :services, through: :service_offices
 
   has_many :team_member_offices, dependent: :destroy
   has_many :team_members, through: :team_member_offices
@@ -25,6 +26,9 @@ class Office < ActiveRecord::Base
       .where(display: true)
       .merge(OfficeLocation.displayed)
   }
+
+  has_many :service_offices, dependent: :destroy
+  has_many :offices, through: :service_offices
 
   def slug_candidates
     [

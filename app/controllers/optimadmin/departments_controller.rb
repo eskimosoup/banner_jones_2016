@@ -66,6 +66,7 @@ module Optimadmin
                                          :remove_social_share_image,
                                          :remote_social_share_image_url,
                                          :image, :social_share_image,
+                                         :team_member_id,
                                          :display, :suggested_url)
     end
   end

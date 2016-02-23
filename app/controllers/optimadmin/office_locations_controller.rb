@@ -3,7 +3,7 @@ module Optimadmin
     before_action :set_office_location, only: [:show, :edit, :update, :destroy]
 
     def index
-      @office_locations = Optimadmin::BaseCollectionPresenter.new(collection: OfficeLocation.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::OfficeLocationPresenter)
+      @office_locations = Optimadmin::BaseCollectionPresenter.new(collection: OfficeLocation.where('name ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::OfficeLocationPresenter)
     end
 
     def show
@@ -45,7 +45,7 @@ module Optimadmin
     end
 
     def office_location_params
-      params.require(:office_location).permit(:title, :display)
+      params.require(:office_location).permit(:name, :display)
     end
   end
 end

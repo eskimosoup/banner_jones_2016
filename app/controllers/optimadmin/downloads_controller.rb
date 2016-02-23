@@ -58,7 +58,8 @@ module Optimadmin
       params.require(:download).permit(:title, :summary, :description, :file,
                                        :remote_image_url, :image_cache, :remove_image,
                                        :remote_file_url, :file_cache, :remove_file,
-                                       :image, :download_category_id, :suggested_url, :display)
+                                       :image, :download_category_id,
+                                       :suggested_url, :display, service_ids: [])
     end
   end
 end

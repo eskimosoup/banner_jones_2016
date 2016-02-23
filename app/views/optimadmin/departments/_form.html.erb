@@ -35,6 +35,11 @@
       <%= f.image_field :social_share_image %>
     <% end %>
     <%= field_set_tag nil, id: 'tabs-3' do %>
+      <div class="field">
+        <%= f.label :team_member_id %><br>
+        <%= f.select :team_member_id, TeamMember.displayed.map{ |x|["#{x.forename} #{x.surname}", x.id] }, prompt: 'Please select' %>
+      </div>
+
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
       <div class="field">
         <%= f.label :display %><br>

@@ -13,6 +13,8 @@ RSpec.describe Article, type: :model, article: true do
   describe 'associations', :association do
     it { should belong_to(:article_category) }
     it { should belong_to(:team_member) }
+    it { should have_many(:service_articles).dependent(:destroy) }
+    it { should have_many(:services).through(:service_articles) }
   end
 
   describe 'custom validation', :validation do
@@ -62,5 +64,12 @@ RSpec.describe Article, type: :model, article: true do
       article.content = 'Gobbledegook'
       expect(article.should_generate_new_friendly_id?).to be false
     end
+  end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:article) { create(:article) }
+
+    it { expect(article).to callback(:set_slug).before(:validation) }
   end
 end

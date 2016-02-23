@@ -60,7 +60,7 @@ module Optimadmin
                                       :social_share_description,
                                       :article_category_id, :date,
                                       :suggested_url, :display, :team_member_id,
-                                      :home_page_highlight)
+                                      :home_page_highlight, service_ids: [])
     end
   end
 end

@@ -11,6 +11,8 @@ RSpec.describe Download, type: :model, download: true do
 
   describe 'associations', :association do
     it { should belong_to(:download_category) }
+    it { should have_many(:service_downloads).dependent(:destroy) }
+    it { should have_many(:services).through(:service_downloads) }
   end
 
   describe 'scopes', :scope do
@@ -44,5 +46,12 @@ RSpec.describe Download, type: :model, download: true do
       download.summary = 'Gobbledegook'
       expect(download.should_generate_new_friendly_id?).to be false
     end
+  end
+
+  # https://github.com/beatrichartz/shoulda-callback-matchers
+  context 'callbacks' do
+    let(:download) { create(:download) }
+
+    it { expect(download).to callback(:set_slug).before(:validation) }
   end
 end

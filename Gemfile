@@ -59,6 +59,7 @@ group :test do
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
+  gem 'shoulda-callback-matchers', '~> 1.1.1'
 end
 
 group :development do
@@ -75,3 +76,4 @@ gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'mast
 gem 'friendly_id', '~> 5.1.0'
 gem 'therubyracer', platforms: :ruby
 gem 'flip'
+gem 'geocoder'

@@ -21,6 +21,7 @@ class ApplicationController < ActionController::Base
     @downloads = Download.displayed
     @team_members = TeamMember.displayed
     @services = Service.displayed.pluck(:title, :id)
+    @banner_menu = Optimadmin::Menu.new(name: 'home_page_banner')
   end
 
   private
