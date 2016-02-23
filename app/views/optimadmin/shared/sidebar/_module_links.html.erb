@@ -22,6 +22,7 @@
         Manage Your Content
       </div>
       <ul id="modules" class="content-category-list">
+        <%= module_link(content: "Banners", model: Banner, path: banners_path) %>
         <%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
         <%= module_link(content: "Awards", model: Award, path: awards_path) %>
         <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
