@@ -34,6 +34,9 @@ RSpec.describe Service, type: :model, service: true do
 
     it { should have_many(:service_related_services).dependent(:destroy) }
     it { should have_many(:related_services).through(:service_related_services) }
+
+    it { should have_many(:service_videos).dependent(:destroy) }
+    it { should have_many(:videos).through(:service_videos) }
   end
 
   describe 'scopes', :scope do

@@ -46,6 +46,9 @@ class Service < ActiveRecord::Base
   has_many :service_related_services, dependent: :destroy
   has_many :related_services, -> { displayed }, through: :service_related_services
 
+  has_many :service_videos, dependent: :destroy
+  has_many :videos, -> { displayed }, through: :service_videos
+
   def slug_candidates
     [
       :suggested_url,
