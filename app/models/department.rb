@@ -15,14 +15,14 @@ class Department < ActiveRecord::Base
   }
 
   scope :displayed, lambda {
-    joins(:audience)
-      .where(display: true)
-      .merge(Audience.displayed)
+    # joins(:audience)
+    where(display: true)
+    #  .merge(Audience.displayed)
   }
 
   belongs_to :team_member
   belongs_to :audience, counter_cache: true
-  has_many :services, dependent: :destroy
+  has_many :services, -> { displayed }, dependent: :destroy
 
   def root_services
     services.displayed.where(parent_id: nil)

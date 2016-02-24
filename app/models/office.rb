@@ -28,7 +28,7 @@ class Office < ActiveRecord::Base
   }
 
   has_many :service_offices, dependent: :destroy
-  has_many :offices, through: :service_offices
+  has_many :services, -> { displayed }, through: :service_offices
 
   def slug_candidates
     [

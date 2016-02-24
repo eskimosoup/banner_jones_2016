@@ -6,5 +6,5 @@ class OfficeLocation < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
 
-  has_many :offices, dependent: :destroy
+  has_many :offices, -> { displayed }, dependent: :destroy
 end

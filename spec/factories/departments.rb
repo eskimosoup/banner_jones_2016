@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :department do
-    sequence(:id) { |n| n }
+    team_member
     audience
+    sequence(:id) { |n| n }
     sequence(:title) { |n| "Title #{n}" }
     summary 'MyText'
     display true

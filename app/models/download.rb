@@ -23,7 +23,7 @@ class Download < ActiveRecord::Base
   belongs_to :download_category
 
   has_many :service_downloads, dependent: :destroy
-  has_many :services, through: :service_downloads
+  has_many :services, -> { displayed }, through: :service_downloads
 
   def slug_candidates
     [
