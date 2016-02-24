@@ -1,6 +1,7 @@
 <%= content_for :javascripts do %>
   <%= javascript_include_tag 'components/home-components.js' %>
 <% end %>
+
 <section class="hero-banner">
   <div class="hero-banner-controls-wrap">
     <%= link_to '#', class: 'hero-banner-controls hero-banner-previous',
@@ -12,47 +13,9 @@
       <%= image_tag 'components/icons/hero/next.png', alt: '' %>
     <% end %>
   </div>
+
   <div class="hero-banner-slick">
-    <div class="hero-banner-item">
-      <div class="hero-banner-item-wrap">
-        <div class="hero-banner-item-content">
-          <h1 class="hero-banner-item-title">
-            A plan for when life doesn’t have one.
-          </h1>
-          <div class="hero-banner-item-summary">
-            <p>
-              Protect your families future, with our Lasting<br />
-              Power of Attorney and Will writing service.
-            </p>
-          </div>
-          <%= link_to 'Find out more', '#', class: 'hero-banner-item-button' %>
-        </div>
-      </div>
-      <%= image_tag 'placeholders/lifebuoy.jpg',
-                    alt: '',
-                    class: 'hero-banner-image' %>
-    </div>
-
-    <div class="hero-banner-item">
-      <div class="hero-banner-item-wrap">
-        <div class="hero-banner-item-content">
-          <h1 class="hero-banner-item-title">
-            Suffered an injury that was not your fault?
-          </h1>
-          <div class="hero-banner-item-summary">
-            <p>
-              Full no win, no fee support from<br />
-              our expert personal injury team
-            </p>
-          </div>
-          <%= link_to 'Find out more', '#', class: 'hero-banner-item-button' %>
-        </div>
-      </div>
-
-      <%= image_tag 'placeholders/poorly-dog.jpg',
-                    alt: '',
-                    class: 'hero-banner-image' %>
-    </div>
+    <%= render partial: 'banners/banner', collection: @banners, as: :banner %>
   </div>
 
   <%= render 'application/shared/hero_banner_navigation' %>

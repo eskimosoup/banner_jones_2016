@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def index
+    @banners = Banner.displayed
     @testimonials = Testimonial.displayed
     @articles = Article.home_page_highlight
     @downloads = Download.displayed
