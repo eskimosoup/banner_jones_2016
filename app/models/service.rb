@@ -15,36 +15,36 @@ class Service < ActiveRecord::Base
   }
 
   scope :displayed, lambda {
-    joins(:department)
-      .where(display: true)
-      .merge(Department.displayed)
+    # joins(:department)
+    where(display: true)
+    #  .merge(Department.displayed)
   }
 
   belongs_to :department, counter_cache: true
 
   has_many :service_articles, dependent: :destroy
-  has_many :articles, through: :service_articles
+  has_many :articles, -> { displayed }, through: :service_articles
 
   has_many :service_downloads, dependent: :destroy
-  has_many :downloads, through: :service_downloads
+  has_many :downloads, -> { displayed }, through: :service_downloads
 
   has_many :service_events, dependent: :destroy
-  has_many :events, through: :service_events
+  has_many :events, -> { displayed }, through: :service_events
 
   has_many :service_faqs, dependent: :destroy
-  has_many :frequently_asked_questions, through: :service_faqs
+  has_many :frequently_asked_questions, -> { displayed }, through: :service_faqs
 
   has_many :service_offices, dependent: :destroy
-  has_many :offices, through: :service_offices
+  has_many :offices, -> { displayed }, through: :service_offices
 
   has_many :service_team_members, dependent: :destroy
-  has_many :team_members, through: :service_team_members
+  has_many :team_members, -> { displayed }, through: :service_team_members
 
   has_many :service_testimonials, dependent: :destroy
-  has_many :testimonials, through: :service_testimonials
+  has_many :testimonials, -> { displayed }, through: :service_testimonials
 
   has_many :service_related_services, dependent: :destroy
-  has_many :related_services, through: :service_related_services
+  has_many :related_services, -> { displayed }, through: :service_related_services
 
   def slug_candidates
     [

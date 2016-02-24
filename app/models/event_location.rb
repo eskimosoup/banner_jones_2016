@@ -4,7 +4,7 @@ class EventLocation < ActiveRecord::Base
 
   validates :building_name, :address_line_1, :city, :postcode, presence: true
 
-  has_many :events, dependent: :nullify
+  has_many :events, -> { displayed }, dependent: :nullify
 
   geocoded_by :address_fields
   # after_validation :geocode, if: lambda { |obj|

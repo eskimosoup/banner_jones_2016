@@ -28,6 +28,7 @@ module Optimadmin
       if @department.save
         redirect_to_index_or_continue_editing(@department, audience_id: @department.audience.id)
       else
+        @audience = @department.audience
         render :new
       end
     end

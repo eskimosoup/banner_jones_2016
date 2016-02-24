@@ -12,7 +12,7 @@ class DownloadCategory < ActiveRecord::Base
 
   scope :displayed, -> { where(display: true) }
 
-  has_many :downloads, dependent: :nullify
+  has_many :downloads, -> { displayed }, dependent: :nullify
 
   def slug_candidates
     [
