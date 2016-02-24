@@ -55,7 +55,7 @@
     </div>
   </div>
 
-  <%= render 'application/shared/hero_banner_navigation' %>  
+  <%= render 'application/shared/hero_banner_navigation' %>
 </section>
 
 <div class="content">
@@ -150,7 +150,7 @@
         </h2>
 
         <div class="articles-slick">
-          <%= render @articles %>
+          <%= render partial: 'articles/home_articles', collection: @articles, as: :article %>
         </div>
       </div>
     </section>
