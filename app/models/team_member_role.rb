@@ -7,4 +7,6 @@ class TeamMemberRole < ActiveRecord::Base
   scope :displayed, -> { where(display: true) }
 
   has_many :team_members, -> { displayed }, dependent: :nullify
+
+  has_many :team_member_additional_roles, dependent: :destroy
 end

@@ -35,11 +35,6 @@
       </div>
 
       <div class="field">
-        <%= f.label :team_member_role_id, "Role" %><br>
-        <%= f.select :team_member_role_id, TeamMemberRole.displayed.pluck(:title, :id), prompt: 'Please select' %>
-      </div>
-
-      <div class="field">
         <%= f.label :primary_telephone %><br>
         <%= f.text_field :primary_telephone %>
       </div>
@@ -108,6 +103,16 @@
 
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <%= render 'optimadmin/shared/service_select_field', f: f %>
+
+      <div class="field">
+        <%= f.label :team_member_role_id, "Primary Role" %><br>
+        <%= f.select :team_member_role_id, TeamMemberRole.displayed.pluck(:title, :id), prompt: 'Please select' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :additional_role_ids, "Additional Roles" %><br>
+        <%= f.select :additional_role_ids, TeamMemberRole.displayed.pluck(:title, :id), { }, { multiple: true, class: 'multiple-select' } %>
+      </div>
 
       <div class="field">
         <%= f.label :office_ids, "Offices" %><br>

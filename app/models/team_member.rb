@@ -11,6 +11,7 @@ class TeamMember < ActiveRecord::Base
               case_sensitive: false,
               message: 'is already taken, leave blank to generate automatically'
             }
+  validate :additional_role_not_containing_role
 
   scope :positioned, -> { order(:position) }
 
@@ -34,6 +35,9 @@ class TeamMember < ActiveRecord::Base
   has_many :offices, through: :team_member_offices
   has_many :team_member_offices, dependent: :destroy
 
+  has_many :team_member_additional_roles, dependent: :destroy
+  has_many :additional_roles, through: :team_member_additional_roles, source: :team_member_role
+
   has_many :articles, dependent: :nullify
   has_many :blog_posts, dependent: :nullify
 
@@ -41,6 +45,10 @@ class TeamMember < ActiveRecord::Base
   has_many :services, through: :service_team_members
 
   has_many :departments
+
+  def additional_role_not_containing_role
+    errors.add(:additional_roles, 'can not contain primary role') if additional_roles.present? && additional_roles.map(&:id).include?(team_member_role.id)
+  end
 
   def slug_candidates
     [

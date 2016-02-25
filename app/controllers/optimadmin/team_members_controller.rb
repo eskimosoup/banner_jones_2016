@@ -65,6 +65,7 @@ module Optimadmin
                                           :specialisms, :has_vcard_download, :profile,
                                           :google_plus, :twitter_link, :facebook_link,
                                           :mobile_number, :dx_number,
+                                          additional_role_ids: [],
                                           service_ids: [], office_ids: [])
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225100902) do
+ActiveRecord::Schema.define(version: 20160225103933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -477,6 +477,17 @@ ActiveRecord::Schema.define(version: 20160225100902) do
   add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
   add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", unique: true, using: :btree
 
+  create_table "team_member_additional_roles", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "team_member_role_id"
+    t.integer  "position"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "team_member_additional_roles", ["team_member_id"], name: "index_team_member_additional_roles_on_team_member_id", using: :btree
+  add_index "team_member_additional_roles", ["team_member_role_id"], name: "index_team_member_additional_roles_on_team_member_role_id", using: :btree
+
   create_table "team_member_offices", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "office_id"
@@ -586,6 +597,8 @@ ActiveRecord::Schema.define(version: 20160225100902) do
   add_foreign_key "service_videos", "services"
   add_foreign_key "service_videos", "videos"
   add_foreign_key "services", "departments"
+  add_foreign_key "team_member_additional_roles", "team_member_roles"
+  add_foreign_key "team_member_additional_roles", "team_members"
   add_foreign_key "team_member_offices", "offices"
   add_foreign_key "team_member_offices", "team_members"
   add_foreign_key "videos", "video_categories"

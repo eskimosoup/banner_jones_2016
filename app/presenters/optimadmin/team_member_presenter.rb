@@ -7,6 +7,14 @@ module Optimadmin
       [forename, surname].join(' ')
     end
 
+    def reorder_additional_roles
+      return if team_member.additional_roles.blank? || team_member.additional_roles.size < 2
+      h.content_tag :div do
+        h.link_to 'Re-order additional roles',
+                  h.team_member_team_member_additional_roles_path(team_member)
+      end
+    end
+
     def toggle_title
       inline_detail_toggle_link(full_name)
     end
