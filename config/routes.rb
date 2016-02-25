@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  resources :pages, only: :show
+
   resources :team_members, only: [:index, :show]
 
   resources :article_categories, only: :show
@@ -30,6 +33,41 @@ Rails.application.routes.draw do
   match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
 end
 Optimadmin::Engine.routes.draw do
+
+
+  resources :pages, except: :show do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'edit_images'
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
+  resources :blog_posts, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
+  resources :blog_categories, except: [:show] do
+    collection do
+      post 'order'
+    end
+    member do
+      get 'toggle'
+    end
+  end
   resources :banners, except: [:show] do
     collection do
       post 'order'

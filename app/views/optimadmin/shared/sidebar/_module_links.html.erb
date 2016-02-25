@@ -22,6 +22,7 @@
         Manage Your Content
       </div>
       <ul id="modules" class="content-category-list">
+        <%= module_link(content: "Pages", model: Page, path: pages_path) %>
         <%= module_link(content: "Banners", model: Banner, path: banners_path) %>
         <%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
         <%= module_link(content: "Awards", model: Award, path: awards_path) %>
@@ -60,6 +61,14 @@
       <ul class="content-category-list">
         <%= module_link(content: "Articles", model: Article, path: articles_path) %>
         <%= module_link(content: "Article Categories", model: ArticleCategory, path: article_categories_path) %>
+      </ul>
+
+      <div class="content-category-type">
+        Blogs
+      </div>
+      <ul class="content-category-list">
+        <%= module_link(content: "Blog Posts", model: BlogPost, path: blog_posts_path) %>
+        <%= module_link(content: "Blog Categories", model: BlogCategory, path: blog_categories_path) %>
       </ul>
 
       <div class="content-category-type">
