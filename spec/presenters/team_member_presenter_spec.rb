@@ -33,7 +33,7 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
     end
 
     it 'returns office locations' do
-      expect(team_member_presenter.office_locations).to eq(team_member.offices.map { |x| x.office_location.name }.join(', '))
+      expect(team_member_presenter.office_locations).to eq(team_member.offices.map { |x| x.office_location.name }.to_sentence)
     end
 
     it 'returns the vcard link' do

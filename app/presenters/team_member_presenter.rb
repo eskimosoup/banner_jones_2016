@@ -16,7 +16,7 @@ class TeamMemberPresenter < BasePresenter
   end
 
   def additional_roles
-    team_member.additional_roles.map(&:title).join(', ')
+    team_member.additional_roles.map(&:title).to_sentence
   end
 
   def linked_email_address(content = '')
