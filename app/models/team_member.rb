@@ -33,7 +33,9 @@ class TeamMember < ActiveRecord::Base
 
   has_many :offices, through: :team_member_offices
   has_many :team_member_offices, dependent: :destroy
+
   has_many :articles, dependent: :nullify
+  has_many :blog_posts, dependent: :nullify
 
   has_many :service_team_members, dependent: :destroy
   has_many :services, through: :service_team_members

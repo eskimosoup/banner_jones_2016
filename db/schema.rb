@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224154803) do
+ActiveRecord::Schema.define(version: 20160225100902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,41 @@ ActiveRecord::Schema.define(version: 20160224154803) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
+
+  create_table "blog_categories", force: :cascade do |t|
+    t.string   "title",                        null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  add_index "blog_categories", ["slug"], name: "index_blog_categories_on_slug", unique: true, using: :btree
+  add_index "blog_categories", ["suggested_url"], name: "index_blog_categories_on_suggested_url", unique: true, using: :btree
+
+  create_table "blog_posts", force: :cascade do |t|
+    t.string   "title",                    limit: 150,                null: false
+    t.text     "summary",                                             null: false
+    t.text     "content",                                             null: false
+    t.date     "date",                                                null: false
+    t.string   "image"
+    t.string   "social_share_title",       limit: 150
+    t.string   "social_share_description"
+    t.string   "social_share_image"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.boolean  "display",                              default: true
+    t.integer  "team_member_id"
+    t.integer  "blog_category_id"
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+  end
+
+  add_index "blog_posts", ["blog_category_id"], name: "index_blog_posts_on_blog_category_id", using: :btree
+  add_index "blog_posts", ["slug"], name: "index_blog_posts_on_slug", unique: true, using: :btree
+  add_index "blog_posts", ["suggested_url"], name: "index_blog_posts_on_suggested_url", unique: true, using: :btree
+  add_index "blog_posts", ["team_member_id"], name: "index_blog_posts_on_team_member_id", using: :btree
 
   create_table "departments", force: :cascade do |t|
     t.string   "title",                             null: false
@@ -317,6 +352,19 @@ ActiveRecord::Schema.define(version: 20160224154803) do
     t.string "environment"
   end
 
+  create_table "pages", force: :cascade do |t|
+    t.string   "title",                        null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.string   "image"
+    t.string   "style",                        null: false
+    t.string   "layout",                       null: false
+    t.boolean  "display",       default: true
+    t.text     "content",                      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
   create_table "service_articles", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "article_id"
@@ -512,6 +560,8 @@ ActiveRecord::Schema.define(version: 20160224154803) do
 
   add_foreign_key "articles", "article_categories"
   add_foreign_key "articles", "team_members"
+  add_foreign_key "blog_posts", "blog_categories"
+  add_foreign_key "blog_posts", "team_members"
   add_foreign_key "departments", "audiences"
   add_foreign_key "departments", "team_members"
   add_foreign_key "downloads", "download_categories"

@@ -18,6 +18,7 @@ RSpec.describe TeamMember, type: :model, team_member: true do
     it { should have_many(:services).through(:service_team_members) }
 
     it { should have_many(:departments) }
+    it { should have_many(:blog_posts).dependent(:nullify) }
   end
 
   describe 'scopes', :scope do
