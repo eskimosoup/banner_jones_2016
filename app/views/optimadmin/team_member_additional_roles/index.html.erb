@@ -1,0 +1,17 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Team Member Additional Roles' %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/form/back', path: team_members_path, title: 'Team Member', prefix: 'Back to' %>
+  </div>
+  <div class="row collapse module-list-index header">
+    <%= list_item 'large-1 hide-for-medium-down' do %>
+      <%= link_to octicon('settings') %>
+    <% end %>
+    <%= list_item 'large-11 small-12' do %>
+      Title
+      <% end %>
+  </div>
+  <div class='module-sortable' data-module="TeamMemberAdditionalRole">
+  <%= render partial: 'team_member_additional_role', collection: @team_member_additional_roles, as: :team_member_additional_role_presenter %>
+  </div>
+</div>

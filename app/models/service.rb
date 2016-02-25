@@ -5,6 +5,8 @@ class Service < ActiveRecord::Base
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
+  has_closure_tree
+
   mount_uploader :image, ServiceUploader
   mount_uploader :social_share_image, ServiceUploader
 
@@ -48,6 +50,14 @@ class Service < ActiveRecord::Base
 
   has_many :service_videos, dependent: :destroy
   has_many :videos, -> { displayed }, through: :service_videos
+
+  def custom_path
+    Rails.application.routes.url_helpers.audience_department_service_path(
+      department.audience,
+      department,
+      self
+    )
+  end
 
   def slug_candidates
     [

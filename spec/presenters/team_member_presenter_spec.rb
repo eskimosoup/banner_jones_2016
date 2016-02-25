@@ -83,6 +83,23 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
     it 'returns the mobile' do
       expect(team_member_presenter.mobile_number).to eq(team_member.mobile_number)
     end
+
+    it 'returns the additional roles boolean' do
+      expect(team_member_presenter.additional_roles?).to eq(false)
+    end
+  end
+
+  describe 'team member with additional roles' do
+    let(:team_member) { build(:team_member_with_additional_roles) }
+    subject(:team_member_presenter) { TeamMemberPresenter.new(object: team_member, view_template: view) }
+
+    it 'returns the additional roles boolean' do
+      expect(team_member_presenter.additional_roles?).to eq(true)
+    end
+
+    it 'returns the additional roles string' do
+      expect(team_member_presenter.additional_roles).to eq(team_member.additional_roles.map(&:title).to_sentence)
+    end
   end
 
   describe 'images' do

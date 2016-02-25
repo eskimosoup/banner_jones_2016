@@ -6,7 +6,8 @@
       </strong>
       /
       <span class="home-team-member-role">
-        <%= team_member_presenter.role %>
+        <%= team_member_presenter.role %><%= ', ' if team_member_presenter.additional_roles? %>
+        <%= team_member_presenter.additional_roles %>
       </span>
       <ul class="home-team-member-profile-details">
         <li class="home-team-member-office-location">

@@ -15,6 +15,10 @@ class TeamMemberPresenter < BasePresenter
     team_member.offices.map { |x| x.office_location.name }.join(', ')
   end
 
+  def additional_roles
+    team_member.additional_roles.map(&:title).to_sentence
+  end
+
   def linked_email_address(content = '')
     h.mail_to team_member.email_address, (content.present? ? content : team_member.email_address)
   end
@@ -49,5 +53,9 @@ class TeamMemberPresenter < BasePresenter
 
   def dx_number
     team_member.dx_number if Flip.team_member_dx_number?
+  end
+
+  def additional_roles?
+    additional_roles.present?
   end
 end

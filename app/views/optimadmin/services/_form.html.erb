@@ -55,7 +55,7 @@
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <div class="field">
         <%= f.label :parent_id %><br>
-        <%= f.select :parent_id, Service.pluck(:title, :id), include_blank: 'No parent service' %>
+        <%= f.select :parent_id, Service.where.not(id: @service.id).pluck(:title, :id), include_blank: 'No parent service' %>
       </div>
 
       <div class="field">

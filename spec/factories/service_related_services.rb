@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :service_related_service do
-    service nil
-related_service nil
+    service
+    related_service { build(:service) }
   end
-
 end

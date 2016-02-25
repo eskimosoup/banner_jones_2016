@@ -8,6 +8,16 @@ RSpec.describe TeamMember, type: :model, team_member: true do
     it { should validate_uniqueness_of(:suggested_url).allow_blank.case_insensitive.with_message('is already taken, leave blank to generate automatically') }
   end
 
+  describe 'custom validation', :validation do
+    subject(:team_member) { build(:team_member) }
+
+    it 'ensures additional roles do not include primary role' do
+      team_member.additional_roles = [team_member.team_member_role]
+      expect(team_member.valid?).to be false
+      expect(team_member.errors[:additional_roles]).to include('can not contain primary role')
+    end
+  end
+
   describe 'associations', :association do
     it { should belong_to(:team_member_role) }
     it { should have_many(:team_member_offices).dependent(:destroy) }

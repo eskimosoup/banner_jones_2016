@@ -20,5 +20,12 @@ FactoryGirl.define do
       image { File.open(File.join(Rails.root, 'spec/support/images/landscape_image.jpg')) }
     end
     factory :team_member_with_image, traits: [:with_image]
+
+    trait :with_additional_roles do
+      after(:build) do |team_member|
+        team_member.additional_roles = build_list(:team_member_role, 2)
+      end
+    end
+    factory :team_member_with_additional_roles, traits: [:with_additional_roles]
   end
 end

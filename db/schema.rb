@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225100902) do
+ActiveRecord::Schema.define(version: 20160225115851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -405,6 +405,15 @@ ActiveRecord::Schema.define(version: 20160225100902) do
   add_index "service_faqs", ["frequently_asked_question_id"], name: "index_service_faqs_on_frequently_asked_question_id", using: :btree
   add_index "service_faqs", ["service_id"], name: "index_service_faqs_on_service_id", using: :btree
 
+  create_table "service_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+  end
+
+  add_index "service_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "service_anc_desc_idx", unique: true, using: :btree
+  add_index "service_hierarchies", ["descendant_id"], name: "service_desc_idx", using: :btree
+
   create_table "service_offices", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "office_id"
@@ -476,6 +485,17 @@ ActiveRecord::Schema.define(version: 20160225100902) do
   add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
   add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
   add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", unique: true, using: :btree
+
+  create_table "team_member_additional_roles", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "team_member_role_id"
+    t.integer  "position"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "team_member_additional_roles", ["team_member_id"], name: "index_team_member_additional_roles_on_team_member_id", using: :btree
+  add_index "team_member_additional_roles", ["team_member_role_id"], name: "index_team_member_additional_roles_on_team_member_role_id", using: :btree
 
   create_table "team_member_offices", force: :cascade do |t|
     t.integer  "team_member_id"
@@ -586,6 +606,8 @@ ActiveRecord::Schema.define(version: 20160225100902) do
   add_foreign_key "service_videos", "services"
   add_foreign_key "service_videos", "videos"
   add_foreign_key "services", "departments"
+  add_foreign_key "team_member_additional_roles", "team_member_roles"
+  add_foreign_key "team_member_additional_roles", "team_members"
   add_foreign_key "team_member_offices", "offices"
   add_foreign_key "team_member_offices", "team_members"
   add_foreign_key "videos", "video_categories"
