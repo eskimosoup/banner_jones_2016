@@ -1,4 +1,6 @@
 class TeamMember < ActiveRecord::Base
+  default_scope { positioned }
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 

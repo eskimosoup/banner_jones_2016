@@ -32,6 +32,10 @@ RSpec.describe TeamMemberPresenter, type: :presenter, team_member: true do
       expect(team_member_presenter.full_name).to eq([team_member.forename, team_member.surname].join(' '))
     end
 
+    it 'returns the services titles' do
+      expect(team_member_presenter.service_titles).to eq(team_member.services.map(&:title).join(', '))
+    end
+
     it 'returns office locations' do
       expect(team_member_presenter.office_locations).to eq(team_member.offices.map { |x| x.office_location.name }.join(', '))
     end
