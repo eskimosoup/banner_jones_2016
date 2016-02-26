@@ -23,7 +23,9 @@
   </div>
   <div class="home-team-member-profile-services">
     <strong class="home-team-member-profile-service-name">
-      <% # TODO: Service name %>
+      <% present team_member do |team_member_presenter| %>
+        <%= team_member_presenter.service_titles %>
+      <% end %>
     </strong>
   </div>
 </div>

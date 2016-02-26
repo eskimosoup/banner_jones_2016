@@ -50,13 +50,13 @@
         Find People By
       </h2>
 
-      <%= form_tag '', method: :post, remote: true, class: 'home-team-member-search-form' do %>
+      <%= form_tag search_team_members_path, method: :get, remote: true, class: 'home-team-member-search-form' do %>
         <div class="home-team-member-search-field">
           <%= text_field_tag :name, '', placeholder: 'Name',
                                         class: 'home-team-member-search-name' %>
         </div>
         <div class="home-team-member-search-field">
-          <%= select_tag :service, options_for_select(@services),
+          <%= select_tag :service_id, options_for_select(@services),
                                    prompt: 'Service',
                                    class: 'home-team-member-search-service' %>
         </div>

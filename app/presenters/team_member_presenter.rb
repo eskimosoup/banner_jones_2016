@@ -15,6 +15,10 @@ class TeamMemberPresenter < BasePresenter
     team_member.offices.map { |x| x.office_location.name }.join(', ')
   end
 
+  def service_titles
+    team_member.services.map(&:title).join(', ')
+  end
+
   def additional_roles
     team_member.additional_roles.map(&:title).to_sentence
   end

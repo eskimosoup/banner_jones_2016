@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :pages, only: :show
 
-  resources :team_members, only: [:index, :show]
+  resources :team_members, only: [:index, :show] do
+    collection do
+      get 'search'
+    end
+  end
 
   resources :article_categories, only: :show
   resources :articles, only: [:index, :show]
@@ -30,6 +34,10 @@ Rails.application.routes.draw do
   match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
 end
 Optimadmin::Engine.routes.draw do
+  get 'services/index'
+
+  get 'services/show'
+
   resources :pages, except: :show do
     collection do
       post 'order'
