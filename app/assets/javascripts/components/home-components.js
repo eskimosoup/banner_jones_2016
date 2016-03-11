@@ -91,3 +91,12 @@ $(document).on({
     $(this).addClass('active');
   }
 }, '.hero-banner-department-select .has-children > a');
+
+$(document).on({
+  mouseenter: function (e) {
+    $(this).css('background', $(this).data('colour'));
+  },
+  mouseleave: function () {
+    $(this).attr('style', '');
+  }
+}, '.hero-banner-navigation-link');

@@ -64,6 +64,8 @@ module Optimadmin
       params.require(:service).permit(:department_id, :parent_id, :title,
                                       :summary, :content, :image, :social_share_image,
                                       :remote_image_url, :image_cache, :remove_image,
+                                      :colour, :banner_highlight, :icon,
+                                      :remote_icon_url, :icon_cache, :remove_icon,
                                       :remote_social_share_image_url, :social_share_image_cache,
                                       :remove_social_share_image,
                                       :social_share_title, :social_share_description,

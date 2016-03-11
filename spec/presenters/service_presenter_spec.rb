@@ -6,6 +6,7 @@ RSpec.describe ServicePresenter, type: :presenter, service: true do
 
   describe 'delegations', :delegation do
     it { should delegate_method(:title).to(:service) }
+    it { should delegate_method(:colour).to(:service) }
   end
 
   describe 'standard service' do

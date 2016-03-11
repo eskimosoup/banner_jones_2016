@@ -11,6 +11,16 @@
 
 .article {
   padding: 0 rem(15px);
+
+  &.blue {
+    .article-title {
+      border-color: #13a8b7;
+
+      &:hover {
+        background: #13a8b7;
+      }
+    }
+  }
 }
 
 .article-title {

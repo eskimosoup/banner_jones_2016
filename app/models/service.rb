@@ -9,6 +9,7 @@ class Service < ActiveRecord::Base
 
   mount_uploader :image, ServiceUploader
   mount_uploader :social_share_image, ServiceUploader
+  mount_uploader :icon, ServiceIconUploader
 
   validates :title, :summary, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: {
@@ -21,6 +22,8 @@ class Service < ActiveRecord::Base
     where(display: true)
     #  .merge(Department.displayed)
   }
+
+  scope :banner_highlight, -> { displayed.where(banner_highlight: true) }
 
   belongs_to :department, counter_cache: true
 
