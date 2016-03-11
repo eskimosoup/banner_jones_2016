@@ -31,7 +31,7 @@
 }
 
 .home-team-member-search-button {
-  background: $dark-purple;
+  background: $black;
   border-radius: 6px;
   color: $white;
   font-family: $ubuntu;
@@ -41,7 +41,7 @@
   padding: rem(19px) rem(90px);
 
   &:focus {
-    background: $slate-purple;
+    background: $black;
     outline: 0;
   }
 }

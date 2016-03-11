@@ -37,6 +37,13 @@
     <% end %>
 
     <%= field_set_tag nil, id: 'tabs-2' do %>
+      <div class="field">
+        <%= f.label :colour %><br />
+        <%= f.text_field :colour %>
+      </div>
+
+      <%= f.image_field :icon %>
+
       <%= f.image_field :image %>
 
       <%= f.image_field :social_share_image %>
@@ -73,6 +80,11 @@
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>
+      </div>
+
+      <div class="field">
+        <%= f.label :banner_highlight %><br>
+        <%= f.check_box :banner_highlight %>
       </div>
     <% end %>
   </div>

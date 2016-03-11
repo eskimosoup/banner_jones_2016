@@ -1,88 +1,76 @@
-.hero-banner-navigation {
+.hero-banner-navigation-wrap {
   @include grid-row;
   position: relative;
 }
 
-.home-page-banner-dropdown {
+.hero-banner-navigation {
   background: $white;
-  display: none;
-  height: 100%;
-  left: 0;
-  list-style-image: image-url('components/icons/right-chevron.png');
-  margin: 0;
-  padding: rem(34px) rem(50px);
-  position: absolute;
-  width: 100%;
-
-  li {
-    margin: rem(7px) 0;
-
-    &::before {
-      content: '';
-      padding: 0 0 0 rem(15px);
-    }
-  }
-
-  a {
-    color: $dark-slate-blue;
-
-    &:visited,
-    &:link,
-    &:hover,
-    &:active {
-      color: $dark-slate-blue;
-    }
-
-    &:hover,
-    &:active {
-      text-decoration: underline;
-    }
-  }
-}
-
-.hero-banner-department-select {
   bottom: 0;
-  height: 334px;
+  height: 670px;
   list-style: none;
+  padding: rem(30px) 0;
   position: absolute;
-  right: 30px;
+  right: 0;
   width: grid-column(3);
-
-  .has-children {
-    display: inline-block;
-
-    > a {
-      background: rgba($white, .33);
-      color: $white;
-      display: block;
-      font-family: $ubuntu;
-      font-size: rem(16px);
-      font-weight: $ubuntu-light;
-      margin: 0 0 0 rem(4px);
-      padding: rem(11px) rem(30px);
-
-      &:visited,
-      &:link {
-        color: $white;
-      }
-
-      &:hover,
-      &.active {
-        background: $white;
-        color: $dark-slate-blue;
-
-        + .dropdown {
-          display: block;
-        }
-      }
-    }
-  }
+  z-index: 2;
 }
 
-.hero-banner-department-title {
-  color: $dark-slate-blue;
-  font-family: $myriad-pro;
-  font-size: rem(23px);
-  font-weight: $myriad-pro-light;
-  margin: 0 0 rem(27px);
+.hero-banner-navigation-link {
+  &:link,
+  &:visited {
+    color: $grey;
+    display: block;
+    font-family: $myriad-pro;
+    font-size: rem(18px);
+    font-weight: $myriad-pro-semibold;
+    margin: rem(15px) rem(1px);
+    padding: 0 rem(12px) 0 rem(35px);
+  }
+
+  &:hover {
+    background: $red;
+    color: $white;
+
+    // TODO: Fix me
+    &.service-1 {
+      background: #00a1b1;
+    }
+
+    &.service-2 {
+      background: #8dc63f;
+    }
+
+    &.service-3 {
+      background: #fdba31;
+    }
+
+    &.service-4 {
+      background: #522f91;
+    }
+
+    &.service-5 {
+      background: #a7a9ac;
+    }
+
+    &.service-6 {
+      background: #0078ae;
+    }
+
+    &.service-7 {
+      background: #40ae49;
+    }
+
+    &.service-8 {
+      background: #d11241;
+    }
+
+    &.service-9 {
+      background: #891b57;
+    }
+  }
+
+  img {
+    display: inline-block;
+    margin: 0 rem(20px) 0 0;
+  }
 }

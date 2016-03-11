@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160225115851) do
+ActiveRecord::Schema.define(version: 20160311161846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -468,8 +468,8 @@ ActiveRecord::Schema.define(version: 20160225115851) do
   create_table "services", force: :cascade do |t|
     t.integer  "department_id"
     t.integer  "parent_id"
-    t.string   "title",                    limit: 150,                null: false
-    t.text     "summary",                                             null: false
+    t.string   "title",                    limit: 150,                 null: false
+    t.text     "summary",                                              null: false
     t.text     "content"
     t.string   "social_share_title"
     t.text     "social_share_description"
@@ -478,8 +478,11 @@ ActiveRecord::Schema.define(version: 20160225115851) do
     t.string   "slug"
     t.string   "suggested_url"
     t.boolean  "display",                              default: true
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                           null: false
+    t.datetime "updated_at",                                           null: false
+    t.string   "icon"
+    t.string   "colour"
+    t.boolean  "banner_highlight",                     default: false
   end
 
   add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree

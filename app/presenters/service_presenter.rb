@@ -1,6 +1,6 @@
 class ServicePresenter < BasePresenter
   presents :service
-  delegate :title, to: :service
+  delegate :title, :colour, to: :service
 
   def linked_text(text = 'View', options = {})
     h.link_to text, h.audience_department_service_path(service.department.audience, service.department, service), options

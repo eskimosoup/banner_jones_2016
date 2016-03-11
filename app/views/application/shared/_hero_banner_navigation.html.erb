@@ -1,7 +1,68 @@
-<div class="hero-banner-navigation">
-  <div class="hero-banner-department-type">
-    <ul class="hero-banner-department-select">
-      <%= nested_menu_items(menu_items: @banner_menu.menu_items) %>
-    </ul>
-  </div>
+<div class="hero-banner-navigation-wrap">
+  <ul class="hero-banner-navigation">
+    <% @banner_services.each do |banner_service| %>
+      <% present banner_service do |service_presenter| %>
+          <%= content_tag :li,
+            service_presenter.linked_text(
+            (service_presenter.show_icon + banner_service.title),
+            class: 'hero-banner-navigation-link', data: { colour: service_presenter.colour }
+          ) %>
+      <% end %>
+    <% end %>
+
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-1' do %>
+        <%= image_tag 'placeholders/service-1.png', alt: '' %>
+        residential property
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-2' do %>
+        <%= image_tag 'placeholders/service-2.png', alt: '' %>
+        dispute resolution
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-3' do %>
+        <%= image_tag 'placeholders/service-3.png', alt: '' %>
+        employment law
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-4' do %>
+        <%= image_tag 'placeholders/service-4.png', alt: '' %>
+        business law
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-5' do %>
+        <%= image_tag 'placeholders/service-5.png', alt: '' %>
+        accident claims
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-6' do %>
+        <%= image_tag 'placeholders/service-6.png', alt: '' %>
+        family law
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-7' do %>
+        <%= image_tag 'placeholders/service-7.png', alt: '' %>
+        wealth management
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-8' do %>
+        <%= image_tag 'placeholders/service-8.png', alt: '' %>
+        wills &amp; probate
+      <% end %>
+    </li>
+    <li>
+      <%= link_to '#', class: 'hero-banner-navigation-link service-9' do %>
+        <%= image_tag 'placeholders/service-9.png', alt: '' %>
+        mediation services
+      <% end %>
+    </li>
+  </ul>
 </div>

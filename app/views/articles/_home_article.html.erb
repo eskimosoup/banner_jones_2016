@@ -9,7 +9,7 @@
             <%= article_presenter.linked_text(team_member_presenter.small_image(alt: team_member_presenter.full_name)) %>
           </div>
           <div class="article-author-details">
-            <%= article_presenter.linked_text(team_member_presenter.full_name, class: 'article-author-title') %>
+            <%= article_presenter.linked_text(team_member_presenter.full_name, class: 'article-author-name') %>
             <% # TODO: Update to service %>
             <%= article_presenter.linked_text('Family Law', class: 'article-author-department') %>
           </div>

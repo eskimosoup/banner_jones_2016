@@ -1,10 +1,3 @@
-<%= link_to '#', class: 'toggle-class sticky-sidebar-toggle',
-            title: 'Toggle contact sidebar',
-            data: { container: '.sticky-sidebar', class: 'hide' } do
-%>
-  <%= image_tag 'components/icons/header/email.png', alt: '' %>
-<% end %>
-
 <div class="sticky-sidebar hide">
 
 </div>
@@ -22,12 +15,6 @@
   <div class="header-contact">
     <ul class="header-aside-navigation">
       <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
-
-      <li class="menu-item">
-        <%= link_to '#', class: 'header-locations', title: 'Locations' do %>
-          <%= image_tag 'components/icons/header/map.png', alt: '' %>
-        <% end %>
-      </li>
     </ul>
 
     <div class="header-telephone">
@@ -36,6 +23,10 @@
       </span>
       <%= site_setting('Phone') %>
     </div>
+
+    <%= link_to '#', class: 'header-locations', title: 'Locations' do %>
+      <%= image_tag 'components/icons/header/map.png', alt: '' %>
+    <% end %>
   </div>
 </header>
 
@@ -51,6 +42,12 @@
 
         <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
       </ul>
+      <%= link_to '#', class: 'toggle-class sticky-sidebar-toggle',
+                  title: 'Toggle contact sidebar',
+                  data: { container: '.sticky-sidebar', class: 'hide' } do
+      %>
+        <%= image_tag 'components/icons/header/email.png', alt: '' %>
+      <% end %>
     </div>
 
     <div class="primary-navigation-search">
