@@ -1,4 +1,19 @@
 <%= render 'optimadmin/shared/header/main_title', title: 'Manage Article Categories' %>
+
+<%= content_for :footer do %>
+  <script>
+  $(document).on('click', '.module-index-display-status', function() {
+    $($(this).attr('href')).load($(this).data('status'));
+  });
+
+  $(document).on('click', '.ui-tabs-panel:visible .pagination a', function() {
+    $('#' + $('.ui-tabs-panel:visible').attr('id')).load($(this).attr('href'));
+    console.log('test');
+    return false;
+  });
+  </script>
+<% end %>
+
 <div class="main-content">
   <div class="row module-header collapse">
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Article Category', object: ArticleCategory, path: new_article_category_path %>
@@ -6,15 +21,50 @@
     <%= render 'optimadmin/shared/module/index/pagination' %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @article_categories.size, path: root_url %>
   </div>
-  <div class="row collapse module-list-index header">
-    <%= list_item 'large-8 small-8' do %>
-      Title
-    <% end %>
-    <%= list_item { 'Display' } %>
-    <%= list_item { 'View' } %>
-    <%= list_item { 'Edit' } %>
-    <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
+
+  <div class="tabs prevent-flash">
+    <ul class="tab-list module-index">
+      <li>
+        <a href="#tabs-1">
+          All
+        </a>
+      </li>
+
+      <li>
+        <a href="#tabs-2"
+          class="module-index-display-status"
+          data-status="<%= article_categories_published_index_path(per_page: params[:per_page], order: params[:order], search: params[:search]) %>">
+          Published
+        </a>
+      </li>
+      <li><a href="#tabs-3">Scheduled</a></li>
+      <li><a href="#tabs-4">Expired</a></li>
+    </ul>
+
+    <div id="tabs-1">
+      <div class="row collapse module-list-index header">
+        <%= list_item 'large-8 small-8' do %>
+          Title
+        <% end %>
+        <%= list_item { 'Display' } %>
+        <%= list_item { 'View' } %>
+        <%= list_item { 'Edit' } %>
+        <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
+      </div>
+      <%= render partial: 'article_category', collection: @article_categories, as: :article_category_presenter %>
+      <%= paginate @article_categories %>
+    </div>
+
+    <div id="tabs-2">
+      <%= image_tag 'optimadmin/vendor/slick/ajax-loader.gif', alt: 'Loading...' %>
+    </div>
+
+    <div id="tabs-3">
+      <%= image_tag 'optimadmin/vendor/slick/ajax-loader.gif', alt: 'Loading...' %>
+    </div>
+
+    <div id="tabs-4">
+      <%= image_tag 'optimadmin/vendor/slick/ajax-loader.gif', alt: 'Loading...' %>
+    </div>
   </div>
-  <%= render partial: 'article_category', collection: @article_categories, as: :article_category_presenter %>
-  <%= paginate @article_categories %>
 </div>
