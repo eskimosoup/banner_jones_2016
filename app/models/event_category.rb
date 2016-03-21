@@ -1,5 +1,7 @@
 # EventCategory
 class EventCategory < ActiveRecord::Base
+  include DisplayStatus
+
   default_scope { order(title: :asc) }
 
   extend FriendlyId
@@ -11,7 +13,7 @@ class EventCategory < ActiveRecord::Base
     message: 'is already taken, leave blank to generate automatically'
   }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, -> { published }
 
   has_many :events, -> { displayed }, dependent: :nullify
 

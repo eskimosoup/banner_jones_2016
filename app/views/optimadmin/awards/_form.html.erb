@@ -34,10 +34,7 @@
       <%= f.image_field :image %>
     <% end %>
     <%= field_set_tag nil, id: 'tabs-3' do %>
-      <div class="field">
-        <%= f.label :display %><br>
-        <%= f.check_box :display %>
-      </div>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
     <% end %>
   </div>
   <div class="actions">

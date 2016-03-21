@@ -61,7 +61,7 @@ module Optimadmin
                                         :social_share_description,
                                         :social_share_image, :blog_category_id,
                                         :team_member_id,
-                                        :suggested_url, :display)
+                                        :suggested_url, :status, :publish_at, :expire_at)
     end
   end
 end

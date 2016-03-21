@@ -89,15 +89,12 @@
         <%= f.label :team_member_ids, "Team Members" %><br>
         <%= f.select :team_member_ids, TeamMember.all.map{|x| ["#{x.forename} #{x.surname}", x.id]}, {  }, { multiple: true, class: 'multiple-select' } %>
       </div>
-      
+
       <%= render 'optimadmin/shared/service_select_field', f: f %>
 
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
 
-      <div class="field">
-        <%= f.label :display %><br>
-        <%= f.check_box :display %>
-      </div>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
     <% end %>
   </div>
   <div class="actions">

@@ -2,7 +2,9 @@ class CreateOfficeLocations < ActiveRecord::Migration
   def change
     create_table :office_locations do |t|
       t.string :name, null: false
-      t.boolean :display, null: true, default: true
+      t.integer :status, null: false, default: 2
+      t.datetime :publish_at, null: false
+      t.datetime :expire_at, null: true
 
       t.timestamps null: false
     end

@@ -45,7 +45,7 @@ module Optimadmin
     end
 
     def download_category_params
-      params.require(:download_category).permit(:title, :display, :suggested_url)
+      params.require(:download_category).permit(:title, :status, :publish_at, :expire_at, :suggested_url)
     end
   end
 end

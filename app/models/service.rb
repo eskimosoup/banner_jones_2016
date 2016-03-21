@@ -1,5 +1,7 @@
 # Service
 class Service < ActiveRecord::Base
+  include DisplayStatus
+
   default_scope { order(title: :asc) }
 
   extend FriendlyId
@@ -17,12 +19,7 @@ class Service < ActiveRecord::Base
     message: 'is already taken, leave blank to generate automatically'
   }
 
-  scope :displayed, lambda {
-    # joins(:department)
-    where(display: true)
-    #  .merge(Department.displayed)
-  }
-
+  scope :displayed, -> { published }
   scope :banner_highlight, -> { displayed.where(banner_highlight: true) }
 
   belongs_to :department, counter_cache: true

@@ -1,39 +1,26 @@
 <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= team_member_presenter.id %>">
-
-    <div class="large-1 hide-for-medium-down columns" data-equalizer-watch="module-list">
-      <span class="drag-helper"></span>
-    </div>
-
-
-
-    <div class="large-5 small-8 columns" data-equalizer-watch="module-list">
-
+  <div class="large-1 hide-for-medium-down columns" data-equalizer-watch="module-list">
+    <span class="drag-helper"></span>
+  </div>
+  <div class="large-5 small-8 columns" data-equalizer-watch="module-list">
     <%= team_member_presenter.toggle_title %>
     <%= team_member_presenter.reorder_additional_roles %>
   </div>
-
-
-    <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
-      <%= team_member_presenter.edit_image(:image)%>
-    </div>
-
-
-  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-    <%= team_member_presenter.toggle_link %>
+  <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
+    <%= team_member_presenter.edit_image(:image)%>
   </div>
-
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%#= team_member_presenter.toggle_link %>
+  </div>
   <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
     <%= team_member_presenter.view_link %>
   </div>
-
   <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
     <%= team_member_presenter.edit_link %>
   </div>
-
   <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
     <%= team_member_presenter.delete_link %>
   </div>
-
   <div class="row module-list-detail hide" id="index-list-<%= team_member_presenter.id %>">
     <div class="small-12 columns module-list-summary last">
       <%= team_member_presenter.optimadmin_summary %>

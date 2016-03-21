@@ -1,5 +1,7 @@
 # BlogPost
 class BlogPost < ActiveRecord::Base
+  include DisplayStatus
+
   default_scope { order(title: :asc) }
 
   extend FriendlyId
@@ -18,7 +20,7 @@ class BlogPost < ActiveRecord::Base
 
   scope :displayed, lambda {
     joins(:blog_category)
-      .where('blog_posts.display = ? AND date <= ?', true, Date.today)
+      .published
       .merge(BlogCategory.displayed)
   }
 

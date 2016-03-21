@@ -191,6 +191,7 @@ Optimadmin::Engine.routes.draw do
   end
   resources :article_categories, except: [:show] do
     collection do
+      resources :published, as: 'article_categories_published', to: 'article_categories/published'
       post 'order'
     end
     member do

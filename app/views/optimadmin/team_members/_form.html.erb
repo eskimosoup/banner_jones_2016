@@ -119,15 +119,7 @@
         <%= f.select :office_ids, Office.pluck(:name, :id), {  }, { multiple: true, class: 'multiple-select' } %>
       </div>
 
-      <%= f.datetimepicker_field :display_from %>
-      <%= f.datetimepicker_field :display_until %>
-
-      <div class="field">
-        <%= f.label :display %>
-        <%= module_tooltip('Main display setting', 'This team member will show only if this is set to true and the times above are blank or within the timeframes.') %>
-        <br>
-        <%= f.check_box :display %>
-      </div>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
 
       <% if Flip.team_member_vcard_download? %>
         <div class="field">

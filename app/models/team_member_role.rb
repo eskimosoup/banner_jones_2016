@@ -4,7 +4,7 @@ class TeamMemberRole < ActiveRecord::Base
   }
 
   scope :positioned, -> { order(:position) }
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, -> { where(status: :published) }
 
   has_many :team_members, -> { displayed }, dependent: :nullify
 

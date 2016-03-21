@@ -58,7 +58,7 @@ module Optimadmin
                                     :event_category_id, :event_location_id,
                                     :image, :social_share_title,
                                     :social_share_description,
-                                    :social_share_image, :slug, :suggested_url, :display,
+                                    :social_share_image, :slug, :suggested_url, :status, :publish_at, :expire_at,
                                     service_ids: [])
     end
   end

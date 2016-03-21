@@ -17,12 +17,14 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   enable_extension "plpgsql"
 
   create_table "article_categories", force: :cascade do |t|
-    t.string   "title",                        null: false
+    t.string   "title",                     null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "status",        default: 2, null: false
+    t.datetime "publish_at",                null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "articles", force: :cascade do |t|
@@ -33,9 +35,10 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "social_share_title"
     t.string   "social_share_image"
     t.string   "social_share_description"
-    t.date     "date",                                    null: false
     t.string   "suggested_url"
-    t.boolean  "display",                  default: true
+    t.integer  "status",                   default: 2,    null: false
+    t.datetime "publish_at",                              null: false
+    t.datetime "expire_at"
     t.boolean  "home_page_highlight",      default: true
     t.string   "slug"
     t.datetime "created_at",                              null: false
@@ -48,66 +51,75 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   add_index "articles", ["team_member_id"], name: "index_articles_on_team_member_id", using: :btree
 
   create_table "audiences", force: :cascade do |t|
-    t.string   "title",                            null: false
-    t.boolean  "display",           default: true
+    t.string   "title",                         null: false
+    t.integer  "status",            default: 2, null: false
+    t.datetime "publish_at",                    null: false
+    t.datetime "expire_at"
     t.integer  "position"
     t.integer  "departments_count"
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "awards", force: :cascade do |t|
     t.integer  "position"
-    t.string   "title",                     null: false
-    t.string   "image",                     null: false
+    t.string   "title",                  null: false
+    t.string   "image",                  null: false
     t.string   "link"
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "status",     default: 2, null: false
+    t.datetime "publish_at",             null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "banners", force: :cascade do |t|
     t.integer  "position"
     t.string   "title"
     t.text     "summary"
-    t.string   "image",                      null: false
+    t.string   "image",                   null: false
     t.string   "button_text"
     t.string   "button_link"
-    t.boolean  "display",     default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "status",      default: 2, null: false
+    t.datetime "publish_at",              null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "blog_categories", force: :cascade do |t|
-    t.string   "title",                        null: false
+    t.string   "title",                     null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "status",        default: 2, null: false
+    t.datetime "publish_at",                null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "blog_categories", ["slug"], name: "index_blog_categories_on_slug", unique: true, using: :btree
   add_index "blog_categories", ["suggested_url"], name: "index_blog_categories_on_suggested_url", unique: true, using: :btree
 
   create_table "blog_posts", force: :cascade do |t|
-    t.string   "title",                    limit: 150,                null: false
-    t.text     "summary",                                             null: false
-    t.text     "content",                                             null: false
-    t.date     "date",                                                null: false
+    t.string   "title",                    limit: 150,             null: false
+    t.text     "summary",                                          null: false
+    t.text     "content",                                          null: false
     t.string   "image"
     t.string   "social_share_title",       limit: 150
     t.string   "social_share_description"
     t.string   "social_share_image"
     t.string   "slug"
     t.string   "suggested_url"
-    t.boolean  "display",                              default: true
+    t.integer  "status",                               default: 2, null: false
+    t.datetime "publish_at",                                       null: false
+    t.datetime "expire_at"
     t.integer  "team_member_id"
     t.integer  "blog_category_id"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   add_index "blog_posts", ["blog_category_id"], name: "index_blog_posts_on_blog_category_id", using: :btree
@@ -116,17 +128,19 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   add_index "blog_posts", ["team_member_id"], name: "index_blog_posts_on_team_member_id", using: :btree
 
   create_table "departments", force: :cascade do |t|
-    t.string   "title",                             null: false
+    t.string   "title",                          null: false
     t.text     "summary"
     t.string   "image"
     t.string   "social_share_image"
-    t.boolean  "display",            default: true
+    t.integer  "status",             default: 2, null: false
+    t.datetime "publish_at",                     null: false
+    t.datetime "expire_at"
     t.string   "suggested_url"
     t.string   "slug"
     t.integer  "audience_id"
     t.integer  "services_count"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "team_member_id"
   end
 
@@ -134,37 +148,43 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   add_index "departments", ["team_member_id"], name: "index_departments_on_team_member_id", using: :btree
 
   create_table "download_categories", force: :cascade do |t|
-    t.string   "title",                        null: false
+    t.string   "title",                     null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "status",        default: 2, null: false
+    t.datetime "publish_at",                null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "downloads", force: :cascade do |t|
-    t.string   "title",                               null: false
-    t.text     "summary",                             null: false
+    t.string   "title",                            null: false
+    t.text     "summary",                          null: false
     t.text     "description"
-    t.string   "file",                                null: false
+    t.string   "file",                             null: false
     t.string   "image"
     t.integer  "download_category_id"
-    t.boolean  "display",              default: true
+    t.integer  "status",               default: 2, null: false
+    t.datetime "publish_at",                       null: false
+    t.datetime "expire_at"
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
 
   create_table "event_categories", force: :cascade do |t|
-    t.string   "title",                        null: false
+    t.string   "title",                     null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "status",        default: 2, null: false
+    t.datetime "publish_at",                null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "event_categories", ["slug"], name: "index_event_categories_on_slug", unique: true, using: :btree
@@ -183,11 +203,11 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "title",                    limit: 150,                null: false
-    t.text     "summary",                                             null: false
+    t.string   "title",                    limit: 150,             null: false
+    t.text     "summary",                                          null: false
     t.text     "content"
-    t.datetime "event_start",                                         null: false
-    t.datetime "event_end",                                           null: false
+    t.datetime "event_start",                                      null: false
+    t.datetime "event_end",                                        null: false
     t.string   "booking_link"
     t.datetime "booking_deadline"
     t.string   "image"
@@ -196,11 +216,13 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "social_share_image"
     t.string   "slug"
     t.string   "suggested_url"
-    t.boolean  "display",                              default: true
+    t.integer  "status",                               default: 2, null: false
+    t.datetime "publish_at",                                       null: false
+    t.datetime "expire_at"
     t.integer  "event_category_id"
     t.integer  "event_location_id"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
   end
 
   add_index "events", ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
@@ -216,12 +238,14 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
-    t.string   "question",                  null: false
-    t.text     "answer",                    null: false
+    t.string   "question",               null: false
+    t.text     "answer",                 null: false
     t.integer  "position"
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "status",     default: 2, null: false
+    t.datetime "publish_at",             null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
@@ -238,20 +262,22 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "office_locations", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "name",                   null: false
+    t.integer  "status",     default: 2, null: false
+    t.datetime "publish_at",             null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "offices", force: :cascade do |t|
     t.string   "name"
     t.string   "building_name"
     t.string   "building_number"
-    t.string   "street",                            null: false
-    t.string   "town",                              null: false
-    t.string   "county",                            null: false
-    t.string   "postcode",                          null: false
+    t.string   "street",                         null: false
+    t.string   "town",                           null: false
+    t.string   "county",                         null: false
+    t.string   "postcode",                       null: false
     t.string   "phone_number"
     t.string   "fax_number"
     t.string   "email"
@@ -259,11 +285,13 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.text     "details"
     t.string   "image"
     t.integer  "office_location_id"
-    t.boolean  "display",            default: true
+    t.integer  "status",             default: 2, null: false
+    t.datetime "publish_at",                     null: false
+    t.datetime "expire_at"
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
   end
 
   add_index "offices", ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
@@ -331,7 +359,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.boolean  "deletable",                   default: true
     t.boolean  "new_window",                  default: false
     t.string   "title_attribute", limit: 100
-    t.integer  "position",                    default: 0
+    t.integer  "position",                    default: 2
     t.integer  "link_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
@@ -353,16 +381,18 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",                        null: false
+    t.string   "title",                     null: false
     t.string   "slug"
     t.string   "suggested_url"
     t.string   "image"
-    t.string   "style",                        null: false
-    t.string   "layout",                       null: false
-    t.boolean  "display",       default: true
-    t.text     "content",                      null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.string   "style",                     null: false
+    t.string   "layout",                    null: false
+    t.integer  "status",        default: 2, null: false
+    t.datetime "publish_at",                null: false
+    t.datetime "expire_at"
+    t.text     "content",                   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "service_articles", force: :cascade do |t|
@@ -477,7 +507,9 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "social_share_image"
     t.string   "slug"
     t.string   "suggested_url"
-    t.boolean  "display",                              default: true
+    t.integer  "status",                               default: 2,     null: false
+    t.datetime "publish_at",                                           null: false
+    t.datetime "expire_at"
     t.datetime "created_at",                                           null: false
     t.datetime "updated_at",                                           null: false
     t.string   "icon"
@@ -511,24 +543,26 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   add_index "team_member_offices", ["team_member_id"], name: "index_team_member_offices_on_team_member_id", using: :btree
 
   create_table "team_member_roles", force: :cascade do |t|
-    t.string   "title",                     null: false
+    t.string   "title",                  null: false
     t.integer  "position"
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "status",     default: 2, null: false
+    t.datetime "publish_at",             null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "team_members", force: :cascade do |t|
     t.integer  "position"
-    t.string   "forename",                           null: false
-    t.string   "surname",                            null: false
+    t.string   "forename",                        null: false
+    t.string   "surname",                         null: false
     t.string   "image"
     t.string   "primary_telephone"
     t.string   "secondary_telephone"
     t.string   "email_address"
-    t.datetime "display_from"
-    t.datetime "display_until"
-    t.boolean  "display",             default: true
+    t.integer  "status",              default: 2, null: false
+    t.datetime "publish_at",                      null: false
+    t.datetime "expire_at"
     t.text     "specialisms"
     t.boolean  "has_vcard_download"
     t.text     "profile"
@@ -540,43 +574,49 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "suggested_url"
     t.string   "slug"
     t.integer  "team_member_role_id"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "team_members", ["team_member_role_id"], name: "index_team_members_on_team_member_role_id", using: :btree
 
   create_table "testimonials", force: :cascade do |t|
-    t.text     "content",                       null: false
-    t.string   "author_name",                   null: false
+    t.text     "content",                    null: false
+    t.string   "author_name",                null: false
     t.string   "author_company"
     t.string   "image"
-    t.boolean  "display",        default: true
+    t.integer  "status",         default: 2, null: false
+    t.datetime "publish_at",                 null: false
+    t.datetime "expire_at"
     t.integer  "position"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "video_categories", force: :cascade do |t|
-    t.string   "title",                        null: false
-    t.boolean  "display",       default: true
+    t.string   "title",                     null: false
+    t.integer  "status",        default: 2, null: false
+    t.datetime "publish_at",                null: false
+    t.datetime "expire_at"
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "video_categories", ["slug"], name: "index_video_categories_on_slug", unique: true, using: :btree
   add_index "video_categories", ["suggested_url"], name: "index_video_categories_on_suggested_url", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|
-    t.string   "title",                            null: false
+    t.string   "title",                         null: false
     t.string   "summary"
-    t.string   "embed_code",                       null: false
+    t.string   "embed_code",                    null: false
     t.integer  "video_category_id"
-    t.boolean  "display",           default: true
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.integer  "status",            default: 2, null: false
+    t.datetime "publish_at",                    null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "videos", ["video_category_id"], name: "index_videos_on_video_category_id", using: :btree

@@ -1,4 +1,6 @@
 class Office < ActiveRecord::Base
+  include DisplayStatus
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
@@ -21,10 +23,10 @@ class Office < ActiveRecord::Base
     case_sensitive: false
   }
 
-  scope :displayed, lambda {
+  scope :published, lambda {
     joins(:office_location)
-      .where(display: true)
-      .merge(OfficeLocation.displayed)
+      .where(status: :published)
+      .merge(OfficeLocation.published)
   }
 
   has_many :service_offices, dependent: :destroy

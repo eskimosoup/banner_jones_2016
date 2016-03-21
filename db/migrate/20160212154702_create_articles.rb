@@ -8,9 +8,10 @@ class CreateArticles < ActiveRecord::Migration
       t.string :social_share_title, null: true
       t.string :social_share_image, null: true
       t.string :social_share_description, null: true
-      t.date :date, null: false
       t.string :suggested_url, null: true, unique: true
-      t.boolean :display, default: true
+      t.integer :status, null: false, default: 2
+      t.datetime :publish_at, null: false
+      t.datetime :expire_at, null: true
       t.boolean :home_page_highlight, default: true
       t.string :slug, null: true, unique: true
 

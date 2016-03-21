@@ -25,10 +25,7 @@
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
 
-      <div class="field">
-        <%= f.label :display %><br>
-        <%= f.check_box :display %>
-      </div>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
     <% end %>
   </div>
   <div class="actions">

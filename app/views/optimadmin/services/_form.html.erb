@@ -77,10 +77,7 @@
 
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
 
-      <div class="field">
-        <%= f.label :display %><br>
-        <%= f.check_box :display %>
-      </div>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
 
       <div class="field">
         <%= f.label :banner_highlight %><br>

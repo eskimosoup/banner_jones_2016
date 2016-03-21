@@ -1,8 +1,12 @@
 # EventLocation
 class EventLocation < ActiveRecord::Base
+  include DisplayStatus
+
   default_scope { order(building_name: :asc) }
 
   validates :building_name, :address_line_1, :city, :postcode, presence: true
+
+  scope :displayed, -> { published }
 
   has_many :events, -> { displayed }, dependent: :nullify
 

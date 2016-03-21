@@ -69,7 +69,7 @@ module Optimadmin
                                       :remote_social_share_image_url, :social_share_image_cache,
                                       :remove_social_share_image,
                                       :social_share_title, :social_share_description,
-                                      :slug, :suggested_url, :display,
+                                      :slug, :suggested_url, :status, :publish_at, :expire_at,
                                       related_service_ids: [])
     end
   end

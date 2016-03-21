@@ -46,7 +46,7 @@ module Optimadmin
 
     def frequently_asked_question_params
       params.require(:frequently_asked_question).permit(:question, :answer,
-                                                        :position, :display,
+                                                        :position, :status, :publish_at, :expire_at,
                                                         service_ids: [])
     end
   end

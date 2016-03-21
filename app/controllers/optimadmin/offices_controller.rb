@@ -53,7 +53,7 @@ module Optimadmin
       params.require(:office).permit(:name, :building_name, :building_number,
                                      :street, :town, :county, :postcode, :phone_number, :fax_number, :email,
                                      :remote_image_url, :image_cache, :remove_image,
-                                     :dx_number, :details, :image, :office_location_id, :display,
+                                     :dx_number, :details, :image, :office_location_id, :status, :publish_at, :expire_at,
                                      :suggested_url, team_member_ids: [], service_ids: [])
     end
   end

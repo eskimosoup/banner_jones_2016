@@ -1,5 +1,7 @@
 # Audience
 class Audience < ActiveRecord::Base
+  include DisplayStatus
+
   default_scope { order(position: :asc) }
 
   extend FriendlyId
@@ -11,7 +13,7 @@ class Audience < ActiveRecord::Base
     message: 'is already taken, leave blank to generate automatically'
   }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, -> { published }
 
   has_many :departments, -> { displayed }, dependent: :destroy
   has_many :services, through: :departments

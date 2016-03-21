@@ -8,9 +8,9 @@ class CreateTeamMembers < ActiveRecord::Migration
       t.string :primary_telephone
       t.string :secondary_telephone
       t.string :email_address
-      t.datetime :display_from
-      t.datetime :display_until
-      t.boolean :display, default: true
+      t.integer :status, null: false, default: 2
+      t.datetime :publish_at, null: false
+      t.datetime :expire_at, null: true
       t.text :specialisms
       t.boolean :has_vcard_download
       t.text :profile

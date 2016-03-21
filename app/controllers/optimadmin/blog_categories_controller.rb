@@ -45,7 +45,7 @@ module Optimadmin
     end
 
     def blog_category_params
-      params.require(:blog_category).permit(:title, :suggested_url, :display)
+      params.require(:blog_category).permit(:title, :suggested_url, :status, :publish_at, :expire_at)
     end
   end
 end
