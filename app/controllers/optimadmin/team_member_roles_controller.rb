@@ -45,7 +45,7 @@ module Optimadmin
     end
 
     def team_member_role_params
-      params.require(:team_member_role).permit(:title, :position, :display)
+      params.require(:team_member_role).permit(:title, :position, :status, :publish_at, :expire_at)
     end
   end
 end

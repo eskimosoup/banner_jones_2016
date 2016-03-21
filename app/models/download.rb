@@ -1,4 +1,6 @@
 class Download < ActiveRecord::Base
+  include DisplayStatus
+
   default_scope { order(title: :asc) }
 
   extend FriendlyId
@@ -16,8 +18,8 @@ class Download < ActiveRecord::Base
   scope :positioned, -> { order(:position) }
   scope :displayed, lambda {
     joins(:download_category)
-      .where(display: true)
-      .merge(DownloadCategory.displayed)
+      .published
+      .merge(DownloadCategory.published)
   }
 
   belongs_to :download_category

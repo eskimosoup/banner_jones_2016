@@ -45,7 +45,7 @@ module Optimadmin
     end
 
     def office_location_params
-      params.require(:office_location).permit(:name, :display)
+      params.require(:office_location).permit(:name, :status, :publish_at, :expire_at)
     end
   end
 end

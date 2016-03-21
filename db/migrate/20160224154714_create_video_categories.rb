@@ -2,7 +2,9 @@ class CreateVideoCategories < ActiveRecord::Migration
   def change
     create_table :video_categories do |t|
       t.string :title, null: false
-      t.boolean :display, null: true, default: true
+      t.integer :status, null: false, default: 2
+      t.datetime :publish_at, null: false
+      t.datetime :expire_at, null: true
       t.string :suggested_url, null: true
       t.string :slug, null: true
 

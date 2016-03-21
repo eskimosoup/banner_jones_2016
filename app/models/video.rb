@@ -1,4 +1,6 @@
 class Video < ActiveRecord::Base
+  include DisplayStatus
+
   belongs_to :video_category
 
   validates :video_category, presence: true, if: proc { |x| x.new_record? }
@@ -6,7 +8,7 @@ class Video < ActiveRecord::Base
 
   scope :displayed, lambda {
     joins(:video_category)
-      .where(display: true)
-      .merge(VideoCategory.displayed)
+      .published
+      .merge(VideoCategory.published)
   }
 end

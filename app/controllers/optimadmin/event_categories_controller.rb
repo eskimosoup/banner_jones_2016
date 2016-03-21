@@ -46,7 +46,7 @@ module Optimadmin
     end
 
     def event_category_params
-      params.require(:event_category).permit(:title, :suggested_url, :slug, :display)
+      params.require(:event_category).permit(:title, :suggested_url, :slug, :status, :publish_at, :expire_at)
     end
   end
 end

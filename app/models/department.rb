@@ -1,5 +1,7 @@
 # Department
 class Department < ActiveRecord::Base
+  include DisplayStatus
+
   default_scope { order(title: :asc) }
 
   extend FriendlyId
@@ -14,11 +16,7 @@ class Department < ActiveRecord::Base
     message: 'is already taken, leave blank to generate automatically'
   }
 
-  scope :displayed, lambda {
-    # joins(:audience)
-    where(display: true)
-    #  .merge(Audience.displayed)
-  }
+  scope :displayed, -> { published }
 
   belongs_to :team_member
   belongs_to :audience, counter_cache: true

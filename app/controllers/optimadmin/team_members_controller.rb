@@ -61,7 +61,7 @@ module Optimadmin
                                           :image, :remote_image_url, :remove_image,
                                           :image_cache, :primary_telephone,
                                           :secondary_telephone, :email_address,
-                                          :display_from, :display_until, :display,
+                                          :status, :publish_at, :expire_at,
                                           :specialisms, :has_vcard_download, :profile,
                                           :google_plus, :twitter_link, :facebook_link,
                                           :mobile_number, :dx_number,

@@ -1,5 +1,7 @@
 # Event
 class Event < ActiveRecord::Base
+  include DisplayStatus
+
   default_scope { order(event_start: :desc) }
 
   extend FriendlyId
@@ -21,9 +23,8 @@ class Event < ActiveRecord::Base
 
   scope :displayed, lambda {
     joins(:event_category)
-      .where(display: true)
-      .where('event_end >= ?', DateTime.now)
-      .merge(EventCategory.displayed)
+      .published
+      .merge(EventCategory.published)
   }
 
   belongs_to :event_category

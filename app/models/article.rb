@@ -1,13 +1,14 @@
 # Article
 class Article < ActiveRecord::Base
+  include DisplayStatus
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
   mount_uploader :image, ArticleUploader
   mount_uploader :social_share_image, SocialImageUploader
 
-  validates :title, :summary, :content, :date, presence: true
-  validate :future_date, if: proc { |x| x.date.present? && x.new_record? }
+  validates :title, :summary, :content, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: {
     case_sensitive: false,
     message: 'is already taken, leave blank to generate automatically'
@@ -15,7 +16,7 @@ class Article < ActiveRecord::Base
 
   scope :displayed, lambda {
     joins(:article_category)
-      .where('articles.display = ? AND date <= ?', true, Date.today)
+      .published
       .merge(ArticleCategory.displayed)
   }
   scope :home_page_highlight, -> { where(home_page_highlight: true).displayed }
@@ -25,10 +26,6 @@ class Article < ActiveRecord::Base
 
   has_many :service_articles, dependent: :destroy
   has_many :services, -> { displayed }, through: :service_articles
-
-  def future_date
-    errors.add(:date, "can't be in the past") if date < Date.today
-  end
 
   def slug_candidates
     [

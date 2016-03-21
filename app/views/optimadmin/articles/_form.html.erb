@@ -44,7 +44,6 @@
         <%= f.label :content %><br>
         <%= f.text_area :content, class: 'tinymce' %>
       </div>
-      <%= f.datepicker_field :date %>
     <% end %>
     <%= field_set_tag nil, id: 'tabs-2' do %>
       <%= f.image_field :image %>
@@ -69,10 +68,7 @@
       </div>
       <%= render 'optimadmin/shared/service_select_field', f: f %>
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
-      <div class="field">
-        <%= f.label :display %><br>
-        <%= f.check_box :display %>
-      </div>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
       <div class="field">
         <%= f.label :home_page_highlight %><br>
         <%= f.check_box :home_page_highlight %>

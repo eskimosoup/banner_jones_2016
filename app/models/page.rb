@@ -1,4 +1,6 @@
 class Page < ActiveRecord::Base
+  include DisplayStatus
+
   extend FriendlyId
   friendly_id :slug_candidates, use: [:slugged, :history]
 
@@ -7,7 +9,7 @@ class Page < ActiveRecord::Base
   before_save :store_image, if: proc { |page| page.remote_image_url.blank? }
   # before_save :store_file, if: Proc.new{|page| page.remote_file_url.blank? }
 
-  scope :displayed, -> { where(display: true) }
+  scope :displayed, -> { published }
 
   validates :title, :content, presence: true
   validates :suggested_url, allow_blank: true, uniqueness: {

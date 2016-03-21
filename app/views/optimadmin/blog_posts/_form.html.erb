@@ -56,10 +56,7 @@
         <%= f.label :team_member_id %><br>
         <%= f.select :team_member_id, TeamMember.displayed.map{ |x| ["#{x.forename} #{x.surname}", x.id] }, include_blank: 'No team member' %>
       </div>
-      <div class="field">
-        <%= f.label :display %><br>
-        <%= f.check_box :display %>
-      </div>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
     <% end %>
   </div>
   <div class="actions">

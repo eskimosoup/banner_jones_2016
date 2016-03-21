@@ -59,10 +59,7 @@
         <%= f.text_field :suggested_url %>
       </div>
 
-      <div class="field">
-        <%= f.label :display %><br />
-        <%= f.check_box :display %>
-      </div>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
     <% end %>
   </div>
   <div class="actions">

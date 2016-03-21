@@ -4,7 +4,9 @@ class CreateArticleCategories < ActiveRecord::Migration
       t.string :title, null: false, unique: true
       t.string :suggested_url, null: true, unique: true
       t.string :slug, null: true, unique: true
-      t.boolean :display, null: true, default: true
+      t.integer :status, null: false, default: 2
+      t.datetime :publish_at, null: false
+      t.datetime :expire_at, null: true
 
       t.timestamps null: false
     end

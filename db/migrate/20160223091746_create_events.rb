@@ -14,7 +14,9 @@ class CreateEvents < ActiveRecord::Migration
       t.string :social_share_image, null: true
       t.string :slug, null: true
       t.string :suggested_url, null: true
-      t.boolean :display, null: true, default: true
+      t.integer :status, null: false, default: 2
+      t.datetime :publish_at, null: false
+      t.datetime :expire_at, null: true
       t.belongs_to :event_category, index: true, foreign_key: true
       t.belongs_to :event_location, index: true, foreign_key: true
 

@@ -58,8 +58,8 @@ module Optimadmin
                                       :remote_social_share_image_url,
                                       :social_share_title, :social_share_image,
                                       :social_share_description,
-                                      :article_category_id, :date,
-                                      :suggested_url, :display, :team_member_id,
+                                      :article_category_id,
+                                      :suggested_url, :status, :publish_at, :expire_at, :team_member_id,
                                       :home_page_highlight, service_ids: [])
     end
   end

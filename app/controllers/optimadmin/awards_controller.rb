@@ -52,7 +52,7 @@ module Optimadmin
     def award_params
       params.require(:award).permit(:position, :title,
                                     :remote_image_url, :image_cache,
-                                    :remove_image, :image, :link, :display)
+                                    :remove_image, :image, :link, :status, :publish_at, :expire_at)
     end
   end
 end

@@ -5,7 +5,9 @@ class CreateTestimonials < ActiveRecord::Migration
       t.string :author_name, null: false
       t.string :author_company
       t.string :image
-      t.boolean :display, default: true
+      t.integer :status, null: false, default: 2
+      t.datetime :publish_at, null: false
+      t.datetime :expire_at, null: true
       t.integer :position
 
       t.timestamps null: false

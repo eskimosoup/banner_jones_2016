@@ -1,18 +1,14 @@
 <%= form_for(@team_member_role) do |f| %>
-<% if @team_member_role.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@team_member_role.errors.count, "error") %> prohibited this team_member_role from being saved:</h2>
-
-    <ul>
-      <% @team_member_role.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-
-
+  <% if @team_member_role.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@team_member_role.errors.count, "error") %> prohibited this team_member_role from being saved:</h2>
+      <ul>
+        <% @team_member_role.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="tabs prevent-flash">
     <ul class="tab-list">
       <li><a href="#tabs-1">Content</a></li>
@@ -23,24 +19,16 @@
         <% end %>
       </li>
     </ul>
-
     <%= field_set_tag nil, id: 'tabs-1' do %>
-            <div class="field">
+      <div class="field">
         <%= f.label :title %><br>
         <%= f.text_field :title %>
       </div>
-
-
-          <% end %>
-
+    <% end %>
     <%= field_set_tag nil, id: 'tabs-3' do %>
-            <div class="field">
-        <%= f.label :display %><br>
-        <%= f.check_box :display %>
-      </div>
-          <% end %>
+      <%= render 'optimadmin/shared/display_status_field', f: f %>
+    <% end %>
   </div>
-
   <div class="actions">
     <%= f.submit "Save" %>
     <%= f.submit "Save and continue editing" %>
