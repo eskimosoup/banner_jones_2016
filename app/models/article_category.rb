@@ -15,7 +15,10 @@ class ArticleCategory < ActiveRecord::Base
   }
 
   scope :displayed, -> { published }
+
   scope :field_search, ->(query) { where('title ILIKE ?', "%#{query}%") if query.present? }
+  scope :field_order, ->(order) { unscoped.order(order) if order.present? }
+
   scope :pagination, ->(page, per_page) { page(page).per(per_page || 1) }
 
   has_many :articles, -> { displayed }, dependent: :nullify

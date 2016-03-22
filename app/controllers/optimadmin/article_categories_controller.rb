@@ -4,6 +4,8 @@ module Optimadmin
 
     def index
       display_status_helper
+      @pagination_helper = @article_category_items
+                           .pagination(params[:page], params[:per_page])
 
       @article_categories = Optimadmin::BaseCollectionPresenter.new(
         collection: @pagination_helper,
@@ -47,11 +49,11 @@ module Optimadmin
     private
 
     def display_status_helper
-      @article_category_items = ArticleCategory.field_search(params[:search])
-      @pagination_helper = @article_category_items.pagination(params[:page], params[:per_page])
+      @article_category_items = ArticleCategory.field_order(params[:order])
+                                               .field_search(params[:search])
       @scheduled_items = @article_category_items.scheduled
       @published_items = @article_category_items.published
-      @expired_items = @article_category_items.expired
+      @expired_items   = @article_category_items.expired
     end
 
     def set_article_category

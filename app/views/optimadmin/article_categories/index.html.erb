@@ -2,13 +2,12 @@
 
 <%= content_for :footer do %>
   <script>
-  $(document).on('click', '.module-index-display-status', function() {
-    $($(this).attr('href')).load($(this).data('status'));
+  $(document).ready(function() {
+    $('.ui-state-active').toggleClass('ui-state-active ui-tabs-active');
+    $('.active').parent().addClass('ui-state-active');
   });
-
-  $(document).on('click', '.ui-tabs-panel:visible:not(#tabs-1) .pagination a', function() {
-    $('#' + $('.ui-tabs-panel:visible').attr('id')).load($(this).attr('href'));
-    return false;
+  $(document).on('click', '.tabs-list a', function(e) {
+    window.location = $(this).data('href');
   });
   </script>
 <% end %>
@@ -18,56 +17,60 @@
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Article Category', object: ArticleCategory, path: new_article_category_path %>
     <%= render 'optimadmin/shared/search_form' %>
     <%= render 'optimadmin/shared/module/index/pagination' %>
+    <%= render 'optimadmin/shared/module/index/order', options: [['Title ASC', 'title ASC'], ['title DESC', 'title DESC']] %>
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @article_categories.size, path: root_url %>
   </div>
 
-  <div class="tabs prevent-flash">
-    <ul class="tab-list module-index">
+  <div class="tabs">
+    <ul class="tabs-list">
       <li>
-        <a href="#tabs-1">
+        <%= link_to '#tabs-1',
+                    data: { href: polymorphic_url(:article_categories, per_page: params[:per_page], order: params[:order], search: params[:search]) },
+                    class: (current_page?(polymorphic_url(:article_categories, per_page: params[:per_page], order: params[:order], search: params[:search])) ? 'active' : '') do %>
           All (<%= @article_category_items.size %>)
-        </a>
+        <% end %>
       </li>
 
       <li>
-        <a href="#tabs-2"
-          class="module-index-display-status"
-          data-status="<%= polymorphic_url([:published, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) %>">
+        <%= link_to '#tabs-2',
+                    data: { href: polymorphic_url([:published, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) },
+                    class: (current_page?(polymorphic_url([:published, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search])) ? 'active' : '') do %>
           Published (<%= @published_items.size %>)
-        </a>
+        <% end %>
       </li>
 
       <li>
-        <a href="#tabs-3"
-          class="module-index-display-status"
-          data-status="<%= polymorphic_url([:scheduled, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) %>">
+        <%= link_to '#tabs-3',
+                    data: { href: polymorphic_url([:scheduled, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) },
+                    class: (current_page?(polymorphic_url([:scheduled, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search])) ? 'active' : '') do %>
           Scheduled (<%= @scheduled_items.size %>)
-        </a>
+        <% end %>
       </li>
 
       <li>
-        <a href="#tabs-4"
-          class="module-index-display-status"
-          data-status="<%= polymorphic_url([:expired, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) %>">
+        <%= link_to '#tabs-4',
+                    data: { href: polymorphic_url([:expired, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) },
+                    class: (current_page?(polymorphic_url([:expired, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search])) ? 'active' : '') do %>
           Expired (<%= @expired_items.size %>)
-        </a>
+        <% end %>
       </li>
     </ul>
 
     <div id="tabs-1">
-      <%= render 'optimadmin/article_categories/table' %>
-    </div>
+      <div class="row collapse module-list-index header">
+        <%= list_item 'large-9 small-8' do %>
+          Title
+        <% end %>
+        <%= list_item { 'View' } %>
+        <%= list_item { 'Edit' } %>
+        <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
+      </div>
 
-    <div id="tabs-2">
-      <%= image_tag 'optimadmin/vendor/slick/ajax-loader.gif', alt: 'Loading...' %>
-    </div>
+      <%= render partial: 'article_category', collection: @article_categories, as: :article_category_presenter %>
 
-    <div id="tabs-3">
-      <%= image_tag 'optimadmin/vendor/slick/ajax-loader.gif', alt: 'Loading...' %>
-    </div>
+      <%= paginate @article_categories %>
 
-    <div id="tabs-4">
-      <%= image_tag 'optimadmin/vendor/slick/ajax-loader.gif', alt: 'Loading...' %>
+      <%= pagination_helper(@pagination_helper, 'article category') %>
     </div>
   </div>
 </div>
