@@ -1,10 +1,10 @@
 module Optimadmin
   module ArticleCategories
-    class PublishedController < Optimadmin::ArticleCategoriesController
+    class ExpiredController < Optimadmin::ArticleCategoriesController
       layout 'optimadmin/inline_editing'
 
       def index
-        @pagination_helper = ArticleCategory.published
+        @pagination_helper = ArticleCategory.expired
                                             .field_search(params[:search])
                                             .pagination(params[:page], params[:per_page])
 

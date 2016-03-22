@@ -6,9 +6,8 @@
     $($(this).attr('href')).load($(this).data('status'));
   });
 
-  $(document).on('click', '.ui-tabs-panel:visible .pagination a', function() {
+  $(document).on('click', '.ui-tabs-panel:visible:not(#tabs-1) .pagination a', function() {
     $('#' + $('.ui-tabs-panel:visible').attr('id')).load($(this).attr('href'));
-    console.log('test');
     return false;
   });
   </script>
@@ -26,33 +25,37 @@
     <ul class="tab-list module-index">
       <li>
         <a href="#tabs-1">
-          All
+          All (<%= @article_category_items.size %>)
         </a>
       </li>
 
       <li>
         <a href="#tabs-2"
           class="module-index-display-status"
-          data-status="<%= article_categories_published_index_path(per_page: params[:per_page], order: params[:order], search: params[:search]) %>">
-          Published
+          data-status="<%= polymorphic_url([:published, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) %>">
+          Published (<%= @published_items.size %>)
         </a>
       </li>
-      <li><a href="#tabs-3">Scheduled</a></li>
-      <li><a href="#tabs-4">Expired</a></li>
+
+      <li>
+        <a href="#tabs-3"
+          class="module-index-display-status"
+          data-status="<%= polymorphic_url([:scheduled, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) %>">
+          Scheduled (<%= @scheduled_items.size %>)
+        </a>
+      </li>
+
+      <li>
+        <a href="#tabs-4"
+          class="module-index-display-status"
+          data-status="<%= polymorphic_url([:expired, :article_categories], per_page: params[:per_page], order: params[:order], search: params[:search]) %>">
+          Expired (<%= @expired_items.size %>)
+        </a>
+      </li>
     </ul>
 
     <div id="tabs-1">
-      <div class="row collapse module-list-index header">
-        <%= list_item 'large-8 small-8' do %>
-          Title
-        <% end %>
-        <%= list_item { 'Display' } %>
-        <%= list_item { 'View' } %>
-        <%= list_item { 'Edit' } %>
-        <%= list_item('large-1 hide-for-medium-down text-center last'){ 'Delete' } %>
-      </div>
-      <%= render partial: 'article_category', collection: @article_categories, as: :article_category_presenter %>
-      <%= paginate @article_categories %>
+      <%= render 'optimadmin/article_categories/table' %>
     </div>
 
     <div id="tabs-2">

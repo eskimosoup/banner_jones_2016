@@ -8,7 +8,7 @@ class CreateTeamMembers < ActiveRecord::Migration
       t.string :primary_telephone
       t.string :secondary_telephone
       t.string :email_address
-      t.integer :status, null: false, default: 2
+      t.integer :status, null: false, default: 1
       t.datetime :publish_at, null: false
       t.datetime :expire_at, null: true
       t.text :specialisms
