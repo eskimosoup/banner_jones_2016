@@ -2,8 +2,6 @@ module Optimadmin
   module ArticleCategories
     class ExpiredController < Optimadmin::ArticleCategoriesController
       def index
-        display_status_helper
-
         @pagination_helper = @expired_items
                              .pagination(params[:page], params[:per_page])
 

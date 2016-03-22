@@ -2,8 +2,6 @@ module Optimadmin
   module ArticleCategories
     class PublishedController < Optimadmin::ArticleCategoriesController
       def index
-        display_status_helper
-
         @pagination_helper = @published_items
                              .pagination(params[:page], params[:per_page])
 

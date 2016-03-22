@@ -2,9 +2,10 @@ module Optimadmin
   class ArticleCategoriesController < Optimadmin::ApplicationController
     before_action :set_article_category, only: [:show, :edit, :update, :destroy]
 
+    before_action :display_status, only: :index
+
     def index
-      display_status_helper
-      @pagination_helper = @article_category_items
+      @pagination_helper = @all_items
                            .pagination(params[:page], params[:per_page])
 
       @article_categories = Optimadmin::BaseCollectionPresenter.new(
@@ -48,12 +49,12 @@ module Optimadmin
 
     private
 
-    def display_status_helper
-      @article_category_items = ArticleCategory.field_order(params[:order])
-                                               .field_search(params[:search])
-      @scheduled_items = @article_category_items.scheduled
-      @published_items = @article_category_items.published
-      @expired_items   = @article_category_items.expired
+    def display_status
+      @all_items = ArticleCategory.field_order(params[:order])
+                                  .field_search(params[:search])
+      @scheduled_items = @all_items.scheduled
+      @published_items = @all_items.published
+      @expired_items   = @all_items.expired
     end
 
     def set_article_category

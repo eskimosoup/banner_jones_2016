@@ -2,8 +2,6 @@ module Optimadmin
   module ArticleCategories
     class ScheduledController < Optimadmin::ArticleCategoriesController
       def index
-        display_status_helper
-
         @pagination_helper = @scheduled_items
                              .pagination(params[:page], params[:per_page])
 
