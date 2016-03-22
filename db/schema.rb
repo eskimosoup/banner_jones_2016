@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "title",                     null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.integer  "status",        default: 2, null: false
+    t.integer  "status",        default: 1, null: false
     t.datetime "publish_at",                null: false
     t.datetime "expire_at"
     t.datetime "created_at",                null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "social_share_image"
     t.string   "social_share_description"
     t.string   "suggested_url"
-    t.integer  "status",                   default: 2,    null: false
+    t.integer  "status",                   default: 1,    null: false
     t.datetime "publish_at",                              null: false
     t.datetime "expire_at"
     t.boolean  "home_page_highlight",      default: true
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
 
   create_table "audiences", force: :cascade do |t|
     t.string   "title",                         null: false
-    t.integer  "status",            default: 2, null: false
+    t.integer  "status",            default: 1, null: false
     t.datetime "publish_at",                    null: false
     t.datetime "expire_at"
     t.integer  "position"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "title",                  null: false
     t.string   "image",                  null: false
     t.string   "link"
-    t.integer  "status",     default: 2, null: false
+    t.integer  "status",     default: 1, null: false
     t.datetime "publish_at",             null: false
     t.datetime "expire_at"
     t.datetime "created_at",             null: false
@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "image",                   null: false
     t.string   "button_text"
     t.string   "button_link"
-    t.integer  "status",      default: 2, null: false
+    t.integer  "status",      default: 1, null: false
     t.datetime "publish_at",              null: false
     t.datetime "expire_at"
     t.datetime "created_at",              null: false
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "title",                     null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.integer  "status",        default: 2, null: false
+    t.integer  "status",        default: 1, null: false
     t.datetime "publish_at",                null: false
     t.datetime "expire_at"
     t.datetime "created_at",                null: false
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "social_share_image"
     t.string   "slug"
     t.string   "suggested_url"
-    t.integer  "status",                               default: 2, null: false
+    t.integer  "status",                               default: 1, null: false
     t.datetime "publish_at",                                       null: false
     t.datetime "expire_at"
     t.integer  "team_member_id"
@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.text     "summary"
     t.string   "image"
     t.string   "social_share_image"
-    t.integer  "status",             default: 2, null: false
+    t.integer  "status",             default: 1, null: false
     t.datetime "publish_at",                     null: false
     t.datetime "expire_at"
     t.string   "suggested_url"
@@ -151,7 +151,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "title",                     null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.integer  "status",        default: 2, null: false
+    t.integer  "status",        default: 1, null: false
     t.datetime "publish_at",                null: false
     t.datetime "expire_at"
     t.datetime "created_at",                null: false
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "file",                             null: false
     t.string   "image"
     t.integer  "download_category_id"
-    t.integer  "status",               default: 2, null: false
+    t.integer  "status",               default: 1, null: false
     t.datetime "publish_at",                       null: false
     t.datetime "expire_at"
     t.string   "suggested_url"
@@ -180,7 +180,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "title",                     null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.integer  "status",        default: 2, null: false
+    t.integer  "status",        default: 1, null: false
     t.datetime "publish_at",                null: false
     t.datetime "expire_at"
     t.datetime "created_at",                null: false
@@ -216,7 +216,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "social_share_image"
     t.string   "slug"
     t.string   "suggested_url"
-    t.integer  "status",                               default: 2, null: false
+    t.integer  "status",                               default: 1, null: false
     t.datetime "publish_at",                                       null: false
     t.datetime "expire_at"
     t.integer  "event_category_id"
@@ -241,7 +241,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "question",               null: false
     t.text     "answer",                 null: false
     t.integer  "position"
-    t.integer  "status",     default: 2, null: false
+    t.integer  "status",     default: 1, null: false
     t.datetime "publish_at",             null: false
     t.datetime "expire_at"
     t.datetime "created_at",             null: false
@@ -263,7 +263,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
 
   create_table "office_locations", force: :cascade do |t|
     t.string   "name",                   null: false
-    t.integer  "status",     default: 2, null: false
+    t.integer  "status",     default: 1, null: false
     t.datetime "publish_at",             null: false
     t.datetime "expire_at"
     t.datetime "created_at",             null: false
@@ -285,7 +285,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.text     "details"
     t.string   "image"
     t.integer  "office_location_id"
-    t.integer  "status",             default: 2, null: false
+    t.integer  "status",             default: 1, null: false
     t.datetime "publish_at",                     null: false
     t.datetime "expire_at"
     t.string   "suggested_url"
@@ -387,7 +387,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "image"
     t.string   "style",                     null: false
     t.string   "layout",                    null: false
-    t.integer  "status",        default: 2, null: false
+    t.integer  "status",        default: 1, null: false
     t.datetime "publish_at",                null: false
     t.datetime "expire_at"
     t.text     "content",                   null: false
@@ -507,7 +507,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "social_share_image"
     t.string   "slug"
     t.string   "suggested_url"
-    t.integer  "status",                               default: 2,     null: false
+    t.integer  "status",                               default: 1,     null: false
     t.datetime "publish_at",                                           null: false
     t.datetime "expire_at"
     t.datetime "created_at",                                           null: false
@@ -545,7 +545,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   create_table "team_member_roles", force: :cascade do |t|
     t.string   "title",                  null: false
     t.integer  "position"
-    t.integer  "status",     default: 2, null: false
+    t.integer  "status",     default: 1, null: false
     t.datetime "publish_at",             null: false
     t.datetime "expire_at"
     t.datetime "created_at",             null: false
@@ -560,7 +560,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "primary_telephone"
     t.string   "secondary_telephone"
     t.string   "email_address"
-    t.integer  "status",              default: 2, null: false
+    t.integer  "status",              default: 1, null: false
     t.datetime "publish_at",                      null: false
     t.datetime "expire_at"
     t.text     "specialisms"
@@ -585,7 +585,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "author_name",                null: false
     t.string   "author_company"
     t.string   "image"
-    t.integer  "status",         default: 2, null: false
+    t.integer  "status",         default: 1, null: false
     t.datetime "publish_at",                 null: false
     t.datetime "expire_at"
     t.integer  "position"
@@ -595,7 +595,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
 
   create_table "video_categories", force: :cascade do |t|
     t.string   "title",                     null: false
-    t.integer  "status",        default: 2, null: false
+    t.integer  "status",        default: 1, null: false
     t.datetime "publish_at",                null: false
     t.datetime "expire_at"
     t.string   "suggested_url"
@@ -612,7 +612,7 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "summary"
     t.string   "embed_code",                    null: false
     t.integer  "video_category_id"
-    t.integer  "status",            default: 2, null: false
+    t.integer  "status",            default: 1, null: false
     t.datetime "publish_at",                    null: false
     t.datetime "expire_at"
     t.datetime "created_at",                    null: false

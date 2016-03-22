@@ -15,7 +15,7 @@ class CreateOffices < ActiveRecord::Migration
       t.text :details, null: true
       t.string :image, null: true
       t.belongs_to :office_location, index: true, foreign_key: true
-      t.integer :status, null: false, default: 2
+      t.integer :status, null: false, default: 1
       t.datetime :publish_at, null: false
       t.datetime :expire_at, null: true
       t.string :suggested_url, null: true

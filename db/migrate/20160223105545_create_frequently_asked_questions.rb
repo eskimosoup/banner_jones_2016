@@ -4,7 +4,7 @@ class CreateFrequentlyAskedQuestions < ActiveRecord::Migration
       t.string :question, null: false
       t.text :answer, null: false
       t.integer :position
-      t.integer :status, null: false, default: 2
+      t.integer :status, null: false, default: 1
       t.datetime :publish_at, null: false
       t.datetime :expire_at, null: true
 

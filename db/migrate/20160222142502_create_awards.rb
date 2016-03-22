@@ -5,7 +5,7 @@ class CreateAwards < ActiveRecord::Migration
       t.string :title, null: false
       t.string :image, null: false
       t.string :link, null: true
-      t.integer :status, null: false, default: 2
+      t.integer :status, null: false, default: 1
       t.datetime :publish_at, null: false
       t.datetime :expire_at, null: true
 

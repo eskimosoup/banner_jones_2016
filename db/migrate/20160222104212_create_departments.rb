@@ -5,7 +5,7 @@ class CreateDepartments < ActiveRecord::Migration
       t.text :summary, null: true
       t.string :image, null: true
       t.string :social_share_image, null: true
-      t.integer :status, null: false, default: 2
+      t.integer :status, null: false, default: 1
       t.datetime :publish_at, null: false
       t.datetime :expire_at, null: true
       t.string :suggested_url, null: true, unique: true

@@ -191,7 +191,9 @@ Optimadmin::Engine.routes.draw do
   end
   resources :article_categories, except: [:show] do
     collection do
-      resources :published, as: 'article_categories_published', to: 'article_categories/published'
+      resources :expired, as: 'expired_article_categories', to: 'article_categories/expired'
+      resources :scheduled, as: 'scheduled_article_categories', to: 'article_categories/scheduled'
+      resources :published, as: 'published_article_categories', to: 'article_categories/published'
       post 'order'
     end
     member do

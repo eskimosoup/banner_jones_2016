@@ -2,7 +2,7 @@ class CreateAudiences < ActiveRecord::Migration
   def change
     create_table :audiences do |t|
       t.string :title, null: false, unique: true
-      t.integer :status, null: false, default: 2
+      t.integer :status, null: false, default: 1
       t.datetime :publish_at, null: false
       t.datetime :expire_at, null: true
       t.integer :position, null: true

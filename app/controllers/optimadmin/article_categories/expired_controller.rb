@@ -1,8 +1,8 @@
 module Optimadmin
   module ArticleCategories
-    class PublishedController < Optimadmin::ArticleCategoriesController
+    class ExpiredController < Optimadmin::ArticleCategoriesController
       def index
-        @pagination_helper = @published_items
+        @pagination_helper = @expired_items
                              .pagination(params[:page], params[:per_page])
 
         @article_categories = Optimadmin::BaseCollectionPresenter.new(

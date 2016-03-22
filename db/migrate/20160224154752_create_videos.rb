@@ -5,7 +5,7 @@ class CreateVideos < ActiveRecord::Migration
       t.string :summary, null: true
       t.string :embed_code, null: false
       t.belongs_to :video_category, index: true, foreign_key: true
-      t.integer :status, null: false, default: 2
+      t.integer :status, null: false, default: 1
       t.datetime :publish_at, null: false
       t.datetime :expire_at, null: true
 

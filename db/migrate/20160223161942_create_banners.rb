@@ -7,7 +7,7 @@ class CreateBanners < ActiveRecord::Migration
       t.string :image, null: false
       t.string :button_text, null: true
       t.string :button_link, null: true
-      t.integer :status, null: false, default: 2
+      t.integer :status, null: false, default: 1
       t.datetime :publish_at, null: false
       t.datetime :expire_at, null: true
 

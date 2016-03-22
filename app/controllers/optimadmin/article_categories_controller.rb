@@ -2,8 +2,17 @@ module Optimadmin
   class ArticleCategoriesController < Optimadmin::ApplicationController
     before_action :set_article_category, only: [:show, :edit, :update, :destroy]
 
+    before_action :display_status, only: :index
+
     def index
-      @article_categories = Optimadmin::BaseCollectionPresenter.new(collection: ArticleCategory.where('title ILIKE ?', "%#{params[:search]}%").page(params[:page]).per(params[:per_page] || 15), view_template: view_context, presenter: Optimadmin::ArticleCategoryPresenter)
+      @pagination_helper = @all_items
+                           .pagination(params[:page], params[:per_page])
+
+      @article_categories = Optimadmin::BaseCollectionPresenter.new(
+        collection: @pagination_helper,
+        view_template: view_context,
+        presenter: Optimadmin::ArticleCategoryPresenter
+      )
     end
 
     def show
@@ -39,6 +48,14 @@ module Optimadmin
     end
 
     private
+
+    def display_status
+      @all_items = ArticleCategory.field_order(params[:order])
+                                  .field_search(params[:search])
+      @scheduled_items = @all_items.scheduled
+      @published_items = @all_items.published
+      @expired_items   = @all_items.expired
+    end
 
     def set_article_category
       @article_category = ArticleCategory.find(params[:id])
