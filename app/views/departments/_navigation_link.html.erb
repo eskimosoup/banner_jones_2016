@@ -1,5 +1,5 @@
 <li>
-  <% present department do |department_presenter| %>
-    <%= department_presenter.linked_text 'Commercial', { class: "hover-toggle#{' active' if department_counter == 0}", data: { container: "meganav-dropdown-content-#{department_presenter.id}" } } %>
+  <% present service do |service_presenter| %>
+    <%= service_presenter.linked_text service.title, { class: "hover-toggle#{' active' if service_counter == 0}", data: { container: "meganav-dropdown-content-#{service_presenter.id}" } } %>
   <% end %>
 </li>

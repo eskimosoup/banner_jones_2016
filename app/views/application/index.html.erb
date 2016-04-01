@@ -38,8 +38,8 @@
       </h2>
 
       <div class="helpful-guides-slick">
-        <%= render partial: 'downloads/download_shelf',
-                  collection: @downloads, as: :download if @downloads.present? %>
+        <%= render partial: 'resources/resource_shelf',
+                  collection: @resources, as: :resource if @resources.present? %>
       </div>
     </div>
   </section>

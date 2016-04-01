@@ -6,10 +6,6 @@ module ApplicationHelper
     end
   end
 
-  def site_setting(type)
-    global_site_settings[type]
-  end
-
   def social_icon(type)
     return if global_site_settings["#{type} URL"].blank?
     link_to global_site_settings["#{type} URL"], title: type, class: "social-icon social-#{}" do

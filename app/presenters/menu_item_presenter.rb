@@ -15,8 +15,8 @@ class MenuItemPresenter < BasePresenter
   end
 
   def meganav
-    return unless destination.class.present? && destination.class.name == 'Audience' && menu_item.menu_name == 'primary_header'
-    h.render 'menu_items/meganav', audience: destination
+    return unless destination.class.present? && destination.class.name == 'Department' && menu_item.menu_name == 'primary_header'
+    h.render 'menu_items/meganav', department: destination
   end
 
   def classes
