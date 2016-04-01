@@ -72,6 +72,7 @@ group :development do
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
-gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
+# gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
+gem 'optimised_site', path: '../optimised_site'
 gem 'friendly_id', '~> 5.1.0'
 gem 'therubyracer', platforms: :ruby

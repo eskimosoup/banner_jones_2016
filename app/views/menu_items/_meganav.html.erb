@@ -1,0 +1,24 @@
+<div class="meganav-dropdown">
+  <div class="meganav-dropdown-wrap">
+    <div class="meganav-dropdown-content">
+      <!-- Departments -->
+      <div class="meganav-dropdown-primary-list">
+        <h2 class="meganav-primary-title">Departments</h2>
+
+        <ul class="meganav-links meganav-primary-links">
+          <% present department do |department_presenter| %>
+            <%= department_presenter.render_department_links %>
+          <% end %>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <% # TODO: Add little triangle to hovered item in the main nav %>
+      <div>
+        <% present department do |department_presenter| %>
+          <%= department_presenter.render_department_contents %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

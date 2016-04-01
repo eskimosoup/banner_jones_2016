@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>BannerJones2016</title>
-    <%= csrf_meta_tags %>
-    <%= action_cable_meta_tag %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
-  </head>
+  <%= render 'layouts/shared/head' %>
 
   <body>
+    <%= render 'layouts/application/header' %>
+
     <%= yield %>
+
+    <%= render 'layouts/application/footer' %>
+
+    <%= render 'layouts/shared/javascripts' %>
   </body>
 </html>

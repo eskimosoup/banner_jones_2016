@@ -1,0 +1,105 @@
+.hero-banner {
+  border-bottom: 8px solid $orange;
+  max-height: 700px;
+  overflow: hidden;
+}
+
+.hero-banner-slick {
+  &.slick-slider {
+    margin: 0;
+  }
+}
+
+.hero-banner-item {
+  padding: rem(160px) 0;
+  position: relative;
+}
+
+.hero-banner-image {
+  left: 0;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+}
+
+.hero-banner-item-wrap {
+  @include grid-row;
+}
+
+.hero-banner-item-content {
+  @include grid-column(6,
+    $gutter: (
+      small: 50,
+      medium: 50,
+      large: 150,
+      xlarge: 150,
+      xxlarge: 150,
+    ));
+  position: relative;
+  z-index: 1;
+}
+
+.hero-banner-item-title {
+  color: $white;
+  font-family: $montserrat;
+  font-size: rem(44px);
+  font-weight: $montserrat-extrabold;
+  line-height: 1.09;
+  margin: 0 0 rem(50px);
+}
+
+.hero-banner-item-summary p {
+  color: $white;
+  font-family: $montserrat;
+  font-size: rem(20px);
+  font-weight: $montserrat-light;
+  line-height: 1.55;
+}
+
+.hero-banner-item-button {
+  background: $orange;
+  border-radius: 5px;
+  color: $white;
+  display: inline-block;
+  font-family: $ubuntu;
+  font-size: rem(18px);
+  font-weight: $ubuntu-light;
+  margin: rem(60px) 0 0;
+  padding: rem(20px) rem(79px);
+
+  &:visited,
+  &:link {
+    color: $white;
+  }
+
+  &:hover,
+  &:active {
+    background: $red;
+    color: $white;
+  }
+}
+
+.hero-banner-controls-wrap {
+  @include grid-row;
+  position: relative;
+  top: 250px;
+}
+
+.hero-banner-controls {
+  background: rgba($offset-purple, .25);
+  border-radius: 50%;
+  height: 60px;
+  line-height: 60px;
+  position: absolute;
+  text-align: center;
+  width: 60px;
+  z-index: 1;
+}
+
+.hero-banner-previous {
+  left: 0;
+}
+
+.hero-banner-next {
+  right: -85px;
+}

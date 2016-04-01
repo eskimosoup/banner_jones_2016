@@ -1,0 +1,9 @@
+<% present resource do |resource_presenter| %>
+  <div class="helpful-guide">
+    <%= resource_presenter.linked_text(resource_presenter.title,
+        class: 'helpful-guide-title', title: resource_presenter.title) %>
+    <%= resource_presenter.linked_text(
+          resource_presenter.index_image(alt: resource_presenter.title),
+          class: 'helpful-guide-image', title: resource_presenter.title) %>
+  </div>
+<% end %>

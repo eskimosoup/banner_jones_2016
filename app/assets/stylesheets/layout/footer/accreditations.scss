@@ -1,0 +1,10 @@
+.primary-footer {
+  background: $dark-purple;
+  box-shadow: 0 6px 15px 1px rgba($dark-purple, .33);
+  padding: rem(63px) 0 rem(81px);
+}
+
+.awards-and-accreditations {
+  @include grid-row;
+  margin: 0 auto;
+}

@@ -1,0 +1,103 @@
+.articles-content-box-slider-controls {
+  position: absolute;
+  right: rem(60px);
+}
+
+.articles-slick {
+  &.slick-slider {
+    margin: 0 em(75px);
+  }
+}
+
+.article {
+  padding: 0 rem(15px);
+
+  &.blue {
+    .article-title {
+      border-color: #13a8b7;
+
+      &:hover {
+        background: #13a8b7;
+      }
+    }
+  }
+}
+
+.article-title {
+  background: $slate-white;
+  border-top: 7px solid $orange;
+  color: $dark-purple;
+  display: block;
+  font-family: $montserrat;
+  font-size: rem(14px);
+  font-weight: $montserrat-semibold;
+  padding: rem(35px) rem(37px);
+
+  &:hover,
+  &:active {
+    background: $dark-purple;
+    color: $white;
+  }
+}
+
+.article-author {
+  @include grid-row;
+  border: 1px solid $secondary-offset-white;
+  padding: rem(21px) 0;
+}
+
+.article-author-photo {
+  @include grid-column(
+  $columns: 3,
+  $gutter: (
+      small: 10
+    )
+  );
+
+  img {
+    border: 1px solid $orange;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+}
+
+.article-author-details {
+  @include grid-column(
+  $columns: 9,
+  $gutter: (
+      small: 0
+    )
+  );
+  line-height: 1;
+}
+
+.article-author-name {
+  color: $dark-purple;
+  display: block;
+  font-family: $montserrat;
+  font-size: rem(12px);
+  font-weight: $montserrat-semibold;
+  line-height: 1;
+  margin: rem(9px) 0 0;
+
+  &:visited,
+  &:link,
+  &:hover,
+  &:active {
+    color: $dark-purple;
+  }
+}
+
+.article-author-department {
+  color: $dark-purple;
+  font-family: $ubuntu;
+  font-size: rem(12px);
+  line-height: 1;
+
+  &:visited,
+  &:link,
+  &:hover,
+  &:active {
+    color: $dark-purple;
+  }
+}
