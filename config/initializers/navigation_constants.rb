@@ -1,9 +1,6 @@
-NavigationMenus = %w( header_aside primary_header home_page_banner footer ).freeze
+NavigationMenus = %w( header footer )
 
 NavigationLinks = {
   'Module Page' => 'Optimadmin::ModulePage',
-  'Dynamic Page' => 'Page',
-  'External Link' => 'Optimadmin::ExternalLink',
-  'Audience' => 'Audience',
-  'Service' => 'Service'
-}.freeze
+  'External Link' => 'Optimadmin::ExternalLink'
+}

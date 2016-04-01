@@ -14,19 +14,10 @@ class MenuItemPresenter < BasePresenter
     h.link_to name, destination, title: title_attribute, class: classes
   end
 
-  def meganav
-    return unless destination.class.present? && destination.class.name == 'Audience' && menu_item.menu_name == 'primary_header'
-    h.render 'menu_items/meganav', audience: destination
-  end
-
   def classes
     classes = ["menu-link"]
     classes << "active" if active?
     classes.join(' ')
-  end
-
-  def menu_name
-    "#{menu_item.menu_name.tr('_', '-')}-dropdown"
   end
 
   private

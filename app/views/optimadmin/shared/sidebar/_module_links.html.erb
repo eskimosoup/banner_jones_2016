@@ -16,74 +16,17 @@
       <% end %>
     </div>
   </div>
+
   <div class="row collapse">
     <div class="large-12 small-8 left content-categories columns">
       <div class="content-category-type">
         Manage Your Content
       </div>
+
       <ul id="modules" class="content-category-list">
-        <%= module_link(content: "Pages", model: Page, path: pages_path) %>
-        <%= module_link(content: "Banners", model: Banner, path: banners_path) %>
-        <%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) %>
-        <%= module_link(content: "Awards", model: Award, path: awards_path) %>
-        <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) %>
-        <%= content_tag :li, (link_to 'Site Navigation', menu_items_path) if can? :manage, Optimadmin::MenuItem %>
-      </ul>
-
-      <div class="content-category-type">
-        Events
-      </div>
-      <ul class="content-category-list">
-        <%= module_link(content: "Events", model: Event, path: events_path) %>
-        <%= module_link(content: "Event Categories", model: EventLocation, path: event_categories_path) %>
-        <%= module_link(content: "Event Locations", model: EventLocation, path: event_locations_path) %>
-      </ul>
-
-      <div class="content-category-type">
-        Team Members
-      </div>
-      <ul class="content-category-list">
-        <%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
-        <%= module_link(content: "Team Member Roles", model: TeamMemberRole, path: team_member_roles_path) %>
-      </ul>
-
-      <div class="content-category-type">
-        Offices
-      </div>
-      <ul class="content-category-list">
-        <%= module_link(content: "Offices", model: Office, path: offices_path) %>
-        <%= module_link(content: "Office Locations", model: OfficeLocation, path: office_locations_path) %>
-      </ul>
-
-      <div class="content-category-type">
-        Articles
-      </div>
-      <ul class="content-category-list">
-        <%= module_link(content: "Articles", model: Article, path: articles_path) %>
-        <%= module_link(content: "Article Categories", model: ArticleCategory, path: article_categories_path) %>
-      </ul>
-
-      <div class="content-category-type">
-        Blogs
-      </div>
-      <ul class="content-category-list">
-        <%= module_link(content: "Blog Posts", model: BlogPost, path: blog_posts_path) %>
-        <%= module_link(content: "Blog Categories", model: BlogCategory, path: blog_categories_path) %>
-      </ul>
-
-      <div class="content-category-type">
-        Downloads
-      </div>
-      <ul class="content-category-list">
-        <%= module_link(content: "Downloads", model: Download, path: downloads_path) %>
-        <%= module_link(content: "Download Categories", model: DownloadCategory, path: download_categories_path) %>
-      </ul>
-
-      <div class="content-category-type">
-        Services
-      </div>
-      <ul class="content-category-list">
-        <%= module_link(content: "Audiences", model: Audience, path: audiences_path) %>
+        <% if can? :manage, Optimadmin::MenuItem %>
+          <li><%= link_to 'Site Navigation', menu_items_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>
