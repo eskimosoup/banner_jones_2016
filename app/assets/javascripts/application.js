@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require components/meganav
 //= require components/hover-toggle
 //= require components/footer-awards
+//= require components/articles

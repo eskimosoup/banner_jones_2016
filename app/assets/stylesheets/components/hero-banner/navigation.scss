@@ -6,7 +6,7 @@
 .hero-banner-navigation {
   background: $white;
   bottom: 0;
-  height: 670px;
+  height: 603px;
   list-style: none;
   padding: rem(30px) 0;
   position: absolute;
@@ -25,6 +25,7 @@
     font-weight: $myriad-pro-semibold;
     margin: rem(15px) rem(1px);
     padding: 0 rem(12px) 0 rem(35px);
+    text-transform: lowercase;
   }
 
   &:hover {

@@ -1,4 +1,4 @@
-NavigationMenus = %w( header_aside primary_header home_page_banner footer ).freeze
+NavigationMenus = %w( header_aside primary_header footer ).freeze
 
 NavigationLinks = {
   'Module Page' => 'Optimadmin::ModulePage',
