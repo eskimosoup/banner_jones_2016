@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160401133104) do
+ActiveRecord::Schema.define(version: 20160404082206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,19 @@ ActiveRecord::Schema.define(version: 20160401133104) do
     t.datetime "expire_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "banners", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title"
+    t.text     "summary"
+    t.string   "image",       null: false
+    t.string   "button_text"
+    t.string   "button_link"
+    t.datetime "publish_at",  null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "case_studies", force: :cascade do |t|
@@ -407,21 +420,24 @@ ActiveRecord::Schema.define(version: 20160401133104) do
   add_index "service_related_services", ["service_id"], name: "index_service_related_services_on_service_id", using: :btree
 
   create_table "services", force: :cascade do |t|
-    t.integer  "department_id",            null: false
+    t.integer  "department_id",                            null: false
     t.integer  "parent_id"
-    t.string   "title",                    null: false
-    t.text     "summary",                  null: false
+    t.string   "title",                                    null: false
+    t.text     "summary",                                  null: false
     t.text     "content"
     t.text     "social_share_title"
     t.text     "social_share_description"
     t.string   "social_share_image"
     t.string   "image"
+    t.string   "colour"
+    t.string   "icon"
+    t.boolean  "homepage_highlight",       default: false
     t.string   "slug"
     t.string   "suggested_url"
-    t.datetime "publish_at",               null: false
+    t.datetime "publish_at",                               null: false
     t.datetime "expire_at"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
@@ -579,8 +595,9 @@ ActiveRecord::Schema.define(version: 20160401133104) do
   add_index "team_members_team_member_testimonials", ["testimonial_id"], name: "index_team_members_team_member_testimonials_on_testimonial_id", using: :btree
 
   create_table "testimonials", force: :cascade do |t|
-    t.string   "author"
+    t.string   "author_name"
     t.string   "author_company"
+    t.string   "image"
     t.text     "recommendation",                     null: false
     t.integer  "position"
     t.datetime "publish_at",                         null: false

@@ -1,6 +1,6 @@
 .sticky-call-to-actions {
   @include clearfix;
-  bottom: 0;
+  bottom: -2px;
   height: 77px;
   position: fixed;
   right: 0;
@@ -13,10 +13,10 @@
 }
 
 .request-callback {
-  background: $dark-purple;
+  background: $black;
   color: $orange;
   float: left;
-  font-size: rem(13px);
+  font-size: rem(12px);
   font-weight: $myriad-pro-semibold;
   padding: rem(14px);
   width: 50%;
@@ -33,7 +33,7 @@
   background: $orange;
   color: $dark-purple;
   float: left;
-  font-size: rem(13px);
+  font-size: rem(12px);
   font-weight: $myriad-pro-semibold;
   padding: rem(14px);
   width: 50%;

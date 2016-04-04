@@ -69,10 +69,16 @@ group :development do
   gem 'flamegraph', '~> 0.1.0'
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet', '~> 4.14.7'
+  gem 'seed_dump'
 end
 
-gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
+# gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
 # gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
+gem 'optimadmin', path: '../optimadmin'
 gem 'optimised_site', path: '../optimised_site'
 gem 'friendly_id', '~> 5.1.0'
 gem 'therubyracer', platforms: :ruby
+
+# FIXME: Remove this when merged: https://github.com/rack/rack/commit/f2baf7ba76f90d5977abc347fed3a6bb7d32e114
+# This is to fix empty params not being submitted when a file field is included
+gem 'rack', github: 'rack/rack'
