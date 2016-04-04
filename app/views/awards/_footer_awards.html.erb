@@ -1,0 +1,5 @@
+<div>
+  <% present award do |award_presenter| %>
+    <%= award_presenter.image('index', { alt: award.title, title: award.title }) %>
+  <% end %>
+</div>
