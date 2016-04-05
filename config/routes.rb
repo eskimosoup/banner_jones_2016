@@ -24,11 +24,13 @@ Rails.application.routes.draw do
     get code, to: 'errors#show', code: code
   end
 
+  mount Optimadmin::Engine => '/admin'
+
+  root to: 'application#index'
+
   # This has to be the last route in your list
   match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
 
-  mount Optimadmin::Engine => '/admin'
-  root to: 'application#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   # Serve websocket cable requests in-process
