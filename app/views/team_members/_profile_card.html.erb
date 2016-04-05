@@ -6,8 +6,8 @@
       </strong>
       /
       <span class="home-team-member-role">
-        <%= team_member_presenter.job_roles(sentence_list: false) %><%= ', ' if team_member_presenter.department_roles? %>
-        <%= team_member_presenter.department_roles %>
+        <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
+        <%= team_member_presenter.department_roles(sentence_list: true) %>
       </span>
       <ul class="home-team-member-profile-details">
         <li class="home-team-member-office-location">
