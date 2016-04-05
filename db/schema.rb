@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404082206) do
+ActiveRecord::Schema.define(version: 20160405084159) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -386,39 +386,6 @@ ActiveRecord::Schema.define(version: 20160404082206) do
   add_index "service_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "service_anc_desc_idx", unique: true, using: :btree
   add_index "service_hierarchies", ["descendant_id"], name: "service_desc_idx", using: :btree
 
-  create_table "service_pages", force: :cascade do |t|
-    t.string   "title",                                null: false
-    t.string   "suggested_url"
-    t.string   "slug"
-    t.datetime "publish_at",                           null: false
-    t.datetime "expire_at"
-    t.string   "social_share_title",       limit: 150
-    t.string   "social_share_description"
-    t.string   "social_share_image"
-    t.string   "style",                                null: false
-    t.string   "layout",                               null: false
-    t.text     "content",                              null: false
-    t.string   "image"
-    t.integer  "service_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-  end
-
-  add_index "service_pages", ["service_id"], name: "index_service_pages_on_service_id", using: :btree
-  add_index "service_pages", ["slug"], name: "index_service_pages_on_slug", unique: true, using: :btree
-  add_index "service_pages", ["suggested_url"], name: "index_service_pages_on_suggested_url", unique: true, using: :btree
-
-  create_table "service_related_services", force: :cascade do |t|
-    t.integer  "service_id"
-    t.integer  "related_service_id"
-    t.integer  "position"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
-  add_index "service_related_services", ["related_service_id"], name: "index_service_related_services_on_related_service_id", using: :btree
-  add_index "service_related_services", ["service_id"], name: "index_service_related_services_on_service_id", using: :btree
-
   create_table "services", force: :cascade do |t|
     t.integer  "department_id",                            null: false
     t.integer  "parent_id"
@@ -444,37 +411,37 @@ ActiveRecord::Schema.define(version: 20160404082206) do
   add_index "services", ["slug"], name: "index_services_on_slug", using: :btree
   add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
 
-  create_table "services_service_articles", force: :cascade do |t|
-    t.integer  "service_id"
-    t.integer  "article_id"
+  create_table "services_articles", force: :cascade do |t|
+    t.integer  "service_id", null: false
+    t.integer  "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "services_service_articles", ["article_id"], name: "index_services_service_articles_on_article_id", using: :btree
-  add_index "services_service_articles", ["service_id"], name: "index_services_service_articles_on_service_id", using: :btree
+  add_index "services_articles", ["article_id"], name: "index_services_articles_on_article_id", using: :btree
+  add_index "services_articles", ["service_id"], name: "index_services_articles_on_service_id", using: :btree
 
-  create_table "services_service_case_studies", force: :cascade do |t|
+  create_table "services_case_studies", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "case_study_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
-  add_index "services_service_case_studies", ["case_study_id"], name: "index_services_service_case_studies_on_case_study_id", using: :btree
-  add_index "services_service_case_studies", ["service_id"], name: "index_services_service_case_studies_on_service_id", using: :btree
+  add_index "services_case_studies", ["case_study_id"], name: "index_services_case_studies_on_case_study_id", using: :btree
+  add_index "services_case_studies", ["service_id"], name: "index_services_case_studies_on_service_id", using: :btree
 
-  create_table "services_service_events", force: :cascade do |t|
+  create_table "services_events", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "services_service_events", ["event_id"], name: "index_services_service_events_on_event_id", using: :btree
-  add_index "services_service_events", ["service_id"], name: "index_services_service_events_on_service_id", using: :btree
+  add_index "services_events", ["event_id"], name: "index_services_events_on_event_id", using: :btree
+  add_index "services_events", ["service_id"], name: "index_services_events_on_service_id", using: :btree
 
-  create_table "services_service_faqs", force: :cascade do |t|
+  create_table "services_faqs", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "frequently_asked_question_id"
     t.integer  "position"
@@ -482,117 +449,179 @@ ActiveRecord::Schema.define(version: 20160404082206) do
     t.datetime "updated_at",                   null: false
   end
 
-  add_index "services_service_faqs", ["frequently_asked_question_id"], name: "index_services_service_faqs_on_frequently_asked_question_id", using: :btree
-  add_index "services_service_faqs", ["service_id"], name: "index_services_service_faqs_on_service_id", using: :btree
+  add_index "services_faqs", ["frequently_asked_question_id"], name: "index_services_faqs_on_frequently_asked_question_id", using: :btree
+  add_index "services_faqs", ["service_id"], name: "index_services_faqs_on_service_id", using: :btree
 
-  create_table "services_service_offices", force: :cascade do |t|
+  create_table "services_offices", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "office_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "services_service_offices", ["office_id"], name: "index_services_service_offices_on_office_id", using: :btree
-  add_index "services_service_offices", ["service_id"], name: "index_services_service_offices_on_service_id", using: :btree
+  add_index "services_offices", ["office_id"], name: "index_services_offices_on_office_id", using: :btree
+  add_index "services_offices", ["service_id"], name: "index_services_offices_on_service_id", using: :btree
 
-  create_table "services_service_resources", force: :cascade do |t|
+  create_table "services_pages", force: :cascade do |t|
+    t.string   "title",                                null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "publish_at",                           null: false
+    t.datetime "expire_at"
+    t.string   "social_share_title",       limit: 150
+    t.string   "social_share_description"
+    t.string   "social_share_image"
+    t.string   "style",                                null: false
+    t.string   "layout",                               null: false
+    t.text     "content",                              null: false
+    t.string   "image"
+    t.integer  "service_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "services_pages", ["service_id"], name: "index_services_pages_on_service_id", using: :btree
+  add_index "services_pages", ["slug"], name: "index_services_pages_on_slug", unique: true, using: :btree
+  add_index "services_pages", ["suggested_url"], name: "index_services_pages_on_suggested_url", unique: true, using: :btree
+
+  create_table "services_related_services", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "related_service_id"
+    t.integer  "position"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "services_related_services", ["related_service_id"], name: "index_services_related_services_on_related_service_id", using: :btree
+  add_index "services_related_services", ["service_id"], name: "index_services_related_services_on_service_id", using: :btree
+
+  create_table "services_resources", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "resource_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "services_service_resources", ["resource_id"], name: "index_services_service_resources_on_resource_id", using: :btree
-  add_index "services_service_resources", ["service_id"], name: "index_services_service_resources_on_service_id", using: :btree
+  add_index "services_resources", ["resource_id"], name: "index_services_resources_on_resource_id", using: :btree
+  add_index "services_resources", ["service_id"], name: "index_services_resources_on_service_id", using: :btree
 
-  create_table "services_service_team_members", force: :cascade do |t|
+  create_table "services_team_members", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "team_member_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "services_service_team_members", ["service_id"], name: "index_services_service_team_members_on_service_id", using: :btree
-  add_index "services_service_team_members", ["team_member_id"], name: "index_services_service_team_members_on_team_member_id", using: :btree
+  add_index "services_team_members", ["service_id"], name: "index_services_team_members_on_service_id", using: :btree
+  add_index "services_team_members", ["team_member_id"], name: "index_services_team_members_on_team_member_id", using: :btree
 
-  create_table "services_service_testimonials", force: :cascade do |t|
+  create_table "services_testimonials", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "testimonial_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "services_service_testimonials", ["service_id"], name: "index_services_service_testimonials_on_service_id", using: :btree
-  add_index "services_service_testimonials", ["testimonial_id"], name: "index_services_service_testimonials_on_testimonial_id", using: :btree
+  add_index "services_testimonials", ["service_id"], name: "index_services_testimonials_on_service_id", using: :btree
+  add_index "services_testimonials", ["testimonial_id"], name: "index_services_testimonials_on_testimonial_id", using: :btree
 
-  create_table "services_service_videos", force: :cascade do |t|
+  create_table "services_videos", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "video_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "services_service_videos", ["service_id"], name: "index_services_service_videos_on_service_id", using: :btree
-  add_index "services_service_videos", ["video_id"], name: "index_services_service_videos_on_video_id", using: :btree
+  add_index "services_videos", ["service_id"], name: "index_services_videos_on_service_id", using: :btree
+  add_index "services_videos", ["video_id"], name: "index_services_videos_on_video_id", using: :btree
 
   create_table "team_members", force: :cascade do |t|
-    t.integer  "job_role_id"
-    t.integer  "department_role_id"
-    t.string   "forename",           null: false
-    t.string   "surname",            null: false
+    t.string   "forename",            null: false
+    t.string   "surname",             null: false
     t.string   "image"
+    t.string   "primary_telephone"
+    t.string   "secondary_telephone"
+    t.string   "email_address"
+    t.string   "has_vcard_download"
+    t.string   "google_plus_link"
+    t.string   "twitter_link"
+    t.string   "facebook_link"
+    t.string   "mobile_number"
+    t.string   "dx_number"
     t.text     "profile"
     t.text     "specialisms"
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "publish_at",         null: false
+    t.datetime "publish_at",          null: false
     t.datetime "expire_at"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
-  add_index "team_members", ["department_role_id"], name: "index_team_members_on_department_role_id", using: :btree
-  add_index "team_members", ["job_role_id"], name: "index_team_members_on_job_role_id", using: :btree
+  add_index "team_members", ["slug"], name: "index_team_members_on_slug", using: :btree
+  add_index "team_members", ["suggested_url"], name: "index_team_members_on_suggested_url", using: :btree
 
-  create_table "team_members_team_member_articles", force: :cascade do |t|
+  create_table "team_members_articles", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "article_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "team_members_team_member_articles", ["article_id"], name: "index_team_members_team_member_articles_on_article_id", using: :btree
-  add_index "team_members_team_member_articles", ["team_member_id"], name: "index_team_members_team_member_articles_on_team_member_id", using: :btree
+  add_index "team_members_articles", ["article_id"], name: "index_team_members_articles_on_article_id", using: :btree
+  add_index "team_members_articles", ["team_member_id"], name: "index_team_members_articles_on_team_member_id", using: :btree
 
-  create_table "team_members_team_member_events", force: :cascade do |t|
+  create_table "team_members_department_roles", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "team_member_id",     null: false
+    t.integer  "department_role_id", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "team_members_department_roles", ["department_role_id"], name: "index_team_members_department_roles_on_department_role_id", using: :btree
+  add_index "team_members_department_roles", ["team_member_id"], name: "index_team_members_department_roles_on_team_member_id", using: :btree
+
+  create_table "team_members_events", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "event_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "team_members_team_member_events", ["event_id"], name: "index_team_members_team_member_events_on_event_id", using: :btree
-  add_index "team_members_team_member_events", ["team_member_id"], name: "index_team_members_team_member_events_on_team_member_id", using: :btree
+  add_index "team_members_events", ["event_id"], name: "index_team_members_events_on_event_id", using: :btree
+  add_index "team_members_events", ["team_member_id"], name: "index_team_members_events_on_team_member_id", using: :btree
 
-  create_table "team_members_team_member_offices", force: :cascade do |t|
+  create_table "team_members_job_roles", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "team_member_id", null: false
+    t.integer  "job_role_id",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "team_members_job_roles", ["job_role_id"], name: "index_team_members_job_roles_on_job_role_id", using: :btree
+  add_index "team_members_job_roles", ["team_member_id"], name: "index_team_members_job_roles_on_team_member_id", using: :btree
+
+  create_table "team_members_offices", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "office_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "team_members_team_member_offices", ["office_id"], name: "index_team_members_team_member_offices_on_office_id", using: :btree
-  add_index "team_members_team_member_offices", ["team_member_id"], name: "index_team_members_team_member_offices_on_team_member_id", using: :btree
+  add_index "team_members_offices", ["office_id"], name: "index_team_members_offices_on_office_id", using: :btree
+  add_index "team_members_offices", ["team_member_id"], name: "index_team_members_offices_on_team_member_id", using: :btree
 
-  create_table "team_members_team_member_testimonials", force: :cascade do |t|
+  create_table "team_members_testimonials", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "testimonial_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
   end
 
-  add_index "team_members_team_member_testimonials", ["team_member_id"], name: "index_team_members_team_member_testimonials_on_team_member_id", using: :btree
-  add_index "team_members_team_member_testimonials", ["testimonial_id"], name: "index_team_members_team_member_testimonials_on_testimonial_id", using: :btree
+  add_index "team_members_testimonials", ["team_member_id"], name: "index_team_members_testimonials_on_team_member_id", using: :btree
+  add_index "team_members_testimonials", ["testimonial_id"], name: "index_team_members_testimonials_on_testimonial_id", using: :btree
 
   create_table "testimonials", force: :cascade do |t|
     t.string   "author_name"
@@ -644,36 +673,38 @@ ActiveRecord::Schema.define(version: 20160404082206) do
   add_foreign_key "events", "event_locations"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "resources", "resource_categories"
-  add_foreign_key "service_pages", "services", on_delete: :nullify
-  add_foreign_key "service_related_services", "services"
   add_foreign_key "services", "departments", on_delete: :nullify
-  add_foreign_key "services_service_articles", "articles"
-  add_foreign_key "services_service_articles", "services"
-  add_foreign_key "services_service_case_studies", "case_studies"
-  add_foreign_key "services_service_case_studies", "services"
-  add_foreign_key "services_service_events", "events"
-  add_foreign_key "services_service_events", "services"
-  add_foreign_key "services_service_faqs", "frequently_asked_questions"
-  add_foreign_key "services_service_faqs", "services"
-  add_foreign_key "services_service_offices", "offices"
-  add_foreign_key "services_service_offices", "services"
-  add_foreign_key "services_service_resources", "resources"
-  add_foreign_key "services_service_resources", "services"
-  add_foreign_key "services_service_team_members", "services"
-  add_foreign_key "services_service_team_members", "team_members"
-  add_foreign_key "services_service_testimonials", "services"
-  add_foreign_key "services_service_testimonials", "testimonials"
-  add_foreign_key "services_service_videos", "services"
-  add_foreign_key "services_service_videos", "videos"
-  add_foreign_key "team_members", "department_roles", on_delete: :nullify
-  add_foreign_key "team_members", "job_roles", on_delete: :nullify
-  add_foreign_key "team_members_team_member_articles", "articles"
-  add_foreign_key "team_members_team_member_articles", "team_members"
-  add_foreign_key "team_members_team_member_events", "events"
-  add_foreign_key "team_members_team_member_events", "team_members"
-  add_foreign_key "team_members_team_member_offices", "offices"
-  add_foreign_key "team_members_team_member_offices", "team_members"
-  add_foreign_key "team_members_team_member_testimonials", "team_members"
-  add_foreign_key "team_members_team_member_testimonials", "testimonials"
+  add_foreign_key "services_articles", "articles"
+  add_foreign_key "services_articles", "services"
+  add_foreign_key "services_case_studies", "case_studies"
+  add_foreign_key "services_case_studies", "services"
+  add_foreign_key "services_events", "events"
+  add_foreign_key "services_events", "services"
+  add_foreign_key "services_faqs", "frequently_asked_questions"
+  add_foreign_key "services_faqs", "services"
+  add_foreign_key "services_offices", "offices"
+  add_foreign_key "services_offices", "services"
+  add_foreign_key "services_pages", "services", on_delete: :nullify
+  add_foreign_key "services_related_services", "services"
+  add_foreign_key "services_resources", "resources"
+  add_foreign_key "services_resources", "services"
+  add_foreign_key "services_team_members", "services"
+  add_foreign_key "services_team_members", "team_members"
+  add_foreign_key "services_testimonials", "services"
+  add_foreign_key "services_testimonials", "testimonials"
+  add_foreign_key "services_videos", "services"
+  add_foreign_key "services_videos", "videos"
+  add_foreign_key "team_members_articles", "articles"
+  add_foreign_key "team_members_articles", "team_members"
+  add_foreign_key "team_members_department_roles", "department_roles"
+  add_foreign_key "team_members_department_roles", "team_members"
+  add_foreign_key "team_members_events", "events"
+  add_foreign_key "team_members_events", "team_members"
+  add_foreign_key "team_members_job_roles", "job_roles"
+  add_foreign_key "team_members_job_roles", "team_members"
+  add_foreign_key "team_members_offices", "offices"
+  add_foreign_key "team_members_offices", "team_members"
+  add_foreign_key "team_members_testimonials", "team_members"
+  add_foreign_key "team_members_testimonials", "testimonials"
   add_foreign_key "videos", "video_categories", on_delete: :nullify
 end

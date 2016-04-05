@@ -6,16 +6,15 @@
       </strong>
       /
       <span class="home-team-member-role">
-        <%= team_member_presenter.role %><%= ', ' if team_member_presenter.additional_roles? %>
-        <%= team_member_presenter.additional_roles %>
+        <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
+        <%= team_member_presenter.department_roles %>
       </span>
       <ul class="home-team-member-profile-details">
         <li class="home-team-member-office-location">
           <%= team_member_presenter.office_locations %>
         </li>
         <li>
-          <% # TODO: Amend %>
-          <%#= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email') %>
+          <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email') %>
         </li>
         <li>
         </li>
