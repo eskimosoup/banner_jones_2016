@@ -99,4 +99,4 @@ $(document).on({
   mouseleave: function () {
     $(this).attr('style', '');
   }
-}, '.hero-banner-navigation-link');
+}, '.hero-banner-navigation-link-horizontal, .hero-banner-navigation-link-vertical');

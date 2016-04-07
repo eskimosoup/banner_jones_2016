@@ -29,45 +29,7 @@
   }
 
   &:hover {
-    background: $red;
     color: $white;
-
-    // TODO: Fix me
-    &.service-1 {
-      background: #00a1b1;
-    }
-
-    &.service-2 {
-      background: #8dc63f;
-    }
-
-    &.service-3 {
-      background: #fdba31;
-    }
-
-    &.service-4 {
-      background: #522f91;
-    }
-
-    &.service-5 {
-      background: #a7a9ac;
-    }
-
-    &.service-6 {
-      background: #0078ae;
-    }
-
-    &.service-7 {
-      background: #40ae49;
-    }
-
-    &.service-8 {
-      background: #d11241;
-    }
-
-    &.service-9 {
-      background: #891b57;
-    }
   }
 
   img {
