@@ -1,0 +1,56 @@
+.hero-banner-navigation-wrap-horizontal {
+  @extend %content-background;
+  padding: 0 0 rem(17px);
+}
+
+.hero-banner-navigation-row-horizontal {
+  @include grid-row;
+  position: relative;
+  padding: 0 0 rem(75px);
+}
+
+.hero-banner-navigation-horizontal {
+  background: $white;
+  bottom: -35px;
+  list-style: none;
+  padding: 0 rem(40px);
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+
+  li {
+    display: inline-block;
+    position: relative;
+  }
+}
+
+.hero-banner-navigation-link-horizontal {
+  &:link,
+  &:visited {
+    color: $grey;
+    display: block;
+    font-family: $myriad-pro;
+    font-size: rem(18px);
+    font-weight: $myriad-pro-semibold;
+    max-width: 153px;
+    padding: rem(62px) rem(25px) rem(42px);
+    text-align: center;
+    text-transform: lowercase;
+  }
+
+  &:hover {
+    color: $white;
+  }
+
+  img {
+    border: 5px solid $white;
+    border-radius: 50%;
+    box-shadow: 0 8px 8px 0 rgba($black, .35);
+    display: block;
+    -webkit-filter: blur(0);
+    left: 50%;
+    position: absolute;
+    top: -55px;
+    transform: translate(-50%, 0);
+  }
+}

@@ -1,5 +1,9 @@
-.content {
+%content-background {
   background: $offset-white;
+}
+
+.content {
+  @extend %content-background;
   padding: rem(55px) 0;
 }
 
