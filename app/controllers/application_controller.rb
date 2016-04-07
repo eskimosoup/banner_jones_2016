@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
   def index
     @banners = Banner.displayed
     @testimonials = Testimonial.displayed
-    @articles = Article.home_page_highlight
-    @resources = Resource.displayed
+    @articles = Article.homepage_highlight
+    @resources = Resource.homepage_highlight
     @team_members = TeamMember.displayed
     @services = Service.displayed.pluck(:title, :id)
     @banner_services = Service.homepage_highlight
