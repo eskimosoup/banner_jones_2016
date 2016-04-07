@@ -21,6 +21,7 @@
   li {
     display: inline-block;
     position: relative;
+    vertical-align: top;
   }
 }
 
@@ -32,8 +33,8 @@
     font-family: $myriad-pro;
     font-size: rem(18px);
     font-weight: $myriad-pro-semibold;
-    max-width: 153px;
-    padding: rem(62px) rem(25px) rem(42px);
+    max-width: 140px;
+    padding: rem(62px) rem(14px) rem(42px);
     text-align: center;
     text-transform: lowercase;
   }
