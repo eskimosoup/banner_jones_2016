@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160405084159) do
+ActiveRecord::Schema.define(version: 20160407110923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,17 +107,19 @@ ActiveRecord::Schema.define(version: 20160405084159) do
   add_index "department_roles", ["slug"], name: "index_department_roles_on_slug", unique: true, using: :btree
 
   create_table "departments", force: :cascade do |t|
-    t.string   "title",                             null: false
+    t.string   "title",                                   null: false
     t.text     "summary"
     t.string   "image"
     t.string   "social_share_image"
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",            default: true
-    t.integer  "services_count",     default: 0,    null: false
+    t.boolean  "display",                  default: true
+    t.integer  "services_count",           default: 0,    null: false
     t.integer  "team_member_id"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "social_share_title"
+    t.string   "social_share_description"
   end
 
   add_index "departments", ["slug"], name: "index_departments_on_slug", using: :btree
@@ -174,6 +176,13 @@ ActiveRecord::Schema.define(version: 20160405084159) do
   add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
   add_index "events", ["suggested_url"], name: "index_events_on_suggested_url", unique: true, using: :btree
+
+  create_table "features", force: :cascade do |t|
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
     t.text     "question",                  null: false
@@ -359,18 +368,19 @@ ActiveRecord::Schema.define(version: 20160405084159) do
   add_index "resource_categories", ["slug"], name: "index_resource_categories_on_slug", using: :btree
 
   create_table "resources", force: :cascade do |t|
-    t.string   "title",                null: false
+    t.string   "title",                                null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "publish_at",           null: false
+    t.datetime "publish_at",                           null: false
     t.datetime "expire_at"
     t.text     "summary"
     t.text     "content"
-    t.string   "file",                 null: false
+    t.string   "file",                                 null: false
     t.string   "image"
     t.integer  "resource_category_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.boolean  "homepage_highlight",   default: false
   end
 
   add_index "resources", ["resource_category_id"], name: "index_resources_on_resource_category_id", using: :btree
@@ -649,18 +659,20 @@ ActiveRecord::Schema.define(version: 20160405084159) do
   add_index "video_categories", ["suggested_url"], name: "index_video_categories_on_suggested_url", using: :btree
 
   create_table "videos", force: :cascade do |t|
-    t.string   "title",              null: false
+    t.string   "title",                    null: false
     t.string   "suggested_url"
     t.string   "slug"
     t.string   "image"
     t.string   "social_share_image"
-    t.datetime "publish_at",         null: false
+    t.datetime "publish_at",               null: false
     t.datetime "expire_at"
     t.integer  "video_category_id"
     t.text     "summary"
-    t.text     "embed_code",         null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.text     "embed_code",               null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "social_share_title"
+    t.string   "social_share_description"
   end
 
   add_index "videos", ["slug"], name: "index_videos_on_slug", unique: true, using: :btree
