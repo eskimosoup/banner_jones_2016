@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'services/show'
+
   resources :pages, only: :show
 
   resources :team_members, only: [:index, :show] do
@@ -16,7 +18,7 @@ Rails.application.routes.draw do
   resources :resources, only: [:index, :show]
   resources :download_categories, only: :show
 
-  resources :departments, only: :show do
+  resources :audiences, only: :show do
     resources :services, only: :show
   end
 
@@ -37,4 +39,9 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 end
 Optimadmin::Engine.routes.draw do
+  get 'services/show'
+
+  namespace :audiences do
+    get 'services/show'
+  end
 end

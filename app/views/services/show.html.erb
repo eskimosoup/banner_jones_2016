@@ -1,0 +1,70 @@
+<% present @service do |service_presenter| %>
+  <%= og_title service_presenter.social_share_title %>
+  <%= og_description service_presenter.social_share_description %>
+  <%= og_image service_presenter.social_share_image_url %>
+  <%= twitter_creator '@twitter' %>
+<% end %>
+
+<div class="page-content-wrap">
+  <aside class="page-related-navigation">
+    <% present @service do |service_presenter| %>
+      <h2>Services <%= service_presenter.audience.title %></h2>
+
+      <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title }) %>
+
+      <ul>
+        <% @service.children.each do |child_service| %>
+          <% present child_service do |service_presenter| %>
+            <li>
+              <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title }) %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </aside>
+
+  <div class="page-content">
+    <% present @service do |service_presenter| %>
+      <h1 style="<%= service_presenter.colour_property_helper('border-color') %>">
+        <%= service_presenter.title %>
+      </h1>
+
+      <%= service_presenter.content %>
+    <% end %>
+  </div>
+
+  <aside class="page-additional-information">
+    <div class="page-call-to-actions">
+
+    </div>
+
+    <div class="page-rating">
+
+    </div>
+  </aside>
+</div>
+
+<div class="service-onpage-navigation">
+  <div class="service-onpage-navigation-links">
+    <% if @onpage_navigation_links.present? %>
+      <% @onpage_navigation_links.each do |onpage_navigation_link| %>
+        <% present onpage_navigation_link do |onpage_navigation_presenter| %>
+          <%= onpage_navigation_presenter.linked_text(onpage_navigation_presenter.button_text) %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <% if @onpage_navigations.present? %>
+      <% @onpage_navigations.each do |onpage_navigation| %>
+        <% present onpage_navigation do |onpage_navigation_presenter| %>
+          <div id="<%= onpage_navigation_presenter.anchor %>">
+            <%= onpage_navigation_presenter.render_partial %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+</div>
