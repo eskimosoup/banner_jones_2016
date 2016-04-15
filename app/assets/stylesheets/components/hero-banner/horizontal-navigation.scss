@@ -5,8 +5,8 @@
 
 .hero-banner-navigation-row-horizontal {
   @include grid-row;
-  position: relative;
   padding: 0 0 rem(75px);
+  position: relative;
 }
 
 .hero-banner-navigation-horizontal {

@@ -1,4 +1,4 @@
-class DepartmentUploader < Optimadmin::ImageUploader
+class AudienceUploader < Optimadmin::ImageUploader
   version :index do
     process resize_to_fill: [200, 200]
   end

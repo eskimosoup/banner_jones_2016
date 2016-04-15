@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160407110923) do
+ActiveRecord::Schema.define(version: 20160415113827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,26 @@ ActiveRecord::Schema.define(version: 20160407110923) do
   add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   add_index "articles", ["suggested_url"], name: "index_articles_on_suggested_url", unique: true, using: :btree
+
+  create_table "audiences", force: :cascade do |t|
+    t.string   "title",                                   null: false
+    t.text     "summary"
+    t.string   "image"
+    t.string   "social_share_image"
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.boolean  "display",                  default: true
+    t.integer  "services_count",           default: 0,    null: false
+    t.integer  "team_member_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "social_share_title"
+    t.string   "social_share_description"
+  end
+
+  add_index "audiences", ["slug"], name: "index_audiences_on_slug", using: :btree
+  add_index "audiences", ["suggested_url"], name: "index_audiences_on_suggested_url", using: :btree
+  add_index "audiences", ["team_member_id"], name: "index_audiences_on_team_member_id", using: :btree
 
   create_table "awards", force: :cascade do |t|
     t.integer  "position"
@@ -105,26 +125,6 @@ ActiveRecord::Schema.define(version: 20160407110923) do
   end
 
   add_index "department_roles", ["slug"], name: "index_department_roles_on_slug", unique: true, using: :btree
-
-  create_table "departments", force: :cascade do |t|
-    t.string   "title",                                   null: false
-    t.text     "summary"
-    t.string   "image"
-    t.string   "social_share_image"
-    t.string   "suggested_url"
-    t.string   "slug"
-    t.boolean  "display",                  default: true
-    t.integer  "services_count",           default: 0,    null: false
-    t.integer  "team_member_id"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.string   "social_share_title"
-    t.string   "social_share_description"
-  end
-
-  add_index "departments", ["slug"], name: "index_departments_on_slug", using: :btree
-  add_index "departments", ["suggested_url"], name: "index_departments_on_suggested_url", using: :btree
-  add_index "departments", ["team_member_id"], name: "index_departments_on_team_member_id", using: :btree
 
   create_table "event_categories", force: :cascade do |t|
     t.string   "title",                        null: false
@@ -255,6 +255,34 @@ ActiveRecord::Schema.define(version: 20160407110923) do
   add_index "offices", ["slug"], name: "index_offices_on_slug", using: :btree
   add_index "offices", ["suggested_url"], name: "index_offices_on_suggested_url", using: :btree
 
+  create_table "onpage_navigations", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title",                                  null: false
+    t.string   "button_text"
+    t.integer  "module_id",                              null: false
+    t.string   "module_type",                            null: false
+    t.string   "partial",                                null: false
+    t.integer  "results_limit"
+    t.string   "anchor",                                 null: false
+    t.boolean  "display_navigation_link", default: true
+    t.boolean  "display_content",         default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  create_table "onpage_navigations_content_items", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title"
+    t.text     "content",                              null: false
+    t.boolean  "display",              default: true
+    t.boolean  "content_click_toggle", default: false
+    t.integer  "onpage_navigation_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  add_index "onpage_navigations_content_items", ["onpage_navigation_id"], name: "index_onpage_navigations_content_items_on_onpage_navigation_id", using: :btree
+
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
     t.string   "email",                  null: false
@@ -322,6 +350,7 @@ ActiveRecord::Schema.define(version: 20160407110923) do
     t.integer  "link_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.boolean  "display",                     default: true
   end
 
   add_index "optimadmin_menu_items", ["link_id"], name: "index_optimadmin_menu_items_on_link_id", using: :btree
@@ -397,7 +426,7 @@ ActiveRecord::Schema.define(version: 20160407110923) do
   add_index "service_hierarchies", ["descendant_id"], name: "service_desc_idx", using: :btree
 
   create_table "services", force: :cascade do |t|
-    t.integer  "department_id",                            null: false
+    t.integer  "audience_id",                              null: false
     t.integer  "parent_id"
     t.string   "title",                                    null: false
     t.text     "summary",                                  null: false
@@ -415,9 +444,11 @@ ActiveRecord::Schema.define(version: 20160407110923) do
     t.datetime "expire_at"
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "inheritance_id"
   end
 
-  add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
+  add_index "services", ["audience_id"], name: "index_services_on_audience_id", using: :btree
+  add_index "services", ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
   add_index "services", ["slug"], name: "index_services_on_slug", using: :btree
   add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
 
@@ -680,12 +711,13 @@ ActiveRecord::Schema.define(version: 20160407110923) do
   add_index "videos", ["video_category_id"], name: "index_videos_on_video_category_id", using: :btree
 
   add_foreign_key "articles", "article_categories", on_delete: :nullify
-  add_foreign_key "departments", "team_members", on_delete: :nullify
+  add_foreign_key "audiences", "team_members", on_delete: :nullify
   add_foreign_key "events", "event_categories"
   add_foreign_key "events", "event_locations"
   add_foreign_key "offices", "office_locations"
+  add_foreign_key "onpage_navigations_content_items", "onpage_navigations"
   add_foreign_key "resources", "resource_categories"
-  add_foreign_key "services", "departments", on_delete: :nullify
+  add_foreign_key "services", "audiences", on_delete: :nullify
   add_foreign_key "services_articles", "articles"
   add_foreign_key "services_articles", "services"
   add_foreign_key "services_case_studies", "case_studies"

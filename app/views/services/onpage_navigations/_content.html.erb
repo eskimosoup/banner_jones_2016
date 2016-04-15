@@ -1,0 +1,8 @@
+<%= onpage_navigation.title %>
+
+<% onpage_navigation.content_items.limit(onpage_navigation.results_limit).each do |content_item| %>
+  <% present content_item do |content_item_presenter| %>
+    <%= content_item_presenter.title %>
+    <%= content_item_presenter.content %>
+  <% end %>
+<% end %>
