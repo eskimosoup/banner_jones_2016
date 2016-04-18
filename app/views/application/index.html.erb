@@ -1,4 +1,11 @@
-<%= content_for :javascripts do %>
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css' %>
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css' %>
+<% end %>
+
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js' %>
   <%= javascript_include_tag 'components/home-components.js' %>
 <% end %>
 
@@ -24,18 +31,18 @@
 <%= render 'application/shared/hero_banner_navigation_horizontal' if global_site_settings['Banner navigation'] == 'Horizontal' %>
 
 <div class="content">
-  <section class="content-box-wrap">
-    <div class="content-box inner">
-      <div class="helpful-guide-content-box-slider-controls">
-        <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
+  <section class="home-content-box-wrap">
+    <div class="home-content-box inner">
+      <div class="helpful-guide-home-content-box-slider-controls">
+        <%= link_to '#', class: 'home-content-box-previous', title: 'Previous' do %>
           <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
         <% end %>
-        <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
+        <%= link_to '#', class: 'home-content-box-next', title: 'Next' do %>
           <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
         <% end %>
       </div>
 
-      <h2 class="content-box-title">
+      <h2 class="home-content-box-title">
         Our Helpful Guides
       </h2>
 
@@ -46,9 +53,9 @@
     </div>
   </section>
 
-  <section class="content-box-wrap">
-    <div class="content-box home-team-members">
-      <h2 class="content-box-title">
+  <section class="home-content-box-wrap">
+    <div class="home-content-box home-team-members">
+      <h2 class="home-content-box-title">
         Find People By
       </h2>
 
@@ -65,12 +72,12 @@
         <%= submit_tag 'Search', class: 'home-team-member-search-button' %>
       <% end %>
 
-      <div class="home-team-members-content-box-slider-controls">
-        <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
+      <div class="home-team-members-home-content-box-slider-controls">
+        <%= link_to '#', class: 'home-content-box-previous', title: 'Previous' do %>
           <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
         <% end %>
 
-        <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
+        <%= link_to '#', class: 'home-content-box-next', title: 'Next' do %>
           <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
         <% end %>
       </div>
@@ -87,9 +94,9 @@
       </div>
     </section>
 
-    <section class="content-box-wrap">
-      <div class="content-box inner testimonials">
-        <h2 class="content-box-title testimonials-title">
+    <section class="home-content-box-wrap">
+      <div class="home-content-box inner testimonials">
+        <h2 class="home-content-box-title testimonials-title">
           A People Business
         </h2>
 
@@ -99,18 +106,18 @@
       </div>
     </section>
 
-    <section class="content-box-wrap">
-      <div class="content-box inner">
-        <div class="articles-content-box-slider-controls">
-          <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
+    <section class="home-content-box-wrap">
+      <div class="home-content-box inner">
+        <div class="articles-home-content-box-slider-controls">
+          <%= link_to '#', class: 'home-content-box-previous', title: 'Previous' do %>
             <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
           <% end %>
-          <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
+          <%= link_to '#', class: 'home-content-box-next', title: 'Next' do %>
             <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
           <% end %>
         </div>
 
-        <h2 class="content-box-title">
+        <h2 class="home-content-box-title">
           News
         </h2>
 

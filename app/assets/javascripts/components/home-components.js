@@ -4,8 +4,8 @@ function teamMembersSlick() {
   });
 
   $('.home-team-members-slick').slick({
-    nextArrow: '.home-team-members-content-box-slider-controls .content-box-next',
-    prevArrow: '.home-team-members-content-box-slider-controls .content-box-previous',
+    nextArrow: '.home-team-members-home-content-box-slider-controls .home-content-box-next',
+    prevArrow: '.home-team-members-home-content-box-slider-controls .home-content-box-previous',
     slidesToShow: 12,
     slidesToScroll: 1,
     swipe: false
@@ -29,8 +29,8 @@ $(function() {
   });
 
   $('.helpful-guides-slick').slick({
-    nextArrow: '.helpful-guide-content-box-slider-controls .content-box-next',
-    prevArrow: '.helpful-guide-content-box-slider-controls .content-box-previous',
+    nextArrow: '.helpful-guide-home-content-box-slider-controls .home-content-box-next',
+    prevArrow: '.helpful-guide-home-content-box-slider-controls .home-content-box-previous',
     slidesToShow: 4,
     slidesToScroll: 1
   });
@@ -40,8 +40,8 @@ $(function() {
   $('.article-title').matchHeight();
 
   $('.articles-slick').slick({
-    nextArrow: '.articles-content-box-slider-controls .content-box-previous',
-    prevArrow: '.articles-content-box-slider-controls .content-box-next',
+    nextArrow: '.articles-home-content-box-slider-controls .home-content-box-previous',
+    prevArrow: '.articles-home-content-box-slider-controls .home-content-box-next',
     slidesToShow: 4
   });
 
@@ -57,7 +57,7 @@ $(document).on('click', '.home-team-member-profile-card-update', function() {
   return false;
 });
 
-$(document).on('click', '.content-box-next, .content-box-previous', function() {
+$(document).on('click', '.home-content-box-next, .home-content-box-previous', function() {
   return false;
 });
 

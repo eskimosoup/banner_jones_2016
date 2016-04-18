@@ -16,3 +16,5 @@
 //= require components/hover-toggle
 //= require components/footer-awards
 //= require components/articles
+//= require components/toggle-class
+//= require vendor/modernizr

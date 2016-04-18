@@ -1,0 +1,21 @@
+<aside class="service-page-aside-navigation">
+  <div class="service-page-aside-navigation-content">
+    <% present @service do |service_presenter| %>
+      <h2 class="service-page-aside-navigation-title">Services <%= service_presenter.audience.title %></h2>
+
+      <div class="service-page-aside-navigation-links">
+        <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: 'service-page-aside-navigation-active' }) %>
+
+        <ul>
+          <% @service.children.each do |child_service| %>
+            <% present child_service do |service_presenter| %>
+              <li>
+                <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title }) %>
+              </li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+</aside>

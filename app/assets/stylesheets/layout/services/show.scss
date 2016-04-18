@@ -1,0 +1,56 @@
+.service-page-content-wrap {
+  @include grid-row;
+  font-family: $montserrat;
+  padding: rem(28px) 0 rem(62px);
+}
+
+.service-page-title {
+  @include clearfix;
+  border-bottom-style: solid;
+  border-bottom-width: 5px;
+  color: $black;
+  font-size: rem(30px);
+  font-weight: $montserrat-semibold;
+  line-height: 2;
+  margin: 0 0 rem(15px);
+  padding: 0 0 0 rem(10px);
+}
+
+.service-page-icon {
+  float: right;
+}
+
+.service-page-content {
+  @include grid-column(6);
+}
+
+.service-page-inner-content {
+  @extend %page-content;
+  margin: 0 rem(16px);
+}
+
+.service-page-additional-information {
+  @include grid-column(3);
+}
+
+.service-onpage-navigation {
+  background: $offset-white;
+
+  &.fixed {
+    padding-top: 54px;
+  }
+}
+
+.service-onpage-navigation-content {
+  @include grid-row;
+
+  .onpage-navigation-item {
+    display: block;
+    float: left;
+    width: 100%;
+  }
+
+  .standard-content-box {
+    margin: rem(28px);
+  }
+}

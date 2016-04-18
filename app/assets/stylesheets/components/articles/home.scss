@@ -1,4 +1,4 @@
-.articles-content-box-slider-controls {
+.articles-home-content-box-slider-controls {
   position: absolute;
   right: rem(60px);
 }
@@ -53,12 +53,6 @@
       small: 10
     )
   );
-
-  img {
-    border: 1px solid $orange;
-    border-radius: 50%;
-    margin: 0 auto;
-  }
 }
 
 .article-author-details {

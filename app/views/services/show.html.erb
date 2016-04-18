@@ -5,66 +5,159 @@
   <%= twitter_creator '@twitter' %>
 <% end %>
 
-<div class="page-content-wrap">
-  <aside class="page-related-navigation">
+<%= content_for :head do %>
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css' %>
+  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css' %>
+<% end %>
+
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js' %>
+  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js' %>
+  <%= javascript_include_tag 'components/service-components.js' %>
+  <script>
+    $(document).ready(function() {
+      $('.service-page-additional-information-key-team-members-slick').slick({
+        autoplay: true,
+        autoplaySpeed: 4000,
+        fade: true,
+        arrows: false,
+        dots: false
+      })
+    });
+
+    $(window).load(function() {
+      $('.service-page-aside-navigation-content, .service-page-content').matchHeight();
+      $('.onpage-navigation-item .standard-content-box').matchHeight();
+    });
+  </script>
+<% end %>
+
+<div class="service-page-content-wrap">
+  <%= render 'services/shared/service_page_aside_navigation' %>
+
+  <div class="service-page-content">
     <% present @service do |service_presenter| %>
-      <h2>Services <%= service_presenter.audience.title %></h2>
-
-      <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title }) %>
-
-      <ul>
-        <% @service.children.each do |child_service| %>
-          <% present child_service do |service_presenter| %>
-            <li>
-              <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title }) %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    <% end %>
-  </aside>
-
-  <div class="page-content">
-    <% present @service do |service_presenter| %>
-      <h1 style="<%= service_presenter.colour_property_helper('border-color') %>">
+      <h1 class="service-page-title" style="<%= service_presenter.colour_property_helper('border-color') %>">
         <%= service_presenter.title %>
+        <%= service_presenter.small_icon({alt: service_presenter.title, class: 'service-page-icon'}) %>
       </h1>
 
-      <%= service_presenter.content %>
+      <div class="service-page-inner-content">
+        <%= service_presenter.content %>
+      </div>
     <% end %>
   </div>
 
-  <aside class="page-additional-information">
-    <div class="page-call-to-actions">
+  <aside class="service-page-additional-information">
+    <div class="service-page-additional-information-key-team-members">
+      <div class="service-page-additional-information-key-team-members-title">
+        <h3>
+          Talk to our<br />
+          <%= @service.title %> team
+        </h3>
+      </div>
 
+      <div class="service-page-additional-information-key-team-members-profiles">
+        <div class="service-page-additional-information-key-team-members-slick">
+          <%= render partial: 'services/shared/key_team_member_avatars', collection: @service.key_team_members, as: :team_member %>
+        </div>
+      </div>
     </div>
 
-    <div class="page-rating">
+    <%= link_to '#', class: 'service-page-call-to-action' do %>
+      <div class="service-page-call-to-action-title">
+        Call us now
+      </div>
 
+      <div class="service-page-call-to-action-icon">
+        <%= image_tag 'components/icons/call-to-action/white-telephone.png', alt: '' %>
+      </div>
+    <% end %>
+
+    <%= link_to '#', class: 'service-page-call-to-action' do %>
+      <div class="service-page-call-to-action-title">
+        Request a call back
+      </div>
+
+      <div class="service-page-call-to-action-icon">
+        <%= image_tag 'components/icons/call-to-action/white-callback.png', alt: '' %>
+      </div>
+    <% end %>
+
+    <%= link_to '#', class: 'service-page-call-to-action' do %>
+      <div class="service-page-call-to-action-title">
+        Email us
+      </div>
+
+      <div class="service-page-call-to-action-icon">
+        <%= image_tag 'components/icons/call-to-action/white-email.png', alt: '' %>
+      </div>
+    <% end %>
+
+    <%= link_to '#', class: 'service-page-call-to-action' do %>
+      <div class="service-page-call-to-action-title">
+        Our offices
+      </div>
+
+      <div class="service-page-call-to-action-icon">
+        <%= image_tag 'components/icons/call-to-action/white-location.png', alt: '' %>
+      </div>
+    <% end %>
+
+    <div class="service-rich-snippets">
+      <h4 class="service-rich-snippets-title">
+        <%= global_site_settings['Name'] %> Reviews
+      </h4>
+
+      <div class="service-rich-snippets-ratings">
+        <%= image_tag 'placeholders/rich-snippet-ratings.jpg', alt: '' %>
+
+        <p>
+          4.5 out of 5 based on 24 ratings
+        </p>
+      </div>
     </div>
   </aside>
 </div>
 
 <div class="service-onpage-navigation">
-  <div class="service-onpage-navigation-links">
-    <% if @onpage_navigation_links.present? %>
-      <% @onpage_navigation_links.each do |onpage_navigation_link| %>
-        <% present onpage_navigation_link do |onpage_navigation_presenter| %>
-          <%= onpage_navigation_presenter.linked_text(onpage_navigation_presenter.button_text) %>
-        <% end %>
-      <% end %>
-    <% end %>
+  <% if @onpage_navigation_links.present? %>
+    <div class="service-onpage-navigation-links">
+      <div class="service-onpage-navigation-links-content">
+        <div class="service-onpage-navigation-links-list">
+          <% @onpage_navigation_links.each do |onpage_navigation_link| %>
+            <% present onpage_navigation_link do |onpage_navigation_presenter| %>
+              <%= onpage_navigation_presenter.linked_text(onpage_navigation_presenter.button_text, class: 'service-onpage-navigation-link') %>
+            <% end %>
+          <% end %>
 
-    <% if @onpage_navigations.present? %>
+          <div class="service-onpage-navigation-links-cta">
+            <%= link_to (image_tag 'components/icons/call-to-action/white-telephone.png', alt: 'Call us today'),
+                        '#', title: 'Call us today' %>
+
+            <%= link_to (image_tag 'components/icons/call-to-action/white-callback.png', alt: 'Request a call back'),
+                        '#', title: 'Request a call back' %>
+
+            <%= link_to (image_tag 'components/icons/call-to-action/white-email.png', alt: 'Email us'),
+                        '#', title: 'Email us' %>
+
+            <%= link_to (image_tag 'components/icons/call-to-action/white-location.png', alt: 'Our offices'),
+                        '#', title: 'Our offices' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @onpage_navigations.present? %>
+    <div class="service-onpage-navigation-content">
       <% @onpage_navigations.each do |onpage_navigation| %>
         <% present onpage_navigation do |onpage_navigation_presenter| %>
-          <div id="<%= onpage_navigation_presenter.anchor %>">
+          <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-item">
             <%= onpage_navigation_presenter.render_partial %>
           </div>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
-
-
+    </div>
+  <% end %>
 </div>
