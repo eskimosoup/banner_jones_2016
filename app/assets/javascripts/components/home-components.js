@@ -1,17 +1,3 @@
-function teamMembersSlick() {
-  $('.home-team-members-slick').on('init', function() {
-    $('.home-team-member:first-of-type .home-team-member-profile-card-update').click();
-  });
-
-  $('.home-team-members-slick').slick({
-    nextArrow: '.home-team-members-content-box-slider-controls .content-box-next',
-    prevArrow: '.home-team-members-content-box-slider-controls .content-box-previous',
-    slidesToShow: 12,
-    slidesToScroll: 1,
-    swipe: false
-  });
-}
-
 $(function() {
   $('.hero-banner-slick').slick({
     autoplay: true,
@@ -21,27 +7,18 @@ $(function() {
     fade: true
   });
 
-  $('.testimonials-slick').slick({
-    arrows: false,
-    dots: true,
-    autoplay: true,
-    autoplaySpeed: 6000
-  });
-
   $('.helpful-guides-slick').slick({
-    nextArrow: '.helpful-guide-content-box-slider-controls .content-box-next',
-    prevArrow: '.helpful-guide-content-box-slider-controls .content-box-previous',
+    nextArrow: '.helpful-guide-home-content-box-slider-controls .home-content-box-next',
+    prevArrow: '.helpful-guide-home-content-box-slider-controls .home-content-box-previous',
     slidesToShow: 4,
     slidesToScroll: 1
   });
 
-  teamMembersSlick();
-
   $('.article-title').matchHeight();
 
   $('.articles-slick').slick({
-    nextArrow: '.articles-content-box-slider-controls .content-box-previous',
-    prevArrow: '.articles-content-box-slider-controls .content-box-next',
+    nextArrow: '.articles-home-content-box-slider-controls .home-content-box-previous',
+    prevArrow: '.articles-home-content-box-slider-controls .home-content-box-next',
     slidesToShow: 4
   });
 
@@ -57,7 +34,7 @@ $(document).on('click', '.home-team-member-profile-card-update', function() {
   return false;
 });
 
-$(document).on('click', '.content-box-next, .content-box-previous', function() {
+$(document).on('click', '.home-content-box-next, .home-content-box-previous', function() {
   return false;
 });
 

@@ -1,8 +1,14 @@
-<%= onpage_navigation.title %>
+<div class="standard-content-box">
+  <h2 class="standard-content-box-title">
+    <%= onpage_navigation.title %>
+  </h2>
 
-<% onpage_navigation.content_items.limit(onpage_navigation.results_limit).each do |content_item| %>
-  <% present content_item do |content_item_presenter| %>
-    <%= content_item_presenter.title %>
-    <%= content_item_presenter.content %>
-  <% end %>
-<% end %>
+  <div class="standard-content-box-inner-content">
+    <% onpage_navigation.content_items.limit(onpage_navigation.results_limit).each do |content_item| %>
+      <% present content_item do |content_item_presenter| %>
+        <%= content_item_presenter.title %>
+        <%= content_item_presenter.content %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
