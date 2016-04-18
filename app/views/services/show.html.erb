@@ -13,6 +13,7 @@
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js' %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js' %>
+  <%= javascript_include_tag 'components/shared-components.js' %>
   <%= javascript_include_tag 'components/service-components.js' %>
   <script>
     $(document).ready(function() {
@@ -153,7 +154,7 @@
     <div class="service-onpage-navigation-content">
       <% @onpage_navigations.each do |onpage_navigation| %>
         <% present onpage_navigation do |onpage_navigation_presenter| %>
-          <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-item">
+          <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-item medium-<%= onpage_navigation_presenter.layout %> columns">
             <%= onpage_navigation_presenter.render_partial %>
           </div>
         <% end %>

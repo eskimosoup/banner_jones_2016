@@ -35,6 +35,7 @@
 
 .service-onpage-navigation {
   background: $offset-white;
+  padding:  0 0 rem(40px);
 
   &.fixed {
     padding-top: 54px;
@@ -47,10 +48,9 @@
   .onpage-navigation-item {
     display: block;
     float: left;
-    width: 100%;
   }
 
   .standard-content-box {
-    margin: rem(28px);
+    margin: rem(17px);
   }
 }

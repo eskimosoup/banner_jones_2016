@@ -15,10 +15,25 @@ module Extensions
          ['Service pages', 'service_pages'],
          ['Team members', 'team_members']
        ],
-        ['Team Members',
-         ['Frequently Asked Questions 2', 'faqs'],
-         ['Services list 2', 'services']
-        ]
+        # ['Team Members',
+        # ['Frequently Asked Questions', 'faqs'],
+        # ['Services list', 'services']
+        # ]
+      ].freeze
+
+      LAYOUTS = [
+        ['100%', '12'],
+        ['91%', '11'],
+        ['83%', '10'],
+        ['70%', '9'],
+        ['66%', '8'],
+        ['58%', '7'],
+        ['50%', '6'],
+        ['41%', '5'],
+        ['33%', '4'],
+        ['30%', '3'],
+        ['16%', '2'],
+        ['8%', '1']
       ].freeze
     end
 

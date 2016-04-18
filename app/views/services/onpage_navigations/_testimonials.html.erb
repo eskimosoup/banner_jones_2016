@@ -1,7 +1,9 @@
-<div class="standard-content-box">
-  <h2 class="standard-content-box-title">
+<div class="standard-content-box home-content-box inner testimonials">
+  <h2 class="home-content-box-title testimonials-title">
     <%= onpage_navigation.title %>
   </h2>
 
-  <%= onpage_navigation.results_limit %>
+  <div class="testimonials-slick">
+    <%= render @service.testimonials.limit(onpage_navigation.results_limit) %>
+  </div>
 </div>

@@ -7,6 +7,7 @@
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js' %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js' %>
   <%= javascript_include_tag 'components/home-components.js' %>
+  <%= javascript_include_tag 'components/shared-components.js' %>
 <% end %>
 
 <section class="hero-banner">
@@ -92,7 +93,8 @@
           <%= render 'team_members/profile_card', team_member: @team_members.first if @team_members.present? %>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <section class="home-content-box-wrap">
       <div class="home-content-box inner testimonials">
