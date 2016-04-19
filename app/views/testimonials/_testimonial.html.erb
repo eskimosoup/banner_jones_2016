@@ -1,6 +1,8 @@
 <% present testimonial do |testimonial_presenter| %>
-  <div class="testimonial">
-    <%= testimonial_presenter.recommendation %>
+  <div class="testimonial-wrap">
+    <div class="testimonial-content">
+      <%= testimonial_presenter.recommendation %>
+    </div>
 
     <div class="testimonial-author">
       <%= testimonial_presenter.author %>

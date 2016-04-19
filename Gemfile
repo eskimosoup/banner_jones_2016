@@ -64,11 +64,12 @@ group :development do
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
-gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
-# gem 'optimised_site', path: '../optimised_site'
+# gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
+gem 'optimised_site', path: '../optimised_site'
 gem 'friendly_id', '~> 5.1.0'
 gem 'geocoder'
 gem 'therubyracer', platforms: :ruby
+gem 'twitter'
 
 # FIXME: Remove this when merged: https://github.com/rack/rack/commit/f2baf7ba76f90d5977abc347fed3a6bb7d32e114
 # This is to fix empty params not being submitted when a file field is included

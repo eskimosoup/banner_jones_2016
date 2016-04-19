@@ -1,0 +1,32 @@
+.tweet {
+  border-bottom: 3px dashed $border-grey;
+  margin: 0 0 rem(12px);
+  padding: 0 0 rem(12px);
+
+  a {
+    &:link,
+    &:visited {
+      color: $dark-purple;
+      text-decoration: underline;
+    }
+
+    &:hover,
+    &:active {
+      color: $black;
+    }
+  }
+}
+
+.tweet-text {
+  @include paragraph;
+}
+
+.tweet-time {
+  @include paragraph;
+  font-size: rem(11px);
+  margin: 0;
+
+  a:link {
+    text-decoration: none;
+  }
+}

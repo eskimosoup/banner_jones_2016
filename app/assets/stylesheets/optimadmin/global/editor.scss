@@ -15,35 +15,6 @@
   margin: em(16px) 0 em(16px) em(16px);
 }
 
-// This wrapper ensures that they're exclusive to TinyMCE, use alongside .content
-%paragraph {
-  color: $dark-purple;
-  font-family: $montserrat;
-  font-size: rem(13px);
-  font-weight: $montserrat-light;
-  margin: rem(15px) 0;
-}
-
-%page-content {
-  // https://benfrain.com/working-with-lists-and-each-loops-in-sass-with-the-index-and-nth-function/
-  $heading-size: 23 21 19 17 16 15;
-
-  @for $i from 1 through length($heading-size) {
-    h#{$i} {
-      color: $dark-purple;
-      font-family: $montserrat;
-      font-size: rem(nth($heading-size, $i));
-      font-weight: $montserrat-semibold;
-      line-height: 1.1;
-      margin: rem(20px) 0;
-    }
-  }
-
-  p {
-    @extend %paragraph;
-  }
-}
-
 .mce-content-body {
-  @extend %page-content;
+  @include page-content;
 }

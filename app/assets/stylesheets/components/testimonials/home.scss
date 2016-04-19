@@ -16,16 +16,18 @@
   }
 }
 
-.testimonial {
-  margin: 0 auto;
-  width: grid-column(10);
-
+.testimonial-wrap {
   p {
     color: $orange;
     font-weight: $myriad-pro-semibold;
     margin: 0 rem(40px) rem(9px);
     text-align: center;
   }
+}
+
+.testimonial-content {
+  margin: 0 auto;
+  width: grid-column(10);
 }
 
 .testimonial-author {

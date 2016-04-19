@@ -42,10 +42,34 @@
   box-shadow: 0 6px 15px 1px rgba($dark-purple, .33);
   padding: rem(20px);
   position: relative;
+
+  &.standalone {
+    padding: 0;
+  }
 }
 
 .standard-content-box-inner-content {
-  @extend %page-content, %paragraph;
+  @include page-content;
+  @include paragraph;
+
+
+
+  a {
+    color: $dark-purple;
+    transition: color 0.1s linear;
+
+    &:link,
+    &:visited {
+      color: $dark-purple;
+      text-decoration: underline;
+    }
+
+    &:hover,
+    &:active {
+      color: $black;
+      text-decoration: none;
+    }
+  }
 }
 
 .standard-content-box-title {

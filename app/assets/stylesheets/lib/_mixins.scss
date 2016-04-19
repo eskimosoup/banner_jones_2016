@@ -1,3 +1,32 @@
+// Page content
+@mixin paragraph {
+  color: $dark-purple;
+  font-family: $montserrat;
+  font-size: rem(13px);
+  font-weight: $montserrat-light;
+  margin: rem(15px) 0;
+}
+
+@mixin page-content {
+  // https://benfrain.com/working-with-lists-and-each-loops-in-sass-with-the-index-and-nth-function/
+  $heading-size: 23 21 19 17 16 15;
+
+  @for $i from 1 through length($heading-size) {
+    h#{$i} {
+      color: $dark-purple;
+      font-family: $montserrat;
+      font-size: rem(nth($heading-size, $i));
+      font-weight: $montserrat-semibold;
+      line-height: 1.1;
+      margin: rem(20px) 0;
+    }
+  }
+
+  p {
+    @include paragraph;
+  }
+}
+
 // Functions
 // http://css-tricks.com/snippets/css/less-mixin-for-rem-font-sizing/
 @function strip-unit($num) {

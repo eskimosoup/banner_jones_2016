@@ -8,27 +8,18 @@
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css' %>
   <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css' %>
+  <%= stylesheet_link_tag 'vendor/colorbox' %>
 <% end %>
 
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js' %>
   <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js' %>
   <%= javascript_include_tag 'components/shared-components.js' %>
+  <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>
   <%= javascript_include_tag 'components/service-components.js' %>
   <script>
-    $(document).ready(function() {
-      $('.service-page-additional-information-key-team-members-slick').slick({
-        autoplay: true,
-        autoplaySpeed: 4000,
-        fade: true,
-        arrows: false,
-        dots: false
-      })
-    });
-
     $(window).load(function() {
       $('.service-page-aside-navigation-content, .service-page-content').matchHeight();
-      $('.onpage-navigation-item .standard-content-box').matchHeight();
     });
   </script>
 <% end %>
@@ -59,7 +50,7 @@
       </div>
 
       <div class="service-page-additional-information-key-team-members-profiles">
-        <div class="service-page-additional-information-key-team-members-slick">
+        <div class="multiple-team-members-slick">
           <%= render partial: 'services/shared/key_team_member_avatars', collection: @service.key_team_members, as: :team_member %>
         </div>
       </div>
@@ -152,13 +143,15 @@
 
   <% if @onpage_navigations.present? %>
     <div class="service-onpage-navigation-content">
-      <% @onpage_navigations.each do |onpage_navigation| %>
-        <% present onpage_navigation do |onpage_navigation_presenter| %>
-          <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-item medium-<%= onpage_navigation_presenter.layout %> columns">
-            <%= onpage_navigation_presenter.render_partial %>
-          </div>
+      <div class="row collapse">
+        <% @onpage_navigations.each do |onpage_navigation| %>
+          <% present onpage_navigation do |onpage_navigation_presenter| %>
+              <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-wrap medium-<%= onpage_navigation_presenter.layout %> columns">
+                <%= onpage_navigation_presenter.render_partial %>
+              </div>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
   <% end %>
 </div>
