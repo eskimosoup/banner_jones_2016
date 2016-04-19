@@ -1,0 +1,23 @@
+.service-video-content {
+  background: $black;
+  padding: rem(20px);
+
+  p {
+    color: $white;
+    font-size: rem(16px);
+    font-weight: $myriad-pro-semibold;
+    margin: 0;
+  }
+}
+
+.service-video-title {
+  color: $orange;
+  font-size: rem(20px);
+  font-weight: $myriad-pro-semibold;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.service-video-embed-code {
+  display: none;
+}

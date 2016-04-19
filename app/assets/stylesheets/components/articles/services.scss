@@ -1,0 +1,131 @@
+.service-article {
+  @include grid-row;
+  font-family: $montserrat;
+
+  &.opened {
+    padding: 0 0 rem(12px);
+
+    .service-article-image {
+      @include grid-column($columns: 4, $gutter: (medium: 10));
+      margin: rem(24px) 0 0;
+    }
+
+    .service-article-content {
+      @include grid-column(8);
+    }
+  }
+
+  &.closed {
+    background: $slate-white;
+    padding: rem(10px);
+
+    .service-article-image,
+    .service-article-summary,
+    .service-article-read-more {
+      display: none;
+    }
+
+    .service-article-date {
+      @include grid-column(2);
+      font-family: $montserrat;
+      font-weight: 400;
+    }
+
+    .service-article-title {
+      @include grid-column($columns: 6, $gutter: (small: 0));
+      margin: 0;
+    }
+
+    .service-article-team-members {
+      @include grid-column($columns: 4, $gutter: (small: 0));
+    }
+  }
+}
+
+.service-article-date {
+  color: $offset-blue;
+  font-family: $ubuntu;
+  font-size: rem(12px);
+  font-weight: $ubuntu-light;
+  margin: 0 0 rem(6px);
+}
+
+.service-article-title {
+  display: block;
+  font-weight: $montserrat-bold;
+  margin: rem(6px) 0 0;
+
+  &:link,
+  &:visited {
+    color: $dark-purple;
+    font-size: rem(15px);
+    text-decoration: none;
+  }
+
+  &:hover,
+  &:active {
+    color: $black;
+  }
+}
+
+.service-article-summary {
+  @include page-content;
+}
+
+.service-article-footer {
+  @include grid-row;
+}
+
+.service-article-read-more {
+  @include grid-column($columns: 6, $gutter: (small: 0));
+  font-size: rem(12px);
+  text-transform: uppercase;
+  margin: rem(6px) 0 0;
+
+  &:link,
+  &:visited {
+    color: $offset-blue;
+  }
+
+  &:hover,
+  &:active {
+    color: $dark-purple;
+  }
+}
+
+.service-article-team-members {
+  @include grid-column($columns: 6, $gutter: (small: 0));
+
+  .multiple-team-members-slick {
+    margin: 0;
+  }
+
+  .slick-slide {
+    @include clearfix;
+  }
+
+  .team-membe-avatar {
+    float: right;
+  }
+}
+
+.service-article-team-member-details {
+  display: block;
+  float: left;
+  padding: rem(6px) 0 0;
+  text-align: right;
+  width: 70%;
+}
+
+.service-article-team-member-name {
+  color: $dark-purple;
+  font-size: rem(13px);
+  font-weight: $montserrat-semibold;
+  line-height: 1.25;
+}
+
+.service-article-team-member-services {
+  font-family: $ubuntu;
+  font-size: rem(12px);
+  line-height: 1.25;
+}

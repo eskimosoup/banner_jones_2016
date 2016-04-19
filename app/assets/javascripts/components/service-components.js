@@ -13,9 +13,16 @@ function setFixedHeader() {
   }
 }
 
+function updateContentHeight() {
+  $('.onpage-navigation-wrap .onpage-navigation-item').matchHeight();
+}
+
 $(window).load(function() {
   offsetHeight = parseInt($('.primary-header').height()) + parseInt($('.primary-navigation-wrap').height()) + parseInt($('.service-page-content-wrap').height()) + onpageLinksHeight;
   setFixedHeader();
+  $('.service-page-aside-navigation-content, .service-page-content').matchHeight();
+
+  $('.onpage-navigation-wrap .onpage-navigation-item').matchHeight();
 
   var windowAnchor = window.location.hash;
   if(windowAnchor !== undefined && $(windowAnchor).length === 1) {
@@ -26,8 +33,6 @@ $(window).load(function() {
 $(window).scroll(function() {
   setFixedHeader();
 });
-
-// Smooth scroll
 
 // Adapted from http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
 var $root, onpageLinksHeight;
@@ -45,6 +50,31 @@ $(function() {
   $onpageContent = $('.service-onpage-navigation');
   onpageLinksHeight = parseInt($onpageLinks.height());
   $root = $('html, body');
+
+  $('.multiple-team-members-slick').slick({
+    autoplay: true,
+    autoplaySpeed: 4000,
+    fade: true,
+    arrows: false,
+    dots: false
+  });
+
+  // Based off http://stackoverflow.com/a/12033350
+  if ($('.inline-colorbox').length) {
+    $('.inline-colorbox').each(function() {
+      var url = $(this).attr("href");
+      $(this).colorbox({
+        inline: true,
+        href: url,
+        onOpen:function() {
+          $(url).show();
+        },
+        onCleanup:function() {
+          $(url).hide();
+        }
+      }).attr("href","javascript:void(0)");
+    });
+  }
 });
 
 $(document).on('click', '.service-onpage-navigation-link', function() {
@@ -53,4 +83,8 @@ $(document).on('click', '.service-onpage-navigation-link', function() {
   $(this).siblings().removeClass('active');
   $(this).addClass('active');
   return false;
+});
+
+$(document).on('click', '.toggle-class', function() {
+  updateContentHeight();
 });

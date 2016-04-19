@@ -1,6 +1,8 @@
 class ServicesController < ApplicationController
   before_action :find_service
 
+  include ResourceHelper, TwitterHelper
+
   def show
     return redirect_to audience_service_path(@audience, @service), status: :moved_permanently if request.path != audience_service_path(@audience, @service)
     @onpage_navigations = @service.displayed_onpage_navigations

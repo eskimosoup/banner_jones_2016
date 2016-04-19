@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418140145) do
+ActiveRecord::Schema.define(version: 20160419103730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20160418140145) do
   end
 
   add_index "article_categories", ["slug"], name: "index_article_categories_on_slug", unique: true, using: :btree
-  add_index "article_categories", ["suggested_url"], name: "index_article_categories_on_suggested_url", unique: true, using: :btree
 
   create_table "articles", force: :cascade do |t|
     t.integer  "article_category_id"
@@ -48,7 +47,6 @@ ActiveRecord::Schema.define(version: 20160418140145) do
 
   add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
-  add_index "articles", ["suggested_url"], name: "index_articles_on_suggested_url", unique: true, using: :btree
 
   create_table "audiences", force: :cascade do |t|
     t.string   "title",                                   null: false
@@ -112,7 +110,6 @@ ActiveRecord::Schema.define(version: 20160418140145) do
   end
 
   add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
-  add_index "case_studies", ["suggested_url"], name: "index_case_studies_on_suggested_url", unique: true, using: :btree
 
   create_table "department_roles", force: :cascade do |t|
     t.string   "title",                      null: false
@@ -175,7 +172,6 @@ ActiveRecord::Schema.define(version: 20160418140145) do
   add_index "events", ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
   add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
-  add_index "events", ["suggested_url"], name: "index_events_on_suggested_url", unique: true, using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "key",                        null: false
@@ -415,7 +411,6 @@ ActiveRecord::Schema.define(version: 20160418140145) do
 
   add_index "resources", ["resource_category_id"], name: "index_resources_on_resource_category_id", using: :btree
   add_index "resources", ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
-  add_index "resources", ["suggested_url"], name: "index_resources_on_suggested_url", unique: true, using: :btree
 
   create_table "service_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
@@ -524,7 +519,6 @@ ActiveRecord::Schema.define(version: 20160418140145) do
 
   add_index "services_pages", ["service_id"], name: "index_services_pages_on_service_id", using: :btree
   add_index "services_pages", ["slug"], name: "index_services_pages_on_slug", unique: true, using: :btree
-  add_index "services_pages", ["suggested_url"], name: "index_services_pages_on_suggested_url", unique: true, using: :btree
 
   create_table "services_related_services", force: :cascade do |t|
     t.integer  "service_id"
@@ -550,8 +544,10 @@ ActiveRecord::Schema.define(version: 20160418140145) do
   create_table "services_team_members", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "team_member_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "position"
+    t.boolean  "key_team_member", default: false
   end
 
   add_index "services_team_members", ["service_id"], name: "index_services_team_members_on_service_id", using: :btree
@@ -708,7 +704,6 @@ ActiveRecord::Schema.define(version: 20160418140145) do
   end
 
   add_index "videos", ["slug"], name: "index_videos_on_slug", unique: true, using: :btree
-  add_index "videos", ["suggested_url"], name: "index_videos_on_suggested_url", unique: true, using: :btree
   add_index "videos", ["video_category_id"], name: "index_videos_on_video_category_id", using: :btree
 
   add_foreign_key "articles", "article_categories", on_delete: :nullify

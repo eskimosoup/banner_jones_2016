@@ -25,7 +25,7 @@
 }
 
 .service-page-inner-content {
-  @extend %page-content;
+  @include page-content;
   margin: 0 rem(16px);
 }
 
@@ -45,12 +45,12 @@
 .service-onpage-navigation-content {
   @include grid-row;
 
-  .onpage-navigation-item {
+  .onpage-navigation-wrap {
     display: block;
     float: left;
   }
 
-  .standard-content-box {
+  .onpage-navigation-item {
     margin: rem(17px);
   }
 }
