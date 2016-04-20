@@ -1,16 +1,16 @@
-<div class="home-team-member-profile">
-  <div class="home-team-member-profile-information">
+<div class="slider-team-member-profile">
+  <div class="slider-team-member-profile-information">
     <% present team_member do |team_member_presenter| %>
-      <strong class="home-team-member-profile-name">
+      <strong class="slider-team-member-profile-name">
         <%= team_member_presenter.full_name %>
       </strong>
       /
-      <span class="home-team-member-role">
+      <span class="slider-team-member-role">
         <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
         <%= team_member_presenter.department_roles(sentence_list: true) %>
       </span>
-      <ul class="home-team-member-profile-details">
-        <li class="home-team-member-office-location">
+      <ul class="slider-team-member-profile-details">
+        <li class="slider-team-member-office-location">
           <%= team_member_presenter.office_locations %>
         </li>
         <li>
@@ -21,8 +21,8 @@
       </ul>
     <% end %>
   </div>
-  <div class="home-team-member-profile-services">
-    <strong class="home-team-member-profile-service-name">
+  <div class="slider-team-member-profile-services">
+    <strong class="slider-team-member-profile-service-name">
       <% present team_member do |team_member_presenter| %>
         <%= team_member_presenter.service_titles %>
       <% end %>

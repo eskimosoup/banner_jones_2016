@@ -14,18 +14,20 @@
   </div>
 <% end %>
 
-  <% present service.key_team_members.first do |team_member_presenter| %>
-    <div class="meganav-dropdown-team-member-wrap">
-      <%= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member') %>
-      <div class="meganav-dropdown-team-member-name">
-        <%= team_member_presenter.full_name %>
+  <% service.key_team_members.limit(1).each do |service_team_member| %>
+    <% present service_team_member.team_member do |team_member_presenter| %>
+      <div class="meganav-dropdown-team-member-wrap">
+        <%= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member') %>
+        <div class="meganav-dropdown-team-member-name">
+          <%= team_member_presenter.full_name %>
+        </div>
+        <div class="meganav-dropdown-team-member-role">
+          <%= team_member_presenter.job_roles %>
+        </div>
+        <div class="meganav-dropdown-team-member-location">
+          <%= team_member_presenter.office_locations %>
+        </div>
       </div>
-      <div class="meganav-dropdown-team-member-role">
-        <%= team_member_presenter.job_roles %>
-      </div>
-      <div class="meganav-dropdown-team-member-location">
-        <%= team_member_presenter.office_locations %>
-      </div>
-    </div>
+    <% end %>
   <% end %>
 </div>

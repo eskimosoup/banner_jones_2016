@@ -2,7 +2,7 @@
   <%= og_title service_presenter.social_share_title %>
   <%= og_description service_presenter.social_share_description %>
   <%= og_image service_presenter.social_share_image_url %>
-  <%= twitter_creator '@twitter' %>
+  <%#= twitter_creator '@twitter' %>
 <% end %>
 
 <%= content_for :head do %>
@@ -51,7 +51,7 @@
 
       <div class="service-page-additional-information-key-team-members-profiles">
         <div class="multiple-team-members-slick">
-          <%= render partial: 'services/shared/key_team_member_avatars', collection: @service.key_team_members, as: :team_member %>
+          <%= render partial: 'services/shared/key_team_member_avatars', collection: @service.key_team_members, as: :service_team_member %>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ module Optimadmin
       included do
         edit_images_for ::Services::Page,
                         [
-                          [:image, { show: ['fit', 200, 200] }],
+                          [:image, { show: ['fit', 200, 200], index: ['fit', 270, 124] }],
                           [:social_share_image, { show: ['fit', 1200, 600] }]
                         ]
       end

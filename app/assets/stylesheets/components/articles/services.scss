@@ -51,21 +51,7 @@
 }
 
 .service-article-title {
-  display: block;
-  font-weight: $montserrat-bold;
-  margin: rem(6px) 0 0;
-
-  &:link,
-  &:visited {
-    color: $dark-purple;
-    font-size: rem(15px);
-    text-decoration: none;
-  }
-
-  &:hover,
-  &:active {
-    color: $black;
-  }
+  @include service-item-title;
 }
 
 .service-article-summary {
@@ -78,19 +64,7 @@
 
 .service-article-read-more {
   @include grid-column($columns: 6, $gutter: (small: 0));
-  font-size: rem(12px);
-  text-transform: uppercase;
-  margin: rem(6px) 0 0;
-
-  &:link,
-  &:visited {
-    color: $offset-blue;
-  }
-
-  &:hover,
-  &:active {
-    color: $dark-purple;
-  }
+  @include service-read-more;
 }
 
 .service-article-team-members {

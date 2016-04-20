@@ -1,7 +1,3 @@
-<div class="standard-content-box onpage-navigation-item">
-  <h2 class="standard-content-box-title">
-    <%= onpage_navigation.title %>
-  </h2>
-
-  <%= onpage_navigation.results_limit %>
+<div class="onpage-navigation-item">
+  <%= render 'team_members/shared/slider', team_members: @service.team_members.displayed, title: onpage_navigation.title %>
 </div>
