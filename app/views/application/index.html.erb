@@ -55,44 +55,8 @@
   </section>
 
   <section class="home-content-box-wrap">
-    <div class="home-content-box home-team-members">
-      <h2 class="home-content-box-title">
-        Find People By
-      </h2>
-
-      <%= form_tag search_team_members_path, method: :get, remote: true, class: 'home-team-member-search-form' do %>
-        <div class="home-team-member-search-field">
-          <%= text_field_tag :name, '', placeholder: 'Name',
-                                        class: 'home-team-member-search-name' %>
-        </div>
-        <div class="home-team-member-search-field">
-          <%= select_tag :service_id, options_for_select(@services),
-                                   prompt: 'Service',
-                                   class: 'home-team-member-search-service' %>
-        </div>
-        <%= submit_tag 'Search', class: 'home-team-member-search-button' %>
-      <% end %>
-
-      <div class="home-team-members-home-content-box-slider-controls">
-        <%= link_to '#', class: 'home-content-box-previous', title: 'Previous' do %>
-          <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
-        <% end %>
-
-        <%= link_to '#', class: 'home-content-box-next', title: 'Next' do %>
-          <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
-        <% end %>
-      </div>
-
-      <div class="home-team-members-profiles">
-        <div class="home-team-members-slick">
-          <%= render partial: 'team_members/home_team_member',
-                    collection: @team_members, as: :team_member if @team_members.present? %>
-        </div>
-
-        <div class="home-team-members-slick-profile">
-          <%= render 'team_members/profile_card', team_member: @team_members.first if @team_members.present? %>
-        </div>
-      </div>
+    <div class="home-content-box">
+      <%= render 'team_members/shared/slider', team_members: @team_members, title: 'Specialist Team' %>
     </div>
   </section>
 

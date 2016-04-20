@@ -21,8 +21,9 @@ class ApplicationController < ActionController::Base
     @articles = Article.homepage_highlight
     @resources = Resource.homepage_highlight
     @team_members = TeamMember.displayed
-    @services = Service.displayed.pluck(:title, :id)
+    @services = Service.root_services.displayed.pluck(:title, :id)
     @banner_services = Service.homepage_highlight
+    @offices = Office.displayed
   end
 
   private

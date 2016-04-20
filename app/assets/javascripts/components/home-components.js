@@ -25,27 +25,6 @@ $(function() {
   $('.hero-banner-audience-select .has-children:first-of-type > a').addClass('active');
 });
 
-
-$(document).on('click', '.home-team-member-profile-card-update', function() {
-  var $teamMemberProfileCard = $($(this).data('container'));
-  $('.home-team-members-slick-profile').html($teamMemberProfileCard.html());
-  $('.home-team-member-profile-card-update.active').removeClass('active');
-  $(this).addClass('active');
-  return false;
-});
-
-$(document).on('click', '.home-content-box-next, .home-content-box-previous', function() {
-  return false;
-});
-
-$(document).on('keyup', '.home-team-member-search-name', function() {
-  $(this).closest('form').submit();
-});
-
-$(document).on('change', '.home-team-member-search-service', function() {
-  $(this).closest('form').submit();
-});
-
 /*
 $(document).on('click', '.hero-banner-audience-select .has-children > a', function() {
   $('.hero-banner-audience-select [data-active]').removeAttr('data-active').removeClass('active');

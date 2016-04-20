@@ -13,9 +13,7 @@
 }
 
 .home-content-box {
-  background: $white;
-  box-shadow: 0 6px 15px 1px rgba($dark-purple, .33);
-  position: relative;
+  @include shadow-content-box;
 
   &.inner {
     padding: rem(60px) 0;
@@ -23,12 +21,7 @@
 }
 
 .home-content-box-title {
-  color: $dark-purple;
-  font-family: $montserrat;
-  font-size: rem(21px);
-  font-weight: $montserrat-semibold;
-  margin: 0 0 rem(40px);
-  text-align: center;
+  @include home-content-box-title;
 }
 
 .home-content-box-previous,
@@ -38,10 +31,8 @@
 }
 
 .standard-content-box {
-  background: $white;
-  box-shadow: 0 6px 15px 1px rgba($dark-purple, .33);
+  @include shadow-content-box;
   padding: rem(20px);
-  position: relative;
 
   &.standalone {
     padding: 0;
@@ -51,8 +42,6 @@
 .standard-content-box-inner-content {
   @include page-content;
   @include paragraph;
-
-
 
   a {
     color: $dark-purple;
