@@ -1,0 +1,4 @@
+<% present event do |event_presenter| %>
+  <%= event.linked_text(event_presenter.title, { title: event_presenter.title }) %>
+  <%= render partial: 'events/shared/categories', collection: event.event_categories.displayed, as: :event_category %>
+<% end %>

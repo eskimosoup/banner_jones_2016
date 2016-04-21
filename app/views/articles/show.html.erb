@@ -1,10 +1,9 @@
-
-  <% present @article do |article_presenter| %>
-    <%= og_title article_presenter.social_share_title %>
-    <%= og_description article_presenter.social_share_description %>
-    <%= og_image article_presenter.social_share_image %>
-    <%= twitter_creator '@twitter' %>
-  <% end %>
+<% present @article do |article_presenter| %>
+  <%= og_title article_presenter.social_share_title %>
+  <%= og_description article_presenter.social_share_description %>
+  <%= og_image article_presenter.social_share_image_url %>
+  <%#= twitter_creator '@twitter' %>
+<% end %>
 
 
 <div class="article-show">
@@ -18,6 +17,9 @@
     <div class="article-show-content">
       <%= article_presenter.content %>
     </div>
+
+    <%= render partial: 'articles/shared/team_members', collection: @article.team_members.displayed, as: :team_member, locals: { article_presenter: article_presenter } %>
+    <%= render partial: 'articles/shared/categories', collection: @article.article_categories.displayed, as: :article_category %>
 
     <%= link_to 'View all', articles_path, class: 'article-show-view-all' %>
   <% end %>

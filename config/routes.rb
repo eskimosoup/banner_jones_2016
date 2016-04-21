@@ -1,25 +1,28 @@
 Rails.application.routes.draw do
-  get 'services/show'
-
-  resources :pages, only: :show
-
   resources :team_members, only: [:index, :show] do
     collection do
       get 'search'
     end
   end
 
-  resources :article_categories, only: :show
+  resources :article_categories, only: :show, path: 'article-categories'
+  resources :office_locations, only: :show, path: 'office-locations'
+  resources :resource_categories, only: :show, path: 'resource-categories'
+  resources :video_categories, only: :show, path: 'video-categories'
+  resources :event_categories, only: :show, path: 'event-categories'
+  resources :event_locations, only: :show, path: 'event-locations'
+
   resources :articles, only: [:index, :show]
-
-  resources :office_locations, only: :show
   resources :offices, only: [:index, :show]
-
   resources :resources, only: [:index, :show]
-  resources :download_categories, only: :show
+  resources :videos, only: [:index, :show]
+  resources :events, only: [:index, :show]
+  resources :pages, only: :show
 
   resources :audiences, only: :show do
-    resources :services, only: :show
+    resources :services, only: :show do
+      resources :service_pages, only: :show, path: 'pages'
+    end
   end
 
   %w( 403 404 422 500 ).each do |code|
