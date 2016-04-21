@@ -1,4 +1,16 @@
 <% present event do |event_presenter| %>
-  <%= event.linked_text(event_presenter.title, { title: event_presenter.title }) %>
+  <%= event_presenter.linked_text(event_presenter.title, { title: event_presenter.title }) %>
+  <%= event_presenter.summary %>
+  <%= event_presenter.booking_deadline(:short) %>
+  <%= event_presenter.event_start(:short) %>
+  <%= event_presenter.event_end(:short) %>
+
+  <% if event.event_location? %>
+    <% present event.event_location do |event_location_presenter| %>
+      <%= event_location_presenter.linked_text(event_location_presenter.title, { title: event_location_presenter.title }) %>
+    <% end %>
+  <% end %>
+
   <%= render partial: 'events/shared/categories', collection: event.event_categories.displayed, as: :event_category %>
+  <%= render partial: 'events/shared/team_members', collection: event.team_members.displayed, as: :team_member, locals: { event_presenter: event_presenter, event: event } %>
 <% end %>
