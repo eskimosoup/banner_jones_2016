@@ -6,14 +6,10 @@
 <% end %>
 
 <%= content_for :head do %>
-  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css' %>
-  <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css' %>
   <%= stylesheet_link_tag 'vendor/colorbox' %>
 <% end %>
 
 <%= content_for :javascript do %>
-  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js' %>
-  <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js' %>
   <%= javascript_include_tag 'components/shared-components.js' %>
   <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>
   <%= javascript_include_tag 'components/service-components.js' %>

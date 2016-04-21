@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420102633) do
+ActiveRecord::Schema.define(version: 20160421110126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 20160420102633) do
   add_index "article_categories", ["slug"], name: "index_article_categories_on_slug", unique: true, using: :btree
 
   create_table "articles", force: :cascade do |t|
-    t.integer  "article_category_id"
     t.string   "title",                                               null: false
     t.string   "suggested_url"
     t.string   "slug"
@@ -45,8 +44,17 @@ ActiveRecord::Schema.define(version: 20160420102633) do
     t.datetime "updated_at",                                          null: false
   end
 
-  add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
   add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
+
+  create_table "articles_categorisations", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "article_category_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "articles_categorisations", ["article_category_id"], name: "index_articles_categorisations_on_article_category_id", using: :btree
+  add_index "articles_categorisations", ["article_id"], name: "index_articles_categorisations_on_article_id", using: :btree
 
   create_table "audiences", force: :cascade do |t|
     t.string   "title",                                   null: false
@@ -163,15 +171,23 @@ ActiveRecord::Schema.define(version: 20160420102633) do
     t.string   "social_share_title",       limit: 150
     t.string   "social_share_description"
     t.string   "social_share_image"
-    t.integer  "event_category_id"
     t.integer  "event_location_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
   end
 
-  add_index "events", ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
   add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
   add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
+
+  create_table "events_categorisations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "event_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "events_categorisations", ["event_category_id"], name: "index_events_categorisations_on_event_category_id", using: :btree
+  add_index "events_categorisations", ["event_id"], name: "index_events_categorisations_on_event_id", using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "key",                        null: false
@@ -394,23 +410,31 @@ ActiveRecord::Schema.define(version: 20160420102633) do
   add_index "resource_categories", ["slug"], name: "index_resource_categories_on_slug", using: :btree
 
   create_table "resources", force: :cascade do |t|
-    t.string   "title",                                null: false
+    t.string   "title",                              null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "publish_at",                           null: false
+    t.datetime "publish_at",                         null: false
     t.datetime "expire_at"
     t.text     "summary"
     t.text     "content"
-    t.string   "file",                                 null: false
+    t.string   "file",                               null: false
     t.string   "image"
-    t.integer  "resource_category_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.boolean  "homepage_highlight",   default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "homepage_highlight", default: false
   end
 
-  add_index "resources", ["resource_category_id"], name: "index_resources_on_resource_category_id", using: :btree
   add_index "resources", ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
+
+  create_table "resources_categorisations", force: :cascade do |t|
+    t.integer  "resource_id"
+    t.integer  "resource_category_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "resources_categorisations", ["resource_category_id"], name: "index_resources_categorisations_on_resource_category_id", using: :btree
+  add_index "resources_categorisations", ["resource_id"], name: "index_resources_categorisations_on_resource_id", using: :btree
 
   create_table "service_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
@@ -695,7 +719,6 @@ ActiveRecord::Schema.define(version: 20160420102633) do
     t.string   "social_share_image"
     t.datetime "publish_at",               null: false
     t.datetime "expire_at"
-    t.integer  "video_category_id"
     t.text     "summary"
     t.text     "embed_code",               null: false
     t.datetime "created_at",               null: false
@@ -705,15 +728,27 @@ ActiveRecord::Schema.define(version: 20160420102633) do
   end
 
   add_index "videos", ["slug"], name: "index_videos_on_slug", unique: true, using: :btree
-  add_index "videos", ["video_category_id"], name: "index_videos_on_video_category_id", using: :btree
 
-  add_foreign_key "articles", "article_categories", on_delete: :nullify
+  create_table "videos_categorisations", force: :cascade do |t|
+    t.integer  "video_id"
+    t.integer  "video_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "videos_categorisations", ["video_category_id"], name: "index_videos_categorisations_on_video_category_id", using: :btree
+  add_index "videos_categorisations", ["video_id"], name: "index_videos_categorisations_on_video_id", using: :btree
+
+  add_foreign_key "articles_categorisations", "article_categories"
+  add_foreign_key "articles_categorisations", "articles"
   add_foreign_key "audiences", "team_members", on_delete: :nullify
-  add_foreign_key "events", "event_categories"
   add_foreign_key "events", "event_locations"
+  add_foreign_key "events_categorisations", "event_categories"
+  add_foreign_key "events_categorisations", "events"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "onpage_navigations_content_items", "onpage_navigations"
-  add_foreign_key "resources", "resource_categories"
+  add_foreign_key "resources_categorisations", "resource_categories"
+  add_foreign_key "resources_categorisations", "resources"
   add_foreign_key "services", "audiences", on_delete: :nullify
   add_foreign_key "services_articles", "articles"
   add_foreign_key "services_articles", "services"
@@ -747,5 +782,6 @@ ActiveRecord::Schema.define(version: 20160420102633) do
   add_foreign_key "team_members_offices", "team_members"
   add_foreign_key "team_members_testimonials", "team_members"
   add_foreign_key "team_members_testimonials", "testimonials"
-  add_foreign_key "videos", "video_categories", on_delete: :nullify
+  add_foreign_key "videos_categorisations", "video_categories"
+  add_foreign_key "videos_categorisations", "videos"
 end
