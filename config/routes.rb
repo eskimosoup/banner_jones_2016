@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :event_categories, only: :show, path: 'event-categories'
   resources :event_locations, only: :show, path: 'event-locations'
 
+  resources :case_studies, only: [:index, :show], path: 'case-studies'
   resources :articles, only: [:index, :show]
   resources :offices, only: [:index, :show]
   resources :resources, only: [:index, :show]
@@ -21,7 +22,7 @@ Rails.application.routes.draw do
 
   resources :audiences, only: :show do
     resources :services, only: :show do
-      resources :service_pages, only: :show, path: 'pages'
+      resources :service_pages, only: :show, path: 'pages', controller: 'services/pages'
     end
   end
 
