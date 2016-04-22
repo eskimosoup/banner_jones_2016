@@ -1,0 +1,7 @@
+<div class="articles-index">
+  <% present @event_location do |event_location_presenter| %>
+    <h1><%= event_location_presenter.title %></h1>
+  <% end %>
+
+  <%= render partial: 'events/event', collection: @events, as: :event %>
+</div>

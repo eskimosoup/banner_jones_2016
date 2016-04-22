@@ -1,0 +1,7 @@
+<div class="articles-index">
+  <% present @article_category do |article_category_presenter| %>
+    <h1><%= article_category_presenter.title %></h1>
+  <% end %>
+
+  <%= render partial: 'articles/article', collection: @articles, as: :article %>
+</div>

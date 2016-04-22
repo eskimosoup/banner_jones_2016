@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 
   resources :audiences, only: :show do
     resources :services, only: :show do
-      resources :service_pages, only: :show, path: 'pages'
+      resources :service_pages, only: :show, path: 'pages', controller: 'services/pages'
     end
   end
 

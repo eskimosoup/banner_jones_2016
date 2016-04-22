@@ -1,0 +1,7 @@
+<div class="videos-index">
+  <h1>Videos</h1>
+  <%= render partial: 'video', collection: @videos, as: :video %>
+
+  <h2>Categories</h2>
+  <%= render partial: 'video_categories/video_category', collection: @video_categories, as: :video_category %>
+</div>
