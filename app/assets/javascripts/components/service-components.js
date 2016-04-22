@@ -3,10 +3,10 @@ var offsetHeight, $onpageLinks, onpageLinksHeight;
 
 function setFixedHeader() {
   if (Modernizr.mq('only screen and (min-width: 1200px)')) {
-    if($(document).scrollTop() > offsetHeight) {
+    if($(document).scrollTop() > offsetHeight && $onpageLinks.length) {
       $onpageLinks.addClass('fixed');
       $onpageContent.addClass('fixed');
-    } else {
+    } else if($onpageLinks.length) {
       $onpageLinks.removeClass('fixed');
       $onpageContent.removeClass('fixed');
     }
