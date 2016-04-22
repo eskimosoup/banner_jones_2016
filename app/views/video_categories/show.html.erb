@@ -1,7 +1,0 @@
-<div class="videos-index">
-  <% present @video_category do |video_category_presenter| %>
-    <h1><%= video_category_presenter.title %></h1>
-  <% end %>
-
-  <%= render partial: 'videos/video', collection: @videos, as: :video %>
-</div>

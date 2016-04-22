@@ -1,7 +1,0 @@
-<div class="events-index">
-  <% present @event_category do |event_category_presenter| %>
-    <h1><%= event_category_presenter.title %></h1>
-  <% end %>
-
-  <%= render partial: 'events/event', collection: @events, as: :event %>
-</div>
