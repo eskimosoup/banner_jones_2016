@@ -1,4 +1,4 @@
-.articles-content-box-slider-controls {
+.articles-home-content-box-slider-controls {
   position: absolute;
   right: rem(60px);
 }
@@ -11,16 +11,6 @@
 
 .article {
   padding: 0 rem(15px);
-
-  &.blue {
-    .article-title {
-      border-color: #13a8b7;
-
-      &:hover {
-        background: #13a8b7;
-      }
-    }
-  }
 }
 
 .article-title {
@@ -53,12 +43,6 @@
       small: 10
     )
   );
-
-  img {
-    border: 1px solid $orange;
-    border-radius: 50%;
-    margin: 0 auto;
-  }
 }
 
 .article-author-details {
@@ -88,7 +72,7 @@
   }
 }
 
-.article-author-department {
+.article-author-audience {
   color: $dark-purple;
   font-family: $ubuntu;
   font-size: rem(12px);

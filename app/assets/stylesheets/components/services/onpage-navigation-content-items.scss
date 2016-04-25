@@ -1,0 +1,13 @@
+.onpage-navigation-content-items {
+  .toggle-class {
+    background: image-url('components/content/bullet-point.png') no-repeat left 5px;
+    display: block;
+    line-height: 1.25;
+    margin: rem(8px) 0;
+    padding: 0 0 0 rem(14px);
+
+    & + div {
+      margin: 0 rem(14px);      
+    }
+  }
+}

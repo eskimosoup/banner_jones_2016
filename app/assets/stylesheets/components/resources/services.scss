@@ -1,0 +1,30 @@
+.service-resource-image {
+  display: block;
+  margin: rem(25px) 0;
+}
+
+.standard-content-box {
+  .service-resource-download-button {
+    background: $black image-url('components/icons/download-orange.png') no-repeat 90% 50%;
+    border-radius: 2px;
+    color: $white;
+    display: block;
+    font-family: $ubuntu;
+    font-size: rem(18px);
+    font-weight: $ubuntu-light;
+    text-align: center;
+    transition: color 0.1s linear;
+    padding: rem(12px);
+
+    &:link,
+    &:visited {
+      color: $white;
+      text-decoration: none;
+    }
+
+    &:hover,
+    &:active {
+      color: $orange;
+    }
+  }
+}

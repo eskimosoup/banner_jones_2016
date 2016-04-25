@@ -1,0 +1,66 @@
+.service-onpage-navigation-links {
+  background: $medium-grey;
+  margin: 0 0 rem(47px);
+  width: 100%;
+
+  &.fixed {
+    margin: 0;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+  }
+}
+
+.service-onpage-navigation-links-content {
+  @include grid-row;
+}
+
+.service-onpage-navigation-links-list {
+  @include grid-column(12);
+  margin: 0 rem(20px);
+  position: relative;
+}
+
+
+.service-onpage-navigation-link {
+  color: $grey;
+  display: inline-block;
+  font-size: rem(14px);
+  line-height: 1;
+  padding: rem(20px);
+
+  &:link,
+  &:visited {
+    color: $grey;
+  }
+
+  &:hover,
+  &:active,
+  &.active {
+    background: $white;
+    border-bottom-width: 9px;
+    border-color: $orange;
+    border-left-width: 0;
+    border-right-width: 0;
+    border-style: solid;
+    border-top-width: 9px;
+    color: $black;
+    padding-bottom: rem(11px);
+    padding-top: rem(11px);
+  }
+}
+
+.service-onpage-navigation-links-cta {
+  background: $black;
+  max-height: 54px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  a {
+    display: inline-block;
+    line-height: 1;
+    padding: rem(17px);
+  }
+}
