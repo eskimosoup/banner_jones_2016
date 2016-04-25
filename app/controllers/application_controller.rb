@@ -18,12 +18,12 @@ class ApplicationController < ActionController::Base
   def index
     @banners = Banner.displayed
     @testimonials = Testimonial.displayed
-    @articles = Article.homepage_highlight
-    @resources = Resource.homepage_highlight
+    @articles = Article.home_page_highlight
+    @downloads = Download.displayed
     @team_members = TeamMember.displayed
-    @services = Service.root_services.displayed.pluck(:title, :id)
-    @banner_services = Service.homepage_highlight
-    @offices = Office.displayed
+    @services = Service.displayed.pluck(:title, :id)
+    @banner_services = Service.banner_highlight
+    @banner_menu = Optimadmin::Menu.new(name: 'home_page_banner')
   end
 
   private

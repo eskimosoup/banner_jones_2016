@@ -2,7 +2,7 @@ class TeamMembersController < ApplicationController
   before_action :set_search_service, only: :search
 
   def index
-    @presented_team_members = BaseCollectionPresenter.new(collection: TeamMember.displayed, view_template: view_context, presenter: TeamMemberPresenter)
+    @presented_team_members = BaseCollectionPresenter.new(collection: TeamMember.positioned.displayed, view_template: view_context, presenter: TeamMemberPresenter)
   end
 
   def show
@@ -11,9 +11,9 @@ class TeamMembersController < ApplicationController
 
   def search
     @team_members = if @service.blank?
-                      TeamMember.displayed.filter(search_params.slice(:name_search, :office_id))
+                      TeamMember.positioned.displayed.name_search(params[:name])
                     else
-                      @service.team_members.displayed.filter(search_params.slice(:name_search, :office_id))
+                      @service.team_members.name_search(params[:name])
                     end
 
     respond_to do |format|
@@ -25,9 +25,5 @@ class TeamMembersController < ApplicationController
 
   def set_search_service
     @service = Service.displayed.find(params[:service_id]) if params[:service_id].present?
-  end
-
-  def search_params
-    params.permit([:name_search, :office_id])
   end
 end

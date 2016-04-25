@@ -1,72 +1,34 @@
-%content-background {
-  background: $offset-white;
-}
-
 .content {
-  @extend %content-background;
+  background: $offset-white;
   padding: rem(55px) 0;
 }
 
-.home-content-box-wrap {
+.content-box-wrap {
   @include grid-row;
   margin: 0 auto rem(35px);
 }
 
-.home-content-box {
-  @include shadow-content-box;
+.content-box {
+  background: $white;
+  box-shadow: 0 6px 15px 1px rgba($dark-purple, .33);
+  position: relative;
 
   &.inner {
     padding: rem(60px) 0;
   }
 }
 
-.home-content-box-title {
-  @include home-content-box-title;
-}
-
-.home-content-box-previous,
-.home-content-box-next {
-  display: inline-block;
-  margin: 0 em(4px) 0;
-}
-
-.standard-content-box {
-  @include shadow-content-box;
-  padding: rem(20px);
-
-  &.standalone {
-    padding: 0;
-  }
-}
-
-.standard-content-box-inner-content {
-  @include page-content;
-  @include paragraph;
-
-  a {
-    color: $dark-purple;
-    transition: color 0.1s linear;
-
-    &:link,
-    &:visited {
-      color: $dark-purple;
-      text-decoration: underline;
-    }
-
-    &:hover,
-    &:active {
-      color: $black;
-      text-decoration: none;
-    }
-  }
-}
-
-.standard-content-box-title {
-  border-bottom: 5px solid $orange;
+.content-box-title {
+  color: $dark-purple;
   font-family: $montserrat;
   font-size: rem(21px);
   font-weight: $montserrat-semibold;
-  line-height: 1;
-  margin: rem(16px) 0;
-  padding: 0 0 rem(17px);
+  margin: 0 0 rem(40px);
+  text-align: center;
+}
+
+.content-box-previous,
+.content-box-next {
+  display: inline-block;
+  margin: 0 em(4px) 0;
 }
