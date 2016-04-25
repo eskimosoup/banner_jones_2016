@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422111200) do
+ActiveRecord::Schema.define(version: 20160425105735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accreditations", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title",      null: false
+    t.string   "image",      null: false
+    t.string   "link"
+    t.datetime "publish_at", null: false
+    t.datetime "expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "article_categories", force: :cascade do |t|
     t.string   "title",                        null: false
@@ -195,7 +206,7 @@ ActiveRecord::Schema.define(version: 20160422111200) do
 
   create_table "features", force: :cascade do |t|
     t.string   "key",                        null: false
-    t.boolean  "enabled",    default: false, null: false
+    t.boolean  "enabled",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
@@ -476,6 +487,17 @@ ActiveRecord::Schema.define(version: 20160422111200) do
   add_index "services", ["slug"], name: "index_services_on_slug", using: :btree
   add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
 
+  create_table "services_accreditations", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "service_id"
+    t.integer  "accreditation_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "services_accreditations", ["accreditation_id"], name: "index_services_accreditations_on_accreditation_id", using: :btree
+  add_index "services_accreditations", ["service_id"], name: "index_services_accreditations_on_service_id", using: :btree
+
   create_table "services_articles", force: :cascade do |t|
     t.integer  "service_id", null: false
     t.integer  "article_id", null: false
@@ -638,6 +660,17 @@ ActiveRecord::Schema.define(version: 20160422111200) do
   add_index "team_members_articles", ["article_id"], name: "index_team_members_articles_on_article_id", using: :btree
   add_index "team_members_articles", ["team_member_id"], name: "index_team_members_articles_on_team_member_id", using: :btree
 
+  create_table "team_members_awards", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "team_member_id"
+    t.integer  "award_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "team_members_awards", ["award_id"], name: "index_team_members_awards_on_award_id", using: :btree
+  add_index "team_members_awards", ["team_member_id"], name: "index_team_members_awards_on_team_member_id", using: :btree
+
   create_table "team_members_department_roles", force: :cascade do |t|
     t.integer  "position"
     t.integer  "team_member_id",     null: false
@@ -754,6 +787,8 @@ ActiveRecord::Schema.define(version: 20160422111200) do
   add_foreign_key "resources_categorisations", "resource_categories"
   add_foreign_key "resources_categorisations", "resources"
   add_foreign_key "services", "audiences", on_delete: :nullify
+  add_foreign_key "services_accreditations", "accreditations"
+  add_foreign_key "services_accreditations", "services"
   add_foreign_key "services_articles", "articles"
   add_foreign_key "services_articles", "services"
   add_foreign_key "services_case_studies", "case_studies"
@@ -776,6 +811,8 @@ ActiveRecord::Schema.define(version: 20160422111200) do
   add_foreign_key "services_videos", "videos"
   add_foreign_key "team_members_articles", "articles"
   add_foreign_key "team_members_articles", "team_members"
+  add_foreign_key "team_members_awards", "awards"
+  add_foreign_key "team_members_awards", "team_members"
   add_foreign_key "team_members_department_roles", "department_roles"
   add_foreign_key "team_members_department_roles", "team_members"
   add_foreign_key "team_members_events", "events"
