@@ -13,7 +13,7 @@ module Extensions
          ['Latest tweets', 'twitter'],
          %w(Videos videos),
          ['Service pages', 'service_pages'],
-         ['Team members', 'team_members']
+         %w(Accreditations accreditations)
        ],
         # ['Team Members',
         # ['Frequently Asked Questions', 'faqs'],
