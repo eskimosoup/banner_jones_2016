@@ -23,15 +23,10 @@
   display: inline-block;
   text-align: center;
   vertical-align: bottom;
-  width: grid-column(8);
 }
 
 .slider-team-member-search-field {
-  @include grid-column($columns: 3,
-    $gutter: (
-      small: 14
-    ));
-  @include grid-column-end;
+  display: inline-block;
   text-align: left;
 }
 
@@ -59,6 +54,7 @@
   font-weight: $ubuntu-light;
   line-height: 1;
   padding: rem(11px) rem(19px);
+  margin: 0 rem(5px);
 
   &:focus {
     background: $black;
