@@ -12,6 +12,17 @@
                                                  class: 'the-legal-500' %>
   </div>
 
+  <div class="header-hamburger-menu">
+    <%= link_to '#', class: 'toggle-class', title: 'Show navigation',
+                data: {
+                  container: '.primary-navigation-wrap',
+                  class: 'mobile-expanded',
+                  return: 'false'
+                } do %>
+      <%= image_tag 'components/icons/navigation/hamburger.png', alt: 'Navigation' %>
+    <% end %>
+  </div>
+
   <div class="header-contact">
     <ul class="header-aside-navigation">
       <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>

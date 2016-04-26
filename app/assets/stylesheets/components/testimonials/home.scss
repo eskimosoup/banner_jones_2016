@@ -1,7 +1,16 @@
 .home-content-box.testimonials {
-  background: image-url('components/icons/testimonial/open-quote.png') no-repeat 30px 70px,
-  image-url('components/icons/testimonial/close-quote.png') no-repeat 97% 75%,
-  $black;
+  background: image-url('components/icons/testimonial/open-quote.png') no-repeat,
+              image-url('components/icons/testimonial/close-quote.png') no-repeat,
+              $black;
+  background-position: 25px 45px, 97% 97%;
+  background-size: 13%;
+  padding-bottom: rem(60px);
+
+  @include breakpoint(medium) {
+    background-size: initial;
+    background-position: 30px 70px, 97% 75%;
+    padding-bottom: 0;
+  }
 }
 
 .testimonials-title {
@@ -20,8 +29,11 @@
   p {
     color: $orange;
     font-weight: $myriad-pro-semibold;
-    margin: 0 rem(40px) rem(9px);
     text-align: center;
+
+    @include breakpoint(medium) {
+      margin: 0 rem(40px) rem(9px);
+    }
   }
 }
 

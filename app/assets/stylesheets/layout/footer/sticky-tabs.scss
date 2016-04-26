@@ -1,10 +1,15 @@
 .sticky-call-to-actions {
-  @include clearfix;
-  bottom: -2px;
-  height: 77px;
-  position: fixed;
-  right: 0;
-  width: 270px;
+  display: none;
+
+  @include breakpoint(medium) {
+    @include clearfix;
+    bottom: -2px;
+    display: block;
+    height: 77px;
+    position: fixed;
+    right: 0;
+    width: 270px;
+  }
 
   img {
     display: block;

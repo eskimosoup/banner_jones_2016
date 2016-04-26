@@ -1,7 +1,12 @@
 .service-onpage-navigation-links {
-  background: $medium-grey;
-  margin: 0 0 rem(47px);
-  width: 100%;
+  display: none;
+
+  @include breakpoint(medium) {
+    display: block;
+    background: $medium-grey;
+    margin: 0 0 rem(47px);
+    width: 100%;
+  }
 
   &.fixed {
     margin: 0;

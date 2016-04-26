@@ -1,21 +1,46 @@
 .primary-header {
   @include grid-row;
+
+  @include breakpoint(small only) {
+    background: $white;
+    padding: rem(15px);
+    position: fixed;
+    top: 0;
+    z-index: 10;
+  }
+}
+
+.the-legal-500 {
+  display: none;
+
+  @include breakpoint(medium) {
+    display: inline-block;
+  }
 }
 
 .header-branding {
-  @include grid-column(6);
-  margin: rem(25px) 0 0;
+  @include clearfix;
+  @include grid-column($columns: 6, $gutter: (small: 0, medium: 30));
+  @include breakpoint(medium) {
+    margin: rem(25px) 0 0;
+  }
 }
 
 .header-logo {
-  display: block;
-  float: left;
-  padding: 0 rem(75px) 0 0;
+  @include breakpoint(medium) {
+    display: block;
+    float: left;
+    padding: 0 rem(75px) 0 0;
+  }
 }
 
 .header-contact {
-  @include grid-column(6);
-  text-align: right;
+  display: none;
+
+  @include breakpoint(medium) {
+    @include grid-column(6);
+    text-align: right;
+  }
 }
 
 .header-telephone {
@@ -40,4 +65,18 @@
 .header-navigation {
   @include grid-row;
   margin: rem(30px) auto 0;
+}
+
+.header-hamburger-menu {
+  @include grid-column(6);
+  text-align: right;
+
+  @include breakpoint(medium) {
+    display: none;
+  }
+
+  a {
+    display: block;
+    padding: 0 em(5px) 0 0;
+  }
 }

@@ -45,7 +45,7 @@
   color: $white;
   font-family: $montserrat;
   font-size: rem(16px);
-  margin: 0 rem(30px)
+  margin: 0 rem(30px);
 
   @include breakpoint(medium) {
     text-align: right;

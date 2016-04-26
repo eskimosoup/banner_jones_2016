@@ -6,12 +6,17 @@
     padding: 0 0 rem(12px);
 
     .service-article-image {
-      @include grid-column($columns: 4, $gutter: (medium: 10));
+      @include breakpoint(medium) {
+        @include grid-column($columns: 4, $gutter: (medium: 10));
+      }
+
       margin: rem(24px) 0 0;
     }
 
     .service-article-content {
-      @include grid-column(8);
+      @include breakpoint(medium) {
+        @include grid-column(8);
+      }
     }
   }
 
@@ -26,18 +31,26 @@
     }
 
     .service-article-date {
-      @include grid-column(2);
+      @include breakpoint(medium) {
+        @include grid-column(2);
+      }
+
       font-family: $montserrat;
       font-weight: 400;
     }
 
     .service-article-title {
-      @include grid-column($columns: 6, $gutter: (small: 0));
+      @include breakpoint(medium) {
+        @include grid-column($columns: 6, $gutter: (small: 0));
+      }
+
       margin: 0;
     }
 
     .service-article-team-members {
-      @include grid-column($columns: 4, $gutter: (small: 0));
+      @include breakpoint(medium) {
+        @include grid-column($columns: 4, $gutter: (small: 0));
+      }
     }
   }
 }
@@ -63,12 +76,17 @@
 }
 
 .service-article-read-more {
-  @include grid-column($columns: 6, $gutter: (small: 0));
   @include service-read-more;
+
+  @include breakpoint(medium) {
+    @include grid-column($columns: 6, $gutter: (small: 0));
+  }
 }
 
 .service-article-team-members {
-  @include grid-column($columns: 6, $gutter: (small: 0));
+  @include breakpoint(medium) {
+    @include grid-column($columns: 6, $gutter: (small: 0));
+  }
 
   .multiple-team-members-slick {
     margin: 0;
@@ -87,8 +105,11 @@
   display: block;
   float: left;
   padding: rem(6px) 0 0;
-  text-align: right;
   width: 70%;
+
+  @include breakpoint(medium) {
+    text-align: right;
+  }
 }
 
 .service-article-team-member-name {
