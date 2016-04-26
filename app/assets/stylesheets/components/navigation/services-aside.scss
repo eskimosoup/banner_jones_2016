@@ -1,5 +1,7 @@
 .service-page-aside-navigation {
-  @include grid-column(3);
+  @include breakpoint(medium) {
+    @include grid-column(3);
+  }
 }
 
 .service-page-aside-navigation-content {
@@ -49,6 +51,10 @@
   font-family: $montserrat;
   font-size: rem(14px);
   font-weight: $montserrat-semibold;
-  margin: 0 0 rem(21px);
-  padding: rem(25px) 0 rem(21px);
+  padding: 0 0 rem(10px);
+
+  @include breakpoint(medium) {
+    margin: 0 0 rem(21px);
+    padding: rem(25px) 0 rem(21px);
+  }
 }

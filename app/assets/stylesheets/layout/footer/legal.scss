@@ -1,11 +1,20 @@
 .legal-footer {
   @include grid-row;
-  margin: em(60px) auto rem(122px);
+  margin: em(30px) auto rem(51px);
+
+  @include breakpoint(medium) {
+    margin-bottom: rem(122px);
+    margin-top: em(60px);
+  }
 
   p {
     font-family: $montserrat;
-    font-size: rem(12px);
+    font-size: rem(10px);
+    margin: rem(5px) 0;
     text-align: center;
-    margin: 0;
+
+    @include breakpoint(medium) {
+      font-size: rem(12px);
+    }
   }
 }
