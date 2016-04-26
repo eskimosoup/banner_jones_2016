@@ -1,7 +1,11 @@
 .primary-footer {
   background: $dark-offset-black;
   box-shadow: 0 6px 15px 1px rgba($dark-offset-black, .33);
-  padding: rem(63px) 0 rem(81px);
+  padding: rem(33px) 0 rem(41px);
+
+  @include breakpoint(medium) {
+    padding: rem(63px) 0 rem(81px);
+  }
 }
 
 .awards-and-accreditations {
