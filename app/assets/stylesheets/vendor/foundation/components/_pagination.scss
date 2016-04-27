@@ -81,7 +81,7 @@ $pagination-arrows: true !default;
         display: inline-block;
       }
 
-      @include breakpoint(medium) {
+      @include breakpoint(large) {
         display: inline-block;
       }
     }

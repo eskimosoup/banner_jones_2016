@@ -13,7 +13,7 @@
 .the-legal-500 {
   display: none;
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     display: inline-block;
   }
 }
@@ -21,13 +21,13 @@
 .header-branding {
   @include clearfix;
   @include grid-column($columns: 6, $gutter: (small: 0, medium: 30));
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     margin: rem(25px) 0 0;
   }
 }
 
 .header-logo {
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     display: block;
     float: left;
     padding: 0 rem(75px) 0 0;
@@ -37,8 +37,9 @@
 .header-contact {
   display: none;
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     @include grid-column(6);
+    display: block;
     text-align: right;
   }
 }
@@ -71,7 +72,7 @@
   @include grid-column(6);
   text-align: right;
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     display: none;
   }
 

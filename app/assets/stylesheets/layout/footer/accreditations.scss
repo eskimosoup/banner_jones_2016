@@ -3,7 +3,7 @@
   box-shadow: 0 6px 15px 1px rgba($dark-offset-black, .33);
   padding: rem(33px) 0 rem(41px);
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     padding: rem(63px) 0 rem(81px);
   }
 }

@@ -45,7 +45,7 @@ function smoothScroll(elem) {
   });
 }
 
-$(function() {
+$(document).ready(function() {
   $onpageLinks = $('.service-onpage-navigation-links');
   $onpageContent = $('.service-onpage-navigation');
   onpageLinksHeight = parseInt($onpageLinks.height());
@@ -75,6 +75,10 @@ $(function() {
       }).attr("href","javascript:void(0)");
     });
   }
+});
+
+$(document).on('click', '.service-page-aside-navigation-active', function() {
+  return false;
 });
 
 $(document).on('click', '.service-onpage-navigation-link', function() {

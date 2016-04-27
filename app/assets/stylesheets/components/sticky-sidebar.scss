@@ -1,7 +1,7 @@
 .sticky-sidebar-toggle {
   display: none;
   
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     background: $black;
     padding: rem(21px) rem(29px);
     position: absolute;;

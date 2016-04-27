@@ -8,7 +8,15 @@ function teamMembersSlick() {
     prevArrow: '.slider-team-members-slider-content-box-slider-controls .slider-content-box-previous',
     slidesToShow: 12,
     slidesToScroll: 1,
-    swipe: false
+    swipe: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 3,
+        }
+      }
+    ]
   });
 }
 

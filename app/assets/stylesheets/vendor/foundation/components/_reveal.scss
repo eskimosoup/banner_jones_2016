@@ -67,7 +67,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   background-color: $reveal-background;
   border-radius: $reveal-radius;
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     min-height: 0;
   }
 
@@ -90,7 +90,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
   $width: $reveal-width,
   $max-width: $reveal-max-width
 ) {
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     @extend %reveal-centered;
     width: $width;
     max-width: $reveal-max-width;
@@ -132,7 +132,7 @@ $reveal-overlay-background: rgba($black, 0.45) !default;
 
     // Placeholder selector for medium-and-up modals
     // Prevents duplicate CSS when defining multiple Reveal sizes
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       %reveal-centered {
         left: auto;
         right: auto;

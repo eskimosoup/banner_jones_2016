@@ -24,7 +24,7 @@
   }
 
 
-  @media #{$medium-up} {
+  @include breakpoint(large) {
     &:last-of-type {
       bottom: 0;
       margin-bottom: 0;
@@ -35,9 +35,17 @@
 }
 
 .service-pages-page-image {
-  @include grid-column($columns: 5);
+  @include breakpoint(small only) {
+    margin: 0 0 rem(10px);
+  }
+
+  @include breakpoint(large) {
+    @include grid-column($columns: 5);
+  }
 }
 
 .service-pages-page-details {
-  @include grid-column($columns: 7);
+  @include breakpoint(large) {
+    @include grid-column($columns: 7);
+  }
 }

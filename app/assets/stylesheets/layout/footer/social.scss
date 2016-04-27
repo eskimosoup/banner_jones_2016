@@ -10,7 +10,7 @@
 .social-networks {
   @include grid-column(12);
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     @include grid-column(6);
   }
 }
@@ -25,7 +25,7 @@
   margin: 0 rem(40px) 0 0;
   padding: 0 rem(31px) 0 0;
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     background-position: center right;
     display: inline-block;
   }
@@ -35,7 +35,7 @@
   display: inline-block;
   margin: rem(20px);
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     margin-bottom: 0;
     margin-top: 0;
   }
@@ -47,7 +47,7 @@
   font-size: rem(16px);
   margin: 0 rem(30px);
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     text-align: right;
     margin: 0;
   }
