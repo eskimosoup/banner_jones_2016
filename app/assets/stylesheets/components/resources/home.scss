@@ -17,7 +17,11 @@
 
 .helpful-guides-slick {
   background: image-url('components/helpful-guides/shelf.png') no-repeat bottom;
-  padding: 0 rem(100px) rem(43px);
+  padding: rem(20px) rem(20px) rem(43px);
+
+  @include breakpoint(large) {
+    padding: 0 rem(100px) rem(43px);
+  }
 
   &.slick-slider {
     margin: 0;

@@ -6,7 +6,7 @@
       <div class="service-page-aside-navigation-links">
         <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: 'service-page-aside-navigation-active' }) %>
 
-        <ul>
+        <ul class="service-page-aside-navigation-links-list">
           <% @service.children.each do |child_service| %>
             <% present child_service do |service_presenter| %>
               <li>

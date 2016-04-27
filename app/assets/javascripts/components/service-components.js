@@ -78,6 +78,8 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.service-page-aside-navigation-active', function() {
+  $('.service-page-aside-navigation-links-list').slideToggle();
+  $('.service-page-aside-navigation-active').toggleClass('expanded');
   return false;
 });
 

@@ -2,11 +2,13 @@
 @mixin home-content-box-title {
   color: $dark-purple;
   font-family: $montserrat;
-  font-size: rem(21px);
+  font-size: rem(18px);
   font-weight: $montserrat-semibold;
   text-align: center;
+  margin: 0 0 rem(20px);
 
   @include breakpoint(large) {
+    font-size: rem(21px);
     margin: 0 0 rem(40px);
   }
 }
@@ -68,10 +70,14 @@
     h#{$i} {
       color: $dark-purple;
       font-family: $montserrat;
-      font-size: rem(nth($heading-size, $i));
+      font-size: rem((nth($heading-size, $i) - 3));
       font-weight: $montserrat-semibold;
       line-height: 1.1;
       margin: rem(20px) 0;
+
+      @include breakpoint(large) {
+        font-size: rem(nth($heading-size, $i));
+      }
     }
   }
 

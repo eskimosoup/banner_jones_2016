@@ -11,7 +11,21 @@ $(function() {
     nextArrow: '.helpful-guide-home-content-box-slider-controls .home-content-box-next',
     prevArrow: '.helpful-guide-home-content-box-slider-controls .home-content-box-previous',
     slidesToShow: 4,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
   });
 
   $('.article-title').matchHeight();
@@ -19,7 +33,15 @@ $(function() {
   $('.articles-slick').slick({
     nextArrow: '.articles-home-content-box-slider-controls .home-content-box-previous',
     prevArrow: '.articles-home-content-box-slider-controls .home-content-box-next',
-    slidesToShow: 4
+    slidesToShow: 4,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        }
+      }
+    ]
   });
 
   $('.hero-banner-audience-select .has-children:first-of-type > a').addClass('active');

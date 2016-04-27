@@ -7,27 +7,37 @@
 .service-page-aside-navigation-content {
   background: $deep-grey;
   margin: 0 rem(18px);
-  padding: rem(20px);
+
+  @include breakpoint(large) {
+    padding: rem(20px);
+  }
 }
 
 .service-page-aside-navigation-links {
   font-size: rem(14px);
-  margin: 0 rem(10px);
 
-  ul {
-    list-style: none;
-    margin: 0 0 0 rem(9px);
-
-    li {
-      margin: rem(5px) 0;
-    }
+  @include breakpoint(large) {
+    margin: 0 rem(10px);
   }
 
   a {
     color: $black;
     display: block;
     font-weight: $montserrat-light;
+    padding: rem(5px) rem(25px);
     transition: color 0.1s linear;
+
+    &:not(.service-page-aside-navigation-active) {
+      font-size: rem(13px);
+
+      @include breakpoint(large) {
+        font-size: rem(14px);
+      }
+    }
+
+    @include breakpoint(large) {
+      padding: 0;
+    }
 
     &:link,
     &:visited {
@@ -40,20 +50,50 @@
     }
 
     &.service-page-aside-navigation-active {
+      background: $red image-url('components/icons/navigation/expand.png') no-repeat 95% center;
+      color: $white;
       font-weight: $montserrat-bold;
+
+      &.expanded {
+        background-image: image-url('components/icons/navigation/collapse.png');
+      }
+
+      @include breakpoint(large) {
+        background: none;
+        color: $black;
+      }
+    }
+  }
+}
+
+.service-page-aside-navigation-links-list {
+  display: none;
+  list-style: none;
+
+  @include breakpoint(large) {
+    display: block;
+    margin: 0 0 0 rem(9px);
+  }
+
+  li {
+    border-bottom: 3px solid $white;
+    margin: rem(5px) 0;
+
+    @include breakpoint(large) {
+      border: 0;
     }
   }
 }
 
 .service-page-aside-navigation-title {
-  border-bottom: 5px solid $deep-accent-grey;
   color: $black;
   font-family: $montserrat;
   font-size: rem(14px);
   font-weight: $montserrat-semibold;
-  padding: 0 0 rem(10px);
+  padding: rem(10px) rem(10px) 0;
 
   @include breakpoint(large) {
+    border-bottom: 5px solid $deep-accent-grey;
     margin: 0 0 rem(21px);
     padding: rem(25px) 0 rem(21px);
   }
