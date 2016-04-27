@@ -27,7 +27,7 @@
     padding: rem(5px) rem(25px);
     transition: color 0.1s linear;
 
-    &:not(.service-page-aside-navigation-active) {
+    &:not(.service-page-aside-navigation-top-level) {
       font-size: rem(13px);
 
       @include breakpoint(large) {
@@ -41,7 +41,7 @@
 
     &:link,
     &:visited {
-      color: $black
+      color: $black;
     }
 
     &:hover,
@@ -49,7 +49,12 @@
       color: $red;
     }
 
-    &.service-page-aside-navigation-active {
+    &.active {
+      color: $red;
+      font-weight: 400;
+    }
+
+    &.service-page-aside-navigation-top-level {
       background: $red image-url('components/icons/navigation/expand.png') no-repeat 95% center;
       color: $white;
       font-weight: $montserrat-bold;

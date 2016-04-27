@@ -18,3 +18,4 @@
 //= require components/articles
 //= require components/toggle-class
 //= require vendor/modernizr
+//= require vendor/doubletaptogo

@@ -5,7 +5,7 @@
 
 .articles-slick {
   &.slick-slider {
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       margin: 0 em(75px);
     }
   }

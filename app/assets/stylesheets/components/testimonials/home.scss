@@ -7,9 +7,8 @@
   padding-bottom: rem(60px);
 
   @include breakpoint(large) {
-    background-size: initial;
     background-position: 30px 70px, 97% 75%;
-    padding-bottom: 0;
+    background-size: initial;
   }
 }
 

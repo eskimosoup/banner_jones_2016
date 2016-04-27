@@ -2,7 +2,7 @@ $(function() {
   $('.awards-and-accreditations-slick').slick({
     autoplay: true,
     autoplaySpeed: 5000,
-    slidesToShow: 2,
+    slidesToShow: 6,
     slidesToScroll: 1,
     dots: true,
     arrows: false,
@@ -10,7 +10,7 @@ $(function() {
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 6,
+          slidesToShow: 3,
         }
       }
     ]

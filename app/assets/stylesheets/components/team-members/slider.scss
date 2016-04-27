@@ -68,7 +68,7 @@
   padding: rem(11px) rem(19px);
   width: 100%;
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     display: inline-block;
     margin: 0 rem(5px);
     width: auto;
