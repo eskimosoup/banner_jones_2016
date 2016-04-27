@@ -1,22 +1,29 @@
 .hero-banner-navigation-wrap-horizontal {
   @extend %content-background;
+  display: none;
   padding: 0 0 rem(17px);
+
+  @include breakpoint(large) {
+    display: block;
+  }
 }
 
 .hero-banner-navigation-row-horizontal {
   @include grid-row;
   padding: 0 0 rem(75px);
-  position: relative;
 }
 
 .hero-banner-navigation-horizontal {
   background: $white;
-  bottom: -35px;
   list-style: none;
   padding: 0 rem(40px);
-  position: absolute;
   width: 100%;
-  z-index: 2;
+
+  @include breakpoint(large) {
+    bottom: -35px;
+    position: absolute;
+    z-index: 2;
+  }
 
   li {
     display: inline-block;

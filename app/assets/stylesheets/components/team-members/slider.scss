@@ -9,6 +9,10 @@
 
 .slider-team-member-form-controls {
   text-align: center;
+
+  @include breakpoint(large) {
+    margin: 0;
+  }
 }
 
 .slider-team-member-form-title {
@@ -27,7 +31,7 @@
 
 .slider-team-member-search-field {
   @include breakpoint(small only) {
-    @include grid-column(4);
+    @include grid-column(6);
   }
 
   @include breakpoint(large) {
@@ -55,12 +59,20 @@
   background: $black;
   border: 0;
   color: $white;
+  display: block;
   font-family: $ubuntu;
   font-size: rem(18px);
   font-weight: $ubuntu-light;
   line-height: 1;
+  margin: 0;
   padding: rem(11px) rem(19px);
-  margin: 0 rem(5px);
+  width: 100%;
+
+  @include breakpoint(large) {
+    display: inline-block;
+    margin: 0 rem(5px);
+    width: auto;
+  }
 
   &:focus {
     background: $black;

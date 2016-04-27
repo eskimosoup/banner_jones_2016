@@ -1,0 +1,7 @@
+body {
+  padding-top: rem(57px);
+
+  @include breakpoint(large) {
+    padding: 0;
+  }
+}

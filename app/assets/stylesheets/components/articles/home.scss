@@ -5,7 +5,9 @@
 
 .articles-slick {
   &.slick-slider {
-    margin: 0 em(75px);
+    @include breakpoint(large) {
+      margin: 0 em(75px);
+    }
   }
 }
 
@@ -37,21 +39,22 @@
 }
 
 .article-author-photo {
-  @include grid-column(
-  $columns: 3,
-  $gutter: (
-      small: 10
-    )
-  );
+    @include grid-column(
+    $columns: 3,
+    $gutter: (
+        small: 10
+      )
+    );
 }
 
 .article-author-details {
-  @include grid-column(
-  $columns: 9,
-  $gutter: (
-      small: 0
-    )
-  );
+    @include grid-column(
+    $columns: 9,
+    $gutter: (
+        small: 0
+      )
+    );
+
   line-height: 1;
 }
 

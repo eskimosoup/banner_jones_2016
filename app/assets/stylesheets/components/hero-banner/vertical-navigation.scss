@@ -1,6 +1,11 @@
 .hero-banner-navigation-wrap {
   @include grid-row;
+  display: none;
   position: relative;
+
+  @include breakpoint(large) {
+    display: block;
+  }
 }
 
 .hero-banner-navigation {

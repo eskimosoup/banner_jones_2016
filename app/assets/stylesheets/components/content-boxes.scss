@@ -14,6 +14,11 @@
 
 .home-content-box {
   @include shadow-content-box;
+  margin: rem(17px);
+
+  @include breakpoint(large) {
+    margin: 0;
+  }
 
   &.inner {
     padding: rem(60px) 0;
@@ -64,9 +69,15 @@
 .standard-content-box-title {
   border-bottom: 5px solid $orange;
   font-family: $montserrat;
-  font-size: rem(21px);
+  font-size: rem(18px);
   font-weight: $montserrat-semibold;
   line-height: 1;
-  margin: rem(16px) 0;
-  padding: 0 0 rem(17px);
+  margin: rem(8px) 0;
+  padding: 0 0 rem(9px);
+
+  @include breakpoint(large) {
+    font-size: rem(21px);
+    margin: rem(16px) 0;
+    padding: 0 0 rem(9px);
+  }
 }
