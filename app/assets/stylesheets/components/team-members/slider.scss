@@ -26,8 +26,14 @@
 }
 
 .slider-team-member-search-field {
-  display: inline-block;
-  text-align: left;
+  @include breakpoint(small only) {
+    @include grid-column(4);
+  }
+
+  @include breakpoint(large) {
+    display: inline-block;
+    text-align: left;
+  }
 }
 
 .slider-team-member-search-name,
@@ -122,7 +128,7 @@
   color: $white;
   padding: rem(10px);
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     padding: rem(29px) rem(40px) rem(40px);
   }
 }
@@ -136,14 +142,14 @@
 }
 
 .slider-team-member-profile-information {
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     float: left;
     width: grid-column(10);
   }
 }
 
 .slider-team-member-profile-services {
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     float: right;
     text-align: right;
     width: grid-column(2);
@@ -152,14 +158,21 @@
 
 .slider-team-member-role {
   display: inline-block;
-  margin: 0 0 0 rem(14px);
   text-transform: uppercase;
+
+  @include breakpoint(large) {
+    margin: 0 0 0 rem(14px);
+  }
 }
 
 .slider-team-member-profile-details {
   display: inline-block;
   list-style: none;
-  margin: 0 0 0 rem(20px);
+  margin: rem(5px) 0;
+
+  @include breakpoint(large) {
+    margin: 0 0 0 rem(20px);
+  }
 
   li {
     display: inline-block;
@@ -178,6 +191,10 @@
   left: 0;
   margin: 0 auto;
   position: absolute;
-  top: 24%;
+  top: 65px;
   z-index: 3;
+
+  @include breakpoint(large) {
+    top: 24%;
+  }
 }

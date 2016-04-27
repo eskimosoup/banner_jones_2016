@@ -74,3 +74,4 @@ gem 'twitter'
 # FIXME: Remove this when merged: https://github.com/rack/rack/commit/f2baf7ba76f90d5977abc347fed3a6bb7d32e114
 # This is to fix empty params not being submitted when a file field is included
 gem 'rack', github: 'rack/rack'
+gem 'kaminari', github: 'amatsuda/kaminari'

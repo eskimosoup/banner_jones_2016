@@ -1,7 +1,7 @@
 .service-onpage-navigation-links {
   display: none;
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     display: block;
     background: $medium-grey;
     margin: 0 0 rem(47px);

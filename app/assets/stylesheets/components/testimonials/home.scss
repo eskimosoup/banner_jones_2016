@@ -6,7 +6,7 @@
   background-size: 13%;
   padding-bottom: rem(60px);
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     background-size: initial;
     background-position: 30px 70px, 97% 75%;
     padding-bottom: 0;
@@ -31,7 +31,7 @@
     font-weight: $myriad-pro-semibold;
     text-align: center;
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       margin: 0 rem(40px) rem(9px);
     }
   }

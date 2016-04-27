@@ -1,7 +1,7 @@
 .sticky-call-to-actions {
   display: none;
 
-  @include breakpoint(medium) {
+  @include breakpoint(large) {
     @include clearfix;
     bottom: -2px;
     display: block;
