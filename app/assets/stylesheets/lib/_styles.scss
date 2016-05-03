@@ -81,7 +81,8 @@
     }
   }
 
-  p {
+  p,
+  li {
     @include paragraph;
   }
 }
