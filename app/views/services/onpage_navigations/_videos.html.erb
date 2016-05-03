@@ -14,7 +14,7 @@
         <%= video_presenter.summary %>
       </div>
 
-      <%= content_tag :div, video_presenter.embed_code, class: 'service-video-embed-code', id: "service-video-#{video_presenter.id}" %>
+      <%= content_tag :div, video_presenter.youtube_embed(400, 0, false), class: 'service-video-embed-code', id: "service-video-#{video_presenter.id}" %>
     <% end %>
   <% end %>
 
