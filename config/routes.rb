@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :videos, only: [:index, :show]
   resources :events, only: [:index, :show]
   resources :pages, only: :show
+  resources :contacts, only: [:new, :create]
 
   resources :audiences, only: :show do
     resources :services, only: :show do
@@ -43,9 +44,4 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 end
 Optimadmin::Engine.routes.draw do
-  get 'services/show'
-
-  namespace :audiences do
-    get 'services/show'
-  end
 end
