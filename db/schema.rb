@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503125426) do
+ActiveRecord::Schema.define(version: 20160504112326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,18 +123,6 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.index ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
-  end
-
-  create_table "conveyancing_quotes_sales", force: :cascade do |t|
-    t.string   "title",                               null: false
-    t.string   "forename",                            null: false
-    t.string   "surname",                             null: false
-    t.string   "phone"
-    t.string   "email",                               null: false
-    t.string   "timeframe"
-    t.decimal  "price",      precision: 10, scale: 2, null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
   end
 
   create_table "conveyancing_quotes_sales", force: :cascade do |t|
@@ -635,8 +623,19 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "expire_at"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "position"
     t.index ["slug"], name: "index_team_members_on_slug", using: :btree
     t.index ["suggested_url"], name: "index_team_members_on_suggested_url", using: :btree
+  end
+
+  create_table "team_members_accreditations", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "team_member_id"
+    t.integer  "accreditation_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["accreditation_id"], name: "index_team_members_accreditations_on_accreditation_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_accreditations_on_team_member_id", using: :btree
   end
 
   create_table "team_members_articles", force: :cascade do |t|
@@ -788,6 +787,8 @@ ActiveRecord::Schema.define(version: 20160503125426) do
   add_foreign_key "services_testimonials", "testimonials"
   add_foreign_key "services_videos", "services"
   add_foreign_key "services_videos", "videos"
+  add_foreign_key "team_members_accreditations", "accreditations"
+  add_foreign_key "team_members_accreditations", "team_members"
   add_foreign_key "team_members_articles", "articles"
   add_foreign_key "team_members_articles", "team_members"
   add_foreign_key "team_members_awards", "awards"
