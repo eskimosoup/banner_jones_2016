@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 0d444705d0eb45a58b6e5cc6c778c95fe1c27060
+  revision: 5226bc7313925069c2a3039fb08e8e5d037b50ae
   branch: master
   specs:
     optimised_site (0.0.12)
@@ -257,7 +257,7 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
-    multi_json (1.11.3)
+    multi_json (1.12.0)
     multipart-post (2.0.0)
     naught (1.1.0)
     nenv (0.3.0)

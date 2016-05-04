@@ -16,10 +16,10 @@
 }
 
 .slider-team-member-form-title {
-  @include home-content-box-title;
+  // @include home-content-box-title;
   display: inline-block;
-  font-size: rem(14px);
-  margin: 0 0 rem(10px);
+  font-size: rem(18px);
+  margin: 0 rem(10px) rem(10px) 0;
 }
 
 .slider-team-member-search-form {
