@@ -34,9 +34,8 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["slug"], name: "index_article_categories_on_slug", unique: true, using: :btree
   end
-
-  add_index "article_categories", ["slug"], name: "index_article_categories_on_slug", unique: true, using: :btree
 
   create_table "articles", force: :cascade do |t|
     t.string   "title",                                               null: false
@@ -53,19 +52,17 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.boolean  "home_page_highlight",                  default: true
     t.datetime "created_at",                                          null: false
     t.datetime "updated_at",                                          null: false
+    t.index ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   end
-
-  add_index "articles", ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
 
   create_table "articles_categorisations", force: :cascade do |t|
     t.integer  "article_id"
     t.integer  "article_category_id"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.index ["article_category_id"], name: "index_articles_categorisations_on_article_category_id", using: :btree
+    t.index ["article_id"], name: "index_articles_categorisations_on_article_id", using: :btree
   end
-
-  add_index "articles_categorisations", ["article_category_id"], name: "index_articles_categorisations_on_article_category_id", using: :btree
-  add_index "articles_categorisations", ["article_id"], name: "index_articles_categorisations_on_article_id", using: :btree
 
   create_table "audiences", force: :cascade do |t|
     t.string   "title",                                   null: false
@@ -81,11 +78,10 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "updated_at",                              null: false
     t.string   "social_share_title"
     t.string   "social_share_description"
+    t.index ["slug"], name: "index_audiences_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_audiences_on_suggested_url", using: :btree
+    t.index ["team_member_id"], name: "index_audiences_on_team_member_id", using: :btree
   end
-
-  add_index "audiences", ["slug"], name: "index_audiences_on_slug", using: :btree
-  add_index "audiences", ["suggested_url"], name: "index_audiences_on_suggested_url", using: :btree
-  add_index "audiences", ["team_member_id"], name: "index_audiences_on_team_member_id", using: :btree
 
   create_table "awards", force: :cascade do |t|
     t.integer  "position"
@@ -126,9 +122,20 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.date     "date",                                 null: false
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.index ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
   end
 
-  add_index "case_studies", ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
+  create_table "conveyancing_quotes_sales", force: :cascade do |t|
+    t.string   "title",                               null: false
+    t.string   "forename",                            null: false
+    t.string   "surname",                             null: false
+    t.string   "phone"
+    t.string   "email",                               null: false
+    t.string   "timeframe"
+    t.decimal  "price",      precision: 10, scale: 2, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
 
   create_table "conveyancing_quotes_sales", force: :cascade do |t|
     t.string   "title",                               null: false
@@ -150,9 +157,8 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.boolean  "display",     default: true, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["slug"], name: "index_department_roles_on_slug", unique: true, using: :btree
   end
-
-  add_index "department_roles", ["slug"], name: "index_department_roles_on_slug", unique: true, using: :btree
 
   create_table "event_categories", force: :cascade do |t|
     t.string   "title",                        null: false
@@ -178,9 +184,8 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "updated_at",                    null: false
     t.string   "slug"
     t.string   "suggested_url"
+    t.index ["slug"], name: "index_event_locations_on_slug", using: :btree
   end
-
-  add_index "event_locations", ["slug"], name: "index_event_locations_on_slug", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.string   "title",                                null: false
@@ -201,20 +206,18 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer  "event_location_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.index ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
+    t.index ["slug"], name: "index_events_on_slug", unique: true, using: :btree
   end
-
-  add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
-  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
 
   create_table "events_categorisations", force: :cascade do |t|
     t.integer  "event_id"
     t.integer  "event_category_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.index ["event_category_id"], name: "index_events_categorisations_on_event_category_id", using: :btree
+    t.index ["event_id"], name: "index_events_categorisations_on_event_id", using: :btree
   end
-
-  add_index "events_categorisations", ["event_category_id"], name: "index_events_categorisations_on_event_category_id", using: :btree
-  add_index "events_categorisations", ["event_id"], name: "index_events_categorisations_on_event_id", using: :btree
 
   create_table "features", force: :cascade do |t|
     t.string   "key",                        null: false
@@ -237,12 +240,11 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
     t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
-
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "job_roles", force: :cascade do |t|
     t.string   "title",                      null: false
@@ -252,9 +254,8 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.boolean  "display",     default: true, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
+    t.index ["slug"], name: "index_job_roles_on_slug", unique: true, using: :btree
   end
-
-  add_index "job_roles", ["slug"], name: "index_job_roles_on_slug", unique: true, using: :btree
 
   create_table "office_locations", force: :cascade do |t|
     t.string   "name",                         null: false
@@ -263,10 +264,9 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.string   "slug"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["slug"], name: "index_office_locations_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_office_locations_on_suggested_url", using: :btree
   end
-
-  add_index "office_locations", ["slug"], name: "index_office_locations_on_slug", using: :btree
-  add_index "office_locations", ["suggested_url"], name: "index_office_locations_on_suggested_url", using: :btree
 
   create_table "offices", force: :cascade do |t|
     t.string   "building_name"
@@ -288,11 +288,10 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.float    "longitude"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
+    t.index ["slug"], name: "index_offices_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_offices_on_suggested_url", using: :btree
   end
-
-  add_index "offices", ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
-  add_index "offices", ["slug"], name: "index_offices_on_slug", using: :btree
-  add_index "offices", ["suggested_url"], name: "index_offices_on_suggested_url", using: :btree
 
   create_table "onpage_navigations", force: :cascade do |t|
     t.integer  "position"
@@ -319,9 +318,8 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer  "onpage_navigation_id"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_content_items_on_onpage_navigation_id", using: :btree
   end
-
-  add_index "onpage_navigations_content_items", ["onpage_navigation_id"], name: "index_onpage_navigations_content_items_on_onpage_navigation_id", using: :btree
 
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
@@ -333,11 +331,10 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "password_reset_sent_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["auth_token"], name: "index_optimadmin_administrators_on_auth_token", using: :btree
+    t.index ["email"], name: "index_optimadmin_administrators_on_email", using: :btree
+    t.index ["username"], name: "index_optimadmin_administrators_on_username", using: :btree
   end
-
-  add_index "optimadmin_administrators", ["auth_token"], name: "index_optimadmin_administrators_on_auth_token", using: :btree
-  add_index "optimadmin_administrators", ["email"], name: "index_optimadmin_administrators_on_email", using: :btree
-  add_index "optimadmin_administrators", ["username"], name: "index_optimadmin_administrators_on_username", using: :btree
 
   create_table "optimadmin_documents", force: :cascade do |t|
     t.string   "name",        null: false
@@ -374,10 +371,9 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
     t.integer "generations",   null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "menu_item_anc_desc_idx", unique: true, using: :btree
+    t.index ["descendant_id"], name: "menu_item_desc_idx", using: :btree
   end
-
-  add_index "optimadmin_menu_item_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "menu_item_anc_desc_idx", unique: true, using: :btree
-  add_index "optimadmin_menu_item_hierarchies", ["descendant_id"], name: "menu_item_desc_idx", using: :btree
 
   create_table "optimadmin_menu_items", force: :cascade do |t|
     t.string   "menu_name",       limit: 100
@@ -391,9 +387,8 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
     t.boolean  "display",                     default: true
+    t.index ["link_id"], name: "index_optimadmin_menu_items_on_link_id", using: :btree
   end
-
-  add_index "optimadmin_menu_items", ["link_id"], name: "index_optimadmin_menu_items_on_link_id", using: :btree
 
   create_table "optimadmin_module_pages", force: :cascade do |t|
     t.string   "name"
@@ -432,9 +427,8 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["slug"], name: "index_resource_categories_on_slug", using: :btree
   end
-
-  add_index "resource_categories", ["slug"], name: "index_resource_categories_on_slug", using: :btree
 
   create_table "resources", force: :cascade do |t|
     t.string   "title",                              null: false
@@ -449,28 +443,25 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.boolean  "homepage_highlight", default: false
+    t.index ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
   end
-
-  add_index "resources", ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
 
   create_table "resources_categorisations", force: :cascade do |t|
     t.integer  "resource_id"
     t.integer  "resource_category_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.index ["resource_category_id"], name: "index_resources_categorisations_on_resource_category_id", using: :btree
+    t.index ["resource_id"], name: "index_resources_categorisations_on_resource_id", using: :btree
   end
-
-  add_index "resources_categorisations", ["resource_category_id"], name: "index_resources_categorisations_on_resource_category_id", using: :btree
-  add_index "resources_categorisations", ["resource_id"], name: "index_resources_categorisations_on_resource_id", using: :btree
 
   create_table "service_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
     t.integer "generations",   null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "service_anc_desc_idx", unique: true, using: :btree
+    t.index ["descendant_id"], name: "service_desc_idx", using: :btree
   end
-
-  add_index "service_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "service_anc_desc_idx", unique: true, using: :btree
-  add_index "service_hierarchies", ["descendant_id"], name: "service_desc_idx", using: :btree
 
   create_table "services", force: :cascade do |t|
     t.integer  "audience_id",                              null: false
@@ -492,12 +483,11 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "inheritance_id"
+    t.index ["audience_id"], name: "index_services_on_audience_id", using: :btree
+    t.index ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
+    t.index ["slug"], name: "index_services_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
   end
-
-  add_index "services", ["audience_id"], name: "index_services_on_audience_id", using: :btree
-  add_index "services", ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
-  add_index "services", ["slug"], name: "index_services_on_slug", using: :btree
-  add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
 
   create_table "services_accreditations", force: :cascade do |t|
     t.integer  "position"
@@ -505,40 +495,36 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer  "accreditation_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["accreditation_id"], name: "index_services_accreditations_on_accreditation_id", using: :btree
+    t.index ["service_id"], name: "index_services_accreditations_on_service_id", using: :btree
   end
-
-  add_index "services_accreditations", ["accreditation_id"], name: "index_services_accreditations_on_accreditation_id", using: :btree
-  add_index "services_accreditations", ["service_id"], name: "index_services_accreditations_on_service_id", using: :btree
 
   create_table "services_articles", force: :cascade do |t|
     t.integer  "service_id", null: false
     t.integer  "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_services_articles_on_article_id", using: :btree
+    t.index ["service_id"], name: "index_services_articles_on_service_id", using: :btree
   end
-
-  add_index "services_articles", ["article_id"], name: "index_services_articles_on_article_id", using: :btree
-  add_index "services_articles", ["service_id"], name: "index_services_articles_on_service_id", using: :btree
 
   create_table "services_case_studies", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "case_study_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.index ["case_study_id"], name: "index_services_case_studies_on_case_study_id", using: :btree
+    t.index ["service_id"], name: "index_services_case_studies_on_service_id", using: :btree
   end
-
-  add_index "services_case_studies", ["case_study_id"], name: "index_services_case_studies_on_case_study_id", using: :btree
-  add_index "services_case_studies", ["service_id"], name: "index_services_case_studies_on_service_id", using: :btree
 
   create_table "services_events", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_services_events_on_event_id", using: :btree
+    t.index ["service_id"], name: "index_services_events_on_service_id", using: :btree
   end
-
-  add_index "services_events", ["event_id"], name: "index_services_events_on_event_id", using: :btree
-  add_index "services_events", ["service_id"], name: "index_services_events_on_service_id", using: :btree
 
   create_table "services_faqs", force: :cascade do |t|
     t.integer  "service_id"
@@ -546,20 +532,18 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer  "position"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["frequently_asked_question_id"], name: "index_services_faqs_on_frequently_asked_question_id", using: :btree
+    t.index ["service_id"], name: "index_services_faqs_on_service_id", using: :btree
   end
-
-  add_index "services_faqs", ["frequently_asked_question_id"], name: "index_services_faqs_on_frequently_asked_question_id", using: :btree
-  add_index "services_faqs", ["service_id"], name: "index_services_faqs_on_service_id", using: :btree
 
   create_table "services_offices", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "office_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["office_id"], name: "index_services_offices_on_office_id", using: :btree
+    t.index ["service_id"], name: "index_services_offices_on_service_id", using: :btree
   end
-
-  add_index "services_offices", ["office_id"], name: "index_services_offices_on_office_id", using: :btree
-  add_index "services_offices", ["service_id"], name: "index_services_offices_on_service_id", using: :btree
 
   create_table "services_pages", force: :cascade do |t|
     t.string   "title",                                null: false
@@ -578,10 +562,9 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.text     "summary"
+    t.index ["service_id"], name: "index_services_pages_on_service_id", using: :btree
+    t.index ["slug"], name: "index_services_pages_on_slug", unique: true, using: :btree
   end
-
-  add_index "services_pages", ["service_id"], name: "index_services_pages_on_service_id", using: :btree
-  add_index "services_pages", ["slug"], name: "index_services_pages_on_slug", unique: true, using: :btree
 
   create_table "services_related_services", force: :cascade do |t|
     t.integer  "service_id"
@@ -589,20 +572,18 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer  "position"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["related_service_id"], name: "index_services_related_services_on_related_service_id", using: :btree
+    t.index ["service_id"], name: "index_services_related_services_on_service_id", using: :btree
   end
-
-  add_index "services_related_services", ["related_service_id"], name: "index_services_related_services_on_related_service_id", using: :btree
-  add_index "services_related_services", ["service_id"], name: "index_services_related_services_on_service_id", using: :btree
 
   create_table "services_resources", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "resource_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.index ["resource_id"], name: "index_services_resources_on_resource_id", using: :btree
+    t.index ["service_id"], name: "index_services_resources_on_service_id", using: :btree
   end
-
-  add_index "services_resources", ["resource_id"], name: "index_services_resources_on_resource_id", using: :btree
-  add_index "services_resources", ["service_id"], name: "index_services_resources_on_service_id", using: :btree
 
   create_table "services_team_members", force: :cascade do |t|
     t.integer  "service_id"
@@ -611,30 +592,27 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "updated_at",                      null: false
     t.integer  "position"
     t.boolean  "key_team_member", default: false
+    t.index ["service_id"], name: "index_services_team_members_on_service_id", using: :btree
+    t.index ["team_member_id"], name: "index_services_team_members_on_team_member_id", using: :btree
   end
-
-  add_index "services_team_members", ["service_id"], name: "index_services_team_members_on_service_id", using: :btree
-  add_index "services_team_members", ["team_member_id"], name: "index_services_team_members_on_team_member_id", using: :btree
 
   create_table "services_testimonials", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "testimonial_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["service_id"], name: "index_services_testimonials_on_service_id", using: :btree
+    t.index ["testimonial_id"], name: "index_services_testimonials_on_testimonial_id", using: :btree
   end
-
-  add_index "services_testimonials", ["service_id"], name: "index_services_testimonials_on_service_id", using: :btree
-  add_index "services_testimonials", ["testimonial_id"], name: "index_services_testimonials_on_testimonial_id", using: :btree
 
   create_table "services_videos", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "video_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["service_id"], name: "index_services_videos_on_service_id", using: :btree
+    t.index ["video_id"], name: "index_services_videos_on_video_id", using: :btree
   end
-
-  add_index "services_videos", ["service_id"], name: "index_services_videos_on_service_id", using: :btree
-  add_index "services_videos", ["video_id"], name: "index_services_videos_on_video_id", using: :btree
 
   create_table "team_members", force: :cascade do |t|
     t.string   "forename",            null: false
@@ -657,20 +635,18 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "expire_at"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.index ["slug"], name: "index_team_members_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_team_members_on_suggested_url", using: :btree
   end
-
-  add_index "team_members", ["slug"], name: "index_team_members_on_slug", using: :btree
-  add_index "team_members", ["suggested_url"], name: "index_team_members_on_suggested_url", using: :btree
 
   create_table "team_members_articles", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "article_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["article_id"], name: "index_team_members_articles_on_article_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_articles_on_team_member_id", using: :btree
   end
-
-  add_index "team_members_articles", ["article_id"], name: "index_team_members_articles_on_article_id", using: :btree
-  add_index "team_members_articles", ["team_member_id"], name: "index_team_members_articles_on_team_member_id", using: :btree
 
   create_table "team_members_awards", force: :cascade do |t|
     t.integer  "position"
@@ -678,10 +654,9 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer  "award_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["award_id"], name: "index_team_members_awards_on_award_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_awards_on_team_member_id", using: :btree
   end
-
-  add_index "team_members_awards", ["award_id"], name: "index_team_members_awards_on_award_id", using: :btree
-  add_index "team_members_awards", ["team_member_id"], name: "index_team_members_awards_on_team_member_id", using: :btree
 
   create_table "team_members_department_roles", force: :cascade do |t|
     t.integer  "position"
@@ -689,20 +664,18 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer  "department_role_id", null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["department_role_id"], name: "index_team_members_department_roles_on_department_role_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_department_roles_on_team_member_id", using: :btree
   end
-
-  add_index "team_members_department_roles", ["department_role_id"], name: "index_team_members_department_roles_on_department_role_id", using: :btree
-  add_index "team_members_department_roles", ["team_member_id"], name: "index_team_members_department_roles_on_team_member_id", using: :btree
 
   create_table "team_members_events", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "event_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["event_id"], name: "index_team_members_events_on_event_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_events_on_team_member_id", using: :btree
   end
-
-  add_index "team_members_events", ["event_id"], name: "index_team_members_events_on_event_id", using: :btree
-  add_index "team_members_events", ["team_member_id"], name: "index_team_members_events_on_team_member_id", using: :btree
 
   create_table "team_members_job_roles", force: :cascade do |t|
     t.integer  "position"
@@ -710,30 +683,27 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.integer  "job_role_id",    null: false
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["job_role_id"], name: "index_team_members_job_roles_on_job_role_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_job_roles_on_team_member_id", using: :btree
   end
-
-  add_index "team_members_job_roles", ["job_role_id"], name: "index_team_members_job_roles_on_job_role_id", using: :btree
-  add_index "team_members_job_roles", ["team_member_id"], name: "index_team_members_job_roles_on_team_member_id", using: :btree
 
   create_table "team_members_offices", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "office_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["office_id"], name: "index_team_members_offices_on_office_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_offices_on_team_member_id", using: :btree
   end
-
-  add_index "team_members_offices", ["office_id"], name: "index_team_members_offices_on_office_id", using: :btree
-  add_index "team_members_offices", ["team_member_id"], name: "index_team_members_offices_on_team_member_id", using: :btree
 
   create_table "team_members_testimonials", force: :cascade do |t|
     t.integer  "team_member_id"
     t.integer  "testimonial_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["team_member_id"], name: "index_team_members_testimonials_on_team_member_id", using: :btree
+    t.index ["testimonial_id"], name: "index_team_members_testimonials_on_testimonial_id", using: :btree
   end
-
-  add_index "team_members_testimonials", ["team_member_id"], name: "index_team_members_testimonials_on_team_member_id", using: :btree
-  add_index "team_members_testimonials", ["testimonial_id"], name: "index_team_members_testimonials_on_testimonial_id", using: :btree
 
   create_table "testimonials", force: :cascade do |t|
     t.string   "author_name"
@@ -755,10 +725,9 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["slug"], name: "index_video_categories_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_video_categories_on_suggested_url", using: :btree
   end
-
-  add_index "video_categories", ["slug"], name: "index_video_categories_on_slug", using: :btree
-  add_index "video_categories", ["suggested_url"], name: "index_video_categories_on_suggested_url", using: :btree
 
   create_table "videos", force: :cascade do |t|
     t.string   "title",                    null: false
@@ -774,19 +743,17 @@ ActiveRecord::Schema.define(version: 20160503125426) do
     t.datetime "updated_at",               null: false
     t.string   "social_share_title"
     t.string   "social_share_description"
+    t.index ["slug"], name: "index_videos_on_slug", unique: true, using: :btree
   end
-
-  add_index "videos", ["slug"], name: "index_videos_on_slug", unique: true, using: :btree
 
   create_table "videos_categorisations", force: :cascade do |t|
     t.integer  "video_id"
     t.integer  "video_category_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.index ["video_category_id"], name: "index_videos_categorisations_on_video_category_id", using: :btree
+    t.index ["video_id"], name: "index_videos_categorisations_on_video_id", using: :btree
   end
-
-  add_index "videos_categorisations", ["video_category_id"], name: "index_videos_categorisations_on_video_category_id", using: :btree
-  add_index "videos_categorisations", ["video_id"], name: "index_videos_categorisations_on_video_id", using: :btree
 
   add_foreign_key "articles_categorisations", "article_categories"
   add_foreign_key "articles_categorisations", "articles"

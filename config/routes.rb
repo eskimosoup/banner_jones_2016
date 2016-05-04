@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :conveyancing_quotes do
+    resources :sales, only: [:new, :create, :show]
+  end
   resources :team_members, only: [:index, :show] do
     collection do
       get 'search'

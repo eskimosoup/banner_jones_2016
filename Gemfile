@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.beta3', '< 5.1'
+gem 'rails', '>= 5.0.0.beta4', '< 5.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
@@ -46,7 +46,8 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.5.0'
-  gem 'capybara', '~> 2.5.0'
+ # gem 'capybara', '~> 2.5.0'
+  gem 'capybara', github: "jnicklas/capybara"
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
@@ -70,6 +71,9 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'geocoder'
 gem 'therubyracer', platforms: :ruby
 gem 'twitter'
+gem 'conveyancing_calculator', github: 'eskimosoup/conveyancing_calculator'
+gem 'stamp_duty', '~> 0.1.0'
+gem 'simple_form', '~> 3.2.1'
 
 # FIXME: Remove this when merged: https://github.com/rack/rack/commit/f2baf7ba76f90d5977abc347fed3a6bb7d32e114
 # This is to fix empty params not being submitted when a file field is included

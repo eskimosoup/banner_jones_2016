@@ -1,0 +1,11 @@
+<%= simple_form_for conveyancing_quote_sale do |f| %>
+  <%= f.input :title, collection: ConveyancingQuotes::TITLES %>
+  <%= f.input :forename %>
+  <%= f.input :surname %>
+  <%= f.input :phone, as: :tel %>
+  <%= f.input :email, as: :email %>
+  <%= f.input :timeframe, collection: ConveyancingQuotes::TIMEFRAMES %>
+
+  <%= f.input :price, as: :decimal %>
+  <%= f.button :submit, "Continue" %>
+<% end %>

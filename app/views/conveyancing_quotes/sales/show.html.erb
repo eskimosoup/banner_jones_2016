@@ -1,0 +1,27 @@
+<div class="conveyancing-quote sale">
+  <h1>Your Conveyancing Quote</h1>
+
+  <div class="forename">
+    <%= @conveyancing_quote_sale.forename %>
+  </div>
+  <div class="surname">
+    <%= @conveyancing_quote_sale.surname %>
+  </div>
+  <div class="phone">
+    <%= @conveyancing_quote_sale.phone %>
+  </div>
+  <div class="email">
+    <%= @conveyancing_quote_sale.email %>
+  </div>
+  <div class="price">
+    For a sale at <%= number_to_currency @conveyancing_quote_sale.price %>
+  </div>
+  <div class="fee">
+    Our fees will be <%= number_to_currency @conveyancing_quote_sale.fee %>
+  </div>
+  <div class="disbursements">
+    <div class="stamp-duty">
+      Stamp Duty Land Tax <%= number_to_currency @conveyancing_quote_sale.stamp_duty %>
+    </div>
+  </div>
+</div>
