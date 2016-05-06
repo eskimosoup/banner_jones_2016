@@ -1,0 +1,29 @@
+<div class="conveyancing-quote sale">
+  <h1>Your Conveyancing Quote</h1>
+
+  <%= render(
+    partial: "conveyancing_quotes/user_details",
+    locals: {
+      quote: @conveyancing_quote_sale_and_purchase
+    }
+  ) %>
+
+  <div class="sale-price">
+    For a sale at <%= number_to_currency @conveyancing_quote_sale_and_purchase.sale_price %>
+  </div>
+  <div class="sale-fee">
+    Our fees will be <%= number_to_currency @conveyancing_quote_sale_and_purchase.sale_fee %>
+  </div>
+
+  <div class="purchase-price">
+    For a sale at <%= number_to_currency @conveyancing_quote_sale_and_purchase.purchase_price %>
+  </div>
+  <div class="purchase-fee">
+    Our fees will be <%= number_to_currency @conveyancing_quote_sale_and_purchase.purchase_fee %>
+  </div>
+  <div class="disbursements">
+    <div class="stamp-duty">
+      Stamp Duty Land Tax <%= number_to_currency @conveyancing_quote_sale_and_purchase.stamp_duty %>
+    </div>
+  </div>
+</div>

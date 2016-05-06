@@ -15,7 +15,7 @@ feature "User makes a conveyancing purchase quote", type: :feature do
 
     within ".conveyancing-quote" do
       expect(page).to have_css ".forename", text: "Joe"
-      expect(page).to have_css ".purchase-fee", text: "£425.00"
+      expect(page).to have_css ".purchase-fee", text: "£450.00"
       expect(page).to have_css ".disbursements .stamp-duty", text: "£0"
     end
   end

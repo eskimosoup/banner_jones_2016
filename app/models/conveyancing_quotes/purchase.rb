@@ -10,7 +10,7 @@ class ConveyancingQuotes::Purchase < ApplicationRecord
   delegate :stamp_duty, to: :stamp_duty_calculator
 
   def conveyancing_calculator
-    @conveyancing_calculator ||= ConveyancingCalculator::Sale.new(price)
+    @conveyancing_calculator ||= ConveyancingCalculator::Purchase.new(price)
   end
 
   def stamp_duty_calculator
