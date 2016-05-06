@@ -1,6 +1,6 @@
 require "rails_helper"
 
-feature "User makes a conveyancing quote", type: :feature do
+feature "User makes a conveyancing sale quote", type: :feature do
   scenario "Successfully" do
     visit new_conveyancing_quotes_sale_path
 
@@ -15,8 +15,7 @@ feature "User makes a conveyancing quote", type: :feature do
 
     within ".conveyancing-quote" do
       expect(page).to have_css ".forename", text: "Joe"
-      expect(page).to have_css ".fee", text: "£425.00"
-      expect(page).to have_css ".disbursements .stamp-duty", text: "£0"
+      expect(page).to have_css ".sale-fee", text: "£425.00"
     end
   end
 end

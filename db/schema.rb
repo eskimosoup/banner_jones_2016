@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504112326) do
+ActiveRecord::Schema.define(version: 20160506140119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,7 +125,7 @@ ActiveRecord::Schema.define(version: 20160504112326) do
     t.index ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
   end
 
-  create_table "conveyancing_quotes_sales", force: :cascade do |t|
+  create_table "conveyancing_quotes_purchases", force: :cascade do |t|
     t.string   "title",                               null: false
     t.string   "forename",                            null: false
     t.string   "surname",                             null: false

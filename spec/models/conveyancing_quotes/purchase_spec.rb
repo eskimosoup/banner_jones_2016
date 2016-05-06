@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ConveyancingQuotes::Sale, :type => :model do
+RSpec.describe ConveyancingQuotes::Purchase, :type => :model do
   describe "validations" do
     it { should validate_presence_of(:title) }
     it { should validate_presence_of(:forename) }
@@ -12,4 +12,5 @@ RSpec.describe ConveyancingQuotes::Sale, :type => :model do
   end
 
   it { should delegate_method(:fee).to(:conveyancing_calculator) }
+  it { should delegate_method(:stamp_duty).to(:stamp_duty_calculator) }
 end
