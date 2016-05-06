@@ -1,0 +1,64 @@
+.hero-banner-navigation-wrap-horizontal {
+  @extend %content-background;
+  display: none;
+  padding: 0 0 rem(17px);
+
+  @include breakpoint(large) {
+    display: block;
+  }
+}
+
+.hero-banner-navigation-row-horizontal {
+  @include grid-row;
+  padding: 0 0 rem(75px);
+}
+
+.hero-banner-navigation-horizontal {
+  background: $white;
+  list-style: none;
+  padding: 0 rem(40px);
+  width: 100%;
+
+  @include breakpoint(large) {
+    bottom: -35px;
+    position: absolute;
+    z-index: 2;
+  }
+
+  li {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+  }
+}
+
+.hero-banner-navigation-link-horizontal {
+  &:link,
+  &:visited {
+    color: $grey;
+    display: block;
+    font-family: $myriad-pro;
+    font-size: rem(18px);
+    font-weight: $myriad-pro-semibold;
+    max-width: 140px;
+    padding: rem(62px) rem(14px) rem(42px);
+    text-align: center;
+    text-transform: lowercase;
+  }
+
+  &:hover {
+    color: $white;
+  }
+
+  img {
+    border: 5px solid $white;
+    border-radius: 50%;
+    box-shadow: 0 8px 8px 0 rgba($black, .35);
+    display: block;
+    -webkit-filter: blur(0);
+    left: 50%;
+    position: absolute;
+    top: -55px;
+    transform: translate(-50%, 0);
+  }
+}

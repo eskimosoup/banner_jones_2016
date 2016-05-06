@@ -1,7 +1,9 @@
-$('.home-team-members-slick').slick('unslick');
-$('.home-team-members-slick').html("<%= j render partial: 'team_members/home_team_member', collection: @team_members, as: :team_member if @team_members.present? %>");
-if($('.home-team-member').length === 0) {
-  $('.home-team-member-profile-information').text('');
-  $('.home-team-member-profile-service-name').text('');
+$('.slider-team-members-slick').slick('unslick');
+$('.slider-team-members-slick').html("<%= j render partial: 'team_members/shared/slider_team_member', collection: @team_members, as: :team_member if @team_members.present? %>");
+if($('.slider-team-member').length === 0) {
+  $('.slider-team-member-profile-information').text('');
+  $('.slider-team-member-profile-service-name').text('');
 }
 teamMembersSlick();
+
+$('.slider-team-members-loading').removeAttr('style');

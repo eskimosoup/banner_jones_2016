@@ -1,0 +1,17 @@
+<div class="conveyancing-quote sale">
+  <h1>Your Conveyancing Quote</h1>
+
+  <%= render(
+    partial: "conveyancing_quotes/user_details",
+    locals: {
+      quote: @conveyancing_quote_sale
+    }
+  ) %>
+
+  <div class="price">
+    For a sale at <%= number_to_currency @conveyancing_quote_sale.price %>
+  </div>
+  <div class="sale-fee">
+    Our fees will be <%= number_to_currency @conveyancing_quote_sale.fee %>
+  </div>
+</div>

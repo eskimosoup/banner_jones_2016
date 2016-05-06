@@ -1,7 +1,15 @@
-.content-box.testimonials {
-  background: image-url('components/icons/testimonial/open-quote.png') no-repeat 30px 70px,
-  image-url('components/icons/testimonial/close-quote.png') no-repeat 97% 75%,
-  $black;
+.home-content-box.testimonials {
+  background: image-url('components/icons/testimonial/open-quote.png') no-repeat,
+              image-url('components/icons/testimonial/close-quote.png') no-repeat,
+              $black;
+  background-position: 25px 45px, 97% 97%;
+  background-size: 13%;
+  padding-bottom: rem(60px);
+
+  @include breakpoint(large) {
+    background-position: 30px 70px, 97% 75%;
+    background-size: initial;
+  }
 }
 
 .testimonials-title {
@@ -16,16 +24,21 @@
   }
 }
 
-.testimonial {
-  margin: 0 auto;
-  width: grid-column(10);
-
+.testimonial-wrap {
   p {
     color: $orange;
     font-weight: $myriad-pro-semibold;
-    margin: 0 0 rem(9px);
     text-align: center;
+
+    @include breakpoint(large) {
+      margin: 0 rem(40px) rem(9px);
+    }
   }
+}
+
+.testimonial-content {
+  margin: 0 auto;
+  width: grid-column(10);
 }
 
 .testimonial-author {

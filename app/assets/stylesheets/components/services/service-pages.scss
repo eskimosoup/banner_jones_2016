@@ -1,0 +1,51 @@
+.service-pages-list {
+  position: relative;
+}
+
+.service-pages-page-highlight {
+  margin: 0 0 rem(25px);
+
+  .standard-content-box-inner-content {
+    @include grid-row;
+  }
+
+  .service-pages-page-read-more {
+    @include service-read-more;
+  }
+
+  .service-pages-page-title {
+    @include service-item-title;
+    margin: 0;
+
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+
+
+  @include breakpoint(large) {
+    &:last-of-type {
+      bottom: 0;
+      margin-bottom: 0;
+      position: absolute;
+      width: 100%;
+    }
+  }
+}
+
+.service-pages-page-image {
+  @include breakpoint(small only) {
+    margin: 0 0 rem(10px);
+  }
+
+  @include breakpoint(large) {
+    @include grid-column($columns: 5);
+  }
+}
+
+.service-pages-page-details {
+  @include breakpoint(large) {
+    @include grid-column($columns: 7);
+  }
+}

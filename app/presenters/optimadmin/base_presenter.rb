@@ -19,8 +19,8 @@ module Optimadmin
       object.id
     end
 
-    def edit_image(image, query_string_data = nil, query_string_value = nil)
-      h.it_edit_images(image, query_string_data, query_string_value).call(object)
+    def edit_image(image)
+      h.it_edit_images(image).call(object)
     end
 
     def view_link

@@ -1,0 +1,59 @@
+<%= form_for @contact, url: contacts_path do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize @contact.errors.count, 'error' %> prevented this message from being sent
+      </h2>
+      <ul>
+        <% @contact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="contact-details">
+    <div class="field">
+      <%= f.label :forename %><br />
+      <%= f.text_field :forename %>
+    </div>
+    <div class="field">
+      <%= f.label :surname %><br />
+      <%= f.text_field :surname %>
+    </div>
+    <div class="field">
+      <%= f.label :telephone %><br />
+      <%= f.text_field :telephone %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :preferred_contact_method %><br />
+      <%= f.select :preferred_contact_method, ['Email', 'Phone'], prompt: 'Please select' %>
+    </div>
+    <% if @offices.present? %>
+      <div class="field">
+        <%= f.label :preferred_office %><br />
+        <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Please select' %>
+      </div>
+    <% end %>
+    <% if Flip.services? %>
+      <div class="field">
+        <%= f.label :service %><br />
+        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Please select' %>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :enquiry_type %><br />
+      <%= f.select :enquiry_type, ['General'], prompt: 'Please select' %>
+    </div>
+    <div class="field">
+      <%= f.label :message %><br />
+      <%= f.text_area :message %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Send", class: "submit-button" %>
+    </div>
+  </div>
+<% end %>

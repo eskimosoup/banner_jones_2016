@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160311161846) do
+ActiveRecord::Schema.define(version: 20160506140119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accreditations", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title",      null: false
+    t.string   "image",      null: false
+    t.string   "link"
+    t.datetime "publish_at", null: false
+    t.datetime "expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "article_categories", force: :cascade do |t|
     t.string   "title",                        null: false
@@ -23,140 +34,119 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["slug"], name: "index_article_categories_on_slug", unique: true, using: :btree
   end
 
   create_table "articles", force: :cascade do |t|
-    t.string   "title",                                   null: false
-    t.text     "summary",                                 null: false
-    t.text     "content",                                 null: false
-    t.string   "image"
-    t.string   "social_share_title"
-    t.string   "social_share_image"
-    t.string   "social_share_description"
-    t.date     "date",                                    null: false
+    t.string   "title",                                               null: false
     t.string   "suggested_url"
-    t.boolean  "display",                  default: true
-    t.boolean  "home_page_highlight",      default: true
     t.string   "slug"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.integer  "article_category_id"
-    t.integer  "team_member_id"
+    t.datetime "publish_at",                                          null: false
+    t.datetime "expire_at"
+    t.string   "social_share_title",       limit: 150
+    t.string   "social_share_description"
+    t.string   "social_share_image"
+    t.text     "summary",                                             null: false
+    t.text     "content",                                             null: false
+    t.string   "image"
+    t.boolean  "home_page_highlight",                  default: true
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.index ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   end
 
-  add_index "articles", ["article_category_id"], name: "index_articles_on_article_category_id", using: :btree
-  add_index "articles", ["team_member_id"], name: "index_articles_on_team_member_id", using: :btree
+  create_table "articles_categorisations", force: :cascade do |t|
+    t.integer  "article_id"
+    t.integer  "article_category_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["article_category_id"], name: "index_articles_categorisations_on_article_category_id", using: :btree
+    t.index ["article_id"], name: "index_articles_categorisations_on_article_id", using: :btree
+  end
 
   create_table "audiences", force: :cascade do |t|
-    t.string   "title",                            null: false
-    t.boolean  "display",           default: true
-    t.integer  "position"
-    t.integer  "departments_count"
+    t.string   "title",                                   null: false
+    t.text     "summary"
+    t.string   "image"
+    t.string   "social_share_image"
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.boolean  "display",                  default: true
+    t.integer  "services_count",           default: 0,    null: false
+    t.integer  "team_member_id"
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "social_share_title"
+    t.string   "social_share_description"
+    t.index ["slug"], name: "index_audiences_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_audiences_on_suggested_url", using: :btree
+    t.index ["team_member_id"], name: "index_audiences_on_team_member_id", using: :btree
   end
 
   create_table "awards", force: :cascade do |t|
     t.integer  "position"
-    t.string   "title",                     null: false
-    t.string   "image",                     null: false
+    t.string   "title"
+    t.string   "image"
     t.string   "link"
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "publish_at"
+    t.datetime "expire_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "banners", force: :cascade do |t|
     t.integer  "position"
     t.string   "title"
     t.text     "summary"
-    t.string   "image",                      null: false
+    t.string   "image",       null: false
     t.string   "button_text"
     t.string   "button_link"
-    t.boolean  "display",     default: true
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "publish_at",  null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "blog_categories", force: :cascade do |t|
-    t.string   "title",                        null: false
+  create_table "case_studies", force: :cascade do |t|
+    t.string   "title",                                null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  add_index "blog_categories", ["slug"], name: "index_blog_categories_on_slug", unique: true, using: :btree
-  add_index "blog_categories", ["suggested_url"], name: "index_blog_categories_on_suggested_url", unique: true, using: :btree
-
-  create_table "blog_posts", force: :cascade do |t|
-    t.string   "title",                    limit: 150,                null: false
-    t.text     "summary",                                             null: false
-    t.text     "content",                                             null: false
-    t.date     "date",                                                null: false
-    t.string   "image"
+    t.datetime "publish_at",                           null: false
+    t.datetime "expire_at"
     t.string   "social_share_title",       limit: 150
     t.string   "social_share_description"
     t.string   "social_share_image"
-    t.string   "slug"
-    t.string   "suggested_url"
-    t.boolean  "display",                              default: true
-    t.integer  "team_member_id"
-    t.integer  "blog_category_id"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
-  end
-
-  add_index "blog_posts", ["blog_category_id"], name: "index_blog_posts_on_blog_category_id", using: :btree
-  add_index "blog_posts", ["slug"], name: "index_blog_posts_on_slug", unique: true, using: :btree
-  add_index "blog_posts", ["suggested_url"], name: "index_blog_posts_on_suggested_url", unique: true, using: :btree
-  add_index "blog_posts", ["team_member_id"], name: "index_blog_posts_on_team_member_id", using: :btree
-
-  create_table "departments", force: :cascade do |t|
-    t.string   "title",                             null: false
-    t.text     "summary"
+    t.text     "summary",                              null: false
+    t.text     "content",                              null: false
     t.string   "image"
-    t.string   "social_share_image"
-    t.boolean  "display",            default: true
-    t.string   "suggested_url"
-    t.string   "slug"
-    t.integer  "audience_id"
-    t.integer  "services_count"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-    t.integer  "team_member_id"
+    t.date     "date",                                 null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
   end
 
-  add_index "departments", ["audience_id"], name: "index_departments_on_audience_id", using: :btree
-  add_index "departments", ["team_member_id"], name: "index_departments_on_team_member_id", using: :btree
-
-  create_table "download_categories", force: :cascade do |t|
-    t.string   "title",                        null: false
-    t.string   "suggested_url"
-    t.string   "slug"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  create_table "downloads", force: :cascade do |t|
+  create_table "conveyancing_quotes_purchases", force: :cascade do |t|
     t.string   "title",                               null: false
-    t.text     "summary",                             null: false
-    t.text     "description"
-    t.string   "file",                                null: false
-    t.string   "image"
-    t.integer  "download_category_id"
-    t.boolean  "display",              default: true
-    t.string   "suggested_url"
-    t.string   "slug"
+    t.string   "forename",                            null: false
+    t.string   "surname",                             null: false
+    t.string   "phone"
+    t.string   "email",                               null: false
+    t.string   "timeframe"
+    t.decimal  "price",      precision: 10, scale: 2, null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "downloads", ["download_category_id"], name: "index_downloads_on_download_category_id", using: :btree
+  create_table "department_roles", force: :cascade do |t|
+    t.string   "title",                      null: false
+    t.string   "slug"
+    t.text     "description"
+    t.integer  "position",    default: 0,    null: false
+    t.boolean  "display",     default: true, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["slug"], name: "index_department_roles_on_slug", unique: true, using: :btree
+  end
 
   create_table "event_categories", force: :cascade do |t|
     t.string   "title",                        null: false
@@ -167,58 +157,66 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.datetime "updated_at",                   null: false
   end
 
-  add_index "event_categories", ["slug"], name: "index_event_categories_on_slug", unique: true, using: :btree
-  add_index "event_categories", ["suggested_url"], name: "index_event_categories_on_suggested_url", unique: true, using: :btree
-
   create_table "event_locations", force: :cascade do |t|
-    t.string   "building_name",  null: false
-    t.string   "address_line_1", null: false
+    t.string   "title",                         null: false
+    t.string   "building_name",                 null: false
+    t.string   "address_line_1",                null: false
     t.string   "address_line_2"
-    t.string   "city",           null: false
-    t.string   "postcode",       null: false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.string   "city",                          null: false
+    t.string   "postcode",                      null: false
+    t.string   "latitude"
+    t.string   "longitude"
+    t.text     "details"
+    t.boolean  "display",        default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.index ["slug"], name: "index_event_locations_on_slug", using: :btree
   end
 
   create_table "events", force: :cascade do |t|
-    t.string   "title",                    limit: 150,                null: false
-    t.text     "summary",                                             null: false
+    t.string   "title",                                null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "publish_at",                           null: false
+    t.datetime "expire_at"
+    t.text     "summary",                              null: false
     t.text     "content"
-    t.datetime "event_start",                                         null: false
-    t.datetime "event_end",                                           null: false
+    t.datetime "event_start",                          null: false
+    t.datetime "event_end",                            null: false
     t.string   "booking_link"
     t.datetime "booking_deadline"
     t.string   "image"
     t.string   "social_share_title",       limit: 150
     t.string   "social_share_description"
     t.string   "social_share_image"
-    t.string   "slug"
-    t.string   "suggested_url"
-    t.boolean  "display",                              default: true
-    t.integer  "event_category_id"
     t.integer  "event_location_id"
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
+    t.index ["slug"], name: "index_events_on_slug", unique: true, using: :btree
   end
 
-  add_index "events", ["event_category_id"], name: "index_events_on_event_category_id", using: :btree
-  add_index "events", ["event_location_id"], name: "index_events_on_event_location_id", using: :btree
-  add_index "events", ["slug"], name: "index_events_on_slug", unique: true, using: :btree
-  add_index "events", ["suggested_url"], name: "index_events_on_suggested_url", unique: true, using: :btree
+  create_table "events_categorisations", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "event_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["event_category_id"], name: "index_events_categorisations_on_event_category_id", using: :btree
+    t.index ["event_id"], name: "index_events_categorisations_on_event_id", using: :btree
+  end
 
   create_table "features", force: :cascade do |t|
     t.string   "key",                        null: false
-    t.boolean  "enabled",    default: false, null: false
+    t.boolean  "enabled",    default: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
-    t.string   "question",                  null: false
+    t.text     "question",                  null: false
     t.text     "answer",                    null: false
-    t.integer  "position"
     t.boolean  "display",    default: true
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
@@ -230,43 +228,86 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.string   "sluggable_type", limit: 50
     t.string   "scope"
     t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+    t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+    t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  create_table "job_roles", force: :cascade do |t|
+    t.string   "title",                      null: false
+    t.string   "slug"
+    t.text     "description"
+    t.integer  "position",    default: 0,    null: false
+    t.boolean  "display",     default: true, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["slug"], name: "index_job_roles_on_slug", unique: true, using: :btree
+  end
 
   create_table "office_locations", force: :cascade do |t|
-    t.string   "name",                      null: false
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "name",                         null: false
+    t.boolean  "display",       default: true
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["slug"], name: "index_office_locations_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_office_locations_on_suggested_url", using: :btree
   end
 
   create_table "offices", force: :cascade do |t|
-    t.string   "name"
     t.string   "building_name"
-    t.string   "building_number"
-    t.string   "street",                            null: false
-    t.string   "town",                              null: false
-    t.string   "county",                            null: false
-    t.string   "postcode",                          null: false
-    t.string   "phone_number"
+    t.string   "address_line_1",     null: false
+    t.string   "address_line_2"
+    t.integer  "office_location_id"
+    t.string   "postcode",           null: false
+    t.string   "phone_number",       null: false
     t.string   "fax_number"
     t.string   "email"
     t.string   "dx_number"
     t.text     "details"
     t.string   "image"
-    t.integer  "office_location_id"
-    t.boolean  "display",            default: true
+    t.datetime "publish_at",         null: false
+    t.datetime "expire_at"
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
+    t.index ["slug"], name: "index_offices_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_offices_on_suggested_url", using: :btree
   end
 
-  add_index "offices", ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
+  create_table "onpage_navigations", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title",                                  null: false
+    t.string   "button_text"
+    t.integer  "module_id",                              null: false
+    t.string   "module_type",                            null: false
+    t.string   "partial",                                null: false
+    t.integer  "results_limit"
+    t.string   "anchor",                                 null: false
+    t.boolean  "display_navigation_link", default: true
+    t.boolean  "display_content",         default: true
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "layout"
+  end
+
+  create_table "onpage_navigations_content_items", force: :cascade do |t|
+    t.integer  "position"
+    t.string   "title"
+    t.text     "content",                              null: false
+    t.boolean  "display",              default: true
+    t.boolean  "content_click_toggle", default: false
+    t.integer  "onpage_navigation_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_content_items_on_onpage_navigation_id", using: :btree
+  end
 
   create_table "optimadmin_administrators", force: :cascade do |t|
     t.string   "username",               null: false
@@ -278,11 +319,10 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.datetime "password_reset_sent_at"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["auth_token"], name: "index_optimadmin_administrators_on_auth_token", using: :btree
+    t.index ["email"], name: "index_optimadmin_administrators_on_email", using: :btree
+    t.index ["username"], name: "index_optimadmin_administrators_on_username", using: :btree
   end
-
-  add_index "optimadmin_administrators", ["auth_token"], name: "index_optimadmin_administrators_on_auth_token", using: :btree
-  add_index "optimadmin_administrators", ["email"], name: "index_optimadmin_administrators_on_email", using: :btree
-  add_index "optimadmin_administrators", ["username"], name: "index_optimadmin_administrators_on_username", using: :btree
 
   create_table "optimadmin_documents", force: :cascade do |t|
     t.string   "name",        null: false
@@ -319,10 +359,9 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
     t.integer "generations",   null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "menu_item_anc_desc_idx", unique: true, using: :btree
+    t.index ["descendant_id"], name: "menu_item_desc_idx", using: :btree
   end
-
-  add_index "optimadmin_menu_item_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "menu_item_anc_desc_idx", unique: true, using: :btree
-  add_index "optimadmin_menu_item_hierarchies", ["descendant_id"], name: "menu_item_desc_idx", using: :btree
 
   create_table "optimadmin_menu_items", force: :cascade do |t|
     t.string   "menu_name",       limit: 100
@@ -335,9 +374,9 @@ ActiveRecord::Schema.define(version: 20160311161846) do
     t.integer  "link_id"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
+    t.boolean  "display",                     default: true
+    t.index ["link_id"], name: "index_optimadmin_menu_items_on_link_id", using: :btree
   end
-
-  add_index "optimadmin_menu_items", ["link_id"], name: "index_optimadmin_menu_items_on_link_id", using: :btree
 
   create_table "optimadmin_module_pages", force: :cascade do |t|
     t.string   "name"
@@ -353,265 +392,417 @@ ActiveRecord::Schema.define(version: 20160311161846) do
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string   "title",                        null: false
+    t.string   "title",                                null: false
     t.string   "slug"
     t.string   "suggested_url"
     t.string   "image"
-    t.string   "style",                        null: false
-    t.string   "layout",                       null: false
+    t.string   "style",                                null: false
+    t.string   "layout",                               null: false
+    t.text     "content",                              null: false
+    t.datetime "publish_at",                           null: false
+    t.datetime "expire_at"
+    t.string   "social_share_title",       limit: 150
+    t.string   "social_share_description"
+    t.string   "social_share_image"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+  end
+
+  create_table "resource_categories", force: :cascade do |t|
+    t.string   "title",                        null: false
+    t.string   "suggested_url"
+    t.string   "slug"
     t.boolean  "display",       default: true
-    t.text     "content",                      null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["slug"], name: "index_resource_categories_on_slug", using: :btree
   end
 
-  create_table "service_articles", force: :cascade do |t|
-    t.integer  "service_id"
-    t.integer  "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "resources", force: :cascade do |t|
+    t.string   "title",                              null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "publish_at",                         null: false
+    t.datetime "expire_at"
+    t.text     "summary"
+    t.text     "content"
+    t.string   "file",                               null: false
+    t.string   "image"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "homepage_highlight", default: false
+    t.index ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
   end
 
-  add_index "service_articles", ["article_id"], name: "index_service_articles_on_article_id", using: :btree
-  add_index "service_articles", ["service_id"], name: "index_service_articles_on_service_id", using: :btree
-
-  create_table "service_downloads", force: :cascade do |t|
-    t.integer  "service_id"
-    t.integer  "download_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+  create_table "resources_categorisations", force: :cascade do |t|
+    t.integer  "resource_id"
+    t.integer  "resource_category_id"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["resource_category_id"], name: "index_resources_categorisations_on_resource_category_id", using: :btree
+    t.index ["resource_id"], name: "index_resources_categorisations_on_resource_id", using: :btree
   end
-
-  add_index "service_downloads", ["download_id"], name: "index_service_downloads_on_download_id", using: :btree
-  add_index "service_downloads", ["service_id"], name: "index_service_downloads_on_service_id", using: :btree
-
-  create_table "service_events", force: :cascade do |t|
-    t.integer  "service_id"
-    t.integer  "event_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "service_events", ["event_id"], name: "index_service_events_on_event_id", using: :btree
-  add_index "service_events", ["service_id"], name: "index_service_events_on_service_id", using: :btree
-
-  create_table "service_faqs", force: :cascade do |t|
-    t.integer  "service_id"
-    t.integer  "frequently_asked_question_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  add_index "service_faqs", ["frequently_asked_question_id"], name: "index_service_faqs_on_frequently_asked_question_id", using: :btree
-  add_index "service_faqs", ["service_id"], name: "index_service_faqs_on_service_id", using: :btree
 
   create_table "service_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
     t.integer "generations",   null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "service_anc_desc_idx", unique: true, using: :btree
+    t.index ["descendant_id"], name: "service_desc_idx", using: :btree
   end
 
-  add_index "service_hierarchies", ["ancestor_id", "descendant_id", "generations"], name: "service_anc_desc_idx", unique: true, using: :btree
-  add_index "service_hierarchies", ["descendant_id"], name: "service_desc_idx", using: :btree
+  create_table "services", force: :cascade do |t|
+    t.integer  "audience_id",                              null: false
+    t.integer  "parent_id"
+    t.string   "title",                                    null: false
+    t.text     "summary",                                  null: false
+    t.text     "content"
+    t.text     "social_share_title"
+    t.text     "social_share_description"
+    t.string   "social_share_image"
+    t.string   "image"
+    t.string   "colour"
+    t.string   "icon"
+    t.boolean  "homepage_highlight",       default: false
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.datetime "publish_at",                               null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "inheritance_id"
+    t.index ["audience_id"], name: "index_services_on_audience_id", using: :btree
+    t.index ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
+    t.index ["slug"], name: "index_services_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_services_on_suggested_url", using: :btree
+  end
 
-  create_table "service_offices", force: :cascade do |t|
+  create_table "services_accreditations", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "service_id"
+    t.integer  "accreditation_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["accreditation_id"], name: "index_services_accreditations_on_accreditation_id", using: :btree
+    t.index ["service_id"], name: "index_services_accreditations_on_service_id", using: :btree
+  end
+
+  create_table "services_articles", force: :cascade do |t|
+    t.integer  "service_id", null: false
+    t.integer  "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_services_articles_on_article_id", using: :btree
+    t.index ["service_id"], name: "index_services_articles_on_service_id", using: :btree
+  end
+
+  create_table "services_case_studies", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "case_study_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["case_study_id"], name: "index_services_case_studies_on_case_study_id", using: :btree
+    t.index ["service_id"], name: "index_services_case_studies_on_service_id", using: :btree
+  end
+
+  create_table "services_events", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_services_events_on_event_id", using: :btree
+    t.index ["service_id"], name: "index_services_events_on_service_id", using: :btree
+  end
+
+  create_table "services_faqs", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "frequently_asked_question_id"
+    t.integer  "position"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["frequently_asked_question_id"], name: "index_services_faqs_on_frequently_asked_question_id", using: :btree
+    t.index ["service_id"], name: "index_services_faqs_on_service_id", using: :btree
+  end
+
+  create_table "services_offices", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "office_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["office_id"], name: "index_services_offices_on_office_id", using: :btree
+    t.index ["service_id"], name: "index_services_offices_on_service_id", using: :btree
   end
 
-  add_index "service_offices", ["office_id"], name: "index_service_offices_on_office_id", using: :btree
-  add_index "service_offices", ["service_id"], name: "index_service_offices_on_service_id", using: :btree
+  create_table "services_pages", force: :cascade do |t|
+    t.string   "title",                                null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.datetime "publish_at",                           null: false
+    t.datetime "expire_at"
+    t.string   "social_share_title",       limit: 150
+    t.string   "social_share_description"
+    t.string   "social_share_image"
+    t.string   "style",                                null: false
+    t.string   "layout",                               null: false
+    t.text     "content",                              null: false
+    t.string   "image"
+    t.integer  "service_id"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.text     "summary"
+    t.index ["service_id"], name: "index_services_pages_on_service_id", using: :btree
+    t.index ["slug"], name: "index_services_pages_on_slug", unique: true, using: :btree
+  end
 
-  create_table "service_related_services", force: :cascade do |t|
+  create_table "services_related_services", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "related_service_id"
     t.integer  "position"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.index ["related_service_id"], name: "index_services_related_services_on_related_service_id", using: :btree
+    t.index ["service_id"], name: "index_services_related_services_on_service_id", using: :btree
   end
 
-  add_index "service_related_services", ["related_service_id"], name: "index_service_related_services_on_related_service_id", using: :btree
-  add_index "service_related_services", ["service_id"], name: "index_service_related_services_on_service_id", using: :btree
+  create_table "services_resources", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "resource_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["resource_id"], name: "index_services_resources_on_resource_id", using: :btree
+    t.index ["service_id"], name: "index_services_resources_on_service_id", using: :btree
+  end
 
-  create_table "service_team_members", force: :cascade do |t|
+  create_table "services_team_members", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "team_member_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.integer  "position"
+    t.boolean  "key_team_member", default: false
+    t.index ["service_id"], name: "index_services_team_members_on_service_id", using: :btree
+    t.index ["team_member_id"], name: "index_services_team_members_on_team_member_id", using: :btree
   end
 
-  add_index "service_team_members", ["service_id"], name: "index_service_team_members_on_service_id", using: :btree
-  add_index "service_team_members", ["team_member_id"], name: "index_service_team_members_on_team_member_id", using: :btree
-
-  create_table "service_testimonials", force: :cascade do |t|
+  create_table "services_testimonials", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "testimonial_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.index ["service_id"], name: "index_services_testimonials_on_service_id", using: :btree
+    t.index ["testimonial_id"], name: "index_services_testimonials_on_testimonial_id", using: :btree
   end
 
-  add_index "service_testimonials", ["service_id"], name: "index_service_testimonials_on_service_id", using: :btree
-  add_index "service_testimonials", ["testimonial_id"], name: "index_service_testimonials_on_testimonial_id", using: :btree
-
-  create_table "service_videos", force: :cascade do |t|
+  create_table "services_videos", force: :cascade do |t|
     t.integer  "service_id"
     t.integer  "video_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  add_index "service_videos", ["service_id"], name: "index_service_videos_on_service_id", using: :btree
-  add_index "service_videos", ["video_id"], name: "index_service_videos_on_video_id", using: :btree
-
-  create_table "services", force: :cascade do |t|
-    t.integer  "department_id"
-    t.integer  "parent_id"
-    t.string   "title",                    limit: 150,                 null: false
-    t.text     "summary",                                              null: false
-    t.text     "content"
-    t.string   "social_share_title"
-    t.text     "social_share_description"
-    t.string   "image"
-    t.string   "social_share_image"
-    t.string   "slug"
-    t.string   "suggested_url"
-    t.boolean  "display",                              default: true
-    t.datetime "created_at",                                           null: false
-    t.datetime "updated_at",                                           null: false
-    t.string   "icon"
-    t.string   "colour"
-    t.boolean  "banner_highlight",                     default: false
-  end
-
-  add_index "services", ["department_id"], name: "index_services_on_department_id", using: :btree
-  add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
-  add_index "services", ["suggested_url"], name: "index_services_on_suggested_url", unique: true, using: :btree
-
-  create_table "team_member_additional_roles", force: :cascade do |t|
-    t.integer  "team_member_id"
-    t.integer  "team_member_role_id"
-    t.integer  "position"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  add_index "team_member_additional_roles", ["team_member_id"], name: "index_team_member_additional_roles_on_team_member_id", using: :btree
-  add_index "team_member_additional_roles", ["team_member_role_id"], name: "index_team_member_additional_roles_on_team_member_role_id", using: :btree
-
-  create_table "team_member_offices", force: :cascade do |t|
-    t.integer  "team_member_id"
-    t.integer  "office_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  add_index "team_member_offices", ["office_id"], name: "index_team_member_offices_on_office_id", using: :btree
-  add_index "team_member_offices", ["team_member_id"], name: "index_team_member_offices_on_team_member_id", using: :btree
-
-  create_table "team_member_roles", force: :cascade do |t|
-    t.string   "title",                     null: false
-    t.integer  "position"
-    t.boolean  "display",    default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.index ["service_id"], name: "index_services_videos_on_service_id", using: :btree
+    t.index ["video_id"], name: "index_services_videos_on_video_id", using: :btree
   end
 
   create_table "team_members", force: :cascade do |t|
-    t.integer  "position"
-    t.string   "forename",                           null: false
-    t.string   "surname",                            null: false
+    t.string   "forename",            null: false
+    t.string   "surname",             null: false
     t.string   "image"
     t.string   "primary_telephone"
     t.string   "secondary_telephone"
     t.string   "email_address"
-    t.datetime "display_from"
-    t.datetime "display_until"
-    t.boolean  "display",             default: true
-    t.text     "specialisms"
-    t.boolean  "has_vcard_download"
-    t.text     "profile"
-    t.string   "google_plus"
+    t.string   "has_vcard_download"
+    t.string   "google_plus_link"
     t.string   "twitter_link"
     t.string   "facebook_link"
     t.string   "mobile_number"
     t.string   "dx_number"
+    t.text     "profile"
+    t.text     "specialisms"
     t.string   "suggested_url"
     t.string   "slug"
-    t.integer  "team_member_role_id"
+    t.datetime "publish_at",          null: false
+    t.datetime "expire_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "position"
+    t.index ["slug"], name: "index_team_members_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_team_members_on_suggested_url", using: :btree
+  end
+
+  create_table "team_members_accreditations", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "team_member_id"
+    t.integer  "accreditation_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["accreditation_id"], name: "index_team_members_accreditations_on_accreditation_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_accreditations_on_team_member_id", using: :btree
+  end
+
+  create_table "team_members_articles", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "article_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["article_id"], name: "index_team_members_articles_on_article_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_articles_on_team_member_id", using: :btree
+  end
+
+  create_table "team_members_awards", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "team_member_id"
+    t.integer  "award_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["award_id"], name: "index_team_members_awards_on_award_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_awards_on_team_member_id", using: :btree
+  end
+
+  create_table "team_members_department_roles", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "team_member_id",     null: false
+    t.integer  "department_role_id", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["department_role_id"], name: "index_team_members_department_roles_on_department_role_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_department_roles_on_team_member_id", using: :btree
+  end
+
+  create_table "team_members_events", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "event_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["event_id"], name: "index_team_members_events_on_event_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_events_on_team_member_id", using: :btree
+  end
+
+  create_table "team_members_job_roles", force: :cascade do |t|
+    t.integer  "position"
+    t.integer  "team_member_id", null: false
+    t.integer  "job_role_id",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["job_role_id"], name: "index_team_members_job_roles_on_job_role_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_job_roles_on_team_member_id", using: :btree
+  end
+
+  create_table "team_members_offices", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "office_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["office_id"], name: "index_team_members_offices_on_office_id", using: :btree
+    t.index ["team_member_id"], name: "index_team_members_offices_on_team_member_id", using: :btree
+  end
+
+  create_table "team_members_testimonials", force: :cascade do |t|
+    t.integer  "team_member_id"
+    t.integer  "testimonial_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["team_member_id"], name: "index_team_members_testimonials_on_team_member_id", using: :btree
+    t.index ["testimonial_id"], name: "index_team_members_testimonials_on_testimonial_id", using: :btree
+  end
+
+  create_table "testimonials", force: :cascade do |t|
+    t.string   "author_name"
+    t.string   "author_company"
+    t.string   "image"
+    t.text     "recommendation",                     null: false
+    t.integer  "position"
+    t.datetime "publish_at",                         null: false
+    t.datetime "expire_at"
+    t.boolean  "home_page_highlight", default: true
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
   end
 
-  add_index "team_members", ["team_member_role_id"], name: "index_team_members_on_team_member_role_id", using: :btree
-
-  create_table "testimonials", force: :cascade do |t|
-    t.text     "content",                       null: false
-    t.string   "author_name",                   null: false
-    t.string   "author_company"
-    t.string   "image"
-    t.boolean  "display",        default: true
-    t.integer  "position"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-  end
-
   create_table "video_categories", force: :cascade do |t|
     t.string   "title",                        null: false
-    t.boolean  "display",       default: true
     t.string   "suggested_url"
     t.string   "slug"
+    t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.index ["slug"], name: "index_video_categories_on_slug", using: :btree
+    t.index ["suggested_url"], name: "index_video_categories_on_suggested_url", using: :btree
   end
-
-  add_index "video_categories", ["slug"], name: "index_video_categories_on_slug", unique: true, using: :btree
-  add_index "video_categories", ["suggested_url"], name: "index_video_categories_on_suggested_url", unique: true, using: :btree
 
   create_table "videos", force: :cascade do |t|
-    t.string   "title",                            null: false
-    t.string   "summary"
-    t.string   "embed_code",                       null: false
-    t.integer  "video_category_id"
-    t.boolean  "display",           default: true
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "title",                    null: false
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.string   "image"
+    t.string   "social_share_image"
+    t.datetime "publish_at",               null: false
+    t.datetime "expire_at"
+    t.text     "summary"
+    t.string   "youtube_url"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "social_share_title"
+    t.string   "social_share_description"
+    t.index ["slug"], name: "index_videos_on_slug", unique: true, using: :btree
   end
 
-  add_index "videos", ["video_category_id"], name: "index_videos_on_video_category_id", using: :btree
+  create_table "videos_categorisations", force: :cascade do |t|
+    t.integer  "video_id"
+    t.integer  "video_category_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["video_category_id"], name: "index_videos_categorisations_on_video_category_id", using: :btree
+    t.index ["video_id"], name: "index_videos_categorisations_on_video_id", using: :btree
+  end
 
-  add_foreign_key "articles", "article_categories"
-  add_foreign_key "articles", "team_members"
-  add_foreign_key "blog_posts", "blog_categories"
-  add_foreign_key "blog_posts", "team_members"
-  add_foreign_key "departments", "audiences"
-  add_foreign_key "departments", "team_members"
-  add_foreign_key "downloads", "download_categories"
-  add_foreign_key "events", "event_categories"
+  add_foreign_key "articles_categorisations", "article_categories"
+  add_foreign_key "articles_categorisations", "articles"
+  add_foreign_key "audiences", "team_members", on_delete: :nullify
   add_foreign_key "events", "event_locations"
+  add_foreign_key "events_categorisations", "event_categories"
+  add_foreign_key "events_categorisations", "events"
   add_foreign_key "offices", "office_locations"
-  add_foreign_key "service_articles", "articles"
-  add_foreign_key "service_articles", "services"
-  add_foreign_key "service_downloads", "downloads"
-  add_foreign_key "service_downloads", "services"
-  add_foreign_key "service_events", "events"
-  add_foreign_key "service_events", "services"
-  add_foreign_key "service_faqs", "frequently_asked_questions"
-  add_foreign_key "service_faqs", "services"
-  add_foreign_key "service_offices", "offices"
-  add_foreign_key "service_offices", "services"
-  add_foreign_key "service_related_services", "services"
-  add_foreign_key "service_team_members", "services"
-  add_foreign_key "service_team_members", "team_members"
-  add_foreign_key "service_testimonials", "services"
-  add_foreign_key "service_testimonials", "testimonials"
-  add_foreign_key "service_videos", "services"
-  add_foreign_key "service_videos", "videos"
-  add_foreign_key "services", "departments"
-  add_foreign_key "team_member_additional_roles", "team_member_roles"
-  add_foreign_key "team_member_additional_roles", "team_members"
-  add_foreign_key "team_member_offices", "offices"
-  add_foreign_key "team_member_offices", "team_members"
-  add_foreign_key "videos", "video_categories"
+  add_foreign_key "onpage_navigations_content_items", "onpage_navigations"
+  add_foreign_key "resources_categorisations", "resource_categories"
+  add_foreign_key "resources_categorisations", "resources"
+  add_foreign_key "services", "audiences", on_delete: :nullify
+  add_foreign_key "services_accreditations", "accreditations"
+  add_foreign_key "services_accreditations", "services"
+  add_foreign_key "services_articles", "articles"
+  add_foreign_key "services_articles", "services"
+  add_foreign_key "services_case_studies", "case_studies"
+  add_foreign_key "services_case_studies", "services"
+  add_foreign_key "services_events", "events"
+  add_foreign_key "services_events", "services"
+  add_foreign_key "services_faqs", "frequently_asked_questions"
+  add_foreign_key "services_faqs", "services"
+  add_foreign_key "services_offices", "offices"
+  add_foreign_key "services_offices", "services"
+  add_foreign_key "services_pages", "services", on_delete: :nullify
+  add_foreign_key "services_related_services", "services"
+  add_foreign_key "services_resources", "resources"
+  add_foreign_key "services_resources", "services"
+  add_foreign_key "services_team_members", "services"
+  add_foreign_key "services_team_members", "team_members"
+  add_foreign_key "services_testimonials", "services"
+  add_foreign_key "services_testimonials", "testimonials"
+  add_foreign_key "services_videos", "services"
+  add_foreign_key "services_videos", "videos"
+  add_foreign_key "team_members_accreditations", "accreditations"
+  add_foreign_key "team_members_accreditations", "team_members"
+  add_foreign_key "team_members_articles", "articles"
+  add_foreign_key "team_members_articles", "team_members"
+  add_foreign_key "team_members_awards", "awards"
+  add_foreign_key "team_members_awards", "team_members"
+  add_foreign_key "team_members_department_roles", "department_roles"
+  add_foreign_key "team_members_department_roles", "team_members"
+  add_foreign_key "team_members_events", "events"
+  add_foreign_key "team_members_events", "team_members"
+  add_foreign_key "team_members_job_roles", "job_roles"
+  add_foreign_key "team_members_job_roles", "team_members"
+  add_foreign_key "team_members_offices", "offices"
+  add_foreign_key "team_members_offices", "team_members"
+  add_foreign_key "team_members_testimonials", "team_members"
+  add_foreign_key "team_members_testimonials", "testimonials"
+  add_foreign_key "videos_categorisations", "video_categories"
+  add_foreign_key "videos_categorisations", "videos"
 end

@@ -1,35 +1,28 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.5.1'
+gem 'rails', '>= 5.0.0.beta4', '< 5.1'
+
 # Use postgresql as the database for Active Record
-gem 'pg', '~> 0.15'
+gem 'pg', '~> 0.18'
+
+# Use Puma as the app server
+gem 'puma'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
+
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0', group: :doc
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -38,24 +31,23 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  # gem 'spring'
+  gem 'web-console', '~> 3.0'
+  gem 'listen', '~> 3.0.5'
 end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'shoulda-matchers', '~> 2.8.0'
-  gem 'guard'
-  gem 'guard-livereload', '~> 2.5', require: false
-  gem 'rack-livereload'
 end
 
 group :test do
   gem 'database_cleaner', '~> 1.5.0'
-  gem 'capybara', '~> 2.5.0'
+ # gem 'capybara', '~> 2.5.0'
+  gem 'capybara', github: "jnicklas/capybara"
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
@@ -73,7 +65,17 @@ group :development do
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
+gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
+# gem 'optimised_site', path: '../optimised_site'
 gem 'friendly_id', '~> 5.1.0'
-gem 'therubyracer', platforms: :ruby
-gem 'flip'
 gem 'geocoder'
+gem 'therubyracer', platforms: :ruby
+gem 'twitter'
+gem 'conveyancing_calculator', github: 'eskimosoup/conveyancing_calculator'
+gem 'stamp_duty', '~> 0.1.0'
+gem 'simple_form', '~> 3.2.1'
+
+# FIXME: Remove this when merged: https://github.com/rack/rack/commit/f2baf7ba76f90d5977abc347fed3a6bb7d32e114
+# This is to fix empty params not being submitted when a file field is included
+gem 'rack', github: 'rack/rack'
+gem 'kaminari', github: 'amatsuda/kaminari'

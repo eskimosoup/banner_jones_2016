@@ -2,7 +2,7 @@
   <%= menu_item_presenter.link_to_webpage %>
   <%= menu_item_presenter.meganav %>
   <% if sub_menu_items.present? %>
-    <%= content_tag :ul, class: "dropdown depth-#{ depth } #{menu_item_presenter.menu_name}" do %>
+    <%= content_tag :ul, class: "dropdown depth-#{ depth }" do %>
       <%= nested_menu_items(menu_items: sub_menu_items, depth: depth + 1) %>
     <% end %>
   <% end %>

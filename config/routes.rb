@@ -1,24 +1,33 @@
 Rails.application.routes.draw do
-  resources :pages, only: :show
-
-  resources :team_members, only: [:index, :show] do
+  namespace :conveyancing_quotes do
+    resources :sales, only: [:new, :create, :show]
+    resources :purchases, only: [:new, :create, :show]
+  end
+  resources :team_members, only: [:index, :show], path: 'team-members' do
     collection do
       get 'search'
     end
   end
 
-  resources :article_categories, only: :show
+  resources :article_categories, only: :show, path: 'article-categories'
+  resources :office_locations, only: :show, path: 'office-locations'
+  resources :resource_categories, only: :show, path: 'resource-categories'
+  resources :video_categories, only: :show, path: 'video-categories'
+  resources :event_categories, only: :show, path: 'event-categories'
+  resources :event_locations, only: :show, path: 'event-locations'
+
+  resources :case_studies, only: [:index, :show], path: 'case-studies'
   resources :articles, only: [:index, :show]
-
-  resources :office_locations, only: :show
   resources :offices, only: [:index, :show]
-
-  resources :downloads, only: [:index, :show]
-  resources :download_categories, only: :show
+  resources :resources, only: [:index, :show]
+  resources :videos, only: [:index, :show]
+  resources :events, only: [:index, :show]
+  resources :pages, only: :show
+  resources :contacts, only: [:new, :create]
 
   resources :audiences, only: :show do
-    resources :departments, only: :show do
-      resources :services, only: :show
+    resources :services, only: :show do
+      resources :service_pages, only: :show, path: 'pages', controller: 'services/pages'
     end
   end
 
@@ -32,241 +41,11 @@ Rails.application.routes.draw do
 
   # This has to be the last route in your list
   match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
+
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # Serve websocket cable requests in-process
+  # mount ActionCable.server => '/cable'
 end
 Optimadmin::Engine.routes.draw do
-  get 'services/index'
-
-  get 'services/show'
-
-  resources :pages, except: :show do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'edit_images'
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-  resources :blog_posts, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-  resources :blog_categories, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :banners, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :frequently_asked_questions, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :event_locations, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :events, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-  resources :event_categories, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :awards, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-  resources :services, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-
-    resources :service_related_services, only: :index do
-      collection do
-        post 'order'
-      end
-      member do
-        get 'toggle'
-      end
-    end
-  end
-  resources :audiences, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :departments, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-
-  resources :downloads, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-  resources :download_categories, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :article_categories, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :offices, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-  resources :office_locations, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  resources :team_member_roles, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-    end
-  end
-  mount Flip::Engine => '/flip' if Rails.env.development?
-
-  resources :articles, except: [:show] do
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-  resources :testimonials, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-  end
-  resources :team_members, except: [:show] do
-    collection do
-      post 'order'
-    end
-    member do
-      get 'toggle'
-      get 'edit_images'
-      post 'update_image_default'
-      post 'update_image_fill'
-      post 'update_image_fit'
-    end
-
-    resources :team_member_additional_roles, only: :index do
-      collection do
-        post 'order'
-      end
-      member do
-        get 'toggle'
-      end
-    end
-  end
 end

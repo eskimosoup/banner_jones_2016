@@ -1,0 +1,44 @@
+.hero-banner-navigation-wrap {
+  @include grid-row;
+  display: none;
+  position: relative;
+
+  @include breakpoint(large) {
+    display: block;
+  }
+}
+
+.hero-banner-navigation {
+  background: $white;
+  bottom: 0;
+  height: 670px;
+  list-style: none;
+  padding: rem(30px) 0;
+  position: absolute;
+  right: 0;
+  width: grid-column(3);
+  z-index: 2;
+}
+
+.hero-banner-navigation-link {
+  &:link,
+  &:visited {
+    color: $grey;
+    display: block;
+    font-family: $myriad-pro;
+    font-size: rem(18px);
+    font-weight: $myriad-pro-semibold;
+    margin: rem(15px) rem(1px);
+    padding: 0 rem(12px) 0 rem(35px);
+    text-transform: lowercase;
+  }
+
+  &:hover {
+    color: $white;
+  }
+
+  img {
+    display: inline-block;
+    margin: 0 rem(20px) 0 0;
+  }
+}

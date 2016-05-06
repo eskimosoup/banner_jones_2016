@@ -2,9 +2,22 @@
   background: $red;
   border-bottom: 2px solid $red;
   box-shadow: 0 5px 7px -2px rgba(darken($red, 75%), .65);
+  display: none;
   margin: rem(26px) 0 0;
   position: relative;
   z-index: 3;
+
+  @include breakpoint(large) {
+    display: block;
+  }
+
+  &.mobile-expanded {
+    display: block;
+  }
+
+  .dropdown {
+    display: none;
+  }
 }
 
 .primary-navigation-links {
@@ -12,7 +25,9 @@
   padding: rem(18px) 0 rem(12px);
 
   .menu-item {
-    display: inline-block;
+    @include breakpoint(large) {
+      display: inline-block;
+    }
 
     &:hover .meganav-dropdown {
       display: block;
@@ -22,7 +37,11 @@
   a {
     display: block;
     font-size: rem(14px);
-    padding: 0 rem(22px);
+    padding: rem(11px);
+
+    @include breakpoint(large) {
+      padding: 0 rem(22px);
+    }
 
     &:visited,
     &:link {
@@ -37,12 +56,20 @@
 }
 
 .primary-navigation {
-  @include grid-column(9);
   text-align: left;
+
+  @include breakpoint(large) {
+    @include grid-column(9);
+  }
 }
 
 .primary-navigation-search {
-  @include grid-column(3);
-  background: $white;
-  padding: rem(18px) 0 rem(12px);
+  display: none;
+
+  @include breakpoint(large) {
+    @include grid-column(3);
+    background: $white;
+    display: block;
+    padding: rem(18px) 0 rem(12px);
+  }
 }

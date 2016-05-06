@@ -4,12 +4,23 @@
 
 <header class="primary-header">
   <div class="header-branding">
-    <%= link_to root_url, title: site_setting('Name'), class: 'header-logo' do %>
-      <%= image_tag 'layout/header/logo.png', alt: site_setting('Name') %>
+    <%= link_to root_url, title: global_site_settings['Name'], class: 'header-logo' do %>
+      <%= image_tag 'layout/header/logo.png', alt: global_site_settings['Name'] %>
     <% end %>
 
     <%= image_tag 'layout/header/legal-500.png', alt: 'Legal 500',
                                                  class: 'the-legal-500' %>
+  </div>
+
+  <div class="header-hamburger-menu">
+    <%= link_to '#', class: 'toggle-class', title: 'Show navigation',
+                data: {
+                  container: '.primary-navigation-wrap',
+                  class: 'mobile-expanded',
+                  return: 'false'
+                } do %>
+      <%= image_tag 'components/icons/navigation/hamburger.png', alt: 'Navigation' %>
+    <% end %>
   </div>
 
   <div class="header-contact">
@@ -21,7 +32,7 @@
       <span class="header-telephone-accent">
         t:
       </span>
-      <%= site_setting('Phone') %>
+      <%= global_site_settings['Phone'] %>
     </div>
 
     <%= link_to '#', class: 'header-locations', title: 'Locations' do %>

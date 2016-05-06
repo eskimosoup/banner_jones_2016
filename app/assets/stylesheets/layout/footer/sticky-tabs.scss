@@ -1,10 +1,15 @@
 .sticky-call-to-actions {
-  @include clearfix;
-  bottom: 0;
-  height: 77px;
-  position: fixed;
-  right: 0;
-  width: 270px;
+  display: none;
+
+  @include breakpoint(large) {
+    @include clearfix;
+    bottom: -2px;
+    display: block;
+    height: 77px;
+    position: fixed;
+    right: 0;
+    width: 270px;
+  }
 
   img {
     display: block;
@@ -13,12 +18,12 @@
 }
 
 .request-callback {
-  background: $dark-purple;
+  background: $black;
   color: $orange;
   float: left;
-  font-size: rem(13px);
+  font-size: rem(12px);
   font-weight: $myriad-pro-semibold;
-  padding: rem(14px);
+  padding: rem(14px) rem(12px);
   width: 50%;
 
   &:link,
@@ -33,7 +38,7 @@
   background: $orange;
   color: $dark-purple;
   float: left;
-  font-size: rem(13px);
+  font-size: rem(12px);
   font-weight: $myriad-pro-semibold;
   padding: rem(14px);
   width: 50%;

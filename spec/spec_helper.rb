@@ -4,7 +4,6 @@ SimpleCov.start 'rails' do
   add_filter '/config/'
   add_filter '/lib/'
   add_filter '/vendor/'
-  add_filter '/optimadmin/'
   add_group 'Presenters', 'app/presenters'
 end
 require 'rubygems'

@@ -1,13 +1,13 @@
 <div class="meganav-dropdown">
   <div class="meganav-dropdown-wrap">
     <div class="meganav-dropdown-content">
-      <!-- Departments -->
+      <!-- Audiences -->
       <div class="meganav-dropdown-primary-list">
         <h2 class="meganav-primary-title">Departments</h2>
 
         <ul class="meganav-links meganav-primary-links">
           <% present audience do |audience_presenter| %>
-            <%= audience_presenter.render_department_links %>
+            <%= audience_presenter.render_audience_links %>
           <% end %>
         </ul>
       </div>
@@ -16,7 +16,7 @@
       <% # TODO: Add little triangle to hovered item in the main nav %>
       <div>
         <% present audience do |audience_presenter| %>
-          <%= audience_presenter.render_department_contents %>
+          <%= audience_presenter.render_audience_contents %>
         <% end %>
       </div>
     </div>

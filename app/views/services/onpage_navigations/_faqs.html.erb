@@ -1,0 +1,18 @@
+<div class="standard-content-box onpage-navigation-item">
+  <h2 class="standard-content-box-title">
+    <%= onpage_navigation.title %>
+  </h2>
+
+  <div class="standard-content-box-inner-content">
+    <% @service.frequently_asked_questions.displayed.limit(onpage_navigation.results_limit).each do |faq| %>
+      <div class="service-frequently-asked-question">
+        <% present faq do |faq_presenter| %>
+          <div class="frequently-asked-question-with-icon">
+            <%= faq_presenter.question %>
+            <%= faq_presenter.answer %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

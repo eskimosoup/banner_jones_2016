@@ -5,6 +5,10 @@
   text-align: left;
   width: 100%;
   z-index: 2;
+
+  @include breakpoint(large) {
+    top: 33px;
+  }
 }
 
 .meganav-dropdown-wrap {
@@ -18,26 +22,37 @@
 }
 
 .meganav-dropdown-primary-list {
-  @include grid-column(
-    $columns: 3,
-    $gutter: (
-      small: 0
-    )
-  );
   background: $light-grey;
   padding: rem(40px) 0 rem(75px);
+
+  @include breakpoint(large) {
+    @include grid-column(
+      $columns: 3,
+      $gutter: (
+        small: 0
+      )
+    );
+  }
 }
 
 .meganav-dropdown-secondary-list {
-  @include grid-column(6);
-  padding: rem(40px) 0 rem(75px);
+  padding: rem(20px) 0;
+
+  @include breakpoint(large) {
+    padding: rem(40px) 0 rem(75px);
+    @include grid-column(6);
+  }
 }
 
 .meganav-dropdown-team-member-wrap {
-  @include grid-column(2);
-  @include grid-column-offset(1);
-  padding: rem(40px) 0 rem(75px);
-  text-align: right;
+  padding: rem(10px);
+
+  @include breakpoint(large) {
+    @include grid-column(2);
+    @include grid-column-offset(1);
+    text-align: right;
+    padding: rem(40px) 0 rem(75px);
+  }
 }
 
 .meganav-primary-title {
@@ -123,14 +138,22 @@
   font-size: rem(14px);
   font-weight: $myriad-pro-semibold;
   line-height: 1;
-  margin: rem(16px) 0 rem(16px) rem(62px);
-  padding: 0 0 rem(16px);
+  margin: rem(10px) 0;
+  padding: 0 0 rem(4px);
   text-align: left;
+
+  @include breakpoint(large) {
+    margin: rem(16px) 0 rem(16px) rem(62px);
+    padding: 0 0 rem(16px);
+  }
 }
 
 .meganav-dropdown-team-member-role,
 .meganav-dropdown-team-member-location {
   font-size: rem(14px);
   text-align: left;
-  margin: 0 0 0 rem(62px);
+
+  @include breakpoint(large) {
+    margin: 0 0 0 rem(62px);
+  }
 }

@@ -1,5 +1,6 @@
-<%= content_for :javascripts do %>
+<%= content_for :javascript do %>
   <%= javascript_include_tag 'components/home-components.js' %>
+  <%= javascript_include_tag 'components/shared-components.js' %>
 <% end %>
 
 <section class="hero-banner">
@@ -18,76 +19,43 @@
     <%= render partial: 'banners/banner', collection: @banners, as: :banner %>
   </div>
 
-  <%= render 'application/shared/hero_banner_navigation' %>
+  <%= render 'application/shared/hero_banner_navigation_vertical' if global_site_settings['Banner navigation'] == 'Vertical' %>
 </section>
 
+<%= render 'application/shared/hero_banner_navigation_horizontal' if global_site_settings['Banner navigation'] == 'Horizontal' %>
+
 <div class="content">
-  <section class="content-box-wrap">
-    <div class="content-box inner">
-      <div class="helpful-guide-content-box-slider-controls">
-        <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
+  <section class="home-content-box-wrap">
+    <div class="home-content-box inner">
+      <div class="helpful-guide-home-content-box-slider-controls">
+        <%= link_to '#', class: 'home-content-box-previous', title: 'Previous' do %>
           <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
         <% end %>
-        <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
+        <%= link_to '#', class: 'home-content-box-next', title: 'Next' do %>
           <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
         <% end %>
       </div>
 
-      <h2 class="content-box-title">
+      <h2 class="home-content-box-title">
         Our Helpful Guides
       </h2>
 
       <div class="helpful-guides-slick">
-        <%= render partial: 'downloads/download_shelf',
-                  collection: @downloads, as: :download if @downloads.present? %>
+        <%= render partial: 'resources/resource_shelf',
+                  collection: @resources, as: :resource if @resources.present? %>
       </div>
     </div>
   </section>
 
-  <section class="content-box-wrap">
-    <div class="content-box home-team-members">
-      <h2 class="content-box-title">
-        Find People By
-      </h2>
+  <section class="home-content-box-wrap">
+    <div class="home-content-box">
+      <%= render 'team_members/shared/slider', team_members: @team_members, title: 'Specialist Team' %>
+    </div>
+  </section>
 
-      <%= form_tag search_team_members_path, method: :get, remote: true, class: 'home-team-member-search-form' do %>
-        <div class="home-team-member-search-field">
-          <%= text_field_tag :name, '', placeholder: 'Name',
-                                        class: 'home-team-member-search-name' %>
-        </div>
-        <div class="home-team-member-search-field">
-          <%= select_tag :service_id, options_for_select(@services),
-                                   prompt: 'Service',
-                                   class: 'home-team-member-search-service' %>
-        </div>
-        <%= submit_tag 'Search', class: 'home-team-member-search-button' %>
-      <% end %>
-
-      <div class="home-team-members-content-box-slider-controls">
-        <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
-          <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
-        <% end %>
-
-        <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
-          <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
-        <% end %>
-      </div>
-
-      <div class="home-team-members-profiles">
-        <div class="home-team-members-slick">
-          <%= render partial: 'team_members/home_team_member',
-                    collection: @team_members, as: :team_member if @team_members.present? %>
-        </div>
-
-        <div class="home-team-members-slick-profile">
-          <%= render 'team_members/profile_card', team_member: @team_members.first if @team_members.present? %>
-        </div>
-      </div>
-    </section>
-
-    <section class="content-box-wrap">
-      <div class="content-box inner testimonials">
-        <h2 class="content-box-title testimonials-title">
+    <section class="home-content-box-wrap">
+      <div class="home-content-box inner testimonials">
+        <h2 class="home-content-box-title testimonials-title">
           A People Business
         </h2>
 
@@ -97,18 +65,18 @@
       </div>
     </section>
 
-    <section class="content-box-wrap">
-      <div class="content-box inner">
-        <div class="articles-content-box-slider-controls">
-          <%= link_to '#', class: 'content-box-previous', title: 'Previous' do %>
+    <section class="home-content-box-wrap">
+      <div class="home-content-box inner">
+        <div class="articles-home-content-box-slider-controls">
+          <%= link_to '#', class: 'home-content-box-previous', title: 'Previous' do %>
             <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
           <% end %>
-          <%= link_to '#', class: 'content-box-next', title: 'Next' do %>
+          <%= link_to '#', class: 'home-content-box-next', title: 'Next' do %>
             <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
           <% end %>
         </div>
 
-        <h2 class="content-box-title">
+        <h2 class="home-content-box-title">
           News
         </h2>
 
