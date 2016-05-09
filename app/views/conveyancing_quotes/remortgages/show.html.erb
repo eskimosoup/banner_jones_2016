@@ -1,0 +1,16 @@
+<div class="conveyancing-quote remortgage">
+  <h1>Your Conveyancing Quote</h1>
+
+  <%= render(
+    partial: "conveyancing_quotes/user_details",
+    locals: {
+      quote: @conveyancing_quote_remortgage
+    }
+  ) %>
+  <div class="remortgage-price">
+    For a remortgage at <%= number_to_currency @conveyancing_quote_remortgage.price %>
+  </div>
+  <div class="remortgage-fee">
+    Our fees will be <%= number_to_currency @conveyancing_quote_remortgage.fee %>
+  </div>
+</div>

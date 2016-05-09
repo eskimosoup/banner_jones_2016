@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :sales, only: [:new, :create, :show]
     resources :sale_and_purchases, only: [:new, :create, :show]
     resources :purchases, only: [:new, :create, :show]
+    resources :remortgages, only: [:new, :create, :show]
   end
   resources :team_members, only: [:index, :show], path: 'team-members' do
     collection do

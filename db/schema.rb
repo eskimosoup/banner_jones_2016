@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160506153241) do
+ActiveRecord::Schema.define(version: 20160509084552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,18 @@ ActiveRecord::Schema.define(version: 20160506153241) do
   end
 
   create_table "conveyancing_quotes_purchases", force: :cascade do |t|
+    t.string   "title",                               null: false
+    t.string   "forename",                            null: false
+    t.string   "surname",                             null: false
+    t.string   "phone"
+    t.string   "email",                               null: false
+    t.string   "timeframe"
+    t.decimal  "price",      precision: 10, scale: 2, null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+  end
+
+  create_table "conveyancing_quotes_remortgages", force: :cascade do |t|
     t.string   "title",                               null: false
     t.string   "forename",                            null: false
     t.string   "surname",                             null: false
