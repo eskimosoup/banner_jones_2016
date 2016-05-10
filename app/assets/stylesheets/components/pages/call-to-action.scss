@@ -1,4 +1,22 @@
-.service-page-call-to-action {
+.page-call-to-actions-title-wrap {
+  border-bottom-width: 0;
+  border-color: $lighter-grey;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 1px;
+  padding: rem(30px);
+}
+
+.page-call-to-actions-title {
+  color: $deeper-grey;
+  font-family: $montserrat;
+  font-size: rem(18px);
+  font-weight: $montserrat-semibold;
+  margin: 0;
+}
+
+.page-call-to-action {
   @include  grid-row;
   background: $black;
   color: $white;
@@ -21,10 +39,10 @@
   }
 }
 
-.service-page-call-to-action-title {
+.page-call-to-action-title {
   @include grid-column($columns: 9, $gutter: (small: 0));
 }
 
-.service-page-call-to-action-icon {
+.page-call-to-action-icon {
   @include grid-column($columns: 3, $gutter: (small: 0));
 }

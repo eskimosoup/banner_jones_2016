@@ -18,9 +18,9 @@ function updateContentHeight() {
 }
 
 $(window).load(function() {
-  offsetHeight = parseInt($('.primary-header').height()) + parseInt($('.primary-navigation-wrap').height()) + parseInt($('.service-page-content-wrap').height()) + onpageLinksHeight;
+  offsetHeight = parseInt($('.primary-header').height()) + parseInt($('.primary-navigation-wrap').height()) + parseInt($('.page-content-wrap').height()) + onpageLinksHeight;
   setFixedHeader();
-  $('.service-page-aside-navigation-content, .service-page-content').matchHeight();
+  $('.page-aside-navigation-content, .page-content').matchHeight();
 
   $('.onpage-navigation-wrap .onpage-navigation-item').matchHeight();
 
@@ -77,9 +77,9 @@ $(document).ready(function() {
   }
 });
 
-$(document).on('click', '.service-page-aside-navigation-top-level', function() {
-  $('.service-page-aside-navigation-links-list').slideToggle();
-  $('.service-page-aside-navigation-active').toggleClass('expanded');
+$(document).on('click', '.page-aside-navigation-top-level', function() {
+  $('.page-aside-navigation-links-list').slideToggle();
+  $('.page-aside-navigation-active').toggleClass('expanded');
   return false;
 });
 

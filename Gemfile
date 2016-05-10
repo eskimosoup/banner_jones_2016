@@ -46,8 +46,8 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.5.0'
- # gem 'capybara', '~> 2.5.0'
-  gem 'capybara', github: "jnicklas/capybara"
+  # gem 'capybara', '~> 2.5.0'
+  gem 'capybara', github: 'jnicklas/capybara'
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
@@ -64,9 +64,10 @@ group :development do
   gem 'bullet', '~> 4.14.7'
 end
 
-gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
-gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
-# gem 'optimised_site', path: '../optimised_site'
+# gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
+gem 'optimadmin', path: '../optimadmin'
+# gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
+gem 'optimised_site', path: '../optimised_site'
 gem 'friendly_id', '~> 5.1.0'
 gem 'geocoder'
 gem 'therubyracer', platforms: :ruby

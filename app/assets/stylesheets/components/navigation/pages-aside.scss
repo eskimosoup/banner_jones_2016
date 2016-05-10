@@ -1,10 +1,10 @@
-.service-page-aside-navigation {
+.page-aside-navigation {
   @include breakpoint(large) {
     @include grid-column(3);
   }
 }
 
-.service-page-aside-navigation-content {
+.page-aside-navigation-content {
   background: $deep-grey;
   margin: 0 rem(18px);
 
@@ -13,7 +13,7 @@
   }
 }
 
-.service-page-aside-navigation-links {
+.page-aside-navigation-links {
   font-size: rem(14px);
 
   @include breakpoint(large) {
@@ -27,7 +27,7 @@
     padding: rem(5px) rem(25px);
     transition: color 0.1s linear;
 
-    &:not(.service-page-aside-navigation-top-level) {
+    &:not(.page-aside-navigation-top-level) {
       font-size: rem(13px);
 
       @include breakpoint(large) {
@@ -54,7 +54,7 @@
       font-weight: 400;
     }
 
-    &.service-page-aside-navigation-top-level {
+    &.page-aside-navigation-top-level {
       background: $red image-url('components/icons/navigation/expand.png') no-repeat 95% center;
       color: $white;
       font-weight: $montserrat-bold;
@@ -71,7 +71,7 @@
   }
 }
 
-.service-page-aside-navigation-links-list {
+.page-aside-navigation-links-list {
   display: none;
   list-style: none;
 
@@ -90,7 +90,7 @@
   }
 }
 
-.service-page-aside-navigation-title {
+.page-aside-navigation-title {
   color: $black;
   font-family: $montserrat;
   font-size: rem(14px);
@@ -101,5 +101,36 @@
     border-bottom: 5px solid $deep-accent-grey;
     margin: 0 0 rem(21px);
     padding: rem(25px) 0 rem(21px);
+  }
+
+  a {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $black;
+    }
+
+    &.active {
+      color: $red;
+    }
+  }
+}
+
+.page-aside-navigation-links-list.page-aside-navigation-links-tree {
+  list-style: none;
+  margin-left: 0;
+
+  li a {
+    display: none;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+
+    a {
+      display: block;
+    }
   }
 }
