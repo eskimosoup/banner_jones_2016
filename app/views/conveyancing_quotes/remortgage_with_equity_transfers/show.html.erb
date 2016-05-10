@@ -1,0 +1,19 @@
+<div class="conveyancing-quote remortgage-with-equity-transfer">
+  <h1>Your Conveyancing Quote</h1>
+
+  <%= render(
+    partial: "conveyancing_quotes/user_details",
+    locals: {
+      quote: @conveyancing_quote_remortgage_with_equity_transfer
+    }
+  ) %>
+  <div class="remortgage-price">
+    For a remortgage at <%= number_to_currency @conveyancing_quote_remortgage_with_equity_transfer.remortgage_price %>
+  </div>
+  <div class="equity-transfer-price">
+    For a equity_transfer at <%= number_to_currency @conveyancing_quote_remortgage_with_equity_transfer.equity_transfer_price %>
+  </div>
+  <div class="remortgage-with-equity-transfer-fee">
+    Our fees will be <%= number_to_currency @conveyancing_quote_remortgage_with_equity_transfer.fee %>
+  </div>
+</div>
