@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   namespace :conveyancing_quotes do
+    resources :equity_transfers, only: [:new, :create, :show]
     resources :sales, only: [:new, :create, :show]
     resources :sale_and_purchases, only: [:new, :create, :show]
     resources :purchases, only: [:new, :create, :show]
     resources :remortgages, only: [:new, :create, :show]
+    resources :remortgage_with_equity_transfers, only: [:new, :create, :show]
   end
   resources :team_members, only: [:index, :show], path: 'team-members' do
     collection do
