@@ -9,9 +9,9 @@ class MenuItemPresenter < BasePresenter
     @descendants_hash = descendants_hash
   end
 
-  def link_to_webpage
+  def link_to_webpage(options = {})
     return nil if destination.nil?
-    h.link_to name, destination, title: title_attribute, class: classes
+    h.link_to name, destination, options.merge({title: title_attribute, class: classes})
   end
 
   def meganav

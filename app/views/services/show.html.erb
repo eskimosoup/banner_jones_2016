@@ -16,28 +16,32 @@
   <%= javascript_include_tag 'components/service-components.js' %>
   <script>
     $(window).load(function() {
-      $('.service-page-aside-navigation-content, .service-page-content').matchHeight();
+      $('.page-aside-navigation-content, .page-content').matchHeight();
     });
   </script>
 <% end %>
 
-<div class="service-page-content-wrap">
-  <%= render 'services/shared/service_page_aside_navigation' %>
+<div class="page-content-wrap">
+  <aside class="page-aside-navigation">
+    <div class="page-aside-navigation-content">
+      <%= render 'services/shared/service_page_aside_navigation' %>
+    </div>
+  </aside>
 
-  <div class="service-page-content">
+  <div class="page-content">
     <% present @service do |service_presenter| %>
       <h1 class="service-page-title" style="<%= service_presenter.colour_property_helper('border-color') %>">
         <%= service_presenter.title %>
         <%= service_presenter.small_icon({alt: service_presenter.title, class: 'service-page-icon'}) %>
       </h1>
 
-      <div class="service-page-inner-content">
+      <div class="page-inner-content">
         <%= service_presenter.content %>
       </div>
     <% end %>
   </div>
 
-  <aside class="service-page-additional-information">
+  <aside class="page-additional-information">
     <div class="service-page-additional-information-key-team-members">
       <div class="service-page-additional-information-key-team-members-title">
         <h3>
@@ -53,45 +57,7 @@
       </div>
     </div>
 
-    <%= link_to '#', class: 'service-page-call-to-action' do %>
-      <div class="service-page-call-to-action-title">
-        Call us now
-      </div>
-
-      <div class="service-page-call-to-action-icon">
-        <%= image_tag 'components/icons/call-to-action/white-telephone.png', alt: '' %>
-      </div>
-    <% end %>
-
-    <%= link_to '#', class: 'service-page-call-to-action' do %>
-      <div class="service-page-call-to-action-title">
-        Request a call back
-      </div>
-
-      <div class="service-page-call-to-action-icon">
-        <%= image_tag 'components/icons/call-to-action/white-callback.png', alt: '' %>
-      </div>
-    <% end %>
-
-    <%= link_to '#', class: 'service-page-call-to-action' do %>
-      <div class="service-page-call-to-action-title">
-        Email us
-      </div>
-
-      <div class="service-page-call-to-action-icon">
-        <%= image_tag 'components/icons/call-to-action/white-email.png', alt: '' %>
-      </div>
-    <% end %>
-
-    <%= link_to '#', class: 'service-page-call-to-action' do %>
-      <div class="service-page-call-to-action-title">
-        Our offices
-      </div>
-
-      <div class="service-page-call-to-action-icon">
-        <%= image_tag 'components/icons/call-to-action/white-location.png', alt: '' %>
-      </div>
-    <% end %>
+    <%= render 'pages/shared/call_to_actions' %>
 
     <div class="service-rich-snippets">
       <h4 class="service-rich-snippets-title">
@@ -101,6 +67,7 @@
       <div class="service-rich-snippets-ratings">
         <%= image_tag 'placeholders/rich-snippet-ratings.jpg', alt: '' %>
 
+        <% # TODO: Make this dynamic %>
         <p>
           4.5 out of 5 based on 24 ratings
         </p>

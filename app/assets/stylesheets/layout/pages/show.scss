@@ -1,0 +1,49 @@
+.page-show-image {
+  display: block;
+  margin: 0 auto;
+}
+
+.page-content-wrap {
+  @include grid-row;
+  font-family: $montserrat;
+  padding: rem(28px) 0;
+
+  @include breakpoint(large) {
+    padding: rem(28px) 0 rem(62px);
+  }
+}
+
+.page-content {
+  @include grid-column(12);
+  margin: rem(10px) 0 0;
+
+  @include breakpoint(large) {
+    @include grid-column(6);
+    margin: 0;
+  }
+}
+
+.page-additional-information {
+  @include grid-column(12);
+  @include breakpoint(large) {
+    @include grid-column(3);
+  }
+}
+
+.page-inner-content {
+  @include page-content;
+  margin: 0 rem(16px);
+}
+
+.page-additional-content-wrap {
+  background: $offset-white;
+  padding: rem(54px);
+}
+
+.page-additional-content {
+  @include grid-row;
+}
+
+.page-team-members {
+  @include grid-column(12);
+}
