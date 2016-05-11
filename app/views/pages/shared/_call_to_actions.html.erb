@@ -1,4 +1,4 @@
-<%= link_to '#', class: 'page-call-to-action' do %>
+<%= link_to new_contact_path, class: 'page-call-to-action' do %>
   <div class="page-call-to-action-title">
     Call us now
   </div>
@@ -8,7 +8,8 @@
   </div>
 <% end %>
 
-<%= link_to '#', class: 'page-call-to-action' do %>
+<%= link_to '#', class: 'page-call-to-action toggle-class',
+  data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
   <div class="page-call-to-action-title">
     Request a call back
   </div>
