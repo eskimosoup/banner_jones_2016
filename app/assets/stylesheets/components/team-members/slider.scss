@@ -46,9 +46,16 @@
   margin: 0;
 }
 
-.slider-team-members-content-box-slider-controls {
+.slider-team-members-slider-content-box-slider-controls {
   margin: 0 rem(35px) 0 0;
   text-align: right;
+}
+
+
+.slider-content-box-previous,
+.slider-content-box-next {
+  display: inline-block;
+  margin: 0 em(4px) 0;
 }
 
 .slider-team-members-profiles {

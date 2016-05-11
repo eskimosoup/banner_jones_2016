@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     @testimonials = Testimonial.displayed
     @articles = Article.homepage_highlight
     @resources = Resource.homepage_highlight
-    @team_members = TeamMember.displayed
+    @team_members = TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed
     @services = Service.root_services.displayed.pluck(:title, :id)
     @banner_services = Service.homepage_highlight
     @offices = Office.displayed
