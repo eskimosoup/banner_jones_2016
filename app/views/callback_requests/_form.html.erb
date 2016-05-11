@@ -1,0 +1,55 @@
+<%= form_for @callback_request, url: callback_requests_path do |f| %>
+  <% if @callback_request.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize @callback_request.errors.count, 'error' %> prevented this message from being sent
+      </h2>
+      <ul>
+        <% @callback_request.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="contact-details">
+    <div class="field">
+      <%= f.label :forename %>
+      <%= f.text_field :forename %>
+    </div>
+    <div class="field">
+      <%= f.label :surname %>
+      <%= f.text_field :surname %>
+    </div>
+    <div class="field">
+      <%= f.label :email_address %>
+      <%= f.text_field :email_address %>
+    </div>
+    <div class="field">
+      <%= f.label :contact_telephone %>
+      <%= f.text_field :contact_telephone %>
+    </div>
+    <div class="field">
+      <%= f.label :callback_time %>
+      <%= f.text_field :callback_time %>
+    </div>
+    <% if @offices.present? %>
+      <div class="field">
+        <%= f.label :preferred_office %>
+        <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Please select' %>
+      </div>
+    <% end %>
+    <% if Flip.services? %>
+      <div class="field">
+        <%= f.label :service %>
+        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Please select' %>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :enquiry_type %>
+      <%= f.text_area :enquiry_type %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Send", class: "submit-button" %>
+    </div>
+  </div>
+<% end %>
