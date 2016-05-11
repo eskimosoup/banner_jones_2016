@@ -1,0 +1,12 @@
+.team-members-content-wrap {
+  @include grid-row;
+}
+
+.team-member-show-profile-wrap {
+  @include grid-column(10);
+}
+
+.team-member-show-profile {
+  @include clearfix;
+  background: $orange;
+}

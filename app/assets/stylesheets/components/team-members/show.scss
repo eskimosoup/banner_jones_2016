@@ -1,0 +1,11 @@
+.team-member-show-profile-image {
+  @include breakpoint(large) {
+    @include grid-column(3);
+  }
+}
+
+.team-member-show-profile-content {
+  @include breakpoint(large) {
+    @include grid-column($columns: 9, $gutter: (large: 0));
+  }
+}

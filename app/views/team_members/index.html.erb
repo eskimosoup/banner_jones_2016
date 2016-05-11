@@ -11,6 +11,7 @@
     });
   </script>
 <% end %>
+
 <div class="index-content-wrap">
   <div class="index-content team-members-index-header">
     <h1 class="standard-content-box-title team-members-title">Meet the team</h1>
@@ -32,7 +33,7 @@
 <div class="team-members-index">
   <div class="team-members-index-wrap">
     <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', class: 'slider-team-members-loading' %>
-    
+
     <div class="team-members-index-content">
       <%= render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member %>
     </div>

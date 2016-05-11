@@ -1,2 +1,59 @@
-<h1>TeamMembers#show</h1>
-<p>Find me in app/views/team_members/show.html.erb</p>
+<div class="index-content-wrap">
+  <div class="index-content team-members-index-header">
+    <h1 class="standard-content-box-title team-members-title">Meet the team</h1>
+
+    <div class="slider-team-member-form-controls">
+      <h2 class="slider-team-member-form-title">
+        Find People By
+      </h2>
+
+
+      <%= form_tag search_team_members_path(index: 1), method: :get, remote: true, class: 'slider-team-member-search-form' do %>
+        <%= render 'team_members/shared/find_people_by_form_fields' %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<div class="team-members-show">
+  <div class="team-members-content-wrap">
+    <div class="team-member-show-profile-wrap">
+      <div class="team-member-show-profile">
+        <% present @team_member do |team_member_presenter| %>
+          <div class="team-member-show-profile-image">
+            <%= team_member_presenter.index_image %>
+          </div>
+
+          <div class="team-member-show-profile-content">
+            <div class="show-team-member-profile-name">
+              <%= team_member_presenter.full_name %>
+            </div>
+            <div class="show-team-member-profile-role">
+              <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
+              <%= team_member_presenter.department_roles(sentence_list: true) %>
+            </div>
+            <div class="show-team-member-profile-services">
+              <%= team_member_presenter.service_titles %>
+            </div>
+            <div class="show-team-member-profile-office-locations">
+              <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
+              <%= team_member_presenter.office_locations %>
+            </div>
+
+            <div class="show-team-member-contact-methods">
+              <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email', class: 'index-team-member-profile-icon') %>
+              <%= team_member_presenter.linked_email_address(team_member_presenter.email_address) %>
+              <%= image_tag 'components/icons/team-member/telephone.png', alt: '' %>
+              <%= team_member_presenter.linked_telephone(team_member_presenter.primary_telephone, alt: 'Telephone', class: 'index-team-member-profile-icon') %>
+            </div>
+
+            <div class="show-team-member-profile-services">
+              <%= team_member_presenter.service_titles %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
