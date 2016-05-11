@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   resources :videos, only: [:index, :show]
   resources :events, only: [:index, :show]
   resources :pages, only: :show
-  resources :contacts, only: [:new, :create]
+  resources :contacts, only: [:new, :create], path: 'contact-us'
+  resources :callback_requests, only: [:new, :create], path: 'callback-request'
 
   resources :audiences, only: :show do
     resources :services, only: :show do

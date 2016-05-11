@@ -1,0 +1,11 @@
+.remote-callback-request-form .contact-details {
+  @include grid-row;
+
+  .field {
+    @include grid-column(3);
+  }
+
+  .actions {
+    @include grid-column(12);
+  }
+}

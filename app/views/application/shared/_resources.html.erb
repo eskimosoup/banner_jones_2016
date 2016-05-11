@@ -1,0 +1,21 @@
+<section class="home-content-box-wrap">
+  <div class="home-content-box inner">
+    <div class="helpful-guide-home-content-box-slider-controls">
+      <%= link_to '#', class: 'home-content-box-previous', title: 'Previous' do %>
+        <%= image_tag 'components/icons/content-box/previous.png', alt: '' %>
+      <% end %>
+      <%= link_to '#', class: 'home-content-box-next', title: 'Next' do %>
+        <%= image_tag 'components/icons/content-box/next.png', alt: '' %>
+      <% end %>
+    </div>
+
+    <h2 class="home-content-box-title">
+      Our Helpful Guides
+    </h2>
+
+    <div class="helpful-guides-slick">
+      <%= render partial: 'resources/resource_shelf',
+                collection: @resources, as: :resource if @resources.present? %>
+    </div>
+  </div>
+</section>

@@ -24,7 +24,7 @@
         <%= page_presenter.title %>
       </h1>
 
-      <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-show-image') %>
+      <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-show-image') if page_presenter.show_image.present? %>
 
       <div class="page-inner-content">
         <%= page_presenter.content %>

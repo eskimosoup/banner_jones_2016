@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
     @testimonials = Testimonial.displayed.homepage_highlight
     @articles = Article.homepage_highlight
     @resources = Resource.homepage_highlight
-    @team_members = TeamMember.displayed
+    @team_members = TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed
     @services = Service.root_services.displayed.pluck(:title, :id)
     @banner_services = Service.homepage_highlight
     @offices = Office.displayed
@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
     @primary_header_menu = Optimadmin::Menu.new(name: 'primary_header')
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
     @awards = Award.displayed
+    @callback_request = CallbackRequest.new
   end
 
   def global_site_settings

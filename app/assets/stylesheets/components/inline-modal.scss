@@ -1,0 +1,29 @@
+.inline-modal {
+  background: rgba($black, .8);
+  box-shadow: 10px $light-grey;
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+
+  &.visible {
+    display: block;
+  }
+}
+
+.inline-modal-content {
+  @include grid-row;
+  background: $white;
+  bottom: 0;
+  -webkit-filter: blur(0);
+  height: auto;
+  left: 50%;
+  padding: rem(20px);
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}

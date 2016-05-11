@@ -60,7 +60,8 @@
 </div>
 
 <div class="sticky-call-to-actions">
-  <%= link_to '#', class: 'request-callback' do %>
+  <%= link_to '#', class: 'request-callback toggle-class', 
+    data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
     <%= image_tag 'components/icons/sticky-callback.png', alt: '' %>
     Request a Callback
   <% end %>
@@ -69,4 +70,12 @@
     <%= image_tag 'components/icons/sticky-search.png', alt: '' %>
     Find a Lawyer
   <% end %>
+</div>
+
+<div class="inline-modal remote-callback-request-form-modal">
+  <div class="inline-modal-content">
+    <div class="remote-callback-request-form">
+      <%= render 'callback_requests/remote_form' %>
+    </div>
+  </div>
 </div>

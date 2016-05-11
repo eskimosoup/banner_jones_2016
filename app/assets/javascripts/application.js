@@ -17,5 +17,6 @@
 //= require components/footer-awards
 //= require components/articles
 //= require components/toggle-class
+//= require components/inline-modal
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
