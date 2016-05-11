@@ -60,20 +60,14 @@
 
     <%= render 'pages/shared/call_to_actions' %>
 
-    <div class="service-rich-snippets">
-      <h4 class="service-rich-snippets-title">
-        <%= global_site_settings['Name'] %> Reviews
-      </h4>
-
-      <div class="service-rich-snippets-ratings">
-        <%= image_tag 'placeholders/rich-snippet-ratings.jpg', alt: '' %>
-
-        <% # TODO: Make this dynamic %>
-        <p>
-          4.5 out of 5 based on 24 ratings
-        </p>
+    <% if @service.rich_snippet %>
+      <div class="service-rich-snippets">
+        <%= render(
+          partial: "rich_snippets/rich_snippet",
+          object: @service.rich_snippet 
+        ) %>
       </div>
-    </div>
+    <% end %>
   </aside>
 </div>
 

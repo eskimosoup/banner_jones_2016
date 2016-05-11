@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511100705) do
+ActiveRecord::Schema.define(version: 20160511115926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -507,6 +507,17 @@ ActiveRecord::Schema.define(version: 20160511100705) do
     t.index ["resource_id"], name: "index_resources_categorisations_on_resource_id", using: :btree
   end
 
+  create_table "rich_snippets", force: :cascade do |t|
+    t.integer  "service_id"
+    t.integer  "rating_value",                null: false
+    t.integer  "rating_count",                null: false
+    t.string   "description"
+    t.boolean  "display",      default: true, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["service_id"], name: "index_rich_snippets_on_service_id", unique: true, using: :btree
+  end
+
   create_table "service_hierarchies", id: false, force: :cascade do |t|
     t.integer "ancestor_id",   null: false
     t.integer "descendant_id", null: false
@@ -829,6 +840,7 @@ ActiveRecord::Schema.define(version: 20160511100705) do
   add_foreign_key "onpage_navigations_content_items", "onpage_navigations"
   add_foreign_key "resources_categorisations", "resource_categories"
   add_foreign_key "resources_categorisations", "resources"
+  add_foreign_key "rich_snippets", "services", on_delete: :cascade
   add_foreign_key "services", "audiences", on_delete: :nullify
   add_foreign_key "services_accreditations", "accreditations"
   add_foreign_key "services_accreditations", "services"
