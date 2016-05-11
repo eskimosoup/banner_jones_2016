@@ -5,3 +5,12 @@ body {
     padding: 0;
   }
 }
+
+.index-content-wrap {
+  @include grid-row;
+}
+
+.index-content {
+  @include grid-column(12);
+  @include page-content;
+}

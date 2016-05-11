@@ -1,1 +1,40 @@
-<%= render partial: 'team_members/team_member', collection: @presented_team_members, as: :team_member_presenter %>
+<%= content_for :javascript do %>
+  <script>
+    $(document).on('keyup', '.slider-team-member-search-name', function() {
+      $(this).closest('form').submit();
+      $('.slider-team-members-loading').css('display', 'block');
+    });
+
+    $(document).on('change', '.slider-team-member-search-select', function() {
+      $(this).closest('form').submit();
+      $('.slider-team-members-loading').css('display', 'block');
+    });
+  </script>
+<% end %>
+<div class="index-content-wrap">
+  <div class="index-content team-members-index-header">
+    <h1 class="standard-content-box-title team-members-title">Meet the team</h1>
+
+    <div class="slider-team-member-form-controls">
+      <h2 class="slider-team-member-form-title">
+        Find People By
+      </h2>
+
+
+      <%= form_tag search_team_members_path(index: 1), method: :get, remote: true, class: 'slider-team-member-search-form' do %>
+        <%= render 'team_members/shared/find_people_by_form_fields' %>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<div class="team-members-index">
+  <div class="team-members-index-wrap">
+    <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', class: 'slider-team-members-loading' %>
+    
+    <div class="team-members-index-content">
+      <%= render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member %>
+    </div>
+  </div>
+</div>

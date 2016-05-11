@@ -9,7 +9,7 @@ module Optimadmin
                           small: ['fill', 45, 45],
                           slider: ['fill', 117, 146],
                           navigation: ['fill', 130, 195],
-                          show: ['fill', 200, 200],
+                          show: ['fill', 220, 220],
                           index: ['fill', 200, 200]
                         }]
                       ]

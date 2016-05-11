@@ -2,7 +2,9 @@ class TeamMembersController < ApplicationController
   before_action :set_search_service, only: :search
 
   def index
-    @presented_team_members = BaseCollectionPresenter.new(collection: TeamMember.displayed, view_template: view_context, presenter: TeamMemberPresenter)
+    @team_members = TeamMember.displayed
+    @offices = Office.displayed
+    @services = Service.root_services.displayed.pluck(:title, :id)
   end
 
   def show

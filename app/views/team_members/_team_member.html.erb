@@ -1,35 +1,38 @@
-<div class="team-member">
-  <div class="team-member-full-name">
-    <%= team_member_presenter.full_name %>
-  </div>
-
-  <div class="team-member-role">
-    <%= team_member_presenter.role %>
-  </div>
-
-  <div class="team-member-primary-telephone">
-    <%= team_member_presenter.primary_telephone %>
-  </div>
-
-  <div class="team-member-email-address">
-    <%= team_member_presenter.linked_email_address %>
-  </div>
-
-  <% if team_member_presenter.dx_number.present? %>
-    <div class="team-member-dx-number">
-      <%= team_member_presenter.dx_number %>
+<% present team_member do |team_member_presenter| %>
+  <div class="team-member">
+    <div class="team-member-full-name">
+      <%= team_member_presenter.full_name %>
     </div>
-  <% end %>
 
-  <% if team_member_presenter.mobile_number.present? %>
-    <div class="team-member-mobile-number">
-      <%= team_member_presenter.mobile_number %>
+    <div class="team-member-role">
+      <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
+      <%= team_member_presenter.department_roles(sentence_list: true) %>
     </div>
-  <% end %>
 
-  <% if team_member_presenter.vcard.present? %>
-    <div class="team-member-vcard">
-      <%= team_member_presenter.vcard %>
+    <div class="team-member-primary-telephone">
+      <%= team_member_presenter.primary_telephone %>
     </div>
-  <% end %>
-</div>
+
+    <div class="team-member-email-address">
+      <%= team_member_presenter.linked_email_address %>
+    </div>
+
+    <% if team_member_presenter.dx_number.present? %>
+      <div class="team-member-dx-number">
+        <%= team_member_presenter.dx_number %>
+      </div>
+    <% end %>
+
+    <% if team_member_presenter.mobile_number.present? %>
+      <div class="team-member-mobile-number">
+        <%= team_member_presenter.mobile_number %>
+      </div>
+    <% end %>
+
+    <% if team_member_presenter.vcard.present? %>
+      <div class="team-member-vcard">
+        <%= team_member_presenter.vcard %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
