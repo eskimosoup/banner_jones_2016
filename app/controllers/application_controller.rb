@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 
   def index
     @banners = Banner.displayed
-    @testimonials = Testimonial.displayed
+    @testimonials = Testimonial.displayed.homepage_highlight
     @articles = Article.homepage_highlight
     @resources = Resource.homepage_highlight
     @team_members = TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed

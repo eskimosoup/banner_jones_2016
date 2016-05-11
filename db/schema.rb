@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510111817) do
+ActiveRecord::Schema.define(version: 20160511100705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -468,6 +468,8 @@ ActiveRecord::Schema.define(version: 20160510111817) do
     t.string   "social_share_image"
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
+    t.string   "subtitle"
+    t.text     "summary"
   end
 
   create_table "resource_categories", force: :cascade do |t|
@@ -762,6 +764,7 @@ ActiveRecord::Schema.define(version: 20160510111817) do
     t.integer  "testimonial_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.integer  "position"
     t.index ["team_member_id"], name: "index_team_members_testimonials_on_team_member_id", using: :btree
     t.index ["testimonial_id"], name: "index_team_members_testimonials_on_testimonial_id", using: :btree
   end
