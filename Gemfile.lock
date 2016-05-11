@@ -32,13 +32,9 @@ GIT
       json
 
 GIT
-  remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: aed29471be22ef0b4ed1a4c653362bd8c61f729f
-  specs:
-    optimadmin_generators (0.5.0)
-
-PATH
-  remote: ../optimadmin
+  remote: git@github.com:eskimosoup/Optimadmin.git
+  revision: 1c193e54358430df0f36e471a9b3ebc94770c942
+  branch: master
   specs:
     optimadmin (0.0.30)
       bcrypt
@@ -55,8 +51,16 @@ PATH
       sass-rails
       tinymce-rails
 
-PATH
-  remote: ../optimised_site
+GIT
+  remote: git@github.com:eskimosoup/optimadmin_generators.git
+  revision: aed29471be22ef0b4ed1a4c653362bd8c61f729f
+  specs:
+    optimadmin_generators (0.5.0)
+
+GIT
+  remote: git@github.com:eskimosoup/optimised_site.git
+  revision: 36a5b46ee108860eff8f6a0138b36c6877ad051b
+  branch: master
   specs:
     optimised_site (0.0.12)
       amoeba
@@ -377,7 +381,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
-    tinymce-rails (4.3.8)
+    tinymce-rails (4.3.12)
       railties (>= 3.1.1)
     twitter (5.16.0)
       addressable (~> 2.3)
