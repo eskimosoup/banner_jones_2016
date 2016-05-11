@@ -2,7 +2,7 @@
   <% present article do |article_presenter| %>
     <div class="article" <%= "data-service-colour=#{article_presenter.first_service.colour}" if article_presenter.first_service.present? %>>
       <%= article_presenter.linked_text(article_presenter.title, class: 'article-title', style: "#{"border-color:" + article_presenter.first_service.colour if article_presenter.first_service.present?}") %>
-      <%= article_presenter.linked_text((article_presenter.index_image(alt: article_presenter.title, class: 'article-image'))) %>
+      <%= article_presenter.linked_text((article_presenter.index_image(alt: article_presenter.title, class: 'article-image'))) if article_presenter.index_image.present? %>
       <%= render partial: 'articles/shared/team_members', collection: article.team_members.displayed, as: :team_member, locals: { article_presenter: article_presenter } %>
     </div>
   <% end %>
