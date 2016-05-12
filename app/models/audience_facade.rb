@@ -10,6 +10,7 @@ class AudienceFacade
   end
 
   def banners
+    @banners ||= audience.banners.displayed
   end
 
   def banner_services
