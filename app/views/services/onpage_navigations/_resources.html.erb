@@ -7,7 +7,7 @@
             <%= resource_presenter.title %>
           </h2>
 
-          <%= resource_presenter.linked_text(resource_presenter.index_image({alt: resource_presenter.title, class: 'service-resource-image'}), {title: resource_presenter.title}) %>
+          <%= resource_presenter.linked_text(resource_presenter.index_image({alt: resource_presenter.title, class: 'service-resource-image'}), {title: resource_presenter.title}) if resource_presenter.index_image.present? %>
 
           <%= resource_presenter.linked_text('Download', {class: 'service-resource-download-button', title: resource_presenter.title}) %>
         </div>
