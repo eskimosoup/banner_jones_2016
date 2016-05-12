@@ -1,22 +1,24 @@
 <div class="page-content-wrap">
-  <aside class="page-aside-navigation">
-    <div class="page-aside-navigation-content">
-      <% present @page do |page_presenter| %>
-        <h2 class="page-aside-navigation-title">
-          <%=
-          render partial: "pages/shared/top_level_menu_item",
-                 locals: { menu_item_presenter: MenuItemPresenter.new(object: @side_menus.last.related_menu_items(@page).first.first, view_template: self, descendants_hash: nil),
-                           sub_menu_items: nil, depth: 0 } %>
-        </h2>
+  <% if @side_menus.present? %>
+    <aside class="page-aside-navigation">
+      <div class="page-aside-navigation-content">
+        <% present @page do |page_presenter| %>
+          <h2 class="page-aside-navigation-title">
+            <%=
+            render partial: "pages/shared/top_level_menu_item",
+                   locals: { menu_item_presenter: MenuItemPresenter.new(object: @side_menus.last.related_menu_items(@page).first.first, view_template: self, descendants_hash: nil),
+                             sub_menu_items: nil, depth: 0 } %>
+          </h2>
 
-        <div class="page-aside-navigation-links">
-          <ul class="page-aside-navigation-links-list page-aside-navigation-links-tree">
-            <%= nested_menu_items(menu_items: @side_menus.last.related_menu_items(@page), view_partial: 'pages/shared/menu_item') %>
-          </ul>
-        </div>
-      <% end %>
-    </div>
-  </aside>
+          <div class="page-aside-navigation-links">
+            <ul class="page-aside-navigation-links-list page-aside-navigation-links-tree">
+              <%= nested_menu_items(menu_items: @side_menus.last.related_menu_items(@page), view_partial: 'pages/shared/menu_item') %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </aside>
+  <% end %>
 
   <div class="page-content">
     <% present @page do |page_presenter| %>
