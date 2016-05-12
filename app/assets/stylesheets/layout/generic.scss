@@ -6,6 +6,15 @@ body {
   }
 }
 
+.index-content-wrap {
+  @include grid-row;
+}
+
+.index-content {
+  @include grid-column(12);
+  @include page-content;
+}
+
 a.see-all {
   margin-top: rem-calc(5px);
   border-radius: rem-calc(3px);

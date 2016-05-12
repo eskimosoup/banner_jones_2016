@@ -37,6 +37,7 @@
 
       font-family: $montserrat;
       font-weight: 400;
+      margin-top: rem(3px);
     }
 
     .service-article-title {
@@ -63,7 +64,8 @@
   margin: 0 0 rem(6px);
 }
 
-.service-article-title {
+.service-article-title,
+.service-article-full-title {
   @include service-item-title;
 }
 

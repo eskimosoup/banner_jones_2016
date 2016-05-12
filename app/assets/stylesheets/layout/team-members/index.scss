@@ -1,0 +1,35 @@
+.index-content {
+  .team-members-title {
+    @include breakpoint(large) {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      width: 40%;
+    }
+  }
+}
+
+.team-members-index,
+.team-members-show {
+  background: $offset-white;
+  padding: rem(40px);
+}
+
+.team-members-index-wrap {
+  @include grid-row;
+}
+
+.team-members-index-content {
+  @include grid-column(12);
+}
+
+.team-members-index-header {
+  padding-bottom: rem(40px);
+  padding-top: rem(20px);
+
+  .slider-team-member-form-title {
+    font-size: rem(16px);
+    display: block;
+  }
+}

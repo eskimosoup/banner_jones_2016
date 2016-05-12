@@ -1,0 +1,45 @@
+.team-members-content-wrap {
+  @include grid-row;
+}
+
+.team-member-show-profile-wrap {
+  @include grid-column(9);
+  height: 100%;
+}
+
+.team-member-show-profile {
+  @include clearfix;
+  background: $orange;
+  height: 100%;
+}
+
+.team-member-show-profile-image {
+  @include breakpoint(large) {
+    @include grid-column(3);
+  }
+}
+
+.team-member-show-profile-content {
+  @include breakpoint(large) {
+    @include grid-column(9);
+  }
+}
+
+.team-member-show-profile-content {
+  color: $white;
+  padding-bottom: rem(15px);
+  padding-top: rem(20px);
+}
+
+.team-member-show-text-profile {
+  @include grid-column(3);
+
+  .standard-content-box {
+    height: 100%;
+  }
+
+  h3 {
+    @include standard-content-box-title;
+    font-size: rem(16px);
+  }
+}

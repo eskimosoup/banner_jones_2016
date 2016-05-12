@@ -78,9 +78,11 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.page-aside-navigation-top-level', function() {
-  $('.page-aside-navigation-links-list').slideToggle();
-  $('.page-aside-navigation-active').toggleClass('expanded');
-  return false;
+  if (Modernizr.mq('only screen and (max-width: 767px)')) {
+    $('.page-aside-navigation-links-list').slideToggle();
+    $('.page-aside-navigation-active').toggleClass('expanded');
+    return false;
+  }
 });
 
 $(document).on('click', '.service-onpage-navigation-link', function() {

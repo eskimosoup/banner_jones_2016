@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 7553ddcedd4afbb799ed88ceefe41d720b0fddef
+  revision: f660c06d9fc2c3396de526eb99b9069e85d2186d
   branch: master
   specs:
     optimised_site (0.0.12)

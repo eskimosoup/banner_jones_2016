@@ -7,16 +7,14 @@
   <% @service.articles.displayed.limit(onpage_navigation.results_limit).each_with_index do |article, index| %>
     <% present article do |article_presenter| %>
       <div class="service-article <%= index >= 1 ? 'closed' : 'opened' %>">
-        <div class="service-article-image">
-          <%= article_presenter.index_image(alt: article_presenter.title) if article_presenter.index_image.present? %>
-        </div>
+        <%= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'service-article-image' if article_presenter.index_image.present? %>
 
         <div class="service-article-content">
           <div class="service-article-date">
             <%= article_presenter.date(:short) %>
           </div>
 
-          <%= article_presenter.linked_text(article.title, {title: article_presenter.title, class: 'service-article-title'}) %>
+          <%= article_presenter.linked_text(article.title, {title: article_presenter.title, class: "#{article.team_members.present? ? 'service-article-title' : 'service-article-full-title' }"}) %>
 
           <div class="service-article-summary">
             <%= article_presenter.summary %>
