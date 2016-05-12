@@ -1,7 +1,7 @@
 <div class="row collapse">
   <% @service.resources.displayed.limit(onpage_navigation.results_limit).each do |resource| %>
     <% present resource do |resource_presenter| %>
-      <div class="medium-<%= width_calculator(onpage_navigation.results_limit) %> columns">
+      <div class="medium-<%= onpage_navigation.results_limit.present? ? width_calculator(onpage_navigation.results_limit) : (12 / @service.resources.displayed.limit(onpage_navigation.results_limit).size) %> columns">
         <div class="standard-content-box onpage-navigation-item">
           <h2 class="standard-content-box-title">
             <%= resource_presenter.title %>
