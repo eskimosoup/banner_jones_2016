@@ -16,6 +16,6 @@ class TeamMemberUploader < Optimadmin::ImageUploader
   end
 
   version :show do
-    process resize_to_fill: [200, 200]
+    process resize_to_fill: [296, 296]
   end
 end

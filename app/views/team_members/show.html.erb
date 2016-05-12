@@ -1,3 +1,10 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.team-members-content-wrap, .team-member-show-text-profile').matchHeight();
+    });
+  </script>
+<% end %>
 <div class="index-content-wrap">
   <div class="index-content team-members-index-header">
     <h1 class="standard-content-box-title team-members-title">Meet the team</h1>
@@ -22,7 +29,7 @@
       <div class="team-member-show-profile">
         <% present @team_member do |team_member_presenter| %>
           <div class="team-member-show-profile-image">
-            <%= team_member_presenter.index_image %>
+            <%= team_member_presenter.show_image(alt: team_member_presenter.full_name) %>
           </div>
 
           <div class="team-member-show-profile-content">
@@ -33,17 +40,18 @@
               <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
               <%= team_member_presenter.department_roles(sentence_list: true) %>
             </div>
-            <div class="show-team-member-profile-services">
-              <%= team_member_presenter.service_titles %>
-            </div>
+
             <div class="show-team-member-profile-office-locations">
               <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
               <%= team_member_presenter.office_locations %>
             </div>
 
-            <div class="show-team-member-contact-methods">
+            <div class="show-team-member-contact-method-email">
               <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email', class: 'index-team-member-profile-icon') %>
               <%= team_member_presenter.linked_email_address(team_member_presenter.email_address) %>
+            </div>
+
+            <div class="show-team-member-contact-method-phone">
               <%= image_tag 'components/icons/team-member/telephone.png', alt: '' %>
               <%= team_member_presenter.linked_telephone(team_member_presenter.primary_telephone, alt: 'Telephone', class: 'index-team-member-profile-icon') %>
             </div>
@@ -52,6 +60,14 @@
               <%= team_member_presenter.service_titles %>
             </div>
           </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="team-member-show-text-profile">
+      <div class="standard-content-box">
+        <% present @team_member do |team_member_presenter| %>
+          <%= team_member_presenter.profile %>
         <% end %>
       </div>
     </div>

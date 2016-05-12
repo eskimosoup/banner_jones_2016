@@ -1,11 +1,40 @@
-.team-member-show-profile-image {
-  @include breakpoint(large) {
-    @include grid-column(3);
+.show-team-member-profile-name {
+  color: $offset-black;
+  font-size: rem(19px);
+  font-weight: $myriad-pro-semibold;
+  margin: 0 0 rem(9px);
+}
+
+.show-team-member-profile-role {
+  font-size: rem(16px);
+  margin: rem(9px) 0 rem(15px);
+  text-transform: uppercase;
+}
+
+.show-team-member-profile-office-locations {
+  margin: rem(15px) 0 rem(5px);
+}
+
+.show-team-member-contact-method-email {
+  margin: rem(10px) 0;
+
+  a {
+    color: $white;
   }
 }
 
-.team-member-show-profile-content {
-  @include breakpoint(large) {
-    @include grid-column($columns: 9, $gutter: (large: 0));
+.show-team-member-contact-method-phone {
+  margin: rem(10px) 0;
+
+  a {
+    color: $white;
   }
+}
+
+.show-team-member-profile-services {
+  color: $offset-black;
+  float: right;
+  font-size: rem(16px);
+  font-weight: $myriad-pro-semibold;
+  margin: 0 rem(15px) 0 0;
 }
