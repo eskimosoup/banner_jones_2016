@@ -4,7 +4,7 @@
       <%= link_to video_presenter.full_image(alt: video_presenter.title),
                   "#service-video-#{video_presenter.id}",
                   class: 'inline-colorbox',
-                  title: video_presenter.title %>
+                  title: video_presenter.title if video_presenter.full_image.present? %>
 
       <div class="service-video-content">
         <h4 class="service-video-title">

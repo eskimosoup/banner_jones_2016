@@ -1,0 +1,23 @@
+<div itemscope itemtype="http://schema.org/Service">
+  <h4 itemprop="name"><%= rich_snippet.title %></h4>
+  <% if rich_snippet.description.present? %>
+    <div itemprop="description"><%= rich_snippet.description %></div>
+  <% end %>
+
+  <% (1..rich_snippet.rating_value.round).each do |x| %>
+    <%= image_tag 'components/icons/rich-snippet-star-yellow.png', alt: "#{rich_snippet.rating_value} out of 5" %>
+  <% end %>
+
+  <% (1..(5 - rich_snippet.rating_value.round)).each do |x| %>
+    <%= image_tag 'components/icons/rich-snippet-star-grey.png', alt: "#{rich_snippet.rating_value} out of 5" %>
+  <% end %>
+
+  <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+    <div>
+      <span itemprop="ratingValue"><%= rich_snippet.rating_value %></span>
+      <meta itemprop="bestRating" content="5"/>
+      <meta itemprop="worstRating" content="1"/>
+      out of 5 based on <span itemprop="ratingCount"><%= rich_snippet.rating_count %></span> ratings
+    </div>
+  </div>
+</div>
