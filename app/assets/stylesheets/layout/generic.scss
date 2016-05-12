@@ -14,3 +14,17 @@ body {
   @include grid-column(12);
   @include page-content;
 }
+
+a.see-all {
+  margin-top: rem-calc(5px);
+  border-radius: rem-calc(3px);
+  color: $white;
+  background-color: $grey;
+  font-weight: 300;
+  padding: rem-calc(5px 15px);
+  float: right;
+  clear: both;
+  &:hover {
+    color: $orange;
+  }
+}
