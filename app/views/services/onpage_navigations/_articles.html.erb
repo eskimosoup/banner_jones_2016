@@ -16,7 +16,7 @@
             <%= article_presenter.date(:short) %>
           </div>
 
-          <%= article_presenter.linked_text(article.title, {title: article_presenter.title, class: 'service-article-title'}) %>
+          <%= article_presenter.linked_text(article.title, {title: article_presenter.title, class: "#{article.team_members.present? ? 'service-article-title' : 'service-article-full-title' }"}) %>
 
           <div class="service-article-summary">
             <%= article_presenter.summary %>
