@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: 48ab1ede946dec2250a2d1d8cbb3313f25096456
+  revision: 8eac3609801ee29aa4642f09ffe437b2b2d54627
   specs:
     capybara (2.8.0.dev)
       addressable
@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 55114b7792af637e71d779f3339838913f2f0e0c
+  revision: 90f15c9d2daca79eea146d129a4df65c076c1dd3
   branch: master
   specs:
     optimised_site (0.0.12)
@@ -125,7 +125,7 @@ GEM
     bullet (4.14.10)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
-    byebug (8.2.5)
+    byebug (9.0.0)
     cancancan (1.13.1)
     carrierwave (0.11.2)
       activemodel (>= 3.2.0)
@@ -380,7 +380,7 @@ GEM
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.2)
+    tilt (2.0.3)
     tinymce-rails (4.3.12)
       railties (>= 3.1.1)
     twitter (5.16.0)
