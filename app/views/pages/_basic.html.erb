@@ -20,7 +20,7 @@
     </aside>
   <% end %>
 
-  <div class="page-content">
+  <div class="page-content <%= 'full' unless @side_menus.present? %>">
     <% present @page do |page_presenter| %>
       <h1 class="service-page-title">
         <%= page_presenter.title %>

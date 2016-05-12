@@ -1,5 +1,5 @@
 <div class="footer-award">
   <% present award do |award_presenter| %>
-    <%= award_presenter.image('index', { alt: award.title, title: award.title }) %>
+    <%= award_presenter.show_award('index', { alt: award.title }, title: award.title, target: '_blank') %>
   <% end %>
 </div>
