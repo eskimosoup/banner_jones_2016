@@ -62,9 +62,9 @@
     <% if @service.rich_snippet %>
       <div class="service-rich-snippets">
         <%= render(
-          partial: "rich_snippets/rich_snippet",
-          object: @service.rich_snippet 
-        ) %>
+          "rich_snippets/service_rich_snippet",
+          rich_snippet: @service.rich_snippet
+         ) %>
       </div>
     <% end %>
   </aside>

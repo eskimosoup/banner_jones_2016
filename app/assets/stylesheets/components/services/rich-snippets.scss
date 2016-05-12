@@ -3,18 +3,15 @@
   padding: rem(11px);
   text-align: center;
   margin: rem(15px) 0;
-}
 
-.service-rich-snippets-title {
-  color: $black;
-  font-family: $open-sans;
-  font-size: rem(15px);
-  font-weight: $open-sans-semibold;
-}
+  h4 {
+    color: $black;
+    font-family: $open-sans;
+    font-size: rem(15px);
+    font-weight: $open-sans-semibold;
+  }
 
-.service-rich-snippets-ratings {
-
-  p {
+  div[itemprop='description'] {
     font-family: $open-sans;
     font-size: rem(11px);
     margin: rem(11px) 0 0;
