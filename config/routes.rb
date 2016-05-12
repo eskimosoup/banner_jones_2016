@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   mount Optimadmin::Engine => '/admin'
 
-  root to: 'application#index'
+  root to: 'homes#show'
 
   # This has to be the last route in your list
   match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local

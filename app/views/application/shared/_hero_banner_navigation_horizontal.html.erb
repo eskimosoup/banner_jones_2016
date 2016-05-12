@@ -1,15 +1,13 @@
 <div class="hero-banner-navigation-wrap-horizontal">
   <div class="hero-banner-navigation-row-horizontal">
     <ul class="hero-banner-navigation-horizontal">
-      <% if @banner_services.present? %>
-        <% @banner_services.each do |banner_service| %>
-          <% present banner_service do |service_presenter| %>
-              <%= content_tag :li,
-                service_presenter.linked_text(
-                [service_presenter.medium_icon, banner_service.title].compact.join,
-                class: 'hero-banner-navigation-link-horizontal', data: { colour: service_presenter.colour }
-              ) %>
-          <% end %>
+      <% banner_services.each do |banner_service| %>
+        <% present banner_service do |service_presenter| %>
+          <%= content_tag :li,
+            service_presenter.linked_text(
+              [service_presenter.medium_icon, banner_service.title].compact.join,
+              class: 'hero-banner-navigation-link-horizontal', data: { colour: service_presenter.colour }
+          ) %>
         <% end %>
       <% end %>
     </ul>

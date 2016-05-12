@@ -15,17 +15,6 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::RoutingError, with: -> { render_error(404) }
   end
 
-  def index
-    @banners = Banner.displayed
-    @testimonials = Testimonial.displayed.homepage_highlight
-    @articles = Article.homepage_highlight
-    @resources = Resource.homepage_highlight
-    @team_members = TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed + TeamMember.displayed
-    @services = Service.root_services.displayed.pluck(:title, :id)
-    @banner_services = Service.homepage_highlight
-    @offices = Office.displayed
-  end
-
   private
 
   def load_global_objects
