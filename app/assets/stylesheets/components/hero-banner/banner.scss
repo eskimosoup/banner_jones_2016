@@ -150,3 +150,18 @@
     right: -85px;
   }
 }
+
+.hero-banner-item-prefix-title {
+  border-bottom: 7px solid $white;
+  color: $orange;
+  display: inline-block;
+  font-family: $montserrat;
+  font-size: rem(55px);
+  font-weight: $montserrat-extrabold;
+  line-height: 1;
+  margin: 0 0 rem(16px);
+
+  .emphasis {
+    color: $red;
+  }
+}

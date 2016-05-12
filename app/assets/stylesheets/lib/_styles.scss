@@ -1,4 +1,20 @@
 // Page content
+@mixin standard-content-box-title {
+  border-bottom: 5px solid $orange;
+  font-family: $montserrat;
+  font-size: rem(18px);
+  font-weight: $montserrat-semibold;
+  line-height: 1;
+  margin: rem(8px) 0;
+  padding: 0 0 rem(9px);
+
+  @include breakpoint(large) {
+    font-size: rem(21px);
+    margin: rem(16px) 0;
+    padding: 0 0 rem(9px);
+  }
+}
+
 @mixin home-content-box-title {
   color: $dark-purple;
   font-family: $montserrat;

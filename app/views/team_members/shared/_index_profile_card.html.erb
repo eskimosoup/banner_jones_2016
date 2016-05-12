@@ -1,0 +1,31 @@
+<div class="index-team-member-profile-wrap">
+  <% present team_member do |team_member_presenter| %>
+    <%= link_to team_member, title: team_member_presenter.full_name do %>
+      <%= team_member_presenter.index_image %>
+    <% end %>
+
+    <div class="index-team-member-profile-content">
+      <%= link_to team_member, title: team_member_presenter.full_name do %>
+        <div class="index-team-member-profile-name">
+          <%= team_member_presenter.full_name %>
+        </div>
+        <div class="index-team-member-profile-role">
+          <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
+          <%= team_member_presenter.department_roles(sentence_list: true) %>
+        </div>
+        <div class="index-team-member-profile-services">
+          <%= team_member_presenter.service_titles %>
+        </div>
+        <div class="index-team-member-profile-office-locations">
+          <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
+          <%= team_member_presenter.office_locations %>
+        </div>
+      <% end %>
+
+      <div class="index-team-member-contact-methods">
+        <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email', class: 'index-team-member-profile-icon') %>
+        <%= team_member_presenter.linked_telephone(image_tag 'components/icons/team-member/telephone.png', alt: 'Telephone', class: 'index-team-member-profile-icon') %>
+      </div>
+    </div>
+  <% end %>
+</div>

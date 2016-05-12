@@ -1,0 +1,55 @@
+.index-team-member-profile-wrap {
+  @include breakpoint(large) {
+    @include grid-column(2, $gutter: (
+      large: 3
+    ));
+
+    &:last-of-type {
+      @include grid-column-end;
+    }
+  }
+}
+
+.index-team-member-profile-content {
+  background: $orange;
+  padding: rem(35px) rem(20px) rem(20px);
+  margin: rem(3px) 0 0;
+}
+
+.index-team-member-profile-name {
+  font-weight: $myriad-pro-semibold;
+  margin: 0 0 rem(10px);
+}
+
+.index-team-member-profile-role {
+  line-height: 1.25;
+  margin: 0 0 rem(20px);
+  text-transform: uppercase;
+}
+
+.index-team-member-profile-services {
+  font-weight: $myriad-pro-semibold;
+  margin: 0 0 rem(40px);
+}
+
+.index-team-member-profile-name,
+.index-team-member-profile-services {
+  color: $offset-black;
+}
+
+.index-team-member-profile-role,
+.index-team-member-profile-office-locations {
+  color: $white;
+}
+
+.index-team-member-profile-icon {
+  margin: 0 rem(5px) 0 0;
+}
+
+.index-team-member-contact-methods {
+  margin: rem(20px) 0 0;
+
+  .index-team-member-profile-icon {
+    margin-right: rem(15px);
+  }
+}

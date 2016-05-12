@@ -1,9 +1,15 @@
-$('.slider-team-members-slick').slick('unslick');
-$('.slider-team-members-slick').html("<%= j render partial: 'team_members/shared/slider_team_member', collection: @team_members, as: :team_member if @team_members.present? %>");
-if($('.slider-team-member').length === 0) {
-  $('.slider-team-member-profile-information').text('');
-  $('.slider-team-member-profile-service-name').text('');
-}
-teamMembersSlick();
+<% if params[:index].blank? %>
+  $('.slider-team-members-slick').slick('unslick');
+  $('.slider-team-members-slick').html("<%= j render partial: 'team_members/shared/slider_team_member', collection: @team_members, as: :team_member if @team_members.present? %>");
+
+  if($('.slider-team-member').length === 0) {
+    $('.slider-team-member-profile-information').text('');
+    $('.slider-team-member-profile-service-name').text('');
+  }
+
+  teamMembersSlick();
+<% else %>
+  $('.team-members-index-content').html('<%= j render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member if @team_members.present? %>');
+<% end %>
 
 $('.slider-team-members-loading').removeAttr('style');
