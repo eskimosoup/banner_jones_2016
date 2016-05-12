@@ -43,3 +43,8 @@
     font-size: rem(16px);
   }
 }
+
+.team-members-split-content {
+  @include grid-column(6);
+  margin: rem(30px) auto 0;
+}
