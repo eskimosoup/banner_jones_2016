@@ -5,7 +5,7 @@
         <% present banner_service do |service_presenter| %>
           <%= content_tag :li,
             service_presenter.linked_text(
-              [service_presenter.medium_icon, banner_service.title].compact.join,
+              (service_presenter.medium_icon, banner_service.title),
               class: 'hero-banner-navigation-link-horizontal', data: { colour: service_presenter.colour }
           ) %>
         <% end %>
