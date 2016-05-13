@@ -1,4 +1,10 @@
 <%= content_for :javascript do %>
+  <% if defined? partial_width %>
+    <script>
+      var partialWidth = <%= partial_width %>
+    </script>
+  <% end %>
+
   <%= javascript_include_tag 'components/team-members/slider.js' %>
 <% end %>
 
@@ -9,7 +15,7 @@
     </h2>
   </div>
 
-  <div class="slider-team-member-form-controls">
+  <div class="slider-team-member-form-controls <%= 'hide' if (defined? partial_width) && team_members.size < partial_width.to_i %>">
     <h2 class="slider-team-member-form-title">
       Find People By
     </h2>

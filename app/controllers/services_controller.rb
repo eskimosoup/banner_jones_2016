@@ -8,6 +8,7 @@ class ServicesController < ApplicationController
     @onpage_navigations = @service.displayed_onpage_navigations
     @onpage_navigation_links = @onpage_navigations.displayed_navigation_link
     @offices = Office.displayed
+    @hide_sticky_cta = true
   end
 
   private

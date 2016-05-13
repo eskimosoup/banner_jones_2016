@@ -72,4 +72,19 @@
       </div>
     </div>
   </div>
+
+  <div class="team-members-content-wrap">
+    <div class="team-members-split-content">
+      <div class="standard-content-box">
+        <% present @team_member do |team_member_presenter| %>
+          <%= team_member_presenter.specialisms %>
+          <%#= render partial: 'accreditations/shared/team_member_accreditations', collection: @team_member.accreditations, as: :accreditation %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="team-members-split-content">
+
+    </div>
+  </div>
 </div>

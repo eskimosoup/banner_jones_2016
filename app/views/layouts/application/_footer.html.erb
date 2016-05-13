@@ -59,18 +59,20 @@
   </p>
 </div>
 
-<div class="sticky-call-to-actions">
-  <%= link_to '#', class: 'request-callback toggle-class',
-    data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
-    <%= image_tag 'components/icons/sticky-callback.png', alt: '' %>
-    Request a Callback
-  <% end %>
+<% unless @hide_sticky_cta.present? %>
+  <div class="sticky-call-to-actions">
+    <%= link_to '#', class: 'request-callback toggle-class',
+      data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
+      <%= image_tag 'components/icons/sticky-callback.png', alt: '' %>
+      Request a Callback
+    <% end %>
 
-  <%= link_to team_members_path, class: 'find-a-lawyer' do %>
-    <%= image_tag 'components/icons/sticky-search.png', alt: '' %>
-    Find a Lawyer
-  <% end %>
-</div>
+    <%= link_to team_members_path, class: 'find-a-lawyer' do %>
+      <%= image_tag 'components/icons/sticky-search.png', alt: '' %>
+      Find a Lawyer
+    <% end %>
+  </div>
+<% end %>
 
 <div class="inline-modal remote-callback-request-form-modal">
   <div class="inline-modal-content">
