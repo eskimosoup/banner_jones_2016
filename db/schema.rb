@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160511115926) do
+ActiveRecord::Schema.define(version: 20160512152119) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,17 @@ ActiveRecord::Schema.define(version: 20160511115926) do
     t.index ["slug"], name: "index_audiences_on_slug", using: :btree
     t.index ["suggested_url"], name: "index_audiences_on_suggested_url", using: :btree
     t.index ["team_member_id"], name: "index_audiences_on_team_member_id", using: :btree
+  end
+
+  create_table "audiences_banners", force: :cascade do |t|
+    t.integer  "audience_id",             null: false
+    t.integer  "banner_id",               null: false
+    t.integer  "position",    default: 0, null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.index ["audience_id", "banner_id"], name: "index_audiences_banners_on_audience_id_and_banner_id", unique: true, using: :btree
+    t.index ["audience_id"], name: "index_audiences_banners_on_audience_id", using: :btree
+    t.index ["banner_id"], name: "index_audiences_banners_on_banner_id", using: :btree
   end
 
   create_table "awards", force: :cascade do |t|
@@ -833,6 +844,8 @@ ActiveRecord::Schema.define(version: 20160511115926) do
   add_foreign_key "articles_categorisations", "article_categories"
   add_foreign_key "articles_categorisations", "articles"
   add_foreign_key "audiences", "team_members", on_delete: :nullify
+  add_foreign_key "audiences_banners", "audiences", on_delete: :cascade
+  add_foreign_key "audiences_banners", "banners", on_delete: :cascade
   add_foreign_key "events", "event_locations"
   add_foreign_key "events_categorisations", "event_categories"
   add_foreign_key "events_categorisations", "events"
