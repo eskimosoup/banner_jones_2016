@@ -23,15 +23,7 @@ body {
 }
 
 .see-all {
-  margin-top: rem(5px);
-  border-radius: rem(3px);
-  color: $white;
-  background-color: $grey;
-  font-weight: 300;
-  padding: rem(5px 15px);
-  float: right;
+  @include navigation-button;
   clear: both;
-  &:hover {
-    color: $orange;
-  }
+  float: right;
 }

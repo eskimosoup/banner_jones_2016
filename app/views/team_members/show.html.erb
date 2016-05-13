@@ -7,23 +7,8 @@
   <%= javascript_include_tag 'components/testimonials/slider.js' %>
   <%= javascript_include_tag 'components/team-members/index-profile-card.js' %>
 <% end %>
-<div class="index-content-wrap">
-  <div class="index-content team-members-index-header">
-    <h1 class="standard-content-box-title team-members-title">Meet the team</h1>
 
-    <div class="slider-team-member-form-controls">
-      <h2 class="slider-team-member-form-title">
-        Find People By
-      </h2>
-
-
-      <%= form_tag search_team_members_path(index: 1), method: :get, remote: true, class: 'slider-team-member-search-form' do %>
-        <%= render 'team_members/shared/find_people_by_form_fields' %>
-      <% end %>
-    </div>
-
-  </div>
-</div>
+<%= render 'team_members/shared/index_header' %>
 
 <div class="module-inner-content">
   <div class="team-members-content-wrap">

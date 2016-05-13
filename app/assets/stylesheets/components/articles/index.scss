@@ -1,3 +1,120 @@
+.index-article-link {
+  &:link,
+  &:visited {
+    color: $offset-black;
+  }
+
+  &:hover,
+  &:active {
+    color: $offset-black;
+  }
+}
+
+.index-article-details-wrap {
+  padding: rem(10px) rem(20px) rem(20px);
+}
+
 .index-article-details-overview {
+  @include grid-row;
   border-top: 5px solid $orange;
+  padding: rem(20px) rem(20px) 0;
+}
+
+.index-article-details {
+  @include breakpoint(medium) {
+    @include grid-column($columns: 10, $gutter: (medium: 0));
+  }
+}
+
+.index-article-shares {
+  @include breakpoint(medium) {
+    @include grid-column($columns: 2, $gutter: (medium: 0));
+    text-align: right;
+  }
+}
+
+.index-article-details-date {
+  color: $light-slate-blue;
+  font-family: $ubuntu;
+  font-size: rem(12px);
+  font-weight: $ubuntu-light;
+}
+
+.index-article-details-categories {
+  color: $orange;
+  font-family: $ubuntu;
+  font-size: rem(14px);
+  font-weight: $ubuntu-light;
+}
+
+.index-article-title {
+  color: $grey-blue;
+  font-family: $open-sans;
+  font-size: rem(20px);
+  font-weight: $open-sans-semibold;
+  margin: 0 0 rem(7px);
+}
+
+.index-article-summary {
+  p {
+    color: $light-slate-blue;
+    font-family: $ubuntu;
+    font-size: rem(14px);
+    font-weight: $ubuntu-light;
+    margin: rem(11px) 0;
+  }
+}
+
+.index-article-read-more {
+  color: $light-accent-grey;
+  font-family: $montserrat;
+  font-size: rem(12px);
+  text-transform: uppercase;
+}
+
+
+.index-article-author-wrap {
+  text-align: right;
+}
+
+.index-article-author {
+  @include grid-row;
+  padding: rem(21px) 0;
+}
+
+.index-article-author-photo {
+    @include grid-column(
+    $columns: 2,
+    $gutter: (
+        small: 10
+      )
+    );
+}
+
+.index-article-author-details {
+    @include grid-column(
+    $columns: 10,
+    $gutter: (
+        small: 0
+      )
+    );
+
+  line-height: 1;
+}
+
+.index-article-author-name {
+  color: $dark-purple;
+  display: block;
+  font-family: $montserrat;
+  font-size: rem(12px);
+  font-weight: $montserrat-semibold;
+  line-height: 1;
+  margin: rem(9px) 0 0;
+
+  &:visited,
+  &:link,
+  &:hover,
+  &:active {
+    color: $dark-purple;
+  }
 }

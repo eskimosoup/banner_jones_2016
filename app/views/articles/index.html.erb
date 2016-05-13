@@ -1,22 +1,4 @@
-<%= content_for :javascript do %>
-  <%= javascript_include_tag 'components/article-categories/toggle' %>
-<% end %>
-
-<div class="index-content-wrap">
-  <div class="index-content articles-index-content">
-    <%= link_to '#', class: 'article-category-toggle see-all', data: { container: '.article-categories-dropdown-wrap', class: 'hide', return: 'false' } do %>
-      News Categories
-      <span class="article-category-toggle-expand">+</span>
-      <span class="article-category-toggle-minimise">-</span>
-    <% end %>
-
-    <h1 class="standard-content-box-title">
-      Latest News
-    </h1>
-
-    <%= render 'article_categories/shared/toggle_overlay' %>
-  </div>
-</div>
+<%= render 'articles/shared/index_header' %>
 
 <div class="module-inner-content">
   <div class="articles-index">
