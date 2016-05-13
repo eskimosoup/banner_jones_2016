@@ -8,7 +8,7 @@ class TeamMembersController < ApplicationController
 
   def show
     @team_member = TeamMember.displayed.find(params[:id])
-    # @presented_team_member = TeamMemberPresenter.new(object: TeamMember.displayed.find(params[:id]), view_context: view_template)
+    @team_members = @team_member.root_services.first.team_members.limit(6)
   end
 
   def search

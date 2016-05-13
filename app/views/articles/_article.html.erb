@@ -1,0 +1,43 @@
+<div class="index-article">
+  <div class="standard-content-box standalone">
+    <% present article do |article_presenter| %>
+      <%= link_to article, title: article_presenter.title, class: 'index-article-link' do %>
+        <%= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'index-article-image' if article_presenter.index_image.present? %>
+
+          <div class="index-article-details-overview">
+            <div class="index-article-details">
+              <div class="index-article-details-date">
+                <%= article_presenter.date %>
+              </div>
+
+              <div class="index-article-details-categories">
+                <%= article.article_categories.map(&:title).join(', ') %>
+              </div>
+            </div>
+
+            <div class="index-article-shares">
+
+            </div>
+          </div>
+
+        <div class="index-article-details-wrap">
+          <div class="index-article-title">
+            <%= article_presenter.title %>
+          </div>
+
+          <div class="index-article-summary">
+            <%= article_presenter.summary %>
+          </div>
+
+          <div class="index-article-read-more">
+            Read more >
+          </div>
+
+          <div class="index-article-author-wrap">
+            <%= render partial: 'articles/shared/team_members', collection: article.team_members.displayed, as: :team_member, locals: { article_presenter: article_presenter } %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -15,7 +15,7 @@
 //= require components/meganav
 //= require components/hover-toggle
 //= require components/footer-awards
-//= require components/articles
+//= require components/articles/colour-toggle
 //= require components/toggle-class
 //= require components/inline-modal
 //= require vendor/modernizr

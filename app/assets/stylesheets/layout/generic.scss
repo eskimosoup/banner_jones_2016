@@ -13,18 +13,17 @@ body {
 .index-content {
   @include grid-column(12);
   @include page-content;
+  padding-bottom: rem(20px);
+  padding-top: rem(20px);
 }
 
-a.see-all {
-  margin-top: rem-calc(5px);
-  border-radius: rem-calc(3px);
-  color: $white;
-  background-color: $grey;
-  font-weight: 300;
-  padding: rem-calc(5px 15px);
-  float: right;
+.module-inner-content {
+  background: $offset-white;
+  padding: rem(40px);
+}
+
+.see-all {
+  @include navigation-button;
   clear: both;
-  &:hover {
-    color: $orange;
-  }
+  float: right;
 }

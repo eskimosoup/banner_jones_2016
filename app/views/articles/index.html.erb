@@ -1,0 +1,7 @@
+<%= render 'articles/shared/index_header' %>
+
+<div class="module-inner-content">
+  <div class="articles-index">
+    <%= render partial: 'articles/article', collection: @articles, as: :article %>
+  </div>
+</div>

@@ -1,4 +1,5 @@
 <%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/testimonials/slider.js' %>
   <%= javascript_include_tag 'components/home-components.js' %>
   <%= javascript_include_tag 'components/shared-components.js' %>
 <% end %>
@@ -40,7 +41,7 @@
     locals: {
       resources: @facade.resources
     }
-  ) if @facade.resources.present? %> 
+  ) if @facade.resources.present? %>
 
   <% if @facade.team_members.present? %>
     <section class="home-content-box-wrap">

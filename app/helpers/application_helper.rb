@@ -12,4 +12,8 @@ module ApplicationHelper
       image_tag "components/icons/social/#{type.downcase.parameterize}.png", alt: type
     end
   end
+
+  def possessive(string)
+    string + ('s' == string[-1, 1] ? "'" : "'s")
+  end
 end

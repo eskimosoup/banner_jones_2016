@@ -1,0 +1,26 @@
+.article-show {
+  @include grid-row;
+}
+
+.article-show-content-overview {
+  @include breakpoint(large) {
+    @include grid-column(9);
+  }
+}
+
+.article-show-content-wrap {
+  @include grid-row;
+  margin-top: rem(20px);
+}
+
+.article-show-author {
+  @include breakpoint(large) {
+    @include grid-column(2);
+  }
+}
+
+.article-show-content {
+  @include breakpoint(large) {
+    @include grid-column(10);
+  }
+}

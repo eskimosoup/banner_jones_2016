@@ -1,4 +1,17 @@
 // Page content
+@mixin navigation-button {
+  background-color: $grey;
+  border-radius: rem(3px);
+  color: $white;
+  font-weight: 300;
+  margin-top: rem(5px);
+  padding: rem(5px 15px);
+
+  &:hover {
+    color: $orange;
+  }
+}
+
 @mixin standard-content-box-title {
   border-bottom: 5px solid $orange;
   font-family: $montserrat;

@@ -13,7 +13,10 @@ Rails.application.config.assets.precompile += %w(
   components/home-components.js
   components/service-components.js
   components/shared-components.js
+  components/testimonials/slider.js
   components/team-members/slider.js
+  components/team-members/index-profile-card.js
+  components/article-categories/toggle.js
   optimadmin/*
   vendor/jquery.colorbox.js
   vendor/colorbox.scss

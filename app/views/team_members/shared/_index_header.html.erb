@@ -1,0 +1,17 @@
+<div class="index-content-wrap">
+  <div class="index-content team-members-index-header">
+    <h1 class="standard-content-box-title team-members-title">Meet the team</h1>
+
+    <div class="slider-team-member-form-controls">
+      <h2 class="slider-team-member-form-title">
+        Find People By
+      </h2>
+
+
+      <%= form_tag search_team_members_path(index: 1), method: :get, remote: true, class: 'slider-team-member-search-form' do %>
+        <%= render 'team_members/shared/find_people_by_form_fields' %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

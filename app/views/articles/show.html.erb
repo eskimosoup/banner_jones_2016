@@ -1,0 +1,61 @@
+<%= render 'articles/shared/index_header' %>
+
+
+<% present @article do |article_presenter| %>
+  <%= og_title article_presenter.social_share_title %>
+  <%= og_description article_presenter.social_share_description %>
+  <%= og_image article_presenter.social_share_image_url %>
+  <%= twitter_creator "@#{@article.team_members.first.twitter_link.split('/').last}" if @article.team_members.size == 1 %>
+<% end %>
+
+<div class="article-show">
+  <div class="article-show-content-overview">
+      <%= link_to 'News', articles_path %> /
+      <%= @article.article_categories.map(&:title).join(', ') %>
+
+
+    <% present @article do |article_presenter| %>
+      <%= article_presenter.show_image(alt: article_presenter.title) %>
+    <% end %>
+
+    <div class="article-show-content-wrap">
+      <div class="article-show-author">
+        <% present @article do |article_presenter| %>
+          <%= render partial: 'articles/shared/show_team_members', collection: @article.team_members, as: :team_member, locals: { article_presenter: article_presenter } %>
+        <% end %>
+      </div>
+
+      <div class="article-show-content">
+        <% present @article do |article_presenter| %>
+          <%= article_presenter.date %>
+
+          <h1>
+            <%= article_presenter.title %>
+          </h1>
+
+          <%= article_presenter.content %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <aside class="article-show-sidebar">
+    Related Stories
+
+
+  </aside>
+</div>
+
+<div class="module-inner-content">
+  Latest from <%= possessive @article.team_members.first.forename %> blog
+
+  <div class="articles-index">
+    <%= render partial: 'articles/article',
+               collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
+               as: :article %>
+  </div>
+
+  <%= link_to 'Show all',
+              team_members_path(@article.team_members.first, anchor: 'articles'),
+              class: 'see-all' %>
+</div>
