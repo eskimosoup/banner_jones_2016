@@ -1,6 +1,6 @@
 .sticky-sidebar-toggle {
   display: none;
-  
+
   @include breakpoint(large) {
     background: $black;
     padding: rem(21px) rem(29px);

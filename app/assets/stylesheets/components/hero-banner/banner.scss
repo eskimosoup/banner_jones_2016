@@ -128,10 +128,12 @@
 }
 
 .hero-banner-previous {
+  cursor: pointer;
   left: 0;
 }
 
 .hero-banner-next {
+  cursor: pointer;
   right: 0;
 
   @include breakpoint(large) {

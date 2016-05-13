@@ -1,0 +1,29 @@
+<div class="index-article">
+  <div class="standard-content-box standalone">
+    <% present article do |article_presenter| %>
+      <%= link_to article, title: article_presenter.title, class: 'index-article-link' do %>
+        <%= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'index-article-image' if article_presenter.index_image.present? %>
+
+        <div class="index-article-details-overview">
+          <%= article_presenter.date %>
+
+          <%= article.article_categories.map(&:title).join(', ') %>
+
+
+        </div>
+
+        <%= article_presenter.title %>
+
+        <%= article_presenter.summary %>
+
+        <div class="index-article-read-more">
+          Read more >
+        </div>
+
+        <div class="index-article-team-member">
+          <%= render partial: 'articles/shared/team_members', collection: article.team_members.displayed, as: :team_member, locals: { article_presenter: article_presenter } %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

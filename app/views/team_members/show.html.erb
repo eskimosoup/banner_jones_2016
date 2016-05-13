@@ -4,6 +4,8 @@
       $('.team-members-content-wrap, .team-member-show-text-profile').matchHeight();
     });
   </script>
+  <%= javascript_include_tag 'components/testimonials/slider.js' %>
+  <%= javascript_include_tag 'components/team-members/index-profile-card.js' %>
 <% end %>
 <div class="index-content-wrap">
   <div class="index-content team-members-index-header">
@@ -23,7 +25,7 @@
   </div>
 </div>
 
-<div class="team-members-show">
+<div class="module-inner-content">
   <div class="team-members-content-wrap">
     <div class="team-member-show-profile-wrap">
       <div class="team-member-show-profile">
@@ -78,13 +80,31 @@
       <div class="standard-content-box">
         <% present @team_member do |team_member_presenter| %>
           <%= team_member_presenter.specialisms %>
-          <%#= render partial: 'accreditations/shared/team_member_accreditations', collection: @team_member.accreditations, as: :accreditation %>
+          <%= render partial: 'accreditations/shared/team_member_accreditations', collection: @team_member.accreditations, as: :accreditation %>
         <% end %>
       </div>
     </div>
 
     <div class="team-members-split-content">
+      <div class="onpage-navigation-item home-content-box inner testimonials">
+        <%= link_to "See All", testimonials_path, class: "see-all" %>
 
+        <h2 class="home-content-box-title testimonials-title">
+          Testimonials
+        </h2>
+
+        <div class="testimonials-slick">
+          <%= render @team_member.testimonials.displayed %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="team-members-content-wrap">
+    <h2 class="standard-content-box-title team-members-title">Also in this department</h2>
+
+    <div class="team-members-index-content">
+      <%= render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member %>
     </div>
   </div>
 </div>

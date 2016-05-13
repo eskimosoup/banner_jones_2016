@@ -1,4 +1,5 @@
-.index-content {
+.module-inner-content,
+.index-content-wrap {
   .team-members-title {
     @include breakpoint(large) {
       display: block;
@@ -8,12 +9,6 @@
       width: 40%;
     }
   }
-}
-
-.team-members-index,
-.team-members-show {
-  background: $offset-white;
-  padding: rem(40px);
 }
 
 .team-members-index-wrap {
@@ -26,10 +21,9 @@
 
 .team-members-index-header {
   padding-bottom: rem(40px);
-  padding-top: rem(20px);
 
   .slider-team-member-form-title {
-    font-size: rem(16px);
     display: block;
+    font-size: rem(16px);
   }
 }

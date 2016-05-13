@@ -1,0 +1,12 @@
+.articles-index-content {
+  @include clearfix;
+  position: relative;
+}
+
+.articles-index {
+  @include grid-row;
+}
+
+.index-article {
+  margin: 0 0 rem(30px);
+}

@@ -13,15 +13,22 @@ body {
 .index-content {
   @include grid-column(12);
   @include page-content;
+  padding-bottom: rem(20px);
+  padding-top: rem(20px);
 }
 
-a.see-all {
-  margin-top: rem-calc(5px);
-  border-radius: rem-calc(3px);
+.module-inner-content {
+  background: $offset-white;
+  padding: rem(40px);
+}
+
+.see-all {
+  margin-top: rem(5px);
+  border-radius: rem(3px);
   color: $white;
   background-color: $grey;
   font-weight: 300;
-  padding: rem-calc(5px 15px);
+  padding: rem(5px 15px);
   float: right;
   clear: both;
   &:hover {

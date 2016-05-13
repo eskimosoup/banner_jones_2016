@@ -1,6 +1,6 @@
 function teamMembersSlick() {
   var slidesToShowCount = 12;
-  if(partialWidth !== undefined) {
+  if(typeof partialWidth !== 'undefined') {
     slidesToShowCount = partialWidth;
   }
 

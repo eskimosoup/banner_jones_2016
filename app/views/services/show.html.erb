@@ -9,6 +9,7 @@
 <% end %>
 
 <%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/testimonials/slider.js' %>
   <%= javascript_include_tag 'components/shared-components.js' %>
   <%= javascript_include_tag 'components/team-members/slider.js' %>
   <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>

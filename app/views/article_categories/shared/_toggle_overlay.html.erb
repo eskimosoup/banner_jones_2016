@@ -1,0 +1,13 @@
+<div class="article-categories-dropdown-wrap">
+  <div class="article-categories-dropdown">
+    <% @article_categories.in_groups_of(6, false) do |article_categories| %>
+      <ul class="article-categories-dropdown-list">
+        <% article_categories.each do |article_category| %>
+          <li>
+            <%= render 'article_categories/shared/link', article_category: article_category %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

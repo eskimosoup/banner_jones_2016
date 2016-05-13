@@ -1,4 +1,10 @@
 .team-members-content-wrap {
+  .team-members-title {
+    margin: rem(60px) auto rem(30px);
+  }
+}
+
+.team-members-content-wrap {
   @include grid-row;
 }
 
@@ -15,13 +21,13 @@
 
 .team-member-show-profile-image {
   @include breakpoint(large) {
-    @include grid-column(3);
+    @include grid-column(4);
   }
 }
 
 .team-member-show-profile-content {
   @include breakpoint(large) {
-    @include grid-column(9);
+    @include grid-column(8);
   }
 }
 

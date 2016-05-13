@@ -10,6 +10,7 @@
       $('.slider-team-members-loading').css('display', 'block');
     });
   </script>
+  <%= javascript_include_tag 'components/team-members/index-profile-card.js' %>
 <% end %>
 
 <div class="index-content-wrap">
@@ -30,7 +31,7 @@
   </div>
 </div>
 
-<div class="team-members-index">
+<div class="module-inner-content">
   <div class="team-members-index-wrap">
     <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', class: 'slider-team-members-loading' %>
 
