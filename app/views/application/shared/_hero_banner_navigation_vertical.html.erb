@@ -6,7 +6,7 @@
             service_presenter.linked_text(
             (service_presenter.small_icon + banner_service.title),
             class: 'hero-banner-navigation-link', data: { colour: service_presenter.colour }
-          ) %>
+          ) if service_presenter.small_icon.present? %>
       <% end %>
     <% end %>
   </ul>

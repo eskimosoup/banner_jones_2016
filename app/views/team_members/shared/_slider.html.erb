@@ -1,4 +1,9 @@
 <%= content_for :javascript do %>
+  <% if defined? partial_width %>
+    <script>
+      var partialWidth = <%= partial_width %>
+    </script>
+  <% end %>
   <%= javascript_include_tag 'components/team-members/slider.js' %>
 <% end %>
 

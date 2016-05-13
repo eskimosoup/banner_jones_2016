@@ -1,4 +1,9 @@
 function teamMembersSlick() {
+  var slidesToShowCount = 12;
+  if(partialWidth !== undefined) {
+    slidesToShowCount = partialWidth;
+  }
+
   $('.slider-team-members-slick').on('init', function() {
     $('.slider-team-member:first-of-type .slider-team-member-profile-card-update').click();
   });
@@ -6,7 +11,7 @@ function teamMembersSlick() {
   $('.slider-team-members-slick').slick({
     nextArrow: '.slider-team-members-slider-content-box-slider-controls .slider-content-box-next',
     prevArrow: '.slider-team-members-slider-content-box-slider-controls .slider-content-box-previous',
-    slidesToShow: 12,
+    slidesToShow: slidesToShowCount,
     slidesToScroll: 1,
     swipe: false,
     responsive: [
