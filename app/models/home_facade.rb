@@ -1,7 +1,7 @@
 class HomeFacade
 
   def articles
-    @articles ||= Article.homepage_highlight
+    @articles ||= Article.homepage_highlight.limit(16)
   end
 
   def banners
@@ -13,11 +13,11 @@ class HomeFacade
   end
 
   def resources
-    @resources ||= Resource.homepage_highlight
+    @resources ||= Resource.homepage_highlight.limit(16)
   end
 
   def team_members
-    @team_members ||= TeamMember.displayed.limit(8)
+    @team_members ||= TeamMember.displayed.limit(48)
   end
 
   def testimonials

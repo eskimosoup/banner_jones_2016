@@ -6,7 +6,7 @@ class AudienceFacade
   end
 
   def articles
-    @articles ||= audience.articles.displayed
+    @articles ||= audience.articles.displayed.limit(16)
   end
 
   def banners
@@ -18,11 +18,11 @@ class AudienceFacade
   end
 
   def resources
-    @resources ||= audience.resources.displayed
+    @resources ||= audience.resources.displayed.limit(16)
   end
 
   def team_members
-    @team_members ||= TeamMember.joins(:service_team_members).where(services_team_members: { service_id: audience.service_ids }).displayed.distinct.limit(8)
+    @team_members ||= TeamMember.joins(:service_team_members).where(services_team_members: { service_id: audience.service_ids }).displayed.distinct.limit(48)
   end
 
   def testimonials
