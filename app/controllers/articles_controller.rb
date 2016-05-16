@@ -3,12 +3,13 @@ class ArticlesController < ApplicationController
   before_action :load_article_categories
 
   def index
-    @articles = Article.displayed
+    @articles = Article.displayed.page(params[:page]).per(params[:per_page] || 15)
     @article_categories = ArticleCategory.displayed
   end
 
   def show
     return redirect_to article_path(@article), status: :moved_permanently if request.path != article_path(@article)
+    @related_articles = Article.displayed.where.not(id: @article.id).limit(3)
   end
 
   private

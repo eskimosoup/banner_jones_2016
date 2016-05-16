@@ -1,0 +1,33 @@
+.related-footer {
+  border-top: 8px solid $orange;
+}
+
+.related-footer-details {
+  @include module-inner-content-background;
+  color: $dark-purple;
+  font-family: $montserrat;
+  font-size: rem(21px);
+  font-weight: $montserrat-semibold;
+  position: relative;
+  padding: rem(60px 0 0);
+  text-align: center;
+
+  @include breakpoint(large) {
+    .team-member-avatar {
+      position: absolute;
+      top: -45px;
+      width: 100%;
+    }
+  }
+}
+
+.related-footer-navigation {
+  text-align: center;
+  margin: rem(25px 0);
+}
+
+.related-footer-see-all {
+  @include navigation-button;
+  font-size: rem(18px);
+  padding: rem(10px 40px);
+}

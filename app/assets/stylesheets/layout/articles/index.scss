@@ -1,6 +1,10 @@
 .articles-index-content {
   @include clearfix;
   position: relative;
+
+  &.index-content {
+    padding-bottom: 0;
+  }
 }
 
 .articles-index {
@@ -10,12 +14,24 @@
 .index-article {
   margin: 0 0 rem(30px);
 
-  @include breakpoint(medium) {
-    @include grid-column(4);
-    // width: grid-column(4);
+  &.index {
+    @include breakpoint(medium) {
+      @include grid-column(4);
+      //width: grid-column(4);
 
-    &:last-of-type {
-      @include grid-column-end;
+      &:last-of-type {
+        @include grid-column-end;
+      }
+    }
+  }
+
+  &.aside {
+    .index-article-details-overview {
+      border-top: 0;
+    }
+
+    .standard-content-box {
+      box-shadow: none;
     }
   }
 }

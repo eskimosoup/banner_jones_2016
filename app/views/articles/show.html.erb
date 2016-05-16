@@ -10,9 +10,10 @@
 
 <div class="article-show">
   <div class="article-show-content-overview">
-      <%= link_to 'News', articles_path %> /
-      <%= @article.article_categories.map(&:title).join(', ') %>
-
+      <ul class="show-breadcrumbs">
+        <li><%= link_to 'News', articles_path %></li>
+        <li><%= @article.article_categories.map(&:title).join(', ') %></li>
+      </ul>
 
     <% present @article do |article_presenter| %>
       <%= article_presenter.show_image(alt: article_presenter.title) %>
@@ -34,28 +35,41 @@
           </h1>
 
           <%= article_presenter.content %>
+
+          <%= render 'shared/social_share_buttons', object: @article %>
         <% end %>
       </div>
     </div>
   </div>
 
-  <aside class="article-show-sidebar">
-    Related Stories
+  <aside class="related-aside">
+    <h5 class="related-aside-title">Related Stories</h5>
 
-
+    <%= render partial: 'articles/aside_article', collection: @related_articles, as: :article %>
   </aside>
 </div>
 
-<div class="module-inner-content">
-  Latest from <%= possessive @article.team_members.first.forename %> blog
-
-  <div class="articles-index">
-    <%= render partial: 'articles/article',
-               collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
-               as: :article %>
+<div class="related-footer">
+  <div class="related-footer-details">
+    <% present @article.team_members.first do |team_member_presenter| %>
+      <%= content_tag :div,
+                      (team_member_presenter.linked_text(team_member_presenter.related_footer_image(alt: team_member_presenter.full_name))),
+                      class: 'team-member-avatar' if team_member_presenter.related_footer_image.present? %>
+      Latest from <%= possessive team_member_presenter.forename %> blog
+    <% end %>
   </div>
 
-  <%= link_to 'Show all',
+  <div class="module-inner-content">
+    <div class="articles-index">
+      <%= render partial: 'articles/article',
+                 collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
+                 as: :article %>
+    </div>
+
+    <div class="related-footer-navigation">
+      <%= link_to 'Show all',
               team_members_path(@article.team_members.first, anchor: 'articles'),
-              class: 'see-all' %>
+              class: 'related-footer-see-all' %>
+    </div>
+  </div>
 </div>

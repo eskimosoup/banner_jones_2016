@@ -1,4 +1,4 @@
-<div class="index-article index">
+<div class="index-article aside">
   <div class="standard-content-box standalone">
     <% present article do |article_presenter| %>
       <%= link_to article, title: article_presenter.title, class: 'index-article-link' do %>
@@ -9,30 +9,16 @@
               <div class="index-article-details-date">
                 <%= article_presenter.date %>
               </div>
-
-              <div class="index-article-details-categories">
-                <%= article.article_categories.map(&:title).join(', ') %>
-              </div>
             </div>
 
             <div class="index-article-shares">
-              <div class="social-share-count" href="<%= url_for([article, only_path: false]) %>">
 
-              </div>
             </div>
           </div>
 
         <div class="index-article-details-wrap">
           <div class="index-article-title">
             <%= article_presenter.title %>
-          </div>
-
-          <div class="index-article-summary">
-            <%= article_presenter.summary %>
-          </div>
-
-          <div class="index-article-read-more">
-            Read more >
           </div>
 
           <div class="index-article-author-wrap">

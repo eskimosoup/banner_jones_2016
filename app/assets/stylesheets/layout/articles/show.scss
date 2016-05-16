@@ -1,5 +1,6 @@
 .article-show {
   @include grid-row;
+  padding: 0 rem(15px);
 }
 
 .article-show-content-overview {
@@ -10,7 +11,7 @@
 
 .article-show-content-wrap {
   @include grid-row;
-  margin-top: rem(20px);
+  margin: rem(20px) auto rem(60px);
 }
 
 .article-show-author {

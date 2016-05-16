@@ -20,6 +20,7 @@ class TeamMembersController < ApplicationController
 
     respond_to do |format|
       format.js
+      format.html { render 'team_members/index' }
     end
   end
 

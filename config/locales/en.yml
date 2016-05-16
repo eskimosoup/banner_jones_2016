@@ -204,3 +204,10 @@ en:
       long: "%d %B, %Y %H:%M"
       short: "%d %b %H:%M"
     pm: pm
+  views:
+    pagination:
+      first: "First"
+      last: "Last"
+      previous: "Prev"
+      next: "Next"
+      truncate: "&hellip;"

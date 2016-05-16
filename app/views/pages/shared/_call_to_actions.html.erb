@@ -1,40 +1,48 @@
-<%= link_to new_contact_path, class: 'page-call-to-action' do %>
-  <div class="page-call-to-action-title">
-    Call us now
-  </div>
+<% unless defined?(hide_call_us) %>
+  <%= link_to new_contact_path, class: 'page-call-to-action' do %>
+    <div class="page-call-to-action-title">
+      Call us now
+    </div>
 
-  <div class="page-call-to-action-icon">
-    <%= image_tag 'components/icons/call-to-action/white-telephone.png', alt: '' %>
-  </div>
+    <div class="page-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-telephone.png', alt: '' %>
+    </div>
+  <% end %>
 <% end %>
 
-<%= link_to '#', class: 'page-call-to-action toggle-class',
-  data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
-  <div class="page-call-to-action-title">
-    Request a call back
-  </div>
+<% unless defined?(hide_callback) %>
+  <%= link_to '#', class: 'page-call-to-action toggle-class',
+    data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
+    <div class="page-call-to-action-title">
+      Request a call back
+    </div>
 
-  <div class="page-call-to-action-icon">
-    <%= image_tag 'components/icons/call-to-action/white-callback.png', alt: '' %>
-  </div>
+    <div class="page-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-callback.png', alt: '' %>
+    </div>
+  <% end %>
 <% end %>
 
-<%= link_to new_contact_path, class: 'page-call-to-action' do %>
-  <div class="page-call-to-action-title">
-    Email us
-  </div>
+<% unless defined?(hide_email) %>
+  <%= link_to new_contact_path, class: 'page-call-to-action' do %>
+    <div class="page-call-to-action-title">
+      Email us
+    </div>
 
-  <div class="page-call-to-action-icon">
-    <%= image_tag 'components/icons/call-to-action/white-email.png', alt: '' %>
-  </div>
+    <div class="page-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-email.png', alt: '' %>
+    </div>
+  <% end %>
 <% end %>
 
-<%= link_to offices_path, class: 'page-call-to-action' do %>
-  <div class="page-call-to-action-title">
-    Our offices
-  </div>
+<% unless defined?(hide_office) %>
+  <%= link_to offices_path, class: 'page-call-to-action' do %>
+    <div class="page-call-to-action-title">
+      Our offices
+    </div>
 
-  <div class="page-call-to-action-icon">
-    <%= image_tag 'components/icons/call-to-action/white-location.png', alt: '' %>
-  </div>
+    <div class="page-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-location.png', alt: '' %>
+    </div>
+  <% end %>
 <% end %>

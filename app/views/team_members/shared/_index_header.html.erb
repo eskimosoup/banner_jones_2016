@@ -8,7 +8,7 @@
       </h2>
 
 
-      <%= form_tag search_team_members_path(index: 1), method: :get, remote: true, class: 'slider-team-member-search-form' do %>
+      <%= form_tag search_team_members_path(index: 1), method: :get, remote: (defined?(index) ? true : false ), class: 'slider-team-member-search-form' do %>
         <%= render 'team_members/shared/find_people_by_form_fields' %>
       <% end %>
     </div>
