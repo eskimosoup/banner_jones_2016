@@ -1,0 +1,20 @@
+<div class="office">
+  <div class="standard-content-box">
+    <% present office.office_location do |office_location_presenter| %>
+      <div class="index-office-location-name">
+        <%= office_location_presenter.name %>
+      </div>
+    <% end %>
+
+    <% present office do |office_presenter| %>
+      <div class="index-office-address-fields">
+        <%= raw office.address_fields.gsub(', ', '<br />') %>
+      </div>
+
+      <div class="index-office-buttons">
+        <%= office_presenter.linked_text('View map', { title: office.address_fields, class: 'index-office-button' } ) %>
+        <%= office_presenter.linked_text('Get directions', { title: office.address_fields, class: 'index-office-button' } ) %>
+      </div>
+    <% end %>
+  </div>
+</div>

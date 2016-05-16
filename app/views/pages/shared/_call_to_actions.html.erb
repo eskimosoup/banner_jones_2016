@@ -29,12 +29,14 @@
   </div>
 <% end %>
 
-<%= link_to offices_path, class: 'page-call-to-action' do %>
-  <div class="page-call-to-action-title">
-    Our offices
-  </div>
+<% unless defined?(hide_office) %>
+  <%= link_to offices_path, class: 'page-call-to-action' do %>
+    <div class="page-call-to-action-title">
+      Our offices
+    </div>
 
-  <div class="page-call-to-action-icon">
-    <%= image_tag 'components/icons/call-to-action/white-location.png', alt: '' %>
-  </div>
+    <div class="page-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-location.png', alt: '' %>
+    </div>
+  <% end %>
 <% end %>

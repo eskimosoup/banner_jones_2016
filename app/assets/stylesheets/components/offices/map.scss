@@ -1,0 +1,10 @@
+.offices-info-window {
+  height: auto;
+  width: 150px;
+}
+
+.offices-view-more {
+  @include navigation-button;
+  display: inline-block;
+  margin: rem(10px 0 0);
+}

@@ -1,0 +1,44 @@
+.office {
+  @include breakpoint(medium) {
+    @include grid-column(4);
+    margin-bottom: rem(30px);
+
+    &:last-of-type {
+      @include grid-column-end;
+    }
+  }
+
+  .standard-content-box {
+    background: image-url('components/icons/office/icon.png') no-repeat 20px 20px;
+    height: 100%;
+
+    @include breakpoint(large) {
+      padding: rem(15px 50px);
+      width: 100%;
+    }
+  }
+}
+
+.index-office-buttons {
+  @include clearfix;
+  margin: rem(0 0 10px);
+}
+
+.index-office-location-name {
+  color: $dark-purple;
+  font-family: $montserrat;
+  font-size: rem(18px);
+  font-weight: $montserrat-semibold;
+  margin: rem(0 0 7px);
+}
+
+.index-office-address-fields {
+  margin: rem(0 0 15px);
+}
+
+.index-office-button {
+  @include navigation-button;
+  clear: left;
+  float: left;
+  margin: rem(5px) 0;
+}

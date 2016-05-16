@@ -1,0 +1,24 @@
+.offices-index-map {
+  background: $white;
+  height: 250px;
+  margin: rem(0 25px);
+  width: 100%;
+
+
+  @include breakpoint(large) {
+    height: 445px;
+    margin: 0;
+  }
+}
+
+.offices-index {
+  @include grid-row;
+}
+
+.offices-index-content {
+  @include grid-column(12);
+
+  h1 {
+    @include standard-content-box-title;
+  }
+}
