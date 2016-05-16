@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def show
     return redirect_to article_path(@article), status: :moved_permanently if request.path != article_path(@article)
+    @related_articles = Article.displayed.where.not(id: @article.id).limit(3)
   end
 
   private

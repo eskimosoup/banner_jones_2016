@@ -10,9 +10,10 @@
 
 <div class="article-show">
   <div class="article-show-content-overview">
-      <%= link_to 'News', articles_path %> /
-      <%= @article.article_categories.map(&:title).join(', ') %>
-
+      <ul class="show-breadcrumbs">
+        <li><%= link_to 'News', articles_path %></li>
+        <li><%= @article.article_categories.map(&:title).join(', ') %></li>
+      </ul>
 
     <% present @article do |article_presenter| %>
       <%= article_presenter.show_image(alt: article_presenter.title) %>
@@ -34,15 +35,17 @@
           </h1>
 
           <%= article_presenter.content %>
+
+          <%= render 'shared/social_share_buttons', object: @article %>
         <% end %>
       </div>
     </div>
   </div>
 
-  <aside class="article-show-sidebar">
-    Related Stories
+  <aside class="related-aside">
+    <h5 class="related-aside-title">Related Stories</h5>
 
-
+    <%= render partial: 'articles/aside_article', collection: @related_articles, as: :article %>
   </aside>
 </div>
 

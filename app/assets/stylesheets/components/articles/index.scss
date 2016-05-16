@@ -49,10 +49,19 @@
 
 .index-article-title {
   color: $grey-blue;
+  margin: 0 0 rem(7px);
+}
+
+.index .index-article-title {
   font-family: $open-sans;
   font-size: rem(20px);
   font-weight: $open-sans-semibold;
-  margin: 0 0 rem(7px);
+}
+
+.aside .index-article-title {
+  font-family: $montserrat;
+  font-size: rem(14px);
+  font-weight: $montserrat-bold;
 }
 
 .index-article-summary {

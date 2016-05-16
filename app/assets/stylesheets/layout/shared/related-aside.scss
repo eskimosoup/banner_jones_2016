@@ -1,0 +1,14 @@
+.related-aside {
+  @include grid-column(3);
+  background: $background-grey;
+}
+
+.related-aside-title {
+  border-bottom: 5px solid $orange;
+  color: $dark-purple;
+  font-family: $montserrat;
+  font-size: rem(21px);
+  font-weight: $montserrat-semibold;
+  margin: rem(44px 0 17px);
+  padding: rem(0 7px 14px);
+}

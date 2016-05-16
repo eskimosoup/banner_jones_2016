@@ -1,5 +1,6 @@
 .article-show {
   @include grid-row;
+  padding: 0 rem(15px);
 }
 
 .article-show-content-overview {

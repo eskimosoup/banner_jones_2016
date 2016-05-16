@@ -1,0 +1,14 @@
+.object-social-share-footer {
+  @include grid-row;
+  margin: rem(35px) auto;
+}
+
+.social-media {
+  @include grid-column(3);
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.fb_iframe_widget span {
+  vertical-align: baseline !important;
+}
