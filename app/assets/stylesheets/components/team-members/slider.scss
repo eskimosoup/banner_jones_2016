@@ -37,6 +37,7 @@
   @include breakpoint(large) {
     display: inline-block;
     text-align: left;
+    vertical-align: bottom;
   }
 }
 
