@@ -1,3 +1,4 @@
+
 <% if params[:index].blank? %>
   $('.slider-team-members-slick').slick('unslick');
   $('.slider-team-members-slick').html("<%= j render partial: 'team_members/shared/slider_team_member', collection: @team_members, as: :team_member if @team_members.present? %>");
@@ -9,7 +10,15 @@
 
   teamMembersSlick();
 <% else %>
-  $('.team-members-index-content').html('<%= j render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member if @team_members.present? %>');
+  $('.team-members-index-wrap').css('min-height', $('.team-members-index-wrap').height());
+  $('.team-members-index-content')
+    .html('<%= j render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member if @team_members.present? %>')
+    .promise()
+    .done(function(){
+      setTimeout(function() {
+        $('.team-members-index-wrap').css('min-height', 'auto');
+      }, 150);
+    });
 <% end %>
 
 $('.slider-team-members-loading').removeAttr('style');

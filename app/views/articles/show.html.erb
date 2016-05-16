@@ -49,16 +49,27 @@
   </aside>
 </div>
 
-<div class="module-inner-content">
-  Latest from <%= possessive @article.team_members.first.forename %> blog
-
-  <div class="articles-index">
-    <%= render partial: 'articles/article',
-               collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
-               as: :article %>
+<div class="related-footer">
+  <div class="related-footer-details">
+    <% present @article.team_members.first do |team_member_presenter| %>
+      <%= content_tag :div,
+                      (team_member_presenter.linked_text(team_member_presenter.related_footer_image(alt: team_member_presenter.full_name))),
+                      class: 'team-member-avatar' if team_member_presenter.related_footer_image.present? %>
+      Latest from <%= possessive team_member_presenter.forename %> blog
+    <% end %>
   </div>
 
-  <%= link_to 'Show all',
+  <div class="module-inner-content">
+    <div class="articles-index">
+      <%= render partial: 'articles/article',
+                 collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
+                 as: :article %>
+    </div>
+
+    <div class="related-footer-navigation">
+      <%= link_to 'Show all',
               team_members_path(@article.team_members.first, anchor: 'articles'),
-              class: 'see-all' %>
+              class: 'related-footer-see-all' %>
+    </div>
+  </div>
 </div>

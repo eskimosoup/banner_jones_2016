@@ -3,7 +3,7 @@ class ArticlesController < ApplicationController
   before_action :load_article_categories
 
   def index
-    @articles = Article.displayed
+    @articles = Article.displayed.page(params[:page]).per(params[:per_page] || 15)
     @article_categories = ArticleCategory.displayed
   end
 

@@ -17,6 +17,7 @@
   &.index {
     @include breakpoint(medium) {
       @include grid-column(4);
+      //width: grid-column(4);
 
       &:last-of-type {
         @include grid-column-end;

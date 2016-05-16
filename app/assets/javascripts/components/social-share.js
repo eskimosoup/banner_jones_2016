@@ -1,6 +1,12 @@
-$(document).ready(function() {  
-  $('.social-share-count').jumboShare({
-    //Replace mycodingtricks to your twitter username
-    twitterUsername: "mycodingtricks"
+$(document).ready(function() {
+  // TODO uncomment this, add = back into application.js
+  /*
+  $('.social-share-count').each(function() {
+    var href = $(this).data('href');
+    $(this).jumboShare({
+      href: href,
+      twitterUsername: "mycodingtricks"
+    });
   });
+  */
 });

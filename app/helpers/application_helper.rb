@@ -14,6 +14,6 @@ module ApplicationHelper
   end
 
   def possessive(string)
-    string + ('s' == string[-1, 1] ? "'" : "'s")
+    sanitize (string + ('s' == string[-1, 1] ? '&#8217;' : '&#8217;s'))
   end
 end

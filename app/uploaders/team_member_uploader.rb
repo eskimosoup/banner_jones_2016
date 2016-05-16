@@ -11,6 +11,10 @@ class TeamMemberUploader < Optimadmin::ImageUploader
     process resize_to_fill: [130, 195]
   end
 
+  version :related_footer do
+    process resize_to_fill: [91, 91]
+  end
+
   version :index do
     process resize_to_fill: [220, 220]
   end

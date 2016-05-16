@@ -1,0 +1,51 @@
+.module-pagination {
+  text-align: center;
+  margin: rem(30px) 0;
+
+  .page.current {
+    @include pagination-button;
+    background: $orange;
+  }
+
+  a {
+    &:link,
+    &:visited {
+      @include pagination-button;
+    }
+
+    &:hover,
+    &:active {
+      background: $orange;
+    }
+  }
+
+  .next a {
+    background-image: image-url('components/icons/pagination/next.png');
+    background-position: 85% 50%;
+    padding-right: rem(40px);
+  }
+
+  .prev a {
+    background-image: image-url('components/icons/pagination/prev.png');
+    background-position: 15% 50%;
+    padding-left: rem(40px);
+  }
+
+  .prev a,
+  .next a {
+    background-color: $black;
+    background-repeat: no-repeat;
+    font-family: $ubuntu;
+    text-transform: uppercase;
+
+    &:hover,
+    &:active {
+      background-color: $orange;
+    }
+  }
+
+  .first,
+  .last {
+    display: none;
+  }
+}

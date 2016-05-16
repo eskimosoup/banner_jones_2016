@@ -1,4 +1,17 @@
 // Page content
+@mixin pagination-button {
+  background: $pagination-grey;
+  border-radius: 4px;
+  color: $white;
+  display: inline-block;
+  padding: rem(14px);
+  transition: background-color .25s ease;
+}
+
+@mixin module-inner-content-background {
+  background: $offset-white;
+}
+
 @mixin navigation-button {
   background-color: $grey;
   border-radius: rem(3px);
@@ -6,6 +19,7 @@
   font-weight: 300;
   margin-top: rem(5px);
   padding: rem(5px 15px);
+  transition: color .25s ease;
 
   &:hover {
     color: $orange;
