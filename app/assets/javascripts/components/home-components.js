@@ -31,8 +31,8 @@ $(function() {
   $('.article-title').matchHeight();
 
   $('.articles-slick').slick({
-    nextArrow: '.articles-home-content-box-slider-controls .home-content-box-previous',
-    prevArrow: '.articles-home-content-box-slider-controls .home-content-box-next',
+    nextArrow: '.articles-home-content-box-slider-controls .home-content-box-next',
+    prevArrow: '.articles-home-content-box-slider-controls .home-content-box-previous',
     slidesToShow: 4,
     responsive: [
       {

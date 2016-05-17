@@ -34,11 +34,10 @@
 
 .social-icon {
   display: inline-block;
-  margin: rem(20px);
+  margin: rem(20px) rem(15px);
 
   @include breakpoint(large) {
-    margin-bottom: 0;
-    margin-top: 0;
+    margin: 0 rem(20px);
   }
 }
 

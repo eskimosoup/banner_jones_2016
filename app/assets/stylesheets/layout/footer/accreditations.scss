@@ -11,6 +11,12 @@
 .awards-and-accreditations {
   @include grid-row;
   margin: 0 auto;
+
+  .slick-dots {
+    bottom: 0;
+    margin: rem(10px) 0;
+    position: static;
+  }
 }
 
 .footer-award {
