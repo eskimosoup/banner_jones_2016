@@ -1,7 +1,10 @@
 .hero-banner {
   border-bottom: 8px solid $orange;
-  max-height: 700px;
   overflow: hidden;
+
+  @include breakpoint(medium) {
+    max-height: 700px;
+  }
 }
 
 .hero-banner-slick {
@@ -117,12 +120,13 @@
 .hero-banner-controls {
   background: rgba($offset-purple, .25);
   border-radius: 50%;
-  padding: rem(10px);
+  padding: rem(5px);
   position: absolute;
-  width: 11px;
+  width: 22px;
   z-index: 1;
 
   @include breakpoint(large) {
+    padding: rem(10px);
     width: auto;
   }
 }

@@ -1,4 +1,4 @@
-<div class="office">
+<div class="office office-<%= office_counter %>">
   <div class="standard-content-box">
     <% present office.office_location do |office_location_presenter| %>
       <div class="index-office-location-name">
@@ -13,7 +13,8 @@
 
       <div class="index-office-buttons">
         <%= office_presenter.linked_text('View map', { title: office.address_fields, class: 'index-office-button' } ) %>
-        <%= office_presenter.linked_text('Get directions', { title: office.address_fields, class: 'index-office-button' } ) %>
+
+        <%= render partial: 'offices/shared/directions', locals: { office: office, office_presenter: office_presenter } %>
       </div>
     <% end %>
   </div>

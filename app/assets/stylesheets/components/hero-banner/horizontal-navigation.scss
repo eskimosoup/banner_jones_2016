@@ -1,35 +1,53 @@
+@mixin hero-banner-img {
+  border: 5px solid $white;
+  border-radius: 50%;
+  margin: 0 rem(5px);
+  width: 50px;
+}
+
 .hero-banner-navigation-wrap-horizontal {
   @extend %content-background;
-  display: none;
-  padding: 0 0 rem(17px);
+  //display: none;
 
-  @include breakpoint(large) {
+  @include breakpoint(medium) {
     display: block;
+    padding: 0 0 rem(17px);
   }
 }
 
 .hero-banner-navigation-row-horizontal {
   @include grid-row;
-  padding: 0 0 rem(75px);
   position: relative;
+
+  @include breakpoint(medium) {
+    padding: 0 0 rem(75px);
+  }
 }
 
 .hero-banner-navigation-horizontal {
+  @include clearfix;
   background: $white;
   list-style: none;
-  padding: 0 rem(40px);
+  padding: 0 rem(15px);
   width: 100%;
 
-  @include breakpoint(large) {
+  @include breakpoint(medium) {
     bottom: -35px;
+    padding: 0 rem(40px);
     position: absolute;
     z-index: 2;
   }
 
   li {
-    display: inline-block;
+    display: table;
+    float: left;
     position: relative;
     vertical-align: top;
+    width: 49%;
+
+    @include breakpoint(medium) {
+      width: auto;
+    }
   }
 }
 
@@ -37,14 +55,26 @@
   &:link,
   &:visited {
     color: $grey;
-    display: block;
+    display: table-cell;
+    float: left;
     font-family: $myriad-pro;
-    font-size: rem(18px);
+    font-size: rem(14px);
     font-weight: $myriad-pro-semibold;
-    max-width: 140px;
-    padding: rem(62px) rem(14px) rem(42px);
-    text-align: center;
+    line-height: 1.1;
+    padding: rem(12px) 0;
+    text-align: left;
     text-transform: lowercase;
+    vertical-align: middle;
+
+    @include breakpoint(medium) {
+      display: block;
+      float: none;
+      font-size: rem(18px);
+      line-height: 1.25;
+      max-width: 140px;
+      padding: rem(62px) rem(14px) rem(42px);
+      text-align: center;
+    }
   }
 
   &:hover {
@@ -52,14 +82,19 @@
   }
 
   img {
-    border: 5px solid $white;
-    border-radius: 50%;
-    box-shadow: 0 8px 8px 0 rgba($black, .35);
-    display: block;
-    -webkit-filter: blur(0);
-    left: 50%;
-    position: absolute;
-    top: -55px;
-    transform: translate(-50%, 0);
+    @include hero-banner-img;
+
+    @include breakpoint(medium) {
+      box-shadow: 0 8px 8px 0 rgba($black, .35);
+      display: block;
+      -webkit-filter: blur(0);
+      float: none;
+      left: 50%;
+      margin: 0;
+      position: absolute;
+      top: -55px;
+      transform: translate(-50%, 0);
+      width: auto;
+    }
   }
 }

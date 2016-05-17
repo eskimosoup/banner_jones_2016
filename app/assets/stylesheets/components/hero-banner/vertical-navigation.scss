@@ -1,36 +1,61 @@
 .hero-banner-navigation-wrap {
   @include grid-row;
-  display: none;
-  position: relative;
 
-  @include breakpoint(large) {
+  @include breakpoint(medium) {
     display: block;
+    position: relative;
   }
 }
 
 .hero-banner-navigation {
+  @include clearfix;
   background: $white;
-  bottom: 0;
-  height: 670px;
   list-style: none;
-  padding: rem(30px) 0;
-  position: absolute;
-  right: 0;
-  width: grid-column(3);
-  z-index: 2;
+  padding: rem(15px) 0;
+
+  @include breakpoint(medium) {
+    bottom: 0;
+    height: 960px;
+    list-style: none;
+    padding: rem(30px) 0;
+    position: absolute;
+    right: 0;
+    width: grid-column(3);
+    z-index: 2;
+  }
+
+  li {
+    display: table;
+    float: left;
+    position: relative;
+    width: 49%;
+
+    @include breakpoint(medium) {
+      width: auto;
+      vertical-align: top;
+    }
+  }
 }
 
 .hero-banner-navigation-link {
   &:link,
   &:visited {
     color: $grey;
-    display: block;
+    display: table-cell;
+    float: left;
     font-family: $myriad-pro;
-    font-size: rem(18px);
+    font-size: rem(14px);
     font-weight: $myriad-pro-semibold;
-    margin: rem(15px) rem(1px);
-    padding: 0 rem(12px) 0 rem(35px);
     text-transform: lowercase;
+
+    @include breakpoint(medium) {
+      display: block;
+      float: none;
+      font-size: rem(18px);
+      margin: rem(15px) rem(1px);
+      padding: 0 rem(12px) 0 rem(35px);
+    }
+
   }
 
   &:hover {
@@ -38,7 +63,6 @@
   }
 
   img {
-    display: inline-block;
-    margin: 0 rem(20px) 0 0;
+    @include hero-banner-img;
   }
 }

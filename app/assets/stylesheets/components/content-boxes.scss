@@ -4,7 +4,11 @@
 
 .content {
   @extend %content-background;
-  padding: rem(55px) 0;
+  padding: rem(25px) 0;
+
+  @include breakpoint(large) {
+    padding: rem(55px) 0;
+  }
 }
 
 .home-content-box-wrap {

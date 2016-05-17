@@ -29,7 +29,7 @@
 
 .page-additional-information {
   @include grid-column(12);
-  
+
   @include breakpoint(large) {
     @include grid-column(3);
   }

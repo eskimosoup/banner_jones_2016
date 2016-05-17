@@ -9,7 +9,7 @@ function initialize() {
     if (locations) {
       var mapOptions = {
         center: new google.maps.LatLng(53.743317, -0.331004),
-        zoom: 8,
+        zoom: 18,
         scrollwheel: false
       };
 
@@ -58,15 +58,15 @@ function initialize() {
           closeInfoWindow();
           // remove class from previously active location
           if (lastMarker != null) {
-            $('#location-' + lastMarker).removeClass('active');
+            $('.office-' + lastMarker).removeClass('active');
           }
 
           lastMarker = markers.indexOf(marker);
-          $('#location-' + lastMarker).toggleClass('active');
+          $('.office-' + lastMarker).toggleClass('active');
           map.panTo(marker.getPosition());
           //pan and then wait 2 secs then zoom and open info window
           window.setTimeout(function() {
-            map.setZoom(15);
+            map.setZoom(18);
             infowindow.open(map, marker);
           }, 1000);
         });
@@ -78,8 +78,10 @@ function initialize() {
         });
 
         google.maps.event.addListener(infowindow, 'closeclick', function() {
-          map.fitBounds(latlngbounds);
-          $('#location-' + lastMarker).toggleClass('active');
+          if(latLngs.length > 1) {
+            map.fitBounds(latlngbounds);
+          }
+          $('.office-' + lastMarker).toggleClass('active');
         });
 
         //add info window and marker to respective arrays
@@ -92,7 +94,9 @@ function initialize() {
         latlngbounds.extend(n);
       });
       map.setCenter(latlngbounds.getCenter());
-      map.fitBounds(latlngbounds);
+      if(latLngs.length > 1) {
+        map.fitBounds(latlngbounds);
+      }
     }
   }
 }

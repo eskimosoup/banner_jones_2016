@@ -11,54 +11,7 @@
 <%= render 'team_members/shared/index_header' %>
 
 <div class="module-inner-content">
-  <div class="team-members-content-wrap">
-    <div class="team-member-show-profile-wrap">
-      <div class="team-member-show-profile">
-        <% present @team_member do |team_member_presenter| %>
-          <div class="team-member-show-profile-image">
-            <%= team_member_presenter.show_image(alt: team_member_presenter.full_name) %>
-          </div>
-
-          <div class="team-member-show-profile-content">
-            <div class="show-team-member-profile-name">
-              <%= team_member_presenter.full_name %>
-            </div>
-            <div class="show-team-member-profile-role">
-              <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
-              <%= team_member_presenter.department_roles(sentence_list: true) %>
-            </div>
-
-            <div class="show-team-member-profile-office-locations">
-              <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
-              <%= team_member_presenter.office_locations %>
-            </div>
-
-            <div class="show-team-member-contact-method-email">
-              <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email', class: 'index-team-member-profile-icon') %>
-              <%= team_member_presenter.linked_email_address(team_member_presenter.email_address) %>
-            </div>
-
-            <div class="show-team-member-contact-method-phone">
-              <%= image_tag 'components/icons/team-member/telephone.png', alt: '' %>
-              <%= team_member_presenter.linked_telephone(team_member_presenter.primary_telephone, alt: 'Telephone', class: 'index-team-member-profile-icon') %>
-            </div>
-
-            <div class="show-team-member-profile-services">
-              <%= team_member_presenter.service_titles %>
-            </div>
-          </div>
-        <% end %>
-      </div>
-    </div>
-
-    <div class="team-member-show-text-profile">
-      <div class="standard-content-box">
-        <% present @team_member do |team_member_presenter| %>
-          <%= team_member_presenter.profile %>
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= render 'team_members/shared/show_summary' %>
 
   <div class="team-members-content-wrap">
     <div class="team-members-split-content">
@@ -72,24 +25,18 @@
 
     <div class="team-members-split-content">
       <div class="onpage-navigation-item home-content-box inner testimonials">
-        <%= link_to "See All", testimonials_path, class: "see-all" %>
+        <%= link_to "See All", testimonials_team_member_path(@team_member), class: "see-all" %>
 
         <h2 class="home-content-box-title testimonials-title">
           Testimonials
         </h2>
 
         <div class="testimonials-slick">
-          <%= render @team_member.testimonials.displayed %>
+          <%= render @team_member.testimonials.displayed.limit(6) %>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="team-members-content-wrap">
-    <h2 class="standard-content-box-title team-members-title">Also in this department</h2>
-
-    <div class="team-members-index-content">
-      <%= render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member %>
-    </div>
-  </div>
+  <%= render 'team_members/shared/show_footer' %>
 </div>

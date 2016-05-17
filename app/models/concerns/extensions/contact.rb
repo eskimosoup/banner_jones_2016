@@ -7,13 +7,14 @@ module Extensions
                     :preferred_contact_method,
                     :preferred_office, :service, :enquiry_type, :message
 
-      validates :forename, :surname, :telephone, :email,
-                :preferred_contact_method, :preferred_office, :service,
+      validates :forename, :surname,
+                :preferred_contact_method, :preferred_office,
                 :enquiry_type, :message, presence: true
-      validates :email, email: true
-      validates :telephone, telephone: true
 
-      validate :email_or_telephone
+      validates :email, email: true, presence: true, if: proc { |x| x.preferred_contact_method == 'Email' }
+      validates :telephone, telephone: true, presence: true, if: proc { |x| x.preferred_contact_method == 'Phone' }
+
+      # validate :email_or_telephone
     end
 
     def email_or_telephone

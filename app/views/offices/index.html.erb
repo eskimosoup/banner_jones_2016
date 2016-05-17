@@ -1,10 +1,18 @@
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'components/offices/map' %>
   <script>
-  $(document).ready(function() {
+  function equalHeightOffices() {
     $('.office').matchHeight({
       byRow: false
     });
+  }
+
+  $(document).ready(function() {
+    equalHeightOffices();
+  });
+
+  $(document).on('click', '.toggle-class', function() {
+    equalHeightOffices();
   });
   </script>
 <% end %>

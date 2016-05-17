@@ -1,4 +1,4 @@
-<%= form_for @contact, url: contacts_path do |f| %>
+<%= form_for @contact, url: contacts_path, html: { class: 'contact-form' } do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -12,44 +12,52 @@
     </div>
   <% end %>
   <div class="contact-details">
-    <div class="field">
-      <%= f.label :forename %><br />
-      <%= f.text_field :forename %>
-    </div>
-    <div class="field">
-      <%= f.label :surname %><br />
-      <%= f.text_field :surname %>
-    </div>
-    <div class="field">
-      <%= f.label :telephone %><br />
-      <%= f.text_field :telephone %>
-    </div>
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.text_field :email %>
-    </div>
-    <div class="field">
-      <%= f.label :preferred_contact_method %><br />
-      <%= f.select :preferred_contact_method, ['Email', 'Phone'], prompt: 'Please select' %>
-    </div>
-    <% if @offices.present? %>
+    <div class="related-fields">
       <div class="field">
-        <%= f.label :preferred_office %><br />
-        <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Please select' %>
+        <%= f.label :forename %>
+        <%= f.text_field :forename %>
       </div>
-    <% end %>
-    <% if Flip.services? %>
       <div class="field">
-        <%= f.label :service %><br />
-        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Please select' %>
+        <%= f.label :surname %>
+        <%= f.text_field :surname %>
       </div>
-    <% end %>
-    <div class="field">
-      <%= f.label :enquiry_type %><br />
-      <%= f.select :enquiry_type, ['General'], prompt: 'Please select' %>
+    </div>
+    <div class="related-fields">
+      <div class="field">
+        <%= f.label :telephone %>
+        <%= f.text_field :telephone %>
+      </div>
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+    </div>
+    <div class="related-fields">
+      <div class="field">
+        <%= f.label :preferred_contact_method %>
+        <%= f.select :preferred_contact_method, ['Email', 'Phone'], prompt: 'Please select' %>
+      </div>
+      <% if @offices.present? %>
+        <div class="field">
+          <%= f.label :preferred_office %>
+          <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Please select' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="related-fields">
+      <% if Flip.services? %>
+        <div class="field">
+          <%= f.label :service %>
+          <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Please select' %>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :enquiry_type %>
+        <%= f.select :enquiry_type, ['General'], prompt: 'Please select' %>
+      </div>
     </div>
     <div class="field">
-      <%= f.label :message %><br />
+      <%= f.label :message %>
       <%= f.text_area :message %>
     </div>
     <div class="actions">

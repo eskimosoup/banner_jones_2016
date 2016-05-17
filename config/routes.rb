@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :remortgage_with_equity_transfers, only: [:new, :create, :show]
   end
   resources :team_members, only: [:index, :show], path: 'team-members' do
+    member do
+      get 'testimonials'
+    end
     collection do
       get 'search'
     end
