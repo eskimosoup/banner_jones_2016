@@ -35,8 +35,14 @@
 
 .home-content-box-previous,
 .home-content-box-next {
+  cursor: pointer;
   display: inline-block;
-  margin: 0 em(4px) 0;
+  margin: 0 em(4px);
+  opacity: .8;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .standard-content-box {

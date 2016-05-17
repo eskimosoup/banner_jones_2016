@@ -1,5 +1,4 @@
 class HomeFacade
-
   def articles
     @articles ||= Article.homepage_highlight.limit(16)
   end

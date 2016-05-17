@@ -1,3 +1,8 @@
+.helpful-guide-home-content-box-slider-controls {
+  position: absolute;
+  right: rem(60px);
+}
+
 .helpful-guide-title {
   background: image-url('components/icons/download.png') no-repeat center left;
   color: $dark-slate-blue;
@@ -26,9 +31,4 @@
   &.slick-slider {
     margin: 0;
   }
-}
-
-.helpful-guide-content-box-slider-controls {
-  position: absolute;
-  right: rem(60px);
 }
