@@ -1,7 +1,6 @@
 <%= render 'articles/shared/index_header' %>
 
 <%= content_for :javascript do %>
-  <%= javascript_include_tag 'components/social-share' %>
   <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
   <script>
     $(window).load(function() {

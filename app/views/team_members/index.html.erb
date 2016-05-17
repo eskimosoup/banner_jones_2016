@@ -9,6 +9,32 @@
       $(this).closest('form').submit();
       $('.slider-team-members-loading').css('display', 'block');
     });
+
+    // http://craftedpixelz.co.uk/blog/conditional-js-with-modernizr-mq/
+    if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+      var offsetHeight, $header, $moduleContent;
+
+      function setFixedHeader() {
+        if($(document).scrollTop() > offsetHeight) {
+          $header.addClass('fixed');
+          $moduleContent.css('padding-top', parseInt($header.height()));
+        } else {
+          $header.removeClass('fixed');
+          $moduleContent.removeAttr('style');
+        }
+      }
+
+      $(window).load(function() {
+        $header = $('.index-fixed-team-members-search');
+        $moduleContent = $('.team-members-index-wrap');
+        offsetHeight = parseInt($('.primary-navigation-wrap').height()) + parseInt($('.primary-header').height());
+        setFixedHeader();
+      });
+
+      $(window).scroll(function() {
+        setFixedHeader();
+      });
+    }
   </script>
   <%= javascript_include_tag 'components/team-members/index-profile-card.js' %>
 <% end %>

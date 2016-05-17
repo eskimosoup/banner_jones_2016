@@ -20,4 +20,3 @@
 //= require components/inline-modal
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
-// require vendor/jquery.jumboshare

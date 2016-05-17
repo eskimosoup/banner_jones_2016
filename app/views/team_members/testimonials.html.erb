@@ -1,0 +1,26 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
+  <script>
+    $(document).ready(function() {
+      $('.team-members-content-wrap, .team-member-show-text-profile').matchHeight();
+      $('.team-member-testimonials').masonry({
+        itemSelector: '.team-members-split-content'
+      });
+    });
+  </script>
+  <%= javascript_include_tag 'components/team-members/index-profile-card.js' %>
+<% end %>
+
+<%= render 'team_members/shared/index_header' %>
+
+<div class="module-inner-content">
+  <%= render 'team_members/shared/show_summary' %>
+
+  <div class="team-members-content-wrap">
+    <div class="team-member-testimonials">
+      <%= render partial: 'testimonials/shared/single_content_box', collection: @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20), as: :testimonial %>
+    </div>
+  </div>
+
+  <%= render 'team_members/shared/show_footer' %>
+</div>

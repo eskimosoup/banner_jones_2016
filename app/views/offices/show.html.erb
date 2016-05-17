@@ -1,0 +1,42 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/offices/map' %>
+<% end %>
+
+<div class="offices-index-map" id="map-canvas" data-locations="[<%= @office.to_json %>]">
+  <%= image_tag 'components/icons/loading.gif', alt: '' %>
+</div>
+
+<div class="offices-index">
+  <div class="offices-index-content">
+    <h1>Office</h1>
+  </div>
+
+  <div class="page-content full">
+    <div class="office office-0">
+      <div class="standard-content-box">
+        <% present @office.office_location do |office_location_presenter| %>
+          <div class="index-office-location-name">
+            <%= office_location_presenter.name %>
+          </div>
+        <% end %>
+
+        <% present @office do |office_presenter| %>
+          <div class="index-office-address-fields">
+            <%= raw @office.address_fields.gsub(', ', '<br />') %>
+          </div>
+
+          <div class="index-office-buttons">
+            <%= render partial: 'offices/shared/directions', locals: { office: @office, office_presenter: office_presenter } %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <aside class="page-additional-information">
+    <div class="page-call-to-actions-title-wrap">
+      <h3 class="page-call-to-actions-title">Talk to us</h3>
+    </div>
+    <%= render 'pages/shared/call_to_actions', hide_office: true %>
+  </aside>
+</div>

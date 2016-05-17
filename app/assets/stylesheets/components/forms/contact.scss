@@ -1,0 +1,23 @@
+.related-fields {
+  @include grid-row;
+
+  .field {
+    @include breakpoint(large) {
+      @include grid-column($columns: 6, $gutter: (large: 0));
+
+      input,
+      select {
+        width: 95%;
+      }
+    }
+  }
+}
+
+.contact-form {
+  @include breakpoint(large) {
+    textarea {
+      height: 170px;
+      width: 627px;
+    }
+  }
+}

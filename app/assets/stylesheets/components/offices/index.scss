@@ -17,6 +17,27 @@
       width: 100%;
     }
   }
+
+  &.active .index-office-location-name {
+    color: $orange;
+  }
+}
+
+.office-directions-button {
+  @include navigation-button;
+  border: 0;
+  border-radius: 0;
+  display: block;
+  font-size: rem(14px);
+  margin: 0;
+  outline: 0;
+  padding: rem(5px);
+  width: 100%;
+}
+
+.office-input {
+  height: auto;
+  margin: 0;
 }
 
 .index-office-buttons {

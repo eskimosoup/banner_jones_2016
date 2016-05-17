@@ -1,3 +1,13 @@
+.index-fixed-team-members-search {
+  background: $white;
+  top: 0;
+  width: 100%;
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
 .module-inner-content,
 .index-content-wrap {
   .team-members-title {

@@ -1,14 +1,13 @@
 class TeamMembersController < ApplicationController
   before_action :set_search_service, only: :search
   before_action :load_form_field_objects
+  before_action :find_team_member, only: [:show, :testimonials]
 
   def index
     @team_members = TeamMember.displayed
   end
 
   def show
-    @team_member = TeamMember.displayed.find(params[:id])
-    @team_members = @team_member.root_services.first.team_members.limit(6)
   end
 
   def search
@@ -37,5 +36,10 @@ class TeamMembersController < ApplicationController
 
   def search_params
     params.permit([:name_search, :office_id])
+  end
+
+  def find_team_member
+    @team_member = TeamMember.displayed.find(params[:id])
+    @team_members = @team_member.root_services.first.team_members.where.not(id: @team_member.id).limit(6)
   end
 end
