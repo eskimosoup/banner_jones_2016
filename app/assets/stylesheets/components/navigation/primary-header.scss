@@ -32,6 +32,10 @@
     &:hover .meganav-dropdown {
       display: block;
     }
+
+    > .menu-link {
+      font-size: rem(16px);
+    }
   }
 
   a {
