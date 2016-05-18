@@ -18,7 +18,7 @@
 
   <div class="team-members-content-wrap">
     <div class="team-member-testimonials">
-      <%= render partial: 'testimonials/shared/single_content_box', collection: @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20) + @team_member.testimonials.displayed.limit(20), as: :testimonial %>
+      <%= render partial: 'testimonials/shared/single_content_box', collection: @team_member.testimonials.displayed.limit(20), as: :testimonial %>
     </div>
   </div>
 

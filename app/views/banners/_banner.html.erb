@@ -1,9 +1,25 @@
-<div class="hero-banner-item">
+<% if banner.audiences.present? %>
+  <%= content_for :head do %>
+    <style>
+    <% present banner do |banner_presenter| %>
+      .banner-<%= banner.id %> .hero-banner-item-prefix-title {
+        border-color: <%= banner.audiences.first.colour %>
+      }
+
+      .banner-<%= banner.id %> .hero-banner-item-button {
+        background: <%= banner.audiences.first.colour %>
+      }
+    <% end %>
+    </style>
+  <% end %>
+<% end %>
+
+<div class="hero-banner-item banner-<%= banner.id %>">
   <div class="hero-banner-item-wrap">
     <div class="hero-banner-item-content">
       <% present banner do |banner_presenter| %>
         <div class="hero-banner-item-prefix-title">
-          <span class="emphasis">We</span> know
+          We know
         </div>
 
         <h1 class="hero-banner-item-title">
@@ -20,6 +36,9 @@
   </div>
 
   <% present banner do |banner_presenter| %>
+    <div class="hero-banner-image-overlay">
+      
+    </div>
     <%= banner_presenter.image(class: 'hero-banner-image') %>
   <% end %>
 </div>
