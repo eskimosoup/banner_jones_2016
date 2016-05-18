@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160512152119) do
+ActiveRecord::Schema.define(version: 20160518143126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20160512152119) do
     t.datetime "updated_at",                              null: false
     t.string   "social_share_title"
     t.string   "social_share_description"
+    t.string   "colour"
     t.index ["slug"], name: "index_audiences_on_slug", using: :btree
     t.index ["suggested_url"], name: "index_audiences_on_suggested_url", using: :btree
     t.index ["team_member_id"], name: "index_audiences_on_team_member_id", using: :btree
@@ -116,6 +117,8 @@ ActiveRecord::Schema.define(version: 20160512152119) do
     t.datetime "expire_at"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "service_id"
+    t.index ["service_id"], name: "index_banners_on_service_id", using: :btree
   end
 
   create_table "case_studies", force: :cascade do |t|
@@ -846,6 +849,7 @@ ActiveRecord::Schema.define(version: 20160512152119) do
   add_foreign_key "audiences", "team_members", on_delete: :nullify
   add_foreign_key "audiences_banners", "audiences", on_delete: :cascade
   add_foreign_key "audiences_banners", "banners", on_delete: :cascade
+  add_foreign_key "banners", "services"
   add_foreign_key "events", "event_locations"
   add_foreign_key "events_categorisations", "event_categories"
   add_foreign_key "events_categorisations", "events"

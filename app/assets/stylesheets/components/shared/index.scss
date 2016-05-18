@@ -1,4 +1,29 @@
-.index-article-link {
+.index-module {
+  margin: 0 0 rem(30px);
+
+  &.index {
+    @include breakpoint(medium) {
+      @include grid-column(4);
+      //width: grid-column(4);
+
+      &:last-of-type {
+        @include grid-column-end;
+      }
+    }
+  }
+
+  &.aside {
+    .index-module-details-overview {
+      border-top: 0;
+    }
+
+    .standard-content-box {
+      box-shadow: none;
+    }
+  }
+}
+
+.index-module-link {
   &:link,
   &:visited {
     color: $offset-black;
@@ -10,61 +35,62 @@
   }
 }
 
-.index-article-details-wrap {
+.index-module-details-wrap {
   padding: rem(10px) rem(20px) rem(20px);
 }
 
-.index-article-details-overview {
+.index-module-details-overview {
   @include grid-row;
   border-top: 5px solid $orange;
   padding: rem(20px) rem(20px) 0;
 }
 
-.index-article-details {
+.index-module-details {
   @include breakpoint(medium) {
     @include grid-column($columns: 10, $gutter: (medium: 0));
   }
 }
 
-.index-article-shares {
+.index-module-shares {
   @include breakpoint(medium) {
     @include grid-column($columns: 2, $gutter: (medium: 0));
     text-align: right;
   }
 }
 
-.index-article-details-date {
+.index-module-details-date {
   color: $light-slate-blue;
   font-family: $ubuntu;
   font-size: rem(12px);
   font-weight: $ubuntu-light;
 }
 
-.index-article-details-categories {
+.index-module-details-categories,
+.index-module-details-list-details {
   color: $orange;
   font-family: $ubuntu;
   font-size: rem(14px);
   font-weight: $ubuntu-light;
 }
 
-.index-article-title {
+.index-module-title {
   color: $grey-blue;
   margin: 0 0 rem(7px);
 }
 
-.index .index-article-title {
+.index .index-module-title {
   font-family: $open-sans;
   font-size: rem(20px);
   font-weight: $open-sans-semibold;
 }
 
-.aside .index-article-title {
+.aside .index-module-title {
   font-family: $montserrat;
   font-size: rem(14px);
   font-weight: $montserrat-bold;
 }
 
-.index-article-summary {
+.index-module-summary {
   p {
     color: $light-slate-blue;
     font-family: $ubuntu;
@@ -74,7 +100,7 @@
   }
 }
 
-.index-article-read-more {
+.index-module-read-more {
   color: $light-accent-grey;
   font-family: $montserrat;
   font-size: rem(12px);
@@ -82,16 +108,16 @@
 }
 
 
-.index-article-author-wrap {
+.index-module-author-wrap {
   text-align: right;
 }
 
-.index-article-author {
+.index-module-author {
   @include grid-row;
   padding: rem(21px) 0;
 }
 
-.index-article-author-photo {
+.index-module-author-photo {
     @include grid-column(
     $columns: 2,
     $gutter: (
@@ -100,7 +126,7 @@
     );
 }
 
-.index-article-author-details {
+.index-module-author-details {
     @include grid-column(
     $columns: 10,
     $gutter: (
@@ -111,7 +137,7 @@
   line-height: 1;
 }
 
-.index-article-author-name {
+.index-module-author-name {
   color: $dark-purple;
   display: block;
   font-family: $montserrat;

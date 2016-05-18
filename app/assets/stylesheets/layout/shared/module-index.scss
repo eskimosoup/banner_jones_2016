@@ -1,0 +1,12 @@
+.module-index-content {
+  @include clearfix;
+  position: relative;
+
+  &.index-content {
+    padding-bottom: 0;
+  }
+}
+
+.module-index {
+  @include grid-row;
+}

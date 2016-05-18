@@ -1,17 +1,17 @@
-.article-category-toggle {
+.module-category-toggle {
   margin: rem(15px) 0 0;
 }
 
-.article-category-toggle-expand,
-.article-category-toggle-minimise {
+.module-category-toggle-expand,
+.module-category-toggle-minimise {
   color: $orange;
 }
 
-.article-category-toggle-minimise {
+.module-category-toggle-minimise {
   display: none;
 }
 
-.article-categories-dropdown-wrap {
+.module-categories-dropdown-wrap {
   display: none;
   @include breakpoint(large) {
     position: absolute;
@@ -21,7 +21,7 @@
   }
 }
 
-.article-categories-dropdown {
+.module-categories-dropdown {
   @include clearfix;
   background: $popout-grey;
   margin: 0 rem(30px) 0 0;
@@ -32,7 +32,7 @@
   }
 }
 
-.article-categories-dropdown-list {
+.module-categories-dropdown-list {
   list-style: none;
   margin: 0;
 

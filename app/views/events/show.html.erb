@@ -1,0 +1,82 @@
+<%= render 'events/shared/index_header' %>
+
+
+<% present @event do |event_presenter| %>
+  <%= og_title event_presenter.social_share_title %>
+  <%= og_description event_presenter.social_share_description %>
+  <%= og_image event_presenter.social_share_image_url %>
+  <%= twitter_creator "@#{@event.team_members.first.twitter_link.split('/').last}" if @event.team_members.size == 1 %>
+<% end %>
+
+<div class="module-show">
+  <div class="module-show-content-overview">
+      <ul class="show-breadcrumbs">
+        <li><%= link_to 'Events', events_path %></li>
+        <li><%= @event.event_categories.map(&:title).join(', ') %></li>
+      </ul>
+
+    <% present @event do |event_presenter| %>
+      <%= event_presenter.show_image(alt: event_presenter.title) %>
+    <% end %>
+
+    <div class="module-show-content-wrap">
+      <div class="module-show-author">
+        <% present @event do |event_presenter| %>
+          <%= render partial: 'events/shared/show_team_members', collection: @event.team_members, as: :team_member, locals: { event_presenter: event_presenter } %>
+        <% end %>
+      </div>
+
+      <div class="module-show-content">
+        <% present @event do |event_presenter| %>
+          <div class="index-module-details-date">
+            <%= event_presenter.date %>
+          </div>
+
+          <h1>
+            <%= event_presenter.title %>
+          </h1>
+
+          <%= event_presenter.content %>
+
+          <%= event_presenter.booking_link('Book now', { class: 'event-booking-button', title: 'Book now' }) if @event.booking_deadline >= DateTime.now %>
+
+          <%= render 'shared/social_share_buttons', object: @event %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <aside class="related-aside">
+    <h5 class="related-aside-title">Related Events</h5>
+
+    <%= render partial: 'events/aside_event', collection: @related_events, as: :event %>
+  </aside>
+</div>
+
+<% if @event.team_members.present? %>
+  <div class="related-footer">
+    <div class="related-footer-details">
+      <% present @event.team_members.first do |team_member_presenter| %>
+        <%= content_tag :div,
+                        (team_member_presenter.linked_text(team_member_presenter.related_footer_image(alt: team_member_presenter.full_name))),
+                        class: 'team-member-avatar' if team_member_presenter.related_footer_image.present? %>
+        <%= possessive team_member_presenter.forename %> other events
+      <% end %>
+    </div>
+
+    <div class="module-inner-content">
+      <div class="module-index">
+        <%= render partial: 'events/event',
+                   collection: @event.team_members.first.events.displayed.limit(3).order(publish_at: :desc),
+                   as: :event %>
+      </div>
+
+      <div class="related-footer-navigation">
+        <% # TODO: Filter? Team member show? %>
+        <%= link_to 'Show all',
+                team_member_path(@event.team_members.first, anchor: 'events'),
+                class: 'related-footer-see-all' %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -8,8 +8,8 @@
   <%= twitter_creator "@#{@article.team_members.first.twitter_link.split('/').last}" if @article.team_members.size == 1 %>
 <% end %>
 
-<div class="article-show">
-  <div class="article-show-content-overview">
+<div class="module-show">
+  <div class="module-show-content-overview">
       <ul class="show-breadcrumbs">
         <li><%= link_to 'News', articles_path %></li>
         <li><%= @article.article_categories.map(&:title).join(', ') %></li>
@@ -19,16 +19,18 @@
       <%= article_presenter.show_image(alt: article_presenter.title) %>
     <% end %>
 
-    <div class="article-show-content-wrap">
-      <div class="article-show-author">
+    <div class="module-show-content-wrap">
+      <div class="module-show-author">
         <% present @article do |article_presenter| %>
           <%= render partial: 'articles/shared/show_team_members', collection: @article.team_members, as: :team_member, locals: { article_presenter: article_presenter } %>
         <% end %>
       </div>
 
-      <div class="article-show-content">
+      <div class="module-show-content">
         <% present @article do |article_presenter| %>
-          <%= article_presenter.date %>
+          <div class="index-module-details-date">
+            <%= article_presenter.date %>
+          </div>
 
           <h1>
             <%= article_presenter.title %>
@@ -60,15 +62,16 @@
   </div>
 
   <div class="module-inner-content">
-    <div class="articles-index">
+    <div class="module-index">
       <%= render partial: 'articles/article',
                  collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
                  as: :article %>
     </div>
 
     <div class="related-footer-navigation">
+      <% # TODO: Filter? Team member show? %>
       <%= link_to 'Show all',
-              team_members_path(@article.team_members.first, anchor: 'articles'),
+              team_member_path(@article.team_members.first, anchor: 'articles'),
               class: 'related-footer-see-all' %>
     </div>
   </div>

@@ -1,8 +1,11 @@
 .meganav-dropdown {
+  @include grid-row;
   display: none;
-  left: 0;
+  -webkit-filter: blur(0);
+  left: 50%;
   position: absolute;
   text-align: left;
+  transform: translate(-50%, 0);
   width: 100%;
   z-index: 2;
 
@@ -39,8 +42,8 @@
   padding: rem(20px) 0;
 
   @include breakpoint(large) {
-    padding: rem(40px) 0 rem(75px);
     @include grid-column(6);
+    padding: rem(40px) 0 rem(75px);
   }
 }
 
@@ -50,15 +53,15 @@
   @include breakpoint(large) {
     @include grid-column(2);
     @include grid-column-offset(1);
-    text-align: right;
     padding: rem(40px) 0 rem(75px);
+    text-align: right;
   }
 }
 
 .meganav-primary-title {
+  color: $dark-slate-blue;
   font-size: rem(18px);
   font-weight: $myriad-pro-semibold;
-  color: $dark-slate-blue;
   margin: 0 0 rem(25px) rem(25px);
 }
 
@@ -68,8 +71,8 @@
   a {
     display: block;
     font-size: rem(14px);
-    padding: 0 rem(10px);
     margin: rem(8px) 0;
+    padding: 0 rem(10px);
 
     &:visited,
     &:link {

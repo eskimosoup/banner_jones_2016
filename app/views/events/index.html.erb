@@ -1,0 +1,37 @@
+<%= render 'events/shared/index_header' if @event_location.blank? %>
+<%= render 'events/shared/location_header' if @event_location.present? %>
+
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
+  <script>
+    $(window).load(function() {
+      $('.module-index').masonry({
+        itemSelector: '.index-module'
+      });
+    });
+  </script>
+<% end %>
+
+
+<div class="module-inner-content">
+  <div class="module-index">
+    <%= render partial: 'events/event', collection: @events, as: :event %>
+  </div>
+
+  <div class="module-pagination">
+    <%= paginate @events %>
+  </div>
+</div>
+
+<!--
+<div class="events-index">
+  <h1>Events</h1>
+  <%#= render partial: 'event', collection: @events, as: :event %>
+
+  <h2>Categories</h2>
+  <%#= render partial: 'event_categories/event_category', collection: @event_categories, as: :event_category %>
+
+  <h2>Locations</h2>
+  <%#= render partial: 'event_locations/event_location', collection: @event_locations, as: :event_location %>
+</div>
+-->

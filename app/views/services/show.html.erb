@@ -6,6 +6,18 @@
 
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'vendor/colorbox' %>
+  <style>
+  <% present @service do |service_presenter| %>
+    <% [*2..6].each do |header| %>
+      .page-inner-content h<%= header %> {
+        border-bottom: 3px;
+        border-bottom-style: solid;
+        padding-bottom: .5rem;
+          <%= service_presenter.colour_property_helper('border-color') %>
+      }
+      <% end %>
+    <% end %>
+  </style>
 <% end %>
 
 <%= content_for :javascript do %>
@@ -36,7 +48,10 @@
       </h1>
 
       <div class="page-inner-content">
-        <%= service_presenter.summary %>
+        <div class="service-page-summary">
+          <%= service_presenter.summary %>
+        </div>
+        
         <%= service_presenter.content %>
       </div>
     <% end %>
