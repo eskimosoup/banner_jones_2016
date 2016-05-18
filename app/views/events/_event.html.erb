@@ -1,0 +1,60 @@
+<div class="index-module index">
+  <div class="standard-content-box standalone">
+    <% present event do |event_presenter| %>
+      <%= link_to event, title: event_presenter.title, class: 'index-module-link' do %>
+        <%= content_tag :div, event_presenter.index_image(alt: event_presenter.title), class: 'index-module-image' if event_presenter.index_image.present? %>
+
+          <div class="index-module-details-overview">
+            <div class="index-module-details">
+              <div class="index-module-details-date">
+                <%= event_presenter.date %>
+              </div>
+
+              <div class="index-module-details-categories">
+                <%= event.event_categories.map(&:title).join(', ') %>
+              </div>
+            </div>
+
+            <div class="index-module-shares">
+              <div class="social-share-count" href="<%= url_for([event, only_path: false]) %>">
+
+              </div>
+            </div>
+          </div>
+
+        <div class="index-module-details-wrap">
+          <div class="index-module-title">
+            <%= event_presenter.title %>
+          </div>
+
+          <% if event.event_location? %>
+            <% present event.event_location do |event_location_presenter| %>
+              <div class="index-module-details-list-details index-event-location">
+                <%= event_location_presenter.title %>
+              </div>
+            <% end %>
+          <% end %>
+
+          <div class="index-module-details-date">
+            <%#= event_presenter.booking_deadline(:short) %>
+            <%= event_presenter.event_start(:short) %>
+            -
+            <%= event_presenter.event_end(:short) %>
+          </div>
+
+          <div class="index-module-summary">
+            <%= event_presenter.summary %>
+          </div>
+
+          <div class="index-module-read-more">
+            Read more >
+          </div>
+
+          <div class="index-module-author-wrap">
+            <%= render partial: 'events/shared/team_members', collection: event.team_members.displayed, as: :team_member, locals: { event_presenter: event_presenter } %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

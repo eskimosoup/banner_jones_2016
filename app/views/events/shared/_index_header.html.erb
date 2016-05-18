@@ -5,20 +5,20 @@
 <div class="index-content-wrap">
   <div class="index-content module-index-content">
     <%= link_to '#', class: 'module-category-toggle see-all', data: { container: '.module-categories-dropdown-wrap', class: 'hide', return: 'false' } do %>
-      News Categories
+      Event Categories
       <span class="module-category-toggle-expand">+</span>
       <span class="module-category-toggle-minimise">-</span>
     <% end %>
 
     <h1 class="standard-content-box-title">
-      Latest News
-      <% if @article_category.present? %>
-        <% present @article_category do |article_category_presenter| %>
-          <strong><%= article_category_presenter.title %></strong>
+      Events
+      <% if @event_category.present? %>
+        <% present @event_category do |event_category_presenter| %>
+          <strong><%= event_category_presenter.title %></strong>
         <% end %>
       <% end %>
     </h1>
 
-    <%= render 'article_categories/shared/toggle_overlay' %>
+    <%= render 'event_categories/shared/toggle_overlay' %>
   </div>
 </div>

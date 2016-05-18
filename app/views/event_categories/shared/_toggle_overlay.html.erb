@@ -1,10 +1,10 @@
 <div class="module-categories-dropdown-wrap">
   <div class="module-categories-dropdown">
-    <% @article_categories.in_groups_of(6, false) do |article_categories| %>
+    <% @event_categories.in_groups_of(6, false) do |event_categories| %>
       <ul class="module-categories-dropdown-list">
-        <% article_categories.each do |article_category| %>
+        <% event_categories.each do |event_category| %>
           <li>
-            <%= render 'article_categories/shared/link', article_category: article_category %>
+            <%= render 'event_categories/shared/link', event_category: event_category %>
           </li>
         <% end %>
       </ul>

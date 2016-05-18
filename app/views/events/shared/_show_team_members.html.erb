@@ -1,0 +1,12 @@
+<% present team_member do |team_member_presenter| %>
+  <div class="show-module-author">
+    <div class="show-module-author-photo team-member-avatar">
+      <%= event_presenter.linked_text(team_member_presenter.small_image(alt: team_member_presenter.full_name)) if team_member_presenter.small_image.present? %>
+    </div>
+
+    <div class="show-module-author-details">
+      <%= event_presenter.linked_text(team_member_presenter.full_name, class: 'module-author-name') %>
+      <%= event_presenter.linked_text(event_presenter.first_service.title, class: 'module-author-audience') %>
+    </div>
+  </div>
+<% end %>

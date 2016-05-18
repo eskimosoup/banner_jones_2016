@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
     @header_aside_menu = Optimadmin::Menu.new(name: 'header_aside')
     @primary_header_menu = Optimadmin::Menu.new(name: 'primary_header')
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
-    @awards = Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed + Award.displayed
+    @awards = Award.displayed
     @callback_request = CallbackRequest.new
   end
 

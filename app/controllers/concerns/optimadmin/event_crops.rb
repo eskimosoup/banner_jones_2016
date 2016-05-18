@@ -5,7 +5,10 @@ module Optimadmin
     included do
       edit_images_for Event,
                       [
-                        [:image, { show: ['fit', 200, 200], index: ['fill', 200, 200] }],
+                        [:image, {
+                          show: ['fit', 975, 443],
+                          index: ['fill', 436, 198]
+                        }],
                         [:social_share_image, { show: ['fit', 1200, 600] }]
                       ]
     end

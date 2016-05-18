@@ -40,7 +40,8 @@
   padding: rem(21px) 0;
 }
 
-.article-author-photo {
+.article-author-photo,
+.module-author-photo {
     @include grid-column(
     $columns: 3,
     $gutter: (
@@ -49,7 +50,8 @@
     );
 }
 
-.article-author-details {
+.article-author-details,
+.module-author-details {
     @include grid-column(
     $columns: 9,
     $gutter: (
@@ -60,7 +62,8 @@
   line-height: 1;
 }
 
-.article-author-name {
+.article-author-name,
+.module-author-name {
   color: $dark-purple;
   display: block;
   font-family: $montserrat;
@@ -77,7 +80,8 @@
   }
 }
 
-.article-author-audience {
+.article-author-audience,
+.module-author-audience {
   color: $dark-purple;
   font-family: $ubuntu;
   font-size: rem(12px);
