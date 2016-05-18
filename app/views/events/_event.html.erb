@@ -7,7 +7,9 @@
           <div class="index-module-details-overview">
             <div class="index-module-details">
               <div class="index-module-details-date">
-                <%= event_presenter.date %>
+                <%= event_presenter.event_start(:short) %>
+                -
+                <%= event_presenter.event_end(:short) %>
               </div>
 
               <div class="index-module-details-categories">
@@ -34,13 +36,6 @@
               </div>
             <% end %>
           <% end %>
-
-          <div class="index-module-details-date">
-            <%#= event_presenter.booking_deadline(:short) %>
-            <%= event_presenter.event_start(:short) %>
-            -
-            <%= event_presenter.event_end(:short) %>
-          </div>
 
           <div class="index-module-summary">
             <%= event_presenter.summary %>

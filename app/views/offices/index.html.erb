@@ -24,7 +24,7 @@
 <div class="module-inner-content">
   <div class="offices-index">
     <div class="offices-index-content">
-      <h1>Offices</h1>
+      <h1>Offices <%= "in #{@office_location.name}" if @office_location.present? %></h1>
     </div>
   </div>
 

@@ -38,6 +38,8 @@
 
           <%= event_presenter.content %>
 
+          <%= event_presenter.booking_link('Book now', { class: 'event-booking-button', title: 'Book now' }) if @event.booking_deadline >= DateTime.now %>
+
           <%= render 'shared/social_share_buttons', object: @event %>
         <% end %>
       </div>
