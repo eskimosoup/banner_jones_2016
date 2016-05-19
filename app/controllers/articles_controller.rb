@@ -3,7 +3,8 @@ class ArticlesController < ApplicationController
   before_action :load_article_categories
 
   def index
-    @articles = Article.displayed.page(params[:page]).per(params[:per_page] || 15)
+    @service = Service.find(params[:service_id]) if params[:service_id]
+    @articles = (@service.present? ? @service.articles.displayed.page(params[:page]).per(params[:per_page] || 15) : Article.displayed.page(params[:page]).per(params[:per_page] || 15) )
     @article_categories = ArticleCategory.displayed
   end
 

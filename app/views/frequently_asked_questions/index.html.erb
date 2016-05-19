@@ -16,7 +16,7 @@
       Frequently Asked Questions
       <% if @service.present? %>
         <% present @service do |service_presenter| %>
-          <strong><%= service_presenter.title %></strong>
+          for <strong><%= service_presenter.title %></strong>
         <% end %>
         <%= link_to 'x', frequently_asked_questions_path %>
       <% end %>
