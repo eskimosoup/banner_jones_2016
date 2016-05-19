@@ -2,24 +2,7 @@
   <%= javascript_include_tag 'components/module-categories/toggle' %>
 <% end %>
 
-<%= content_for :javascript do %>
-  <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
-  <script>
-    function loadMasonry() {
-      $('.frequently-asked-questions-list-wrap').masonry({
-        itemSelector: '.standalone-faq'
-      });
-    }
-    
-    $(window).load(function() {
-      loadMasonry();
-    });
-
-    $(document).on('click', '.toggle-class', function() {
-      loadMasonry();
-    });
-  </script>
-<% end %>
+<%= render 'frequently_asked_questions/shared/javascript' %>
 
 <div class="index-content-wrap">
   <div class="index-content module-index-content">
@@ -44,7 +27,7 @@
 </div>
 
 <div class="module-inner-content">
-  <div class="page-content-wrap">
+  <div class="page-additional-content">
     <div class="frequently-asked-questions frequently-asked-questions-list-wrap">
       <%= render partial: 'frequently_asked_questions/shared/single_content_box', collection: @faqs, as: :frequently_asked_question %>
     </div>

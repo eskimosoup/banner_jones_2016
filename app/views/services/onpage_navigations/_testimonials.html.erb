@@ -1,5 +1,9 @@
 <div class="onpage-navigation-item home-content-box inner testimonials">
-  <%= link_to "See All", audience_service_testimonials_path(@audience, @service), class: "see-all" %>
+  <%= link_to "See All",
+              audience_service_testimonials_path(@audience, @service, anchor: 'testimonials'),
+              class: "see-all" # if onpage_navigation.results_limit && @service.testimonials.displayed.size > onpage_navigation.results_limit
+              %>
+
   <h2 class="home-content-box-title testimonials-title">
     <%= onpage_navigation.title %>
   </h2>

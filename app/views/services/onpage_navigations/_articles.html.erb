@@ -1,5 +1,8 @@
 <div class="standard-content-box onpage-navigation-item">
-  <%= link_to "See All", articles_path, class: "see-all" %>
+
+  <%= link_to "See All",
+            articles_path(service_id: @service.id), class: "see-all" if onpage_navigation.results_limit && @service.articles.displayed.size > onpage_navigation.results_limit %>
+
   <h2 class="standard-content-box-title">
     <%= onpage_navigation.title %>
   </h2>

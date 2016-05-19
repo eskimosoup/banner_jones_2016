@@ -31,12 +31,15 @@ Rails.application.routes.draw do
   resources :videos, only: [:index, :show]
   resources :events, only: [:index, :show]
   resources :pages, only: :show
-  resources :contacts, only: [:new, :create], path: 'contact-us'
+  # FIXME: This is used in conjuction with the engine, so you end up with
+  # /contacts/new and /contact-us/new - it should be one or the other.
+  # resources :contacts, only: [:new, :create], path: 'contact-us'
   resources :callback_requests, only: [:new, :create], path: 'callback-request'
 
   resources :audiences, only: :show do
     resources :services, only: :show do
       get 'testimonials'
+      get 'frequently-asked-questions'
       resources :service_pages, only: :show, path: 'pages', controller: 'services/pages'
     end
   end

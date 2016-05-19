@@ -1,4 +1,4 @@
-<%= render 'testimonials/shared/javascript' %>
+<%= render 'frequently_asked_questions/shared/javascript' %>
 <%= render 'services/shared/show_header' %>
 
 <div class="page-content-wrap">
@@ -26,12 +26,12 @@
   <%= render 'services/shared/sidebar' %>
 </div>
 
-<div class="service-onpage-navigation" id="testimonials">
-  <div class="page-additional-content">
-    <div class="testimonials-list-wrap">
-      <%= render partial: 'testimonials/shared/single_content_box', collection: @service.testimonials.displayed, as: :testimonial %>
+<div class="service-onpage-navigation" id="frequently-asked-questions">
+  <div class="page-content-wrap">
+    <div class="frequently-asked-questions frequently-asked-questions-list-wrap">
+      <%= render partial: 'frequently_asked_questions/shared/single_content_box', collection: @service.frequently_asked_questions.displayed, as: :frequently_asked_question %>
     </div>
-    
+
     <div class="related-footer-navigation">
       <%= link_to 'Back to service',
               audience_service_path(@audience, @service),

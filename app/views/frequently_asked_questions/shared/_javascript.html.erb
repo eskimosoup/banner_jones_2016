@@ -1,0 +1,18 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
+  <script>
+    function loadMasonry() {
+      $('.frequently-asked-questions-list-wrap').masonry({
+        itemSelector: '.standalone-faq'
+      });
+    }
+
+    $(window).load(function() {
+      loadMasonry();
+    });
+
+    $(document).on('click', '.toggle-class', function() {
+      loadMasonry();
+    });
+  </script>
+<% end %>
