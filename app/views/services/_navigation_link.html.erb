@@ -1,5 +1,3 @@
 <li>
-  <% present service do |service_presenter| %>
-    <%= service_presenter.linked_text(service_presenter.title) %>
-  <% end %>
+  <%= render 'services/shared/link', service: service %> 
 </li>

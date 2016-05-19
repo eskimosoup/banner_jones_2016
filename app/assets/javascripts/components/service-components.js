@@ -26,8 +26,8 @@ $(window).load(function() {
 
   var windowAnchor = window.location.hash;
   if(windowAnchor !== undefined && $(windowAnchor).length === 1) {
-    smoothScroll(windowAnchor);
-  }
+    // smoothScroll(windowAnchor);
+  }  
 });
 
 $(window).scroll(function() {

@@ -10,6 +10,14 @@
     background-position: 30px 70px, 97% 75%;
     background-size: initial;
   }
+
+  .see-all {
+    @include breakpoint(large) {
+      position: absolute;
+      right: 20px;
+      top: 17px;
+    }
+  }
 }
 
 .testimonials-title {

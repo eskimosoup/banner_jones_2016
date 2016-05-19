@@ -12,7 +12,9 @@
   <div class="module-show-content-overview">
       <ul class="show-breadcrumbs">
         <li><%= link_to 'Events', events_path %></li>
-        <li><%= @event.event_categories.map(&:title).join(', ') %></li>
+        <li>
+          <%= render partial: 'shared/module_breadcrumbs', collection: @event.event_categories.displayed, as: :category, locals: { categories: @event.event_categories.displayed } %>
+        </li>
       </ul>
 
     <% present @event do |event_presenter| %>

@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
-  before_action :find_service
+  before_action :find_service, only: :show
+  before_action :find_member_service, except: :show
 
   include ResourceHelper, TwitterHelper
 
@@ -11,7 +12,20 @@ class ServicesController < ApplicationController
     @hide_sticky_cta = true
   end
 
+  def testimonials
+    return redirect_to audience_service_testimonials_path(@audience, @service), status: :moved_permanently if request.path != audience_service_testimonials_path(@audience, @service)
+  end
+
+  def frequently_asked_questions
+    return redirect_to audience_service_frequently_asked_questions_path(@audience, @service), status: :moved_permanently if request.path != audience_service_frequently_asked_questions_path(@audience, @service)
+  end
+
   private
+
+  def find_member_service
+    @audience = Audience.find(params[:audience_id])
+    @service = @audience.services.find(params[:service_id])
+  end
 
   def find_service
     @audience = Audience.find(params[:audience_id])

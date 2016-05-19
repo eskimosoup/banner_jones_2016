@@ -1,0 +1,41 @@
+<%= render 'testimonials/shared/javascript' %>
+<%= render 'services/shared/show_header' %>
+
+<div class="page-content-wrap">
+  <aside class="page-aside-navigation">
+    <div class="page-aside-navigation-content">
+      <%= render 'services/shared/service_page_aside_navigation' %>
+    </div>
+  </aside>
+
+  <div class="page-content">
+    <% present @service do |service_presenter| %>
+      <h1 class="service-page-title" style="<%= service_presenter.colour_property_helper('border-color') %>">
+        <%= service_presenter.title %>
+        <%= service_presenter.small_icon({alt: service_presenter.title, class: 'service-page-icon'}) %>
+      </h1>
+
+      <div class="page-inner-content">
+        <div class="service-page-summary">
+          <%= service_presenter.summary %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= render 'services/shared/sidebar' %>
+</div>
+
+<div class="service-onpage-navigation" id="testimonials">
+  <div class="page-additional-content">
+    <div class="testimonials-list-wrap">
+      <%= render partial: 'testimonials/shared/single_content_box', collection: @service.testimonials.displayed, as: :testimonial %>
+    </div>
+    
+    <div class="related-footer-navigation">
+      <%= link_to 'Back to service',
+              audience_service_path(@audience, @service),
+              class: 'related-footer-see-all' %>
+    </div>
+  </div>
+</div>

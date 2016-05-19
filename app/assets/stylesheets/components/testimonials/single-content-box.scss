@@ -1,0 +1,4 @@
+.testimonials-split-content {
+  @include grid-column(6);
+  margin: rem(30px) auto 0;
+}
