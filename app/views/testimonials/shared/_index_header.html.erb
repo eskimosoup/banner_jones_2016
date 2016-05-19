@@ -1,0 +1,25 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/module-categories/toggle' %>
+<% end %>
+
+<div class="index-content-wrap">
+  <div class="index-content module-index-content">
+    <%= link_to '#', class: 'module-category-toggle see-all', data: { container: '.module-categories-dropdown-wrap', class: 'hide', return: 'false' } do %>
+      Filter by service
+      <span class="module-category-toggle-expand">+</span>
+      <span class="module-category-toggle-minimise">-</span>
+    <% end %>
+
+    <h1 class="standard-content-box-title">
+      Testimonials
+      <% if @service.present? %>
+        <% present @service do |service_presenter| %>
+          <strong><%= service_presenter.title %></strong>
+        <% end %>
+        <%= link_to 'x', testimonials_path %>
+      <% end %>
+    </h1>
+
+    <%= render 'testimonials/shared/toggle_overlay' %>
+  </div>
+</div>

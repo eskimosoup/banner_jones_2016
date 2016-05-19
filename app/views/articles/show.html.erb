@@ -11,8 +11,13 @@
 <div class="module-show">
   <div class="module-show-content-overview">
       <ul class="show-breadcrumbs">
-        <li><%= link_to 'News', articles_path %></li>
-        <li><%= @article.article_categories.map(&:title).join(', ') %></li>
+        <li>
+          <%= link_to 'News', articles_path %>
+        </li>
+        
+        <li>
+          <%= render partial: 'shared/module_breadcrumbs', collection: @article.article_categories.displayed, as: :category, locals: { categories: @article.article_categories.displayed } %>
+        </li>
       </ul>
 
     <% present @article do |article_presenter| %>

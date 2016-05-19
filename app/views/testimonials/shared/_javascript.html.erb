@@ -1,0 +1,10 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
+  <script>
+    $(document).ready(function() {
+      $('.testimonials-list-wrap').masonry({
+        itemSelector: '.testimonials-split-content'
+      });
+    });
+  </script>
+<% end %>

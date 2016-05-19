@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :remortgages, only: [:new, :create, :show]
     resources :remortgage_with_equity_transfers, only: [:new, :create, :show]
   end
+
   resources :team_members, only: [:index, :show], path: 'team-members' do
     member do
       get 'testimonials'
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :audiences, only: :show do
     resources :services, only: :show do
+      get 'testimonials'
       resources :service_pages, only: :show, path: 'pages', controller: 'services/pages'
     end
   end

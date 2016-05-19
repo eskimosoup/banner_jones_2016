@@ -1,0 +1,61 @@
+<%= render 'testimonials/shared/javascript' %>
+<%= render 'services/shared/show_header' %>
+
+<div class="page-content-wrap">
+  <aside class="page-aside-navigation">
+    <div class="page-aside-navigation-content">
+      <%= render 'services/shared/service_page_aside_navigation' %>
+    </div>
+  </aside>
+
+  <div class="page-content">
+    <% present @service do |service_presenter| %>
+      <h1 class="service-page-title" style="<%= service_presenter.colour_property_helper('border-color') %>">
+        <%= service_presenter.title %>
+        <%= service_presenter.small_icon({alt: service_presenter.title, class: 'service-page-icon'}) %>
+      </h1>
+
+      <div class="page-inner-content">
+        <div class="service-page-summary">
+          <%= service_presenter.summary %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <aside class="page-additional-information">
+    <div class="service-page-additional-information-key-team-members">
+      <div class="service-page-additional-information-key-team-members-title">
+        <h3>
+          Talk to our<br />
+          <%= @service.title %> team
+        </h3>
+      </div>
+
+      <div class="service-page-additional-information-key-team-members-profiles">
+        <div class="multiple-team-members-slick">
+          <%= render partial: 'services/shared/key_team_member_avatars', collection: @service.key_team_members, as: :service_team_member %>
+        </div>
+      </div>
+    </div>
+
+    <%= render 'pages/shared/call_to_actions' %>
+
+    <% if @service.rich_snippet %>
+      <div class="service-rich-snippets">
+        <%= render(
+          "rich_snippets/service_rich_snippet",
+          rich_snippet: @service.rich_snippet
+         ) %>
+      </div>
+    <% end %>
+  </aside>
+</div>
+
+<div class="service-onpage-navigation" id="testimonials">
+  <div class="team-members-content-wrap">
+    <div class="testimonials-list-wrap">
+      <%= render partial: 'testimonials/shared/single_content_box', collection: @service.testimonials.displayed.limit(20), as: :testimonial %>
+    </div>
+  </div>
+</div>

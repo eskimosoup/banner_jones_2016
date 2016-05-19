@@ -1,0 +1,14 @@
+<%= render 'testimonials/shared/javascript' %>
+<%= render 'testimonials/shared/index_header' %>
+
+<div class="module-inner-content">
+  <div class="page-content-wrap">
+    <div class="testimonials testimonials-list-wrap">
+      <%= render partial: 'testimonials/shared/single_content_box', collection: @testimonials, as: :testimonial %>
+    </div>
+  </div>
+
+  <div class="module-pagination">
+    <%= paginate @testimonials %>
+  </div>
+</div>
