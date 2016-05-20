@@ -42,7 +42,12 @@
 
 .index-team-member-profile-role,
 .index-team-member-profile-office-locations {
+  @include clearfix;
   color: $white;
+
+  .index-team-member-profile-icon {
+    float: left;
+  }
 }
 
 .index-team-member-profile-icon {
