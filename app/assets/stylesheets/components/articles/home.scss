@@ -25,7 +25,11 @@
   font-family: $montserrat;
   font-size: rem(14px);
   font-weight: $montserrat-semibold;
-  padding: rem(35px) rem(37px);
+  padding: rem(15px) rem(17px);
+
+  @include media('>1300px') {
+    padding: rem(35px) rem(37px);
+  }
 
   &:hover,
   &:active {

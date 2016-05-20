@@ -96,5 +96,9 @@
       transform: translate(-50%, 0);
       width: auto;
     }
+
+    @include media('>768px', '<1400px') {
+      top: -35px;
+    }
   }
 }

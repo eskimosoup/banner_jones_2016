@@ -25,7 +25,13 @@
   margin: 0 rem(20px);
   padding: 0 rem(31px) 0 0;
 
-  @include breakpoint(large) {
+  @include media('>768px', '<1400px') {
+    background: none;
+    display: inline-block;
+    padding: 0;
+  }
+
+  @include media('>1400px') {
     background-position: center right;
     display: inline-block;
     margin: 0 rem(40px) 0 0;
@@ -36,7 +42,7 @@
   display: inline-block;
   margin: rem(20px) rem(15px);
 
-  @include breakpoint(large) {
+  @include media('>1400px') {
     margin: 0 rem(20px);
   }
 }
@@ -47,8 +53,15 @@
   font-size: rem(16px);
   margin: 0 rem(30px);
 
-  @include breakpoint(large) {
+  @include media('>768px') {
     text-align: right;
+  }
+
+  @include media('>768px', '<1400px') {
+    margin: rem(10px);
+  }
+
+  @include media('>1400px') {
     margin: 0;
   }
 }

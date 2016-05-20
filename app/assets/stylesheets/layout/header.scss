@@ -21,16 +21,19 @@
 .header-branding {
   @include clearfix;
   @include grid-column($columns: 6, $gutter: (small: 0, medium: 30));
+
   @include breakpoint(large) {
     margin: rem(25px) 0 0;
   }
 }
 
 .header-logo {
-  @include breakpoint(large) {
-    display: block;
-    float: left;
-    padding: 0 rem(75px) 0 0;
+  display: block;
+  float: left;
+  padding: 0 rem(75px) 0 0;
+
+  @include media('>768px', '<1920px') {
+    width: 75%;
   }
 }
 
