@@ -90,7 +90,7 @@
   text-shadow: 0 2px $charcoal;
 
   @include media('<1920px') {
-    font-size: rem(22px);
+    font-size: rem(32px);
   }
 
   @include media('>=1920px') {
@@ -107,11 +107,7 @@
   margin: 0 0 rem(15px);
   text-shadow: 0 2px $charcoal;
 
-  @include media('<1920px') {
-    font-size: rem(22px);
-  }
-
-  @include media('>=1920px') {
+  @include media('>=1200px') {
     font-size: rem(32px);
     margin: 0 0 rem(25px);
   }

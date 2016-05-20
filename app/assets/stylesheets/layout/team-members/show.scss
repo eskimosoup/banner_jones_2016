@@ -51,5 +51,9 @@
   h3 {
     @include standard-content-box-title;
     font-size: rem(16px);
+
+    @include media('<1200px') {
+      font-size: rem(14px);
+    }
   }
 }

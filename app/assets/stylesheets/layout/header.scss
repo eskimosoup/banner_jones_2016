@@ -1,12 +1,13 @@
 .primary-header {
   @include grid-row;
 
-  @include breakpoint(small only) {
+  @include media('<1024px') {
     background: $white;
     padding: rem(15px);
     position: fixed;
     top: 0;
     z-index: 10;
+    width: 100%;
   }
 }
 
