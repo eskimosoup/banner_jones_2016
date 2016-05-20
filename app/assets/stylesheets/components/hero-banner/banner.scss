@@ -83,6 +83,7 @@
   font-weight: $montserrat-semibold;
   line-height: 1.09;
   margin: 0 0 rem(15px);
+  text-shadow: 0 2px $charcoal;
 
   @include breakpoint(large) {
     font-size: rem(44px);
@@ -166,6 +167,7 @@
 
 .hero-banner-item-prefix-title {
   border-bottom: 7px solid $white;
+  box-shadow: 0 2px $charcoal;
   color: $white;
   display: inline-block;
   font-family: $montserrat;
@@ -173,4 +175,5 @@
   font-weight: $montserrat-extrabold;
   line-height: 1;
   margin: 0 0 rem(16px);
+  text-shadow: 0 2px $charcoal;
 }

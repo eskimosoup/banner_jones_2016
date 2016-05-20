@@ -57,7 +57,8 @@
     }
 
     &:hover,
-    &:active {
+    &:active,
+    &.active {
       color: $orange;
     }
   }

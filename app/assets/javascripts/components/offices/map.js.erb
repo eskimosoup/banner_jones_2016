@@ -37,7 +37,10 @@ function initialize() {
           contentString += value.postcode + '<br />';
         }
 
-        contentString += '<a href="/offices/' + value.slug + '" title="View more detail" class="offices-view-more">Find out more</a>';
+        if(latLngs.length > 1) {
+          contentString += '<a href="/offices/' + value.slug + '" title="View more detail" class="offices-view-more">Find out more</a>';
+        }
+        
         contentString += '</div>';
 
         var infowindow = new google.maps.InfoWindow({
