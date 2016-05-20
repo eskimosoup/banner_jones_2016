@@ -11,8 +11,8 @@
   &.slick-slider {
     margin: 0;
 
-    @include breakpoint(medium) {
-      max-height: 720px;
+    @include media('>=1024px') {
+      height: 720px;
     }
   }
 
