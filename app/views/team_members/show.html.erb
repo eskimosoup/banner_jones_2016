@@ -14,7 +14,7 @@
   <%= render 'team_members/shared/show_summary' %>
 
   <div class="team-members-content-wrap">
-    <div class="team-members-split-content">
+    <div class="page-content">
       <div class="standard-content-box">
         <% present @team_member do |team_member_presenter| %>
           <%= team_member_presenter.specialisms %>
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <div class="team-members-split-content">
+    <div class="page-content">
       <div class="onpage-navigation-item home-content-box inner testimonials">
         <%= link_to "See All", testimonials_team_member_path(@team_member), class: "see-all" %>
 

@@ -4,9 +4,9 @@
   color: $black;
   font-size: rem(30px);
   font-weight: $montserrat-semibold;
-  line-height: 2;
+  line-height: 1.2;
   margin: 0 0 rem(15px);
-  padding: 0 0 0 rem(10px);
+  padding: rem(0 0 10px 10px);
 }
 
 .service-page-icon {

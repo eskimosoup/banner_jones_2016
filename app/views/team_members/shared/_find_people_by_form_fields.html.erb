@@ -6,7 +6,7 @@
 <% if @services.present? %>
   <div class="slider-team-member-search-field">
     <%= select_tag :service_id, options_for_select(@services),
-                             prompt: 'Department',
+                             prompt: 'All Departments',
                              class: 'slider-team-member-search-select' %>
   </div>
 <% elsif @service.present? %>
@@ -15,8 +15,8 @@
   </div>
 <% end %>
 
-  <%= content_tag :div, (select_tag :office_id, options_for_select(@offices.map{|x| ["#{x.office_location.name} - #{x.building_name}", x.id]}),
-                           prompt: 'Offices',
+  <%= content_tag :div, (select_tag :office_id, options_for_select(@offices.map{|x| ["#{x.office_location.name} #{"- #{x.building_name}" if x.building_name}", x.id]}),
+                           prompt: 'All Offices',
                            class: 'slider-team-member-search-select'), class: 'slider-team-member-search-field' if @offices.present? %>
 
 <div class="slider-team-member-search-field">
