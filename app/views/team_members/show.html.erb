@@ -23,19 +23,21 @@
       </div>
     </div>
 
-    <div class="page-content">
-      <div class="onpage-navigation-item home-content-box inner testimonials">
-        <%= link_to "See All", testimonials_team_member_path(@team_member), class: "see-all" %>
+    <% if @team_member.testimonials.present? %>
+      <div class="page-content">
+        <div class="onpage-navigation-item home-content-box inner testimonials">
+          <%= link_to "See All", testimonials_team_member_path(@team_member), class: "see-all" if @team_member.testimonials.displayed.size > 6 %>
 
-        <h2 class="home-content-box-title testimonials-title">
-          Testimonials
-        </h2>
+          <h2 class="home-content-box-title testimonials-title">
+            Testimonials
+          </h2>
 
-        <div class="testimonials-slick">
-          <%= render @team_member.testimonials.displayed.limit(6) %>
+          <div class="testimonials-slick">
+            <%= render @team_member.testimonials.displayed.limit(6) %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 
   <%= render 'team_members/shared/show_footer' %>
