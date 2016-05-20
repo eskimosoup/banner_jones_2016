@@ -1,0 +1,19 @@
+<div class="module-categories-dropdown-wrap">
+  <div class="module-categories-dropdown">
+    <% @audiences.each do |audience| %>
+      <h5 class="module-categories-dropdown-list-title"><%= audience.title %></h5>
+
+      <ul class="module-categories-dropdown-list">
+        <% audience.services.displayed.root_services.where('id IN (?)', @service_ids).order(title: :asc).in_groups(6, false).each_with_index do |services, index| %>
+          <% services.each do |service| %>
+            <li>
+              <% present service do |service_presenter| %>
+                <%= link_to service_presenter.title, testimonials_path(service_id: service.id), title: "View testimonials for #{service_presenter.title}", class: (@service.present? && @service.id.present? ? 'active' : 'link') %>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
