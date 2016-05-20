@@ -42,7 +42,11 @@
 
 .page-additional-content-wrap {
   background: $offset-white;
-  padding: rem(54px);
+  padding: rem(54px) 0;
+
+  @include media('>1400px') {
+    padding: rem(54px);
+  }
 }
 
 .page-additional-content {

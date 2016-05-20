@@ -22,7 +22,11 @@
 
 .primary-navigation-links {
   list-style: none;
-  padding: rem(18px) 0 rem(12px);
+  padding: rem(8px) 0;
+
+  @include media('>1400px') {
+    padding: rem(18px) 0 rem(12px);
+  }
 
   .menu-item {
     @include breakpoint(large) {
