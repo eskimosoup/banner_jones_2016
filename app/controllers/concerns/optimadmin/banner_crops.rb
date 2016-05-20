@@ -5,7 +5,7 @@ module Optimadmin
     included do
       edit_images_for Banner,
                       [
-                        [:image, { homepage: ['fill', 200, 200] }]
+                        [:image, { homepage: ['fill', 1920, 723] }]
                       ]
     end
   end
