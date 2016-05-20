@@ -14,7 +14,7 @@
         <li>
           <%= link_to 'News', articles_path %>
         </li>
-        
+
         <li>
           <%= render partial: 'shared/module_breadcrumbs', collection: @article.article_categories.displayed, as: :category, locals: { categories: @article.article_categories.displayed } %>
         </li>
@@ -56,28 +56,30 @@
   </aside>
 </div>
 
-<div class="related-footer">
-  <div class="related-footer-details">
-    <% present @article.team_members.first do |team_member_presenter| %>
-      <%= content_tag :div,
-                      (team_member_presenter.linked_text(team_member_presenter.related_footer_image(alt: team_member_presenter.full_name))),
-                      class: 'team-member-avatar' if team_member_presenter.related_footer_image.present? %>
-      Latest from <%= possessive team_member_presenter.forename %> blog
-    <% end %>
-  </div>
-
-  <div class="module-inner-content">
-    <div class="module-index">
-      <%= render partial: 'articles/article',
-                 collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
-                 as: :article %>
+<% if @article.team_members.present? %>
+  <div class="related-footer">
+    <div class="related-footer-details">
+      <% present @article.team_members.first do |team_member_presenter| %>
+        <%= content_tag :div,
+                        (team_member_presenter.linked_text(team_member_presenter.related_footer_image(alt: team_member_presenter.full_name))),
+                        class: 'team-member-avatar' if team_member_presenter.related_footer_image.present? %>
+        Latest from <%= possessive team_member_presenter.forename %> blog
+      <% end %>
     </div>
 
-    <div class="related-footer-navigation">
-      <% # TODO: Filter? Team member show? %>
-      <%= link_to 'Show all',
-              team_member_path(@article.team_members.first, anchor: 'articles'),
-              class: 'related-footer-see-all' %>
+    <div class="module-inner-content">
+      <div class="module-index">
+        <%= render partial: 'articles/article',
+                   collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
+                   as: :article %>
+      </div>
+
+      <div class="related-footer-navigation">
+        <% # TODO: Filter? Team member show? %>
+        <%= link_to 'Show all',
+                team_member_path(@article.team_members.first, anchor: 'articles'),
+                class: 'related-footer-see-all' %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
