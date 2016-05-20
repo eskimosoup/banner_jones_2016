@@ -6,6 +6,10 @@
 
 .team-members-content-wrap {
   @include grid-row;
+
+  .page-content {
+    margin: rem(30px) auto 0;
+  }
 }
 
 .team-member-show-profile-wrap {

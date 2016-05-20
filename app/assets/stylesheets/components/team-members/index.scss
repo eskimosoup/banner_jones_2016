@@ -1,4 +1,6 @@
 .index-team-member-profile-wrap {
+  margin-bottom: rem(10px);
+
   @include breakpoint(large) {
     @include grid-column(2, $gutter: (
       large: 3
