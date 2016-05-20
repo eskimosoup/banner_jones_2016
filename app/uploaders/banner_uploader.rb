@@ -19,7 +19,7 @@ class BannerUploader < CarrierWave::Uploader::Base
   end
 
   version :homepage do
-    process resize_to_fill: [200, 200]
+    process resize_to_fill: [1920, 723]
   end
 
   def extension_white_list
