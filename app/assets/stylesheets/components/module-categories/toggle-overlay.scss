@@ -30,15 +30,24 @@
   @include breakpoint(large) {
     padding: rem(30px 45px);
   }
+
+  .module-categories-dropdown-list-title {
+    border-bottom: 2px solid $white;
+    color: $orange;
+    margin: rem(5px) 0;
+    padding: 0 0 rem(5px);
+  }
 }
 
 .module-categories-dropdown-list {
   list-style: none;
-  margin: 0;
+  margin: 0 0 rem(20px);
 
   @include breakpoint(large) {
-    float: left;
-    width: 20%;
+    li {
+      display: inline-block;
+      width: 16%;
+    }
   }
 
   a {
