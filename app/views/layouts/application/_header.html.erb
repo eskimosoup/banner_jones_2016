@@ -35,7 +35,7 @@
       <%= global_site_settings['Phone'] %>
     </div>
 
-    <%= link_to '#', class: 'header-locations', title: 'Locations' do %>
+    <%= link_to offices_path, class: 'header-locations', title: 'Locations' do %>
       <%= image_tag 'components/icons/header/map.png', alt: '' %>
     <% end %>
   </div>
@@ -53,8 +53,8 @@
 
         <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
       </ul>
-      <%= link_to '#', class: 'toggle-class sticky-sidebar-toggle',
-                  title: 'Toggle contact sidebar',
+      <%= link_to new_contact_path, class: 'toggle-class sticky-sidebar-toggle',
+                  title: 'Contact us',
                   data: { container: '.sticky-sidebar', class: 'hide' } do
       %>
         <%= image_tag 'components/icons/header/email.png', alt: '' %>

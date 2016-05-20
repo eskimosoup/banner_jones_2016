@@ -8,7 +8,7 @@
 
   @include breakpoint(large) {
     background-position: 30px 70px, 97% 75%;
-    background-size: initial;
+    background-size: auto;
   }
 
   .see-all {

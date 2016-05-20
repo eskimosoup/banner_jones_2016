@@ -14,7 +14,7 @@ class AudienceFacade
   end
 
   def banner_services
-    @banner_services ||= audience.services.displayed
+    @banner_services ||= audience.services.displayed.homepage_highlight
   end
 
   def resources
