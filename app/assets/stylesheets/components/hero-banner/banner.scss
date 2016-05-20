@@ -12,7 +12,7 @@
     margin: 0;
 
     @include breakpoint(medium) {
-      height: 720px;
+      max-height: 720px;
     }
   }
 
@@ -84,11 +84,18 @@
   color: $white;
   display: inline-block;
   font-family: $montserrat;
-  font-size: rem(55px);
   font-weight: $montserrat-extrabold;
   line-height: 1;
   margin: 0 0 rem(16px);
   text-shadow: 0 2px $charcoal;
+
+  @include media('<1920px') {
+    font-size: rem(22px);
+  }
+
+  @include media('>=1920px') {
+    font-size: rem(55px);
+  }
 }
 
 .hero-banner-item-summary p {
@@ -96,12 +103,16 @@
   font-family: $montserrat;
   font-size: rem(22px);
   font-weight: $montserrat-semibold;
-  line-height: 1.09;
+  line-height: 1.5;
   margin: 0 0 rem(15px);
   text-shadow: 0 2px $charcoal;
 
-  @include breakpoint(large) {
-    font-size: rem(44px);
+  @include media('<1920px') {
+    font-size: rem(22px);
+  }
+
+  @include media('>=1920px') {
+    font-size: rem(32px);
     margin: 0 0 rem(25px);
   }
 }
@@ -146,8 +157,15 @@
   padding: rem(5px);
 
   @include breakpoint(large) {
-    font-size: rem(18px);
     margin: rem(30px) 0 0;
+  }
+
+  @include media('>768px', '<1920px') {
+    font-size: rem(16px);
+    padding: rem(10px);
+  }
+
+  @include media('>=1920px') {
     padding: rem(20px) rem(79px);
   }
 
@@ -193,6 +211,6 @@
   right: 0;
 
   @include breakpoint(large) {
-    right: -85px;
+    right: 0;
   }
 }
