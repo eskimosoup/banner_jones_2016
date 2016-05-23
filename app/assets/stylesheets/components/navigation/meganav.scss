@@ -1,3 +1,7 @@
+.ie9 .meganav-dropdown {
+  -ms-transform: translate(-50%, 0);
+}
+
 .meganav-dropdown {
   @include grid-row;
   display: none;
@@ -7,7 +11,7 @@
   text-align: left;
   transform: translate(-50%, 0);
   width: 100%;
-  z-index: 2;
+  z-index: 10;
 
   @include breakpoint(large) {
     top: 33px;

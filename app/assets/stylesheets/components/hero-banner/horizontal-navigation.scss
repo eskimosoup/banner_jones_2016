@@ -51,6 +51,34 @@
   }
 }
 
+.ie9 {
+  .hero-banner-navigation-wrap-horizontal {
+    padding-bottom: 0;
+  }
+
+  .hero-banner-navigation-row-horizontal {
+    padding: 0;
+  }
+
+  .hero-banner-navigation-horizontal {
+    @include shadow-content-box;
+    padding: 0;
+    position: static;
+  }
+
+  .hero-banner-navigation-link-horizontal img {
+    margin: 0 auto rem(10px);
+    position: static;
+  }
+
+  .hero-banner-navigation-link-horizontal {
+    &:link,
+    &:visited {
+      padding: rem(24px) 0;
+    }
+  }
+}
+
 .hero-banner-navigation-link-horizontal {
   &:link,
   &:visited {
@@ -77,7 +105,8 @@
     }
 
     @include media('<1400px') {
-      max-width: 120px;
+      font-size: rem(14px);
+      max-width: 100px;
     }
   }
 
@@ -102,7 +131,8 @@
     }
 
     @include media('>768px', '<1400px') {
-      top: -35px;
+      top: -27px;
+      width: 70%;
     }
   }
 }
