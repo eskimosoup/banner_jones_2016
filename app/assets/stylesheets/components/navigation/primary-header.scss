@@ -45,7 +45,7 @@
   a {
     display: block;
     font-size: rem(14px);
-    padding: rem(11px);
+    padding: rem(8px);
 
     @include media('>1300px') {
       padding: 0 rem(22px);
