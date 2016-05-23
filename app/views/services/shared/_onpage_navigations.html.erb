@@ -1,0 +1,43 @@
+<div class="service-onpage-navigation">
+  <% if @onpage_navigation_links.present? %>
+    <div class="service-onpage-navigation-links">
+      <div class="service-onpage-navigation-links-content">
+        <div class="service-onpage-navigation-links-list">
+          <% @onpage_navigation_links.each do |onpage_navigation_link| %>
+            <% present onpage_navigation_link do |onpage_navigation_presenter| %>
+              <%= onpage_navigation_presenter.linked_text(onpage_navigation_presenter.button_text, class: 'service-onpage-navigation-link') %>
+            <% end %>
+          <% end %>
+
+          <div class="service-onpage-navigation-links-cta">
+            <%= link_to (image_tag 'components/icons/call-to-action/white-telephone.png', alt: 'Call us today'),
+                        '#', class: 'toggle-class', title: 'Call us today', data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } %>
+
+            <%= link_to (image_tag 'components/icons/call-to-action/white-callback.png', alt: 'Request a call back'),
+                        '#', class: 'toggle-class', title: 'Request a callback', data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } %>
+
+            <%= link_to (image_tag 'components/icons/call-to-action/white-email.png', alt: 'Email us'),
+                        new_contact_path, title: 'Email us' %>
+
+            <%= link_to (image_tag 'components/icons/call-to-action/white-location.png', alt: 'Our offices'),
+                        offices_path, title: 'Our offices' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @onpage_navigations.present? %>
+    <div class="service-onpage-navigation-content">
+      <div class="row collapse">
+        <% @onpage_navigations.each do |onpage_navigation| %>
+          <% present onpage_navigation do |onpage_navigation_presenter| %>
+              <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-wrap medium-<%= onpage_navigation_presenter.layout %> columns">
+                <%= onpage_navigation_presenter.render_partial %>
+              </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

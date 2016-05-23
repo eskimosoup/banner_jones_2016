@@ -76,8 +76,11 @@
 
       <div class="related-footer-navigation">
         <% # TODO: Filter? Team member show? %>
-        <%= link_to 'Show all',
+        <%#= link_to 'Show all',
                 team_member_path(@article.team_members.first, anchor: 'articles'),
+                class: 'related-footer-see-all' %>
+        <%= link_to 'Show all',
+                articles_path,
                 class: 'related-footer-see-all' %>
       </div>
     </div>

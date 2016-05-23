@@ -19,11 +19,11 @@ body {
 
 .module-inner-content {
   @include module-inner-content-background;
-
+  padding: rem(20px);
 
   @include media('>1024px') {
     padding: rem(40px);
-  }  
+  }
 }
 
 .see-all {
