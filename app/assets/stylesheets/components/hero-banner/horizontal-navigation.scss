@@ -75,6 +75,10 @@
       padding: rem(62px) rem(14px) rem(42px);
       text-align: center;
     }
+
+    @include media('<1400px') {
+      max-width: 120px;
+    }
   }
 
   &:hover {

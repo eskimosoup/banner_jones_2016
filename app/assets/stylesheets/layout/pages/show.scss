@@ -6,7 +6,7 @@
 .page-content-wrap {
   @include grid-row;
   font-family: $montserrat;
-  padding: rem(28px) 0;
+  padding: rem(14px) 0;
 
   @include breakpoint(large) {
     padding: rem(28px) 0 rem(62px);

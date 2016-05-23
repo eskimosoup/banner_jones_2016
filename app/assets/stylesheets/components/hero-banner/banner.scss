@@ -1,18 +1,15 @@
 .hero-banner {
   border-bottom: 8px solid $orange;
+  max-height: 700px;
   overflow: hidden;
-
-  @include breakpoint(medium) {
-    max-height: 700px;
-  }
 }
 
 .hero-banner-slick {
   &.slick-slider {
     margin: 0;
 
-    @include media('>=1024px') {
-      height: 720px;
+    @include media('>768px') {
+      padding-bottom: rem(40px);
     }
   }
 
@@ -25,7 +22,11 @@
 .hero-banner-item {
   position: relative;
 
-  @include breakpoint(large) {
+  @include media('<1600px') {
+    padding: rem(40px) 0 rem(120px);
+  }
+
+  @include media('>1600px') {
     height: 669px;
     padding: rem(120px) 0;
   }

@@ -2,6 +2,10 @@
   @include grid-row;
   margin: em(30px) auto rem(51px);
 
+  @include media('>768px', '<1400px') {
+    width: 75%;
+  }
+
   @include breakpoint(large) {
     margin-bottom: rem(122px);
     margin-top: em(60px);
