@@ -159,6 +159,14 @@
   font-size: rem(16px);
   font-weight: $myriad-pro-semibold;
   margin: 0 rem(14px) 0 0;
+
+  a {
+    color: $offset-black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .slider-team-member-profile-information {
@@ -179,6 +187,14 @@
 .slider-team-member-role {
   display: inline-block;
   text-transform: uppercase;
+
+  a {
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   @include breakpoint(large) {
     margin: 0 0 0 rem(14px);
@@ -204,6 +220,14 @@
   background: image-url('components/icons/team-member/map.png') no-repeat left center;
   min-height: 27px;
   padding: 0 0 0 rem(30px);
+
+  a {
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .slider-team-members-loading {

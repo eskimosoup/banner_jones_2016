@@ -9,13 +9,17 @@
   <style>
   <% present @service do |service_presenter| %>
     <% [*2..6].each do |header| %>
-      .page-inner-content h<%= header %> {
+      .page-inner-content h<%= header %>,
+      .standard-content-box-title {
         border-bottom: 3px;
         border-bottom-style: solid;
         padding-bottom: .5rem;
           <%= service_presenter.colour_property_helper('border-color') %>
       }
       <% end %>
+      .service-onpage-navigation-link:hover {
+        <%= service_presenter.colour_property_helper('border-color') %>
+      }
     <% end %>
   </style>
 <% end %>

@@ -12,7 +12,6 @@ function teamMembersSlick() {
     nextArrow: '.slider-team-members-slider-content-box-slider-controls .slider-content-box-next',
     prevArrow: '.slider-team-members-slider-content-box-slider-controls .slider-content-box-previous',
     slidesToShow: slidesToShowCount,
-    slidesToScroll: 1,
     swipe: false,
     responsive: [
       {

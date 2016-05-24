@@ -31,3 +31,26 @@ body {
   clear: both;
   float: right;
 }
+
+.module-see-all {
+  @include navigation-button;
+
+  &.home-resources {
+    display: none;
+    position: absolute;
+    right: 130px;
+    top: 50px;
+  }
+
+  &.home-team-members {
+    position: absolute;
+    right: 100px;
+    top: 122px;
+  }
+
+  &.home-articles {
+    position: absolute;
+    right: 130px;
+    top: 50px;
+  }
+}

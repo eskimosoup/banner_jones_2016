@@ -13,6 +13,14 @@
 
 .show-team-member-profile-office-locations {
   margin: rem(15px) 0 rem(5px);
+
+  a {
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .show-team-member-contact-method-email {
@@ -20,6 +28,10 @@
 
   a {
     color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -28,6 +40,10 @@
 
   a {
     color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -37,4 +53,12 @@
   font-size: rem(16px);
   font-weight: $myriad-pro-semibold;
   margin: 0 rem(15px) 0 0;
+
+  a {
+    color: $offset-black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }

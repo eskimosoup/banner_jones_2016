@@ -38,12 +38,28 @@
 .index-team-member-profile-name,
 .index-team-member-profile-services {
   color: $offset-black;
+
+  a {
+    color: $offset-black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .index-team-member-profile-role,
 .index-team-member-profile-office-locations {
   @include clearfix;
   color: $white;
+
+  a {
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 
   .index-team-member-profile-icon {
     float: left;

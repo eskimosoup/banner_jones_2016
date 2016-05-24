@@ -17,7 +17,9 @@
 
           <div class="show-team-member-profile-office-locations">
             <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
-            <%= team_member_presenter.office_locations %>
+            <% @team_member.offices.each do |office| %>
+              <%= link_to "#{office.office_location.name}#{" - #{office.building_name}" if office.building_name.present?}", office_path(office) %><%= ', ' unless office == @team_member.offices.last %>
+            <% end %>
           </div>
 
           <div class="show-team-member-contact-method-email">
@@ -31,7 +33,9 @@
           </div>
 
           <div class="show-team-member-profile-services">
-            <%= team_member_presenter.service_titles %>
+            <% @team_member.root_services.order(:title).each do |root_service| %>
+              <%= link_to root_service.title, audience_service_path(root_service.audience, root_service) %><%= ', ' unless root_service == @team_member.root_services.last %>
+            <% end %>
           </div>
         </div>
       <% end %>
