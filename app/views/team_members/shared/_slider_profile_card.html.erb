@@ -2,16 +2,20 @@
   <div class="slider-team-member-profile-information">
     <% present team_member do |team_member_presenter| %>
       <strong class="slider-team-member-profile-name">
-        <%= team_member_presenter.full_name %>
+        <%= link_to team_member_presenter.full_name, team_member %>
       </strong>
       /
       <span class="slider-team-member-role">
-        <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
-        <%= team_member_presenter.department_roles(sentence_list: true) %>
+        <%= link_to team_member do %>
+          <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
+          <%= team_member_presenter.department_roles(sentence_list: true) %>
+        <% end %>
       </span>
       <ul class="slider-team-member-profile-details">
         <li class="slider-team-member-office-location">
-          <%= team_member_presenter.office_locations %>
+          <% team_member.offices.each do |office| %>
+            <%= link_to "#{office.office_location.name}#{" - #{office.building_name}" if office.building_name.present?}", office_path(office) %><%= ', ' unless office == team_member.offices.last %>
+          <% end %>
         </li>
         <li>
           <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email') %>
@@ -23,8 +27,8 @@
   </div>
   <div class="slider-team-member-profile-services">
     <strong class="slider-team-member-profile-service-name">
-      <% present team_member do |team_member_presenter| %>
-        <%= team_member_presenter.service_titles %>
+      <% team_member.root_services.order(:title).each do |root_service| %>
+        <%= link_to root_service.title, audience_service_path(root_service.audience, root_service) %><%= ', ' unless root_service == team_member.root_services.last %>
       <% end %>
     </strong>
   </div>

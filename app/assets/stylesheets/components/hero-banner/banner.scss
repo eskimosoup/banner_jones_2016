@@ -78,6 +78,7 @@
   background: rgba($black, 0.2);
   height: 100%;
   left: 0;
+  min-height: 700px;
   position: absolute;
   top: 0;
   width: 100%;
@@ -98,7 +99,7 @@
   text-shadow: 0 2px $charcoal;
 
   @include media('<1920px') {
-    font-size: rem(32px);
+    font-size: rem(45px);
   }
 
   @include media('>=1920px') {
@@ -189,6 +190,7 @@
   @include grid-row;
   position: relative;
   top: 250px;
+  z-index: 2;
 }
 
 .hero-banner-controls {
