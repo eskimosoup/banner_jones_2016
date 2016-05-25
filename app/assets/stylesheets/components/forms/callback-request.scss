@@ -1,11 +1,40 @@
+.remote-callback-request-form {
+  padding: rem-calc(16px 35px);
+  h2 {
+    text-align: center;
+    border-bottom: 2px solid $orange;
+  }
+  .close-container {
+    @include clearfix;
+
+    .close-button {
+      @include navigation-button;
+      float: right;
+      background: $red;
+
+      &:hover {
+        background-color: lighten($red, 20%);
+      }
+    }
+  }
+}
+
 .remote-callback-request-form .contact-details {
   @include grid-row;
 
   .field {
-    @include grid-column(3);
+    @include grid-column(12);
   }
 
   .actions {
     @include grid-column(12);
+    .submit-button {
+      background-color: $red;
+      color: $white;
+
+      &:hover {
+        background-color: lighten($red, 20%);
+      }
+    }
   }
 }
