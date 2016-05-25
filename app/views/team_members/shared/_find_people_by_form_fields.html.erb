@@ -15,9 +15,9 @@
   </div>
 <% end %>
 
-  <%= content_tag :div, (select_tag :office_id, options_for_select(@offices.map{|x| ["#{x.office_location.name} #{"- #{x.building_name}" if x.building_name}", x.id]}),
-                           prompt: 'All Offices',
-                           class: 'slider-team-member-search-select'), class: 'slider-team-member-search-field' if @offices.present? %>
+<%= content_tag :div, (select_tag :office_id, options_for_select(@offices.map{|x| ["#{x.office_location.name} #{"- #{x.building_name}" if x.building_name}", x.id]}, selected: (@office.id if @office.present?)),
+                         prompt: 'All Offices',
+                         class: 'slider-team-member-search-select'), class: 'slider-team-member-search-field' if @offices.present? %>
 
 <div class="slider-team-member-search-field">
   <%= submit_tag 'Search', class: 'slider-team-member-search-button' %>

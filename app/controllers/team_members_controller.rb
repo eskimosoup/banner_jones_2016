@@ -4,7 +4,8 @@ class TeamMembersController < ApplicationController
   before_action :find_team_member, only: [:show, :testimonials]
 
   def index
-    @team_members = TeamMember.displayed
+    @office = Office.displayed.find(params[:office_id]) if params[:office_id].present?
+    @team_members = @office.present? ? @office.team_members.displayed : TeamMember.displayed
   end
 
   def show
