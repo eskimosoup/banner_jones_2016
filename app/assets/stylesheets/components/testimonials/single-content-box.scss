@@ -1,4 +1,13 @@
 .testimonials-split-content {
-  @include grid-column(6);
-  margin: rem(30px) auto 0;
+  @include media('<768px') {
+    .testimonials {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+
+  @include breakpoint(large) {
+    @include grid-column(6);
+    margin: rem(30px) auto 0;
+  }
 }

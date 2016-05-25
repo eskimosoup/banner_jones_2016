@@ -1,6 +1,13 @@
 .helpful-guide-home-content-box-slider-controls {
   position: absolute;
   right: rem(60px);
+
+  @include media('<768px') {
+    left: 50%;
+    top: 89px;
+    text-align: center;
+    transform: translate(-50%);
+  }
 }
 
 .helpful-guide-title {

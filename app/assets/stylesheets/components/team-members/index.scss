@@ -14,8 +14,9 @@
 
 .index-team-member-profile-content {
   background: $orange;
-  padding: rem(35px) rem(20px) rem(20px);
   margin: rem(3px) 0 0;
+  max-width: 220px;
+  padding: rem(35px) rem(20px) rem(20px);
 }
 
 .index-team-member-profile-name {

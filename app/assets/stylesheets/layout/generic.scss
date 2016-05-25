@@ -34,23 +34,19 @@ body {
 
 .module-see-all {
   @include navigation-button;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 0);
 
   &.home-resources {
-    display: none;
-    position: absolute;
-    right: 130px;
-    top: 50px;
+    bottom: 10px;
   }
 
   &.home-team-members {
-    position: absolute;
-    right: 100px;
-    top: 122px;
+    bottom: 10px;
   }
 
   &.home-articles {
-    position: absolute;
-    right: 130px;
-    top: 50px;
+    bottom: 10px;
   }
 }

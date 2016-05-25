@@ -2,6 +2,10 @@
   .team-members-title {
     margin: rem(60px) auto rem(30px);
   }
+
+  .testimonials {
+    margin: 0;
+  }
 }
 
 .team-members-content-wrap {
@@ -13,14 +17,24 @@
 }
 
 .team-member-show-profile-wrap {
-  @include grid-column(9);
   height: 100%;
+  @include grid-column(12);
+
+  @include breakpoint(large) {
+    @include grid-column(9);
+  }
+
 }
 
 .team-member-show-profile {
   @include clearfix;
   background: $orange;
   height: 100%;
+  padding: rem(0 15px 15px);
+
+  @include breakpoint(large) {
+    padding: 0;
+  }
 }
 
 .team-member-show-profile-image {
@@ -42,7 +56,10 @@
 }
 
 .team-member-show-text-profile {
-  @include grid-column(3);
+  @include grid-column(12);
+  @include breakpoint(large) {
+    @include grid-column(3);
+  }
 
   .standard-content-box {
     height: 100%;

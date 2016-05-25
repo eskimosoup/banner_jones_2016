@@ -1,7 +1,9 @@
 <%= content_for :javascript do %>
   <script>
     $(document).ready(function() {
-      $('.team-members-content-wrap, .team-member-show-text-profile').matchHeight();
+      if (Modernizr.mq('only screen and (min-width: 1024px)')) {
+        $('.team-members-content-wrap, .team-member-show-text-profile').matchHeight();
+      }
     });
   </script>
   <%= javascript_include_tag 'components/testimonials/slider.js' %>
