@@ -1,3 +1,6 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/resources/hover.js' %>
+<% end %>
 <section class="home-content-box-wrap">
   <div class="home-content-box inner">
     <%= link_to 'See All', resources_path, class: 'module-see-all home-resources' %>
