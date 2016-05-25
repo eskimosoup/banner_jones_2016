@@ -59,10 +59,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: f05e8f36cad31835d2a2ba0d533fc31663c7c2d5
+  revision: 8c7624b0a6207fb0dafccc7d6b0146b042af245b
   branch: master
   specs:
-    optimised_site (0.0.21)
+    optimised_site (0.0.22)
       amoeba
       closure_tree (~> 6.0)
       flip
