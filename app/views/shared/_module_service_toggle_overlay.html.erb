@@ -4,11 +4,11 @@
       <h5 class="module-categories-dropdown-list-title"><%= audience.title %></h5>
 
       <ul class="module-categories-dropdown-list">
-        <% audience.services.displayed.root_services.where('id IN (?)', @service_ids).order(title: :asc).in_groups(6, false).each_with_index do |services, index| %>
+        <% audience.services.displayed.where('id IN (?)', @service_ids).order(title: :asc).in_groups(6, false).each_with_index do |services, index| %>
           <% services.each do |service| %>
             <li>
               <% present service do |service_presenter| %>
-                <%= link_to service_presenter.title, testimonials_path(service_id: service.id), title: "View testimonials for #{service_presenter.title}", class: (@service.present? && @service.id == service.id ? 'active' : 'link') %>
+                <%= link_to service_presenter.title, URI.join(send(module_route), "?service_id=#{service.id}").to_s.gsub(root_url, '/'), title: "View testimonials for #{service_presenter.title}", class: (@service.present? && @service.id == service.id ? 'active' : 'link') %>
               <% end %>
             </li>
           <% end %>

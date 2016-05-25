@@ -53,6 +53,14 @@
   font-size: rem(16px);
   margin: 0 rem(30px);
 
+  a {
+    color: $white;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   @include media('>768px') {
     text-align: right;
   }

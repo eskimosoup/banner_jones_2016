@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
     @awards = Award.displayed
     @callback_request = CallbackRequest.new
+    @navigation_offices = Office.displayed
   end
 
   def global_site_settings

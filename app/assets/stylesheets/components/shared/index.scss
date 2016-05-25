@@ -45,6 +45,10 @@
   padding: rem(20px) rem(20px) 0;
 }
 
+.index-module-image {
+  text-align: center;
+}
+
 .index-module-details {
   @include breakpoint(medium) {
     @include grid-column($columns: 10, $gutter: (medium: 0));

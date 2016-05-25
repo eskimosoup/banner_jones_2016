@@ -11,15 +11,16 @@
     <% end %>
 
     <h1 class="standard-content-box-title">
-      Testimonials
+      Latest Resources
       <% if @service.present? %>
         <% present @service do |service_presenter| %>
-          <strong><%= service_presenter.title %></strong>
+          within <strong><%= service_presenter.title %></strong>
         <% end %>
-        <%= link_to 'x', testimonials_path %>
+
+        <%= link_to 'x', resources_path %>
       <% end %>
     </h1>
 
-    <%= render 'shared/module_service_toggle_overlay', module_route: 'testimonials_url' %>
+    <%= render 'shared/module_service_toggle_overlay', module_route: 'resources_url' %>
   </div>
 </div>
