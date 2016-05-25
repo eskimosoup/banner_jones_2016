@@ -27,7 +27,7 @@ $(window).load(function() {
   var windowAnchor = window.location.hash;
   if(windowAnchor !== undefined && $(windowAnchor).length === 1) {
     // smoothScroll(windowAnchor);
-  }  
+  }
 });
 
 $(window).scroll(function() {
@@ -40,7 +40,7 @@ var $root, onpageLinksHeight;
 function smoothScroll(elem) {
   $root.animate({
     scrollTop: $(elem).offset().top - onpageLinksHeight
-  }, 500, function () {
+  }, 250, function () {
     window.location.hash = elem;
   });
 }
@@ -95,4 +95,9 @@ $(document).on('click', '.service-onpage-navigation-link', function() {
 
 $(document).on('click', '.toggle-class', function() {
   updateContentHeight();
+});
+
+$(document).on('click', '.frequently-asked-question-toggle', function() {
+  smoothScroll('#' + $(this).attr('id'));
+  return false;
 });
