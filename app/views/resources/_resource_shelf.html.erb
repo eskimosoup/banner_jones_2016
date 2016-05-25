@@ -1,9 +1,13 @@
 <% present resource do |resource_presenter| %>
-  <div class="helpful-guide">
+  <div class="helpful-guide helpful-guide-hover">
     <%= resource_presenter.linked_download(resource_presenter.title,
         class: 'helpful-guide-title', title: resource_presenter.title, target: '_blank') %>
     <%= resource_presenter.linked_download(
           resource_presenter.index_image(alt: resource_presenter.title),
           class: 'helpful-guide-image', title: resource_presenter.title, target: '_blank') if resource_presenter.index_image.present? %>
+
+    <% present resource.services.first do |service_presenter| %>
+      <%= resource_presenter.linked_download(content_tag :div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background-color')) %>
+    <% end %>
   </div>
 <% end %>

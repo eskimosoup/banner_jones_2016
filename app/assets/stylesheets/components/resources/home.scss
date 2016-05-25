@@ -32,3 +32,16 @@
     margin: 0;
   }
 }
+
+.helpful-guide-content {
+  color: $white;
+  display: none;
+  height: 90%;
+  left: 0;
+  margin: rem(25px) rem(15px);
+  opacity: .9;
+  padding: rem(5px);
+  position: absolute;
+  top: 0;
+  width: 90%;
+}

@@ -1,8 +1,11 @@
 <div class="row collapse">
+  <% #@service.resources.displayed.limit(onpage_navigation.results_limit).each do |resource| %>
   <% @service.resources.displayed.limit(onpage_navigation.results_limit).each do |resource| %>
     <% present resource do |resource_presenter| %>
-      <div class="medium-<%= onpage_navigation.results_limit.present? ? width_calculator(onpage_navigation.results_limit) : (12 / @service.resources.displayed.limit(onpage_navigation.results_limit).size) %> columns">
-        <div class="standard-content-box onpage-navigation-item">
+      <% # medium-<%= onpage_navigation.results_limit.present? ? width_calculator(onpage_navigation.results_limit) : (12 / @service.resources.displayed.limit(onpage_navigation.results_limit).size) %>
+      <div class="<%= 'end' if resource == @service.resources.displayed.limit(onpage_navigation.results_limit).last %> columns"
+            style="width: <%= 100 / @service.resources.displayed.limit(onpage_navigation.results_limit).size %>%">
+        <div class="standard-content-box onpage-navigation-item helpful-guide-hover">
           <h2 class="standard-content-box-title">
             <%= resource_presenter.title %>
           </h2>
@@ -10,6 +13,10 @@
           <%= resource_presenter.linked_download(resource_presenter.index_image({alt: resource_presenter.title, class: 'service-resource-image'}), {title: resource_presenter.title , target: '_blank' }) if resource_presenter.index_image.present? %>
 
           <%= resource_presenter.linked_download('Download', {class: 'service-resource-download-button', title: resource_presenter.title, target: '_blank' }) %>
+
+          <% present resource.services.first do |service_presenter| %>
+            <%= resource_presenter.linked_download(content_tag :div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background-color')) %>
+          <% end %>
         </div>
       </div>
     <% end %>

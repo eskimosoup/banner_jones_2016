@@ -18,6 +18,7 @@ Rails.application.config.assets.precompile += %w(
   components/team-members/index-profile-card.js
   components/module-categories/toggle.js
   components/offices/map.js
+  components/resources/hover.js
   optimadmin/*
   vendor/jquery.colorbox.js
   vendor/colorbox.scss

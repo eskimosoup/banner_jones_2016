@@ -99,14 +99,14 @@
       float: none;
       font-size: rem(18px);
       line-height: 1.25;
-      max-width: 140px;
+      width: 140px;
       padding: rem(62px) rem(14px) rem(42px);
       text-align: center;
     }
 
     @include media('<1400px') {
       font-size: rem(14px);
-      max-width: 100px;
+      width: 100px;
     }
   }
 
