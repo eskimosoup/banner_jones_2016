@@ -9,6 +9,10 @@ class MenuItemPresenter < BasePresenter
     @descendants_hash = descendants_hash
   end
 
+  def display_offices?
+    team_member_route? || contact_route?
+  end
+
   def link_to_webpage(options = {})
     return nil if destination.nil?
     h.link_to name, destination, options.merge({title: title_attribute, class: classes})
@@ -39,6 +43,18 @@ class MenuItemPresenter < BasePresenter
     "#{menu_item.menu_name.tr('_', '-')}-dropdown"
   end
 
+  def sub_menu_items
+    @descendents_hash
+  end
+
+  def has_children?
+    sub_menu_items.present? || display_offices?
+  end
+
+  def destination
+    destination_evaluator.destination
+  end
+
   private
 
   def active?
@@ -50,8 +66,8 @@ class MenuItemPresenter < BasePresenter
   end
 
   def build_descendants_array
-    return [] if @descendants_hash.blank?
-    flatten_nested_hash(@descendants_hash)
+    return [] if sub_menu_items.blank?
+    flatten_nested_hash(sub_menu_items)
   end
 
   def flatten_nested_hash(menu_items)
@@ -75,11 +91,19 @@ class MenuItemPresenter < BasePresenter
     menu_item.title_attribute
   end
 
-  def destination
-    destination_evaluator.destination
-  end
-
   def destination_evaluator
     @destination_evaluator ||= MenuItemDestinationEvaluator.new(view_template: h, menu_resource: menu_resource)
+  end
+
+  def team_member_route?
+    static_route? && menu_resource.route == "team_members_path"
+  end
+
+  def contact_route?
+    static_route? && menu_resource.route == "new_contact_path"
+  end
+
+  def static_route?
+    menu_resource.class == Optimadmin::ModulePage
   end
 end

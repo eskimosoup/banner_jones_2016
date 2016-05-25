@@ -1,9 +1,19 @@
-<li class="menu-item <%= ' has-children' if (sub_menu_items.present? || menu_item_presenter.offices_dropdown?)%>">
+<li class="menu-item <%= ' has-children' if menu_item_presenter.has_children? %>">
   <%= menu_item_presenter.link_to_webpage %>
   <%= menu_item_presenter.special_layout %>
-  <% if sub_menu_items.present? %>
+  <% if menu_item_presenter.has_children? %>
     <%= content_tag :ul, class: "dropdown depth-#{ depth }" do %>
-      <%= nested_menu_items(menu_items: sub_menu_items, depth: depth + 1) %>
+      <% if menu_item_presenter.sub_menu_items.present? %>
+        <%= nested_menu_items(menu_items: menu_item_presenter.sub_menu_items, depth: depth + 1) %>
+      <% end %>
+      <% if menu_item_presenter.display_offices? %>
+        <%= render(
+          partial: "menu_items/office_sub_menu_item",
+          collection: office_data,
+          as: :office,
+          locals: { destination: menu_item_presenter.destination }
+        ) %>
+      <% end %>
     <% end %>
   <% end %>
 </li>
