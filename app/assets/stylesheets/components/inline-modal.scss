@@ -17,7 +17,6 @@
 .inline-modal-content {
   @include grid-row;
   background: $white;
-  bottom: 0;
   -webkit-filter: blur(0);
   height: auto;
   left: 50%;
@@ -26,4 +25,11 @@
   top: 50%;
   transform: translate(-50%, -50%);
   width: 80%;
+}
+
+.inline-modal.remote-callback-request-form-modal {
+  .inline-modal-content {
+    background: $black;
+    color: $white;
+  }
 }

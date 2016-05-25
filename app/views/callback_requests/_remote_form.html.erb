@@ -1,0 +1,53 @@
+<div class="close-container">
+  <%= button_tag("Close", type: "button", class: "close-button toggle-class", data: { container: ".remote-callback-request-form-modal", class: 'visible', return: false }) %>
+</div>
+
+<%= form_for @callback_request, url: callback_requests_path, remote: true do |f| %>
+
+  <h2>Request a callback</h2>
+  <% if @callback_request.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize @callback_request.errors.count, 'error' %> prevented this message from being sent
+      </h2>
+      <ul>
+        <% @callback_request.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="contact-details">
+    <div class="field">
+      <%= f.text_field :forename, placeholder: "Forename" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :surname, placeholder: "Surname" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :email_address, placeholder: "Email Address" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :contact_telephone, placeholder: "Contact Phone" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :callback_time, placeholder: "Callback time" %>
+    </div>
+    <% if @offices.present? %>
+      <div class="field">
+        <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Preferred office' %>
+      </div>
+    <% end %>
+    <% if Flip.services? %>
+      <div class="field">
+        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.text_area :enquiry_type, placeholder: "Enquiry" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Send", class: "submit-button" %>
+    </div>
+  </div>
+<% end %>
