@@ -56,7 +56,7 @@
 .slider-content-box-previous,
 .slider-content-box-next {
   display: inline-block;
-  margin: 0 em(4px) 0;
+  margin: 0 em(4px);
 }
 
 .slider-team-members-profiles {
@@ -188,16 +188,16 @@
   display: inline-block;
   text-transform: uppercase;
 
+  @include breakpoint(large) {
+    margin: 0 0 0 rem(14px);
+  }
+
   a {
     color: $white;
 
     &:hover {
       text-decoration: underline;
     }
-  }
-
-  @include breakpoint(large) {
-    margin: 0 0 0 rem(14px);
   }
 }
 
