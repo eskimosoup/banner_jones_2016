@@ -7,10 +7,16 @@ module PresenterHelper
   end
 
   def nested_menu_items(menu_items:, view_partial: 'menu_items/menu_item', depth: 1)
+    office_data = Office.joins(:office_location).select("offices.id, office_locations.name AS name")
     menu_items.map do |menu_item, sub_menu_items|
-      render partial: view_partial,
-             locals: { menu_item_presenter: MenuItemPresenter.new(object: menu_item, view_template: self, descendants_hash: sub_menu_items),
-                       sub_menu_items: sub_menu_items, depth: depth }
+      render(
+        partial: view_partial,
+        locals: { 
+          menu_item_presenter: MenuItemPresenter.new(object: menu_item, view_template: self, descendants_hash: sub_menu_items),
+          depth: depth,
+          office_data: office_data
+        }
+      )
     end.join.html_safe
   end
 
