@@ -2,9 +2,11 @@
   <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
   <script>
     function loadMasonry() {
-      $('.frequently-asked-questions-list-wrap').masonry({
-        itemSelector: '.standalone-faq'
-      });
+      if (Modernizr.mq('only screen and (min-width: 1024px)')) {
+        $('.frequently-asked-questions-list-wrap').masonry({
+          itemSelector: '.standalone-faq'
+        });
+      }
     }
 
     $(window).load(function() {

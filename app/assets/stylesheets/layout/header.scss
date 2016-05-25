@@ -31,9 +31,9 @@
 .header-logo {
   display: block;
   float: left;
-  padding: 0 rem(75px) 0 0;
 
   @include media('>768px', '<1920px') {
+    padding: 0 rem(75px) 0 0;
     width: 75%;
   }
 }

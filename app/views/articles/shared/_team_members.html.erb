@@ -1,11 +1,16 @@
 <% present team_member do |team_member_presenter| %>
-  <div class="index-module-author">
-    <div class="index-module-author-details">
-      <%= article_presenter.linked_text(team_member_presenter.full_name, class: 'article-author-name') %>
-      <%= article_presenter.linked_text(article_presenter.first_service.title, class: 'article-author-audience') %>
+  <%= link_to team_member, title: team_member_presenter.full_name do %>
+    <div class="index-module-author">
+      <div class="index-module-author-details">
+        <div class="article-author-name">
+          <%= team_member_presenter.full_name %>
+        </div>
+
+        <div class="article-author-audience">
+          <%= article_presenter.first_service.title %>
+        </div>
+      </div>
+      <%= content_tag :div, (article_presenter.linked_text(team_member_presenter.small_image(alt: team_member_presenter.full_name))), class: 'index-module-author-photo team-member-avatar' if team_member_presenter.small_image.present? %>
     </div>
-    <div class="index-module-author-photo team-member-avatar">
-      <%= article_presenter.linked_text(team_member_presenter.small_image(alt: team_member_presenter.full_name)) if team_member_presenter.small_image.present? %>
-    </div>
-  </div>
+    <% end %>
 <% end %>

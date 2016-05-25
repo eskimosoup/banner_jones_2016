@@ -17,17 +17,20 @@
 
             </div>
           </div>
+        <% end %>
 
         <div class="index-module-details-wrap">
-          <div class="index-module-title">
-            <%= event_presenter.title %>
-          </div>
+          <%= link_to event, title: event_presenter.title, class: 'index-module-link' do %>
+            <div class="index-module-title">
+              <%= event_presenter.title %>
+            </div>
 
-          <% if event.event_location? %>
-            <% present event.event_location do |event_location_presenter| %>
-              <div class="index-module-details-list-details index-event-location">
-                <%= event_location_presenter.title %>
-              </div>
+            <% if event.event_location? %>
+              <% present event.event_location do |event_location_presenter| %>
+                <div class="index-module-details-list-details index-event-location">
+                  <%= event_location_presenter.title %>
+                </div>
+              <% end %>
             <% end %>
           <% end %>
 
@@ -35,7 +38,6 @@
             <%= render partial: 'events/shared/team_members', collection: event.team_members.displayed, as: :team_member, locals: { event_presenter: event_presenter } %>
           </div>
         </div>
-      <% end %>
     <% end %>
   </div>
 </div>

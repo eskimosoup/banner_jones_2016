@@ -2,7 +2,7 @@
 var offsetHeight, $onpageLinks, onpageLinksHeight;
 
 function setFixedHeader() {
-  if (Modernizr.mq('only screen and (min-width: 1200px)')) {
+  if (Modernizr.mq('only screen and (min-width: 1024px)')) {
     if($(document).scrollTop() > offsetHeight && $onpageLinks.length) {
       $onpageLinks.addClass('fixed');
       $onpageContent.addClass('fixed');
