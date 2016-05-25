@@ -14,9 +14,19 @@ class MenuItemPresenter < BasePresenter
     h.link_to name, destination, options.merge({title: title_attribute, class: classes})
   end
 
-  def meganav
-    return unless destination.class.present? && destination.class.name == 'Audience' && menu_item.menu_name == 'primary_header'
-    h.render 'menu_items/meganav', audience: destination
+  def special_layout
+    if destination.class.present? && destination.class.name == 'Audience' && menu_item.menu_name == 'primary_header'
+      h.render 'menu_items/meganav', audience: destination
+    end
+    #elsif destination.present? && menu_item.menu_name == 'primary_header' && menu_item.link.menu_resource_type == 'Optimadmin::ModulePage' && menu_item.link.menu_resource.route == 'new_contact_path'
+    #  h.render partial: 'menu_items/offices',
+    #         locals: { menu_item_presenter: MenuItemPresenter.new(object: menu_item, view_template: self, descendants_hash: menu_item.children),
+    #                   sub_menu_items: menu_item.children, depth: 1 }
+    #end
+  end
+
+  def offices_dropdown?
+    destination.present? && menu_item.menu_name == 'primary_header' && menu_item.link.menu_resource_type == 'Optimadmin::ModulePage' && menu_item.link.menu_resource.route == 'new_contact_path'
   end
 
   def classes

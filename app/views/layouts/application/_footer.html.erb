@@ -15,14 +15,14 @@
         <span class="contact-method-accent">
           e:
         </span>
-        <%= global_site_settings['Email'] %>
+        <%= mail_to global_site_settings['Email'] %>
       </div>
 
       <div class="contact-method">
         <span class="contact-method-accent">
           t:
         </span>
-        <%= global_site_settings['Phone'] %>
+        <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}" if global_site_settings['Phone'].present? %>
       </div>
     </div>
   </div>

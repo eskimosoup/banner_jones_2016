@@ -9,7 +9,7 @@
         <% present child_service do |service_presenter| %>
           <li>
             <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>
-            <% if child_service.children && child_service == @service %>
+            <% if child_service.children && (child_service == @service || child_service.child_ids.include?(@service.id)) %>
               <ul class="page-aside-navigation-links-list">
                 <% child_service.children.each do |grandchild_service| %>
                   <% present grandchild_service do |service_presenter| %>

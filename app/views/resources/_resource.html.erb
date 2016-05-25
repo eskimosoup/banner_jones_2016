@@ -1,0 +1,33 @@
+<div class="index-module index">
+  <div class="standard-content-box standalone">
+    <% present resource do |resource_presenter| %>
+      <%= link_to resource.file.url, title: resource_presenter.title, class: 'index-module-link', target: '_blank' do %>
+        <%= content_tag :div, resource_presenter.index_image(alt: resource_presenter.title), class: 'index-module-image' if resource_presenter.index_image.present? %>
+
+          <div class="index-module-details-overview">
+            <div class="index-module-details">
+              <div class="index-module-details-categories">
+                <%= resource.services.map(&:title).join(', ') %>
+              </div>
+            </div>
+
+            <div class="index-module-shares">
+              <div class="social-share-count" href="<%= url_for([resource, only_path: false]) %>">
+
+              </div>
+            </div>
+          </div>
+
+        <div class="index-module-details-wrap">
+          <div class="index-module-title">
+            <%= resource_presenter.title %>
+          </div>
+
+          <div class="index-module-summary">
+            <%= resource_presenter.summary %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

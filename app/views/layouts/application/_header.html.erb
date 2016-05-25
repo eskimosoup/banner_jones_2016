@@ -32,7 +32,7 @@
       <span class="header-telephone-accent">
         t:
       </span>
-      <%= global_site_settings['Phone'] %>
+      <%= link_to global_site_settings['Phone'], "tel:#{global_site_settings['Phone']}" if global_site_settings['Phone'].present? %>
     </div>
 
     <%= link_to offices_path, class: 'header-locations', title: 'Locations' do %>

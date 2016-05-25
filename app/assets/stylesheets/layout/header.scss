@@ -54,6 +54,14 @@
   font-family: $montserrat;
   font-size: rem(25px);
   margin: rem(35px) rem(70px) 0 0;
+
+  a {
+    color: $light-slate-blue;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .header-telephone-accent {
