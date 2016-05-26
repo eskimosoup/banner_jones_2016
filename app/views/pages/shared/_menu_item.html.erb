@@ -3,7 +3,7 @@
 
   <% if menu_item_presenter.sub_menu_items.present? %>
     <%= content_tag :ul, class: "dropdown depth-#{ depth }" do %>
-      <%= nested_menu_items(menu_items: menu_item_presenter.sub_menu_items, view_partial: 'pages/shared/menu_item', depth: depth + 1) %>
+      <%= page_sidebar_menu_items(menu_items: menu_item_presenter.sub_menu_items, depth: depth + 1) %>
     <% end %>
   <% end %>
 </li>

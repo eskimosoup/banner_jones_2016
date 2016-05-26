@@ -44,7 +44,7 @@ class MenuItemPresenter < BasePresenter
   end
 
   def sub_menu_items
-    @descendents_hash
+    @descendants_hash
   end
 
   def has_children?
