@@ -55,11 +55,12 @@ class MenuItemPresenter < BasePresenter
     destination_evaluator.destination
   end
 
-  private
-
   def active?
     destination_evaluator.active? || active_descendants?
   end
+
+  private
+
 
   def descendants_array
     @desendants_array ||= build_descendants_array

@@ -1,5 +1,10 @@
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'components/resources/hover.js' %>
+  <script>
+    $(document).ready(function() {
+      $('.helpful-guide-title').matchHeight();
+    });
+  </script>
 <% end %>
 <section class="home-content-box-wrap">
   <div class="home-content-box inner">

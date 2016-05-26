@@ -28,6 +28,7 @@ module PresenterHelper
         locals: {
           menu_item_presenter: MenuItemPresenter.new(object: menu_item, view_template: self, descendants_hash: sub_menu_items),
           depth: depth,
+          menu_item: menu_item
         }
       )
     end.join.html_safe

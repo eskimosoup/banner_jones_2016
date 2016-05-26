@@ -125,8 +125,26 @@
   list-style: none;
   margin-left: 0;
 
-  li a {
-    display: none;
+  li {
+    a {
+      display: none;
+    }
+
+    &.top-level-parent:hover ul,
+    &.selected-navigation > ul {
+      display: block;
+    }
+
+
+    ul {
+      display: none;
+      margin-left: rem(10px);
+
+      &.depth-0 {
+        display: block;
+        margin: 0;
+      }
+    }
   }
 
   ul {
