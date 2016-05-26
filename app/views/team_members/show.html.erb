@@ -42,5 +42,5 @@
     <% end %>
   </div>
 
-  <%= render 'team_members/shared/show_footer' %>
+  <%= render 'team_members/shared/show_footer' if @team_members.present? %>
 </div>

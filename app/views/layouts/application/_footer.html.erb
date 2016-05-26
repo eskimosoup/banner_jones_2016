@@ -31,14 +31,13 @@
 <footer class="primary-footer">
   <div class="awards-and-accreditations">
     <div class="awards-and-accreditations-slick">
-      <%= render partial: 'awards/footer_awards', collection: @awards, as: :award if @awards.present? %>
+      <%#= render partial: 'awards/footer_awards', collection: @awards, as: :award if @awards.present? %>
     </div>
   </div>
 
   <div class="primary-footer-navigation">
-    Copyright &copy; 2016
-
     <ul class="primary-footer-navigation-links">
+      <li>Copyright &copy; 2016</li>
       <%= nested_menu_items(menu_items: @footer_menu.menu_items) %>
     </ul>
   </div>

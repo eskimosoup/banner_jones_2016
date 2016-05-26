@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160526082906) do
+=======
+ActiveRecord::Schema.define(version: 20160526123538) do
+>>>>>>> upstream/master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -560,6 +564,7 @@ ActiveRecord::Schema.define(version: 20160526082906) do
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
     t.integer  "inheritance_id"
+    t.boolean  "audience_highlight",       default: false, null: false
     t.index ["audience_id"], name: "index_services_on_audience_id", using: :btree
     t.index ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
     t.index ["slug"], name: "index_services_on_slug", using: :btree
