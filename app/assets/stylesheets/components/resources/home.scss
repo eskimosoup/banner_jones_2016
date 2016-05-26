@@ -44,15 +44,20 @@
   position: relative;
 }
 
+
 .helpful-guide-content {
-  color: $white;
+  background: $slate-white;
+  border-top: 7px solid $orange;
+  border-left: 1px solid $orange;
+  border-right: 1px solid $orange;
+  color: $dark-purple;
   display: none;
-  height: 90%;
+  font-family: $montserrat;
+  font-size: rem(14px);
+  height: 100%;
   left: 0;
-  margin: rem(25px) rem(15px);
-  opacity: .9;
-  padding: rem(5px);
+  padding: rem(15px) rem(17px);
   position: absolute;
-  top: 0;
-  width: 90%;
+  top: 28px;
+  width: 100%;
 }

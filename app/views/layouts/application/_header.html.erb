@@ -62,6 +62,16 @@
     </div>
 
     <div class="primary-navigation-search">
+      <!--
+      <%= form_tag '', method: :get, class: 'header-search-form' do %>
+        <%= text_field_tag :search, params[:search],
+                                  placeholder: 'Search',
+                                    class: 'header-search-input' %>
+
+        <%= submit_tag 'Search', class: 'header-search-submit' %>
+       <% end %>
+      -->
+
       <script>
         (function() {
           var cx = '014374903494110971556:qvo4l6fimr8';
