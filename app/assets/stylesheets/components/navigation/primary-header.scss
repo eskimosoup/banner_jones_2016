@@ -63,7 +63,7 @@
   }
 
   .dropdown {
-    background: $red;
+    background: $light-grey;
     position: absolute;
 
     li {
@@ -71,10 +71,18 @@
     }
 
     a {
-      padding: rem(15px);
+      padding: rem(6px 15px);
+      margin: rem(1px);
 
-      &:hover {
-        color: $orange;
+      &:link,
+      &:visited {
+        color: $dark-offset-black;
+      }
+
+      &:hover,
+      &.active {
+        background: $white;
+        color: $dark-offset-black;
       }
     }
   }
