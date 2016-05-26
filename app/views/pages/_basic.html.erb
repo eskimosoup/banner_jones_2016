@@ -12,7 +12,10 @@
 
           <div class="page-aside-navigation-links">
             <ul class="page-aside-navigation-links-list page-aside-navigation-links-tree">
-              <%= page_sidebar_menu_items(menu_items: @side_menus.last.related_menu_items(@page)) %>
+
+              <%#= @side_menus.last.related_menu_items(@page).first.first.link.menu_resource %>
+              <%#= page_sidebar_menu_items(menu_items: @side_menus.last.related_menu_items(@side_menus.last.related_menu_items(@page).first.first.link.menu_resource)) %>
+              <%= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
             </ul>
           </div>
         <% end %>

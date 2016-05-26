@@ -1,4 +1,4 @@
-<li>
+<li class="<%= 'top-level-parent' if menu_item.parent.present? && menu_item.children.present? %><%= ' selected-navigation' if menu_item_presenter.active? %>">
   <%= menu_item_presenter.link_to_webpage %>
 
   <% if menu_item_presenter.sub_menu_items.present? %>
