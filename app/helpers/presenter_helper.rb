@@ -11,10 +11,11 @@ module PresenterHelper
     menu_items.map do |menu_item, sub_menu_items|
       render(
         partial: view_partial,
-        locals: { 
+        locals: {
           menu_item_presenter: MenuItemPresenter.new(object: menu_item, view_template: self, descendants_hash: sub_menu_items),
           depth: depth,
-          office_data: office_data
+          office_data: office_data,
+          sub_menu_items: sub_menu_items
         }
       )
     end.join.html_safe
