@@ -12,7 +12,7 @@
 
           <div class="page-aside-navigation-links">
             <ul class="page-aside-navigation-links-list page-aside-navigation-links-tree">
-              <%= nested_menu_items(menu_items: @side_menus.last.related_menu_items(@page), view_partial: 'pages/shared/menu_item') %>
+              <%= page_sidebar_menu_items(menu_items: @side_menus.last.related_menu_items(@page)) %>
             </ul>
           </div>
         <% end %>
