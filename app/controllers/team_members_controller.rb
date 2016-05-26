@@ -41,6 +41,7 @@ class TeamMembersController < ApplicationController
 
   def find_team_member
     @team_member = TeamMember.displayed.find(params[:id])
-    @team_members = @team_member.root_services.first.team_members.where.not(id: @team_member.id).limit(6)
+    root_services = Service.joins(:service_team_members).where(services_team_members: { team_member_id: @team_member.id }).pluck(:id)
+    @team_members = TeamMember.joins(:service_team_members).where(services_team_members: { service_id: root_services}).where.not(id: @team_member.id).limit(6)
   end
 end
