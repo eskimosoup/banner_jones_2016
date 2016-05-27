@@ -1,7 +1,7 @@
 Rails.application.configure do
-    config.logger = Logger.new(config.paths['log'].first, 3, 5242880)
+  config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
-  Rails.application.routes.default_url_options[:host] = 'www.ludo5.co.uk'
+  Rails.application.routes.default_url_options[:host] = 'banner.ludo5.co.uk'
 
   # config.action_mailer.delivery_method = :sendmail
   # config.action_mailer.sendmail_settings = {
@@ -70,13 +70,13 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
-  if ENV["RAILS_LOG_TO_STDOUT"].present?
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
     config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
   end
 
