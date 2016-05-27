@@ -12,12 +12,14 @@ function teamMembersSlick() {
     nextArrow: '.slider-team-members-slider-content-box-slider-controls .slider-content-box-next',
     prevArrow: '.slider-team-members-slider-content-box-slider-controls .slider-content-box-previous',
     slidesToShow: slidesToShowCount,
+    slidesToScroll: slidesToShowCount,
     swipe: false,
     responsive: [
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 3,
+          slidesToScroll: 3,
+          slidesToShow: 3
         }
       }
     ]
