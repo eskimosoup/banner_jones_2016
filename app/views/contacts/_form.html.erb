@@ -57,6 +57,10 @@
       </div>
     </div>
     <div class="field">
+      <%= f.label :find_us, 'How did you find us?' %>
+      <%= f.select :find_us, options_for_select(['Google search', 'Yell.com search', 'Other search', 'Advertisement', 'Facebook advert', 'Recommendation', 'Existing client', 'Peak FM advert', 'TV advert']), include_blank: 'Please select' %>
+    </div>
+    <div class="field">
       <%= f.label :message %>
       <%= f.text_area :message %>
     </div>
