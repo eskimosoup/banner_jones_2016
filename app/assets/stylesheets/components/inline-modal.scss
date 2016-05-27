@@ -27,7 +27,8 @@
   width: 80%;
 }
 
-.inline-modal.remote-callback-request-form-modal {
+.inline-modal.remote-callback-request-form-modal,
+.inline-modal.remote-contact-form-modal, {
   .inline-modal-content {
     background: $black;
     color: $white;

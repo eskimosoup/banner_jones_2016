@@ -5,8 +5,8 @@
 <%= render 'shared/flash_messages' %>
 
 <%= form_for @callback_request, url: callback_requests_path, remote: true do |f| %>
-
   <h2 class="request-callback-title">Request a callback</h2>
+
   <% if @callback_request.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -19,52 +19,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="contact-details">
-    <div class="related-fields">
-      <div class="field">
-        <%= f.text_field :forename, placeholder: "Forename" %>
-      </div>
-      <div class="field">
-        <%= f.text_field :surname, placeholder: "Surname" %>
-      </div>
-    </div>
 
-    <div class="related-fields">
-      <div class="field">
-        <%= f.text_field :email_address, placeholder: "Email Address" %>
-      </div>
-      <div class="field">
-        <%= f.text_field :contact_telephone, placeholder: "Contact Phone" %>
-      </div>
-    </div>
-
-    <div class="related-fields">
-      <div class="field">
-        <%= f.text_field :callback_time, placeholder: "Callback time" %>
-      </div>
-      <% if @offices.present? %>
-        <div class="field">
-          <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Preferred office' %>
-        </div>
-      <% end %>
-    </div>
-
-    <div class="related-fields">
-      <% if Flip.services? %>
-        <div class="field">
-          <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
-        </div>
-      <% end %>
-      <div class="field">
-        <%= f.select :find_us, options_for_select(['Google search', 'Yell.com search', 'Other search', 'Advertisement', 'Facebook advert', 'Recommendation', 'Existing client', 'Peak FM advert', 'TV advert']), include_blank: 'How did you find us?' %>
-      </div>
-    </div>
-
-    <div class="field">
-      <%= f.text_area :enquiry_type, placeholder: "Enquiry" %>
-    </div>
-    <div class="actions">
-      <%= f.submit "Send", class: "submit-button" %>
-    </div>
-  </div>
+  <%= render partial: 'callback_requests/shared/remote_form_fields_solicitors', locals: { f: f } unless (@page.present? && @page.layout == 'wealth_management') || @callback_request.wealth_management.present? %>
+  <%= render partial: 'callback_requests/shared/remote_form_fields_wealth_management', locals: { f: f } if (@page.present? && @page.layout == 'wealth_management') || @callback_request.wealth_management.present? %>
 <% end %>

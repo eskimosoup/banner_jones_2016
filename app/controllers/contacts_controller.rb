@@ -3,24 +3,40 @@ class ContactsController < ApplicationController
 
   def new
     @contact = Contact.new
-    @office = Office.displayed.find(params[:office_id]) if params[:office_id].present?
   end
 
   def create
     @contact = Contact.new(contact_params)
-    if @contact.valid?
-      ContactMailer.new_contact(@contact).deliver_now
+    process_contact_request(@contact)
+  end
+
+  private
+
+  def process_contact_request(contact)
+    ContactMailer.new_contact(@contact).deliver_now if contact.valid?
+    respond_to do |format|
+      format.html { html_contact(contact) }
+      format.js { js_contact(contact) }
+    end
+  end
+
+  def html_contact(contact)
+    if contact.valid?
       redirect_to new_contact_path, notice: 'Thank you for your submission.'
     else
       render :new
     end
   end
 
-  private
+  def js_contact(contact)
+    flash.notice = 'Thank you for contacting us' if contact.valid?
+  end
 
   def contact_params
     params.require(:contact)
-          .permit(:forename, :surname, :telephone, :email, :preferred_contact_method, :preferred_office, :service, :enquiry_type, :message)
+          .permit(:forename, :surname, :telephone, :email,
+                  :preferred_contact_method, :preferred_office,
+                  :service, :enquiry_type, :message, :wealth_management)
   end
 
   def load_modules

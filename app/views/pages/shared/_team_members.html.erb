@@ -1,0 +1,14 @@
+<div class="page-additional-content-wrap">
+  <div class="page-additional-content">
+    <div class="page-team-members">
+      <%= content_for :javascript do %>
+        <script>
+          $(document).ready(function() {
+            teamMembersSlick();
+          });
+        </script>
+      <% end %>
+      <%= render 'team_members/shared/slider', team_members: @team_members.displayed %>
+    </div>
+  </div>
+</div>

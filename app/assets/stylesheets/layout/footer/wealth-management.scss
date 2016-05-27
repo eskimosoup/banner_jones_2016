@@ -1,0 +1,14 @@
+.wealth-management-disclaimer-wrap {
+  background: $border-grey;
+  border-top: 4px solid $black;
+  padding: rem(15px);
+}
+
+.wealth-management-content {
+  font-size: rem(14px);
+
+  @include media('>1024px') {
+    margin: 0 auto;
+    max-width: 1287px;
+  }
+}

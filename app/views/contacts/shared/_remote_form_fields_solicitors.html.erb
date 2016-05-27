@@ -1,0 +1,50 @@
+<div class="contact-details">
+  <div class="related-fields">
+    <div class="field">
+      <%= f.text_field :forename, placeholder: 'Forename' %>
+    </div>
+    <div class="field">
+      <%= f.text_field :surname, placeholder: 'Surname' %>
+    </div>
+  </div>
+  <div class="related-fields">
+    <div class="field">
+      <%= f.text_field :telephone, placeholder: 'Telephone' %>
+    </div>
+    <div class="field">
+      <%= f.text_field :email, placeholder: 'Email' %>
+    </div>
+  </div>
+  <div class="related-fields">
+    <div class="field">
+      <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, prompt: 'Preferred contact method' %>
+    </div>
+    <% if @offices.present? %>
+      <div class="field">
+        <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }, selected: (@office.address_fields if @office.present?)), prompt: 'Preffered office' %>
+      </div>
+    <% end %>
+  </div>
+  <div class="related-fields">
+    <% if Flip.services? %>
+      <div class="field">
+        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.select :enquiry_type, options_for_select(Contact::ENQUIRY_TYPES, selected: (params[:enquiry_type] if params[:enquiry_type].present?)), prompt: 'Enquiry type' %>
+    </div>
+  </div>
+
+  <div class="field full">
+    <%= f.select :find_us, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
+  </div>
+
+  <div class="field full">
+    <%= f.text_area :message, placeholder: 'Message' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send", class: "submit-button" %>
+  </div>
+</div>
