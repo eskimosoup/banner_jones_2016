@@ -1,8 +1,9 @@
 .remote-callback-request-form {
   padding: rem-calc(16px 35px);
-  h2 {
-    text-align: center;
+  .request-callback-title {
     border-bottom: 2px solid $orange;
+    padding-bottom: rem(15px);
+    text-align: center;
   }
   .close-container {
     @include clearfix;
@@ -20,9 +21,15 @@
 }
 
 .remote-callback-request-form .contact-details {
-  @include grid-row;
+  .field:nth-child(2) {
+    input,
+    select {
+      float: right;
+      width: 100%;
+    }
+  }
 
-  .field {
+  .field.full {
     @include grid-column(12);
   }
 
