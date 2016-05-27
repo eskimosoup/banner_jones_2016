@@ -20,7 +20,7 @@
       <div class="standard-content-box">
         <% present @team_member do |team_member_presenter| %>
           <%= team_member_presenter.specialisms %>
-          <%= render partial: 'accreditations/shared/team_member_accreditations', collection: @team_member.accreditations, as: :accreditation %>
+          <%= render partial: 'accreditations/shared/team_member_accreditations', collection: @team_member.accreditations, as: :accreditation, cached: true %>
         <% end %>
       </div>
     </div>
@@ -35,7 +35,12 @@
           </h2>
 
           <div class="testimonials-slick">
-            <%= render @team_member.testimonials.displayed.limit(6) %>
+            <%= render(
+              partial: "testimonial/testimonial",
+              collection: @team_member.testimonials.displayed.limit(6),
+              cached: true,
+              as: :testimonial
+            %>
           </div>
         </div>
       </div>

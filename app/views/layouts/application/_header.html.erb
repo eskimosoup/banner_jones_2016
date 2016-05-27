@@ -24,6 +24,7 @@
   </div>
 
   <div class="header-contact">
+    <%= Rails.application.config.cache_store if Rails.env.development? %>
     <ul class="header-aside-navigation">
       <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
     </ul>

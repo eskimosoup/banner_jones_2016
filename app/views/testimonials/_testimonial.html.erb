@@ -1,13 +1,15 @@
-<% present testimonial do |testimonial_presenter| %>
-  <div class="testimonial-wrap">
-    <div class="testimonial-content">
-      <%= testimonial_presenter.recommendation %>
-    </div>
+<% cache testimonial do %>
+  <% present testimonial do |testimonial_presenter| %>
+    <div class="testimonial-wrap">
+      <div class="testimonial-content">
+        <%= testimonial_presenter.recommendation %>
+      </div>
 
-    <div class="testimonial-author">
-      <%= testimonial_presenter.author %>
-    </div>
+      <div class="testimonial-author">
+        <%= testimonial_presenter.author %>
+      </div>
 
-    <%= testimonial_presenter.show_image(alt: testimonial_presenter.author, class: 'testimonial-photo') %>
-  </div>
+      <%= testimonial_presenter.show_image(alt: testimonial_presenter.author, class: 'testimonial-photo') %>
+    </div>
+  <% end %>
 <% end %>

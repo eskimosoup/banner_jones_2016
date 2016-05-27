@@ -1,12 +1,18 @@
-<% present team_member do |team_member_presenter| %>
-  <div class="team-member">
-    <div class="team-member-full-name">
-      <%= team_member_presenter.full_name %>
-    </div>
+<% cache [team_member, team_member.job_roles.map(&:updated_at).max, team_member.department_roles.map(&:updated_at).max] do %>
+  <% present team_member do |team_member_presenter| %>
+    <div class="team-member">
+      <div class="team-member-full-name">
+        <%= team_member_presenter.full_name %>
+      </div>
 
-    <div class="team-member-role">
-      <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
-      <%= team_member_presenter.department_roles(sentence_list: true) %>
+      <div class="team-member-role">
+        <%= render(
+          partial: "team_members/shared/profile_role",
+          locals: {
+            team_member: team_member,
+            team_member_presenter: team_member_presenter
+          }
+        ) %>
     </div>
 
     <div class="team-member-primary-telephone">
@@ -34,5 +40,6 @@
         <%= team_member_presenter.vcard %>
       </div>
     <% end %>
-  </div>
+    </div>
+  <% end %>
 <% end %>
