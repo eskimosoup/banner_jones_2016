@@ -19,11 +19,16 @@
     <div class="field">
       <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, prompt: 'Preferred contact method' %>
     </div>
-    <% if @offices.present? %>
-      <div class="field">
-        <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }, selected: (@office.address_fields if @office.present?)), prompt: 'Preffered office' %>
-      </div>
-    <% end %>
+    <!--
+      <% if @offices.present? %>
+        <div class="field">
+          <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }, selected: (@office.address_fields if @office.present?)), prompt: 'Preffered office' %>
+        </div>
+      <% end %>
+    -->
+    <div class="field">
+      <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
+    </div>
   </div>
   <div class="related-fields">
     <% if Flip.services? %>
@@ -34,10 +39,6 @@
     <div class="field">
       <%= f.select :enquiry_type, options_for_select(Contact::ENQUIRY_TYPES, selected: (params[:enquiry_type] if params[:enquiry_type].present?)), prompt: 'Enquiry type' %>
     </div>
-  </div>
-
-  <div class="field full">
-    <%= f.select :find_us, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
   </div>
 
   <div class="field full">

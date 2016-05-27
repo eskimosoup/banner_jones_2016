@@ -19,12 +19,19 @@
     <%= f.label :callback_time %>
     <%= f.text_field :callback_time %>
   </div>
+  <!--
   <% if @offices.present? %>
     <div class="field">
       <%= f.label :preferred_office %>
       <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Please select' %>
     </div>
   <% end %>
+  -->
+
+  <div class="field">
+    <%= f.label :enquiry_type %>
+    <%= f.text_area :enquiry_type %>
+  </div>
   <% if Flip.services? %>
     <div class="field">
       <%= f.label :service %>
@@ -32,12 +39,8 @@
     </div>
   <% end %>
   <div class="field">
-    <%= f.label :find_us, 'How did you find us?' %>
-    <%= f.select :find_us, options_for_select(Contact::HOW_HEARDS), include_blank: 'Please select' %>
-  </div>
-  <div class="field">
-    <%= f.label :enquiry_type %>
-    <%= f.text_area :enquiry_type %>
+    <%= f.label :how_heard, 'How did you find us?' %>
+    <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'Please select' %>
   </div>
   <div class="actions">
     <%= f.submit "Send", class: "submit-button" %>

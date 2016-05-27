@@ -6,7 +6,7 @@ module Extensions
       attr_accessor :forename, :surname, :telephone, :email,
                     :preferred_contact_method,
                     :preferred_office, :service, :enquiry_type, :message,
-                    :find_us, :wealth_management
+                    :how_heard, :wealth_management
 
       validates :forename, :surname,
                 :preferred_contact_method,
