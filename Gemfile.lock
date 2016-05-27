@@ -60,7 +60,7 @@ GIT
 PATH
   remote: ../optimised_site
   specs:
-    optimised_site (0.0.23)
+    optimised_site (0.0.24)
       amoeba
       closure_tree (~> 6.0)
       flip

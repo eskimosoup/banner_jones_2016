@@ -14,7 +14,7 @@ class AudienceFacade
   end
 
   def banner_services
-    @banner_services ||= audience.services.displayed.where(audience_highlight: true)
+    @banner_services ||= audience.services.displayed.where(audience_highlight: true).order(:position)
   end
 
   def resources
