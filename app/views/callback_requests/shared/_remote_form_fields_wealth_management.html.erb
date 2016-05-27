@@ -22,7 +22,7 @@
       <%= f.text_field :callback_time, placeholder: "Callback time" %>
     </div>
     <div class="field">
-      <%= f.select :find_us, options_for_select(['Google search', 'Yell.com search', 'Other search', 'Advertisement', 'Facebook advert', 'Recommendation', 'Existing client', 'Peak FM advert', 'TV advert']), include_blank: 'How did you find us?' %>
+      <%= f.select :find_us, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
     </div>
   </div>
 

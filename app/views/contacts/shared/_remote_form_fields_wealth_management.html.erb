@@ -17,19 +17,20 @@
   </div>
   <div class="related-fields">
     <div class="field">
-      <%= f.select :preferred_contact_method, ['Email', 'Phone'], prompt: 'Preferred contact method' %>
+      <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, prompt: 'Preferred contact method' %>
     </div>
     <div class="field">
-      <%= f.select :enquiry_type, options_for_select(['General'], selected: (params[:enquiry_type] if params[:enquiry_type].present?)), prompt: 'Enquiry type' %>
+      <%= f.select :enquiry_type, options_for_select(Contact::ENQUIRY_TYPES, selected: (params[:enquiry_type] if params[:enquiry_type].present?)), prompt: 'Enquiry type' %>
     </div>
   </div>
-  <div class="related-fields">
-    <div class="field">
-      <%= f.select :find_us, options_for_select(['Google search', 'Yell.com search', 'Other search', 'Advertisement', 'Facebook advert', 'Recommendation', 'Existing client', 'Peak FM advert', 'TV advert']), include_blank: 'How did you find us?' %>
-    </div>
-    <div class="field">
-      <%= f.text_area :message, placeholder: 'Message' %>
-    </div>
+
+
+  <div class="field full">
+    <%= f.select :find_us, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
+  </div>
+
+  <div class="field full">
+    <%= f.text_area :message, placeholder: 'Message' %>
   </div>
 
   <%= f.hidden_field :wealth_management, value: '1' %>

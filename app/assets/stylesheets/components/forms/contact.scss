@@ -26,6 +26,20 @@
 .remote-contact-form {
   padding: rem-calc(16px 35px);
 
+  .contact-details .field:nth-child(2) {
+    input,
+    select {
+      float: right;
+      width: 100%;
+    }
+  }
+
+  .field.full {
+    textarea {
+      width: 100%;
+    }
+  }
+
   .request-contact-title {
     border-bottom: 2px solid $orange;
     padding-bottom: rem(15px);

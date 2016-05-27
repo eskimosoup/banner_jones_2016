@@ -22,7 +22,7 @@
   <div class="related-fields">
     <div class="field">
       <%= f.label :preferred_contact_method %>
-      <%= f.select :preferred_contact_method, ['Email', 'Phone'], prompt: 'Please select' %>
+      <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, prompt: 'Please select' %>
     </div>
     <% if @offices.present? %>
       <div class="field">
@@ -40,12 +40,12 @@
     <% end %>
     <div class="field">
       <%= f.label :enquiry_type %>
-      <%= f.select :enquiry_type, options_for_select(['General'], selected: (params[:enquiry_type] if params[:enquiry_type].present?)), prompt: 'Please select' %>
+      <%= f.select :enquiry_type, options_for_select(Contact::ENQUIRY_TYPES, selected: (params[:enquiry_type] if params[:enquiry_type].present?)), prompt: 'Please select' %>
     </div>
   </div>
   <div class="field">
     <%= f.label :find_us, 'How did you find us?' %>
-    <%= f.select :find_us, options_for_select(['Google search', 'Yell.com search', 'Other search', 'Advertisement', 'Facebook advert', 'Recommendation', 'Existing client', 'Peak FM advert', 'TV advert']), include_blank: 'Please select' %>
+    <%= f.select :find_us, options_for_select(Contact::HOW_HEARDS), include_blank: 'Please select' %>
   </div>
   <div class="field">
     <%= f.label :message %>
