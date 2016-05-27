@@ -8,7 +8,7 @@ class HomeFacade
   end
 
   def banner_services
-    @banner_services ||= Service.homepage_highlight
+    @banner_services ||= Service.homepage_highlight.order(:position)
   end
 
   def resources
