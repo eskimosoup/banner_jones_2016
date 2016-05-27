@@ -1,7 +1,7 @@
 <% unless defined?(hide_call_us) %>
-  <%= link_to new_contact_path, class: 'page-call-to-action' do %>
+  <%= link_to "tel:#{global_site_settings['Phone - Wealth Management']}", class: 'page-call-to-action' do %>
     <div class="page-call-to-action-title">
-      Call us now
+      <%= global_site_settings['Phone - Wealth Management'] %>
     </div>
 
     <div class="page-call-to-action-icon">
@@ -24,25 +24,14 @@
 <% end %>
 
 <% unless defined?(hide_email) %>
-  <%= link_to new_contact_path, class: 'page-call-to-action' do %>
+  <%= link_to '#', class: 'page-call-to-action toggle-class',
+    data: { container: '.remote-contact-form-modal', class: 'visible', return: 'false' } do %>
     <div class="page-call-to-action-title">
       Email us
     </div>
 
     <div class="page-call-to-action-icon">
       <%= image_tag 'components/icons/call-to-action/white-email.png', alt: '' %>
-    </div>
-  <% end %>
-<% end %>
-
-<% unless defined?(hide_office) %>
-  <%= link_to offices_path, class: 'page-call-to-action' do %>
-    <div class="page-call-to-action-title">
-      Our offices
-    </div>
-
-    <div class="page-call-to-action-icon">
-      <%= image_tag 'components/icons/call-to-action/white-location.png', alt: '' %>
     </div>
   <% end %>
 <% end %>

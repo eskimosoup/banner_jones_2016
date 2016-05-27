@@ -1,0 +1,84 @@
+<div class="sticky-sidebar hide">
+
+</div>
+
+<header class="primary-header">
+  <div class="header-branding">
+    <%= link_to root_url, title: global_site_settings['Name'], class: 'header-logo' do %>
+      <%= image_tag "layout/header/#{logo}", alt: global_site_settings['Name'] %>
+    <% end %>
+
+    <%= image_tag 'layout/header/legal-500.png', alt: 'Legal 500',
+                                                 class: 'the-legal-500' if defined?(legal_500) %>
+  </div>
+
+  <div class="header-hamburger-menu">
+    <%= link_to '#', class: 'toggle-class', title: 'Show navigation',
+                data: {
+                  container: '.primary-navigation-wrap',
+                  class: 'mobile-expanded',
+                  return: 'false'
+                } do %>
+      <%= image_tag 'components/icons/navigation/hamburger.png', alt: 'Navigation' %>
+    <% end %>
+  </div>
+
+  <div class="header-contact">
+    <ul class="header-aside-navigation">
+      <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
+    </ul>
+
+    <div class="header-telephone">
+      <span class="header-telephone-accent">
+        t:
+      </span>
+      <%= link_to phone, "tel:#{phone}" if phone.present? %>
+    </div>
+
+    <%= link_to (image_tag 'components/icons/header/map.png', alt: ''), class: 'header-locations', title: 'Locations' if defined?(solicitors) %>
+  </div>
+</header>
+
+<div class="primary-navigation-wrap">
+  <nav class="header-navigation">
+    <div class="primary-navigation">
+      <ul class="primary-navigation-links">
+        <li class="menu-item">
+          <%= link_to root_url, class: 'primary-navigation-home', title: 'Home' do %>
+            <%= image_tag 'components/icons/navigation/home.png', alt: '' %>
+          <% end %>
+        </li>
+
+        <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
+      </ul>
+      <%= link_to (image_tag 'components/icons/header/email.png', alt: ''), new_contact_path, class: 'toggle-class sticky-sidebar-toggle',
+                  title: 'Contact us',
+                  data: { container: '.sticky-sidebar', class: 'hide' } if defined?(solicitors) %>
+    </div>
+
+    <div class="primary-navigation-search">
+      <!--
+      <%= form_tag '', method: :get, class: 'header-search-form' do %>
+        <%= text_field_tag :search, params[:search],
+                                  placeholder: 'Search',
+                                    class: 'header-search-input' %>
+
+        <%= submit_tag 'Search', class: 'header-search-submit' %>
+       <% end %>
+      -->
+
+      <script>
+        (function() {
+          var cx = '014374903494110971556:qvo4l6fimr8';
+          var gcse = document.createElement('script');
+          gcse.type = 'text/javascript';
+          gcse.async = true;
+          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+          var s = document.getElementsByTagName('script')[0];
+          s.parentNode.insertBefore(gcse, s);
+        })();
+      </script>
+      <gcse:search></gcse:search>
+    </div>
+  </nav>
+</div>

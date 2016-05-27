@@ -5,10 +5,11 @@ module Extensions
     included do
       attr_accessor :forename, :surname, :telephone, :email,
                     :preferred_contact_method,
-                    :preferred_office, :service, :enquiry_type, :message, :find_us
+                    :preferred_office, :service, :enquiry_type, :message,
+                    :find_us, :wealth_management
 
       validates :forename, :surname,
-                :preferred_contact_method, :preferred_office,
+                :preferred_contact_method,
                 :enquiry_type, :message, presence: true
 
       validates :email, email: true, presence: true, if: proc { |x| x.preferred_contact_method == 'Email' }

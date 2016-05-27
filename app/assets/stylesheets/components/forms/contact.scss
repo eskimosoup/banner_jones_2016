@@ -6,7 +6,8 @@
       @include grid-column($columns: 6, $gutter: (large: 0));
 
       input,
-      select {
+      select,
+      textarea {
         width: 95%;
       }
     }
@@ -18,6 +19,39 @@
     textarea {
       height: 170px;
       width: 627px;
+    }
+  }
+}
+
+.remote-contact-form {
+  padding: rem-calc(16px 35px);
+
+  .request-contact-title {
+    border-bottom: 2px solid $orange;
+    padding-bottom: rem(15px);
+    text-align: center;
+  }
+
+  .close-container {
+    @include clearfix;
+
+    .close-button {
+      @include navigation-button;
+      float: right;
+      background: $red;
+
+      &:hover {
+        background-color: lighten($red, 20%);
+      }
+    }
+  }
+
+  .submit-button {
+    background-color: $red;
+    color: $white;
+
+    &:hover {
+      background-color: lighten($red, 20%);
     }
   }
 }

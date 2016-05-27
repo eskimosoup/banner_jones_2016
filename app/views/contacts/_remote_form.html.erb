@@ -1,0 +1,25 @@
+<div class="close-container">
+  <%= button_tag("Close", type: "button", class: "close-button toggle-class", data: { container: ".remote-contact-form-modal", class: 'visible', return: false }) %>
+</div>
+
+<%= render 'shared/flash_messages' %>
+
+<%= form_for @contact, url: contacts_path, remote: true, html: { class: 'contact-form' } do |f| %>
+  <h2 class="request-contact-title">Contact us</h2>
+
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize @contact.errors.count, 'error' %> prevented this message from being sent
+      </h2>
+      <ul>
+        <% @contact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= render partial: 'contacts/shared/remote_form_fields_solicitors', locals: { f: f } unless (@page.present? && @page.layout == 'wealth_management') || @contact.wealth_management.present? %>
+  <%= render partial: 'contacts/shared/remote_form_fields_wealth_management', locals: { f: f } if (@page.present? && @page.layout == 'wealth_management') || @contact.wealth_management.present? %>
+<% end %>

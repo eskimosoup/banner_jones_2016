@@ -1,0 +1,37 @@
+<% unless defined?(hide_call_us) %>
+  <%= link_to "tel:#{global_site_settings['Phone']}", class: 'page-call-to-action' do %>
+    <div class="page-call-to-action-title">
+      <%= global_site_settings['Phone'] %>
+    </div>
+
+    <div class="page-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-telephone.png', alt: '' %>
+    </div>
+  <% end %>
+<% end %>
+
+<% unless defined?(hide_callback) %>
+  <%= link_to '#', class: 'page-call-to-action toggle-class',
+    data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
+    <div class="page-call-to-action-title">
+      Request a call back
+    </div>
+
+    <div class="page-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-callback.png', alt: '' %>
+    </div>
+  <% end %>
+<% end %>
+
+<% unless defined?(hide_email) %>
+<%= link_to '#', class: 'page-call-to-action toggle-class',
+    data: { container: '.remote-contact-form-modal', class: 'visible', return: 'false' } do %>
+    <div class="page-call-to-action-title">
+      Email us
+    </div>
+
+    <div class="page-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-email.png', alt: '' %>
+    </div>
+  <% end %>
+<% end %>

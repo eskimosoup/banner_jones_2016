@@ -1,0 +1,38 @@
+<div class="contact-details">
+  <div class="related-fields">
+    <div class="field">
+      <%= f.text_field :forename, placeholder: "Forename" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :surname, placeholder: "Surname" %>
+    </div>
+  </div>
+
+  <div class="related-fields">
+    <div class="field">
+      <%= f.text_field :email_address, placeholder: "Email Address" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :contact_telephone, placeholder: "Contact Phone" %>
+    </div>
+  </div>
+
+  <div class="related-fields">
+    <div class="field">
+      <%= f.text_field :callback_time, placeholder: "Callback time" %>
+    </div>
+    <div class="field">
+      <%= f.select :find_us, options_for_select(['Google search', 'Yell.com search', 'Other search', 'Advertisement', 'Facebook advert', 'Recommendation', 'Existing client', 'Peak FM advert', 'TV advert']), include_blank: 'How did you find us?' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :enquiry_type, placeholder: "Enquiry" %>
+  </div>
+
+  <%= f.hidden_field :wealth_management, value: '1' %>
+
+  <div class="actions">
+    <%= f.submit "Send", class: "submit-button" %>
+  </div>
+</div>
