@@ -36,10 +36,11 @@
 
           <div class="testimonials-slick">
             <%= render(
-              partial: "testimonial/testimonial",
+              partial: "testimonials/testimonial",
               collection: @team_member.testimonials.displayed.limit(6),
               cached: true,
               as: :testimonial
+              )
             %>
           </div>
         </div>
