@@ -48,7 +48,7 @@
             <%= image_tag 'components/icons/navigation/home.png', alt: '' %>
           <% end %>
         </li>
-
+        <%= Rails.application.config.cache_store if Rails.env.development? %>
         <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
       </ul>
       <%= link_to (image_tag 'components/icons/header/email.png', alt: ''), new_contact_path, class: 'toggle-class sticky-sidebar-toggle',

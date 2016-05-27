@@ -1,0 +1,7 @@
+<% cache [team_member, team_member.root_services.map(&:updated_at).max] do %>
+  <div class="index-team-member-profile-services">
+    <% team_member.root_services.order(:title).each do |root_service| %>
+      <%= link_to root_service.title, audience_service_path(root_service.audience, root_service) %><%= ', ' unless root_service == team_member.root_services.last %>
+    <% end %>
+  </div>
+<% end %>

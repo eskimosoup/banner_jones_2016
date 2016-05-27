@@ -1,3 +1,5 @@
-<% present accreditation do |accreditation_presenter| %>
-  <%= accreditation_presenter.show_accreditation('show', alt: accreditation_presenter.title, title: accreditation_presenter.title) %>
+<% cache accreditation do %>
+  <% present accreditation do |accreditation_presenter| %>
+    <%= accreditation_presenter.show_accreditation('show', alt: accreditation_presenter.title, title: accreditation_presenter.title) %>
+  <% end %>
 <% end %>

@@ -1,52 +1,68 @@
-<div class="team-members-content-wrap">
-  <div class="team-member-show-profile-wrap">
-    <div class="team-member-show-profile">
-      <% present @team_member do |team_member_presenter| %>
-        <div class="team-member-show-profile-image">
-          <%= team_member_presenter.show_image(alt: team_member_presenter.full_name) %>
-        </div>
-
-        <div class="team-member-show-profile-content">
-          <div class="show-team-member-profile-name">
-            <%= team_member_presenter.full_name %>
-          </div>
-          <div class="show-team-member-profile-role">
-            <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
-            <%= team_member_presenter.department_roles(sentence_list: true) %>
+<% cache [@team_member, @team_member.job_roles.map(&:updated_at).max, @team_member.department_roles.map(&:updated_at).max, @team_member.root_services.map(&:updated_at).max] do %>
+  <div class="team-members-content-wrap">
+    <div class="team-member-show-profile-wrap">
+      <div class="team-member-show-profile">
+        <% present @team_member do |team_member_presenter| %>
+          <div class="team-member-show-profile-image">
+            <%= team_member_presenter.show_image(alt: team_member_presenter.full_name) %>
           </div>
 
-          <div class="show-team-member-profile-office-locations">
-            <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
-            <% @team_member.offices.each do |office| %>
-              <%= link_to "#{office.office_location.name}#{" - #{office.building_name}" if office.building_name.present?}", office_path(office) %><%= ', ' unless office == @team_member.offices.last %>
-            <% end %>
-          </div>
+          <div class="team-member-show-profile-content">
+            <div class="show-team-member-profile-name">
+              <%= team_member_presenter.full_name %>
+            </div>
+            <div class="show-team-member-profile-role">
+              <%= render(
+                partial: "team_members/shared/profile_role",
+                locals: {
+                  team_member: @team_member,
+                  team_member_presenter: team_member_presenter
+                }
+              ) %>
+            </div>
 
-          <div class="show-team-member-contact-method-email">
-            <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email', class: 'index-team-member-profile-icon') %>
-            <%= team_member_presenter.linked_email_address(team_member_presenter.email_address) %>
-          </div>
+            <div class="show-team-member-profile-office-locations">
+              <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
+              <%= render(
+                partial: "offices/team_member_office",
+                collection: @team_member.offices,
+                cached: true,
+                as: :office,
+                locals: {
+                  team_member: @team_member
+                }
+              ) %>
+            </div>
 
-          <div class="show-team-member-contact-method-phone">
-            <%= image_tag 'components/icons/team-member/telephone.png', alt: '' %>
-            <%= team_member_presenter.linked_telephone(team_member_presenter.primary_telephone, alt: 'Telephone', class: 'index-team-member-profile-icon') %>
-          </div>
+            <div class="show-team-member-contact-method-email">
+              <%= team_member_presenter.linked_email_address(image_tag 'components/icons/team-member/email.png', alt: 'Email', class: 'index-team-member-profile-icon') %>
+              <%= team_member_presenter.linked_email_address(team_member_presenter.email_address) %>
+            </div>
 
-          <div class="show-team-member-profile-services">
-            <% @team_member.root_services.order(:title).each do |root_service| %>
-              <%= link_to root_service.title, audience_service_path(root_service.audience, root_service) %><%= ', ' unless root_service == @team_member.root_services.last %>
-            <% end %>
+            <div class="show-team-member-contact-method-phone">
+              <%= image_tag 'components/icons/team-member/telephone.png', alt: '' %>
+              <%= team_member_presenter.linked_telephone(team_member_presenter.primary_telephone, alt: 'Telephone', class: 'index-team-member-profile-icon') %>
+            </div>
+
+            <div class="show-team-member-profile-services">
+              <%= render(
+                partial: "team_members/shared/root_services",
+                locals: {
+                  team_member: @team_member
+                }
+              ) %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="team-member-show-text-profile">
+      <div class="standard-content-box">
+        <% present @team_member do |team_member_presenter| %>
+          <%= team_member_presenter.profile %>
+        <% end %>
+      </div>
     </div>
   </div>
-
-  <div class="team-member-show-text-profile">
-    <div class="standard-content-box">
-      <% present @team_member do |team_member_presenter| %>
-        <%= team_member_presenter.profile %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<% end %>

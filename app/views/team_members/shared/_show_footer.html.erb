@@ -2,6 +2,10 @@
   <h2 class="standard-content-box-title team-members-title">Also in this department</h2>
 
   <div class="team-members-index-content">
-    <%= render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member %>
+    <%= render(
+      partial: 'team_members/shared/index_profile_card',
+      collection: @team_members,
+      cached: true,
+      as: :team_member %>
   </div>
 </div>
