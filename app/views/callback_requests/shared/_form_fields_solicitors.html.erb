@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :callback_time %>
-    <%= f.text_field :callback_time %>
+    <%= f.select :callback_time, options_for_select(CallbackRequest::TIMES) %>
   </div>
   <!--
   <% if @offices.present? %>

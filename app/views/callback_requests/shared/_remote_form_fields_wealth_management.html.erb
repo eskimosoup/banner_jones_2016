@@ -19,7 +19,7 @@
 
   <div class="related-fields">
     <div class="field">
-      <%= f.text_field :callback_time, placeholder: "Callback time" %>
+      <%= f.select :callback_time, options_for_select(CallbackRequest::TIMES), prompt: 'Callback time' %>
     </div>
     <div class="field">
       <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
