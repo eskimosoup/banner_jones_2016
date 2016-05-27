@@ -1,61 +1,81 @@
 <%= content_tag :h1, 'Wealth Management' if @contact.wealth_management.present? %>
 
-<p>
-  <strong>Forename</strong><br />
+<% if @contact.forename.present? %>
+  <p>
+    <strong>Forename</strong><br />
 
-  <%= @contact.forename %>
-</p>
+    <%= @contact.forename %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Surname</strong><br />
+<% if @contact.surname.present? %>
+  <p>
+    <strong>Surname</strong><br />
 
-  <%= @contact.surname %>
-</p>
+    <%= @contact.surname %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Telephone</strong><br />
+<% if @contact.telephone.present? %>
+  <p>
+    <strong>Telephone</strong><br />
 
-  <%= @contact.telephone %>
-</p>
+    <%= @contact.telephone %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Email</strong><br />
+<% if @contact.email.present? %>
+  <p>
+    <strong>Email</strong><br />
 
-  <%= @contact.email %>
-</p>
+    <%= @contact.email %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Preferred contact method</strong><br />
+<% if @contact.preferred_contact_method.present? %>
+  <p>
+    <strong>Preferred contact method</strong><br />
 
-  <%= @contact.preferred_contact_method %>
-</p>
+    <%= @contact.preferred_contact_method %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Preferred office</strong><br />
+<% if @contact.preferred_office.present? %>
+  <p>
+    <strong>Preferred office</strong><br />
 
-  <%= @contact.preferred_office %>
-</p>
+    <%= @contact.preferred_office %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Service</strong><br />
+<% if @contact.service.present? %>
+  <p>
+    <strong>Service</strong><br />
 
-  <%= @contact.service %>
-</p>
+    <%= @contact.service %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Enquiry type</strong><br />
+<% if @contact.enquiry_type.present? %>
+  <p>
+    <strong>Enquiry type</strong><br />
 
-  <%= @contact.enquiry_type %>
-</p>
+    <%= @contact.enquiry_type %>
+  </p>
+<% end %>
 
-<p>
-  <strong>How did you find us?</strong><br />
+<% if @contact.how_heard.present? %>
+  <p>
+    <strong>How did you find us?</strong><br />
 
-  <%= @contact.find_us %>
-</p>
+    <%= @contact.how_heard %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Message</strong><br />
+<% if @contact.message.present? %>
+  <p>
+    <strong>Message</strong><br />
 
-  <%= @contact.message %>
-</p>
+    <%= @contact.message %>
+  </p>
+<% end %>

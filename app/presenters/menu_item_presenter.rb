@@ -10,7 +10,7 @@ class MenuItemPresenter < BasePresenter
   end
 
   def display_offices?
-    team_member_route? || contact_route?
+    team_member_route? # || contact_route?
   end
 
   def link_to_webpage(options = {})

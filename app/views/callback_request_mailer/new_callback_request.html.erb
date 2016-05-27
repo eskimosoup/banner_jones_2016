@@ -1,55 +1,75 @@
 <%= content_tag :h1, 'Wealth Management' if @contact.wealth_management.present? %>
 
-<p>
-  <strong>Forename</strong><br />
+<% if @callback_request.forename.present? %>
+  <p>
+    <strong>Forename</strong><br />
 
-  <%= @callback_request.forename %>
-</p>
+    <%= @callback_request.forename %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Surname</strong><br />
 
-  <%= @callback_request.surname %>
-</p>
+<% if @callback_request.surname.present? %>
+  <p>
+    <strong>Surname</strong><br />
 
-<p>
-  <strong>Email address</strong><br />
+    <%= @callback_request.surname %>
+  </p>
+<% end %>
 
-  <%= @callback_request.email_address %>
-</p>
+<% if @callback_request.email_address.present? %>
+  <p>
+    <strong>Email address</strong><br />
 
-<p>
-  <strong>Contact telephone</strong><br />
+    <%= @callback_request.email_address %>
+  </p>
+<% end %>
 
-  <%= @callback_request.contact_telephone %>
-</p>
+<% if @callback_request.contact_telephone.present? %>
+  <p>
+    <strong>Contact telephone</strong><br />
 
-<p>
-  <strong>Callback time</strong><br />
+    <%= @callback_request.contact_telephone %>
+  </p>
+<% end %>
 
-  <%= @callback_request.callback_time %>
-</p>
+<% if @callback_request.callback_time.present? %>
+  <p>
+    <strong>Callback time</strong><br />
 
-<p>
-  <strong>Preferred office</strong><br />
+    <%= @callback_request.callback_time %>
+  </p>
+<% end %>
 
-  <%= @callback_request.preferred_office %>
-</p>
+<% if @callback_request.preferred_office.present? %>
+  <p>
+    <strong>Preferred office</strong><br />
 
-<p>
-  <strong>Service</strong><br />
+    <%= @callback_request.preferred_office %>
+  </p>
+<% end %>
 
-  <%= @callback_request.service %>
-</p>
+<% if @callback_request.service.present? %>
+  <p>
+    <strong>Service</strong><br />
 
-<p>
-  <strong>How did you find us?</strong><br />
+    <%= @callback_request.service %>
+  </p>
+<% end %>
 
-  <%= @callback_request.find_us %>
-</p>
 
-<p>
-  <strong>Enquiry type</strong><br />
+<% if @callback_request.how_heard.present? %>
+  <p>
+    <strong>How did you find us?</strong><br />
 
-  <%= @callback_request.enquiry_type %>
-</p>
+    <%= @callback_request.how_heard %>
+  </p>
+<% end %>
+
+<% if @callback_request.enquiry_type.present? %>
+  <p>
+    <strong>Enquiry type</strong><br />
+
+    <%= @callback_request.enquiry_type %>
+  </p>
+<% end %>

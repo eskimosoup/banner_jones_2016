@@ -5,7 +5,7 @@ module Extensions
     included do
       attr_accessor :forename, :surname, :email_address, :contact_telephone,
                     :callback_time, :preferred_office, :service, :enquiry_type,
-                    :find_us, :wealth_management
+                    :how_heard, :wealth_management
 
       validates :forename, :surname, :contact_telephone,
                 :callback_time, :enquiry_type, presence: true
