@@ -156,3 +156,19 @@
     }
   }
 }
+
+.top-level-parent.selected-navigation {
+  background: $deep-accent-grey;
+  padding: rem(0 0 1px);
+
+  & > a {
+    font-weight: $montserrat-bold;
+    padding: rem(5px);
+  }
+
+  .dropdown.depth-1 {
+    background: $white;
+    margin: rem(1px);
+    padding: rem(5px);
+  }
+}
