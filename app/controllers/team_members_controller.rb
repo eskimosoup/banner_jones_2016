@@ -5,7 +5,7 @@ class TeamMembersController < ApplicationController
 
   def index
     @office = Office.displayed.find(params[:office_id]) if params[:office_id].present?
-    @team_members = @office.present? ? @office.team_members.displayed : TeamMember.displayed
+    @team_members = @office.present? ? @office.team_members.unscoped.displayed.order(:surname) : TeamMember.unscoped.displayed.order(:surname)
   end
 
   def show
