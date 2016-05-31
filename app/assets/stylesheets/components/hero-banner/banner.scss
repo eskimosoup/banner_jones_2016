@@ -8,6 +8,10 @@
   border-bottom: 8px solid $orange;
   max-height: 700px;
   overflow: hidden;
+
+  @include media('<768px') {
+    display: none;
+  }
 }
 
 .hero-banner-slick {

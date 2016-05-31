@@ -15,6 +15,10 @@
     display: block;
     padding: 0 0 rem(17px);
   }
+
+  @include media('<768px') {
+    margin-top: rem(1px);
+  }
 }
 
 .hero-banner-navigation-row-horizontal {
