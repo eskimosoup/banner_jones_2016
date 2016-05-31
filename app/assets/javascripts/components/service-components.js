@@ -107,3 +107,17 @@ $(document).on('click', '.frequently-asked-question-toggle', function() {
   smoothScroll('#' + $(this).attr('id'));
   return false;
 });
+
+if (Modernizr.mq('only screen and (max-width: 768px)')) {
+  var currentScrollPosition;
+
+  $(document).on('click', '.inline-modal .close-button', function() {
+    $(window).scrollTop(currentScrollPosition, 0);
+  });
+
+  $(document).on('click', '.page-call-to-action.toggle-class', function() {
+    var scrollTo = $($(this).attr('href')).offset().top - onpageLinksHeight;
+    currentScrollPosition = $(window).scrollTop();
+    $(window).scrollTop(scrollTo, 0);
+  });
+}
