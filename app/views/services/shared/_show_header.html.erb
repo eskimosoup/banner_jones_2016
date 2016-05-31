@@ -24,18 +24,20 @@
       <% end %>
     </style>
   <% end %>
+<% end %>
 
-  <%= content_for :javascript do %>
-    <%= javascript_include_tag 'components/testimonials/slider.js' %>
-    <%= javascript_include_tag 'components/shared-components.js' %>
-    <%= javascript_include_tag 'components/team-members/slider.js' %>
-    <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>
-    <%= javascript_include_tag 'components/service-components.js' %>
-    <%= javascript_include_tag 'components/resources/hover.js' %>
-    <script>
-      $(window).load(function() {
-        $('.page-aside-navigation-content, .page-content').matchHeight();
-      });
-    </script>
-  <% end %>
+
+
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/testimonials/slider.js' %>
+  <%= javascript_include_tag 'components/shared-components.js' %>
+  <%= javascript_include_tag 'components/team-members/slider.js' %>
+  <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>
+  <%= javascript_include_tag 'components/service-components.js' %>
+  <%= javascript_include_tag 'components/resources/hover.js' %>
+  <script>
+    $(window).load(function() {
+      $('.page-aside-navigation-content, .page-content').matchHeight();
+    });
+  </script>
 <% end %>
