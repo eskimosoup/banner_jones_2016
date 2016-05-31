@@ -14,8 +14,8 @@
   </div>
 <% end %>
 
-  <% service.key_team_members.limit(1).each do |service_team_member| %>
-    <% present service_team_member.team_member do |team_member_presenter| %>
+  <% service.team_members.key_team_members.limit(1).each do |service_team_member| %>
+    <% present service_team_member do |team_member_presenter| %>
       <div class="meganav-dropdown-team-member-wrap">
         <%= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member') %>
         <div class="meganav-dropdown-team-member-name">
