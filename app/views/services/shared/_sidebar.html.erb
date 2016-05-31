@@ -1,27 +1,29 @@
-<aside class="page-additional-information">
-  <div class="service-page-additional-information-key-team-members">
-    <div class="service-page-additional-information-key-team-members-title">
-      <h3>
-        Talk to our<br />
-        <%= @service.title %> team
-      </h3>
-    </div>
+<% cache [@service, @service.rich-snippet, @service.team_members.key_team_members.max(:updated_at) ] %>
+  <aside class="page-additional-information">
+    <div class="service-page-additional-information-key-team-members">
+      <div class="service-page-additional-information-key-team-members-title">
+        <h3>
+          Talk to our<br />
+          <%= @service.title %> team
+        </h3>
+      </div>
 
-    <div class="service-page-additional-information-key-team-members-profiles">
-      <div class="multiple-team-members-slick">
-        <%= render partial: 'services/shared/key_team_member_avatars', collection: @service.key_team_members, as: :service_team_member %>
+      <div class="service-page-additional-information-key-team-members-profiles">
+        <div class="multiple-team-members-slick">
+          <%= render partial: 'services/shared/key_team_member_avatars', collection: @service.team_members.key_team_members, cached: true, as: :team_member %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <%= render 'pages/shared/call_to_actions_solicitors' %>
+    <%= render 'pages/shared/call_to_actions_solicitors' %>
 
-  <% if @service.rich_snippet %>
-    <div class="service-rich-snippets">
-      <%= render(
-        "rich_snippets/service_rich_snippet",
-        rich_snippet: @service.rich_snippet
-       ) %>
-    </div>
-  <% end %>
-</aside>
+    <% if @service.rich_snippet %>
+      <div class="service-rich-snippets">
+        <%= render(
+          "rich_snippets/service_rich_snippet",
+          rich_snippet: @service.rich_snippet
+        ) %>
+      </div>
+    <% end %>
+  </aside>
+<% end %>

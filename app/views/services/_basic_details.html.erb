@@ -1,0 +1,14 @@
+<% cache service do %>
+  <% present service do |service_presenter| %>
+    <h1 class="service-page-title" style="<%= service_presenter.colour_property_helper('border-color') %>">
+      <%= service_presenter.title %>
+      <%= service_presenter.small_icon({alt: service_presenter.title, class: 'service-page-icon'}) %>
+    </h1>
+
+    <div class="page-inner-content">
+      <div class="service-page-summary">
+        <%= service_presenter.summary %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

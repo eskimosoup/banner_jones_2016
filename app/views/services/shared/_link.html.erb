@@ -1,3 +1,5 @@
-<% present service do |service_presenter| %>
-  <%= service_presenter.linked_text(service_presenter.title) %>
+<% cache service do %>
+  <% present service do |service_presenter| %>
+    <%= service_presenter.linked_text(service_presenter.title) %>
+  <% end %>
 <% end %>
