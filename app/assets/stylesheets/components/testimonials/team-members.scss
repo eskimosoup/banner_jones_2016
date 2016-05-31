@@ -1,3 +1,9 @@
 .home-content-box.testimonials.testimonials-show {
-  padding-top: rem(118px);
+  @include media('<768px') {
+    background-position: 15px 15px, 97% 97%;
+  }
+
+  @include media('>768px') {
+    padding-top: rem(118px);
+  }
 }

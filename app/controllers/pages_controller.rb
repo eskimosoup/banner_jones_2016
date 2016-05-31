@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     @side_menus = @page.side_menus
     @team_members = TeamMember.displayed
     @services = Service.root_services.displayed.pluck(:title, :id)
-    @offices = Office.displayed
+    @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
     render layout: @page.layout
   end
 

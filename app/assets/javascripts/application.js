@@ -18,5 +18,6 @@
 //= require components/articles/colour-toggle
 //= require components/toggle-class
 //= require components/inline-modal
+//= require components/mobile-anchors
 //= require vendor/modernizr
 //= require vendor/doubletaptogo

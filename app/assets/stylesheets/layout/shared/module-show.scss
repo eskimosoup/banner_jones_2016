@@ -11,7 +11,11 @@
 
 .module-show-content-wrap {
   @include grid-row;
-  margin: rem(20px) auto rem(60px);
+  margin: rem(20px) auto 0;
+
+  @include media('>768px') {
+    margin: rem(20px) auto rem(60px);
+  }
 }
 
 .module-show-author {

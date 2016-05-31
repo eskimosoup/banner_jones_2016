@@ -13,6 +13,10 @@
 
   &.mobile-expanded {
     display: block;
+    position: fixed;
+    top: 50px;
+    width: 100%;
+    z-index: 77;
   }
 
   .dropdown {
@@ -34,7 +38,9 @@
     }
 
     &:hover .meganav-dropdown {
-      display: block;
+      @include media('>768px') {
+        display: block;
+      }
     }
 
     > .menu-link {
@@ -65,7 +71,10 @@
   .dropdown {
     background: $light-grey;
     padding: rem(15px 0);
-    position: absolute;
+
+    @include media('>768px') {
+      position: absolute;
+    }
 
     li {
       display: block;
@@ -73,7 +82,11 @@
 
     a {
       margin: rem(1px);
-      padding: rem(3px) rem(20px) rem(3px) rem(25px);
+      padding: rem(7px) rem(15px);
+
+      @include media('>768px') {
+        padding: rem(3px) rem(20px) rem(3px) rem(25px);
+      }
 
       &:link,
       &:visited {

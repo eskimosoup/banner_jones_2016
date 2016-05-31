@@ -1,7 +1,11 @@
 .frequently-asked-question-with-icon {
   margin: rem(15px) 0;
-  padding: rem(3px) rem(44px) 0;
   position: relative;
+  padding: 0 0 0 rem(38px);
+
+  @include media('>768px') {
+    padding: rem(3px) rem(44px) 0;
+  }
 
   &:before {
     background: $even-lighter-grey;

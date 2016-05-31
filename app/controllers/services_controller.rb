@@ -9,7 +9,7 @@ class ServicesController < ApplicationController
     return redirect_to audience_service_path(@audience, @service), status: :moved_permanently if request.path != audience_service_path(@audience, @service)
     @onpage_navigations = @service.displayed_onpage_navigations
     @onpage_navigation_links = @onpage_navigations.displayed_navigation_link
-    @offices = Office.displayed
+    @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
     @hide_sticky_cta = true
   end
 

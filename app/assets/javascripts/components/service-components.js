@@ -38,11 +38,17 @@ $(window).scroll(function() {
 var $root, onpageLinksHeight;
 
 function smoothScroll(elem) {
-  $root.animate({
-    scrollTop: $(elem).offset().top - onpageLinksHeight
-  }, 250, function () {
-    window.location.hash = elem;
-  });
+  var scrollTo = $(elem).offset().top - onpageLinksHeight;
+
+  if (Modernizr.mq('only screen and (min-width: 1024px)')) {
+    $root.animate({
+      scrollTop: scrollTo
+    }, 250, function () {
+      window.location.hash = elem;
+    });
+  } else {
+    $(window).scrollTop(scrollTo, 0);
+  }
 }
 
 $(document).ready(function() {
@@ -79,8 +85,8 @@ $(document).ready(function() {
 
 $(document).on('click', '.page-aside-navigation-top-level', function() {
   if (Modernizr.mq('only screen and (max-width: 767px)')) {
-    $('.page-aside-navigation-links-list').slideToggle();
-    $('.page-aside-navigation-active').toggleClass('expanded');
+    $('.page-aside-child-navigation-links-list').slideToggle();
+    $(this).toggleClass('expanded');
     return false;
   }
 });

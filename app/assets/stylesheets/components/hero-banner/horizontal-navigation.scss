@@ -1,7 +1,9 @@
 @mixin hero-banner-img {
   border: 5px solid $white;
   border-radius: 50%;
-  margin: 0 rem(5px);
+  display: block;
+  // margin: 0 rem(5px);
+  margin: 0 auto;
   width: 50px;
 }
 
@@ -107,7 +109,9 @@
 
     @include media('<1400px') {
       font-size: rem(14px);
-      width: 100px;
+      // width: 100px;
+      text-align: center;
+      width: 100%;
     }
   }
 
