@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160527130926) do
+ActiveRecord::Schema.define(version: 20160531153106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -530,6 +530,15 @@ ActiveRecord::Schema.define(version: 20160527130926) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.index ["service_id"], name: "index_rich_snippets_on_service_id", unique: true, using: :btree
+  end
+
+  create_table "seo_entries", force: :cascade do |t|
+    t.string   "nominal_url"
+    t.string   "title"
+    t.text     "meta_description"
+    t.boolean  "in_sitemap",       default: true
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "service_hierarchies", id: false, force: :cascade do |t|

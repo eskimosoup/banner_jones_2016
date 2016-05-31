@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :global_site_settings, :load_global_objects
+  before_action :global_site_settings, :load_global_objects, :set_seo_variables
 
   include Optimadmin::AdminSessionsHelper
 
@@ -15,7 +15,24 @@ class ApplicationController < ActionController::Base
     rescue_from ActionController::RoutingError, with: -> { render_error(404) }
   end
 
+  def sitemap
+    @seo_entries = SeoEntry.where(in_sitemap: true).order(:nominal_url)
+
+    respond_to do |format|
+      format.html
+      format.xml
+    end
+  end
+
   private
+
+  def set_seo_variables
+    seo_entry = SeoEntry.find_by_nominal_url(request.path)
+    return unless seo_entry
+    @title = seo_entry.title
+    @meta_description = seo_entry.meta_description
+    @meta_tags = seo_entry.title
+  end
 
   def load_global_objects
     @header_aside_menu = Optimadmin::Menu.new(name: 'header_aside')
