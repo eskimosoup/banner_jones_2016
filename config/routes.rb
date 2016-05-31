@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
 
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
+  resources :payments, only: [:new, :create, :show]
+  match '/payments/gateway_reply', to: 'payment_gateway_replies#create', via: [:get, :post]
   resources :testimonials, only: [:index]
 
   resources :team_members, only: [:index, :show], path: 'team-members' do

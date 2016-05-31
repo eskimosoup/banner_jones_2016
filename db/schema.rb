@@ -486,6 +486,16 @@ ActiveRecord::Schema.define(version: 20160531153106) do
     t.text     "summary"
   end
 
+  create_table "payments", force: :cascade do |t|
+    t.string   "invoice_number",                          null: false
+    t.string   "name",                                    null: false
+    t.string   "contact_number",                          null: false
+    t.decimal  "amount",         precision: 15, scale: 2, null: false
+    t.string   "code",                                    null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
   create_table "resource_categories", force: :cascade do |t|
     t.string   "title",                        null: false
     t.string   "suggested_url"

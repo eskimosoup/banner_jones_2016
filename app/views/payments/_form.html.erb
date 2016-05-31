@@ -1,0 +1,7 @@
+<%= simple_form_for @payment do |f| %>
+  <%= f.input :invoice_number %>
+  <%= f.input :name %>
+  <%= f.input :contact_number %>
+  <%= f.input :amount, as: :decimal %>
+  <%= f.button :submit, "Continue" %>
+<% end %>
