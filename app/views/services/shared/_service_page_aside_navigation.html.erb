@@ -1,12 +1,63 @@
+<%= content_for :head do %>
+  <style>
+    .page-aside-root-service-title,
+    .page-aside-parent-title,
+    .page-aside-child-navigation-links-list {
+      display: none;
+    }
+
+    @media screen and (max-width: 768px) {
+      <% if @service.parent.present? %>
+        .page-aside-root-service-title,
+        .page-aside-parent-title {
+          display: block;
+        }
+
+        .page-aside-audience-title,
+        .page-aside-root-title {
+          display: none;
+        }
+      <% end %>
+    }
+  </style>
+<% end %>
+
 <% cache [@service, @service.audience] do %>
   <% present @service do |service_presenter| %>
-    <h2 class="page-aside-navigation-title">Services <%= service_presenter.audience.title %></h2>
+    <h2 class="page-aside-navigation-title">
+      <div class="page-aside-audience-title">
+        Services <%= service_presenter.audience.title %>
+      </div>
+
+      <div class="page-aside-root-service-title">
+        <%= link_to @service.parent.title, audience_service_path(@service.parent.audience, @service.parent) if @service.parent.present? %>
+      </div>
+    </h2>
 
     <div class="page-aside-navigation-links">
-      <%= link_to @service.root.title, audience_service_path(@service.root.audience, @service.root), { title: @service.root.title, class: 'page-aside-navigation-top-level' } %>
+      <div class="page-aside-root-title">
+        <%= link_to @service.root.title, audience_service_path(@service.root.audience, @service.root), { title: @service.root.title, class: 'page-aside-navigation-top-level' } %>
+      </div>
+
+      <div class="page-aside-parent-title">
+        <%= link_to @service.title, '#', { title: @service.title, class: "page-aside-navigation-top-level #{'has-children' if @service.children.present?}" } %>
+      </div>
 
       <ul class="page-aside-navigation-links-list">
         <% @service.root.children.each do |child_service| %>
+          <% present child_service do |service_presenter| %>
+            <li>
+              <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>
+              <% if child_service.children && (child_service == @service || child_service.descendant_ids.include?(@service.id)) %>
+                <%= render 'services/shared/service_page_aside_nested_navigation', child_service: child_service %>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+
+      <ul class="page-aside-navigation-links-list page-aside-child-navigation-links-list">
+        <% @service.children.each do |child_service| %>
           <% present child_service do |service_presenter| %>
             <li>
               <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>

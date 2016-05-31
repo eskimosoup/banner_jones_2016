@@ -4,10 +4,13 @@
   display: none;
   height: 100%;
   left: 0;
-  position: fixed;
   top: 0;
   width: 100%;
   z-index: 9999;
+
+  @include media('>768px') {
+    position: fixed;
+  }
 
   &.visible {
     display: block;
@@ -19,12 +22,16 @@
   background: $white;
   -webkit-filter: blur(0);
   height: auto;
-  left: 50%;
   padding: rem(20px);
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
+  width: 100%;
+
+  @include media('>768px') {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+  }
 }
 
 .inline-modal.remote-callback-request-form-modal,

@@ -1,5 +1,8 @@
 .remote-callback-request-form {
-  padding: rem-calc(16px 35px);
+  @include media('>768px') {
+    padding: rem-calc(16px 35px);
+  }
+  
   .request-callback-title {
     border-bottom: 2px solid $orange;
     padding-bottom: rem(15px);

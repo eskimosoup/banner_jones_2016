@@ -146,7 +146,11 @@
   @include clearfix;
   background: $orange;
   color: $white;
-  padding: rem(10px) rem(10px) rem(50px);
+  padding: rem(15px) rem(10px);
+
+  @include media('>768px') {
+    padding: rem(10px) rem(10px) rem(50px);
+  }
 
   @include breakpoint(large) {
     padding: rem(29px) rem(40px);

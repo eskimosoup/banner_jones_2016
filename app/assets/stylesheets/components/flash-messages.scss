@@ -6,15 +6,16 @@ $border-color: $light-slate-blue;
 
 %flash-heading {
   font-weight: normal;
+  font-size: rem(16px);
 }
 
 // Flash
 .flash-message {
   border: 1px solid $border-color;
   color: $text-color;
-  font-size: rem(16px);
-  padding: rem(5px);
+  font-size: rem(14px);
   margin: 0 0 rem(20px);
+  padding: rem(5px);
 
   h2 {
     @extend %flash-heading;
@@ -44,7 +45,7 @@ $border-color: $light-slate-blue;
 #error_explanation {
   background: $error;
   color: $white;
-  
+
   h2 {
     @extend %flash-heading;
   }

@@ -45,6 +45,7 @@
 
     &:link,
     &:visited {
+      display: block;
       color: $black;
     }
 
@@ -59,9 +60,15 @@
     }
 
     &.page-aside-navigation-top-level {
-      background: $red image-url('components/icons/navigation/expand.png') no-repeat 95% center;
+      background: $red;
       color: $white;
       font-weight: $montserrat-bold;
+
+      &.has-children {
+        background-image: image-url('components/icons/navigation/expand.png');
+        background-position: 95% center;
+        background-repeat: no-repeat;
+      }
 
       &.expanded {
         background-image: image-url('components/icons/navigation/collapse.png');

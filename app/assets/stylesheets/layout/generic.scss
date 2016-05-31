@@ -15,6 +15,12 @@ body {
   @include page-content;
   padding-bottom: rem(20px);
   padding-top: rem(20px);
+
+  @include media('<768px') {
+    h1 {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .module-inner-content {
@@ -36,18 +42,38 @@ body {
   @include navigation-button;
   position: absolute;
 
+  @include media('<768px') {
+    padding: rem(2px) rem(9px);
+    z-index: 3;
+  }
+
   &.home-resources {
     right: 120px;
     top: 51px;
+
+    @include media('<768px') {
+      right: 10px;
+      top: 84px;
+    }
   }
 
   &.home-team-members {
     right: 120px;
-    top: 154px;
+    top: 114px;
+
+    @include media('<768px') {
+      right: 10px;
+      top: 84px;
+    }
   }
 
   &.home-articles {
     right: 120px;
     top: 50px;
+
+    @include media('<768px') {
+      right: 10px;
+      top: 10px;
+    }
   }
 }

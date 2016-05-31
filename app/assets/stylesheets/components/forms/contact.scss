@@ -1,7 +1,11 @@
 .related-fields {
-  @include grid-row;
+  @include breakpoint(large) {
+    @include grid-row;
+  }
 
   .field {
+    overflow: auto;
+    
     @include breakpoint(large) {
       @include grid-column($columns: 6, $gutter: (large: 0));
 
@@ -24,7 +28,9 @@
 }
 
 .remote-contact-form {
-  padding: rem-calc(16px 35px);
+  @include media('>768px') {
+    padding: rem-calc(16px 35px);
+  }
 
   .contact-details .field:nth-child(2) {
     input,

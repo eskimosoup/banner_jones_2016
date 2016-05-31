@@ -3,11 +3,12 @@
 
   @include media('<1024px') {
     background: $white;
+    border-bottom: 1px solid $light-grey;
     padding: rem(15px);
     position: fixed;
     top: 0;
-    z-index: 10;
     width: 100%;
+    z-index: 10;
   }
 }
 
@@ -78,6 +79,10 @@
 .header-navigation {
   @include grid-row;
   margin: rem(30px) auto 0;
+
+  @include media('<768px') {
+    margin: 0 auto;
+  }
 }
 
 .header-hamburger-menu {

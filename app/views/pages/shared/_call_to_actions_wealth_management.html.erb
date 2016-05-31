@@ -11,7 +11,7 @@
 <% end %>
 
 <% unless defined?(hide_callback) %>
-  <%= link_to '#', class: 'page-call-to-action toggle-class',
+  <%= link_to '#new_callback_request', class: 'page-call-to-action toggle-class',
     data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
     <div class="page-call-to-action-title">
       Request a call back
@@ -24,7 +24,7 @@
 <% end %>
 
 <% unless defined?(hide_email) %>
-  <%= link_to '#', class: 'page-call-to-action toggle-class',
+  <%= link_to '#new_contact', class: 'page-call-to-action toggle-class',
     data: { container: '.remote-contact-form-modal', class: 'visible', return: 'false' } do %>
     <div class="page-call-to-action-title">
       Email us
