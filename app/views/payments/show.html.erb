@@ -1,0 +1,92 @@
+<div class="index-content-wrap">
+  <div class="index-content module-index-content">
+    <h1>Confirm Details</h1>
+
+    <p>
+      <strong>Please check the the details below are correct before continuing</strong>
+    </p>
+
+    <div class="payment">
+      <div class="invoice-number">
+        <strong>Our reference:</strong> <%= @payment.invoice_number %>
+      </div>
+      <div class="name">
+        <strong>Name:</strong> <%= @payment.name %>
+      </div>
+      <div class="contact-number">
+        <strong>Contact number:</strong> <%= @payment.contact_number %>
+      </div>
+      <div class="amount">
+        <strong>Amount</strong> <%= number_to_currency @payment.amount %>
+      </div>
+    </div>
+
+    <h3>Debit Card - <%= number_to_currency @payment.amount %></h3>
+    <%= render(
+      partial: "payments/worldpay",
+      locals: {
+        amount: @payment.amount,
+        payment_type: "SWIT",
+        card_type: "Maestro",
+      }
+    ) %>
+    <%= render(
+      partial: "payments/worldpay",
+      locals: {
+        amount: @payment.amount,
+        payment_type: "VISD",
+        card_type: "Visa Debit",
+      }
+    ) %>
+    <%= render(
+      partial: "payments/worldpay",
+      locals: {
+        amount: @payment.amount,
+        payment_type: "VIED",
+        card_type: "Visa Electron",
+      }
+    ) %>
+
+    <h3>Credit Card - <%= number_to_currency @payment.credit_card_amount %></h3>
+    <%= render(
+      partial: "payments/worldpay",
+      locals: {
+        amount: @payment.amount,
+        payment_type: "VISA",
+        card_type: "Visa Credit",
+      }
+    ) %>
+    <%= render(
+      partial: "payments/worldpay",
+      locals: {
+        amount: @payment.amount,
+        payment_type: "MSCD",
+        card_type: "Mastercard",
+      }
+    ) %>
+    <%= render(
+      partial: "payments/worldpay",
+      locals: {
+        amount: @payment.amount,
+        payment_type: "JCB",
+        card_type: "JCB",
+      }
+    ) %>
+    <%= render(
+      partial: "payments/worldpay",
+      locals: {
+        amount: @payment.amount,
+        payment_type: "AMEX",
+        card_type: "American Express",
+      }
+    ) %>
+    <%= render(
+      partial: "payments/worldpay",
+      locals: {
+        amount: @payment.amount,
+        payment_type: "DINS",
+        card_type: "Diners Card",
+      }
+    ) %>
+  </div>
+</div>
