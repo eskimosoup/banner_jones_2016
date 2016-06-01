@@ -1,3 +1,9 @@
 <li>
-  <%= render 'services/shared/link', service: service %> 
+  <%= render(
+    partial: 'services/shared/link', 
+    locals: {
+      service: service,
+      audience: audience
+    }
+  ) %>
 </li>

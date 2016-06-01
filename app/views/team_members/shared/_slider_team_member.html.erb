@@ -1,4 +1,4 @@
-<% cache [team_member, team_member.job_roles.map(&:updated_at).max, team_member.department_roles.map(&:updated_at).max, team_member.root_services.map(&:updated_at).max] do %>
+<% cache [team_member, team_member.offices.map(&:updated_at).max, team_member.job_roles.map(&:updated_at).max, team_member.department_roles.map(&:updated_at).max, team_member.root_services.map(&:updated_at).max] do %>
   <div class="slider-team-member">
     <% present team_member do |team_member_presenter| %>
       <%= link_to '#',

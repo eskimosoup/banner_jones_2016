@@ -6,18 +6,23 @@
         <h2 class="meganav-primary-title">Departments</h2>
 
         <ul class="meganav-links meganav-primary-links">
-          <% present audience do |audience_presenter| %>
-            <%= audience_presenter.render_audience_links %>
-          <% end %>
+          <%= render(
+            partial: "audiences/navigation_link",
+            collection: audience.services.roots.order(:position),
+            as: :service
+          ) %>
         </ul>
       </div>
 
       <!-- Services -->
       <% # TODO: Add little triangle to hovered item in the main nav %>
       <div>
-        <% present audience do |audience_presenter| %>
-          <%= audience_presenter.render_audience_contents %>
-        <% end %>
+        <%= render(
+          partial: "audiences/navigation_content",
+          collection: audience.services.includes(:children),
+          as: :service,
+          locals: { audience: audience }
+        ) %>
       </div>
     </div>
   </div>

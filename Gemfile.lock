@@ -59,7 +59,7 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: d13e45cecd8ca7b2f0efda9548ae1428dd2d7392
+  revision: 287e794ca63a154ba54d39a31335674e1cf6da12
   branch: master
   specs:
     optimised_site (0.0.25)
@@ -122,9 +122,9 @@ GEM
     bcrypt (3.1.11)
     buftok (0.2.0)
     builder (3.2.2)
-    bullet (4.14.10)
+    bullet (5.1.0)
       activesupport (>= 3.0.0)
-      uniform_notifier (~> 1.9.0)
+      uniform_notifier (~> 1.10.0)
     byebug (9.0.5)
     cancancan (1.14.0)
     carrierwave (0.11.2)
@@ -406,7 +406,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
-    uniform_notifier (1.9.0)
+    uniform_notifier (1.10.0)
     web-console (3.1.1)
       activemodel (>= 4.2)
       debug_inspector
@@ -425,7 +425,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bullet (~> 4.14.7)
+  bullet (~> 5.1.0)
   byebug
   capybara!
   coffee-rails (~> 4.1.0)

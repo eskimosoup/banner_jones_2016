@@ -1,5 +1,3 @@
-<% cache service do %>
-  <% present service do |service_presenter| %>
-    <%= service_presenter.linked_text(service_presenter.title) %>
-  <% end %>
+<% cache [audience, service] do %>
+  <%= link_to service.title, audience_service_path(audience, service) %>
 <% end %>

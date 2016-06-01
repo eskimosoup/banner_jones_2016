@@ -1,0 +1,28 @@
+<section class="hero-banner">
+  <div class="hero-banner-controls-wrap">
+    <%= image_tag 'components/icons/hero/previous.png', alt: '', class: 'hero-banner-controls hero-banner-previous', title: 'Previous slide' %>
+    <%= image_tag 'components/icons/hero/next.png', class: 'hero-banner-controls hero-banner-next', title: 'Next slide' %>
+  </div>
+
+  <div class="hero-banner-slick">
+    <%= render partial: 'banners/banner', collection: banners, as: :banner %>
+  </div>
+
+  <% if banner_services.present? && global_site_settings['Banner navigation'] == 'Vertical' %>
+    <%= render(
+      partial: 'application/shared/hero_banner_navigation_vertical',
+      locals: {
+        banner_services: banner_services
+      }
+    ) %>
+  <% end %>
+</section>
+
+<% if banner_services.present? && global_site_settings['Banner navigation'] == 'Horizontal' %>
+  <%= render(
+    partial: 'application/shared/hero_banner_navigation_horizontal',
+    locals: {
+      banner_services: banner_services
+    }
+  ) %>
+<% end %>

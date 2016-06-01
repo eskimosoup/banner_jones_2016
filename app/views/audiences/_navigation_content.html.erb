@@ -9,7 +9,12 @@
       </div>
 
       <ul class="meganav-links meganav-secondary-links">
-        <%= service_presenter.render_child_service_links %>
+        <%= render(
+          partial: "services/navigation_link",
+          collection: service.children,
+          as: :service,
+          locals: { audience: audience }
+        ) %>
       </ul>
   </div>
 <% end %>

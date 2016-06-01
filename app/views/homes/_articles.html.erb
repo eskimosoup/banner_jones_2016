@@ -1,0 +1,19 @@
+<section class="home-content-box-wrap">
+  <div class="home-content-box inner">
+
+    <%= link_to 'See All', articles_path, class: 'module-see-all home-articles' %>
+
+    <div class="articles-home-content-box-slider-controls">
+      <%= image_tag 'components/icons/content-box/previous.png', alt: 'Previous', class: 'home-content-box-previous' %>
+      <%= image_tag 'components/icons/content-box/next.png', alt: 'Next', class: 'home-content-box-next' %>
+    </div>
+
+    <h2 class="home-content-box-title">
+      News
+    </h2>
+
+    <div class="articles-slick">
+      <%= render partial: 'articles/home_article', collection: articles, as: :article %>
+    </div>
+  </div>
+</section>

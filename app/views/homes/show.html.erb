@@ -5,34 +5,13 @@
 <% end %>
 
 <% if @facade.banners.present? %>
-  <section class="hero-banner">
-    <div class="hero-banner-controls-wrap">
-      <%= image_tag 'components/icons/hero/previous.png', alt: '', class: 'hero-banner-controls hero-banner-previous', title: 'Previous slide' %>
-      <%= image_tag 'components/icons/hero/next.png', class: 'hero-banner-controls hero-banner-next', title: 'Next slide' %>
-    </div>
-
-    <div class="hero-banner-slick">
-      <%= render partial: 'banners/banner', collection: @facade.banners, as: :banner %>
-    </div>
-
-    <% if @facade.banner_services.present? && global_site_settings['Banner navigation'] == 'Vertical' %>
-      <%= render(
-        partial: 'application/shared/hero_banner_navigation_vertical',
-        locals: {
-          banner_services: @facade.banner_services
-        }
-      ) %>
-    <% end %>
-  </section>
-
-  <% if @facade.banner_services.present? && global_site_settings['Banner navigation'] == 'Horizontal' %>
-    <%= render(
-      partial: 'application/shared/hero_banner_navigation_horizontal',
-      locals: {
-        banner_services: @facade.banner_services
-      }
-    ) %>
-  <% end %>
+  <%= render(
+    partial: "homes/banners",
+    locals: { 
+      banners: @facade.banners,
+      banner_services: @facade.banner_services
+    } 
+  ) %>
 <% end %>
 
 <div class="content">
@@ -44,46 +23,23 @@
   ) if @facade.resources.present? %>
 
   <% if @facade.team_members.present? %>
-    <section class="home-content-box-wrap">
-      <div class="home-content-box">
-        <%= render 'team_members/shared/slider', team_members: @facade.team_members, title: 'Specialist Team' %>
-      </div>
-    </section>
+    <%= render(
+      partial: "homes/team_members",
+      locals: { team_members: @facade.team_members }
+    ) %>
   <% end %>
 
   <% if @facade.testimonials.present? %>
-    <section class="home-content-box-wrap">
-      <div class="home-content-box inner testimonials">
-        <h2 class="home-content-box-title testimonials-title">
-          A People Business
-        </h2>
-
-        <div class="testimonials-slick">
-          <%= render @facade.testimonials %>
-        </div>
-      </div>
-    </section>
+    <%= render(
+      partial: "homes/testimonials",
+      locals: { testimonials: @facade.testimonials }
+    ) %>
   <% end %>
 
   <% if @facade.articles.present? %>
-    <section class="home-content-box-wrap">
-      <div class="home-content-box inner">
-
-        <%= link_to 'See All', articles_path, class: 'module-see-all home-articles' %>
-
-        <div class="articles-home-content-box-slider-controls">
-          <%= image_tag 'components/icons/content-box/previous.png', alt: 'Previous', class: 'home-content-box-previous' %>
-          <%= image_tag 'components/icons/content-box/next.png', alt: 'Next', class: 'home-content-box-next' %>
-        </div>
-
-        <h2 class="home-content-box-title">
-          News
-        </h2>
-
-        <div class="articles-slick">
-          <%= render partial: 'articles/home_article', collection: @facade.articles, as: :article %>
-        </div>
-      </div>
-    </section>
+    <%= render(
+      partial: "homes/articles",
+      locals: { articles: @facade.articles }
+    ) %>
   <% end %>
 </div>

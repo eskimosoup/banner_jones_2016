@@ -1,4 +1,4 @@
-<% cache [team_member, team_member.job_roles.map(&:updated_at).max, team_member.department_roles.map(&:updated_at).max, team_member.root_services.map(&:updated_at).max] do %>
+<% cache [team_member, team_member.offices.map(&:updated_at).max, team_member.job_roles.map(&:updated_at).max, team_member.department_roles.map(&:updated_at).max, team_member.root_services.map(&:updated_at).max] do %>
   <div class="slider-team-member-profile">
     <div class="slider-team-member-profile-information">
       <% present team_member do |team_member_presenter| %>
@@ -19,7 +19,7 @@
         <li class="slider-team-member-office-location">
           <%= render(
             partial: "offices/team_member_office",
-            collection: team_member.offices,
+            collection: team_member.offices.includes(:office_location),
             cached: true,
             as: :office,
             locals: {

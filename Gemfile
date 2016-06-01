@@ -63,7 +63,7 @@ group :development do
   gem 'pry-rails', '~> 0.3.4'
   gem 'pry-byebug'
   gem 'stackprof', '~> 0.2.7'
-  gem 'bullet', '~> 4.14.7'
+  gem 'bullet', '~> 5.1.0'
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
