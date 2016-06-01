@@ -5,7 +5,7 @@ function teamMembersSlick() {
   }
 
   $('.slider-team-members-slick').on('init', function() {
-    $('.slider-team-member.slick-current').click();
+    $('.slider-team-member.slick-current .slider-team-member-profile-card-update').click();
   });
 
   $('.slider-team-members-slick').slick({

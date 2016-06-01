@@ -30,16 +30,11 @@
       <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
     </div>
   </div>
-  <div class="related-fields">
-    <% if Flip.services? %>
-      <div class="field">
-        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
-      </div>
-    <% end %>
+  <% if Flip.services? %>
     <div class="field">
-      <%= f.select :enquiry_type, options_for_select(Contact::ENQUIRY_TYPES, selected: (params[:enquiry_type] if params[:enquiry_type].present?)), prompt: 'Enquiry type' %>
+      <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
     </div>
-  </div>
+  <% end %>
 
   <div class="field full">
     <%= f.text_area :message, placeholder: 'Message' %>

@@ -33,7 +33,7 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 714a0ce71005015422b2dabf69c848bb27105140
+  revision: 1dc5c58a4ea582baa0d74dac2fd027da97583d5b
   branch: master
   specs:
     optimadmin (0.0.31)
@@ -57,10 +57,8 @@ GIT
   specs:
     optimadmin_generators (0.5.0)
 
-GIT
-  remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 28fbe6407349d4e4ab27b595ccc31a9f8db15e46
-  branch: master
+PATH
+  remote: ../optimised_site
   specs:
     optimised_site (0.0.24)
       amoeba

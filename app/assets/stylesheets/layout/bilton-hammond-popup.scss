@@ -1,0 +1,15 @@
+.bilton-hammond-popup-brand-logos {
+  @include clearfix;
+  display: inline-block;
+  text-align: center;
+}
+
+.bilton-hammond-popup-bh-logo {
+  float: right;
+  margin: rem(20px) rem(40px);
+}
+
+.bilton-hammond-popup-bj-logo {
+  float: left;
+  margin: rem(20px) rem(40px);
+}

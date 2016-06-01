@@ -35,7 +35,7 @@
       <%= link_to phone, "tel:#{phone}" if phone.present? %>
     </div>
 
-    <%= link_to (image_tag 'components/icons/header/map.png', alt: ''), class: 'header-locations', title: 'Locations' if defined?(solicitors) %>
+    <%= link_to (image_tag 'components/icons/header/map.png', alt: ''), offices_path, class: 'header-locations', title: 'Locations' if defined?(solicitors) %>
   </div>
 </header>
 

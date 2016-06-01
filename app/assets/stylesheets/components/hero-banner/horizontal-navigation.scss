@@ -107,7 +107,7 @@
       line-height: 1.25;
       min-height: 170px;
       width: 140px;
-      padding: rem(62px) rem(14px) rem(42px);
+      padding: rem(62px) rem(12px) rem(42px);
       text-align: center;
     }
 
@@ -141,7 +141,7 @@
 
     @include media('>768px', '<1400px') {
       top: -27px;
-      width: 70%;
+      width: 72px;
     }
   }
 }
