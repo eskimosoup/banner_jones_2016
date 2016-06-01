@@ -42,6 +42,9 @@
   <div class="field">
     <%= f.text_area :enquiry_type, placeholder: "Enquiry" %>
   </div>
+
+  <%= f.hidden_field :from_url, value: request.original_url %>
+  
   <div class="actions">
     <%= f.submit "Send", class: "submit-button" %>
   </div>

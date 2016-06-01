@@ -4,7 +4,10 @@
       <% present grandchild_service do |service_presenter| %>
         <li>
           <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if grandchild_service == @service}" }) %>
-          <%= render 'services/shared/service_page_aside_nested_navigation', child_service: grandchild_service %>
+          <%=
+          render 'services/shared/service_page_aside_nested_navigation', child_service: grandchild_service
+          # if (grandchild_service == @service || grandchild_service.descendant_ids.include?(@service.id)) 
+          %>
         </li>
       <% end %>
     <% end %>

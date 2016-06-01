@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   private
 
   def set_seo_variables
-    seo_entry = SeoEntry.find_by_nominal_url(request.path)
+    seo_entry = SeoEntry.find_by(nominal_url: request.path)
     return unless seo_entry
     @title = seo_entry.title
     @meta_description = seo_entry.meta_description

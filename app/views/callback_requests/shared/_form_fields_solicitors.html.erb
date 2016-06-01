@@ -42,6 +42,9 @@
     <%= f.label :how_heard, 'How did you find us?' %>
     <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'Please select' %>
   </div>
+
+  <%= f.hidden_field :from_url, value: request.original_url %>
+
   <div class="actions">
     <%= f.submit "Send", class: "submit-button" %>
   </div>

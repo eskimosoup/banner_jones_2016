@@ -73,3 +73,5 @@
     <%= simple_format @callback_request.enquiry_type %>
   </p>
 <% end %>
+
+<%= link_to "Submitted from #{@callback_request.from_url}", @callback_request.from_url if @callback_request.from_url.present? %>
