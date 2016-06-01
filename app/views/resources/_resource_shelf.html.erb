@@ -12,7 +12,7 @@
 
     <% present resource.services.first do |service_presenter| %>
       <%= resource_presenter.linked_download(
-        content_tag(:div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('border-color')),
+        content_tag(:div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background')),
         onclick: "pageTracker._trackEvent('Infographic', 'Open', '#{ resource_presenter.title }')"
       ) if resource.summary.present? %>
     <% end %>
