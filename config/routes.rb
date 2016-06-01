@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create], path: 'contact-us'
   resources :callback_requests, only: [:new, :create], path: 'callback-request'
 
-  resources :audiences, only: :show do
+  resources :audiences, only: :show, path: '' do
     resources :services, only: :show do
       get 'testimonials'
       get 'frequently-asked-questions'

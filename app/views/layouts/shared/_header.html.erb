@@ -32,7 +32,13 @@
       <span class="header-telephone-accent">
         t:
       </span>
-      <%= link_to phone, "tel:#{phone}" if phone.present? %>
+      <% if phone.present? %>
+        <%= link_to "tel:#{phone}" do %>
+          <span class="calltracks_bannerjonescouk-main">
+            <%= phone %>
+          </span>
+        <% end %>
+      <% end %>
     </div>
 
     <%= link_to (image_tag 'components/icons/header/map.png', alt: ''), offices_path, class: 'header-locations', title: 'Locations' if defined?(solicitors) %>
