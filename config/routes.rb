@@ -41,13 +41,6 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create], path: 'contact-us'
   resources :callback_requests, only: [:new, :create], path: 'callback-request'
 
-  resources :audiences, only: :show, path: '' do
-    resources :services, only: :show do
-      get 'testimonials'
-      get 'frequently-asked-questions'
-      resources :service_pages, only: :show, path: 'pages', controller: 'services/pages'
-    end
-  end
 
   %w( 403 404 422 500 ).each do |code|
     get code, to: 'errors#show', code: code
@@ -56,6 +49,13 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 
   root to: 'homes#show'
+  resources :audiences, only: :show, path: '' do
+    resources :services, only: :show do
+      get 'testimonials'
+      get 'frequently-asked-questions'
+      resources :service_pages, only: :show, path: 'pages', controller: 'services/pages'
+    end
+  end
 
   # This has to be the last route in your list
   match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
