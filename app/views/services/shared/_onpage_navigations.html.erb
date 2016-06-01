@@ -34,7 +34,7 @@
       <div class="row collapse">
         <% @onpage_navigations.each do |onpage_navigation| %>
           <% present onpage_navigation do |onpage_navigation_presenter| %>
-              <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-wrap medium-<%= onpage_navigation_presenter.layout %> columns">
+              <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-wrap medium-<%= onpage_navigation_presenter.layout %> columns <%= 'end' if onpage_navigation == @onpage_navigations.last %>">
                 <%= onpage_navigation_presenter.render_partial %>
               </div>
           <% end %>

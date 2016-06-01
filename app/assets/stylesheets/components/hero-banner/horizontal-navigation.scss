@@ -16,8 +16,12 @@
     padding: 0 0 rem(17px);
   }
 
-  @include media('<768px') {
+  @include media('<650px') {
     margin-top: rem(1px);
+  }
+
+  @include media('>=650px', '<=768px') {
+    margin-top: rem(128px);
   }
 }
 
@@ -51,8 +55,12 @@
     vertical-align: top;
     width: 49%;
 
-    @include breakpoint(medium) {
-      width: auto;
+    @include media('>=1280px') {
+      width: 129px;
+    }
+
+    @include media('<=1024px') {
+      width: 101px;
     }
   }
 }

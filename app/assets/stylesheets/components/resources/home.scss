@@ -11,12 +11,13 @@
 }
 
 .helpful-guide-title {
-  background: image-url('components/icons/download.png') no-repeat center left;
+  //background: image-url('components/icons/download.png') no-repeat center left;
   color: $dark-slate-blue;
   display: block;
   font-size: rem(16px);
   margin: 0 0 rem(15px);
-  padding: 0 0 0 rem(26px);
+  //padding: 0 0 0 rem(26px);
+  text-align: center;
 }
 
 .helpful-guide-image {
@@ -24,6 +25,7 @@
 
   img {
     display: block;
+    margin: 0 auto;
   }
 }
 
@@ -50,17 +52,22 @@
 
 .helpful-guide-content {
   background: $slate-white;
-  border-top: 7px solid $orange;
-  border-left: 1px solid $orange;
-  border-right: 1px solid $orange;
+  //border-top: 7px solid $orange;
+  //border-left: 1px solid $orange;
+  //border-right: 1px solid $orange;
   color: $dark-purple;
   display: none;
   font-family: $montserrat;
-  font-size: rem(14px);
   height: 100%;
   left: 0;
   padding: rem(15px) rem(17px);
+  margin: 0 rem(15px);
   position: absolute;
   top: 28px;
   width: 100%;
+
+  p {
+    color: $white;
+    font-size: rem(14px);
+  }
 }
