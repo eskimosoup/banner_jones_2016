@@ -79,3 +79,5 @@
     <%= simple_format @contact.message %>
   </p>
 <% end %>
+
+<%= link_to "Submitted from #{@contact.from_url}", @contact.from_url if @contact.from_url.present? %>

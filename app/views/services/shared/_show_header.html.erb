@@ -37,5 +37,11 @@
     $(window).load(function() {
       $('.page-aside-navigation-content, .page-content').matchHeight();
     });
+
+    $(document).ready(function() {
+      $("#contact_service option:first, #callback_request_service option:first").remove();
+      $("#contact_service, #callback_request_service").prepend(new Option('<%= @service.title %>', '<%= @service.title %>', true, true));
+      $("#contact_service option:first, #callback_request_service option:first").attr("selected", "selected");
+    });
   </script>
 <% end %>
