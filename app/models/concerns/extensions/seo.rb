@@ -13,6 +13,26 @@ module Extensions
         #
         when 'articles'
           ::Article.order(:title)
+        when 'audiences'
+          ::Audience.order(:title)
+        when 'event_categories'
+          ::EventCategory.order(:title)
+        when 'events'
+          ::Event.order(:title)
+        when 'office_locations'
+          ::OfficeLocation.order(:name)
+        when 'office'
+          ::Office.order(:building_name)
+        when 'pages'
+          ::Page.order(:title)
+        when 'resource'
+          ::Resource.order(:title)
+        # when 'resource_categories'
+        #  ::ResourceCategory.order(:title)
+        when 'services'
+          ::Service.order(:title)
+        when 'team_members'
+          ::TeamMember.order(:surname)
 
         else
           []
@@ -28,7 +48,27 @@ module Extensions
         # that you would like to appear in the admin sitemap. Eg.
         #
         when 'articles'
-          ::Article.published
+          ::Article.displayed
+        when 'audiences'
+          ::Audience.displayed
+        when 'event_categories'
+          ::EventCategory.displayed
+        when 'events'
+          ::Event.displayed
+        when 'office_locations'
+          ::OfficeLocation.displayed
+        when 'office'
+          ::Office.displayed
+        when 'pages'
+          ::Page.displayed
+        when 'resource'
+          ::Resource.displayed
+        # when 'resource_categories'
+        #  ::ResourceCategory.displayed
+        when 'services'
+          ::Service.displayed
+        when 'team_members'
+          ::TeamMember.displayed
 
         else
           []
