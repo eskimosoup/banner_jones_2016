@@ -1,0 +1,15 @@
+<%= form_tag "https://secure.wp3.rbsworldpay.com/wcc/purchase" do %>
+  <%# form_tag "https://select-test.wp3.rbsworldpay.com/wcc/purchase" do %>
+  <%= hidden_field_tag "paymentType", payment_type %>
+  <%# hidden_field_tag "testMode", "100" %>
+  <%= hidden_field_tag "instId", "260533" %>
+  <%= hidden_field_tag "cartId", @payment.id %>
+  <%= hidden_field_tag "name", @payment.name %>
+  <%= hidden_field_tag "tel", @payment.contact_number %>
+  <%= hidden_field_tag "desc", @payment.invoice_number %>
+  <%= hidden_field_tag "amount", number_with_precision(amount, precision: 2) %>
+  <%= hidden_field_tag "currency", "GBP" %>
+  <div class="actions">
+    Pay By: <%= submit_tag card_type, class: "submit-button" %>
+  </div>
+<% end %>
