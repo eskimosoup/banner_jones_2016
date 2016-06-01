@@ -1,7 +1,9 @@
 <% unless defined?(hide_call_us) %>
   <%= link_to "tel:#{global_site_settings['Phone']}", class: 'page-call-to-action' do %>
     <div class="page-call-to-action-title">
-      <%= global_site_settings['Phone'] %>
+      <span class="calltracks_bannerjonescouk-main">
+        <%= global_site_settings['Phone'] %>
+      </span>
     </div>
 
     <div class="page-call-to-action-icon">
