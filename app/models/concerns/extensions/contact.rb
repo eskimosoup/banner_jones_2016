@@ -10,7 +10,7 @@ module Extensions
 
       validates :forename, :surname,
                 :preferred_contact_method,
-                :enquiry_type, :message, presence: true
+                :message, presence: true
 
       validates :email, email: true, presence: true, if: proc { |x| x.preferred_contact_method == 'Email' }
       validates :telephone, telephone: true, presence: true, if: proc { |x| x.preferred_contact_method == 'Phone' }

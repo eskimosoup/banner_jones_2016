@@ -1,4 +1,10 @@
-$(function() {
+$(window).load(function() {
+  // http://stackoverflow.com/a/13319029
+  var shortestBannerImage = [].reduce.call($('.hero-banner-image'), function(sml, cur) {
+    return $(sml).height() < $(cur).height() ? sml : cur;
+  });
+
+  $('.hero-banner-slick').height($(shortestBannerImage).height());
   $('.hero-banner-slick').slick({
     autoplay: true,
     autoplaySpeed: 5000,
@@ -6,7 +12,9 @@ $(function() {
     prevArrow: '.hero-banner-previous',
     fade: true
   });
+});
 
+$(function() {
   $('.helpful-guides-slick').slick({
     nextArrow: '.helpful-guide-home-content-box-slider-controls .home-content-box-next',
     prevArrow: '.helpful-guide-home-content-box-slider-controls .home-content-box-previous',

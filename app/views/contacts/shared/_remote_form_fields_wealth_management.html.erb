@@ -15,13 +15,8 @@
       <%= f.text_field :email, placeholder: 'Email' %>
     </div>
   </div>
-  <div class="related-fields">
-    <div class="field">
-      <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, prompt: 'Preferred contact method' %>
-    </div>
-    <div class="field">
-      <%= f.select :enquiry_type, options_for_select(Contact::ENQUIRY_TYPES, selected: (params[:enquiry_type] if params[:enquiry_type].present?)), prompt: 'Enquiry type' %>
-    </div>
+  <div class="field">
+    <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, prompt: 'Preferred contact method' %>
   </div>
 
 

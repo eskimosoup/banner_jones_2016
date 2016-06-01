@@ -94,6 +94,40 @@
   </div>
 </div>
 
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/js-cookie' %>
+
+  <script>
+    $(document).ready(function() {
+      var biltonHammond = Cookies.get('bilton-hammond');
+
+      if($('.bilton-hammond-redirect').length == 1 && biltonHammond === undefined) {
+        $('.bilton-hammond-redirect').fadeIn();
+        $('.bilton-hammond-redirect').addClass('visible').attr('style', '');
+      }
+    });
+
+    $(document).on('click', '.set-bilton-hammond-close-cookie', function() {
+      Cookies.set('bilton-hammond', '1', { expires: 1 });
+    });
+  </script>
+<% end %>
+
+<div class="inline-modal bilton-hammond-popup <%= 'bilton-hammond-redirect' if params[:wf].present? && params[:wf] == 'bh' %>">
+  <div class="inline-modal-content text-center">
+      <div class="close-container">
+        <%= button_tag("Close", type: "button", class: "close-button toggle-class set-bilton-hammond-close-cookie", data: { container: ".bilton-hammond-popup", class: 'visible', return: false }) %>
+      </div>
+
+      <%= image_tag 'components/bilton-hammond-logo.png', alt: 'Bilton Hammond' %>
+
+      <h4>
+        From 1st June 2016 the Bilton Hammond Solicitors office in
+        Mansfield will be known as Banner Jones Solicitors.
+      </h4>
+  </div>
+</div>
+
 <div class="inline-modal remote-contact-form-modal">
   <div class="inline-modal-content">
     <div class="remote-contact-form">

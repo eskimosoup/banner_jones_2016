@@ -33,12 +33,12 @@
 .hero-banner-item {
   position: relative;
 
-  @include media('<1600px') {
+  @include media('<1280px') {
     padding: rem(40px) 0 rem(120px);
   }
 
-  @include media('>1600px') {
-    height: 669px;
+  @include media('>=1280px') {
+    // height: 669px;
     padding: rem(120px) 0;
   }
 }
