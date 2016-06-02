@@ -24,15 +24,17 @@
 
 <% cache [@service, @service.audience] do %>
   <% present @service do |service_presenter| %>
-    <h2 class="page-aside-navigation-title">
-      <div class="page-aside-audience-title">
+    <div class="page-aside-audience-title">
+      <h2 class="page-aside-navigation-title">
         Services <%= service_presenter.audience.title %>
-      </div>
+      </h2>
+    </div>
 
-      <div class="page-aside-root-service-title">
+    <div class="page-aside-root-service-title">
+      <h2 class="page-aside-navigation-title">
         <%= link_to @service.parent.title, audience_service_path(@service.parent.audience, @service.parent) if @service.parent.present? %>
-      </div>
-    </h2>
+      </h2>
+    </div>
 
     <div class="page-aside-navigation-links">
       <div class="page-aside-root-title">
