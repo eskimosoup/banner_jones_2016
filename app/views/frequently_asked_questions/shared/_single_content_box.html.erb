@@ -1,12 +1,14 @@
-<div class="standalone-faq">
-  <div class="standard-content-box">
-    <div class="standard-content-box-inner-content">
-      <div class="service-frequently-asked-question">
-        <%= render(
-          partial: "frequently_asked_questions/frequently_asked_question",
-          object: frequently_asked_question
-        ) %>
+<% cache frequently_asked_question do %>
+  <div class="standalone-faq">
+    <div class="standard-content-box">
+      <div class="standard-content-box-inner-content">
+        <div class="service-frequently-asked-question">
+          <%= render(
+            partial: "frequently_asked_questions/frequently_asked_question",
+            object: frequently_asked_question
+          ) %>
+      </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

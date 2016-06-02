@@ -29,7 +29,7 @@
 <div class="module-inner-content">
   <div class="page-additional-content">
     <div class="frequently-asked-questions frequently-asked-questions-list-wrap">
-      <%= render partial: 'frequently_asked_questions/shared/single_content_box', collection: @faqs, as: :frequently_asked_question %>
+      <%= render partial: 'frequently_asked_questions/shared/single_content_box', collection: @faqs, as: :frequently_asked_question, cached: true %>
     </div>
   </div>
 
