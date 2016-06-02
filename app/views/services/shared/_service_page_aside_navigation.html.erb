@@ -38,7 +38,7 @@
 
     <div class="page-aside-navigation-links">
       <div class="page-aside-root-title">
-        <%= link_to @service.root.title, audience_service_path(@service.root.audience, @service.root), { title: @service.root.title, class: 'page-aside-navigation-top-level' } %>
+        <%= link_to @service.root.title, audience_service_path(@service.root.audience, @service.root), { title: @service.root.title, class: "page-aside-navigation-top-level #{'has-children' if @service.children.present?}" } %>
       </div>
 
       <div class="page-aside-parent-title">
