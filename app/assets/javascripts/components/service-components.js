@@ -84,7 +84,7 @@ $(document).ready(function() {
 });
 
 $(document).on('click', '.page-aside-navigation-top-level', function() {
-  if (Modernizr.mq('only screen and (max-width: 767px)')) {
+  if (Modernizr.mq('only screen and (max-width: 1024px)')) {
     $('.page-aside-child-navigation-links-list').slideToggle();
     $(this).toggleClass('expanded');
     return false;
