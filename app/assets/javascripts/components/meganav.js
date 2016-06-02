@@ -5,3 +5,7 @@ $(document).ready(function() {
 
   $('.has-children').doubleTapToGo();
 });
+
+$(document).on('click', '.mobile-menu-toggle', function() {
+  $('.primary-navigation-wrap').css('top', $(window).scrollTop() + 58);
+});

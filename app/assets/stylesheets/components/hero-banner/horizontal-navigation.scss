@@ -59,7 +59,7 @@
       width: 129px;
     }
 
-    @include media('<=1024px') {
+    @include media('>768px', '<1280px') {
       width: 101px;
     }
   }
