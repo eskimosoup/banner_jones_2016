@@ -17,6 +17,10 @@
   background: $offset-white;
   padding:  0 0 rem(40px);
 
+  @media print {
+    display: none;
+  }
+
   &.fixed {
     padding-top: 54px;
   }
@@ -28,6 +32,11 @@
   .onpage-navigation-wrap {
     display: block;
     float: left;
+
+    @media screen {
+      overflow: hidden;
+      width: 100%;
+    }
   }
 
   .onpage-navigation-item {
