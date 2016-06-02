@@ -41,7 +41,6 @@ Rails.application.routes.draw do
   resources :contacts, only: [:new, :create], path: 'contact-us'
   resources :callback_requests, only: [:new, :create], path: 'callback-request'
 
-
   %w( 403 404 422 500 ).each do |code|
     get code, to: 'errors#show', code: code
   end
@@ -49,6 +48,7 @@ Rails.application.routes.draw do
   mount Optimadmin::Engine => '/admin'
 
   root to: 'homes#show'
+
   resources :audiences, only: :show, path: '' do
     resources :services, only: :show do
       get 'testimonials'
