@@ -5,7 +5,7 @@ module Optimadmin
     included do
       edit_images_for Resource,
                       [
-                        [:image, { show: ['fit', 200, 200], index: ['fill', 251, 153] }]
+                        [:image, { show: ['fill', 200, 200], index: ['fill', 251, 153] }]
                       ]
     end
   end
