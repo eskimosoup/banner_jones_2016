@@ -1,5 +1,5 @@
 <% unless defined?(hide_call_us) %>
-  <%= link_to "tel:#{global_site_settings['Phone - Wealth Management']}", class: 'page-call-to-action' do %>
+  <%= link_to "tel:#{global_site_settings['Phone - Wealth Management'].tr(' ', '')}", class: 'page-call-to-action' do %>
     <div class="page-call-to-action-title">
       <%= global_site_settings['Phone - Wealth Management'] %>
     </div>

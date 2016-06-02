@@ -1,5 +1,5 @@
 <% unless defined?(hide_call_us) %>
-  <%= link_to "tel:#{global_site_settings['Phone']}", class: 'page-call-to-action' do %>
+  <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}", class: 'page-call-to-action' do %>
     <div class="page-call-to-action-title">
       <span class="calltracks_bannerjonescouk-main">
         <%= global_site_settings['Phone'] %>

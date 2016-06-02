@@ -33,7 +33,7 @@
         t:
       </span>
       <% if phone.present? %>
-        <%= link_to "tel:#{phone}" do %>
+        <%= link_to "tel:#{phone.tr(' ', '')}" do %>
           <span class="calltracks_bannerjonescouk-main">
             <%= phone %>
           </span>

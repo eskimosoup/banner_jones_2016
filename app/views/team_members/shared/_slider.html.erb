@@ -10,9 +10,7 @@
 
 <div class="slider-team-members">
   <div class="slider-team-members-title">
-    <h2 class="slider-content-box-title">
-      <%= title if defined?(title) %>
-    </h2>
+    <%= content_tag :h2, title, class: 'slider-content-box-title' if defined?(title) %>
   </div>
 
   <div class="slider-team-member-form-controls <%= 'hide' if (defined? partial_width) && team_members.size < partial_width.to_i %>">

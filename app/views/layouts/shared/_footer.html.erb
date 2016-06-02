@@ -35,7 +35,7 @@
         <span class="contact-method-accent">
           t:
         </span>
-        <%= link_to phone, "tel:#{phone}" if phone.present? %>
+        <%= link_to phone, "tel:#{phone.tr(' ', '')}" if phone.present? %>
       </div>
     </div>
   </div>
