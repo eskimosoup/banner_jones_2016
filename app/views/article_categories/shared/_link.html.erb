@@ -1,3 +1,3 @@
-<% present article_category do |article_category_presenter| %>
-  <%= article_category_presenter.linked_text(article_category_presenter.title, { title: article_category_presenter.title }) %>
+<% cache article_category do %>
+  <%= link_to article_category.title, article_category_path(article_category), title: article_category.title %>
 <% end %>
