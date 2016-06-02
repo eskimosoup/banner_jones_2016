@@ -15,7 +15,10 @@
     font-family: $montserrat;
     font-size: rem(10px);
     margin: rem(5px) 0;
-    text-align: center;
+
+    @media screen {
+      text-align: center;
+    }
 
     @include breakpoint(large) {
       font-size: rem(12px);

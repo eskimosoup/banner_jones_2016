@@ -1,6 +1,10 @@
 .slider-team-members {
   @include shadow-content-box;
   padding: rem(60px) 0 0;
+
+  @media print {
+    display: none;
+  }
 }
 
 .slider-content-box-title {

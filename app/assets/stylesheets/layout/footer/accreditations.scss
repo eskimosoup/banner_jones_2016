@@ -21,4 +21,12 @@
 
 .footer-award {
   margin: 0 rem(15px);
+
+  @media print {
+    display: inline-block;
+  }
+
+  a[href]:after {
+    content: '';
+  }
 }

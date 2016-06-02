@@ -30,6 +30,10 @@
 .page-additional-information {
   @include grid-column(12);
 
+  @media print {
+    display: none;
+  }
+
   @include breakpoint(large) {
     @include grid-column(3);
   }
@@ -43,6 +47,10 @@
 .page-additional-content-wrap {
   background: $offset-white;
   padding: rem(54px) 0;
+
+  @media print {
+    display: none;    
+  }
 
   @include media('>1400px') {
     padding: rem(54px);
