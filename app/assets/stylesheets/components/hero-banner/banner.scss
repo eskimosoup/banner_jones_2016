@@ -9,7 +9,7 @@
   max-height: 700px;
   overflow: hidden;
 
-  @include media('<768px') {
+  @include media('<1024px') {
     display: none;
   }
 }
@@ -40,7 +40,7 @@
   @include media('>=1280px', '<1920px') {
     padding: rem(60px) 0;
   }
-  
+
   @include media('>=1920px') {
     padding: rem(120px) 0;
   }

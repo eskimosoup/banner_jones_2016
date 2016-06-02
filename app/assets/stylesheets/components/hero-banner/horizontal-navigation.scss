@@ -20,7 +20,7 @@
     margin-top: rem(1px);
   }
 
-  @include media('>=650px', '<=768px') {
+  @include media('>=650px', '<1024px') {
     margin-top: rem(128px);
   }
 }
@@ -41,7 +41,7 @@
   padding: 0 rem(15px);
   width: 100%;
 
-  @include breakpoint(medium) {
+  @include media('>=1024px') {
     bottom: -35px;
     padding: 0 rem(40px);
     position: absolute;
