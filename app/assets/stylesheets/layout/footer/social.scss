@@ -82,3 +82,26 @@
   color: $orange;
   font-weight: 400;
 }
+
+.social-contact-methods {
+  @include media('>1024px') {
+    float: right;
+  }
+}
+
+.footer-rich-snippets {
+  color: $white;
+  float: right;
+  line-height: 1.66;
+  margin: 0 rem(110px) 0 0;
+  text-align: center;
+
+  h4 {
+    font-size: rem(14px);
+    margin: 0;
+  }
+
+  div {
+    font-size: rem(12px);
+  }
+}
