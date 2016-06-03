@@ -17,11 +17,11 @@
 
     <%= render 'pages/shared/call_to_actions_solicitors' %>
 
-    <% if @service.rich_snippet %>
+    <% if @rich_snippet.present? %>
       <div class="service-rich-snippets">
         <%= render(
           "rich_snippets/service_rich_snippet",
-          rich_snippet: @service.rich_snippet
+          rich_snippet: @rich_snippet
         ) %>
       </div>
     <% end %>

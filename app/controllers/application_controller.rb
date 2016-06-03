@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
   def set_seo_variables
     seo_entry = SeoEntry.find_by(nominal_url: request.path)
     return unless seo_entry
+    @rich_snippet = seo_entry.rich_snippet
     @title = seo_entry.title
     @meta_description = seo_entry.meta_description
     @meta_tags = seo_entry.title

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531153106) do
+ActiveRecord::Schema.define(version: 20160603082426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -532,14 +532,15 @@ ActiveRecord::Schema.define(version: 20160531153106) do
   end
 
   create_table "rich_snippets", force: :cascade do |t|
-    t.integer  "service_id"
-    t.integer  "rating_value",                null: false
-    t.integer  "rating_count",                null: false
+    t.decimal  "rating_value", precision: 2, scale: 1,                null: false
+    t.integer  "rating_count",                                        null: false
     t.string   "description"
-    t.boolean  "display",      default: true, null: false
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.index ["service_id"], name: "index_rich_snippets_on_service_id", unique: true, using: :btree
+    t.boolean  "display",                              default: true, null: false
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
+    t.integer  "seo_entry_id"
+    t.string   "title"
+    t.index ["seo_entry_id"], name: "index_rich_snippets_on_seo_entry_id", using: :btree
   end
 
   create_table "seo_entries", force: :cascade do |t|
@@ -878,7 +879,7 @@ ActiveRecord::Schema.define(version: 20160531153106) do
   add_foreign_key "onpage_navigations_content_items", "onpage_navigations"
   add_foreign_key "resources_categorisations", "resource_categories"
   add_foreign_key "resources_categorisations", "resources"
-  add_foreign_key "rich_snippets", "services", on_delete: :cascade
+  add_foreign_key "rich_snippets", "seo_entries"
   add_foreign_key "services", "audiences", on_delete: :nullify
   add_foreign_key "services_accreditations", "accreditations"
   add_foreign_key "services_accreditations", "services"
