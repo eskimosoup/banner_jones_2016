@@ -38,6 +38,15 @@
         <%= link_to phone, "tel:#{phone.tr(' ', '')}" if phone.present? %>
       </div>
     </div>
+    
+    <% if @rich_snippet.present? %>
+      <div class="footer-rich-snippets">
+        <%= render(
+          "rich_snippets/rich_snippet",
+          rich_snippet: @rich_snippet
+        ) %>
+      </div>
+    <% end %>
   </div>
 </div>
 

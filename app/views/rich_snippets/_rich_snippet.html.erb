@@ -5,13 +5,7 @@
       <div itemprop="description"><%= rich_snippet.description %></div>
     <% end %>
 
-    <% (1..rich_snippet.rating_value.round).each do |x| %>
-      <%= image_tag 'components/icons/rich-snippet-star-yellow.png', alt: "#{rich_snippet.rating_value} out of 5" %>
-    <% end %>
-
-    <% (1..(5 - rich_snippet.rating_value.round)).each do |x| %>
-      <%= image_tag 'components/icons/rich-snippet-star-grey.png', alt: "#{rich_snippet.rating_value} out of 5" %>
-    <% end %>
+    <%= image_tag "components/rich-snippets/#{rich_snippet.rating_value.to_s.tr('.', '')}.png", alt: "#{rich_snippet.rating_value} out of 5" %>    
 
     <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
       <div>
