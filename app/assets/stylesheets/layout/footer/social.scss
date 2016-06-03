@@ -46,6 +46,16 @@
   display: inline-block;
   margin: rem(20px) rem(15px);
 
+  img {
+    max-height: 30px;
+  }
+
+  @include media('>768px') {
+    img {
+      max-height: none;
+    }
+  }
+
   @include media('>1400px') {
     margin: 0 rem(20px);
   }
@@ -91,10 +101,14 @@
 
 .footer-rich-snippets {
   color: $white;
-  float: right;
   line-height: 1.66;
-  margin: 0 rem(110px) 0 0;
-  text-align: center;
+  margin: rem(10px) rem(30px);
+
+  @include media('>1024px') {
+    float: right;
+    margin: 0 rem(110px) 0 0;
+    text-align: center;
+  }
 
   h4 {
     font-size: rem(14px);
