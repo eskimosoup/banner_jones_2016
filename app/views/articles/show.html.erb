@@ -56,7 +56,7 @@
   </aside>
 </div>
 
-<% if @article.team_members.present? %>
+<% if @article.team_members.present? && @article.team_members.first.articles.size > 1 %>
   <div class="related-footer">
     <div class="related-footer-details">
       <% present @article.team_members.first do |team_member_presenter| %>
