@@ -33,7 +33,7 @@
     display: block;
     float: left;
 
-    @media screen {
+    @media print {
       overflow: hidden;
       width: 100%;
     }
