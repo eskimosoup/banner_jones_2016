@@ -5,7 +5,7 @@
   <%= og_title article_presenter.social_share_title %>
   <%= og_description article_presenter.social_share_description %>
   <%= og_image article_presenter.social_share_image_url %>
-  <%= twitter_creator "@#{@article.team_members.first.twitter_link.split('/').last}" if @article.team_members.size == 1 %>
+  <%= twitter_creator "@#{@article.team_members.first.twitter_link.split('/').last}" if @article.team_members.size == 1 && @article.team_members.first.twitter_link.present? %>
 <% end %>
 
 <div class="module-show">
