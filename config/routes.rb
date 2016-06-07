@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   resources :article_categories, only: :show, path: 'article-categories'
   resources :office_locations, only: :show, path: 'office-locations'
   resources :resource_categories, only: :show, path: 'resource-categories'
-  resources :video_categories, only: :show, path: 'video-categories'
+  # resources :video_categories, only: :show, path: 'video-categories'
   resources :event_categories, only: :show, path: 'event-categories'
   resources :event_locations, only: :show, path: 'event-locations'
 
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   resources :articles, only: [:index, :show]
   resources :offices, only: [:index, :show]
   resources :resources, only: [:index, :show]
-  resources :videos, only: [:index, :show]
+  # resources :videos, only: [:index, :show]
   resources :events, only: [:index, :show]
   resources :pages, only: :show
   # FIXME: This is used in conjuction with the engine, so you end up with
