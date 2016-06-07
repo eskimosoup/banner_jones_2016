@@ -1,8 +1,9 @@
 $(window).load(function() {
   // http://stackoverflow.com/a/13319029
-  var shortestBannerImage = [].reduce.call($('.hero-banner-image'), function(sml, cur) {
-    return $(sml).height() < $(cur).height() ? sml : cur;
-  });
+  var shortestBannerImage;
+  $( '.hero-banner-image' ).each( function(e, i) {
+    if( shortestBannerImage !== undefined && $(e).height() > shortestBannerImage.height() ) shortestBannerImage = $(e);
+  } );
 
   $('.hero-banner-slick').height($(shortestBannerImage).height());
   $('.hero-banner-slick').slick({
