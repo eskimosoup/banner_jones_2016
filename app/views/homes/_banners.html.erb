@@ -5,7 +5,7 @@
   </div>
 
   <div class="hero-banner-slick">
-    <%= render partial: 'banners/banner', collection: banners, as: :banner %>
+    <%= render partial: 'banners/banner', collection: banners, cache: true, as: :banner %>
   </div>
 
   <% if banner_services.present? && global_site_settings['Banner navigation'] == 'Vertical' %>

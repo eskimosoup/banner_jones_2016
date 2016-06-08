@@ -1,4 +1,12 @@
 <%= javascript_include_tag 'application' %>
+
+<script>
+$(document).ready(function() {
+  $('head').prepend('<link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />');
+  $('head').prepend('<link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />');
+});
+</script>
+
 <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js' %>
 <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js' %>
 <%= yield :javascript %>
