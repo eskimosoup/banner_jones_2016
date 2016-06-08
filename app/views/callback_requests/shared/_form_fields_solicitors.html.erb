@@ -19,14 +19,13 @@
     <%= f.label :callback_time %>
     <%= f.select :callback_time, options_for_select(CallbackRequest::TIMES) %>
   </div>
-  <!--
+  
   <% if @offices.present? %>
     <div class="field">
       <%= f.label :preferred_office %>
       <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Please select' %>
     </div>
   <% end %>
-  -->
 
   <div class="field">
     <%= f.label :enquiry_type %>
