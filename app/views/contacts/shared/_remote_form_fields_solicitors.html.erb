@@ -19,22 +19,23 @@
     <div class="field">
       <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, prompt: 'Preferred contact method' %>
     </div>
-    <!--
-      <% if @offices.present? %>
-        <div class="field">
-          <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }, selected: (@office.address_fields if @office.present?)), prompt: 'Preffered office' %>
-        </div>
-      <% end %>
-    -->
+    <% if @offices.present? %>
+      <div class="field">
+        <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }, selected: (@office.address_fields if @office.present?)), prompt: 'Preffered office' %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="related-fields">
     <div class="field">
       <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
     </div>
+    <% if Flip.services? %>
+      <div class="field">
+        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
+      </div>
+    <% end %>
   </div>
-  <% if Flip.services? %>
-    <div class="field">
-      <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
-    </div>
-  <% end %>
 
   <div class="field full">
     <%= f.text_area :message, placeholder: 'Message' %>

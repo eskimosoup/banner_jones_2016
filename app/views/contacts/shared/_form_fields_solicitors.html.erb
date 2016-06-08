@@ -24,25 +24,27 @@
       <%= f.label :preferred_contact_method %>
       <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, prompt: 'Please select' %>
     </div>
-    <!--
     <% if @offices.present? %>
       <div class="field">
         <%= f.label :preferred_office %>
         <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }, selected: (@office.address_fields if @office.present?)), prompt: 'Please select' %>
       </div>
     <% end %>
-    -->
+  </div>
+
+  <div class="related-fields">
     <div class="field">
       <%= f.label :how_heard, 'How did you find us?' %>
       <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'Please select' %>
     </div>
+    <% if Flip.services? %>
+      <div class="field">
+        <%= f.label :service %>
+        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Please select' %>
+      </div>
+    <% end %>
   </div>
-  <% if Flip.services? %>
-    <div class="field">
-      <%= f.label :service %>
-      <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Please select' %>
-    </div>
-  <% end %>
+  
   <div class="field">
     <%= f.label :message %>
     <%= f.text_area :message %>
