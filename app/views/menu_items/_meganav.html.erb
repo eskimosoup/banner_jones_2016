@@ -10,8 +10,7 @@
             <%= render(
               partial: "audiences/navigation_link",
               collection: audience.services.roots.order(:position),
-              as: :service,
-              cahced: true
+              as: :service
             ) %>
           </ul>
         </div>
@@ -23,8 +22,7 @@
             partial: "audiences/navigation_content",
             collection: audience.services.includes(:children),
             as: :service,
-            locals: { audience: audience },
-            cahced: true
+            locals: { audience: audience }
           ) %>
         </div>
       </div>
