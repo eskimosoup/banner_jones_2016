@@ -24,7 +24,7 @@
           <%= resource_presenter.linked_download('Download', {class: 'service-resource-download-button', title: resource_presenter.title, target: '_blank' }) %>
 
           <% present resource.services.first do |service_presenter| %>
-            <%= resource_presenter.linked_download(content_tag :div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background-color'), target: '_blank') if resource.summary.present? %>
+            <%= resource_presenter.linked_download((content_tag :div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background-color')), target: '_blank') if resource.summary.present? %>
           <% end %>
         </div>
       </div>

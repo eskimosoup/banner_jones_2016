@@ -1,0 +1,25 @@
+.online-payments-form {
+  padding: 0 0 rem(10px);
+
+  .field_with_errors {
+    margin: 0 0 rem(10px);
+    
+    input,
+    select {
+      border: 1px solid $red;
+      margin: 0;
+    }
+
+    span {
+      color: $red;
+    }
+  }
+}
+
+.online-payments-additional-information {
+  padding: rem(10px) 0;
+}
+
+.verified-by-visa {
+  margin: 0 0 rem(10px);
+}
