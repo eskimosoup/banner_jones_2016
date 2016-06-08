@@ -2,12 +2,10 @@
   <div class="helpful-guide helpful-guide-hover">
     <%= resource_presenter.linked_download(resource_presenter.title,
                                            class: 'helpful-guide-title', title: resource_presenter.title, target: '_blank',
-                                           onclick: "pageTracker._trackEvent('Resource', 'Open', '#{ resource_presenter.title }')"
                                           ) %>
     <%= resource_presenter.linked_download(
           resource_presenter.index_image(alt: resource_presenter.title),
           class: 'helpful-guide-image', title: resource_presenter.title, target: '_blank',
-          onclick: "pageTracker._trackEvent('Resource', 'Open', '#{ resource_presenter.title }')"
     ) if resource_presenter.index_image.present? %>
 
     <% present resource.services.first do |service_presenter| %>
