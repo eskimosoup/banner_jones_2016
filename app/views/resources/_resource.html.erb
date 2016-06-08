@@ -26,7 +26,14 @@
           <div class="index-module-summary">
             <%= resource_presenter.summary %>
           </div>
-          <%= resource_presenter.linked_download('Download', {class: 'service-resource-download-button', title: resource_presenter.title, target: '_blank' }) %>
+          <%= resource_presenter.linked_download(
+            'Download',
+            {
+              class: 'service-resource-download-button',
+              title: resource_presenter.title,
+              target: '_blank',
+              onclick: "pageTracker._trackEvent('Resource', 'Open', '#{ resource_presenter.title }')"
+            }) %>
 
         </div>
       <% end %>
