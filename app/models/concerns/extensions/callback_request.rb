@@ -10,7 +10,7 @@ module Extensions
       validates :forename, :surname, :contact_telephone,
                 :callback_time, :enquiry_type, presence: true
 
-      TIMES = %w(Morning Afternoon).freeze
+      TIMES = %w(Morning Afternoon Anytime).freeze
     end
 
     class_methods do
