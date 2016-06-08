@@ -1,4 +1,4 @@
-<% cache [service, service.team_members.map(&:updated_at).max] do %>
+<% cache [service, service.team_members.key_team_members.first, service.descendants.map(&:updated_at).max] do %>
   <% present service do |service_presenter| %>
   <div class="meganav-dropdown-content-inner meganav-dropdown-content-<%= service_presenter.id %> <%= 'hide' unless service_counter == 0 %>">
     <div class="meganav-dropdown-secondary-list">
@@ -20,7 +20,7 @@
     </div>
   <% end %>
 
-    <% service.team_members.key_team_members.limit(1).each do |service_team_member| %>
+    <% service.team_members.key_team_members.first do |service_team_member| %>
       <% present service_team_member do |team_member_presenter| %>
         <div class="meganav-dropdown-team-member-wrap">
           <%= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member') %>
