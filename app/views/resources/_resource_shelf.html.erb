@@ -15,6 +15,7 @@
         content_tag(:div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background')),
         id: "Resource-#{ resource.id }",
         target: '_blank',
+        onclick: "ga('send', 'event', 'Resource', 'Open', '#{ resource_presenter.title }')"
       ) if resource.summary.present? %>
     <% end %>
   </div>

@@ -33,6 +33,7 @@
               class: 'service-resource-download-button',
               title: resource_presenter.title,
               target: '_blank',
+              onclick: "ga('send', 'event', 'Resource', 'Open', '#{ resource_presenter.title }')"
             }) %>
 
         </div>
