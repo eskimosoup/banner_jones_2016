@@ -1,29 +1,33 @@
-<div class="meganav-dropdown">
-  <div class="meganav-dropdown-wrap">
-    <div class="meganav-dropdown-content">
-      <!-- Audiences -->
-      <div class="meganav-dropdown-primary-list">
-        <h2 class="meganav-primary-title">Departments</h2>
+<% cache [audience, audience.services.map(&:updated_at).max] do %>
+  <div class="meganav-dropdown">
+    <div class="meganav-dropdown-wrap">
+      <div class="meganav-dropdown-content">
+        <!-- Audiences -->
+        <div class="meganav-dropdown-primary-list">
+          <h2 class="meganav-primary-title">Departments</h2>
 
-        <ul class="meganav-links meganav-primary-links">
+          <ul class="meganav-links meganav-primary-links">
+            <%= render(
+              partial: "audiences/navigation_link",
+              collection: audience.services.roots.order(:position),
+              as: :service,
+              cahced: true
+            ) %>
+          </ul>
+        </div>
+
+        <!-- Services -->
+        <% # TODO: Add little triangle to hovered item in the main nav %>
+        <div>
           <%= render(
-            partial: "audiences/navigation_link",
-            collection: audience.services.roots.order(:position),
-            as: :service
+            partial: "audiences/navigation_content",
+            collection: audience.services.includes(:children),
+            as: :service,
+            locals: { audience: audience },
+            cahced: true
           ) %>
-        </ul>
-      </div>
-
-      <!-- Services -->
-      <% # TODO: Add little triangle to hovered item in the main nav %>
-      <div>
-        <%= render(
-          partial: "audiences/navigation_content",
-          collection: audience.services.includes(:children),
-          as: :service,
-          locals: { audience: audience }
-        ) %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

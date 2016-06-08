@@ -13,7 +13,7 @@
     </h2>
 
     <div class="articles-slick">
-      <%= render partial: 'articles/home_article', collection: articles, as: :article %>
+      <%= render partial: 'articles/home_article', collection: articles, cached: true, as: :article %>
     </div>
   </div>
 </section>

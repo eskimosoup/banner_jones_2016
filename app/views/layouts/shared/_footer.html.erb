@@ -38,7 +38,7 @@
         <%= link_to phone, "tel:#{phone.tr(' ', '')}" if phone.present? %>
       </div>
     </div>
-    
+
     <% if @rich_snippet.present? %>
       <div class="footer-rich-snippets">
         <%= render(
@@ -53,7 +53,7 @@
 <footer class="primary-footer">
   <div class="awards-and-accreditations">
     <div class="awards-and-accreditations-slick">
-      <%= render partial: 'awards/footer_awards', collection: @awards, as: :award if @awards.present? %>
+      <%= render partial: 'awards/footer_awards', collection: @awards, cached: true, as: :award if @awards.present? %>
     </div>
   </div>
 
