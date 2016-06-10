@@ -8,7 +8,11 @@
       <% # TODO: Make this have dynamic content %>
       <% if global_site_settings['Phone'].present? %>
         <p>
-          Call us now on <%= global_site_settings['Phone'] %>.
+          Call us now on
+
+          <span class="calltracks_bannerjonescouk-main">
+            <%= global_site_settings['Phone'] %>
+          </span>
         </p>
       <% end %>
 
