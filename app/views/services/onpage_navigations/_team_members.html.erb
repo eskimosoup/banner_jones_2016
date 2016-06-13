@@ -1,3 +1,7 @@
 <div class="onpage-navigation-item">
-  <%= render 'team_members/shared/slider', team_members: @service.team_members.displayed, title: onpage_navigation.title, partial_width: onpage_navigation.layout %>
+  <%
+  team_members = onpage_navigation.team_members.displayed
+  team_members = @service.team_members.displayed if team_members.blank?
+  %>
+  <%= render 'team_members/shared/slider', team_members: team_members.limit(onpage_navigation.results_limit), title: onpage_navigation.title, partial_width: onpage_navigation.layout %>
 </div>

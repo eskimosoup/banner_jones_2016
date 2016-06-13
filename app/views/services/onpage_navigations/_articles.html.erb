@@ -7,7 +7,11 @@
     <%= onpage_navigation.title %>
   </h2>
 
-  <% @service.articles.displayed.limit(onpage_navigation.results_limit).each_with_index do |article, index| %>
+  <%
+  articles = onpage_navigation.articles.displayed
+  articles = @service.articles.displayed if articles.blank?
+  %>  
+  <% articles.limit(onpage_navigation.results_limit).each_with_index do |article, index| %>
     <% present article do |article_presenter| %>
       <div class="service-article <%= index >= 1 ? 'closed' : 'opened' %>">
         <%= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'service-article-image' if article_presenter.index_image.present? %>

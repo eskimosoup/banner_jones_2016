@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160603082426) do
+ActiveRecord::Schema.define(version: 20160610142503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -373,6 +373,26 @@ ActiveRecord::Schema.define(version: 20160603082426) do
     t.string   "layout"
   end
 
+  create_table "onpage_navigations_accreditations", force: :cascade do |t|
+    t.integer  "onpage_navigation_id"
+    t.integer  "accreditation_id"
+    t.integer  "position",             default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["accreditation_id"], name: "index_onpage_navigations_accreditations_on_accreditation_id", using: :btree
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_accreditations_on_onpage_navigation_id", using: :btree
+  end
+
+  create_table "onpage_navigations_articles", force: :cascade do |t|
+    t.integer  "onpage_navigation_id"
+    t.integer  "article_id"
+    t.integer  "position",             default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["article_id"], name: "index_onpage_navigations_articles_on_article_id", using: :btree
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_articles_on_onpage_navigation_id", using: :btree
+  end
+
   create_table "onpage_navigations_content_items", force: :cascade do |t|
     t.integer  "position"
     t.string   "title"
@@ -383,6 +403,66 @@ ActiveRecord::Schema.define(version: 20160603082426) do
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
     t.index ["onpage_navigation_id"], name: "index_onpage_navigations_content_items_on_onpage_navigation_id", using: :btree
+  end
+
+  create_table "onpage_navigations_faqs", force: :cascade do |t|
+    t.integer  "onpage_navigation_id"
+    t.integer  "frequently_asked_question_id"
+    t.integer  "position",                     default: 0, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.index ["frequently_asked_question_id"], name: "index_onpage_navigations_faqs_on_frequently_asked_question_id", using: :btree
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_faqs_on_onpage_navigation_id", using: :btree
+  end
+
+  create_table "onpage_navigations_resources", force: :cascade do |t|
+    t.integer  "onpage_navigation_id"
+    t.integer  "resource_id"
+    t.integer  "position",             default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_resources_on_onpage_navigation_id", using: :btree
+    t.index ["resource_id"], name: "index_onpage_navigations_resources_on_resource_id", using: :btree
+  end
+
+  create_table "onpage_navigations_service_pages", force: :cascade do |t|
+    t.integer  "onpage_navigation_id"
+    t.integer  "services_page_id"
+    t.integer  "position",             default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_service_pages_on_onpage_navigation_id", using: :btree
+    t.index ["services_page_id"], name: "index_onpage_navigations_service_pages_on_services_page_id", using: :btree
+  end
+
+  create_table "onpage_navigations_team_members", force: :cascade do |t|
+    t.integer  "onpage_navigation_id"
+    t.integer  "team_member_id"
+    t.integer  "position",             default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_team_members_on_onpage_navigation_id", using: :btree
+    t.index ["team_member_id"], name: "index_onpage_navigations_team_members_on_team_member_id", using: :btree
+  end
+
+  create_table "onpage_navigations_testimonials", force: :cascade do |t|
+    t.integer  "onpage_navigation_id"
+    t.integer  "testimonial_id"
+    t.integer  "position",             default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_testimonials_on_onpage_navigation_id", using: :btree
+    t.index ["testimonial_id"], name: "index_onpage_navigations_testimonials_on_testimonial_id", using: :btree
+  end
+
+  create_table "onpage_navigations_videos", force: :cascade do |t|
+    t.integer  "onpage_navigation_id"
+    t.integer  "video_id"
+    t.integer  "position",             default: 0, null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["onpage_navigation_id"], name: "index_onpage_navigations_videos_on_onpage_navigation_id", using: :btree
+    t.index ["video_id"], name: "index_onpage_navigations_videos_on_video_id", using: :btree
   end
 
   create_table "optimadmin_administrators", force: :cascade do |t|
@@ -876,7 +956,23 @@ ActiveRecord::Schema.define(version: 20160603082426) do
   add_foreign_key "events_categorisations", "event_categories"
   add_foreign_key "events_categorisations", "events"
   add_foreign_key "offices", "office_locations"
+  add_foreign_key "onpage_navigations_accreditations", "accreditations"
+  add_foreign_key "onpage_navigations_accreditations", "onpage_navigations"
+  add_foreign_key "onpage_navigations_articles", "articles"
+  add_foreign_key "onpage_navigations_articles", "onpage_navigations"
   add_foreign_key "onpage_navigations_content_items", "onpage_navigations"
+  add_foreign_key "onpage_navigations_faqs", "frequently_asked_questions"
+  add_foreign_key "onpage_navigations_faqs", "onpage_navigations"
+  add_foreign_key "onpage_navigations_resources", "onpage_navigations"
+  add_foreign_key "onpage_navigations_resources", "resources"
+  add_foreign_key "onpage_navigations_service_pages", "onpage_navigations"
+  add_foreign_key "onpage_navigations_service_pages", "services_pages"
+  add_foreign_key "onpage_navigations_team_members", "onpage_navigations"
+  add_foreign_key "onpage_navigations_team_members", "team_members"
+  add_foreign_key "onpage_navigations_testimonials", "onpage_navigations"
+  add_foreign_key "onpage_navigations_testimonials", "testimonials"
+  add_foreign_key "onpage_navigations_videos", "onpage_navigations"
+  add_foreign_key "onpage_navigations_videos", "videos"
   add_foreign_key "resources_categorisations", "resource_categories"
   add_foreign_key "resources_categorisations", "resources"
   add_foreign_key "rich_snippets", "seo_entries"

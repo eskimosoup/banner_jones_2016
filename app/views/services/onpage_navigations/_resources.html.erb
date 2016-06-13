@@ -10,7 +10,11 @@
 
 <div class="row collapse">
   <% #@service.resources.displayed.limit(onpage_navigation.results_limit).each do |resource| %>
-  <% @service.resources.displayed.limit(onpage_navigation.results_limit).each do |resource| %>
+  <%
+  resources = onpage_navigation.resources.displayed
+  resources = @service.resources.displayed if resources.blank?
+  %>  
+  <% resources.each do |resource| %>
     <% present resource do |resource_presenter| %>
       <% # medium-<%= onpage_navigation.results_limit.present? ? width_calculator(onpage_navigation.results_limit) : (12 / @service.resources.displayed.limit(onpage_navigation.results_limit).size) %>
       <div class="resource-<%= onpage_navigation.id %> <%= 'end' if resource == @service.resources.displayed.limit(onpage_navigation.results_limit).last %> columns">
