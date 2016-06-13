@@ -71,6 +71,10 @@
 
 .service-article-summary {
   @include page-content;
+
+  p {
+    margin: rem(12px) 0;
+  }
 }
 
 .service-article-footer {

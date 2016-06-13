@@ -13,11 +13,11 @@
   <%
   resources = onpage_navigation.resources.displayed
   resources = @service.resources.displayed if resources.blank?
-  %>  
+  %>
   <% resources.each do |resource| %>
     <% present resource do |resource_presenter| %>
       <% # medium-<%= onpage_navigation.results_limit.present? ? width_calculator(onpage_navigation.results_limit) : (12 / @service.resources.displayed.limit(onpage_navigation.results_limit).size) %>
-      <div class="resource-<%= onpage_navigation.id %> <%= 'end' if resource == @service.resources.displayed.limit(onpage_navigation.results_limit).last %> columns">
+      <div class="resource-<%= onpage_navigation.id %> <%= 'end' if resource == resources.last %> columns">
         <div class="standard-content-box onpage-navigation-item helpful-guide-hover">
           <h2 class="standard-content-box-title">
             <%= resource_presenter.title %>

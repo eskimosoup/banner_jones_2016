@@ -15,4 +15,5 @@ Rails.application.config.assets.precompile += %w(
   vendor/js-cookie.js
   vendor/jquery.colorbox.js
   vendor/colorbox.scss
+  vendor/slick.js
 )
