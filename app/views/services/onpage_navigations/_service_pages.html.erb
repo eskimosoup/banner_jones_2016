@@ -1,5 +1,9 @@
 <div class="onpage-navigation-item service-pages-list">
-  <% @service.service_pages.displayed.limit(onpage_navigation.results_limit).each do |service_page| %>
+  <%
+  service_pages = onpage_navigation.services_pages.displayed
+  service_pages = @service.service_pages.displayed if service_pages.blank?
+  %>
+  <% service_pages.limit(onpage_navigation.results_limit).each do |service_page| %>
     <div class="service-pages-page-highlight standard-content-box">
       <div class="standard-content-box-inner-content">
         <% present service_page do |service_page_presenter| %>

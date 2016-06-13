@@ -9,6 +9,10 @@
   </h2>
 
   <div class="testimonials-slick">
-    <%= render @service.testimonials.displayed.limit(onpage_navigation.results_limit) %>
+    <%
+    testimonials = onpage_navigation.testimonials.displayed
+    testimonials = @service.testimonials.displayed if testimonials.blank?
+    %>
+    <%= render testimonials.limit(onpage_navigation.results_limit) %>
   </div>
 </div>

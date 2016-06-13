@@ -9,7 +9,11 @@
   </h2>
 
   <div class="standard-content-box-inner-content">
-    <% @service.frequently_asked_questions.displayed.limit(onpage_navigation.results_limit).each do |faq| %>
+    <%
+    faqs = onpage_navigation.frequently_asked_questions.displayed
+    faqs = @service.frequently_asked_questions.displayed if faqs.blank?
+    %>
+    <% faqs.limit(onpage_navigation.results_limit).each do |faq| %>
       <div class="service-frequently-asked-question">
         <%= render(
           partial: "frequently_asked_questions/frequently_asked_question",
