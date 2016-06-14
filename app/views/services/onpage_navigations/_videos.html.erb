@@ -7,7 +7,7 @@ videos = @service.videos.displayed if videos.blank?
   <style>
     @media screen and (min-width: 768px) {
         .video-<%= onpage_navigation.id %> {
-          width: <%= 100 / videos %>%
+          width: <%= 100 / videos.limit(onpage_navigation.results_limit).size %>%
         }
       }
   </style>
