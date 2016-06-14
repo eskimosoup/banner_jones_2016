@@ -1,8 +1,13 @@
+<%
+videos = onpage_navigation.videos.displayed
+videos = @service.videos.displayed if videos.blank?
+%>
+
 <%= content_for :head do %>
   <style>
     @media screen and (min-width: 768px) {
         .video-<%= onpage_navigation.id %> {
-          width: <%= 100 / @service.resources.displayed.limit(onpage_navigation.results_limit).size %>%
+          width: <%= 100 / videos %>%
         }
       }
   </style>
@@ -16,10 +21,6 @@
 <% end %>
 
 <div class="row collapse">
-  <%
-  videos = onpage_navigation.videos.displayed
-  videos = @service.videos.displayed if videos.blank?
-  %>
   <% videos.limit(onpage_navigation.results_limit).each do |video| %>
     <div class="video-<%= onpage_navigation.id %> <%= 'end' if video == videos.last %> columns">
       <div class="onpage-navigation-item standard-content-box standalone">
