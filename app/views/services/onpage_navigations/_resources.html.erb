@@ -1,8 +1,14 @@
+
+<%
+resources = onpage_navigation.resources.displayed
+resources = @service.resources.displayed if resources.blank?
+%>
+
 <%= content_for :head do %>
   <style>
   @media screen and (min-width: 768px) {
     .resource-<%= onpage_navigation.id %> {
-      width: <%= 100 / @service.resources.displayed.limit(onpage_navigation.results_limit).size %>%
+      width: <%= 100 / resources.limit(onpage_navigation.results_limit).size %>%
     }
   }
   </style>
@@ -10,10 +16,6 @@
 
 <div class="row collapse">
   <% #@service.resources.displayed.limit(onpage_navigation.results_limit).each do |resource| %>
-  <%
-  resources = onpage_navigation.resources.displayed
-  resources = @service.resources.displayed if resources.blank?
-  %>
   <% resources.each do |resource| %>
     <% present resource do |resource_presenter| %>
       <% # medium-<%= onpage_navigation.results_limit.present? ? width_calculator(onpage_navigation.results_limit) : (12 / @service.resources.displayed.limit(onpage_navigation.results_limit).size) %>
