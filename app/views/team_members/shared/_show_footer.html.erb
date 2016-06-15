@@ -1,7 +1,35 @@
+<%= content_for :javascript do %>
+  <script>
+  $(document).ready(function() {
+    $('.team-members-index-content.footer').slick({
+      nextArrow: '.hero-banner-next',
+      prevArrow: '.hero-banner-previous',
+      slidesToShow: 6,
+      slidesToScroll: 6,
+      swipe: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToScroll: 3,
+            slidesToShow: 3
+          }
+        }
+      ]
+    });
+  });
+  </script>
+<% end %>
+
 <div class="team-members-content-wrap">
   <h2 class="standard-content-box-title team-members-title">Also in this department</h2>
 
-  <div class="team-members-index-content">
+  <div class="hero-banner-controls-wrap">
+    <%= image_tag 'components/icons/hero/previous.png', alt: '', class: 'hero-banner-controls hero-banner-previous', title: 'Previous slide' %>
+    <%= image_tag 'components/icons/hero/next.png', class: 'hero-banner-controls hero-banner-next', title: 'Next slide' %>
+  </div>
+
+  <div class="team-members-index-content footer">
     <%= render(
       partial: 'team_members/shared/index_profile_card',
       collection: @team_members,

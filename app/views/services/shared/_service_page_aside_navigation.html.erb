@@ -51,7 +51,7 @@
             <li>
               <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>
               <% if child_service.children && (child_service == @service || child_service.descendant_ids.include?(@service.id)) %>
-                <%= render 'services/shared/service_page_aside_nested_navigation', child_service: child_service %>
+                <%= render partial: 'services/shared/service_page_aside_nested_navigation', locals: { child_service: child_service, index: 0 } %>
               <% end %>
             </li>
           <% end %>
@@ -64,7 +64,7 @@
             <li>
               <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>
               <% if child_service.children && (child_service == @service || child_service.descendant_ids.include?(@service.id)) %>
-                <%= render 'services/shared/service_page_aside_nested_navigation', child_service: child_service %>
+                <%= render partial: 'services/shared/service_page_aside_nested_navigation', locals: { child_service: child_service, index: 0 } %>
               <% end %>
             </li>
           <% end %>

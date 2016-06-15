@@ -21,3 +21,17 @@
 .service-video-embed-code {
   display: none;
 }
+
+.service-video {
+  position: relative;
+}
+
+.service-video-play-icon {
+  height: 106px;
+  left: 50%;
+  margin-left: -45px;
+  margin-top: -88px;
+  position: absolute;
+  top: 50%;
+  width: 89px;
+}

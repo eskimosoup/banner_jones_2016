@@ -61,6 +61,10 @@ body {
     right: 90px;
     top: 48px;
 
+    @include media('>768px', '<=1340px') {
+      right: 48px;
+    }
+    
     @include media('<768px') {
       right: 10px;
       top: 84px;
