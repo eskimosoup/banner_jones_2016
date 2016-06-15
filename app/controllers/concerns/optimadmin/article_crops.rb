@@ -6,7 +6,7 @@ module Optimadmin
       edit_images_for Article,
                       [
                         [:image, {
-                          show: ['fit', 975, 443],
+                          show: ['fill', 975, 443],
                           home: ['fill', 270, 200],
                           sidebar: ['fill', 270, 124],
                           index: ['fill', 436, 198]
