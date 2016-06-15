@@ -101,6 +101,10 @@
       border: 0;
     }
   }
+
+  &.nested a {
+    font-size: rem(13px);
+  }
 }
 
 .page-aside-navigation-title {

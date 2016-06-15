@@ -1,13 +1,13 @@
 <%
 #cache child_service do
 %>
-  <ul class="page-aside-navigation-links-list">
+  <ul class="page-aside-navigation-links-list nested depth-<%= index %>">
     <% child_service.children.each do |grandchild_service| %>
       <% present grandchild_service do |service_presenter| %>
         <li>
           <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if grandchild_service == @service}" }) %>
           <%=
-          render 'services/shared/service_page_aside_nested_navigation', child_service: grandchild_service if (grandchild_service == @service || grandchild_service.descendant_ids.include?(@service.id))
+          render partial: 'services/shared/service_page_aside_nested_navigation', locals: { child_service: grandchild_service, index: (index + 1) } if (grandchild_service == @service || grandchild_service.descendant_ids.include?(@service.id))
           %>
         </li>
       <% end %>
