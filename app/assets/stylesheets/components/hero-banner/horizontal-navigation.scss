@@ -1,10 +1,13 @@
 @mixin hero-banner-img {
-  border: 5px solid $white;
   border-radius: 50%;
   display: block;
   // margin: 0 rem(5px);
   margin: 0 auto;
   width: 50px;
+
+  &.loaded {
+    border: 5px solid $white;    
+  }
 }
 
 .hero-banner-navigation-wrap-horizontal {

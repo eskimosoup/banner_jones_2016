@@ -2,15 +2,20 @@
   <%= javascript_include_tag 'components/testimonials/slider.js' %>
   <%= javascript_include_tag 'components/home-components.js' %>
   <%= javascript_include_tag 'components/shared-components.js' %>
+  <script>
+    $(window).load(function() {
+      $('.hero-banner-navigation-link-horizontal img').addClass('loaded');
+    });
+  </script>
 <% end %>
 
 <% if @facade.banners.present? %>
   <%= render(
     partial: "homes/banners",
-    locals: { 
+    locals: {
       banners: @facade.banners,
       banner_services: @facade.banner_services
-    } 
+    }
   ) %>
 <% end %>
 
