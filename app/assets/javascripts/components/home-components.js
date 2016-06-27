@@ -11,7 +11,8 @@ $(window).load(function() {
     autoplaySpeed: 5000,
     nextArrow: '.hero-banner-next',
     prevArrow: '.hero-banner-previous',
-    fade: true
+    fade: true,
+    lazyLoad: 'progressive'
   });
 });
 

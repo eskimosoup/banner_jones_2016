@@ -33,10 +33,11 @@
     </div>
   </div>
 
-  <% present banner do |banner_presenter| %>
+
     <div class="hero-banner-image-overlay">
 
     </div>
-    <%= banner_presenter.homepage_image(class: 'hero-banner-image') %>
-  <% end %>
+    <%= image_tag '', data: { lazy: banner.image.homepage.url }, class: 'hero-banner-image' %>
+    <%#= banner_presenter.homepage_image(class: 'hero-banner-image') %>
+
 </div>
