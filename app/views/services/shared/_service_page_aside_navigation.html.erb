@@ -46,7 +46,7 @@
       </div>
 
       <ul class="page-aside-navigation-links-list">
-        <% @service.root.children.each do |child_service| %>
+        <% @service.root.children.order(:position).each do |child_service| %>
           <% present child_service do |service_presenter| %>
             <li>
               <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>
@@ -59,7 +59,7 @@
       </ul>
 
       <ul class="page-aside-navigation-links-list page-aside-child-navigation-links-list">
-        <% @service.children.each do |child_service| %>
+        <% @service.children.order(:position).each do |child_service| %>
           <% present child_service do |service_presenter| %>
             <li>
               <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>
