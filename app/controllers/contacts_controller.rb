@@ -36,7 +36,7 @@ class ContactsController < ApplicationController
     params.require(:contact)
           .permit(:forename, :surname, :telephone, :email,
                   :preferred_contact_method, :preferred_office,
-                  :how_heard, :from_url,
+                  :how_heard, :from_url, :mediation,
                   :service, :enquiry_type, :message, :wealth_management)
   end
 

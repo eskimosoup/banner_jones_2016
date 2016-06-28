@@ -43,6 +43,7 @@
     <%= f.text_area :enquiry_type, placeholder: "Enquiry" %>
   </div>
 
+  <%= f.hidden_field :mediation, value: 1 if defined?(mediation) %>
   <%= f.hidden_field :from_url, value: request.original_url %>
 
   <div class="actions">

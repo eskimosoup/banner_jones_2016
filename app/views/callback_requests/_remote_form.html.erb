@@ -20,6 +20,12 @@
     </div>
   <% end %>
 
-  <%= render partial: 'callback_requests/shared/remote_form_fields_solicitors', locals: { f: f } unless (@page.present? && @page.layout == 'wealth_management') || @callback_request.wealth_management.present? %>
-  <%= render partial: 'callback_requests/shared/remote_form_fields_wealth_management', locals: { f: f } if (@page.present? && @page.layout == 'wealth_management') || @callback_request.wealth_management.present? %>
+
+  <% if (@page.present? && @page.layout == 'wealth_management') || @callback_request.wealth_management.present? %>
+    <%= render partial: 'callback_requests/shared/remote_form_fields_wealth_management', locals: { f: f }  %>
+  <% elsif (@service.present? && @service.title == 'Mediation') || @callback_request.mediation.present? %>
+    <%= render partial: 'callback_requests/shared/remote_form_fields_solicitors', locals: { f: f, mediation: true } %>
+  <% else %>
+    <%= render partial: 'callback_requests/shared/remote_form_fields_solicitors', locals: { f: f } %>
+  <% end %>
 <% end %>

@@ -37,6 +37,17 @@ class ApplicationMailer < ActionMailer::Base
     end
   end
 
+  def mediation_email
+    @site_email = begin
+      site_setting = Optimadmin::SiteSetting.where(environment: Rails.env).find_by(key: 'Email - Mediation')
+      if site_setting
+        site_setting.value
+      else
+        'support@optimised.today'
+      end
+    end
+  end
+
   def site_name
     @site_name = begin
       site_setting = Optimadmin::SiteSetting.where(environment: Rails.env).find_by(key: 'Name')

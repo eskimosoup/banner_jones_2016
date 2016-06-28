@@ -32,7 +32,9 @@
       <span class="header-telephone-accent">
         t:
       </span>
-      <% if phone.present? %>
+      <% if yield(:custom_telephone).present? %>
+        <%= yield :custom_telephone %>
+      <% elsif phone.present? %>
         <%= link_to "tel:#{phone.tr(' ', '')}" do %>
           <span class="calltracks_bannerjonescouk-main">
             <%= phone %>
