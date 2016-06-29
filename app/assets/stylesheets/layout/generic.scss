@@ -6,21 +6,6 @@ body {
   }
 }
 
-a {
-  color: $red;
-
-  &:link,
-  &:visited {
-    color: $red;
-  }
-
-  &:hover,
-  &:active {
-    color: $red;
-    text-decoration: underline;
-  }
-}
-
 .index-content-wrap {
   @include grid-row;
 }

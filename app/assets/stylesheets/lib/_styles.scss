@@ -129,4 +129,20 @@
   li {
     @include paragraph;
   }
+
+
+  a {
+    color: $red;
+
+    &:link,
+    &:visited {
+      color: $red;
+    }
+
+    &:hover,
+    &:active {
+      color: $red;
+      text-decoration: underline;
+    }
+  }
 }
