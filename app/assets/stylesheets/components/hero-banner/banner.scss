@@ -6,7 +6,7 @@
 
 .hero-banner {
   border-bottom: 8px solid $orange;
-  max-height: 700px;
+  height: 601px;
   overflow: hidden;
 
   @include media('<1024px') {
@@ -15,7 +15,7 @@
 }
 
 .hero-banner-slick {
-  max-height: 600px;
+  height: 601px;
   overflow: hidden;
 
   &.slick-slider {
@@ -70,6 +70,7 @@
   padding: rem(15px) rem(30px);
   position: relative;
   z-index: 2;
+  height: 601px;
 
   @include breakpoint(large) {
     @include grid-column(6,

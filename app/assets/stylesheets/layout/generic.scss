@@ -6,6 +6,21 @@ body {
   }
 }
 
+a {
+  color: $red;
+
+  &:link,
+  &:visited {
+    color: $red;
+  }
+
+  &:hover,
+  &:active {
+    color: $red;
+    text-decoration: underline;
+  }
+}
+
 .index-content-wrap {
   @include grid-row;
 }
@@ -64,7 +79,7 @@ body {
     @include media('>768px', '<=1340px') {
       right: 48px;
     }
-    
+
     @include media('<768px') {
       right: 10px;
       top: 84px;
