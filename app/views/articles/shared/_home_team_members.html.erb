@@ -1,7 +1,7 @@
 <% present team_member do |team_member_presenter| %>
   <%= link_to team_member, title: team_member_presenter.full_name do %>
     <div class="article-author">
-      <%= content_tag :div, (team_member_presenter.small_image(alt: team_member_presenter.full_name)), class: 'article-author-photo team-member-avatar' if team_member_presenter.small_image.present? %>
+      <%= content_tag :div, (team_member_presenter.lazy_small_image(alt: team_member_presenter.full_name)), class: 'article-author-photo team-member-avatar' if team_member_presenter.small_image.present? %>
       <div class="article-author-details">
         <div class="article-author-name">
           <%= team_member_presenter.full_name %>

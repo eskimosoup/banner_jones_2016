@@ -21,3 +21,8 @@
 //= require components/mobile-anchors
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
+//= require vendor/jquery.unveil
+
+$(document).ready(function() {
+  $('img[data-src]').unveil();
+});
