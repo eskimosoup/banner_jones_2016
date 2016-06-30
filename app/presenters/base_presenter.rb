@@ -31,6 +31,12 @@ class BasePresenter
     end
   end
 
+  def self.add_lazy_image_version_method(column_name, version_name)
+    define_method("lazy_#{ version_name }_#{ column_name }") do |options = {}|
+      h.image_tag 'blank.png', options.merge(data: { src: object.public_send("#{ column_name }_url", version_name) }) if object.public_send("#{ column_name }?")
+    end
+  end
+
   private
 
   def create_image_methods
@@ -38,6 +44,7 @@ class BasePresenter
       BasePresenter.add_image_method(column_name)
       uploader.versions.keys.each do |version_name|
         BasePresenter.add_image_version_method(column_name, version_name)
+        BasePresenter.add_lazy_image_version_method(column_name, version_name)
       end
     end
   end
