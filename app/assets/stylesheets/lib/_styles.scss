@@ -131,7 +131,7 @@
   }
 
 
-  a {
+  a:not(.see-all) {
     color: $red;
 
     &:link,
