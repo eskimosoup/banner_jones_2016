@@ -4,6 +4,7 @@ $(document).ready(function() {
   }
 
   $('.has-children').doubleTapToGo();
+  $('.meganav-dropdown-content .meganav-dropdown-content-inner:first-of-type').removeClass('hide')
 });
 
 $(document).on('click', '.mobile-menu-toggle', function() {
