@@ -1,6 +1,6 @@
 <% cache [service, service.team_members.key_team_members.first, service.descendants.map(&:updated_at).max] do %>
   <% present service do |service_presenter| %>
-  <div class="meganav-dropdown-content-inner meganav-dropdown-content-<%= service_presenter.id %> <%= 'hide' unless service_counter == 0 %>">
+  <div class="meganav-dropdown-content-inner meganav-dropdown-content-<%= service_presenter.id %> hide">
     <div class="meganav-dropdown-secondary-list">
         <div class="meganav-secondary-title-area">
           <h3 class="meganav-secondary-title">
