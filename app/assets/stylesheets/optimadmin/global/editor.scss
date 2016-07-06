@@ -19,4 +19,8 @@
 
 .mce-content-body {
   @include page-content;
+
+  .hide {
+    display: block;
+  }
 }
