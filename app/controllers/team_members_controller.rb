@@ -1,7 +1,7 @@
 class TeamMembersController < ApplicationController
   before_action :set_search_service, only: :search
   before_action :load_form_field_objects
-  before_action :find_team_member, only: [:show, :testimonials]
+  before_action :find_team_member, only: [:testimonials]
 
   def index
     @office = Office.displayed.find(params[:office_id]) if params[:office_id].present?
@@ -9,6 +9,7 @@ class TeamMembersController < ApplicationController
   end
 
   def show
+    find_team_member
   end
 
   def search
