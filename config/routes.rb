@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     end
     collection do
       get 'search'
+      resources :audiences, path: 'services' do
+        resources :services, only: :show, path: '', controller: 'team_members/services', as: 'team_member_services'
+      end
     end
   end
 
