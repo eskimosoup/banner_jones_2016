@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.rc1', '< 5.1'
+gem 'rails', '~> 5.0', '< 5.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
@@ -55,7 +55,6 @@ group :test do
 end
 
 group :development do
-  gem 'quiet_assets', '~> 1.1.0'
   gem 'guard-rspec', '~> 4.6.4', require: false
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
   gem 'rack-mini-profiler', '~> 0.9.7'
@@ -75,8 +74,3 @@ gem 'twitter'
 gem 'conveyancing_calculator', github: 'eskimosoup/conveyancing_calculator'
 gem 'stamp_duty', '~> 0.1.0'
 gem 'simple_form', '~> 3.2.1'
-
-# FIXME: Remove this when merged: https://github.com/rack/rack/commit/f2baf7ba76f90d5977abc347fed3a6bb7d32e114
-# This is to fix empty params not being submitted when a file field is included
-gem 'rack', github: 'rack/rack'
-gem 'kaminari', github: 'amatsuda/kaminari'
