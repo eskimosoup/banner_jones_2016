@@ -33,8 +33,12 @@ feature "User makes a conveyancing purchase quote", type: :feature do
       price: 100000,
     )
     click_button "Continue"
+    click_link I18n.t("conveyancing_quotes.download_button")
 
-
+    expect(content_type).to eq("application/pdf")
+    expect(content_disposition).to include("inline")
+    expect(download_filename).to include("Banner Jones Conveyancing Quote")
+    expect(pdf_body).to have_content("Joe")
   end
 
   def fill_form(attrs = {})

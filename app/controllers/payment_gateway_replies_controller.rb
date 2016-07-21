@@ -1,5 +1,5 @@
 class PaymentGatewayRepliesController < ApplicationController
   def create
-    render nothing: true
+    head :ok
   end
 end

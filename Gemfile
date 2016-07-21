@@ -42,6 +42,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'shoulda-matchers', '~> 2.8.0'
+  gem 'pry-rails', '~> 0.3.4'
+  gem 'pry-byebug'
 end
 
 group :test do
@@ -52,6 +54,7 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'shoulda-callback-matchers', '~> 1.1.1'
+  gem 'pdf-reader', '~> 1.4'
 end
 
 group :development do
@@ -59,8 +62,6 @@ group :development do
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
   gem 'rack-mini-profiler', '~> 0.9.7'
   gem 'flamegraph', '~> 0.1.0'
-  gem 'pry-rails', '~> 0.3.4'
-  gem 'pry-byebug'
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet', '~> 5.1.0'
 end
@@ -74,3 +75,4 @@ gem 'twitter'
 gem 'conveyancing_calculator', github: 'eskimosoup/conveyancing_calculator'
 gem 'stamp_duty', '~> 0.1.0'
 gem 'simple_form', '~> 3.2.1'
+gem 'pdfkit', '~> 0.8.2'

@@ -211,3 +211,5 @@ en:
       previous: "Prev"
       next: "Next"
       truncate: "&hellip;"
+  conveyancing_quotes:
+    download_button: "Download Quote"

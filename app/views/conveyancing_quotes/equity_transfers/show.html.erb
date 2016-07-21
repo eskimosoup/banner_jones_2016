@@ -14,3 +14,8 @@
     Our fees will be <%= number_to_currency @conveyancing_quote_equity_transfer.fee %>
   </div>
 </div>
+
+<%= link_to I18n.t("conveyancing_quotes.download_button"),
+  conveyancing_quotes_equity_transfer_download_path(@conveyancing_quote_equity_transfer, format: "pdf"),
+  target: "_blank",
+  class: "download-button" %>

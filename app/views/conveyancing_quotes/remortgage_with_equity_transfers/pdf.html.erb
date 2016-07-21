@@ -1,0 +1,19 @@
+<div class="conveyancing-quote remortgage-with-equity-transfer">
+  <h1>Your Conveyancing Quote</h1>
+
+  <%= render(
+    partial: "conveyancing_quotes/user_details",
+    locals: {
+      quote: quote
+    }
+  ) %>
+  <div class="remortgage-price">
+    For a remortgage at <%= number_to_currency quote.remortgage_price %>
+  </div>
+  <div class="equity-transfer-price">
+    For a equity_transfer at <%= number_to_currency quote.equity_transfer_price %>
+  </div>
+  <div class="remortgage-with-equity-transfer-fee">
+    Our fees will be <%= number_to_currency quote.fee %>
+  </div>
+</div>

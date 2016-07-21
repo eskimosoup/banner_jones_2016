@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   namespace :conveyancing_quotes do
-    resources :equity_transfers, only: [:new, :create, :show]
-    resources :sales, only: [:new, :create, :show]
-    resources :sale_and_purchases, only: [:new, :create, :show]
-    resources :purchases, only: [:new, :create, :show]
-    resources :remortgages, only: [:new, :create, :show]
-    resources :remortgage_with_equity_transfers, only: [:new, :create, :show]
+    concern :downloadable do
+      resource :download, only: [:show]
+    end
+    resources :equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
+    resources :sales, only: [:new, :create, :show], concerns: [:downloadable]
+    resources :sale_and_purchases, only: [:new, :create, :show], concerns: [:downloadable]
+    resources :purchases, only: [:new, :create, :show], concerns: [:downloadable]
+    resources :remortgages, only: [:new, :create, :show], concerns: [:downloadable]
+    resources :remortgage_with_equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
   end
 
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'

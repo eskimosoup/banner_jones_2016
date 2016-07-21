@@ -4,18 +4,56 @@ feature "User makes a conveyancing sale quote", type: :feature do
   scenario "Successfully" do
     visit new_conveyancing_quotes_sale_path
 
-    select "Mr", from: "conveyancing_quotes_sale_title"
-    fill_in "conveyancing_quotes_sale_forename", with: "Joe"
-    fill_in "conveyancing_quotes_sale_surname", with: "Bloggs"
-    fill_in "conveyancing_quotes_sale_phone", with: "01482 482482"
-    fill_in "conveyancing_quotes_sale_email", with: "joe.bloggs@example.com"
-    select "Now", from: "conveyancing_quotes_sale_timeframe"
-    fill_in "conveyancing_quotes_sale_price", with: 100000
+    fill_form(
+      title: "Mr",
+      forename: "Joe",
+      surname: "Bloggs",
+      phone: "01482 482 482",
+      email: "joe.bloggs@example.com",
+      timeframe: "Now",
+      price: 100000,
+    )
     click_button "Continue"
 
     within ".conveyancing-quote" do
       expect(page).to have_css ".forename", text: "Joe"
       expect(page).to have_css ".sale-fee", text: "£425.00"
     end
+  end
+
+  scenario "and downloads pdf" do
+    visit new_conveyancing_quotes_sale_path
+
+    fill_form(
+      title: "Mr",
+      forename: "Joe",
+      surname: "Bloggs",
+      phone: "01482 482 482",
+      email: "joe.bloggs@example.com",
+      timeframe: "Now",
+      price: 100000,
+    )
+    click_button "Continue"
+    click_link I18n.t("conveyancing_quotes.download_button")
+
+    expect(content_type).to eq("application/pdf")
+    expect(content_disposition).to include("inline")
+    expect(download_filename).to include("Banner Jones Conveyancing Quote")
+    expect(pdf_body).to have_content("Joe")
+  end
+
+  def fill_form(attrs = {})
+    attrs.each do |attr, value|
+      case attr
+      when :title, :timeframe
+        select value, from: field_name(attr)
+      else
+        fill_in field_name(attr), with: value
+      end
+    end
+  end
+
+  def field_name(attr)
+    "conveyancing_quotes_sale_#{ attr }"
   end
 end

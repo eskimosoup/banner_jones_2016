@@ -1,0 +1,16 @@
+<div class="conveyancing-quote equity-transfer">
+  <h1>Your Conveyancing Quote</h1>
+
+  <%= render(
+    partial: "conveyancing_quotes/user_details",
+    locals: {
+      quote: quote
+    }
+  ) %>
+  <div class="equity-transfer-price">
+    For a equity_transfer at <%= number_to_currency quote.price %>
+  </div>
+  <div class="equity-transfer-fee">
+    Our fees will be <%= number_to_currency quote.fee %>
+  </div>
+</div>

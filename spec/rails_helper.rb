@@ -33,7 +33,11 @@ ActiveRecord::Migration.maintain_test_schema!
 # Capybara.javascript_driver = :poltergeist
 Capybara.javascript_driver = :selenium
 
+module Features
+end
+
 RSpec.configure do |config|
+  config.include Features, type: :feature
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 

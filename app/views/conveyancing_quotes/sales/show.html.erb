@@ -15,3 +15,8 @@
     Our fees will be <%= number_to_currency @conveyancing_quote_sale.fee %>
   </div>
 </div>
+
+<%= link_to I18n.t("conveyancing_quotes.download_button"),
+  conveyancing_quotes_sale_download_path(@conveyancing_quote_sale, format: "pdf"),
+  target: "_blank",
+  class: "download-button" %>

@@ -1,0 +1,21 @@
+<div class="conveyancing-quote purchase">
+  <h1>Your Conveyancing Quote</h1>
+
+  <%= render(
+    partial: "conveyancing_quotes/user_details",
+    locals: {
+      quote: quote
+    }
+  ) %>
+  <div class="purchase-price">
+    For a purchase at <%= number_to_currency quote.price %>
+  </div>
+  <div class="purchase-fee">
+    Our fees will be <%= number_to_currency quote.fee %>
+  </div>
+  <div class="disbursements">
+    <div class="stamp-duty">
+      Stamp Duty Land Tax <%= number_to_currency quote.stamp_duty %>
+    </div>
+  </div>
+</div>

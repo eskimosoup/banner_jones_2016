@@ -27,3 +27,8 @@
     </div>
   </div>
 </div>
+
+<%= link_to I18n.t("conveyancing_quotes.download_button"),
+  conveyancing_quotes_sale_and_purchase_download_path(@conveyancing_quote_sale_and_purchase, format: "pdf"),
+  target: "_blank",
+  class: "download-button" %>
