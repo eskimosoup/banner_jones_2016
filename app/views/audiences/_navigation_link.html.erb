@@ -1,5 +1,7 @@
-<li>
-  <% present service do |service_presenter| %>
-    <%= service_presenter.linked_text service.title, { class: "hover-toggle#{' active' if service_counter == 0}", data: { container: "meganav-dropdown-content-#{service_presenter.id}" } } %>
-  <% end %>
-</li>
+<% cache [service, service_counter] do %>
+  <li>
+    <% present service do |service_presenter| %>
+      <%= service_presenter.linked_text service.title, { class: "hover-toggle#{' active' if service_counter == 0}", data: { container: "meganav-dropdown-content-#{service_presenter.id}" } } %>
+    <% end %>
+  </li>
+<% end %>

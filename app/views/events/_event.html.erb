@@ -1,29 +1,30 @@
-<div class="index-module index">
-  <div class="standard-content-box standalone">
-    <% present event do |event_presenter| %>
-      <%= link_to event, title: event_presenter.title, class: 'index-module-link' do %>
-        <%= content_tag :div, event_presenter.index_image(alt: event_presenter.title), class: 'index-module-image' if event_presenter.index_image.present? %>
+<% cache [event, event.event_location, event.event_categories.map(&:updated_at).max, event.team_members.map(&:updated_at).max do %>
+  <div class="index-module index">
+    <div class="standard-content-box standalone">
+      <% present event do |event_presenter| %>
+        <%= link_to event, title: event_presenter.title, class: 'index-module-link' do %>
+          <%= content_tag :div, event_presenter.index_image(alt: event_presenter.title), class: 'index-module-image' if event_presenter.index_image.present? %>
 
-        <div class="index-module-details-overview">
-          <div class="index-module-details">
-            <div class="index-module-details-date">
-              <%= event_presenter.event_start(:short) %>
-              -
-              <%= event_presenter.event_end(:short) %>
+          <div class="index-module-details-overview">
+            <div class="index-module-details">
+              <div class="index-module-details-date">
+                <%= event_presenter.event_start(:short) %>
+                -
+                <%= event_presenter.event_end(:short) %>
+              </div>
+
+              <div class="index-module-details-categories">
+                <%= event.event_categories.map(&:title).join(', ') %>
+              </div>
             </div>
 
-            <div class="index-module-details-categories">
-              <%= event.event_categories.map(&:title).join(', ') %>
+            <div class="index-module-shares">
+              <div class="social-share-count" href="<%= url_for([event, only_path: false]) %>">
+
+              </div>
             </div>
           </div>
-
-          <div class="index-module-shares">
-            <div class="social-share-count" href="<%= url_for([event, only_path: false]) %>">
-
-            </div>
-          </div>
-        </div>
-      <% end %>
+        <% end %>
 
         <div class="index-module-details-wrap">
           <%= link_to event, title: event_presenter.title, class: 'index-module-link' do %>
@@ -52,6 +53,7 @@
             <%= render partial: 'events/shared/team_members', collection: event.team_members.displayed, as: :team_member, locals: { event_presenter: event_presenter } %>
           </div>
         </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

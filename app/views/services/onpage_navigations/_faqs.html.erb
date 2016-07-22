@@ -14,12 +14,14 @@
     faqs = @service.frequently_asked_questions.displayed if faqs.blank?
     %>
     <% faqs.limit(onpage_navigation.results_limit).each do |faq| %>
-      <div class="service-frequently-asked-question">
-        <%= render(
-          partial: "frequently_asked_questions/frequently_asked_question",
-          object: faq
-        ) %>
-      </div>
+      <% cache faq do %>
+        <div class="service-frequently-asked-question">
+          <%= render(
+            partial: "frequently_asked_questions/frequently_asked_question",
+            object: faq
+          ) %>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

@@ -1,21 +1,23 @@
-<div class="office office-<%= office_counter %>">
-  <div class="standard-content-box">
-    <% present office.office_location do |office_location_presenter| %>
-      <div class="index-office-location-name">
-        <%= office_location_presenter.name %>
-      </div>
-    <% end %>
+<% cache [office, office.office_location, office_counter] do %>
+  <div class="office office-<%= office_counter %>">
+    <div class="standard-content-box">
+      <% present office.office_location do |office_location_presenter| %>
+        <div class="index-office-location-name">
+          <%= office.office_location_name %>
+        </div>
+      <% end %>
 
-    <% present office do |office_presenter| %>
-      <div class="index-office-address-fields">
-        <%= raw office.address_fields.gsub(', ', '<br />') %>
-      </div>
+      <% present office do |office_presenter| %>
+        <div class="index-office-address-fields">
+          <%= raw office.address_fields.gsub(', ', '<br />') %>
+        </div>
 
-      <div class="index-office-buttons">
-        <%= office_presenter.linked_text('View map', { title: office.address_fields, class: 'index-office-button' } ) %>
+        <div class="index-office-buttons">
+          <%= office_presenter.linked_text('View map', { title: office.address_fields, class: 'index-office-button' } ) %>
 
-        <%= render partial: 'offices/shared/directions', locals: { office: office, office_presenter: office_presenter } %>
-      </div>
-    <% end %>
+          <%= render partial: 'offices/shared/directions', locals: { office: office, office_presenter: office_presenter } %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>

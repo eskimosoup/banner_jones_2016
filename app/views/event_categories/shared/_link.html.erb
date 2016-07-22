@@ -1,3 +1,5 @@
-<% present event_category do |event_category_presenter| %>
-  <%= event_category_presenter.linked_text(event_category_presenter.title, { title: event_category_presenter.title }) %>
+<% cache event_category do %>
+  <% present event_category do |event_category_presenter| %>
+    <%= event_category_presenter.linked_text(event_category_presenter.title, { title: event_category_presenter.title }) %>
+  <% end %>
 <% end %>

@@ -1,8 +1,9 @@
-<div class="index-module aside">
-  <div class="standard-content-box standalone">
-    <% present article do |article_presenter| %>
-      <%= link_to article, title: article_presenter.title, class: 'index-module-link' do %>
-        <%= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'index-module-image' if article_presenter.index_image.present? %>
+<% cache [article, article.team_members.map(&:updated_at).max] do %>
+  <div class="index-module aside">
+    <div class="standard-content-box standalone">
+      <% present article do |article_presenter| %>
+        <%= link_to article, title: article_presenter.title, class: 'index-module-link' do %>
+          <%= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'index-module-image' if article_presenter.index_image.present? %>
 
           <div class="index-module-details-overview">
             <div class="index-module-details">
@@ -16,16 +17,17 @@
             </div>
           </div>
 
-        <div class="index-module-details-wrap">
-          <div class="index-module-title">
-            <%= article_presenter.title %>
-          </div>
+          <div class="index-module-details-wrap">
+            <div class="index-module-title">
+              <%= article_presenter.title %>
+            </div>
 
-          <div class="index-module-author-wrap">
-            <%= render partial: 'articles/shared/team_members', collection: article.team_members.displayed, as: :team_member, locals: { article_presenter: article_presenter } %>
+            <div class="index-module-author-wrap">
+              <%= render partial: 'articles/shared/team_members', collection: article.team_members.displayed, as: :team_member, locals: { article_presenter: article_presenter } %>
+            </div>
           </div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% end %>

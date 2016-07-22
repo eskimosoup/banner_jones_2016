@@ -4,20 +4,22 @@
   service_pages = @service.service_pages.displayed if service_pages.blank?
   %>
   <% service_pages.limit(onpage_navigation.results_limit).each do |service_page| %>
-    <div class="service-pages-page-highlight standard-content-box">
-      <div class="standard-content-box-inner-content">
-        <% present service_page do |service_page_presenter| %>
-          <%= content_tag :div, service_page_presenter.linked_text(service_page_presenter.index_image(alt: service_page_presenter.title), alt: service_page_presenter.title), class: 'service-pages-page-image' if service_page_presenter.index_image.present? %>
+    <% cache service_page do %>
+      <div class="service-pages-page-highlight standard-content-box">
+        <div class="standard-content-box-inner-content">
+          <% present service_page do |service_page_presenter| %>
+            <%= content_tag :div, service_page_presenter.linked_text(service_page_presenter.index_image(alt: service_page_presenter.title), alt: service_page_presenter.title), class: 'service-pages-page-image' if service_page_presenter.index_image.present? %>
 
-          <div class="service-pages-page-details">
-            <%= service_page_presenter.linked_text(service_page_presenter.title, {title: service_page_presenter.title, class: 'service-pages-page-title'}) %>
+            <div class="service-pages-page-details">
+              <%= service_page_presenter.linked_text(service_page_presenter.title, {title: service_page_presenter.title, class: 'service-pages-page-title'}) %>
 
-            <%= service_page_presenter.summary %>
+              <%= service_page_presenter.summary %>
 
-            <%= service_page_presenter.linked_text('Read more >', title: service_page_presenter.title, class: 'service-pages-page-read-more') %>
-          </div>
-        <% end %>
+              <%= service_page_presenter.linked_text('Read more >', title: service_page_presenter.title, class: 'service-pages-page-read-more') %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
