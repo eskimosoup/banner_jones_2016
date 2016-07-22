@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_administrator
 
   unless Rails.application.config.consider_all_requests_local
-    rescue_from Exception, with: -> { render_error(500) }
-    rescue_from ActiveRecord::RecordNotFound, with: -> { render_error(404) }
-    rescue_from ActionController::RoutingError, with: -> { render_error(404) }
+    rescue_from Exception, with: ->(e) { render_error(500, e) }
+    rescue_from ActiveRecord::RecordNotFound, with: ->(e) { render_error(404, e) }
+    rescue_from ActionController::RoutingError, with: ->(e) { render_error(404, e) }
   end
 
   def sitemap
@@ -50,7 +50,8 @@ class ApplicationController < ActionController::Base
   end
   helper_method :global_site_settings
 
-  def render_error(status)
+  def render_error(status, error)
+    logger.error "#{ error.class }: #{ error.message }"
     respond_to do |format|
       format.html { render "errors/#{status}", status: status }
       format.all { render nothing: true, status: status }
