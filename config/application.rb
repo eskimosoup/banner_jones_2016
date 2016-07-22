@@ -10,7 +10,6 @@ module BannerJones2016
   class Application < Rails::Application
     { env: 'development' }
     config.exceptions_app = routes
-    config.middleware.use Rack::Deflater
 
     config.time_zone = 'London'
     config.active_record.default_timezone = :local

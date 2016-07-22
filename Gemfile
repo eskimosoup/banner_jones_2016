@@ -60,7 +60,7 @@ end
 group :development do
   gem 'guard-rspec', '~> 4.6.4', require: false
   gem 'optimadmin_generators', git: 'git@github.com:eskimosoup/optimadmin_generators.git'
-  gem 'rack-mini-profiler', '~> 0.9.7'
+  gem 'rack-mini-profiler', '~> 0.10.1'
   gem 'flamegraph', '~> 0.1.0'
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet', '~> 5.1.0'

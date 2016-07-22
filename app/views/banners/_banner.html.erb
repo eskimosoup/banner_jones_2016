@@ -1,21 +1,3 @@
-<% if banner.audiences.present? %>
-  <%= content_for :head do %>
-    <style>
-    /*
-    <% present banner do |banner_presenter| %>
-      .banner-<%= banner.id %> .hero-banner-item-prefix-title {
-        border-color: <%= banner.audiences.first.colour %>
-      }
-
-      .banner-<%= banner.id %> .hero-banner-item-button {
-        background: <%= banner.audiences.first.colour %>
-      }
-    <% end %>
-    */
-    </style>
-  <% end %>
-<% end %>
-
 <div class="hero-banner-item banner-<%= banner.id %>">
   <div class="hero-banner-item-wrap">
     <div class="hero-banner-item-content">

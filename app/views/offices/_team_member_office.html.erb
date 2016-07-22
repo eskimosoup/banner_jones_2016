@@ -1,3 +1,3 @@
 <% cache [team_member, office.office_location, office] do %>
-  <%= link_to "#{office.office_location.name}#{" - #{office.building_name}" if office.building_name.present?}", office_path(office) %><%= ', ' unless office == team_member.offices.last %>
+  <%= link_to "#{office.office_location_name}#{" - #{office.building_name}" if office.building_name.present?}", office_path(office) %><%= ', ' unless office == team_member.offices.last %>
 <% end %>

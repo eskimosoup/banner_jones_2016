@@ -1,6 +1,4 @@
 Rails.application.configure do
-  Rack::MiniProfiler.config.position = 'right'
-  Rack::MiniProfiler.config.start_hidden = false # use ALT + P to toggle
 
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   config.web_console.whitelisted_ips = '192.168.0.0/16'

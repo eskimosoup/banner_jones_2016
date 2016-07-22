@@ -12,7 +12,7 @@ class HomeFacade
   end
 
   def resources
-    @resources ||= Resource.homepage_highlight.limit(16)
+    @resources ||= Resource.homepage_highlight.includes(:services).limit(16)
   end
 
   def team_members
