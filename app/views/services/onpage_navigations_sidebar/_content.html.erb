@@ -1,0 +1,18 @@
+<% cache [onpage_navigation, onpage_navigation.content_items.displayed.limit(onpage_navigation.results_limit).map(&:updated_at).max] do %>
+  <div class="standard-content-box onpage-navigation-item">
+    <h3 class="standard-content-box-title">
+      <%= onpage_navigation.title %>
+    </h3>
+
+    <div class="standard-content-box-inner-content">
+      <div class="onpage-navigation-content-items">
+        <% onpage_navigation.content_items.displayed.limit(onpage_navigation.results_limit).each do |content_item| %>
+          <% present content_item do |content_item_presenter| %>
+            <%= content_tag :h3, content_item_presenter.title if content_item_presenter.title.present? %>
+            <%= content_item_presenter.content %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

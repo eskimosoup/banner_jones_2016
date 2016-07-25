@@ -1,0 +1,13 @@
+<% if @onpage_navigations.present? %>
+  <div class="service-onpage-navigation-content">
+    <% @onpage_navigations.where.not(partial: 'content').each do |onpage_navigation| %>
+      <% present onpage_navigation do |onpage_navigation_presenter| %>
+        <div class="row collapse">
+          <div id="<%= onpage_navigation_presenter.anchor %>" class="onpage-navigation-wrap small-12 columns">
+            <%= onpage_navigation_presenter.render_partial('onpage_navigations_sidebar') %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
