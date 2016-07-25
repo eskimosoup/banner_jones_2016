@@ -14,7 +14,7 @@
     faqs = @service.frequently_asked_questions.displayed if faqs.blank?
     %>
     <% faqs.limit(onpage_navigation.results_limit).each do |faq| %>
-      <% cache faq do %>
+      <% cache ['sidebar', faq] do %>
         <div class="service-frequently-asked-question">
           <%= render(
             partial: "frequently_asked_questions/frequently_asked_question",
