@@ -95,15 +95,18 @@
 
   li {
     border-bottom: 3px solid $white;
-    margin: rem(2px) 0;
+    margin: rem(3px) 0;
 
     @include breakpoint(large) {
       border: 0;
     }
   }
 
-  &.nested a {
-    font-size: rem(13px);
+  &.nested a:not(.depth-0) {
+    font-size: rem(12px);
+  }
+  &.nested:not(.depth-0) a {
+    font-size: rem(11px);
   }
 }
 
