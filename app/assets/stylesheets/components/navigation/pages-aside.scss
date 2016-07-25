@@ -119,8 +119,8 @@
 
   @include breakpoint(large) {
     border-bottom: 5px solid $deep-accent-grey;
-    margin: 0 0 rem(21px);
-    padding: rem(25px) 0 rem(21px);
+    margin: 0 0 rem(10px);
+    padding: rem(4px 0 15px);
   }
 
   a {
