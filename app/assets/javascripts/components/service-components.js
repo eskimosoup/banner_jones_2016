@@ -105,7 +105,7 @@ $(document).on('click', '.toggle-class', function() {
 
 $(document).on('click', '.frequently-asked-question-toggle', function() {
   // smoothScroll('#' + $(this).attr('id'));
-  return false;
+  // return false;
 });
 
 if (Modernizr.mq('only screen and (max-width: 768px)')) {
