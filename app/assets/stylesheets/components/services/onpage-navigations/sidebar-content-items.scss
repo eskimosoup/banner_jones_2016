@@ -60,6 +60,7 @@
   }
 
   .testimonial-wrap p {
+    font-size: rem(14px);
     margin: 0;
   }
 
@@ -74,5 +75,49 @@
 
   .slick-dots {
     position: static;
+  }
+
+
+  .slider-team-members-slider-content-box-slider-controls {
+    margin-top: rem(11px);
+  }
+
+  .slider-team-members-profiles {
+    margin: rem(10px 0 0);
+  }
+
+
+  .service-article.opened {
+    .service-article-image {
+      @include breakpoint(large) {
+        @include grid-column($columns: 12, $gutter: (medium: 10));
+      }
+    }
+
+    .service-article-content {
+      @include breakpoint(large) {
+        @include grid-column(12);
+      }
+    }
+  }
+
+  .service-article.closed {
+    .service-article-date {
+      @include breakpoint(large) {
+        @include grid-column(12);
+      }
+    }
+
+    .service-article-title {
+      @include breakpoint(large) {
+        @include grid-column($columns: 12, $gutter: (small: 0));
+      }
+    }
+
+    .service-article-team-members {
+      @include breakpoint(large) {
+        @include grid-column($columns: 12, $gutter: (small: 0));
+      }
+    }
   }
 }
