@@ -6,11 +6,11 @@
     padding: 0 0 rem(12px);
 
     .service-article-image {
+      margin: rem(24px) 0 0;
+
       @include breakpoint(large) {
         @include grid-column($columns: 4, $gutter: (medium: 10));
       }
-
-      margin: rem(24px) 0 0;
     }
 
     .service-article-content {
