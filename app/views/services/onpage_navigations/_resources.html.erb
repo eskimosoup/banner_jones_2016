@@ -15,25 +15,23 @@ resources = @service.resources.displayed if resources.blank?
 <% end %>
 
 <div class="row collapse">
-  <% cache resources do %>
-    <% resources.each do |resource| %>
-      <% present resource do |resource_presenter| %>
-        <div class="resource-<%= onpage_navigation.id %> <%= 'end' if resource == resources.last %> columns">
-          <div class="standard-content-box onpage-navigation-item helpful-guide-hover">
-            <h2 class="standard-content-box-title">
-              <%= resource_presenter.title %>
-            </h2>
+  <% resources.each do |resource| %>
+    <% present resource do |resource_presenter| %>
+      <div class="resource-<%= onpage_navigation.id %> <%= 'end' if resource == resources.last %> columns">
+        <div class="standard-content-box onpage-navigation-item helpful-guide-hover">
+          <h2 class="standard-content-box-title">
+            <%= resource_presenter.title %>
+          </h2>
 
-            <%= resource_presenter.linked_download(resource_presenter.index_image({alt: resource_presenter.title, class: 'service-resource-image'}), {title: resource_presenter.title , target: '_blank' }) if resource_presenter.index_image.present? %>
+          <%= resource_presenter.linked_download(resource_presenter.index_image({alt: resource_presenter.title, class: 'service-resource-image'}), {title: resource_presenter.title , target: '_blank' }) if resource_presenter.index_image.present? %>
 
-            <%= resource_presenter.linked_download('Download', {class: 'service-resource-download-button', title: resource_presenter.title, target: '_blank' }) %>
+          <%= resource_presenter.linked_download('Download', {class: 'service-resource-download-button', title: resource_presenter.title, target: '_blank' }) %>
 
-            <% present resource.services.first do |service_presenter| %>
-              <%= resource_presenter.linked_download((content_tag :div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background-color')), target: '_blank') if resource.summary.present? %>
-            <% end %>
-          </div>
+          <% present resource.services.first do |service_presenter| %>
+            <%= resource_presenter.linked_download((content_tag :div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background-color')), target: '_blank') if resource.summary.present? %>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
