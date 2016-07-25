@@ -3,49 +3,29 @@ videos = onpage_navigation.videos.displayed
 videos = @service.videos.displayed if videos.blank?
 %>
 
-<%= content_for :head do %>
-  <style>
-    @media screen and (min-width: 768px) {
-        .video-<%= onpage_navigation.id %> {
-          width: <%= 100 / videos.limit(onpage_navigation.results_limit).size %>%
-        }
-      }
-  </style>
-<% end %>
-<%= content_for :javascript do %>
-  <script>
-    $(function() {
-      $('.service-video-content').matchHeight();
-    })
-  </script>
-<% end %>
+<% videos.limit(onpage_navigation.results_limit).each do |video| %>
+  <% cache ['sidebar', video] do %>
+    <div class="service-video">
+      <div class="onpage-navigation-item standard-content-box standalone">
+        <% present video do |video_presenter| %>
+          <%= link_to (image_tag 'components/icons/play-video.png', alt: '', class: 'service-video-play-icon'),
+                "#service-video-#{video_presenter.id}",
+                class: 'inline-colorbox',
+                title: video_presenter.title if video_presenter.full_image.present? %>
 
-<div class="row collapse">
-
-  <% videos.limit(onpage_navigation.results_limit).each do |video| %>
-    <% cache video do %>
-      <div class="service-video video-<%= onpage_navigation.id %> <%= 'end' if video == videos.last %> columns">
-        <div class="onpage-navigation-item standard-content-box standalone">
-          <% present video do |video_presenter| %>
-            <%= link_to (image_tag 'components/icons/play-video.png', alt: '', class: 'service-video-play-icon'),
+          <%= link_to video_presenter.full_image(alt: video_presenter.title),
                   "#service-video-#{video_presenter.id}",
                   class: 'inline-colorbox',
                   title: video_presenter.title if video_presenter.full_image.present? %>
-
-            <%= link_to video_presenter.full_image(alt: video_presenter.title),
-                    "#service-video-#{video_presenter.id}",
-                    class: 'inline-colorbox',
-                    title: video_presenter.title if video_presenter.full_image.present? %>
-            <div class="service-video-content">
-              <h4 class="service-video-title">
-                <%= video_presenter.title %>
-              </h4>
-              <%= video_presenter.summary %>
-            </div>
-            <%= content_tag :div, video_presenter.youtube_embed(800, 0, false), class: 'service-video-embed-code', id: "service-video-#{video_presenter.id}" %>
-          <% end %>
-        </div>
+          <div class="service-video-content">
+            <h4 class="service-video-title">
+              <%= video_presenter.title %>
+            </h4>
+            <%= video_presenter.summary %>
+          </div>
+          <%= content_tag :div, video_presenter.youtube_embed(800, 0, false), class: 'service-video-embed-code', id: "service-video-#{video_presenter.id}" %>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   <% end %>
-</div>
+<% end %>

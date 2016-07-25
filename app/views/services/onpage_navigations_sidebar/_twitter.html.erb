@@ -8,7 +8,7 @@
   </h2>
 
 
-  <% cache('services-twitter', expires_in: 15.minutes) do %>
+  <% cache('services-sidebar-twitter', expires_in: 15.minutes) do %>
     <% tweets = twitter_timeline(global_site_settings['Twitter'], (onpage_navigation.results_limit || 1)) %>
 
     <% tweets.each do |tweet| %>

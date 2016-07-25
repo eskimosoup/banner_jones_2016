@@ -4,7 +4,7 @@
   service_pages = @service.service_pages.displayed if service_pages.blank?
   %>
   <% service_pages.limit(onpage_navigation.results_limit).each do |service_page| %>
-    <% cache service_page do %>
+    <% cache ['sidebar', service_page] do %>
       <div class="service-pages-page-highlight standard-content-box">
         <div class="standard-content-box-inner-content">
           <% present service_page do |service_page_presenter| %>
