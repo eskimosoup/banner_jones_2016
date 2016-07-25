@@ -100,7 +100,7 @@
   .service-article.opened {
     .service-article-image {
       @include breakpoint(large) {
-        margin: rem(10px) auto;
+        margin: rem(10px) auto rem(5px);
         @include grid-column($columns: 12, $gutter: (medium: 10));
       }
     }
