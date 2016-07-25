@@ -15,8 +15,8 @@ resources = @service.resources.displayed if resources.blank?
 <% end %>
 
 <div class="row collapse">
-  <% resources.each do |resource| %>
-    <% cache [resource] do %>
+  <% cache resources do %>
+    <% resources.each do |resource| %>
       <% present resource do |resource_presenter| %>
         <div class="resource-<%= onpage_navigation.id %> <%= 'end' if resource == resources.last %> columns">
           <div class="standard-content-box onpage-navigation-item helpful-guide-hover">
