@@ -64,6 +64,11 @@
     margin: 0;
   }
 
+  .slider-team-member-profile-details li {
+    display: block;
+    margin: rem(8px 0);
+  }
+
   &.standard-content-box,
   &.home-content-box.testimonials {
     margin: rem(15px 0 0);
