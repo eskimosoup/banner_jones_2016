@@ -87,9 +87,15 @@
   }
 
 
+  .service-resource-image {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   .service-article.opened {
     .service-article-image {
       @include breakpoint(large) {
+        margin: rem(10px) auto;
         @include grid-column($columns: 12, $gutter: (medium: 10));
       }
     }
@@ -104,7 +110,7 @@
   .service-article.closed {
     .service-article-date {
       @include breakpoint(large) {
-        @include grid-column(12);
+        @include grid-column($columns: 12, $gutter: (small: 0));
       }
     }
 
