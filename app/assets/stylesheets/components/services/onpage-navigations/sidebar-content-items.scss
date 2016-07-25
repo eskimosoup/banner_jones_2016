@@ -1,0 +1,86 @@
+.page-additional-information .service-onpage-navigation-content .onpage-navigation-item {
+  margin: rem(10px 0);
+  padding: rem(10px);
+
+  h2 {
+    font-size: rem(16px);
+  }
+
+  .service-resource-download-button {
+    font-size: rem(14px);
+  }
+
+  &.home-content-box.testimonials {
+    background-position: 10px 65px, right 10px bottom 40px;
+    background-size: 9%;
+  }
+
+  &.home-content-box.testimonials .see-all,
+  .module-see-all.home-team-members {
+    font-size: rem(14px);
+    padding: 5px;
+    right: 10px;
+    top: 10px;
+  }
+
+  .slider-team-members {
+    padding: rem(23px 0 0);
+  }
+
+  .slider-team-member-search-form,
+  .slider-team-member-form-title {
+    display: none;
+  }
+
+  .slider-team-member-profile-information,
+  .slider-team-member-profile-services {
+    float: none;
+    font-size: rem(13px);
+    margin: rem(0 0 5px);
+    text-align: left;
+    width: 100%;
+  }
+
+  .slider-team-member-profile {
+    padding: rem(15px);
+  }
+
+  .slider-content-box-title {
+    margin: 0;
+  }
+
+  .testimonials-title {
+    margin: rem(15px 0);
+  }
+
+  .testimonial-wrap p {
+    margin: 0;
+  }
+
+  &.standard-content-box,
+  &.home-content-box.testimonials {
+    margin: rem(15px 0 0);
+  }
+
+  .frequently-asked-question-with-icon {
+    padding-right: 15px;
+  }
+
+  .slick-dots {
+    position: static;
+  }
+}
+
+.onpage-navigation-content-items {
+  .toggle-class {
+    background: image-url('components/content/bullet-point.png') no-repeat left 5px;
+    display: block;
+    line-height: 1.25;
+    margin: rem(8px) 0;
+    padding: 0 0 0 rem(14px);
+
+    & + div {
+      margin: 0 rem(14px);
+    }
+  }
+}

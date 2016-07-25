@@ -1,0 +1,27 @@
+<div class="standard-content-box onpage-navigation-item">
+
+  <%= link_to "See All",
+      audience_service_frequently_asked_questions_path(@audience, @service, anchor: 'frequently-asked-questions'),
+      class: "see-all" if  onpage_navigation.results_limit && @service.frequently_asked_questions.displayed.size > onpage_navigation.results_limit %>
+
+  <h2 class="standard-content-box-title">
+    <%= onpage_navigation.title %>
+  </h2>
+
+  <div class="standard-content-box-inner-content">
+    <%
+    faqs = onpage_navigation.frequently_asked_questions.displayed
+    faqs = @service.frequently_asked_questions.displayed if faqs.blank?
+    %>
+    <% faqs.limit(onpage_navigation.results_limit).each do |faq| %>
+      <% cache faq do %>
+        <div class="service-frequently-asked-question">
+          <%= render(
+            partial: "frequently_asked_questions/frequently_asked_question",
+            object: faq
+          ) %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

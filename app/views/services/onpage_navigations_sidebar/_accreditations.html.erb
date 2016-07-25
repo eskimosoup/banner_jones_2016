@@ -1,0 +1,36 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.accreditations-slick-<%= onpage_navigation.id %>').slick({
+        arrows: false,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 6000,
+        infinite: true,
+        // centerMode: true
+      });
+    });
+  </script>
+<% end %>
+
+<div class="onpage-navigation-item standard-content-box">
+  <h2 class="standard-content-box-title">
+    <%= onpage_navigation.title %>
+  </h2>
+
+  <div class="accreditations">
+    <ul class="accreditations-slick-<%= onpage_navigation.id %>">
+      <%
+      accreditations = onpage_navigation.accreditations.displayed
+      accreditations = @service.accreditations.displayed if accreditations.blank?
+      %>
+      <% accreditations.limit(onpage_navigation.results_limit).each do |accreditation| %>
+        <li>
+          <% present accreditation do |accreditation_presenter| %>
+            <%= accreditation_presenter.show_accreditation %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

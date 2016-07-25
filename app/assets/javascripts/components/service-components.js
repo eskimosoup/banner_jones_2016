@@ -104,7 +104,7 @@ $(document).on('click', '.toggle-class', function() {
 });
 
 $(document).on('click', '.frequently-asked-question-toggle', function() {
-  smoothScroll('#' + $(this).attr('id'));
+  // smoothScroll('#' + $(this).attr('id'));
   return false;
 });
 
