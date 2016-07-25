@@ -1,4 +1,4 @@
-<% cache [article, article_categories.map(&:updated_at).max, article.team_members.map(&:updated_at).max].compact do %>
+<% cache [article, article.article_categories.map(&:updated_at).max, article.team_members.map(&:updated_at).max].compact do %>
   <div class="index-module index">
     <div class="standard-content-box standalone">
       <% present article do |article_presenter| %>
@@ -37,7 +37,7 @@
               <div class="index-module-read-more">
                 Read more >
               </div>
-            <% end %>          
+            <% end %>
 
             <div class="index-module-author-wrap">
               <%= render partial: 'articles/shared/team_members', collection: article.team_members.displayed, as: :team_member, locals: { article_presenter: article_presenter } %>
