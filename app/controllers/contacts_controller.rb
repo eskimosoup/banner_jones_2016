@@ -24,8 +24,9 @@ class ContactsController < ApplicationController
   end
 
   def subscribe_to_mailchimp(contact)
-    mailchimp_list = Service.find_by(title: contact.service).mailchimp_list if contact.service.present?
-    mailchimp_list = MailchimpList.find_by(module_id: nil, module_type: nil) if contact.service.blank? || mailchimp_list.blank?
+    service = Service.find_by(title: contact.service) if contact.service.present?
+    service = Service.find_by(title: service.root) if service.mailchimp_list.blank?
+    mailchimp_list = (service.present? && service.mailchimp_list.present? ? service.mailchimp_list : MailchimpList.find_by(module_id: nil, module_type: nil))
     Mailchimp.subscribe(mailchimp_list.mailchimp_list_id, contact) if mailchimp_list.present? && mailchimp_list.mailchimp_list_id.present?
   end
 
