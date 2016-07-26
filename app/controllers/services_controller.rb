@@ -5,7 +5,7 @@ class ServicesController < ApplicationController
   include ResourceHelper, TwitterHelper
 
   def show
-    return redirect_to '/pages/wealth-management' if @service.title == 'Wealth Management' || @service.root.title == 'Wealth Management'
+    return redirect_to '/pages/wealth-management' if (@service.title == 'Wealth Management' || @service.root.title == 'Wealth Management') && params[:preview].blank?
     return redirect_to audience_service_path(@audience, @service), status: :moved_permanently if request.path != audience_service_path(@audience, @service)
     @onpage_navigations = @service.displayed_onpage_navigations
     @onpage_navigation_links = @onpage_navigations.displayed_navigation_link
@@ -30,7 +30,10 @@ class ServicesController < ApplicationController
   end
 
   def find_service
-    @audience = Audience.displayed.friendly.find(params[:audience_id])
-    @service = @audience.services.displayed.friendly.find(params[:id])
+    @audience = (params[:preview].present? ? Audience.all : Audience.displayed)
+    @audience = @audience.friendly.find(params[:audience_id])
+
+    @service = (params[:preview].present? ? @audience.services : @audience.services.displayed)
+    @service = @service.friendly.find(params[:id])
   end
 end
