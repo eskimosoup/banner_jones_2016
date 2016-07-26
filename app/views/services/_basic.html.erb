@@ -1,0 +1,34 @@
+<%= content_for :custom_telephone do global_site_settings['Phone - Mediation'] end if @service.title == 'Mediation' %>
+
+<%= render 'services/shared/show_header' %>
+
+<div class="page-content-wrap">
+  <aside class="page-aside-navigation">
+    <div class="page-aside-navigation-content">
+      <%= render 'services/shared/service_page_aside_navigation' %>
+    </div>
+  </aside>
+
+  <div class="page-content">
+    <% cache @service do %>
+      <% present @service do |service_presenter| %>
+        <h1 class="service-page-title" style="<%= service_presenter.colour_property_helper('border-color') %>">
+          <%= service_presenter.title %>
+          <%= service_presenter.small_icon({alt: service_presenter.title, class: 'service-page-icon'}) %>
+        </h1>
+
+        <div class="page-inner-content">
+          <div class="service-page-summary">
+            <%= service_presenter.summary %>
+          </div>
+
+          <%= service_presenter.content %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <%= render 'services/shared/sidebar' %>
+</div>
+
+<%= render 'services/shared/onpage_navigations' if @onpage_navigations.present? %>
