@@ -9,7 +9,7 @@
           <ul class="meganav-links meganav-primary-links">
             <%= render(
               partial: "audiences/navigation_link",
-              collection: audience.services.roots.order(:position),
+              collection: audience.services.roots.displayed.order(:position),
               as: :service
             ) %>
           </ul>
@@ -20,7 +20,7 @@
         <div>
           <%= render(
             partial: "audiences/navigation_content",
-            collection: audience.services.includes(:children).order(:position),
+            collection: audience.services.displayed.includes(:children).order(:position),
             as: :service,
             locals: { audience: audience }
           ) %>

@@ -12,7 +12,7 @@
         <ul class="meganav-links meganav-secondary-links">
           <%= render(
             partial: "services/navigation_link",
-            collection: service.children,
+            collection: service.children.displayed,
             as: :service,
             locals: { audience: audience }
           ) %>
