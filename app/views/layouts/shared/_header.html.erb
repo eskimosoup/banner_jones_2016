@@ -33,8 +33,12 @@
         t:
       </span>
       <% if yield(:custom_telephone).present? %>
-        <%= yield :custom_telephone %>
-      <% elsif phone.present? %>
+        <% phone = yield(:custom_telephone) %>
+      <% else %>
+        <% phone = global_site_settings['Phone'] %>
+      <% end %>
+
+      <% if phone.present? %>
         <%= link_to "tel:#{phone.tr(' ', '')}" do %>
           <span class="calltracks_bannerjonescouk-main">
             <%= phone %>
