@@ -9,7 +9,7 @@
   <% if telephone.present? %>
     <%= link_to "tel:#{telephone.tr(' ', '')}", class: 'page-call-to-action' do %>
       <div class="page-call-to-action-title">
-        <span class="calltracks_bannerjonescouk-main">
+        <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
           <%= telephone %>
         </span>
       </div>
