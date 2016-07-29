@@ -6,7 +6,7 @@
 
     <div class="page-inner-content">
       <% if @additional_content.present? %>
-        <%= raw @additional_content.title %>
+        <%= raw @additional_content.content %>
       <% else %>
         <% # TODO: Make this have dynamic content %>
         <% if global_site_settings['Phone'].present? %>
