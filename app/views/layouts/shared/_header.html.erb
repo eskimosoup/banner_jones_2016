@@ -40,7 +40,7 @@
 
       <% if phone.present? %>
         <%= link_to "tel:#{phone.tr(' ', '')}" do %>
-          <span class="calltracks_bannerjonescouk-main">
+          <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
             <%= phone %>
           </span>
         <% end %>
