@@ -1,37 +1,41 @@
 <div class="page-content-wrap">
   <div class="page-content">
     <h1 class="service-page-title">
-      Contact us
+      <%= @additional_content.present? ? @additional_content.title : 'Contact Us' %>
     </h1>
 
     <div class="page-inner-content">
-      <% # TODO: Make this have dynamic content %>
-      <% if global_site_settings['Phone'].present? %>
-        <p>
-          Call us now on
+      <% if @additional_content.present? %>
+        <%= raw @additional_content.content %>
+      <% else %>
+        <% # TODO: Make this have dynamic content %>
+        <% if global_site_settings['Phone'].present? %>
+          <p>
+            Call us now on
 
-          <span class="calltracks_bannerjonescouk-main">
-            <%= global_site_settings['Phone'] %>
-          </span>
+            <span class="calltracks_bannerjonescouk-main">
+              <%= global_site_settings['Phone'] %>
+            </span>
+          </p>
+        <% end %>
+
+        <p>
+          Our normal office hours are Monday - Friday: 9am-5pm.
+        </p>
+
+        <p>Lines are open Monday - Friday 8-8pm, Sat 9-5pm, Sun 10-4pm.
+
+        <p>
+          If outside of office hours, a message will be taken and your call will be
+          returned on the next working day. If you wish to send a fax to one of our
+          offices, please call the number above and ask for the relevant fax number.
+        </p>
+
+        <p>
+          <strong>Or</strong> you can e-mail your enquiry by simply completing the form below and
+          clicking '<strong>Send</strong>'. Email enquiries will be picked up during office hours only.
         </p>
       <% end %>
-
-      <p>
-        Our normal office hours are Monday - Friday: 9am-5pm.
-      </p>
-
-      <p>Lines are open Monday - Friday 8-8pm, Sat 9-5pm, Sun 10-4pm.
-
-      <p>
-        If outside of office hours, a message will be taken and your call will be
-        returned on the next working day. If you wish to send a fax to one of our
-        offices, please call the number above and ask for the relevant fax number.
-      </p>
-
-      <p>
-        <strong>Or</strong> you can e-mail your enquiry by simply completing the form below and
-        clicking '<strong>Send</strong>'. Email enquiries will be picked up during office hours only.
-      </p>
     </div>
   </div>
 

@@ -52,5 +52,6 @@ class ContactsController < ApplicationController
 
   def load_modules
     @offices = Office.displayed if Flip.offices?
+    @additional_content = AdditionalContent.displayed('contact_us')
   end
 end
