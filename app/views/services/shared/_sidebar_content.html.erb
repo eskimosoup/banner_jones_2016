@@ -13,7 +13,8 @@
   </div>
 </div>
 
-<%= render 'pages/shared/call_to_actions_solicitors' %>
+<%= render 'pages/shared/call_to_actions_solicitors' unless @service.layout == 'wealth_management' %>
+<%= render 'pages/shared/call_to_actions_solicitors' if @service.layout == 'wealth_management' %>
 
 <% if @rich_snippet.present? %>
   <div class="service-rich-snippets">

@@ -46,6 +46,7 @@
       </div>
 
       <ul class="page-aside-navigation-links-list">
+        <%= render partial: 'services/shared/service_pages_links' if @service.root == @service %>
         <% @service.root.children.displayed.order(:position).each do |child_service| %>
           <% present child_service do |service_presenter| %>
             <li>
@@ -60,6 +61,7 @@
       </ul>
 
       <ul class="page-aside-navigation-links-list page-aside-child-navigation-links-list">
+        <%= render partial: 'services/shared/service_pages_links' if @service.root == @service %>
         <% @service.children.displayed.order(:position).each do |child_service| %>
           <% present child_service do |service_presenter| %>
             <li>
