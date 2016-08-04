@@ -1,4 +1,4 @@
-<% cache [event, event.event_location, event.event_categories.map(&:updated_at).max, event.team_members.map(&:updated_at).max do %>
+<% cache [event, event.event_location, event.event_categories.map(&:updated_at).max, event.team_members.map(&:updated_at).max] do %>
   <div class="index-module index">
     <div class="standard-content-box standalone">
       <% present event do |event_presenter| %>
