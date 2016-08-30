@@ -131,7 +131,7 @@
   }
 
 
-  a:not(.see-all) {
+  a:not(.see-all):not(.module-categories-dropdown-list a) {
     color: $red;
 
     &:link,
