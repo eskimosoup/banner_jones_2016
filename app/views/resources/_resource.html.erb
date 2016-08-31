@@ -1,4 +1,4 @@
-<% cache [resource, resource.services.map(&:updated_at).max do %>
+<% cache [resource, resource.services.map(&:updated_at).max] do %>
   <div class="index-module index">
     <div class="standard-content-box standalone">
       <% present resource do |resource_presenter| %>
