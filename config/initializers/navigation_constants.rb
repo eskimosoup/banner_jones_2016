@@ -4,7 +4,6 @@ NavigationLinks = {
   'Module Page' => 'Optimadmin::ModulePage',
   'External Link' => 'Optimadmin::ExternalLink',
   'Audience' => 'Audience',
-  'Service' => 'Service',
   'Office' => 'Office',
   'Page' => 'Page'
 }.freeze
