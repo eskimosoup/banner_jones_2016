@@ -20,6 +20,6 @@ module ApplicationHelper
   def module_show_content_classes(collection)
     classes = ['module-show-content']
     classes << 'wide' if collection.present?
-    classess.join(' ')
+    classes.join(' ')
   end
 end
