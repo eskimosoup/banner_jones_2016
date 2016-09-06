@@ -25,13 +25,15 @@
     <% end %>
 
     <div class="module-show-content-wrap">
-      <div class="module-show-author">
-        <% present @article do |article_presenter| %>
-          <%= render partial: 'articles/shared/show_team_members', collection: @article.team_members, as: :team_member, locals: { article_presenter: article_presenter } %>
-        <% end %>
-      </div>
+      <% if @article.team_members.present? %>
+        <div class="module-show-author">
+          <% present @article do |article_presenter| %>
+            <%= render partial: 'articles/shared/show_team_members', collection: @article.team_members, as: :team_member, locals: { article_presenter: article_presenter } %>
+          <% end %>
+        </div>
+      <% end %>
 
-      <div class="module-show-content">
+      <div class="<%= module_show_content_classes(@article.team_members) %>">
         <% present @article do |article_presenter| %>
           <div class="index-module-details-date">
             <%= article_presenter.date %>

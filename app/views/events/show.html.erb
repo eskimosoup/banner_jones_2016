@@ -22,13 +22,15 @@
     <% end %>
 
     <div class="module-show-content-wrap">
-      <div class="module-show-author">
-        <% present @event do |event_presenter| %>
-          <%= render partial: 'events/shared/show_team_members', collection: @event.team_members, as: :team_member, locals: { event_presenter: event_presenter } %>
-        <% end %>
-      </div>
+      <% if @event.team_members.present? %>
+        <div class="module-show-author">
+          <% present @event do |event_presenter| %>
+            <%= render partial: 'events/shared/show_team_members', collection: @event.team_members, as: :team_member, locals: { event_presenter: event_presenter } %>
+          <% end %>
+        </div>
+      <% end %>
 
-      <div class="module-show-content">
+      <div class="<%= module_show_content_classes(@event.team_members) %>">
         <% present @event do |event_presenter| %>
           <div class="index-module-details-date">
             <%= event_presenter.date %>

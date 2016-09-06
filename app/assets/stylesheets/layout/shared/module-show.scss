@@ -32,6 +32,12 @@
   }
 }
 
+.module-show-content.wide {
+  @include breakpoint(large) {
+    @include grid-column(12);
+  }
+}
+
 .show-module-author {
   margin: 0 0 rem(20px);
 }

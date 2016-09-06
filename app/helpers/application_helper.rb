@@ -16,4 +16,10 @@ module ApplicationHelper
   def possessive(string)
     sanitize (string + ('s' == string[-1, 1] ? '&#8217;' : '&#8217;s'))
   end
+
+  def module_show_content_classes(collection)
+    classes = ['module-show-content']
+    classes << 'wide' if collection.present?
+    classess.join(' ')
+  end
 end
