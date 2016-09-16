@@ -1,0 +1,14 @@
+<div>
+  <% present event do |event_presenter| %>
+    <div class="article">
+
+      <%= event_presenter.linked_text(
+            event_presenter.title,
+            class: 'article-title'
+          ) %>
+
+      <%= event_presenter.linked_text((event_presenter.lazy_home_image(alt: event_presenter.title, class: 'article-image'))) if event_presenter.index_image.present? %>
+      <%= render partial: 'events/shared/home_team_members', collection: event.team_members.displayed, as: :team_member, locals: { event_presenter: event_presenter } %>
+    </div>
+  <% end %>
+</div>

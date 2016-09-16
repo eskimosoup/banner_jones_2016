@@ -1,5 +1,5 @@
 <section class="home-content-box-wrap">
-  <div class="home-content-box inner">
+  <div class="home-content-box home-articles-and-events-content-box inner">
 
     <%= link_to 'See All', articles_path, class: 'module-see-all home-articles' %>
 
@@ -9,11 +9,18 @@
     </div>
 
     <h2 class="home-content-box-title">
-      News
+      News and Events
     </h2>
 
     <div class="articles-slick">
+      <%= render partial: 'events/home_event', collection: events, cached: true, as: :event %>
       <%= render partial: 'articles/home_article', collection: articles, cached: true, as: :article %>
+    </div>
+  </div>
+
+  <div class="home-twitter-feed">
+    <div class="home-content-box">
+      <a class="twitter-timeline" data-height="603" href="https://twitter.com/<%= global_site_settings['Twitter'] %>">Tweets by <%= global_site_settings['Twitter'] %></a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
     </div>
   </div>
 </section>

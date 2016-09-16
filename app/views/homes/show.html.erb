@@ -44,7 +44,7 @@
   <% if @facade.articles.present? %>
     <%= render(
       partial: "homes/articles",
-      locals: { articles: @facade.articles }
+      locals: { articles: @facade.articles, events: @facade.events }
     ) %>
   <% end %>
 </div>
