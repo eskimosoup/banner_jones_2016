@@ -1,0 +1,11 @@
+.home-articles-and-events-content-box {
+  @include grid-column(8);
+}
+
+.home-twitter-feed {
+  @include grid-column(4);
+
+  @include media('>768px') {
+    padding-right: 0;
+  }
+}

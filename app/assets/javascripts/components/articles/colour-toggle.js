@@ -1,7 +1,7 @@
 $(document).on({
   mouseenter: function (e) {
     var color = $(this).data('service-colour');
-    if(color !== '') {
+    if(typeof color != 'undefined') {
       $(this).find('.article-title').css({
         backgroundColor: color,
         borderColor: color,

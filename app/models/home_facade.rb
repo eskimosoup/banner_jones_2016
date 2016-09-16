@@ -3,6 +3,10 @@ class HomeFacade
     @articles ||= Article.homepage_highlight.limit(16)
   end
 
+  def events
+    @events ||= Event.displayed.where('event_end >= ?', Time.zone.now)
+  end
+
   def banners
     @banners ||= Banner.displayed
   end
