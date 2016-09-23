@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729094141) do
+ActiveRecord::Schema.define(version: 20160729152905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -754,7 +754,7 @@ ActiveRecord::Schema.define(version: 20160729094141) do
     t.string   "social_share_image"
     t.string   "style",                                null: false
     t.string   "layout",                               null: false
-    t.text     "content",                              null: false
+    t.string   "content"
     t.string   "image"
     t.integer  "service_id"
     t.datetime "created_at",                           null: false
