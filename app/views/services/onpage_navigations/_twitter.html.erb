@@ -9,20 +9,24 @@
 
 
   <% cache('services-twitter', expires_in: 15.minutes) do %>
-    <% tweets = twitter_timeline(global_site_settings['Twitter'], (onpage_navigation.results_limit || 1)) %>
+    <% begin %>
+      <% tweets = twitter_timeline(global_site_settings['Twitter'], (onpage_navigation.results_limit || 1)) %>
 
-    <% tweets.each do |tweet| %>
-      <div class="tweet">
-        <p class="tweet-text">
-          <%= raw tweet_text(tweet.text) %>
-        </p>
+      <% tweets.each do |tweet| %>
+        <div class="tweet">
+          <p class="tweet-text">
+            <%= raw tweet_text(tweet.text) %>
+          </p>
 
-        <p class="tweet-time">
-          <%= link_to tweet_time(tweet.created_at), "https://twitter.com/statuses/#{tweet.id}" %>
-        </p>
-      </div>
+          <p class="tweet-time">
+            <%= link_to tweet_time(tweet.created_at), "https://twitter.com/statuses/#{tweet.id}" %>
+          </p>
+        </div>
+      <% end %>
+
+      <a href="https://twitter.com/<%= global_site_settings['Twitter'] %>" class="twitter-follow-button" data-show-count="false">Follow <%= global_site_settings['Twitter'] %></a>
+    <% rescue %>
+      <p>Twitter is not currently loading</p>
     <% end %>
-
-    <a href="https://twitter.com/<%= global_site_settings['Twitter'] %>" class="twitter-follow-button" data-show-count="false">Follow <%= global_site_settings['Twitter'] %></a>
   <% end %>
 </div>
