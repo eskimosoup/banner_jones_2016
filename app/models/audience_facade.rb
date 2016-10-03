@@ -9,6 +9,10 @@ class AudienceFacade
     @articles ||= audience.articles.displayed.limit(16)
   end
 
+  def events
+    nil
+  end
+
   def banners
     @banners ||= audience.banners.displayed
   end
