@@ -1,6 +1,6 @@
 .social-footer {
   background: $black;
-  padding: rem(48px) 0 rem(41px);
+  padding: rem(30px) 0;
 }
 
 .social-types {
@@ -16,6 +16,7 @@
 
   @include breakpoint(large) {
     @include grid-column(6);
+    margin: rem(45px 0 0);
   }
 }
 
@@ -96,6 +97,7 @@
 .social-contact-methods {
   @include media('>1024px') {
     float: right;
+    margin: rem(36px 0 0);
   }
 }
 

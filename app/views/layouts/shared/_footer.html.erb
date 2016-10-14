@@ -51,14 +51,24 @@
       </div>
     </div>
 
-    <% if @rich_snippet.present? %>
-      <div class="footer-rich-snippets">
-        <%= render(
-          "rich_snippets/rich_snippet",
-          rich_snippet: @rich_snippet
-        ) %>
-      </div>
+    <%= content_for :javascript do %>
+    <script src="https://widget.reviews.co.uk/badge/dist.js"></script>
+
+    <script>
+    reviewsBadge('badge-140',{
+    store: 'banner-jones-solicitors',
+    primaryClr: '#fbaa07',
+    neutralClr: '#f4f4f4',
+    starsClr: '#fff',
+    textClr: '#fff'
+    });
+    </script>
     <% end %>
+
+
+    <div class="footer-rich-snippets">
+      <div id="badge-140" style="max-width:140px;"></div>
+    </div>
   </div>
 </div>
 
