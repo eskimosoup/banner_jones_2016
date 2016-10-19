@@ -9,6 +9,7 @@
 
   @include breakpoint(large) {
     display: block;
+    margin: rem(19px) 0 0;
   }
 
   &.mobile-expanded {
