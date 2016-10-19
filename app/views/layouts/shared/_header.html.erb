@@ -24,6 +24,25 @@
   </div>
 
   <div class="header-contact">
+
+    <%= content_for :javascript do %>
+      <script src="https://widget.reviews.co.uk/badge/dist.js"></script>
+
+      <script>
+      reviewsBadge('badge-140',{
+      store: 'banner-jones-solicitors',
+      primaryClr: '#fbaa07',
+      neutralClr: '#f4f4f4',
+      starsClr: '#fff',
+      textClr: '#fff'
+      });
+      </script>
+    <% end %>
+
+    <div class="header-rich-snippets">
+      <div id="badge-140" style="max-width:140px;"></div>
+    </div>
+
     <ul class="header-aside-navigation">
       <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
     </ul>
