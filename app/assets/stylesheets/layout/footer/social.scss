@@ -16,7 +16,7 @@
 
   @include breakpoint(large) {
     @include grid-column(6);
-    margin: rem(45px 0 0);
+    // margin: rem(45px 0 0);
   }
 }
 
@@ -97,7 +97,7 @@
 .social-contact-methods {
   @include media('>1024px') {
     float: right;
-    margin: rem(36px 0 0);
+    // margin: rem(36px 0 0);
   }
 }
 

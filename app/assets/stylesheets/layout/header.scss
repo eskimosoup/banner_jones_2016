@@ -10,6 +10,10 @@
     width: 100%;
     z-index: 10;
   }
+
+  @include media('>=1024px') {
+    min-height: 151px;
+  }
 }
 
 .the-legal-500 {
