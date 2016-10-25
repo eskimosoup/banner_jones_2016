@@ -26,26 +26,19 @@
   <div class="header-contact">
 
     <%= content_for :javascript do %>
-      <script src="https://widget.reviews.co.uk/badge/dist.js"></script>
-
+      <script src="https://widget.reviews.co.uk/dropdown/dist.js"></script>
       <script>
-      reviewsBadge('badge-140',{
+      dropdownWidget('dropdown-300',{
       store: 'banner-jones-solicitors',
       primaryClr: '#fbaa07',
       neutralClr: '#f4f4f4',
-      starsClr: '#fff',
-      textClr: '#fff'
+      textClr: '#000',
+      height: 400,
+      numReviews: 10,
+      direction: 'down'
       });
       </script>
-    <% end %>
-
-    <div class="header-rich-snippets">
-      <div id="badge-140" style="max-width:140px;"></div>
-    </div>
-
-    <ul class="header-aside-navigation">
-      <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
-    </ul>
+    <% end %>    
 
     <div class="header-telephone">
       <span class="header-telephone-accent">
@@ -66,7 +59,13 @@
       <% end %>
     </div>
 
-    <%= link_to (image_tag 'components/icons/header/map.png', alt: ''), offices_path, class: 'header-locations', title: 'Locations' if defined?(solicitors) %>
+    <div class="header-rich-snippets">
+      <div id="dropdown-300" style="width:300px;"></div>
+    </div>
+
+    <ul class="header-aside-navigation">
+      <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
+    </ul>
   </div>
 </header>
 
