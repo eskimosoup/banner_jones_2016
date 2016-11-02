@@ -7,7 +7,7 @@ module PresenterHelper
   end
 
   def nested_menu_items(menu_items:, view_partial: 'menu_items/menu_item', depth: 1)
-    office_data = Office.joins(:office_location).select("offices.id, office_locations.name AS name").reorder("office_locations.name asc")
+    office_data = Office.joins(:office_location).select("offices.id, office_locations.name AS name").displayed.reorder("office_locations.name asc")
     menu_items.map do |menu_item, sub_menu_items|
       render(
         partial: view_partial,
