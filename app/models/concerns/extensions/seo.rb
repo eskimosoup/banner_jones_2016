@@ -21,7 +21,7 @@ module Extensions
           ::Event.order(:title)
         when 'office_locations'
           ::OfficeLocation.order(:name)
-        when 'office'
+        when 'offices'
           ::Office.order(:building_name)
         when 'pages'
           ::Page.order(:title)
@@ -57,7 +57,7 @@ module Extensions
           ::Event.displayed
         when 'office_locations'
           ::OfficeLocation.displayed
-        when 'office'
+        when 'offices'
           ::Office.displayed
         when 'pages'
           ::Page.displayed
