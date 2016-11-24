@@ -4,6 +4,36 @@
   }
 }
 
+.inpage-navigation {
+  margin: rem(20px 0);
+
+  @include breakpoint(large) {
+    @include grid-row;
+  }
+
+  .page-aside-navigation-content {
+    margin: 0;
+  }
+}
+
+.inpage-navigation-item {
+  .page-aside-navigation-links-list {
+    display: block;
+  }
+  
+  @include breakpoint(large) {
+    @include grid-column(6);
+
+    &:first-of-type {
+      padding-left: 0;
+    }
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+}
+
 .page-aside-navigation-content {
   background: $deep-grey;
 

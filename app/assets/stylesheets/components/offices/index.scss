@@ -11,9 +11,9 @@
   .standard-content-box {
     background: image-url('components/icons/office/icon.png') no-repeat 20px 20px;
     height: 100%;
+    padding: rem(15px 50px);
 
     @include breakpoint(large) {
-      padding: rem(15px 50px);
       width: 100%;
     }
   }

@@ -51,10 +51,14 @@ class ApplicationController < ActionController::Base
   helper_method :global_site_settings
 
   def render_error(status, error)
-    logger.error "#{ error.class }: #{ error.message }"
+    logger.error "#{error.class}: #{error.message}"
     respond_to do |format|
       format.html { render "errors/#{status}", status: status }
       format.all { render nothing: true, status: status }
     end
+  end
+
+  def friendly_id_redirect(item)
+    redirect_to item, status: 301 unless item.friendly_id == params[:id]
   end
 end
