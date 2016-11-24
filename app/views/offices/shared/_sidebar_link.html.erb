@@ -1,0 +1,6 @@
+<li>
+  <%= link_to office.office_location_name,
+              office,
+              title: office.office_location_name,
+              class: "#{'active' if defined?(current_office) && current_office == office}" %>
+</li>

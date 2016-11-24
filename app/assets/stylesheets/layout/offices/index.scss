@@ -1,9 +1,12 @@
 .offices-index-map {
   background: $white;
   height: 250px;
-  margin: rem(0 25px);
   width: 100%;
 
+
+  @include breakpoint(medium) {
+    margin: rem(0 25px);
+  }
 
   @include breakpoint(large) {
     height: 445px;

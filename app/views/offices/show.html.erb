@@ -2,34 +2,51 @@
   <%= javascript_include_tag 'components/offices/map' %>
 <% end %>
 
-<div class="offices-index-map" id="map-canvas" data-locations="[<%= @office.to_json %>]">
-  <%= image_tag 'components/icons/loading.gif', alt: '' %>
-</div>
+<div class="page-content-wrap">
+  <aside class="page-aside-navigation">
+    <div class="page-aside-navigation-content">
+      <h2 class="page-aside-navigation-title">
+        <%= link_to 'Offices', offices_path %>
+      </h2>
 
-<div class="offices-index">
-  <div class="offices-index-content">
-    <h1>Office</h1>
-  </div>
-
-  <div class="page-content full">
-    <div class="office office-0">
-      <div class="standard-content-box">
-        <% present @office.office_location do |office_location_presenter| %>
-          <div class="index-office-location-name">
-            <%= office_location_presenter.name %>
-          </div>
-        <% end %>
-
-        <% present @office do |office_presenter| %>
-          <div class="index-office-address-fields">
-            <%= raw @office.address_fields.gsub(', ', '<br />') %>
-          </div>
-
-          <div class="index-office-buttons">
-            <%= render partial: 'offices/shared/directions', locals: { office: @office, office_presenter: office_presenter } %>
-          </div>
-        <% end %>
+      <div class="page-aside-navigation-links">
+        <ul class="page-aside-navigation-links-list">
+          <%= render partial: 'offices/shared/sidebar_link',
+                     collection: @offices,
+                     as: :office,
+                     locals: {
+                       current_office: @office
+                     } %>
+        </ul>
       </div>
+    </div>
+  </aside>
+
+  <div class="page-content">
+    <h1 class="service-page-title"><%= @office.office_location_name %></h1>
+
+    <div class="offices-index-map" id="map-canvas" data-locations="[<%= @office.to_json %>]">
+      <%= image_tag 'components/icons/loading.gif', alt: '' %>
+    </div>
+
+    <div class="inpage-navigation">
+      <% @office.services.roots.group_by(&:audience).each do |audience, services| %>
+        <div class="inpage-navigation-item">
+          <div class="page-aside-navigation-content">
+            <h2 class="page-aside-navigation-title">
+              <%= link_to audience.title, audience %>
+            </h2>
+
+            <div class="page-aside-navigation-links">
+              <ul class="page-aside-navigation-links-list">
+                <%= render partial: 'offices/shared/service',
+                           collection: services,
+                           as: :service %>
+              </ul>
+           </div>
+         </div>
+       </div>
+      <% end %>
     </div>
   </div>
 
