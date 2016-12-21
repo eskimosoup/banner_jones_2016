@@ -30,10 +30,10 @@ class ServicesController < ApplicationController
   end
 
   def find_service
-    @audience = (params[:preview].present? ? Audience.all : Audience.displayed)
-    @audience = @audience.friendly.find(params[:audience_id])
+    audiences = (params[:preview].present? ? Audience.all : Audience.displayed)
+    @audience = audiences.friendly.find(params[:audience_id])
 
-    @service = (params[:preview].present? ? @audience.services : @audience.services.displayed)
-    @service = @service.friendly.find(params[:id])
+    services = (params[:preview].present? ? @audience.services : @audience.services.displayed)
+    @service = services.friendly.find(params[:id])
   end
 end
