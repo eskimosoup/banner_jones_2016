@@ -9,12 +9,12 @@
     </div>
 
     <h2 class="home-content-box-title">
-      News and Events
+      News <%= 'and Events' if events.present? %>
     </h2>
 
     <div class="articles-slick">
-      <%= render partial: 'events/home_event', collection: events, cached: true, as: :event %>
-      <%= render partial: 'articles/home_article', collection: articles, cached: true, as: :article %>
+      <%= render partial: 'events/home_event', collection: events, cached: true, as: :event if events.present? %>
+      <%= render partial: 'articles/home_article', collection: articles, cached: true, as: :article if articles.present? %>
     </div>
   </div>
 
