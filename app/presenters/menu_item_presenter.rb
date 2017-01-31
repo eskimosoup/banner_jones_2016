@@ -15,18 +15,18 @@ class MenuItemPresenter < BasePresenter
 
   def link_to_webpage(options = {})
     return nil if destination.nil?
-    h.link_to name, destination, options.merge({title: title_attribute, class: classes})
+    h.link_to name, destination, options.merge(class: classes)
   end
 
   def special_layout
     if destination.class.present? && destination.class.name == 'Audience' && menu_item.menu_name == 'primary_header'
       h.render 'menu_items/meganav', audience: destination
     end
-    #elsif destination.present? && menu_item.menu_name == 'primary_header' && menu_item.link.menu_resource_type == 'Optimadmin::ModulePage' && menu_item.link.menu_resource.route == 'new_contact_path'
+    # elsif destination.present? && menu_item.menu_name == 'primary_header' && menu_item.link.menu_resource_type == 'Optimadmin::ModulePage' && menu_item.link.menu_resource.route == 'new_contact_path'
     #  h.render partial: 'menu_items/offices',
     #         locals: { menu_item_presenter: MenuItemPresenter.new(object: menu_item, view_template: self, descendants_hash: menu_item.children),
     #                   sub_menu_items: menu_item.children, depth: 1 }
-    #end
+    # end
   end
 
   def offices_dropdown?
@@ -34,8 +34,8 @@ class MenuItemPresenter < BasePresenter
   end
 
   def classes
-    classes = ["menu-link"]
-    classes << "active" if active?
+    classes = ['menu-link']
+    classes << 'active' if active?
     classes.join(' ')
   end
 
@@ -61,7 +61,6 @@ class MenuItemPresenter < BasePresenter
 
   private
 
-
   def descendants_array
     @desendants_array ||= build_descendants_array
   end
@@ -73,15 +72,15 @@ class MenuItemPresenter < BasePresenter
 
   def flatten_nested_hash(menu_items)
     # flat maps flattens by one level, call recursively packaging the values into one item of an array by the splat operator
-    menu_items.flat_map{|k, v| [k, *flatten_nested_hash(v)] }
+    menu_items.flat_map { |k, v| [k, *flatten_nested_hash(v)] }
   end
 
   def descendants_destinations
-    descendants_array.map{|x| MenuItemDestinationEvaluator.new(view_template: h, menu_resource: x.link.menu_resource) }
+    descendants_array.map { |x| MenuItemDestinationEvaluator.new(view_template: h, menu_resource: x.link.menu_resource) }
   end
 
   def active_descendants?
-    descendants_destinations.map(&:active?).any?{|x| x == true }
+    descendants_destinations.map(&:active?).any? { |x| x == true }
   end
 
   def name
@@ -97,11 +96,11 @@ class MenuItemPresenter < BasePresenter
   end
 
   def team_member_route?
-    static_route? && menu_resource.route == "team_members_path"
+    static_route? && menu_resource.route == 'team_members_path'
   end
 
   def contact_route?
-    static_route? && menu_resource.route == "new_contact_path"
+    static_route? && menu_resource.route == 'new_contact_path'
   end
 
   def static_route?
