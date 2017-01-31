@@ -2,12 +2,17 @@
   @include media('>768px') {
     padding: rem-calc(16px 35px);
   }
-  
+
+  label {
+    color: $white;
+  }
+
   .request-callback-title {
     border-bottom: 2px solid $orange;
     padding-bottom: rem(15px);
     text-align: center;
   }
+
   .close-container {
     @include clearfix;
 

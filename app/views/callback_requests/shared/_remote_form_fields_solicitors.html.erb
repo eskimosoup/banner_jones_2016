@@ -1,28 +1,34 @@
 <div class="contact-details">
   <div class="related-fields">
     <div class="field">
+      <%= f.label :forename %>
       <%= f.text_field :forename, placeholder: "Forename" %>
     </div>
     <div class="field">
+      <%= f.label :surname %>
       <%= f.text_field :surname, placeholder: "Surname" %>
     </div>
   </div>
 
   <div class="related-fields">
     <div class="field">
+      <%= f.label :email_address %>
       <%= f.text_field :email_address, placeholder: "Email Address" %>
     </div>
     <div class="field">
+      <%= f.label :contact_telephone %>
       <%= f.text_field :contact_telephone, placeholder: "Contact Phone" %>
     </div>
   </div>
 
   <div class="related-fields">
     <div class="field">
+      <%= f.label :callback_time %>
       <%= f.select :callback_time, options_for_select(CallbackRequest::TIMES), prompt: 'Callback time' %>
     </div>
     <% if @offices.present? %>
       <div class="field">
+        <%= f.label :preferred_office %>
         <%= f.select :preferred_office, options_for_select(@offices.map{|x| x.address_fields }), prompt: 'Preferred office' %>
       </div>
     <% end %>
@@ -31,15 +37,18 @@
   <div class="related-fields">
     <% if Flip.services? %>
       <div class="field">
+        <%= f.label :service %>
         <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
       </div>
     <% end %>
     <div class="field">
+      <%= f.label :how_heard, 'How did you find us?' %>
       <%= f.select :how_heard, options_for_select(['Google search', 'Yell.com search', 'Other search', 'Advertisement', 'Facebook advert', 'Recommendation', 'Existing client', 'Peak FM advert', 'TV advert']), include_blank: 'How did you find us?' %>
     </div>
   </div>
 
   <div class="field">
+    <%= f.label :enquiry_type %>
     <%= f.text_area :enquiry_type, placeholder: "Enquiry" %>
   </div>
 
