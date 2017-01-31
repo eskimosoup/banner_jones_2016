@@ -160,6 +160,21 @@
     padding: rem(29px) rem(40px);
   }
 }
+.slider-team-member-name-and-role {
+  color: $white;
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    border-bottom: 1px solid $white;
+    color: $white;
+  }
+}
 
 .slider-team-member-profile-name,
 .slider-team-member-profile-service-name {
