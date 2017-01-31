@@ -5,7 +5,7 @@
         <%= resource_presenter.title %>
       </div>
 
-      <%= content_tag :div, (resource_presenter.lazy_index_image(alt: resource_presenter.title)), class: 'helpful-guide-image' if resource_presenter.index_image.present? %>
+      <%= content_tag :div, (resource_presenter.lazy_index_image(alt: '')), class: 'helpful-guide-image' if resource_presenter.index_image.present? %>
 
       <% present resource.services.first do |service_presenter| %>
         <%= content_tag :div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background'),
