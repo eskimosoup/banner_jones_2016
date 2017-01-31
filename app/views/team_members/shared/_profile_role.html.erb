@@ -1,5 +1,5 @@
 <% cache [team_member, team_member.job_roles.map(&:updated_at).max, team_member.department_roles.map(&:updated_at).max] do %>
-  <%= link_to team_member, title: team_member_presenter.full_name do %>
+  <%= link_to team_member, title: '' do %>
     <%= team_member_presenter.job_roles %><%= ', ' if team_member_presenter.department_roles? %>
     <%= team_member_presenter.department_roles(sentence_list: true) %>
   <% end %>
