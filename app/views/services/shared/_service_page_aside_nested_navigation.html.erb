@@ -5,7 +5,7 @@
     <% child_service.children.each do |grandchild_service| %>
       <% present grandchild_service do |service_presenter| %>
         <li>
-          <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if grandchild_service == @service}" }) %>
+          <%= service_presenter.linked_text(service_presenter.title, { title: "Read #{service_presenter.title}", class: "#{'active' if grandchild_service == @service}" }) %>
           <%= render partial: 'services/shared/service_pages_links' if grandchild_service == @service %>
           <%=
           render partial: 'services/shared/service_page_aside_nested_navigation', locals: { child_service: grandchild_service, index: (index + 1) } if (grandchild_service == @service || grandchild_service.descendant_ids.include?(@service.id))

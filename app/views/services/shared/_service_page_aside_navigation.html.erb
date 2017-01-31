@@ -38,11 +38,11 @@
 
     <div class="page-aside-navigation-links">
       <div class="page-aside-root-title">
-        <%= link_to @service.root.title, audience_service_path(@service.root.audience, @service.root), { title: @service.root.title, class: "page-aside-navigation-top-level #{'has-children' if @service.children.present?}" } %>
+        <%= link_to @service.root.title, audience_service_path(@service.root.audience, @service.root), { title: "Read #{@service.root.title}", class: "page-aside-navigation-top-level #{'has-children' if @service.children.present?}" } %>
       </div>
 
       <div class="page-aside-parent-title">
-        <%= link_to @service.title, '#', { title: @service.title, class: "page-aside-navigation-top-level #{'has-children' if @service.children.present?}" } %>
+        <%= link_to @service.title, '#', { title: "Read #{@service.title}", class: "page-aside-navigation-top-level #{'has-children' if @service.children.present?}" } %>
       </div>
 
       <ul class="page-aside-navigation-links-list">
@@ -50,7 +50,7 @@
         <% @service.root.children.displayed.order(:position).each do |child_service| %>
           <% present child_service do |service_presenter| %>
             <li>
-              <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>
+              <%= service_presenter.linked_text(service_presenter.title, { title: "Read #{service_presenter.title}", class: "#{'active' if child_service == @service}" }) %>
               <%= render partial: 'services/shared/service_pages_links' if child_service == @service %>
               <% if child_service.children && (child_service == @service || child_service.descendant_ids.include?(@service.id)) %>
                 <%= render partial: 'services/shared/service_page_aside_nested_navigation', locals: { child_service: child_service, index: 0 } %>
@@ -65,7 +65,7 @@
         <% @service.children.displayed.order(:position).each do |child_service| %>
           <% present child_service do |service_presenter| %>
             <li>
-              <%= service_presenter.linked_text(service_presenter.title, { title: service_presenter.title, class: "#{'active' if child_service == @service}" }) %>
+              <%= service_presenter.linked_text(service_presenter.title, { title: "Read #{service_presenter.title}", class: "#{'active' if child_service == @service}" }) %>
               <%= render partial: 'services/shared/service_pages_links' if child_service == @service %>
               <% if child_service.children && (child_service == @service || child_service.descendant_ids.include?(@service.id)) %>
                 <%= render partial: 'services/shared/service_page_aside_nested_navigation', locals: { child_service: child_service, index: 0 } %>

@@ -1,4 +1,4 @@
-<section class="hero-banner" role="banner">
+<div class="hero-banner" role="banner">
   <div class="hero-banner-controls-wrap">
     <%= image_tag 'components/icons/hero/previous.png', alt: 'Previous', class: 'hero-banner-controls hero-banner-previous', title: 'Previous slide' %>
     <%= image_tag 'components/icons/hero/next.png', class: 'hero-banner-controls hero-banner-next', title: 'Next slide' %>
@@ -16,7 +16,7 @@
       }
     ) %>
   <% end %>
-</section>
+</div>
 
 <% if banner_services.present? && global_site_settings['Banner navigation'] == 'Horizontal' %>
   <%= render(
