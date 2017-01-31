@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: dbeec59726a983b801e56838670d8dd86b6e4f8f
+  revision: 12ff809a75159eedcbc19744085801c7a86dd4ac
   specs:
     capybara (2.12.0)
       addressable
@@ -42,8 +42,10 @@ GIT
   specs:
     optimadmin_generators (0.5.2)
 
-PATH
-  remote: ../optimised_site
+GIT
+  remote: git@github.com:eskimosoup/optimised_site.git
+  revision: 6e74aeef4aaaf2256b9c0edf7868bfd7689a92ed
+  branch: master
   specs:
     optimised_site (0.0.30)
       amoeba
@@ -186,7 +188,7 @@ GEM
       multi_json (~> 1.11)
       os (~> 0.9)
       signet (~> 0.7)
-    guard (2.14.0)
+    guard (2.14.1)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
       lumberjack (~> 1.0)
@@ -288,7 +290,7 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     public_suffix (2.0.5)
-    puma (3.6.2)
+    puma (3.7.0)
     rack (2.0.1)
     rack-mini-profiler (0.10.1)
       rack (>= 1.2.0)

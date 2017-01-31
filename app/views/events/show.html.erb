@@ -30,7 +30,7 @@
         </div>
       <% end %>
 
-      <div class="<%= module_show_content_classes(@event.team_members) %>">
+      <div class="<%= module_show_content_classes(@event.team_members) %>" role="main">
         <% present @event do |event_presenter| %>
           <div class="index-module-details-date">
             <%= event_presenter.date %>
