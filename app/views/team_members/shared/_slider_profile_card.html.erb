@@ -3,7 +3,7 @@
     <div class="slider-team-member-profile-information">
       <% present team_member do |team_member_presenter| %>
         <strong class="slider-team-member-profile-name">
-          <%= link_to team_member_presenter.full_name, team_member %>
+          <%= link_to team_member_presenter.full_name, team_member, title: "Find out more about #{team_member_presenter.full_name}" %>
         </strong>
         /
         <span class="slider-team-member-role">
