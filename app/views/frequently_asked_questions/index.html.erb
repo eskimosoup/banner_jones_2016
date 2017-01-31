@@ -5,8 +5,8 @@
 <%= render 'frequently_asked_questions/shared/javascript' %>
 
 <div class="index-content-wrap">
-  <div class="index-content module-index-content">
-    <%= link_to '#', class: 'module-category-toggle see-all', data: { container: '.module-categories-dropdown-wrap', class: 'hide', return: 'false' } do %>
+  <div class="index-content module-index-content" id="faq-service-toggle">
+    <%= link_to '#faq-service-toggle', class: 'module-category-toggle see-all', data: { container: '.module-categories-dropdown-wrap', class: 'hide', return: 'false' } do %>
       Filter by service
       <span class="module-category-toggle-expand">+</span>
       <span class="module-category-toggle-minimise">-</span>

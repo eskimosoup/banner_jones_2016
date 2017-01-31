@@ -1,10 +1,10 @@
 <div class="hero-banner-item banner-<%= banner.id %>">
   <div class="hero-banner-item-wrap">
-    <div class="hero-banner-item-content">
+    <section class="hero-banner-item-content">
       <% present banner do |banner_presenter| %>
-        <div class="hero-banner-item-title">
+        <h1 class="hero-banner-item-title">
           <%= banner_presenter.title %>
-        </div>
+        </h1>
 
         <div class="hero-banner-item-summary">
           <%= banner_presenter.summary %>
@@ -12,7 +12,7 @@
 
         <%= banner_presenter.button(class: 'hero-banner-item-button') %>
       <% end %>
-    </div>
+    </section>
   </div>
 
 

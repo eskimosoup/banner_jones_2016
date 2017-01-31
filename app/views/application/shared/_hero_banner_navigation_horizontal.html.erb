@@ -6,7 +6,7 @@
           <% present banner_service do |service_presenter| %>
             <%= content_tag :li,
               service_presenter.linked_text(
-                (service_presenter.lazy_medium_icon(alt: banner_service.title) + banner_service.title),
+                (service_presenter.lazy_medium_icon(alt: '') + banner_service.title),
                 class: 'hero-banner-navigation-link-horizontal loaded', data: { colour: service_presenter.colour }
             ) if service_presenter.medium_icon.present? %>
           <% end %>

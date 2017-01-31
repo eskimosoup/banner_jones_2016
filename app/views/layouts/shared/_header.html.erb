@@ -13,7 +13,7 @@
   </div>
 
   <div class="header-hamburger-menu">
-    <%= link_to '#', class: 'toggle-class mobile-menu-toggle', title: 'Show navigation',
+    <%= link_to '#primray-navigation', class: 'toggle-class mobile-menu-toggle', title: 'Show navigation',
                 data: {
                   container: '.primary-navigation-wrap',
                   class: 'mobile-expanded',
@@ -38,7 +38,7 @@
       direction: 'down'
       });
       </script>
-    <% end %>    
+    <% end %>
 
     <div class="header-telephone">
       <span class="header-telephone-accent">
@@ -70,18 +70,18 @@
 </header>
 
 <div class="primary-navigation-wrap">
-  <nav class="header-navigation">
+  <nav class="header-navigation" id="primary-navigation">
     <div class="primary-navigation">
       <ul class="primary-navigation-links">
         <li class="menu-item">
           <%= link_to root_url, class: 'primary-navigation-home', title: 'Home' do %>
-            <%= image_tag 'components/icons/navigation/home.png', alt: '' %>
+            <%= image_tag 'components/icons/navigation/home.png', alt: 'Home' %>
           <% end %>
         </li>
         <%= Rails.application.config.cache_store if Rails.env.development? %>
         <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
       </ul>
-      <%= link_to (image_tag 'components/icons/header/email.png', alt: ''), new_contact_path, class: 'toggle-class sticky-sidebar-toggle',
+      <%= link_to (image_tag 'components/icons/header/email.png', alt: 'Email'), new_contact_path, class: 'toggle-class sticky-sidebar-toggle',
                   title: 'Contact us',
                   data: { container: '.sticky-sidebar', class: 'hide' } if defined?(solicitors) %>
     </div>

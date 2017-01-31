@@ -22,7 +22,7 @@
             </div>
 
             <div class="show-team-member-profile-office-locations">
-              <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
+              <%= image_tag 'components/icons/team-member/map.png', alt: 'Offices', class: 'index-team-member-profile-icon' %>
               <%= render(
                 partial: "offices/team_member_office",
                 collection: @team_member.offices,
@@ -40,7 +40,7 @@
             </div>
 
             <div class="show-team-member-contact-method-phone">
-              <%= image_tag 'components/icons/team-member/telephone.png', alt: '' %>
+              <%= image_tag 'components/icons/team-member/telephone.png', alt: 'Telephone' %>
               <%= team_member_presenter.linked_telephone(team_member_presenter.primary_telephone, alt: 'Telephone', class: 'index-team-member-profile-icon') %>
             </div>
 

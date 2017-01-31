@@ -1,3 +1,3 @@
 <% present category do |category_presenter| %>
-  <%= category_presenter.linked_text(category_presenter.title, { title: category_presenter.title }) %><%= ', ' unless category == categories.last %>
+  <%= category_presenter.linked_text(category_presenter.title, { title: "Read #{category_presenter.title}" }) %><%= ', ' unless category == categories.last %>
 <% end %>
