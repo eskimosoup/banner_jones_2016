@@ -1,32 +1,39 @@
 <div class="contact-details">
   <div class="related-fields">
     <div class="field">
+      <%= f.label :forename %>
       <%= f.text_field :forename, placeholder: "Forename" %>
     </div>
     <div class="field">
+      <%= f.label :surname %>
       <%= f.text_field :surname, placeholder: "Surname" %>
     </div>
   </div>
 
   <div class="related-fields">
     <div class="field">
+      <%= f.label :email_address %>
       <%= f.text_field :email_address, placeholder: "Email Address" %>
     </div>
     <div class="field">
+      <%= f.label :contact_telephone %>
       <%= f.text_field :contact_telephone, placeholder: "Contact Phone" %>
     </div>
   </div>
 
   <div class="related-fields">
     <div class="field">
+      <%= f.label :callback_time %>
       <%= f.select :callback_time, options_for_select(CallbackRequest::TIMES), prompt: 'Callback time' %>
     </div>
     <div class="field">
+      <%= f.label :how_heard %>
       <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
     </div>
   </div>
 
   <div class="field">
+    <%= f.label :enquiry_type %>
     <%= f.text_area :enquiry_type, placeholder: "Enquiry" %>
   </div>
 
