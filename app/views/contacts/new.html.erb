@@ -4,7 +4,7 @@
       <%= @additional_content.present? ? @additional_content.title : 'Contact Us' %>
     </h1>
 
-    <div class="page-inner-content">
+    <div class="page-inner-content" role="main">
       <% if @additional_content.present? %>
         <%= raw @additional_content.content %>
       <% else %>
