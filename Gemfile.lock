@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: 12ff809a75159eedcbc19744085801c7a86dd4ac
+  revision: 41542d5617f638608cff301b5b454b011ae41f53
   specs:
     capybara (2.12.0)
       addressable
@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 4430336f43a632f91ce0d45e3ad053cf1718cf9c
+  revision: 0560585bb233fe7cc6852673c7f6f2a2ca9a45f8
   branch: master
   specs:
-    optimadmin (0.0.34)
+    optimadmin (0.0.36)
       bcrypt
       cancancan
       carrierwave
@@ -34,22 +34,21 @@ GIT
       mini_magick
       rails
       sass-rails
-      tinymce-rails (= 4.4.3)
+      tinymce-rails
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: adbef498ffe63f87d97b2275b42b71546887d481
+  revision: a6a495de21a908fe7b7bc36fb1f032d2d522c1b8
   specs:
     optimadmin_generators (0.5.2)
 
-GIT
-  remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 6e74aeef4aaaf2256b9c0edf7868bfd7689a92ed
-  branch: master
+PATH
+  remote: ../optimised_site
   specs:
     optimised_site (0.0.30)
       amoeba
       closure_tree (~> 6.0)
+      deep_cloneable (~> 2.2.2)
       flip
       friendly_id (~> 5.1)
       geocoder
@@ -115,14 +114,14 @@ GEM
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.10.0)
     byebug (9.0.6)
-    cancancan (1.15.0)
+    cancancan (1.16.0)
     carrierwave (1.0.0)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
     childprocess (0.6.1)
       ffi (~> 1.0, >= 1.0.11)
-    closure_tree (6.2.0)
+    closure_tree (6.4.0)
       activerecord (>= 4.1.0)
       with_advisory_lock (>= 3.0.0)
     coderay (1.1.1)
@@ -136,6 +135,8 @@ GEM
     concurrent-ruby (1.0.4)
     database_cleaner (1.5.3)
     debug_inspector (0.0.2)
+    deep_cloneable (2.2.2)
+      activerecord (>= 3.1.0, < 5.2.0)
     diff-lcs (1.3)
     docile (1.1.5)
     domain_name (0.5.20161129)
@@ -163,7 +164,7 @@ GEM
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    geocoder (1.4.1)
+    geocoder (1.4.3)
     gibbon (3.0.1)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)
@@ -203,7 +204,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashery (2.1.2)
-    http (2.1.0)
+    http (2.2.1)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
       http-form_data (~> 1.0.1)
@@ -212,7 +213,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
-    i18n (0.7.0)
+    i18n (0.8.0)
     jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
@@ -258,7 +259,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_magick (4.6.0)
+    mini_magick (4.6.1)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
@@ -287,12 +288,12 @@ GEM
     pry-byebug (3.4.2)
       byebug (~> 9.0)
       pry (~> 0.10)
-    pry-rails (0.3.4)
+    pry-rails (0.3.5)
       pry (>= 0.9.10)
     public_suffix (2.0.5)
-    puma (3.7.0)
+    puma (3.7.1)
     rack (2.0.1)
-    rack-mini-profiler (0.10.1)
+    rack-mini-profiler (0.10.2)
       rack (>= 1.2.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -347,7 +348,7 @@ GEM
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
     ruby-rc4 (0.1.5)
-    rubyzip (1.2.0)
+    rubyzip (1.2.1)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -355,7 +356,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.0.5)
+    selenium-webdriver (3.1.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)
@@ -394,9 +395,9 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.6)
-    tinymce-rails (4.4.3)
+    tinymce-rails (4.5.3)
       railties (>= 3.1.1)
-    ttfunk (1.4.0)
+    ttfunk (1.5.0)
     twitter (6.1.0)
       addressable (~> 2.5)
       buftok (~> 0.2.0)
@@ -420,11 +421,11 @@ GEM
       activemodel (>= 5.0)
       debug_inspector
       railties (>= 5.0)
-    websocket (1.2.3)
+    websocket (1.2.4)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.2)
-    with_advisory_lock (3.0.0)
+    with_advisory_lock (3.1.0)
       activerecord (>= 3.2)
       thread_safe
     xpath (2.0.0)

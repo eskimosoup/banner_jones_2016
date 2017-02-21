@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127123115) do
+ActiveRecord::Schema.define(version: 20170221115636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -681,6 +681,7 @@ ActiveRecord::Schema.define(version: 20170127123115) do
     t.integer  "position"
     t.string   "layout",                   default: "application", null: false
     t.string   "style",                    default: "basic",       null: false
+    t.boolean  "landing_page",             default: false
     t.index ["audience_id"], name: "index_services_on_audience_id", using: :btree
     t.index ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
     t.index ["slug"], name: "index_services_on_slug", using: :btree
