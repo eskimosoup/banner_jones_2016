@@ -26,14 +26,14 @@ class ServicesController < ApplicationController
 
   def find_member_service
     @audience = Audience.displayed.friendly.find(params[:audience_id])
-    @service = @audience.services.displayed.friendly.find(params[:service_id])
+    @service = @audience.services.displayed_or_landing_page.friendly.find(params[:service_id])
   end
 
   def find_service
     audiences = (params[:preview].present? ? Audience.all : Audience.displayed)
     @audience = audiences.friendly.find(params[:audience_id])
 
-    services = (params[:preview].present? ? @audience.services : @audience.services.displayed)
+    services = (params[:preview].present? ? @audience.services : @audience.services.displayed_or_landing_page)
     @service = services.friendly.find(params[:id])
   end
 end
