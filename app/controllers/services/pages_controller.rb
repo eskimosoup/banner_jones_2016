@@ -18,6 +18,6 @@ class Services::PagesController < ApplicationController
 
   def find_member_service
     @audience = Audience.displayed.friendly.find(params[:audience_id])
-    @service = @audience.services.displayed.friendly.find(params[:service_id])
+    @service = @audience.services.displayed_or_landing_page.friendly.find(params[:service_id])
   end
 end
