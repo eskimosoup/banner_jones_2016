@@ -1,14 +1,6 @@
 Rails.application.configure do
   Rails.application.routes.default_url_options[:host] = 'localhost:3000'
   config.web_console.whitelisted_ips = '192.168.0.0/16'
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: 'mail.eskimosoup.co.uk',
-    authentication: :plain,
-    user_name: 'tasks@eskimosoup.co.uk',
-    password: 'poipoip',
-    enable_starttls_auto: false
-  }
 
   config.generators do |g|
     g.assets false
