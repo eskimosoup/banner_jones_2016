@@ -16,7 +16,7 @@ Rails.application.configure do
     address: 'mail.optimised.today',
     authentication: :plain,
     user_name: 'noreply@optimised.today',
-    password: 'LudoStudio47#!poip'
+    password: ENV['NOREPLY_PASSWORD']
   }
 
   # Settings specified here will take precedence over those in config/application.rb.
