@@ -48,13 +48,8 @@
   margin: rem(20px) rem(15px);
 
   img {
+    width: auto;
     max-height: 30px;
-  }
-
-  @include media('>768px') {
-    img {
-      max-height: none;
-    }
   }
 
   @include media('>1400px') {
