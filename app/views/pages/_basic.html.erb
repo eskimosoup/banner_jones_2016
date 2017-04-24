@@ -31,7 +31,7 @@
 
       <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-show-image') if page_presenter.show_image.present? %>
 
-      <div class="page-inner-content">
+      <div class="page-inner-content" role="main">
         <%= page_presenter.content %>
       </div>
     <% end %>

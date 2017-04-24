@@ -22,14 +22,14 @@
               <%= article_presenter.date(:short) %>
             </div>
 
-            <%= article_presenter.linked_text(article.title, {title: article_presenter.title, class: "#{article.team_members.present? ? 'service-article-title' : 'service-article-full-title' }"}) %>
+            <%= article_presenter.linked_text(article.title, {title: "Read #{article_presenter.title}", class: "#{article.team_members.present? ? 'service-article-title' : 'service-article-full-title' }"}) %>
 
             <div class="service-article-summary">
               <%= article_presenter.summary %>
             </div>
 
             <div class="service-article-footer">
-              <%= article_presenter.linked_text('Read more >', {title: "Read: #{article_presenter.title}", class: 'service-article-read-more'}) %>
+              <%= article_presenter.linked_text('Read more >', {title: "Read #{article_presenter.title}", class: 'service-article-read-more'}) %>
 
               <div class="service-article-team-members">
                 <div class="multiple-team-members-slick">

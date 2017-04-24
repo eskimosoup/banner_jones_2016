@@ -26,7 +26,7 @@
     <h1 class="service-page-title"><%= @office.office_location_name %></h1>
 
     <div class="offices-index-map" id="map-canvas" data-locations="[<%= @office.to_json %>]">
-      <%= image_tag 'components/icons/loading.gif', alt: '' %>
+      <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
     </div>
 
     <div class="inpage-navigation">

@@ -1,14 +1,14 @@
 <div>
   <% present article do |article_presenter| %>
     <div class="article" <%= "data-service-colour=#{article_presenter.first_service.colour}" if article_presenter.first_service.present? %>>
+      <%= link_to article, title: "Read #{article_presenter.title}" do %>
+        <div class="article-title" style="<%= (article_presenter.first_service.present? && article_presenter.first_service.colour.present? ? "border-color:" + article_presenter.first_service.colour : nil) %>">
+          <%= article_presenter.title %>
+        </div>
 
-      <%= article_presenter.linked_text(
-            article_presenter.title,
-            class: 'article-title',
-            style: (article_presenter.first_service.present? && article_presenter.first_service.colour.present? ? "border-color:" + article_presenter.first_service.colour : nil)
-          ) %>
+        <%= article_presenter.lazy_home_image(alt: '', class: 'article-image') if article_presenter.index_image.present? %>
+      <% end %>
 
-      <%= article_presenter.linked_text((article_presenter.lazy_home_image(alt: article_presenter.title, class: 'article-image'))) if article_presenter.index_image.present? %>
       <%= render partial: 'articles/shared/home_team_members', collection: article.team_members.displayed, as: :team_member, locals: { article_presenter: article_presenter } %>
     </div>
   <% end %>

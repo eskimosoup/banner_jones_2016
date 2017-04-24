@@ -10,17 +10,17 @@
           <div class="index-team-member-profile-name">
             <%= team_member_presenter.full_name %>
           </div>
-        <% end %>
 
-        <div class="index-team-member-profile-role">
-          <%= render(
-            partial: "team_members/shared/profile_role",
-            locals: {
-              team_member: team_member,
-              team_member_presenter: team_member_presenter
-            }
-          ) %>
-        </div>
+          <div class="index-team-member-profile-role">
+            <%= render(
+              partial: "team_members/shared/unlinked_profile_role",
+              locals: {
+                team_member: team_member,
+                team_member_presenter: team_member_presenter
+              }
+            ) %>
+          </div>
+        <% end %>
 
         <div class="index-team-member-profile-services">
           <%= render(
@@ -32,7 +32,7 @@
         </div>
 
         <div class="index-team-member-profile-office-locations">
-          <%= image_tag 'components/icons/team-member/map.png', alt: '', class: 'index-team-member-profile-icon' %>
+          <%= image_tag 'components/icons/team-member/map.png', alt: 'Map', class: 'index-team-member-profile-icon' %>
 
           <%= render(
             partial: "offices/team_member_office",
