@@ -38,7 +38,7 @@
       direction: 'down'
       });
       </script>
-    <% end %>    
+    <% end %>
 
     <div class="header-telephone">
       <span class="header-telephone-accent">
@@ -70,7 +70,7 @@
 </header>
 
 <div class="primary-navigation-wrap">
-  <nav class="header-navigation">
+  <nav class="header-navigation" aria-label="Main menu">
     <div class="primary-navigation">
       <ul class="primary-navigation-links">
         <li class="menu-item">
@@ -86,7 +86,7 @@
                   data: { container: '.sticky-sidebar', class: 'hide' } if defined?(solicitors) %>
     </div>
 
-    <div class="primary-navigation-search">
+    <div class="primary-navigation-search" role="search">
       <!--
       <%= form_tag '', method: :get, class: 'header-search-form' do %>
         <%= text_field_tag :search, params[:search],
