@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: f36a20ba8d90922e4c6c445743c9a877d3a01130
+  revision: 7f8914b605943261957326c41b37b1d69ec74b59
   specs:
     capybara (2.13.0)
       addressable
@@ -102,7 +102,7 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     afm (0.2.2)
-    amoeba (3.0.0)
+    amoeba (3.1.0)
       activerecord (>= 3.2.6)
     arel (7.1.4)
     autoparse (0.3.3)
@@ -251,7 +251,7 @@ GEM
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.11)
-    mail (2.6.4)
+    mail (2.6.5)
       mime-types (>= 1.16, < 4)
     memoist (0.15.0)
     memoizable (0.4.2)
@@ -357,7 +357,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.3.0)
+    selenium-webdriver (3.4.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
       websocket (~> 1.0)

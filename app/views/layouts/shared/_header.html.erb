@@ -4,8 +4,13 @@
 
 <header class="primary-header">
   <div class="header-branding">
-    <%= link_to root_url, title: global_site_settings['Name'], class: 'header-logo' do %>
-      <%= image_tag "layout/header/#{logo}", alt: global_site_settings['Name'] %>
+    <%= link_to root_url, title: global_site_settings['Name'], class: "header-logo #{'with-notary' if defined?(notary)}" do %>
+      <%= image_tag "layout/header/#{logo}", alt: global_site_settings['Name'], class: 'header-logo-primary' %>
+
+      <% if defined?(notary) %>
+        <%= image_tag "layout/header/logo-notary.png", alt: '', class: 'header-notary-logo' %>
+      <% end %>
+
     <% end %>
 
     <%= image_tag 'layout/header/legal-500.png', alt: 'Legal 500',
@@ -46,7 +51,7 @@
       </span>
       <% if yield(:custom_telephone).present? %>
         <% phone = yield(:custom_telephone) %>
-      <% else %>
+      <% elsif !defined?(phone) %>
         <% phone = global_site_settings['Phone'] %>
       <% end %>
 
