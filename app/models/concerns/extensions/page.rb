@@ -3,7 +3,7 @@ module Extensions
     extend ActiveSupport::Concern
 
     included do
-      LAYOUTS = %w(application wealth_management).freeze
+      LAYOUTS = %w(application wealth_management notary).freeze
       STYLES = %w(basic).freeze
     end
 
