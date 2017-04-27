@@ -30,11 +30,13 @@
       </h2>
     </div>
 
-    <div class="page-aside-root-service-title">
-      <h2 class="page-aside-navigation-title">
-        <%= link_to @service.parent.title, audience_service_path(@service.parent.audience, @service.parent) if @service.parent.present? %>
-      </h2>
-    </div>
+    <% if @service.parent.present? %>
+      <div class="page-aside-root-service-title">
+        <h2 class="page-aside-navigation-title">
+          <%= link_to @service.parent.title, audience_service_path(@service.parent.audience, @service.parent) %>
+        </h2>
+      </div>
+    <% end %>
 
     <div class="page-aside-navigation-links">
       <div class="page-aside-root-title">

@@ -482,13 +482,13 @@
 			$content = $tag(div, "Content").append(
 				$title = $tag(div, "Title"),
 				$current = $tag(div, "Current"),
-				$prev = $('<button type="button"/>').attr({id:prefix+'Previous'}),
-				$next = $('<button type="button"/>').attr({id:prefix+'Next'}),
-				$slideshow = $('<button type="button"/>').attr({id:prefix+'Slideshow'}),
+				$prev = $('<button type="button"/>').attr({id:prefix+'Previous', value: 'Previous'}),
+				$next = $('<button type="button"/>').attr({id:prefix+'Next', value: 'Next'}),
+				$slideshow = $('<button type="button"/>').attr({id:prefix+'Slideshow', value: 'Slideshow'}),
 				$loadingOverlay
 			);
 
-			$close = $('<button type="button"/>').attr({id:prefix+'Close'});
+			$close = $('<button type="button"/>').attr({id:prefix+'Close', value: 'Close'});
 
 			$wrap.append( // The 3x3 Grid that makes up Colorbox
 				$tag(div).append(
