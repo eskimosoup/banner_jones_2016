@@ -37,7 +37,7 @@
       <%= f.label :how_heard, 'How did you find us?' %>
       <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), include_blank: 'How did you find us?' %>
     </div>
-    <% if Flip.services? %>
+    <% if Flipflop.services? %>
       <div class="field">
         <%= f.label :service %>
         <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Service' %>
