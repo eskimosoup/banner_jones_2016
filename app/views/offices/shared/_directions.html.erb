@@ -2,9 +2,16 @@
   <%= link_to 'Get directions', '#', class: 'index-office-button toggle-class', data: { container: ".office-directions-form-#{office.id}", class: 'hide', return: 'false' } %>
 
   <% # http://www.online-tech-tips.com/google-softwaretips/add-google-maps-driving-directions-to-your-website/ %>
-  <%= form_tag 'http://maps.google.com/maps', method: :get, target: '_blank', class: "office-directions-form-#{office.id} hide" do %>
-    <%= text_field_tag :saddr, nil, placeholder: 'Starting location', class: 'office-input' %>
+  <%= form_tag 'http://maps.google.com/maps', method: :get, target: '_blank', class: "office-directions-form-#{office.id} office-directions-form hide" do %>
+    <div class="field">
+      <%= label_tag :saddr, 'Starting location' %>
+      <%= text_field_tag :saddr, nil, placeholder: 'Starting location', class: 'office-input' %>
+    </div>
+
     <%= hidden_field_tag :daddr, office.address_fields %>
-    <%= submit_tag 'Search', class: 'office-directions-button' %>
+
+    <div class="actions">
+      <%= submit_tag 'Search', class: 'office-directions-button' %>
+    </div>
   <% end %>
 <% end %>

@@ -24,6 +24,8 @@
 }
 
 .index-module-link {
+  display: block;
+
   &:link,
   &:visited {
     color: $offset-black;
