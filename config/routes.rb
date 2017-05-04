@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sitemap', to: 'application#sitemap'
+
   namespace :conveyancing_quotes do
     concern :downloadable do
       resource :download, only: [:show]
@@ -44,6 +46,7 @@ Rails.application.routes.draw do
   resources :pages, only: :show
   # FIXME: This is used in conjuction with the engine, so you end up with
   # /contacts/new and /contact-us/new - it should be one or the other.
+  resources :contacts, only: [:new, :create] # Here for legacy  
   resources :contacts, only: [:new, :create], path: 'contact-us'
   resources :callback_requests, only: [:new, :create], path: 'callback-request'
 
