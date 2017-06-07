@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170502120238) do
+ActiveRecord::Schema.define(version: 20170602125258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -299,10 +299,10 @@ ActiveRecord::Schema.define(version: 20170502120238) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",                        null: false
-    t.boolean  "enabled",    default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "key",        null: false
+    t.boolean  "enabled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -323,6 +323,27 @@ ActiveRecord::Schema.define(version: 20170502120238) do
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
     t.index ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+  end
+
+  create_table "job_listings", force: :cascade do |t|
+    t.string   "title",                null: false
+    t.text     "summary",              null: false
+    t.text     "description",          null: false
+    t.string   "salary"
+    t.date     "start_date"
+    t.string   "role_type"
+    t.string   "hours"
+    t.string   "contract_type"
+    t.integer  "office_id"
+    t.date     "application_deadline"
+    t.datetime "publish_at",           null: false
+    t.datetime "expire_at"
+    t.string   "slug"
+    t.string   "suggested_url"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.index ["office_id"], name: "index_job_listings_on_office_id", using: :btree
+    t.index ["slug"], name: "index_job_listings_on_slug", using: :btree
   end
 
   create_table "job_roles", force: :cascade do |t|
@@ -752,22 +773,23 @@ ActiveRecord::Schema.define(version: 20170502120238) do
   end
 
   create_table "services_pages", force: :cascade do |t|
-    t.string   "title",                                null: false
+    t.string   "title",                                            null: false
     t.string   "suggested_url"
     t.string   "slug"
-    t.datetime "publish_at",                           null: false
+    t.datetime "publish_at",                                       null: false
     t.datetime "expire_at"
     t.string   "social_share_title",       limit: 150
     t.string   "social_share_description"
     t.string   "social_share_image"
-    t.string   "style",                                null: false
-    t.string   "layout",                               null: false
+    t.string   "style",                                            null: false
+    t.string   "layout",                                           null: false
     t.string   "content"
     t.string   "image"
     t.integer  "service_id"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
     t.text     "summary"
+    t.integer  "position",                             default: 0, null: false
     t.index ["service_id"], name: "index_services_pages_on_service_id", using: :btree
     t.index ["slug"], name: "index_services_pages_on_slug", unique: true, using: :btree
   end
@@ -842,6 +864,7 @@ ActiveRecord::Schema.define(version: 20170502120238) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.integer  "position"
+    t.string   "linkedin_link"
     t.index ["slug"], name: "index_team_members_on_slug", using: :btree
     t.index ["suggested_url"], name: "index_team_members_on_suggested_url", using: :btree
   end
@@ -983,6 +1006,7 @@ ActiveRecord::Schema.define(version: 20170502120238) do
   add_foreign_key "events", "event_locations"
   add_foreign_key "events_categorisations", "event_categories"
   add_foreign_key "events_categorisations", "events"
+  add_foreign_key "job_listings", "offices"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "onpage_navigations_accreditations", "accreditations"
   add_foreign_key "onpage_navigations_accreditations", "onpage_navigations"
