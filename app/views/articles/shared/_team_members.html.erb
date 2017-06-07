@@ -7,7 +7,7 @@
         </div>
 
         <div class="article-author-audience">
-          <%= article_presenter.first_service.title %>
+          <%= article_presenter.first_service.title if article_presenter.first_service.present? %>
         </div>
       </div>
       <%= content_tag :div, (article_presenter.linked_text(team_member_presenter.small_image(alt: team_member_presenter.full_name))), class: 'index-module-author-photo team-member-avatar' if team_member_presenter.small_image.present? %>

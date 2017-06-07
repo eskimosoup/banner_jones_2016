@@ -36,7 +36,7 @@
     <% end %>
     <%= field_set_tag nil, id: 'tabs-2' do %>
       <%= f.image_field :image %>
-      <%= render 'optimadmin/shared/form_fields/social_share_fields', f: f if Flip.social_share_fields? || Flip.service_page_social_share_fields? %>
+      <%= render 'optimadmin/shared/form_fields/social_share_fields', f: f if Flipflop.social_share_fields? || Flipflop.service_page_social_share_fields? %>
     <% end %>
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <div class="field<%= ' hide' if ::Services::Page::LAYOUTS.size < 2 %>">
