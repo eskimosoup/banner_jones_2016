@@ -127,3 +127,17 @@
 .header-notary-logo {
   margin-left: em(25px);
 }
+
+.header-notary-title {
+  color: $black;
+  display: inline-block;
+
+  @include breakpoint(large) {
+    font-size: em(25px);
+    margin-left: em(5px, 25px);
+  }
+}
+
+.header-notary-subtitle {
+  font-size: em(16px, 25px);
+}
