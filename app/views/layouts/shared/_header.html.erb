@@ -5,10 +5,18 @@
 <header class="primary-header">
   <div class="header-branding">
     <%= link_to root_url, title: global_site_settings['Name'], class: "header-logo #{'with-notary' if defined?(notary)}" do %>
-      <%= image_tag "layout/header/#{logo}", alt: global_site_settings['Name'], class: 'header-logo-primary' %>
 
       <% if defined?(notary) %>
+        <div class="header-notary-title">
+          Stephen Gordon
+
+          <div class="header-notary-subtitle">
+            Public Notary
+          </div>
+        </div>
         <%= image_tag "layout/header/logo-notary.png", alt: '', class: 'header-notary-logo' %>
+      <% else %>
+        <%= image_tag "layout/header/#{logo}", alt: global_site_settings['Name'], class: 'header-logo-primary' %>
       <% end %>
 
     <% end %>
