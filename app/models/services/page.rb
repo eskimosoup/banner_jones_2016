@@ -4,7 +4,7 @@ module Services
 
     default_scope { order(title: :asc) }
 
-    LAYOUTS = %w(application wealth_management).freeze
+    LAYOUTS = %w(application wealth_management notary).freeze
     STYLES  = %w(basic).freeze
 
     extend FriendlyId
