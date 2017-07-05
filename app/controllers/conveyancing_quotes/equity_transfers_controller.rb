@@ -1,3 +1,4 @@
+=begin
 module ConveyancingQuotes
   class EquityTransfersController < ::ApplicationController
     def new
@@ -27,3 +28,4 @@ module ConveyancingQuotes
     end
   end
 end
+=end

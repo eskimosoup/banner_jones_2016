@@ -1,10 +1,4 @@
 GIT
-  remote: git://github.com/eskimosoup/conveyancing_calculator.git
-  revision: 02f7b39cdc468826e972976dc806721db014d646
-  specs:
-    conveyancing_calculator (0.1.0)
-
-GIT
   remote: git://github.com/jnicklas/capybara.git
   revision: cb9de160835fdd5f5726b3bbbc8acad085de4363
   specs:
@@ -57,6 +51,11 @@ GIT
       gibbon
       optimadmin
       rails (>= 5.0)
+
+PATH
+  remote: ../conveyancing_calculator
+  specs:
+    conveyancing_calculator (0.1.0)
 
 GEM
   remote: https://rubygems.org/

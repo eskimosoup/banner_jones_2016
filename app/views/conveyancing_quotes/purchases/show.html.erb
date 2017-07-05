@@ -20,6 +20,11 @@
   </div>
 </div>
 
+<% @conveyancing_quote_purchase.additional_costs.each do |additional_cost| %>
+  <%= additional_cost.to_s.humanize %>
+  <%= ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
+<% end %>
+
 <%= link_to I18n.t("conveyancing_quotes.download_button"),
   conveyancing_quotes_purchase_download_path(@conveyancing_quote_purchase, format: "pdf"),
   target: "_blank",

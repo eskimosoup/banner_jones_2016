@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170602125258) do
+ActiveRecord::Schema.define(version: 20170705143325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,15 +160,30 @@ ActiveRecord::Schema.define(version: 20170602125258) do
   end
 
   create_table "conveyancing_quotes_purchases", force: :cascade do |t|
-    t.string   "title",                               null: false
-    t.string   "forename",                            null: false
-    t.string   "surname",                             null: false
     t.string   "phone"
-    t.string   "email",                               null: false
     t.string   "timeframe"
-    t.decimal  "price",      precision: 10, scale: 2, null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "price",                       precision: 10, scale: 2,                 null: false
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
+    t.integer  "conveyancing_quotes_user_id"
+    t.boolean  "second_home_or_buy_to_let",                            default: false
+    t.boolean  "leasehold_house",                                      default: false
+    t.boolean  "leasehold_apartment",                                  default: false
+    t.boolean  "help_to_buy_scheme",                                   default: false
+    t.boolean  "help_to_buy_isa",                                      default: false
+    t.boolean  "shared_ownership_scheme",                              default: false
+    t.index ["conveyancing_quotes_user_id"], name: "user_id", using: :btree
+  end
+
+  create_table "conveyancing_quotes_quote_locations", force: :cascade do |t|
+    t.string   "location"
+    t.string   "suggested_url"
+    t.string   "slug"
+    t.boolean  "display",       default: true
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["location"], name: "index_conveyancing_quotes_quote_locations_on_location", using: :btree
+    t.index ["slug"], name: "index_conveyancing_quotes_quote_locations_on_slug", using: :btree
   end
 
   create_table "conveyancing_quotes_remortgage_with_equity_transfers", force: :cascade do |t|
@@ -219,6 +234,23 @@ ActiveRecord::Schema.define(version: 20170602125258) do
     t.decimal  "price",      precision: 10, scale: 2, null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+  end
+
+  create_table "conveyancing_quotes_users", force: :cascade do |t|
+    t.string   "title"
+    t.string   "forename",                                              null: false
+    t.string   "surname",                                               null: false
+    t.string   "email",                                                 null: false
+    t.string   "phone",                                                 null: false
+    t.string   "token",                                                 null: false
+    t.boolean  "buying",                                default: false
+    t.boolean  "selling",                               default: false
+    t.boolean  "conveyancing_email_permission",         default: false
+    t.datetime "created_at",                                            null: false
+    t.datetime "updated_at",                                            null: false
+    t.integer  "conveyancing_quotes_quote_location_id"
+    t.index ["conveyancing_quotes_quote_location_id"], name: "quote_location_id", using: :btree
+    t.index ["token"], name: "index_conveyancing_quotes_users_on_token", using: :btree
   end
 
   create_table "department_roles", force: :cascade do |t|
@@ -1003,6 +1035,7 @@ ActiveRecord::Schema.define(version: 20170602125258) do
   add_foreign_key "audiences_banners", "audiences", on_delete: :cascade
   add_foreign_key "audiences_banners", "banners", on_delete: :cascade
   add_foreign_key "banners", "services"
+  add_foreign_key "conveyancing_quotes_purchases", "conveyancing_quotes_users"
   add_foreign_key "events", "event_locations"
   add_foreign_key "events_categorisations", "event_categories"
   add_foreign_key "events_categorisations", "events"

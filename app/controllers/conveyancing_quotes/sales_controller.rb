@@ -1,3 +1,4 @@
+=begin
 module ConveyancingQuotes
   class SalesController < ::ApplicationController
     def new
@@ -26,3 +27,4 @@ module ConveyancingQuotes
     end
   end
 end
+=end

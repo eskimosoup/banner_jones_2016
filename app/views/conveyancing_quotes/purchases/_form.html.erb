@@ -1,11 +1,43 @@
-<%= simple_form_for conveyancing_quote_purchase do |f| %>
-  <%= f.input :title, collection: ConveyancingQuotes::TITLES %>
-  <%= f.input :forename %>
-  <%= f.input :surname %>
-  <%= f.input :phone, as: :tel %>
-  <%= f.input :email, as: :email %>
-  <%= f.input :timeframe, collection: ConveyancingQuotes::TIMEFRAMES %>
+<%= form_for conveyancing_quote_purchase do |f| %>
+  <%#= f.input :timeframe, collection: ConveyancingQuotes::TIMEFRAMES %>
+  <%= render 'shared/form_errors', object: conveyancing_quote_purchase %>
 
-  <%= f.input :price, as: :decimal %>
-  <%= f.button :submit, "Continue" %>
+  <div class="fields">
+    <%= f.label :price %>
+    <%= f.number_field :price %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :second_home_or_buy_to_let %>
+    <%= f.check_box :second_home_or_buy_to_let %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :leasehold_house %>
+    <%= f.check_box :leasehold_house %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :leasehold_apartment %>
+    <%= f.check_box :leasehold_apartment %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :help_to_buy_scheme %>
+    <%= f.check_box :help_to_buy_scheme %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :help_to_buy_isa %>
+    <%= f.check_box :help_to_buy_isa %>
+  </div>
+
+  <div class="fields">
+    <%= f.label :shared_ownership_scheme %>
+    <%= f.check_box :shared_ownership_scheme %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Continue" %>
+  </div>
 <% end %>
