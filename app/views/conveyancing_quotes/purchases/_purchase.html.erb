@@ -72,6 +72,22 @@
     </div>
   </div>
 
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Land Fee Cost
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency purchase.land_fee_calculator.fee %>
+    </div>
+    <div class="large-2 columns">
+
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency purchase.land_fee_calculator.fee %>
+      <% total += purchase.land_fee_calculator.fee  %>
+    </div>
+  </div>
+
   <hr />
 
   <div class="conveyancing-cost">

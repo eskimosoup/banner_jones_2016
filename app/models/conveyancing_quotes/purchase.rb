@@ -4,14 +4,23 @@ class ConveyancingQuotes::Purchase < ApplicationRecord
   belongs_to :user, foreign_key: 'conveyancing_quotes_user_id'
 
   delegate :fee, :vat, :total, to: :conveyancing_calculator
-  delegate :stamp_duty, to: :stamp_duty_calculator
+  # delegate :stamp_duty, to: :stamp_duty_calculator
 
   def conveyancing_calculator
     @conveyancing_calculator ||= ConveyancingCalculator::Purchase.new(price, user.symbolised_location)
   end
 
+  def land_fee_calculator
+    @land_fee_calculator ||= ConveyancingCalculator::LandFees.new(price)
+  end
+
   def stamp_duty_calculator
     @stamp_duty_calculator ||= StampDuty.for(price)
+  end
+
+  def stamp_duty
+    stamp_duty_calculator.calculate
+    stamp_duty_calculator.stamp_duty
   end
 
   def additional_costs

@@ -56,6 +56,7 @@
 
   <h3>This is what you have to pay other Government Agencies</h3>
 
+
   <div class="row collapse">
     <div class="large-6 columns">
       Stamp Duty Land Tax
@@ -69,6 +70,23 @@
     <div class="large-2 columns">
       <%= number_to_currency purchase.stamp_duty %>
       <% total += purchase.stamp_duty %>
+    </div>
+  </div>
+
+
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Land Fee Cost
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency purchase.land_fee_calculator.fee %>
+    </div>
+    <div class="large-2 columns">
+
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency purchase.land_fee_calculator.fee %>
+      <% total += purchase.land_fee_calculator.fee  %>
     </div>
   </div>
 
