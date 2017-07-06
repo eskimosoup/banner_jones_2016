@@ -4,32 +4,32 @@
   <%= render(
     partial: "conveyancing_quotes/user_details",
     locals: {
-      quote: @conveyancing_quote_purchase
+      quote: purchase
     }
   ) %>
   <div class="purchase-price">
-    For a purchase at <%= number_to_currency @conveyancing_quote_purchase.price %>
+    For a purchase at <%= number_to_currency purchase.price %>
   </div>
   <div class="purchase-fee">
-    Our fees will be <%= number_to_currency @conveyancing_quote_purchase.fee %>
+    Our fees will be <%= number_to_currency purchase.fee %>
   </div>
   <!--
   <div class="disbursements">
     <div class="stamp-duty">
-      Stamp Duty Land Tax <%= number_to_currency @conveyancing_quote_purchase.stamp_duty %>
+      Stamp Duty Land Tax <%= number_to_currency purchase.stamp_duty %>
     </div>
   </div>
   -->
 </div>
 
-<% @conveyancing_quote_purchase.additional_costs.each do |additional_cost| %>
+<% purchase.additional_costs.each do |additional_cost| %>
   <%= additional_cost.to_s.humanize %>
   <%= ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
 <% end %>
 
 <%= link_to I18n.t("conveyancing_quotes.download_button"),
-  conveyancing_quotes_purchase_download_path(@conveyancing_quote_purchase, format: "pdf"),
+  conveyancing_quotes_purchase_download_path(purchase, format: "pdf"),
   target: "_blank",
   class: "download-button" %>
 
-<%= link_to 'Continue to selling quote', new_conveyancing_quotes_sale_path if @user.selling? %>
+<%#= link_to 'Continue to selling quote', new_conveyancing_quotes_sale_path if @user.selling? %>

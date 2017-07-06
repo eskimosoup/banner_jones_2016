@@ -5,8 +5,12 @@ module ConveyancingQuotes
     validates :surname, presence: true
     validates :email, presence: true
     validates :phone, presence: true
-    validates :buying, presence: { message: 'can not be blank, unless buying' }, unless: :selling?
-    validates :selling, presence: { message: 'can not be blank, unless selling' }, unless: :buying?
+    validates :buying,
+              presence: { message: 'can not be blank, unless buying' },
+              unless: :selling?
+    validates :selling,
+              presence: { message: 'can not be blank, unless selling' },
+              unless: :buying?
 
     belongs_to :quote_location,
                foreign_key: 'conveyancing_quotes_quote_location_id'
@@ -15,7 +19,21 @@ module ConveyancingQuotes
             dependent: :destroy,
             foreign_key: 'conveyancing_quotes_user_id'
 
-    has_one :sale, dependent: :destroy
+    has_one :sale,
+            dependent: :destroy,
+            foreign_key: 'conveyancing_quotes_user_id'
+
+    has_many :deeds,
+             dependent: :destroy,
+             foreign_key: 'conveyancing_quotes_user_id'
+
+    accepts_nested_attributes_for :deeds,
+                                  reject_if: :all_blank,
+                                  allow_destroy: true
+
+    has_many :addresses,
+             dependent: :destroy,
+             foreign_key: 'conveyancing_quotes_user_id'
 
     delegate :symbolised_location, to: :quote_location
 

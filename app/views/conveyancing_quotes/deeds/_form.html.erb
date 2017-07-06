@@ -1,0 +1,15 @@
+<%= form_for @user, url: conveyancing_quotes_deeds_path do |f| %>
+  <%= render 'shared/form_errors', object: @user %>
+
+  <div id="deeds">
+    <%= f.fields_for :deeds do |deed| %>
+      <%= render 'deed_fields', f: deed %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'Add another person to the deed', f, :deeds %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

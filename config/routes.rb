@@ -6,14 +6,25 @@ Rails.application.routes.draw do
       resource :download, only: [:show]
     end
     # resources :equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
-    resources :sales, only: %i[new create show], concerns: [:downloadable]
     # resources :sale_and_purchases, only: [:new, :create, :show], concerns: [:downloadable]
-    resources :purchases, only: %i[new create show], concerns: [:downloadable]
     # resources :remortgages, only: [:new, :create, :show], concerns: [:downloadable]
     # resources :remortgage_with_equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
 
+    resources :sales, only: %i[new create], concerns: [:downloadable]
+    resources :purchases, only: %i[new create], concerns: [:downloadable]
+
+    resource :deeds, only: %i[new update]
+
+    resource :property_addresses,
+              only: %i[new create edit update],
+              path: 'property-address'
+
+    resource :correspondence_addresses,
+              only: %i[new create edit update],
+              path: 'correspondence-address'
+
     resources :quote_locations, only: :show, path: '', shallow: true, as: :location do
-      resource :users, only: %i[new create], path: ''
+      resource :users, only: %i[new create edit update show], path: 'request'
     end
   end
 

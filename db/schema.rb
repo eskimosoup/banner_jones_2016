@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170705143325) do
+ActiveRecord::Schema.define(version: 20170706093324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -147,6 +147,28 @@ ActiveRecord::Schema.define(version: 20170705143325) do
     t.index ["slug"], name: "index_case_studies_on_slug", unique: true, using: :btree
   end
 
+  create_table "conveyancing_quotes_addresses", force: :cascade do |t|
+    t.integer  "conveyancing_quotes_user_id"
+    t.string   "address_type",                null: false
+    t.string   "house_number",                null: false
+    t.string   "address_line_1"
+    t.string   "address_line_2"
+    t.string   "town",                        null: false
+    t.string   "postcode",                    null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["conveyancing_quotes_user_id"], name: "addresses_user_id", using: :btree
+  end
+
+  create_table "conveyancing_quotes_deeds", force: :cascade do |t|
+    t.integer  "conveyancing_quotes_user_id"
+    t.string   "full_name",                   null: false
+    t.date     "date_of_birth",               null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.index ["conveyancing_quotes_user_id"], name: "deeds_user_id", using: :btree
+  end
+
   create_table "conveyancing_quotes_equity_transfers", force: :cascade do |t|
     t.string   "title",                               null: false
     t.string   "forename",                            null: false
@@ -172,7 +194,7 @@ ActiveRecord::Schema.define(version: 20170705143325) do
     t.boolean  "help_to_buy_scheme",                                   default: false
     t.boolean  "help_to_buy_isa",                                      default: false
     t.boolean  "shared_ownership_scheme",                              default: false
-    t.index ["conveyancing_quotes_user_id"], name: "user_id", using: :btree
+    t.index ["conveyancing_quotes_user_id"], name: "purchases_user_id", using: :btree
   end
 
   create_table "conveyancing_quotes_quote_locations", force: :cascade do |t|
@@ -225,15 +247,16 @@ ActiveRecord::Schema.define(version: 20170705143325) do
   end
 
   create_table "conveyancing_quotes_sales", force: :cascade do |t|
-    t.string   "title",                               null: false
-    t.string   "forename",                            null: false
-    t.string   "surname",                             null: false
     t.string   "phone"
-    t.string   "email",                               null: false
     t.string   "timeframe"
-    t.decimal  "price",      precision: 10, scale: 2, null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.decimal  "price",                       precision: 10, scale: 2,                 null: false
+    t.datetime "created_at",                                                           null: false
+    t.datetime "updated_at",                                                           null: false
+    t.integer  "conveyancing_quotes_user_id"
+    t.boolean  "leasehold_house",                                      default: false
+    t.boolean  "leasehold_apartment",                                  default: false
+    t.boolean  "shared_ownership_scheme",                              default: false
+    t.index ["conveyancing_quotes_user_id"], name: "sales_user_id", using: :btree
   end
 
   create_table "conveyancing_quotes_users", force: :cascade do |t|
@@ -1035,7 +1058,10 @@ ActiveRecord::Schema.define(version: 20170705143325) do
   add_foreign_key "audiences_banners", "audiences", on_delete: :cascade
   add_foreign_key "audiences_banners", "banners", on_delete: :cascade
   add_foreign_key "banners", "services"
+  add_foreign_key "conveyancing_quotes_addresses", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_deeds", "conveyancing_quotes_users"
   add_foreign_key "conveyancing_quotes_purchases", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_sales", "conveyancing_quotes_users"
   add_foreign_key "events", "event_locations"
   add_foreign_key "events_categorisations", "event_categories"
   add_foreign_key "events_categorisations", "events"

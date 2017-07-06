@@ -78,3 +78,5 @@ gem 'conveyancing_calculator', path: '../conveyancing_calculator'
 gem 'stamp_duty', '~> 0.1.0'
 gem 'simple_form', '~> 3.2.1'
 gem 'pdfkit', '~> 0.8.2'
+
+gem 'cocoon'

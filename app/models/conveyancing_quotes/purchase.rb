@@ -23,6 +23,6 @@ class ConveyancingQuotes::Purchase < ApplicationRecord
        leasehold_apartment].each do |x|
          additional_costs << x.to_sym if send(x)
        end
-       additional_costs
+     additional_costs
   end
 end

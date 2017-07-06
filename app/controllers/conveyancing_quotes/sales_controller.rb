@@ -1,30 +1,31 @@
-=begin
 module ConveyancingQuotes
-  class SalesController < ::ApplicationController
+  class SalesController < BaseController
+    before_action :valid_user
+
     def new
-      @conveyancing_quote_sale = ConveyancingQuotes::Sale.new
+      @conveyancing_quote_sale = @user.build_sale
     end
 
     def create
-      @conveyancing_quote_sale = ConveyancingQuotes::Sale.new(conveyancing_quotes_sale_params)
+      @conveyancing_quote_sale = @user.build_sale(conveyancing_quotes_sale_params)
       if @conveyancing_quote_sale.save
-        redirect_to @conveyancing_quote_sale, notice: "Conveyancing Quote saved"
+        redirect_to conveyancing_quotes_location_users_path(@user.quote_location),
+                    notice: 'Conveyancing Quote saved'
       else
         render :new
       end
     end
 
     def show
-      @conveyancing_quote_sale = ConveyancingQuotes::Sale.find(params[:id])
+      @conveyancing_quote_sale = @user.sale
     end
 
     private
 
     def conveyancing_quotes_sale_params
-      params.require(:conveyancing_quotes_sale).permit(:title, :forename,
-                                                       :surname, :phone, :email,
-                                                       :timeframe, :price)
+      params.require(:conveyancing_quotes_sale).permit(
+        :timeframe, :price, :leasehold_house, :leasehold_apartment, :shared_ownership_scheme
+      )
     end
   end
 end
-=end

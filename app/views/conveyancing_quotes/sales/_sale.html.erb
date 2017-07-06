@@ -4,24 +4,24 @@
   <%= render(
     partial: "conveyancing_quotes/user_details",
     locals: {
-      quote: @conveyancing_quote_sale
+      quote: sale
     }
   ) %>
 
   <div class="sale-price">
-    For a sale at <%= number_to_currency @conveyancing_quote_sale.price %>
+    For a sale at <%= number_to_currency sale.price %>
   </div>
   <div class="sale-fee">
-    Our fees will be <%= number_to_currency @conveyancing_quote_sale.fee %>
+    Our fees will be <%= number_to_currency sale.fee %>
   </div>
 </div>
 
-<% @conveyancing_quote_sale.additional_costs.each do |additional_cost| %>
+<% sale.additional_costs.each do |additional_cost| %>
   <%= additional_cost.to_s.humanize %>
   <%= ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
 <% end %>
 
 <%= link_to I18n.t("conveyancing_quotes.download_button"),
-  conveyancing_quotes_sale_download_path(@conveyancing_quote_sale, format: "pdf"),
+  conveyancing_quotes_sale_download_path(sale, format: "pdf"),
   target: "_blank",
   class: "download-button" %>

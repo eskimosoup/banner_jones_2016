@@ -22,6 +22,7 @@
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
 //= require vendor/jquery.unveil
+//= require cocoon
 
 $(document).ready(function() {
   $('img[data-src]').unveil();

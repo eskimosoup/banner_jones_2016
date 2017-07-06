@@ -1,8 +1,10 @@
 module ConveyancingQuotes
   class UsersController < BaseController
     before_action :set_location
+    before_action :valid_user, only: %i[edit update show]
 
     def new
+      session.delete(:conveyancing_quote)
       @user = @location.users.new
     end
 
@@ -15,6 +17,18 @@ module ConveyancingQuotes
         render :new
       end
     end
+
+    def edit; end
+
+    def update
+      if @user.update(user_params)
+        redirect_to root_url
+      else
+        render :edit
+      end
+    end
+
+    def show; end
 
     private
 
