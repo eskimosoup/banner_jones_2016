@@ -1,27 +1,76 @@
-<div class="conveyancing-quote sale">
-  <h1>Your Conveyancing Quote</h1>
+<% total = 0 %>
+<div class="conveyancing-quote purchase">
+  <h2>Your Selling Conveyancing Quote</h2>
 
-  <%= render(
-    partial: "conveyancing_quotes/user_details",
-    locals: {
-      quote: sale
-    }
-  ) %>
+  <div class="conveyancing-cost">
+    <div class="conveyancing-cost-description">
+      Selling a property for <strong><%= number_to_currency sale.price %></strong>.
+    </div>
+    <div class="conveyancing-cost-item">
+      Fee
+    </div>
+    <div class="conveyancing-cost-item">
+      VAT
+    </div>
+    <div class="conveyancing-cost-item">
+      Total
+    </div>
+  </div>
 
-  <div class="sale-price">
-    For a sale at <%= number_to_currency sale.price %>
+  <div class="conveyancing-cost">
+    <div class="conveyancing-cost-description">
+      Banner Jones Conveyancing Costs
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency sale.fee %>
+    </div>
+    <div class="conveyancing-cost-item">
+      +<%= number_to_currency sale.vat %>
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency sale.total %>
+      <% total += sale.total %>
+    </div>
   </div>
-  <div class="sale-fee">
-    Our fees will be <%= number_to_currency sale.fee %>
+
+  <% sale.additional_costs.each do |additional_cost| %>
+    <% cost = ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
+    <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+    <div class="conveyancing-cost">
+      <div class="conveyancing-cost-description">
+        <%= additional_cost.to_s.humanize.titlecase %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency cost %>
+      </div>
+      <div class="conveyancing-cost-item">
+        +<%= number_to_currency vat %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency cost + vat %>
+        <% total += (cost + vat) %>
+      </div>
+    </div>
+    <%= cost = vat = nil %>
+  <% end %>
+  <hr />
+
+  <div class="conveyancing-cost">
+    <div class="conveyancing-cost-description">
+      Overall total
+    </div>
+    <div class="conveyancing-cost-item">
+    </div>
+    <div class="conveyancing-cost-item">
+
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency total %>
+    </div>
   </div>
+  
+  <%= link_to I18n.t("conveyancing_quotes.download_button"),
+    conveyancing_quotes_sale_download_path(sale, format: "pdf"),
+    target: "_blank",
+    class: "download-button" %>
 </div>
-
-<% sale.additional_costs.each do |additional_cost| %>
-  <%= additional_cost.to_s.humanize %>
-  <%= ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
-<% end %>
-
-<%= link_to I18n.t("conveyancing_quotes.download_button"),
-  conveyancing_quotes_sale_download_path(sale, format: "pdf"),
-  target: "_blank",
-  class: "download-button" %>

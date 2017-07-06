@@ -4,9 +4,9 @@
     <%= f.text_field :full_name %>
   </div>
 
-  <div class="field">
+  <div class="field conveyancing-date-field">
     <%= f.label :date_of_birth %>
-    <%= f.date_select :date_of_birth %>
+    <%= f.date_select :date_of_birth, { start_year: 100.years.ago.year, end_year: 16.years.ago.year, max_years_allowed: 84 } %>
   </div>
 
   <%= link_to_remove_association 'Remove', f %>

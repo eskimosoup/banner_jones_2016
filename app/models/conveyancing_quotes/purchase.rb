@@ -3,7 +3,7 @@ class ConveyancingQuotes::Purchase < ApplicationRecord
 
   belongs_to :user, foreign_key: 'conveyancing_quotes_user_id'
 
-  delegate :fee, to: :conveyancing_calculator
+  delegate :fee, :vat, :total, to: :conveyancing_calculator
   delegate :stamp_duty, to: :stamp_duty_calculator
 
   def conveyancing_calculator

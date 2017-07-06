@@ -1,8 +1,6 @@
-<div>
-  <h1><%= @user.forename %>, we just need a bit more information</h1>
+<%= content_for :content_title { "#{@user.forename}, we just need a bit more information" } %>
 
-  <%= render(
-    partial: "conveyancing_quotes/purchases/form",
-    locals: { conveyancing_quote_purchase: @conveyancing_quote_purchase }
-  ) %>
-</div>
+<%= render(
+  partial: "conveyancing_quotes/purchases/form",
+  locals: { conveyancing_quote_purchase: @conveyancing_quote_purchase }
+) %>

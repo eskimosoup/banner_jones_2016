@@ -2,6 +2,7 @@ module ConveyancingQuotes
   class UsersController < BaseController
     before_action :set_location
     before_action :valid_user, only: %i[edit update show]
+    before_action :current_user, only: %i[thank_you]
 
     def new
       session.delete(:conveyancing_quote)
@@ -22,13 +23,18 @@ module ConveyancingQuotes
 
     def update
       if @user.update(user_params)
-        redirect_to root_url
+        redirect_to thank_you_conveyancing_quotes_location_users_path
+        @user.update_attributes(submitted: true)
       else
         render :edit
       end
     end
 
     def show; end
+
+    def thank_you
+      redirect_to root_url if @user.blank?
+    end
 
     private
 

@@ -2,42 +2,46 @@
   <%#= f.input :timeframe, collection: ConveyancingQuotes::TIMEFRAMES %>
   <%= render 'shared/form_errors', object: conveyancing_quote_purchase %>
 
-  <div class="fields">
-    <%= f.label :price %>
+  <div class="field">
+    <p>How much are you buying the property for?</p>
+
+    <%= f.label :price, 'Purchase price' %>
     <%= f.number_field :price %>
   </div>
 
-  <div class="fields">
-    <%= f.label :second_home_or_buy_to_let %>
+  <div class="field">
     <%= f.check_box :second_home_or_buy_to_let %>
+    <%= f.label :second_home_or_buy_to_let, 'This a second home or buy-to-let purchase', class: 'inline-label' %>
   </div>
 
-  <div class="fields">
-    <%= f.label :leasehold_house %>
+  <p>Please tick any other requirements.</p>
+
+  <div class="field">
     <%= f.check_box :leasehold_house %>
+    <%= f.label :leasehold_house, 'Leasehold house', class: 'inline-label' %>
   </div>
 
-  <div class="fields">
-    <%= f.label :leasehold_apartment %>
+  <div class="field">
     <%= f.check_box :leasehold_apartment %>
+    <%= f.label :leasehold_apartment, 'Leasehold apartment', class: 'inline-label' %>
   </div>
 
-  <div class="fields">
-    <%= f.label :help_to_buy_scheme %>
+  <div class="field">
     <%= f.check_box :help_to_buy_scheme %>
+    <%= f.label :help_to_buy_scheme, 'Help to Buy Scheme', class: 'inline-label' %>
   </div>
 
-  <div class="fields">
-    <%= f.label :help_to_buy_isa %>
+  <div class="field">
     <%= f.check_box :help_to_buy_isa %>
+    <%= f.label :help_to_buy_isa, 'Help to Buy ISA', class: 'inline-label' %>
   </div>
 
-  <div class="fields">
-    <%= f.label :shared_ownership_scheme %>
+  <div class="field">
     <%= f.check_box :shared_ownership_scheme %>
+    <%= f.label :shared_ownership_scheme, 'Shared Ownership Scheme', class: 'inline-label'  %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Continue" %>
+    <%= f.submit "Continue", class: 'submit-button' %>
   </div>
 <% end %>

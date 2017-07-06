@@ -1,2 +1,9 @@
+<%= content_for :content_title { 'Your Conveyancing Quote' } %>
+
 <%= render @user.purchase %>
 <%= render @user.sale %>
+
+<div class="conveyancing-quote-overview">
+  <p>If you are happy with the quote, please proceed to accept it.</p>
+  <%= link_to 'Accept quote', new_conveyancing_quotes_deeds_path, class: 'submit-button' %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706093324) do
+ActiveRecord::Schema.define(version: 20170706140017) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -204,6 +204,7 @@ ActiveRecord::Schema.define(version: 20170706093324) do
     t.boolean  "display",       default: true
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.text     "details"
     t.index ["location"], name: "index_conveyancing_quotes_quote_locations_on_location", using: :btree
     t.index ["slug"], name: "index_conveyancing_quotes_quote_locations_on_slug", using: :btree
   end
@@ -272,6 +273,7 @@ ActiveRecord::Schema.define(version: 20170706093324) do
     t.datetime "created_at",                                            null: false
     t.datetime "updated_at",                                            null: false
     t.integer  "conveyancing_quotes_quote_location_id"
+    t.boolean  "submitted",                             default: false
     t.index ["conveyancing_quotes_quote_location_id"], name: "quote_location_id", using: :btree
     t.index ["token"], name: "index_conveyancing_quotes_users_on_token", using: :btree
   end

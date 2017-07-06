@@ -22,21 +22,21 @@
   </div>
 
   <div class="field">
-    <%= f.label :buying %>
     <%= f.check_box :buying %>
+    <%= f.label :buying, 'I am buying', class: 'inline-label' %>
   </div>
 
   <div class="field">
-    <%= f.label :selling %>
     <%= f.check_box :selling %>
+    <%= f.label :selling, 'I am selling', class: 'inline-label' %>
   </div>
 
   <div class="field">
-    <%= f.label :conveyancing_email_permission, 'I would like useful information about conveyancing to be sent to me by email' %>
     <%= f.check_box :conveyancing_email_permission %>
+    <%= f.label :conveyancing_email_permission, 'I would like useful information about conveyancing to be sent to me by email', class: 'inline-label' %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Get quote', class: 'submit-button' %>
   </div>
 <% end %>

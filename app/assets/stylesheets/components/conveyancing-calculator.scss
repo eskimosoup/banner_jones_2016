@@ -1,0 +1,32 @@
+.conveyancing-quote,
+.conveyancing-address {
+  border-bottom: 1px solid $black;
+  margin-bottom: rem(10px);
+  padding-bottom: rem(10px);
+}
+
+.conveyancing-cost {
+  @include grid-row;
+  @include grid-row-nest;
+  margin-bottom: rem(4px);
+  margin-top: rem(2px);
+}
+
+.conveyancing-cost-description {
+  @include grid-column(6);
+}
+
+.conveyancing-cost-item {
+  @include grid-column(2);
+}
+
+.conveyancing-quote-overview {
+  margin-top: rem(20px);
+}
+
+.conveyancing-date-field {
+  select {
+    display: inline-block;
+    width: 33%;
+  }
+}

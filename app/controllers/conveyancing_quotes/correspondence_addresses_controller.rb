@@ -3,7 +3,7 @@ module ConveyancingQuotes
     before_action :valid_user
 
     def new
-      redirect_to edit_conveyancing_quotes_correspondence_addresses_path if @user.addresses.correspondence
+      redirect_to edit_conveyancing_quotes_correspondence_addresses_path if @user.addresses.correspondence.present?
       @address = @user.addresses.new(address_type: 'Correspondence')
     end
 

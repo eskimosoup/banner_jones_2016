@@ -1,5 +1,23 @@
+<%= content_for :content_title { 'Please review your quote' } %>
+
 <%= render @user.purchase %>
 <%= render @user.sale %>
+
+<% if @user.addresses.correspondence.present? %>
+  <%= render @user.addresses.correspondence  %>
+  <%= link_to 'Edit', edit_conveyancing_quotes_property_addresses_path %>
+<% end %>
+
+<% if @user.addresses.property.present? %>
+  <%= render @user.addresses.property %>
+  <%= link_to 'Edit', edit_conveyancing_quotes_correspondence_addresses_path %>
+<% end %>
+
+<% if @user.deeds.present? %>
+  <h3>Deeds</h3>
+  <%= content_tag :ul, (render @user.deeds) %>
+  <%= link_to 'Edit', edit_conveyancing_quotes_deeds_path %>
+<% end %>
 
 <%= form_for @user, url: conveyancing_quotes_location_users_path do |f| %>
   <%= render 'shared/form_errors', object: @user %>
@@ -14,6 +32,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Confirm' %>
+    <%= f.submit 'Confirm', class: 'submit-button' %>
   </div>
 <% end %>

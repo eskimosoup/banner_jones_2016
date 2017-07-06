@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :sales, only: %i[new create], concerns: [:downloadable]
     resources :purchases, only: %i[new create], concerns: [:downloadable]
 
-    resource :deeds, only: %i[new update]
+    resource :deeds, only: %i[new edit update]
 
     resource :property_addresses,
               only: %i[new create edit update],
@@ -24,7 +24,9 @@ Rails.application.routes.draw do
               path: 'correspondence-address'
 
     resources :quote_locations, only: :show, path: '', shallow: true, as: :location do
-      resource :users, only: %i[new create edit update show], path: 'request'
+      resource :users, only: %i[new create edit update show], path: 'request' do
+        get 'thank-you', on: :collection
+      end
     end
   end
 

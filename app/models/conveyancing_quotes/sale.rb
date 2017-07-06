@@ -3,7 +3,7 @@ class ConveyancingQuotes::Sale < ApplicationRecord
 
   belongs_to :user, foreign_key: 'conveyancing_quotes_user_id'
 
-  delegate :fee, to: :conveyancing_calculator
+  delegate :fee, :vat, :total, to: :conveyancing_calculator
 
   def conveyancing_calculator
     @conveyancing_calculator ||= ConveyancingCalculator::Sale.new(price, user.symbolised_location)
