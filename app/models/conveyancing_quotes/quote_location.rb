@@ -1,5 +1,8 @@
 module ConveyancingQuotes
   class QuoteLocation < ApplicationRecord
+    include OptimadminScopes
+    include Presentable
+
     extend FriendlyId
     friendly_id :slug_candidates, use: %i[slugged history]
 

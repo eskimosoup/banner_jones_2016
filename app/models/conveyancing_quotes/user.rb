@@ -1,5 +1,9 @@
 module ConveyancingQuotes
   class User < ApplicationRecord
+    include OptimadminScopes
+
+    default_scope { order(created_at: :desc) }
+
     # validates :title, inclusion: { in: ConveyancingQuotes::TITLES }
     validates :forename, presence: true
     validates :surname, presence: true

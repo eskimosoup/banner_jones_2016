@@ -1,0 +1,71 @@
+<% total = 0 %>
+<div class="conveyancing-quote purchase">
+  <h2>Your Selling Conveyancing Quote</h2>
+
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Selling a property for <strong><%= number_to_currency sale.price %></strong>.
+    </div>
+    <div class="large-2 columns">
+      Fee
+    </div>
+    <div class="large-2 columns">
+      VAT
+    </div>
+    <div class="large-2 columns">
+      Total
+    </div>
+  </div>
+
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Banner Jones Conveyancing Costs
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency sale.fee %>
+    </div>
+    <div class="large-2 columns">
+      +<%= number_to_currency sale.vat %>
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency sale.total %>
+      <% total += sale.total %>
+    </div>
+  </div>
+
+  <% sale.additional_costs.each do |additional_cost| %>
+    <% cost = ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
+    <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+    <div class="row collapse">
+      <div class="large-6 columns">
+        <%= additional_cost.to_s.humanize.titlecase %>
+      </div>
+      <div class="large-2 columns">
+        <%= number_to_currency cost %>
+      </div>
+      <div class="large-2 columns">
+        +<%= number_to_currency vat %>
+      </div>
+      <div class="large-2 columns">
+        <%= number_to_currency cost + vat %>
+        <% total += (cost + vat) %>
+      </div>
+    </div>
+    <%= cost = vat = nil %>
+  <% end %>
+  <hr />
+
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Overall total
+    </div>
+    <div class="large-2 columns">
+    </div>
+    <div class="large-2 columns">
+
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency total %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,92 @@
+<% total = 0 %>
+<div class="conveyancing-quote purchase">
+  <h2>Your Purchase Conveyancing Quote</h2>
+
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
+    </div>
+    <div class="large-2 columns">
+      Fee
+    </div>
+    <div class="large-2 columns">
+      VAT
+    </div>
+    <div class="large-2 columns">
+      Total
+    </div>
+  </div>
+
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Banner Jones Conveyancing Costs
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency purchase.fee %>
+    </div>
+    <div class="large-2 columns">
+      +<%= number_to_currency purchase.vat %>
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency purchase.total %>
+      <% total += purchase.total %>
+    </div>
+  </div>
+
+  <% purchase.additional_costs.each do |additional_cost| %>
+    <% cost = ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
+    <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+    <div class="row collapse">
+      <div class="large-6 columns">
+        <%= additional_cost.to_s.humanize.titlecase %>
+      </div>
+      <div class="large-2 columns">
+        <%= number_to_currency cost %>
+      </div>
+      <div class="large-2 columns">
+        +<%= number_to_currency vat %>
+      </div>
+      <div class="large-2 columns">
+        <%= number_to_currency cost + vat %>
+        <% total += (cost + vat) %>
+      </div>
+    </div>
+    <%= cost = vat = nil %>
+  <% end %>
+
+  <h3>This is what you have to pay other Government Agencies</h3>
+
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Stamp Duty Land Tax
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency purchase.stamp_duty %>
+    </div>
+    <div class="large-2 columns">
+
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency purchase.stamp_duty %>
+      <% total += purchase.stamp_duty %>
+    </div>
+  </div>
+
+  <hr />
+
+  <div class="row collapse">
+    <div class="large-6 columns">
+      Overall total
+    </div>
+    <div class="large-2 columns">
+    </div>
+    <div class="large-2 columns">
+
+    </div>
+    <div class="large-2 columns">
+      <%= number_to_currency total %>
+    </div>
+  </div>
+</div>
+
+<%#= link_to 'Continue to selling quote', new_conveyancing_quotes_sale_path if @user.selling? %>

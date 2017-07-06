@@ -92,4 +92,45 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 end
 Optimadmin::Engine.routes.draw do
+  concern :imageable do
+    member do
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
+
+  concern :orderable do
+    collection do
+      post 'order'
+    end
+  end
+
+  concern :toggleable do
+    member do
+      get 'toggle'
+    end
+  end
+
+  concern :publishable do |options|
+    collection do
+      resources :expired,
+                as: "expired_#{options[:module]}",
+                controller: "#{options[:module]}/expired"
+      resources :scheduled,
+                as: "scheduled_#{options[:module]}",
+                controller: "#{options[:module]}/scheduled"
+      resources :published,
+                as: "published_#{options[:module]}",
+                controller: "#{options[:module]}/published"
+    end
+  end
+
+  # Module routes go below concerns
+  namespace :conveyancing_quotes do
+    resources :quote_locations do
+      resources :users, only: [:index, :show]
+    end
+  end
 end
