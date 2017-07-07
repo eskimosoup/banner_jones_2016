@@ -1,11 +1,64 @@
-<%= simple_form_for conveyancing_quote_sale do |f| %>
-  <%= f.input :title, collection: ConveyancingQuotes::TITLES %>
-  <%= f.input :forename %>
-  <%= f.input :surname %>
-  <%= f.input :phone, as: :tel %>
-  <%= f.input :email, as: :email %>
-  <%= f.input :timeframe, collection: ConveyancingQuotes::TIMEFRAMES %>
+<%= form_for conveyancing_quote_sale do |f| %>
+  <%= render 'shared/form_errors', object: conveyancing_quote_sale %>
 
-  <%= f.input :price, as: :decimal %>
-  <%= f.button :submit, "Continue" %>
+  <p>How much are you selling the property for?</p>
+
+  <div class="field">
+    <%= f.label :price, 'Selling Price' %>
+    <%= f.number_field :price %>
+  </div>
+
+  <p>Please tick any other requirements.</p>
+
+  <div class="field">
+    <%= f.check_box :leasehold_house %>
+    <%= f.label :leasehold_house, 'Leasehold House', class: 'inline-label' %>
+
+    <%= link_to 'Find out more',
+                '#leasehold-house',
+                class: 'toggle-class',
+                data: {
+                  class: 'hide',
+                  container: '.leasehold-house',
+                  return: false
+                } %>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/leasehold_house' %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :leasehold_apartment %>
+    <%= f.label :leasehold_apartment, 'Leasehold Apartment', class: 'inline-label' %>
+
+    <%= link_to 'Find out more',
+                '#leasehold-apartment',
+                class: 'toggle-class',
+                data: {
+                  class: 'hide',
+                  container: '.leasehold-apartment',
+                  return: false
+                } %>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/leasehold_apartment' %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :shared_ownership_scheme %>
+    <%= f.label :shared_ownership_scheme, 'Shared Ownership Scheme', class: 'inline-label' %>
+
+    <%= link_to 'Find out more',
+                '#shared-ownership-scheme',
+                class: 'toggle-class',
+                data: {
+                  class: 'hide',
+                  container: '.shared-ownership-scheme',
+                  return: false
+                } %>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>  
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Continue", class: 'submit-button' %>
+  </div>
 <% end %>

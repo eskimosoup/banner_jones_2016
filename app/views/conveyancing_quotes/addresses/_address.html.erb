@@ -1,0 +1,5 @@
+<div class="conveyancing-address">
+  <h2><%= address.address_type %> Address</h2>
+  
+  <%= address.address_fields.gsub(', ', '<br />').html_safe %>
+</div>

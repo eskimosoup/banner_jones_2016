@@ -1,0 +1,32 @@
+<%= form_for @address, url: path do |f| %>
+  <%= render 'shared/form_errors', object: @address %>
+
+  <div class="field">
+    <%= f.label :house_number, 'House name or number' %>
+    <%= f.text_field :house_number %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_line_1 %>
+    <%= f.text_field :address_line_1 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address_line_2 %>
+    <%= f.text_field :address_line_2 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :town, 'Town or city' %>
+    <%= f.text_field :town %>
+  </div>
+
+  <div class="field">
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Submit', class: 'submit-button' %>
+  </div>
+<% end %>

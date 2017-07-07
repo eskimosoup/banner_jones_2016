@@ -1,0 +1,135 @@
+<div class="content-categories-sidebar">
+  <div class="row collapse">
+    <div class="small-8 show-for-medium-down columns">
+      <%= link_to octicon('book') + 'Manage Content',
+          '#',
+          class: 'content-categories-toggle toggle-class',
+          data: {
+            class: 'content-categories-toggle-visiblity',
+            container: '.content-categories, .content-categories-toggle',
+            return: 'true'
+          } %>
+    </div>
+    <div class="small-4 show-for-medium-down columns">
+      <%= link_to logout_path, class: 'logout-link' do %>
+        <%= octicon('sign-in') %> Logout
+      <% end %>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="large-12 small-8 left content-categories columns">
+      <div class="content-category-type">
+        Manage Content
+      </div>
+      <ul id="modules" class="content-category-list">
+        <%= module_link(content: "Conveyancing Quotes", model: ConveyancingQuotes::QuoteLocation, path: conveyancing_quotes_quote_locations_path) %>
+        <%= module_link(content: "Case Studies", model: CaseStudy, path: case_studies_path) if Flipflop.case_studies? %>
+        <%= module_link(content: 'Pages', model: Page, path: pages_path) %>
+        <%= content_tag :li, (link_to 'Site Navigation', menu_items_path) if can? :manage, Optimadmin::MenuItem %>
+      </ul>
+
+      <div class="content-category-type">
+        Manage Inline Content
+      </div>
+      <ul class="content-category-list">
+        <%= module_link(content: "Additional Contents", model: AdditionalContent, path: additional_contents_path) %>
+        <%= module_link(content: "Frequently Asked Questions", model: FrequentlyAskedQuestion, path: frequently_asked_questions_path) if Flipflop.frequently_asked_questions? %>
+        <%= module_link(content: "Testimonials", model: Testimonial, path: testimonials_path) if Flipflop.testimonials? %>
+        <%= module_link(content: "Banners", model: Banner, path: banners_path) if Flipflop.banners? %>
+      </ul>
+
+      <% if Flipflop.awards? || Flipflop.accreditations? %>
+      <div class="content-category-type">
+        Manage Awards and Accreditations
+      </div>
+      <ul class="content-category-list">
+        <%= module_link(content: "Accreditations", model: Accreditation, path: accreditations_path) if Flipflop.accreditations? %>
+        <%= module_link(content: "Awards", model: Award, path: awards_path) if Flipflop.awards? %>
+      </ul>
+      <% end %>
+
+      <% if Flipflop.team_members? %>
+        <div class="content-category-type">
+          Manage Team Members
+        </div>
+        <ul class="content-category-list">
+          <%= module_link(content: "Team Members", model: TeamMember, path: team_members_path) %>
+          <%= module_link(content: "Job Roles", model: JobRole, path: job_roles_path) %>
+          <%= module_link(content: "Department Roles", model: DepartmentRole, path: department_roles_path) %>
+        </ul>
+      <% end %>
+
+      <% if Flipflop.services? %>
+        <div class="content-category-type">
+          Manage Services
+        </div>
+        <ul class="content-category-list">
+          <%= module_link(content: "Audiences [not shown to the user]", model: Audience, path: audiences_path) if current_administrator.role == 'master'  %>
+          <%= render partial: 'optimadmin/audiences/audience_link', collection: Audience.all, as: :audience %>
+        </ul>
+      <% end %>
+
+      <% if Flipflop.videos? %>
+        <div class="content-category-type">
+          Manage Videos
+        </div>
+        <ul class="content-category-list">
+          <%= module_link(content: "Videos", model: Video, path: videos_path) %>
+          <%= module_link(content: "Video Categories", model: VideoCategory, path: video_categories_path) %>
+        </ul>
+      <% end %>
+
+      <% if Flipflop.articles? %>
+        <div class="content-category-type">
+          Manage Articles
+        </div>
+        <ul class="content-category-list">
+          <%= module_link(content: "Articles", model: Article, path: articles_path) %>
+          <%= module_link(content: "Article Categories", model: ArticleCategory, path: article_categories_path) %>
+        </ul>
+      <% end %>
+
+      <% if Flipflop.events? %>
+        <div class="content-category-type">
+          Manage Events
+        </div>
+        <ul class="content-category-list">
+          <%= module_link(content: "Events", model: Event, path: events_path) %>
+          <%= module_link(content: "Event Categories", model: EventCategory, path: event_categories_path) %>
+          <%= module_link(content: "Event Locations", model: EventLocation, path: event_locations_path) %>
+        </ul>
+      <% end %>
+
+      <% if Flipflop.resources? %>
+        <div class="content-category-type">
+          Manage Resources
+        </div>
+        <ul class="content-category-list">
+          <%= module_link(content: "Resources", model: Resource, path: resources_path) %>
+          <%= module_link(content: "Resource Categories", model: ResourceCategory, path: resource_categories_path) %>
+        </ul>
+      <% end %>
+
+      <% if Flipflop.offices? %>
+        <div class="content-category-type">
+          Manage Offices
+        </div>
+        <ul class="content-category-list">
+          <%= module_link(content: "Offices", model: Office, path: offices_path) %>
+          <%= module_link(content: "Office Locations", model: OfficeLocation, path: office_locations_path) %>
+        </ul>
+      <% end %>
+
+
+
+      <div class="content-category-type">
+        Manage SEO
+      </div>
+      <ul class="content-category-list">
+        <%= module_link(content: "Rich Snippets", model: RichSnippet, path: rich_snippets_path) %>
+        <%= module_link(content: 'SEO Entries', model: SeoEntry, path: seo_entries_path) %>
+        <%= module_link(content: 'Mailchimp Lists', model: MailchimpList, path: mailchimp_lists_path) %>
+      </ul>
+    </div>
+  </div>
+</div>

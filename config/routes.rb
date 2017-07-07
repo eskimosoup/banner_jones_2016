@@ -1,24 +1,41 @@
 Rails.application.routes.draw do
   get 'sitemap', to: 'application#sitemap'
 
-  namespace :conveyancing_quotes do
+  namespace :conveyancing_quotes, path: 'conveyancing-quotes' do
     concern :downloadable do
       resource :download, only: [:show]
     end
-    resources :equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
-    resources :sales, only: [:new, :create, :show], concerns: [:downloadable]
-    resources :sale_and_purchases, only: [:new, :create, :show], concerns: [:downloadable]
-    resources :purchases, only: [:new, :create, :show], concerns: [:downloadable]
-    resources :remortgages, only: [:new, :create, :show], concerns: [:downloadable]
-    resources :remortgage_with_equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
+    # resources :equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
+    # resources :sale_and_purchases, only: [:new, :create, :show], concerns: [:downloadable]
+    # resources :remortgages, only: [:new, :create, :show], concerns: [:downloadable]
+    # resources :remortgage_with_equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
+
+    resources :sales, only: %i[new create], concerns: [:downloadable]
+    resources :purchases, only: %i[new create], concerns: [:downloadable]
+
+    resource :deeds, only: %i[new edit update]
+
+    resource :property_addresses,
+              only: %i[new create edit update],
+              path: 'property-address'
+
+    resource :correspondence_addresses,
+              only: %i[new create edit update],
+              path: 'correspondence-address'
+
+    resources :quote_locations, only: :show, path: '', shallow: true, as: :location do
+      resource :users, only: %i[new create edit update show], path: 'request' do
+        get 'thank-you', on: :collection
+      end
+    end
   end
 
   resources :frequently_asked_questions, only: [:index], path: 'frequently-asked-questions'
-  resources :payments, only: [:new, :create, :show]
-  match '/payments/gateway_reply', to: 'payment_gateway_replies#create', via: [:get, :post]
+  resources :payments, only: %i[new create show]
+  match '/payments/gateway_reply', to: 'payment_gateway_replies#create', via: %i[get post]
   resources :testimonials, only: [:index]
 
-  resources :team_members, only: [:index, :show], path: 'team-members' do
+  resources :team_members, only: %i[index show], path: 'team-members' do
     member do
       get 'testimonials'
     end
@@ -37,20 +54,20 @@ Rails.application.routes.draw do
   resources :event_categories, only: :show, path: 'event-categories'
   resources :event_locations, only: :show, path: 'event-locations'
 
-  resources :case_studies, only: [:index, :show], path: 'case-studies'
-  resources :articles, only: [:index, :show]
-  resources :offices, only: [:index, :show]
-  resources :resources, only: [:index, :show]
+  resources :case_studies, only: %i[index show], path: 'case-studies'
+  resources :articles, only: %i[index show]
+  resources :offices, only: %i[index show]
+  resources :resources, only: %i[index show]
   # resources :videos, only: [:index, :show]
-  resources :events, only: [:index, :show]
+  resources :events, only: %i[index show]
   resources :pages, only: :show
   # FIXME: This is used in conjuction with the engine, so you end up with
   # /contacts/new and /contact-us/new - it should be one or the other.
-  resources :contacts, only: [:new, :create] # Here for legacy  
-  resources :contacts, only: [:new, :create], path: 'contact-us'
-  resources :callback_requests, only: [:new, :create], path: 'callback-request'
+  resources :contacts, only: %i[new create] # Here for legacy
+  resources :contacts, only: %i[new create], path: 'contact-us'
+  resources :callback_requests, only: %i[new create], path: 'callback-request'
 
-  %w( 403 404 422 500 ).each do |code|
+  %w[403 404 422 500].each do |code|
     get code, to: 'errors#show', code: code
   end
 
@@ -75,4 +92,45 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
 end
 Optimadmin::Engine.routes.draw do
+  concern :imageable do
+    member do
+      get 'edit_images'
+      post 'update_image_default'
+      post 'update_image_fill'
+      post 'update_image_fit'
+    end
+  end
+
+  concern :orderable do
+    collection do
+      post 'order'
+    end
+  end
+
+  concern :toggleable do
+    member do
+      get 'toggle'
+    end
+  end
+
+  concern :publishable do |options|
+    collection do
+      resources :expired,
+                as: "expired_#{options[:module]}",
+                controller: "#{options[:module]}/expired"
+      resources :scheduled,
+                as: "scheduled_#{options[:module]}",
+                controller: "#{options[:module]}/scheduled"
+      resources :published,
+                as: "published_#{options[:module]}",
+                controller: "#{options[:module]}/published"
+    end
+  end
+
+  # Module routes go below concerns
+  namespace :conveyancing_quotes do
+    resources :quote_locations do
+      resources :users, only: [:index, :show]
+    end
+  end
 end

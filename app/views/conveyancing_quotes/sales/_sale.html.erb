@@ -1,0 +1,86 @@
+<% total = 0 %>
+<div class="conveyancing-quote purchase">
+  <h2>Your Selling Conveyancing Quote</h2>
+
+  <div class="conveyancing-cost">
+    <div class="conveyancing-cost-description">
+      Selling a property for <strong><%= number_to_currency sale.price %></strong>.
+    </div>
+    <div class="conveyancing-cost-item">
+      Fee
+    </div>
+    <div class="conveyancing-cost-item">
+      VAT
+    </div>
+    <div class="conveyancing-cost-item">
+      Total
+    </div>
+  </div>
+
+  <div class="conveyancing-cost">
+    <div class="conveyancing-cost-description">
+      Banner Jones Conveyancing Costs
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency sale.fee %>
+    </div>
+    <div class="conveyancing-cost-item">
+      +<%= number_to_currency sale.vat %>
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency sale.total %>
+      <% total += sale.total %>
+    </div>
+  </div>
+
+  <% sale.additional_costs.each do |additional_cost| %>
+    <% cost = ConveyancingCalculator.configuration.additional_costs[sale.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
+    <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+    <div class="conveyancing-cost">
+      <div class="conveyancing-cost-description">
+        <%= link_to additional_cost.to_s.humanize.titlecase,
+                    "##{additional_cost.to_s.parameterize.tr('_', '-')}",
+                    class: 'toggle-class',
+                    data: {
+                      class: 'hide',
+                      container: ".#{additional_cost.to_s.parameterize.tr('_', '-')}",
+                      return: false
+                      } %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency cost %>
+      </div>
+      <div class="conveyancing-cost-item">
+        +<%= number_to_currency vat %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency cost + vat %>
+        <% total += (cost + vat) %>
+      </div>
+    </div>
+
+    <%= render "conveyancing_quotes/shared/tooltips/#{additional_cost.to_s.parameterize}" %>
+
+    <%= cost = vat = nil %>
+  <% end %>
+  <hr />
+
+  <div class="conveyancing-cost">
+    <div class="conveyancing-cost-description">
+      Overall total
+    </div>
+    <div class="conveyancing-cost-item">
+    </div>
+    <div class="conveyancing-cost-item">
+
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency total %>
+    </div>
+  </div>
+
+  <%= link_to I18n.t("conveyancing_quotes.download_button"),
+    conveyancing_quotes_sale_download_path(sale, format: "pdf"),
+    target: "_blank",
+    class: "download-button" %>
+</div>

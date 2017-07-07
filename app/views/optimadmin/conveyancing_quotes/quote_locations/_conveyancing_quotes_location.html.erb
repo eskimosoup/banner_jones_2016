@@ -1,0 +1,31 @@
+<% present conveyancing_quotes_location do |conveyancing_quotes_location_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= conveyancing_quotes_location_presenter.id %>">
+    <div class="large-8 small-8 columns" data-equalizer-watch="module-list">
+      <%= conveyancing_quotes_location_presenter.toggle_title %>
+    </div>
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= conveyancing_quotes_location_presenter.toggle_link %>
+    </div>
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= conveyancing_quotes_location_presenter.view_link %>
+    </div>
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= conveyancing_quotes_location_presenter.edit_link %>
+    </div>
+    <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+      <%= conveyancing_quotes_location_presenter.delete_link %>
+    </div>
+    <div class="row module-list-detail hide" id="index-list-<%= conveyancing_quotes_location_presenter.id %>">
+      <div class="small-12 columns module-list-summary last">
+        <%= conveyancing_quotes_location_presenter.optimadmin_summary %>
+      </div>
+    </div>
+    <div class="small-12 module-list-additional-row columns">
+      <div class="row collapse" id="index-list-<%= conveyancing_quotes_location_presenter.id %>">
+        <div class="large-12 columns">
+          <%= conveyancing_quotes_location_presenter.show_users %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
