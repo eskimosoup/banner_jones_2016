@@ -6,7 +6,9 @@ module ConveyancingQuotes
     extend FriendlyId
     friendly_id :slug_candidates, use: %i[slugged history]
 
-    LOCATIONS = ['London', 'Outside London'].freeze
+    # Outside Location doesn't have correct fees set up
+    # LOCATIONS = ['London', 'Outside London'].freeze
+    LOCATIONS = ['London'].freeze
 
     validates :location, inclusion: { in: LOCATIONS }, uniqueness: true
 
