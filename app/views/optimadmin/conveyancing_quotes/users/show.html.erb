@@ -16,8 +16,8 @@
 
     <%= l @user.created_at, format: :long %>
 
-    <%= render 'optimadmin/conveyancing_quotes/users/purchase', purchase: @user.purchase %>
-    <%= render 'optimadmin/conveyancing_quotes/users/sale', sale: @user.sale %>
+    <%= render 'optimadmin/conveyancing_quotes/users/purchase', purchase: @user.purchase if @user.purchase.present? %>
+    <%= render 'optimadmin/conveyancing_quotes/users/sale', sale: @user.sale  if @user.sale.present? %>
 
     <%= render 'optimadmin/conveyancing_quotes/users/address', address: @user.addresses.correspondence if @user.addresses.correspondence.present? %>
     <%= render 'optimadmin/conveyancing_quotes/users/address', address: @user.addresses.property if @user.addresses.property.present? %>
