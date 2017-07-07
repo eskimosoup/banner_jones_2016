@@ -1,7 +1,7 @@
 <%= content_for :content_title do 'Your Conveyancing Quote' end %>
 
 <%= render @user.purchase if @user.purchase.present? %>
-<%= render @user.sale if @user.purchase.present? %>
+<%= render @user.sale if @user.sale.present? %>
 
 
 <div class="conveyancing-quote-overview">
