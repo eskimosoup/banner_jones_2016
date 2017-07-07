@@ -12,8 +12,8 @@
   <%= @user.email %>
 </div>
 
-<%= render @user.purchase %>
-<%= render @user.sale %>
+<%= render @user.purchase if @user.purchase.present? %>
+<%= render @user.sale  if @user.sale.present? %>
 
 <% if @user.addresses.correspondence.present? %>
   <%= render @user.addresses.correspondence  %>
