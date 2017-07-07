@@ -28,7 +28,14 @@
         <% end %>
       </div>
 
-      <%= render 'services/shared/sidebar' %>
+      <aside class="page-additional-information">
+        <%= render 'services/shared/sidebar_content' %>
+
+        <div class="conveyancing-accreditations">
+          <%= image_tag 'components/conveyancing-calculator/conveyancing-accreditation.png', alt: 'Conveyancing Quality' %>
+          <%= image_tag 'components/conveyancing-calculator/conveyancing-award.png', alt: 'The Conveyancing Awards' %>
+        </div>
+      </aside>
     </div>
 
 

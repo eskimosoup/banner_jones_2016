@@ -3,7 +3,38 @@
 <%= render @user.purchase %>
 <%= render @user.sale %>
 
+
 <div class="conveyancing-quote-overview">
+  <h2>Request More Information</h2>
+
+  <p>
+    Need more information?<br />
+    Call:
+    <%= render 'shared/calltracks_phone',
+                phone: global_site_settings['Phone'],
+                options: { class: 'conveyancing-secondary-button' } %>
+
+    <%= link_to 'Request a callback',
+                '#',
+                class: 'conveyancing-secondary-button toggle-class',
+                data: {
+                  class: 'visible',
+                  container: '.remote-callback-request-form-modal',
+                  return: false
+                  }  %>
+    <%= link_to 'Email us',
+                '#',
+                class: 'conveyancing-secondary-button toggle-class',
+                data: {
+                  class: 'visible',
+                  container: '.remote-contact-form-modal',
+                  return: false
+                  }  %>
+
+  </p>
+
+  <h2>Proceed with Quote</h2>
   <p>If you are happy with the quote, please proceed to accept it.</p>
   <%= link_to 'Accept quote', new_conveyancing_quotes_deeds_path, class: 'submit-button' %>
+  <%= link_to 'Print quote', '#', class: 'conveyancing-secondary-button print-page' %>
 </div>

@@ -4,3 +4,8 @@
   partial: "conveyancing_quotes/purchases/form",
   locals: { conveyancing_quote_purchase: @conveyancing_quote_purchase }
 ) %>
+
+<p>
+  Need a remortgage or transfer of equity?<br />
+  Call: <%= render 'shared/calltracks_phone', phone: global_site_settings['Phone'] %>
+</p>

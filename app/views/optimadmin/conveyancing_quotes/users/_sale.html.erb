@@ -34,7 +34,7 @@
   </div>
 
   <% sale.additional_costs.each do |additional_cost| %>
-    <% cost = ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
+    <% cost = ConveyancingCalculator.configuration.additional_costs[sale.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
     <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
     <div class="row collapse">
       <div class="large-6 columns">

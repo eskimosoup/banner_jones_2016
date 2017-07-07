@@ -1,7 +1,7 @@
 <div class="conveyancing-quote purchase">
   <h1>Your Conveyancing Quote</h1>
 
-  <%= render(
+  <%#= render(
     partial: "conveyancing_quotes/user_details",
     locals: {
       quote: @conveyancing_quote_purchase
@@ -23,13 +23,13 @@
 </div>
 
 <% @conveyancing_quote_purchase.additional_costs.each do |additional_cost| %>
-  <%= additional_cost.to_s.humanize %>
-  <%= ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
+  <%#= additional_cost.to_s.humanize %>
+  <%#= ConveyancingCalculator.configuration.additional_costs[:london].reduce(Hash.new, :merge)[additional_cost] %>
 <% end %>
 
-<%= link_to I18n.t("conveyancing_quotes.download_button"),
+<%#= link_to I18n.t("conveyancing_quotes.download_button"),
   conveyancing_quotes_purchase_download_path(@conveyancing_quote_purchase, format: "pdf"),
   target: "_blank",
   class: "download-button" %>
 
-<%= link_to 'Continue to selling quote', new_conveyancing_quotes_sale_path if @user.selling? %>
+<%#= link_to 'Continue to selling quote', new_conveyancing_quotes_sale_path if @user.selling? %>

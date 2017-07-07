@@ -35,3 +35,29 @@
     width: 33%;
   }
 }
+
+.conveyancing-tooltip {
+  @media (min-width: 1024px) {
+    width: 50%;
+  }
+}
+
+.conveyancing-accreditations {
+  margin-top: rem(10px);
+  text-align: center;
+}
+
+.conveyancing-secondary-button {
+  background-color: $pagination-grey;
+  border-radius: rem(3px);
+  color: $black;
+  display: inline-block;
+  font-weight: 300;
+  margin-top: rem(5px);
+  padding: rem(5px 15px);
+  transition: color .25s ease;
+
+  &:hover {
+    color: $orange;
+  }
+}

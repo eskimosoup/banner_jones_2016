@@ -19,26 +19,80 @@
   <div class="field">
     <%= f.check_box :leasehold_house %>
     <%= f.label :leasehold_house, 'Leasehold house', class: 'inline-label' %>
+    <%= link_to 'Find out more',
+                '#leasehold-house',
+                class: 'toggle-class',
+                data: {
+                  class: 'hide',
+                  container: '.leasehold-house',
+                  return: false
+                } %>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/leasehold_house' %>
   </div>
 
   <div class="field">
     <%= f.check_box :leasehold_apartment %>
     <%= f.label :leasehold_apartment, 'Leasehold apartment', class: 'inline-label' %>
+
+    <%= link_to 'Find out more',
+                '#leasehold-apartment',
+                class: 'toggle-class',
+                data: {
+                  class: 'hide',
+                  container: '.leasehold-apartment',
+                  return: false
+                } %>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/leasehold_apartment' %>
   </div>
 
   <div class="field">
     <%= f.check_box :help_to_buy_scheme %>
     <%= f.label :help_to_buy_scheme, 'Help to Buy Scheme', class: 'inline-label' %>
+
+    <%= link_to 'Find out more',
+                '#help-to-buy-scheme',
+                class: 'toggle-class',
+                data: {
+                  class: 'hide',
+                  container: '.help-to-buy-scheme',
+                  return: false
+                } %>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_scheme' %>
   </div>
 
   <div class="field">
     <%= f.check_box :help_to_buy_isa %>
     <%= f.label :help_to_buy_isa, 'Help to Buy ISA', class: 'inline-label' %>
+
+    <%= link_to 'Find out more',
+                '#help-to-buy-isa',
+                class: 'toggle-class',
+                data: {
+                  class: 'hide',
+                  container: '.help-to-buy-isa',
+                  return: false
+                } %>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_isa' %>
   </div>
 
   <div class="field">
     <%= f.check_box :shared_ownership_scheme %>
     <%= f.label :shared_ownership_scheme, 'Shared Ownership Scheme', class: 'inline-label'  %>
+
+    <%= link_to 'Find out more',
+                '#shared-ownership-scheme',
+                class: 'toggle-class',
+                data: {
+                  class: 'hide',
+                  container: '.shared-ownership-scheme',
+                  return: false
+                } %>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>    
   </div>
 
   <div class="actions">
