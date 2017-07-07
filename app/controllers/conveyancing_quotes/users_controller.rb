@@ -25,6 +25,7 @@ module ConveyancingQuotes
       if @user.update(user_params)
         redirect_to thank_you_conveyancing_quotes_location_users_path
         @user.update_attributes(submitted: true)
+        ConveyancingQuoteMailer.new_quote(@user).deliver_now        
       else
         render :edit
       end
