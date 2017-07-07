@@ -1,0 +1,21 @@
+<h1>Conveyancing Quote - <%= @user.quote_location.location %></h1>
+<h2>Your Details</h2>
+<div class="name">
+  <%= @user.forename %>
+  <%= @user.surname %>
+</div>
+<div class="phone">
+  <%= @user.phone %>
+</div>
+<div class="email">
+  <%= @user.email %>
+</div>
+<%= l @user.created_at, format: :long %>
+<%= render 'optimadmin/conveyancing_quotes/users/purchase', purchase: @user.purchase %>
+<%= render 'optimadmin/conveyancing_quotes/users/sale', sale: @user.sale %>
+<%= render 'optimadmin/conveyancing_quotes/users/address', address: @user.addresses.correspondence if @user.addresses.correspondence.present? %>
+<%= render 'optimadmin/conveyancing_quotes/users/address', address: @user.addresses.property if @user.addresses.property.present? %>
+<% if @user.deeds.present? %>
+  <h3>Deeds</h3>
+  <%= content_tag :ul, (render partial: 'optimadmin/conveyancing_quotes/users/deed', collection: @user.deeds, as: :deed) %>
+<% end %>
