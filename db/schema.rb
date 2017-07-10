@@ -356,10 +356,10 @@ ActiveRecord::Schema.define(version: 20170706140017) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",        null: false
-    t.boolean  "enabled"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|

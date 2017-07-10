@@ -31,12 +31,14 @@
     <%= f.label :selling, 'I am selling', class: 'inline-label' %>
   </div>
 
-  <div class="field">
-    <%= f.check_box :conveyancing_email_permission %>
-    <%= f.label :conveyancing_email_permission, 'I would like useful information about conveyancing to be sent to me by email', class: 'inline-label' %>
-  </div>
+  <!--
+    <div class="field">
+      <%#= f.check_box :conveyancing_email_permission %>
+      <%#= f.label :conveyancing_email_permission, 'I would like useful information about conveyancing to be sent to me by email', class: 'inline-label' %>
+    </div>
+  -->
 
   <div class="actions">
-    <%= f.submit 'Get quote', class: 'submit-button' %>
+    <%= f.submit 'Get quote', class: 'inverted-submit-button' %>
   </div>
 <% end %>

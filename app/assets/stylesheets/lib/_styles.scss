@@ -27,6 +27,21 @@
   }
 }
 
+@mixin inverted-navigation-button {
+  background-color: $orange;
+  border-radius: rem(3px);
+  color: $black;
+  display: inline-block;
+  margin-top: rem(5px);
+  padding: rem(15px);
+  transition: color .25s ease;
+
+  &:hover {
+    background-color: $grey;
+    color: $white;
+  }
+}
+
 @mixin standard-content-box-title {
   border-bottom: 5px solid $orange;
   font-family: $montserrat;

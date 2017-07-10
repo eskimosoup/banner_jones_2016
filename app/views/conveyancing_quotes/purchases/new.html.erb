@@ -1,4 +1,4 @@
-<%= content_for :content_title do "#{@user.forename}, we just need a bit more information" end %>
+<%= content_for :content_title do "#{@user.forename.strip}, we just need a bit more information" end %>
 
 <%= render(
   partial: "conveyancing_quotes/purchases/form",

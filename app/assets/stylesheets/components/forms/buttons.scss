@@ -3,3 +3,7 @@
   border: 0;
 }
 
+.inverted-submit-button {
+  @include inverted-navigation-button;
+  border: 0;
+}

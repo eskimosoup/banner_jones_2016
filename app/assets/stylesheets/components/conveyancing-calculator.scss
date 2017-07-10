@@ -38,7 +38,7 @@
 
 .conveyancing-tooltip {
   @media (min-width: 1024px) {
-    width: 50%;
+    max-width: 640px;
   }
 }
 
@@ -60,4 +60,58 @@
   &:hover {
     color: $orange;
   }
+}
+
+.conveyancing-call-to-actions-title-wrap {
+  border-bottom-width: 0;
+  border-color: $lighter-grey;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-style: solid;
+  border-top-width: 1px;
+  padding: rem(30px);
+}
+
+.conveyancing-call-to-actions-title {
+  color: $deeper-grey;
+  font-family: $montserrat;
+  font-size: rem(18px);
+  font-weight: $montserrat-semibold;
+  margin: 0;
+}
+
+.conveyancing-call-to-action {
+  @include  grid-row;
+  background: $orange;
+  color: $grey;
+  display: block;
+  font-family: $open-sans;
+  font-size: rem(18px);
+  font-weight: $open-sans-semibold;
+  margin: 0 0 rem(2px);
+  padding: rem(11px) 0 rem(11px) rem(20px);
+
+  &:link,
+  &:visited {
+    color: $grey;
+  }
+
+  &:active,
+  &:hover {
+    background: $red;
+    color: $white;
+  }
+}
+
+.conveyancing-call-to-action-title {
+  @include grid-column($columns: 10, $gutter: (small: 0));
+
+  div {
+    font-size: rem(22px);
+    color: $black;
+  }
+}
+
+.conveyancing-call-to-action-icon {
+  @include grid-column($columns: 2, $gutter: (small: 0));
 }
