@@ -51,3 +51,35 @@
 .accreditations .slick-slide img {
   margin: 0 auto;
 }
+
+//promotion
+
+.promotion-row {
+  @include flex-grid-row;
+}
+.promotion-column {
+  @include flex-grid-column(4);
+}
+
+.promotion-call-to-action {
+  @include  grid-row;
+  background: $black;
+  color: $white;
+  display: block;
+  font-family: $open-sans;
+  font-size: rem(15px);
+  font-weight: $open-sans-semibold;
+  margin: rem(0 20px);
+  padding: rem(20px);
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:active,
+  &:hover {
+    background: $red;
+    color: $white;
+  }
+}
