@@ -7,7 +7,8 @@
 <% if @services.present? %>
   <div class="slider-team-member-search-field">
     <%= label_tag :service_id, 'Department' %>
-    <%= select_tag :service_id, options_for_select(@services),
+    <% # [x[0].title, x.map{|x| [x.title, x.id]}] } %>
+    <%= select_tag :service_id, grouped_options_for_select(Service.roots.displayed.group_by(&:audience).map{|x| [x.first.title, x.first.services.roots.displayed.pluck(:title, :id)]}),
                              prompt: 'All Departments',
                              class: 'slider-team-member-search-select' %>
   </div>
