@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :price, 'Selling Price' %>
-    <%= f.number_field :price %>
+    <%= f.number_field :price, placeholder: 'e.g. 200000' %>
   </div>
 
   <p>Please tick any other requirements.</p>
@@ -14,7 +14,7 @@
     <%= f.check_box :leasehold_house %>
     <%= f.label :leasehold_house, 'Leasehold House', class: 'inline-label' %>
 
-    <%= link_to 'Find out more',
+    <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
                 '#leasehold-house',
                 class: 'toggle-class',
                 data: {
@@ -30,7 +30,7 @@
     <%= f.check_box :leasehold_apartment %>
     <%= f.label :leasehold_apartment, 'Leasehold Apartment', class: 'inline-label' %>
 
-    <%= link_to 'Find out more',
+    <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
                 '#leasehold-apartment',
                 class: 'toggle-class',
                 data: {
@@ -46,7 +46,7 @@
     <%= f.check_box :shared_ownership_scheme %>
     <%= f.label :shared_ownership_scheme, 'Shared Ownership Scheme', class: 'inline-label' %>
 
-    <%= link_to 'Find out more',
+    <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
                 '#shared-ownership-scheme',
                 class: 'toggle-class',
                 data: {
@@ -55,10 +55,10 @@
                   return: false
                 } %>
 
-    <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>  
+    <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Continue", class: 'submit-button' %>
+    <%= f.submit "Get Quote", class: 'inverted-submit-button' %>
   </div>
 <% end %>

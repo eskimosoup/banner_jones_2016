@@ -1,6 +1,6 @@
 <% total = 0 %>
 <div class="conveyancing-quote purchase">
-  <h2>Your Purchase Conveyancing Quote</h2>
+  <h2>For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
 
   <div class="conveyancing-cost">
     <div class="conveyancing-cost-description">
@@ -143,7 +143,7 @@
     </div>
   </div>
 
-  <%= render "conveyancing_quotes/shared/tooltips/premium_search_package" %>  
+  <%= render "conveyancing_quotes/shared/tooltips/premium_search_package" %>
 
   <hr />
 

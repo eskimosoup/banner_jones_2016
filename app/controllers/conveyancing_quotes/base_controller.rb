@@ -9,7 +9,7 @@ module ConveyancingQuotes
       if current_user.blank?
         return redirect_to root_url
       elsif current_user.submitted?
-        return redirect_to thank_you_conveyancing_quotes_location_users_path
+        return redirect_to thank_you_conveyancing_quotes_location_users_path(current_user.quote_location)
       else
         current_user
       end

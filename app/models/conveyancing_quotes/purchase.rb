@@ -34,4 +34,8 @@ class ConveyancingQuotes::Purchase < ApplicationRecord
        end
      additional_costs
   end
+
+  def leasehold?
+    leasehold_house? || leasehold_apartment?
+  end
 end
