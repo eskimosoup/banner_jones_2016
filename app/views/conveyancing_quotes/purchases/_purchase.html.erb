@@ -2,18 +2,18 @@
 <div class="conveyancing-quote purchase">
   <h2>For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
 
-  <div class="conveyancing-cost">
+  <div class="conveyancing-cost headers">
     <div class="conveyancing-cost-description">
       Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
     </div>
     <div class="conveyancing-cost-item">
-      Fee
+      <strong>Fee</strong>
     </div>
     <div class="conveyancing-cost-item">
-      VAT
+      <strong>VAT</strong>
     </div>
     <div class="conveyancing-cost-item">
-      Total
+      <strong>Total</strong>
     </div>
   </div>
 
@@ -25,7 +25,7 @@
       <%= number_to_currency purchase.fee %>
     </div>
     <div class="conveyancing-cost-item">
-      +<%= number_to_currency purchase.vat %>
+      <%= number_to_currency purchase.vat %>
     </div>
     <div class="conveyancing-cost-item">
       <%= number_to_currency purchase.total %>
@@ -36,7 +36,7 @@
   <% purchase.additional_costs.each do |additional_cost| %>
     <% cost = ConveyancingCalculator.configuration.additional_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
     <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
-    <div class="conveyancing-cost">
+    <div class="conveyancing-cost additional-cost">
       <div class="conveyancing-cost-description">
         <%= link_to additional_cost.to_s.humanize.titlecase,
                     "##{additional_cost.to_s.parameterize.tr('_', '-')}",
@@ -51,7 +51,7 @@
         <%= number_to_currency cost %>
       </div>
       <div class="conveyancing-cost-item">
-        +<%= number_to_currency vat %>
+        <%= number_to_currency vat %>
       </div>
       <div class="conveyancing-cost-item">
         <%= number_to_currency cost + vat %>

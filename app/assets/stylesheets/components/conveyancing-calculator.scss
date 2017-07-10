@@ -3,6 +3,11 @@
 'lib/styles',
 'lib/fonts',
 'vendor/foundation/foundation';
+
+.conveyancing-content {
+  @include page-content($paragraph: false);
+}
+
 .conveyancing-quote,
 .conveyancing-address {
   border-bottom: 1px solid $black;
@@ -15,6 +20,14 @@
   @include grid-row-nest;
   margin-bottom: rem(4px);
   margin-top: rem(2px);
+
+  &.headers {
+    padding-bottom: rem(10px);
+  }
+
+  &.additional-cost {
+    margin-top: rem(10px);
+  }
 }
 
 .conveyancing-cost-description {
