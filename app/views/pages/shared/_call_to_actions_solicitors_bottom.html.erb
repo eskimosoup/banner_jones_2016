@@ -10,15 +10,13 @@
 
   <% if telephone.present? %>
     <%= link_to "tel:#{telephone.tr(' ', '')}", class: 'promotion-call-to-action' do %>
-      <div class="page-call-to-action-title">
-        <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
-          <%= telephone %>
-        </span>
-      </div>
-
-      <div class="page-call-to-action-icon">
-        <%= image_tag 'components/icons/call-to-action/white-telephone.png', alt: 'Telephone' %>
-      </div>
+    <div class="promotion-call-to-action-icon">
+      <%= image_tag 'components/icons/call-to-action/white-telephone.png', alt: 'Telephone' %>
+    </div>
+    <div class="promotion-call-to-action-title">
+      Call us<br>
+      <%= telephone %>
+    </div>
     <% end %>
   <% end %>
 <% end %>
@@ -26,26 +24,27 @@
 <% unless defined?(hide_callback) %>
   <%= link_to '#new_callback_request', class: 'promotion-call-to-action toggle-class',
     data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
-    <div class="page-call-to-action-title">
-      Request a call back
-    </div>
-
-    <div class="page-call-to-action-icon">
+    <div class="promotion-call-to-action-icon">
       <%= image_tag 'components/icons/call-to-action/white-callback.png', alt: 'Callback' %>
     </div>
+    <div class="promotion-call-to-action-title">
+      Request a<br>call back
+    </div>
+
   <% end %>
 <% end %>
 
 <% unless defined?(hide_email) %>
 <%= link_to '#new_contact', class: 'promotion-call-to-action toggle-class',
     data: { container: '.remote-contact-form-modal', class: 'visible', return: 'false' } do %>
-    <div class="page-call-to-action-title">
-      Email us
-    </div>
-
-    <div class="page-call-to-action-icon">
+    <div class="promotion-call-to-action-icon">
       <%= image_tag 'components/icons/call-to-action/white-email.png', alt: 'Email' %>
     </div>
+    <div class="promotion-call-to-action-title">
+      Email us
+      <%= global_site_settings['Email'] if global_site_settings['Email'].present? %>
+    </div>
+
   <% end %>
 <% end %>
 
