@@ -36,7 +36,9 @@
   padding: rem(15px);
   transition: color .25s ease;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     background-color: $grey;
     color: $white;
   }
