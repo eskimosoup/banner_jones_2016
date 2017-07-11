@@ -2,8 +2,8 @@
 
 <%= render 'conveyancing_quotes/shared/acceptance_steps', current_step: 4 %>
 
-<%= render @user.purchase %>
-<%= render @user.sale %>
+<%= render @user.purchase if @user.purchase? %>
+<%= render @user.sale if @user.sale? %>
 
 <% if @user.addresses.correspondence.present? %>
   <div class="conveyancing-address">
