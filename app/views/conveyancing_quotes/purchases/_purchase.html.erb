@@ -1,4 +1,4 @@
-<% total = 0 %>
+<% total = fees_total = vat_total = 0 %>
 <div class="conveyancing-quote purchase">
   <h2>For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
 
@@ -19,13 +19,15 @@
 
   <div class="conveyancing-cost">
     <div class="conveyancing-cost-description">
-      Banner Jones Conveyancing Costs
+      <strong>Banner Jones Conveyancing Costs</strong>
     </div>
     <div class="conveyancing-cost-item">
       <%= number_to_currency purchase.fee %>
+      <% fees_total += purchase.fee %>
     </div>
     <div class="conveyancing-cost-item">
       <%= number_to_currency purchase.vat %>
+      <% vat_total += purchase.vat %>
     </div>
     <div class="conveyancing-cost-item">
       <%= number_to_currency purchase.total %>
@@ -38,7 +40,8 @@
     <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
     <div class="conveyancing-cost additional-cost">
       <div class="conveyancing-cost-description">
-        <%= link_to additional_cost.to_s.humanize.titlecase,
+        <%= content_tag :strong, additional_cost.to_s.humanize.titlecase %>
+        <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
                     "##{additional_cost.to_s.parameterize.tr('_', '-')}",
                     class: 'toggle-class',
                     data: {
@@ -49,9 +52,11 @@
       </div>
       <div class="conveyancing-cost-item">
         <%= number_to_currency cost %>
+        <% fees_total += cost %>
       </div>
       <div class="conveyancing-cost-item">
         <%= number_to_currency vat %>
+        <% vat_total += vat %>
       </div>
       <div class="conveyancing-cost-item">
         <%= number_to_currency cost + vat %>
@@ -66,106 +71,126 @@
 
   <h3>This is what you have to pay other Government Agencies</h3>
 
-  <div class="conveyancing-cost">
-    <div class="conveyancing-cost-description">
-      <%= link_to 'Stamp Duty Land Tax',
-                  "#stamp-duty-land-tax",
-                  class: 'toggle-class',
-                  data: {
-                    class: 'hide',
-                    container: ".stamp-duty-land-tax",
-                    return: false
-                    } %>
-    </div>
-    <div class="conveyancing-cost-item">
-      <%= number_to_currency purchase.stamp_duty %>
-    </div>
-    <div class="conveyancing-cost-item">
+  <div class="conveyancing-government-fees">
 
+    <div class="conveyancing-cost headers">
+      <div class="conveyancing-cost-description">
+        Description
+      </div>
+      <div class="conveyancing-cost-item">
+        <strong>Fee</strong>
+      </div>
+      <div class="conveyancing-cost-item">
+        <strong>VAT</strong>
+      </div>
+      <div class="conveyancing-cost-item">
+        <strong>Total</strong>
+      </div>
     </div>
-    <div class="conveyancing-cost-item">
-      <%= number_to_currency purchase.stamp_duty %>
-      <% total += purchase.stamp_duty %>
+
+    <div class="conveyancing-cost">
+      <div class="conveyancing-cost-description">
+        <strong>Stamp Duty Land Tax</strong>
+        <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+                    "#stamp-duty-land-tax",
+                    class: 'toggle-class',
+                    data: {
+                      class: 'hide',
+                      container: ".stamp-duty-land-tax",
+                      return: false
+                      } %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency purchase.stamp_duty %>
+        <% fees_total += purchase.stamp_duty %>
+      </div>
+      <div class="conveyancing-cost-item">
+
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency purchase.stamp_duty %>
+        <% total += purchase.stamp_duty %>
+      </div>
     </div>
+
+    <%= render "conveyancing_quotes/shared/tooltips/stamp_duty_land_tax" %>
+
+
+    <div class="conveyancing-cost">
+      <div class="conveyancing-cost-description">
+        <strong>Land Registry Fee</strong>
+        <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+                    "#land-registry-fee",
+                    class: 'toggle-class',
+                    data: {
+                      class: 'hide',
+                      container: ".land-registry-fee",
+                      return: false
+                      } %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency purchase.land_fee_calculator.fee %>
+        <% fees_total += purchase.land_fee_calculator.fee %>
+      </div>
+      <div class="conveyancing-cost-item">
+
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency purchase.land_fee_calculator.fee %>
+        <% total += purchase.land_fee_calculator.fee  %>
+      </div>
+    </div>
+
+    <%= render "conveyancing_quotes/shared/tooltips/land_registry_fee" %>
+
+
+    <div class="conveyancing-cost">
+      <div class="conveyancing-cost-description">
+        <strong>Premium Search Package</strong>
+        <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+                    "#premium-search-package",
+                    class: 'toggle-class',
+                    data: {
+                      class: 'hide',
+                      container: ".premium-search-package",
+                      return: false
+                      } %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <% cost = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>
+        <%= number_to_currency cost %>
+        <% fees_total += cost %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+        <%= number_to_currency vat %>
+        <% vat_total += vat %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency (cost + vat) %>
+        <% total += (cost + vat)  %>
+      </div>
+    </div>
+
+    <%= render "conveyancing_quotes/shared/tooltips/premium_search_package" %>
   </div>
 
-  <%= render "conveyancing_quotes/shared/tooltips/stamp_duty_land_tax" %>
-
-
-  <div class="conveyancing-cost">
-    <div class="conveyancing-cost-description">
-      <%= link_to 'Land Registry Fee',
-                  "#land-registry-fee",
-                  class: 'toggle-class',
-                  data: {
-                    class: 'hide',
-                    container: ".land-registry-fee",
-                    return: false
-                    } %>
+  <div class="conveyancing-cost totals">
+    <div class="conveyancing-cost-summary">
+      <%= link_to I18n.t("conveyancing_quotes.download_button"),
+        conveyancing_quotes_purchase_download_path(purchase, format: "pdf"),
+        target: "_blank",
+        class: "download-button inverted-submit-button" %>
     </div>
     <div class="conveyancing-cost-item">
-      <%= number_to_currency purchase.land_fee_calculator.fee %>
+      Subtotal<br />
+      <strong>Overall Total</strong>
     </div>
     <div class="conveyancing-cost-item">
-
-    </div>
-    <div class="conveyancing-cost-item">
-      <%= number_to_currency purchase.land_fee_calculator.fee %>
-      <% total += purchase.land_fee_calculator.fee  %>
+      <%= number_to_currency fees_total %><br />
+      <strong><%= number_to_currency total %></strong>
     </div>
   </div>
-
-  <%= render "conveyancing_quotes/shared/tooltips/land_registry_fee" %>
-
-
-  <div class="conveyancing-cost">
-    <div class="conveyancing-cost-description">
-      <%= link_to 'Premium Search Package',
-                  "#premium-search-package",
-                  class: 'toggle-class',
-                  data: {
-                    class: 'hide',
-                    container: ".premium-search-package",
-                    return: false
-                    } %>
-    </div>
-    <div class="conveyancing-cost-item">
-      <% cost = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>
-      <%= number_to_currency cost %>
-    </div>
-    <div class="conveyancing-cost-item">
-      <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
-      +<%= number_to_currency vat %>
-    </div>
-    <div class="conveyancing-cost-item">
-      <%= number_to_currency (cost + vat) %>
-      <% total += (cost + vat)  %>
-    </div>
-  </div>
-
-  <%= render "conveyancing_quotes/shared/tooltips/premium_search_package" %>
-
-  <hr />
-
-  <div class="conveyancing-cost">
-    <div class="conveyancing-cost-description">
-      Overall total
-    </div>
-    <div class="conveyancing-cost-item">
-    </div>
-    <div class="conveyancing-cost-item">
-
-    </div>
-    <div class="conveyancing-cost-item">
-      <%= number_to_currency total %>
-    </div>
-  </div>
-
-
-  <%= link_to I18n.t("conveyancing_quotes.download_button"),
-    conveyancing_quotes_purchase_download_path(purchase, format: "pdf"),
-    target: "_blank",
-    class: "download-button" %>
 </div>
 
 <%#= link_to 'Continue to selling quote', new_conveyancing_quotes_sale_path if @user.selling? %>

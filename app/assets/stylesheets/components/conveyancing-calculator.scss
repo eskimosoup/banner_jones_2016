@@ -11,8 +11,29 @@
 .conveyancing-quote,
 .conveyancing-address {
   border-bottom: 1px solid $black;
+  font-size: rem(14px);
   margin-bottom: rem(10px);
   padding-bottom: rem(10px);
+}
+
+.conveyancing-address {
+  display: inline-block;
+  width: 49%;
+}
+
+.conveyancing-government-fees {
+  border-bottom: 5px solid $blue;
+  border-top: 5px solid $blue;
+  padding-bottom: rem(10px);
+  margin-bottom: rem(10px);
+  padding-top: rem(10px);
+}
+
+.conveyancing-sale-totals {
+  border-top: 5px solid $blue;
+  padding-bottom: rem(10px);
+  margin-top: rem(10px);
+  padding-top: rem(10px);
 }
 
 .conveyancing-cost {
@@ -28,10 +49,18 @@
   &.additional-cost {
     margin-top: rem(10px);
   }
+
+  &.totals {
+    font-size: rem(16px);
+  }
 }
 
 .conveyancing-cost-description {
   @include grid-column(6);
+}
+
+.conveyancing-cost-summary {
+  @include grid-column(8);
 }
 
 .conveyancing-cost-item {
@@ -127,4 +156,51 @@
 
 .conveyancing-call-to-action-icon {
   @include grid-column($columns: 2, $gutter: (small: 0));
+}
+
+.conveyancing-acceptance-steps {
+  font-size: 0;
+  list-style: none;
+  margin-bottom: rem(20px);
+}
+
+.conveyancing-acceptance-step {
+  background: $orange;
+  color: $white;
+  display: inline-block;
+  font-size: rem(16px);
+  text-align: center;
+  width: 25%;
+
+  .inactive {
+    opacity: .5;
+  }
+
+  .active {
+    background: $black;
+    color: $white;
+    font-weight: 700;
+  }
+
+  .inactive,
+  .active {
+    padding-bottom: rem(10px);
+    padding-top: rem(10px);
+  }
+
+  .acceptance-step-link {
+    display: block;
+    color: $white;
+    padding-bottom: rem(10px);
+    padding-top: rem(10px);
+
+    &:hover {
+      background: $black;
+      color: $white;
+    }
+  }
+}
+
+.conveyancing-deed {
+  margin-bottom: rem(2px);
 }

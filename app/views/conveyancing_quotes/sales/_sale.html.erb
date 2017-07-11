@@ -1,6 +1,6 @@
-<% total = 0 %>
-<div class="conveyancing-quote purchase">
-  <h2>Your Selling Conveyancing Quote</h2>
+<% total = fees_total = vat_total = 0 %>
+<div class="conveyancing-quote sale">
+  <h2>For your standard <%= sale.leasehold? ? 'leasehold' : 'freehold' %> sale</h2>
 
   <div class="conveyancing-cost headers">
     <div class="conveyancing-cost-description">
@@ -19,13 +19,15 @@
 
   <div class="conveyancing-cost">
     <div class="conveyancing-cost-description">
-      Banner Jones Conveyancing Costs
+      <strong>Banner Jones Conveyancing Costs</strong>
     </div>
     <div class="conveyancing-cost-item">
       <%= number_to_currency sale.fee %>
+      <% fees_total = sale.fee %>
     </div>
     <div class="conveyancing-cost-item">
       <%= number_to_currency sale.vat %>
+      <% vat_total += sale.vat %>
     </div>
     <div class="conveyancing-cost-item">
       <%= number_to_currency sale.total %>
@@ -38,7 +40,8 @@
     <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
     <div class="conveyancing-cost additional-cost">
       <div class="conveyancing-cost-description">
-        <%= link_to additional_cost.to_s.humanize.titlecase,
+        <strong><%= additional_cost.to_s.humanize.titlecase %></strong>
+        <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
                     "##{additional_cost.to_s.parameterize.tr('_', '-')}",
                     class: 'toggle-class',
                     data: {
@@ -49,9 +52,11 @@
       </div>
       <div class="conveyancing-cost-item">
         <%= number_to_currency cost %>
+        <% fees_total += cost %>
       </div>
       <div class="conveyancing-cost-item">
         <%= number_to_currency vat %>
+        <% vat_total += vat %>
       </div>
       <div class="conveyancing-cost-item">
         <%= number_to_currency cost + vat %>
@@ -63,23 +68,27 @@
 
     <%= cost = vat = nil %>
   <% end %>
-  <hr />
 
-  <div class="conveyancing-cost">
-    <div class="conveyancing-cost-description">
-      Overall total
-    </div>
-    <div class="conveyancing-cost-item">
-    </div>
-    <div class="conveyancing-cost-item">
-
-    </div>
-    <div class="conveyancing-cost-item">
-      <%= number_to_currency total %>
+  <div class="conveyancing-sale-totals">
+    <div class="conveyancing-cost totals">
+      <div class="conveyancing-cost-summary">
+        <%= link_to I18n.t("conveyancing_quotes.download_button"),
+          conveyancing_quotes_sale_download_path(sale, format: "pdf"),
+          target: "_blank",
+          class: "download-button inverted-submit-button" %>
+      </div>
+      <div class="conveyancing-cost-item">
+        Subtotal<br />
+        <strong>Overall Total</strong>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency fees_total %><br />
+        <strong><%= number_to_currency total %></strong>
+      </div>
     </div>
   </div>
 
-  <%= link_to I18n.t("conveyancing_quotes.download_button"),
+  <%#= link_to I18n.t("conveyancing_quotes.download_button"),
     conveyancing_quotes_sale_download_path(sale, format: "pdf"),
     target: "_blank",
     class: "download-button" %>
