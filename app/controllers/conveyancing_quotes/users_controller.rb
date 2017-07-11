@@ -48,7 +48,7 @@ module ConveyancingQuotes
 
     def user_redirect_path
       if @user.buying? && @user.selling?
-        new_conveyancing_quotes_sale_and_purchase_path
+        new_conveyancing_quotes_sale_and_purchases_path
       elsif @user.buying?
         new_conveyancing_quotes_purchase_path
       elsif @user.selling?
