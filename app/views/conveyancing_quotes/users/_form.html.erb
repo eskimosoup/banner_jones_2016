@@ -1,24 +1,28 @@
 <%= form_for @user, url: conveyancing_quotes_location_users_path do |f| %>
   <%= render 'shared/form_errors', object: @user %>
 
-  <div class="field">
-    <%= f.label :forename %>
-    <%= f.text_field :forename %>
+  <div class="related-fields">
+    <div class="field">
+      <%= f.label :forename %>
+      <%= f.text_field :forename %>
+    </div>
+
+    <div class="field">
+      <%= f.label :surname %>
+      <%= f.text_field :surname %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :surname %>
-    <%= f.text_field :surname %>
-  </div>
+  <div class="related-fields">
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :phone %>
-    <%= f.text_field :phone %>
+    <div class="field">
+      <%= f.label :phone %>
+      <%= f.text_field :phone %>
+    </div>
   </div>
 
   <div class="field">

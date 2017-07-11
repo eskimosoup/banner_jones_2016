@@ -21,6 +21,14 @@
   width: 49%;
 }
 
+.conveyancing-small-input {
+  width: 33%;
+}
+
+.conveyancing-additional-requirements {
+  margin-left: rem(20px);
+}
+
 .conveyancing-government-fees {
   border-bottom: 5px solid $blue;
   border-top: 5px solid $blue;
@@ -71,16 +79,27 @@
   margin-top: rem(20px);
 }
 
-.conveyancing-date-field {
-  select {
-    display: inline-block;
-    width: 33%;
+.related-fields {
+  .conveyancing-date-field {
+    select {
+      display: inline-block;
+      width: 32%;
+    }
   }
 }
 
 .conveyancing-tooltip {
   @media (min-width: 1024px) {
     max-width: 640px;
+  }
+
+  background: $pagination-grey;
+  padding: rem(7px);
+  margin: rem(5px 0);
+
+  p {
+    font-size: rem(14px);
+    margin: 0;
   }
 }
 
