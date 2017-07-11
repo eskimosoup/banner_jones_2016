@@ -25,7 +25,7 @@ module ConveyancingQuotes
       if @user.update(user_params)
         redirect_to thank_you_conveyancing_quotes_location_users_path
         @user.update_attributes(submitted: true)
-        ConveyancingQuoteMailer.new_quote(@user).deliver_now        
+        ConveyancingQuoteMailer.new_quote(@user).deliver_now
       else
         render :edit
       end
@@ -47,7 +47,9 @@ module ConveyancingQuotes
     end
 
     def user_redirect_path
-      if @user.buying?
+      if @user.buying? && @user.selling?
+        new_conveyancing_quotes_sale_and_purchase_path
+      elsif @user.buying?
         new_conveyancing_quotes_purchase_path
       elsif @user.selling?
         new_conveyancing_quotes_sale_path

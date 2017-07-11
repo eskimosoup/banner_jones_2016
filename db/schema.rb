@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706140017) do
+ActiveRecord::Schema.define(version: 20170711105951) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,16 +184,18 @@ ActiveRecord::Schema.define(version: 20170706140017) do
   create_table "conveyancing_quotes_purchases", force: :cascade do |t|
     t.string   "phone"
     t.string   "timeframe"
-    t.decimal  "price",                       precision: 10, scale: 2,                 null: false
-    t.datetime "created_at",                                                           null: false
-    t.datetime "updated_at",                                                           null: false
+    t.decimal  "price",                                     precision: 10, scale: 2,                 null: false
+    t.datetime "created_at",                                                                         null: false
+    t.datetime "updated_at",                                                                         null: false
     t.integer  "conveyancing_quotes_user_id"
-    t.boolean  "second_home_or_buy_to_let",                            default: false
-    t.boolean  "leasehold_house",                                      default: false
-    t.boolean  "leasehold_apartment",                                  default: false
-    t.boolean  "help_to_buy_scheme",                                   default: false
-    t.boolean  "help_to_buy_isa",                                      default: false
-    t.boolean  "shared_ownership_scheme",                              default: false
+    t.boolean  "second_home_or_buy_to_let",                                          default: false
+    t.boolean  "leasehold_house",                                                    default: false
+    t.boolean  "leasehold_apartment",                                                default: false
+    t.boolean  "help_to_buy_scheme",                                                 default: false
+    t.boolean  "help_to_buy_isa",                                                    default: false
+    t.boolean  "shared_ownership_scheme",                                            default: false
+    t.integer  "conveyancing_quotes_sale_and_purchases_id"
+    t.index ["conveyancing_quotes_sale_and_purchases_id"], name: "sale_and_purchases_purchase_id", using: :btree
     t.index ["conveyancing_quotes_user_id"], name: "purchases_user_id", using: :btree
   end
 
@@ -235,28 +237,26 @@ ActiveRecord::Schema.define(version: 20170706140017) do
   end
 
   create_table "conveyancing_quotes_sale_and_purchases", force: :cascade do |t|
-    t.string   "title",                                   null: false
-    t.string   "forename",                                null: false
-    t.string   "surname",                                 null: false
     t.string   "phone"
-    t.string   "email",                                   null: false
     t.string   "timeframe"
-    t.decimal  "sale_price",     precision: 10, scale: 2, null: false
-    t.decimal  "purchase_price", precision: 10, scale: 2, null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "conveyancing_quotes_user_id"
+    t.index ["conveyancing_quotes_user_id"], name: "sales_and_purchases_user_id", using: :btree
   end
 
   create_table "conveyancing_quotes_sales", force: :cascade do |t|
     t.string   "phone"
     t.string   "timeframe"
-    t.decimal  "price",                       precision: 10, scale: 2,                 null: false
-    t.datetime "created_at",                                                           null: false
-    t.datetime "updated_at",                                                           null: false
+    t.decimal  "price",                                     precision: 10, scale: 2,                 null: false
+    t.datetime "created_at",                                                                         null: false
+    t.datetime "updated_at",                                                                         null: false
     t.integer  "conveyancing_quotes_user_id"
-    t.boolean  "leasehold_house",                                      default: false
-    t.boolean  "leasehold_apartment",                                  default: false
-    t.boolean  "shared_ownership_scheme",                              default: false
+    t.boolean  "leasehold_house",                                                    default: false
+    t.boolean  "leasehold_apartment",                                                default: false
+    t.boolean  "shared_ownership_scheme",                                            default: false
+    t.integer  "conveyancing_quotes_sale_and_purchases_id"
+    t.index ["conveyancing_quotes_sale_and_purchases_id"], name: "sale_and_purchases_sale_id", using: :btree
     t.index ["conveyancing_quotes_user_id"], name: "sales_user_id", using: :btree
   end
 
@@ -1062,7 +1062,10 @@ ActiveRecord::Schema.define(version: 20170706140017) do
   add_foreign_key "banners", "services"
   add_foreign_key "conveyancing_quotes_addresses", "conveyancing_quotes_users"
   add_foreign_key "conveyancing_quotes_deeds", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_purchases", "conveyancing_quotes_sale_and_purchases", column: "conveyancing_quotes_sale_and_purchases_id"
   add_foreign_key "conveyancing_quotes_purchases", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_sale_and_purchases", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_sales", "conveyancing_quotes_sale_and_purchases", column: "conveyancing_quotes_sale_and_purchases_id"
   add_foreign_key "conveyancing_quotes_sales", "conveyancing_quotes_users"
   add_foreign_key "events", "event_locations"
   add_foreign_key "events_categorisations", "event_categories"

@@ -1,21 +1,27 @@
-<%= content_for :content_title do 'Please review your quote' end %>
+<%= content_for :content_title do 'Accept Quote' end %>
+
+<%= render 'conveyancing_quotes/shared/acceptance_steps', current_step: 4 %>
 
 <%= render @user.purchase %>
 <%= render @user.sale %>
 
 <% if @user.addresses.correspondence.present? %>
-  <%= render @user.addresses.correspondence  %>
-  <%= link_to 'Edit', edit_conveyancing_quotes_property_addresses_path %>
+  <div class="conveyancing-address">
+    <%= render @user.addresses.correspondence  %>
+    <%= link_to 'Edit', edit_conveyancing_quotes_property_addresses_path %>
+  </div>
 <% end %>
 
 <% if @user.addresses.property.present? %>
-  <%= render @user.addresses.property %>
-  <%= link_to 'Edit', edit_conveyancing_quotes_correspondence_addresses_path %>
+  <div class="conveyancing-address">
+    <%= render @user.addresses.property %>
+    <%= link_to 'Edit', edit_conveyancing_quotes_correspondence_addresses_path %>
+  </div>
 <% end %>
 
 <% if @user.deeds.present? %>
   <h3>Deeds</h3>
-  <%= content_tag :ul, (render @user.deeds) %>
+  <%= render @user.deeds %>
   <%= link_to 'Edit', edit_conveyancing_quotes_deeds_path %>
 <% end %>
 
@@ -32,6 +38,16 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Confirm', class: 'submit-button' %>
+    <%= f.submit 'Accept quote', class: 'inverted-submit-button' %>
   </div>
 <% end %>
+
+<p>
+  Thank You for choosing Banner Jones to complete your conveyancing. 
+  Your details will now be sent to our quotes team who will set up your file
+  and send out instructions to the correspondence address within 2 working days.
+  These instructions will need to be signed and returned to our office which
+  then gives us the permission to proceed with your matter.  If in the meantime
+  you have any questions please call the quotes team on
+  <%= render 'shared/calltracks_phone', phone: global_site_settings['Phone'] %>
+</p>

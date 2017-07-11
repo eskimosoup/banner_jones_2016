@@ -1,0 +1,92 @@
+<div class="field">
+  <p>How much are you buying the property for?</p>
+
+  <%= f.label :price, 'Purchase price' %>
+  <%= f.number_field :price, placeholder: 'e.g. 200000' %>
+</div>
+
+<div class="field">
+  <%= f.check_box :second_home_or_buy_to_let %>
+  <%= f.label :second_home_or_buy_to_let, 'This a second home or buy-to-let purchase', class: 'inline-label' %>
+</div>
+
+<p>Please tick any other requirements.</p>
+
+<div class="field">
+  <%= f.check_box :leasehold_house %>
+  <%= f.label :leasehold_house, 'Leasehold house', class: 'inline-label' %>
+  <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+              '#leasehold-house',
+              class: 'toggle-class',
+              data: {
+                class: 'hide',
+                container: '.leasehold-house',
+                return: false
+              } %>
+
+  <%= render 'conveyancing_quotes/shared/tooltips/leasehold_house' %>
+</div>
+
+<div class="field">
+  <%= f.check_box :leasehold_apartment %>
+  <%= f.label :leasehold_apartment, 'Leasehold apartment', class: 'inline-label' %>
+
+  <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+              '#leasehold-apartment',
+              class: 'toggle-class',
+              data: {
+                class: 'hide',
+                container: '.leasehold-apartment',
+                return: false
+              } %>
+
+  <%= render 'conveyancing_quotes/shared/tooltips/leasehold_apartment' %>
+</div>
+
+<div class="field">
+  <%= f.check_box :help_to_buy_scheme %>
+  <%= f.label :help_to_buy_scheme, 'Help to Buy Scheme', class: 'inline-label' %>
+
+  <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+              '#help-to-buy-scheme',
+              class: 'toggle-class',
+              data: {
+                class: 'hide',
+                container: '.help-to-buy-scheme',
+                return: false
+              } %>
+
+  <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_scheme' %>
+</div>
+
+<div class="field">
+  <%= f.check_box :help_to_buy_isa %>
+  <%= f.label :help_to_buy_isa, 'Help to Buy ISA', class: 'inline-label' %>
+
+  <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+              '#help-to-buy-isa',
+              class: 'toggle-class',
+              data: {
+                class: 'hide',
+                container: '.help-to-buy-isa',
+                return: false
+              } %>
+
+  <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_isa' %>
+</div>
+
+<div class="field">
+  <%= f.check_box :shared_ownership_scheme %>
+  <%= f.label :shared_ownership_scheme, 'Shared Ownership Scheme', class: 'inline-label'  %>
+
+  <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+              '#shared-ownership-scheme',
+              class: 'toggle-class',
+              data: {
+                class: 'hide',
+                container: '.shared-ownership-scheme',
+                return: false
+              } %>
+
+  <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
+</div>

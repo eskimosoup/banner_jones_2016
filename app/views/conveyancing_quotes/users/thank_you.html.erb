@@ -16,11 +16,15 @@
 <%= render @user.sale  if @user.sale.present? %>
 
 <% if @user.addresses.correspondence.present? %>
-  <%= render @user.addresses.correspondence  %>
+  <div class="conveyancing-address">
+    <%= render @user.addresses.correspondence  %>
+  </div>
 <% end %>
 
 <% if @user.addresses.property.present? %>
-  <%= render @user.addresses.property %>
+  <div class="conveyancing-address">
+    <%= render @user.addresses.property %>
+  </div>
 <% end %>
 
 <% if @user.deeds.present? %>
@@ -28,4 +32,4 @@
   <%= content_tag :ul, (render @user.deeds) %>
 <% end %>
 
-<%= link_to 'Print quote', '#', class: 'submit-button print-page' %>
+<%= link_to 'Print quote', '#', class: 'inverted-submit-button print-page' %>

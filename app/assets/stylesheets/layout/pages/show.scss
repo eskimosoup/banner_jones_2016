@@ -11,6 +11,11 @@
   @include breakpoint(large) {
     padding: rem(28px) 0 rem(62px);
   }
+
+  @media print {
+    margin-bottom: rem(120px);
+    margin-top: rem(120px);
+  }
 }
 
 .page-content {
@@ -49,7 +54,7 @@
   padding: rem(54px) 0;
 
   @media print {
-    display: none;    
+    display: none;
   }
 
   @include media('>1400px') {

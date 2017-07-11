@@ -1,0 +1,39 @@
+<ul class="conveyancing-acceptance-steps">
+  <li class="conveyancing-acceptance-step">
+    <% if current_step == 1 %>
+      <div class="active">Deeds of the Property</div>
+    <% else %>
+      <%= link_to 'Deeds of the property', edit_conveyancing_quotes_deeds_path, class: 'acceptance-step-link' %>
+    <% end %>
+  </li>
+
+  <li class="conveyancing-acceptance-step">
+    <% if current_step == 2 %>
+      <div class="active">Address of the property</div>
+    <% elsif current_step < 2 %>
+      <div class="inactive">Address of the property</div>
+    <% else %>
+      <%= link_to 'Address of the property', edit_conveyancing_quotes_property_addresses_path, class: 'acceptance-step-link' %>
+    <% end %>
+  </li>
+
+  <li class="conveyancing-acceptance-step">
+    <% if current_step == 3 %>
+      <div class="active">Correspondence address</div>
+    <% elsif current_step < 3 %>
+      <div class="inactive">Correspondence address</div>
+    <% else %>
+      <%= link_to 'Correspondence address', edit_conveyancing_quotes_correspondence_addresses_path, class: 'acceptance-step-link' %>
+    <% end %>
+  </li>
+
+  <li class="conveyancing-acceptance-step">
+    <% if current_step == 4 %>
+      <div class="active">Confirm quote</div>
+    <% elsif current_step < 4 %>
+      <div class="inactive">Confirm quote</div>
+    <% else %>
+      <%= link_to 'Confirm quote', edit_conveyancing_quotes_location_users_path(@user.quote_location), class: 'acceptance-step-link' %>
+    <% end %>
+  </li>
+</ul>

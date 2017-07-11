@@ -27,6 +27,10 @@ module ConveyancingQuotes
             dependent: :destroy,
             foreign_key: 'conveyancing_quotes_user_id'
 
+    has_one :sale_and_purchase,
+            dependent: :destroy,
+            foreign_key: 'conveyancing_quotes_user_id'
+
     has_many :deeds,
              dependent: :destroy,
              foreign_key: 'conveyancing_quotes_user_id'
