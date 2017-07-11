@@ -10,6 +10,10 @@ module ConveyancingQuotes
 
     delegate :fee, :vat, :total, to: :conveyancing_calculator
 
+    def price=(price)
+      write_attribute(:price, price.gsub(/\D/, ''))
+    end
+
     def conveyancing_calculator
       @conveyancing_calculator ||= ConveyancingCalculator::Sale.new(price, user.symbolised_location)
     end

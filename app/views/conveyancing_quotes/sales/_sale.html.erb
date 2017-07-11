@@ -43,12 +43,13 @@
         <strong><%= additional_cost.to_s.humanize.titlecase %></strong>
         <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
                     "##{additional_cost.to_s.parameterize.tr('_', '-')}",
-                    class: 'toggle-class',
+                    class: 'toggle-class-closest',
                     data: {
                       class: 'hide',
                       container: ".#{additional_cost.to_s.parameterize.tr('_', '-')}",
                       return: false
                       } %>
+        <%= render "conveyancing_quotes/shared/tooltips/#{additional_cost.to_s.parameterize}" %>
       </div>
       <div class="conveyancing-cost-item">
         <%= number_to_currency cost %>
@@ -64,7 +65,6 @@
       </div>
     </div>
 
-    <%= render "conveyancing_quotes/shared/tooltips/#{additional_cost.to_s.parameterize}" %>
 
     <%= cost = vat = nil %>
   <% end %>
