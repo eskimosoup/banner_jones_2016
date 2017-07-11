@@ -51,3 +51,46 @@
 .accreditations .slick-slide img {
   margin: 0 auto;
 }
+
+//promotion
+
+.promotion-row {
+  @include flex-grid-row;
+}
+.promotion-column {
+  @include flex-grid-column(4);
+}
+
+.promotion-call-to-action {
+  @include  grid-row;
+  background: $black;
+  color: $white;
+  display: block;
+  font-family: $open-sans;
+  font-size: rem(15px);
+  font-weight: $open-sans-semibold;
+  margin: rem(0 1px);
+  padding: rem(10px);
+  width: 33%;
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:active,
+  &:hover {
+    background: $red;
+    color: $white;
+  }
+}
+
+.promotion-call-to-action-title {
+  @include grid-column($columns: 10, $gutter: (small: 0));
+  font-size: rem(14px);
+}
+
+.promotion-call-to-action-icon {
+  @include grid-column($columns: 2, $gutter: (small: 0));
+  padding-top: rem(-10px);
+}
