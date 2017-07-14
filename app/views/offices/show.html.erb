@@ -29,6 +29,10 @@
       <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
     </div>
 
+    <div class="page-inner-content" role="main">
+      <%= raw @office.details %>
+    </div>
+
     <div class="inpage-navigation">
       <% @office.services.roots.group_by(&:audience).each do |audience, services| %>
         <div class="inpage-navigation-item">
