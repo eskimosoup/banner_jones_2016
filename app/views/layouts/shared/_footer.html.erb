@@ -37,7 +37,7 @@
         </span>
         <% if yield(:custom_telephone).present? %>
           <% phone = yield(:custom_telephone) %>
-        <% elsif !defined?(phone) %>        
+        <% elsif !defined?(phone) %>
           <% phone = global_site_settings['Phone'] %>
         <% end %>
 
@@ -84,7 +84,9 @@
 </div>
 
 <% unless @hide_sticky_cta.present? %>
-  <div class="sticky-call-to-actions">
+  <div class="sticky-call-to-actions <%= yield :additional_sticky_cta_classes %>">
+    <%= yield :additional_sticky_cta %>
+
     <%= link_to '#footer-callback-request', class: 'request-callback toggle-class',
       data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
       <%= image_tag 'components/icons/sticky-callback.png', alt: 'Callback request' %>
