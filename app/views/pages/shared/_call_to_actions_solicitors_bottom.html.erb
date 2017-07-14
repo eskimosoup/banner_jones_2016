@@ -1,4 +1,4 @@
-<%= content_for :additional_sticky_cta_classes { 'three' } %>
+<%= content_for :additional_sticky_cta_classes do 'three' end %>
 <%= content_for :additional_sticky_cta do %>
   <%= link_to '#landing-page-contact-form', class: 'send-an-enquiry toggle-class',
     data: { container: '.remote-contact-form-modal', class: 'visible', return: 'false' } do %>
