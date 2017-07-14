@@ -31,7 +31,9 @@ module ConveyancingQuotes
       end
     end
 
-    def show; end
+    def show
+      ConveyancingQuoteMailer.new_quote(User.where(submitted: true).last).deliver_now      
+    end
 
     def thank_you
       redirect_to root_url if @user.blank?
@@ -42,7 +44,7 @@ module ConveyancingQuotes
     def user_params
       params.require(:conveyancing_quotes_user).permit(
         :forename, :surname, :email, :phone, :buying, :selling,
-        :conveyancing_email_permission
+        :conveyancing_email_permission, :buying_and_selling
       )
     end
 

@@ -16,9 +16,13 @@
     </style>
   </head>
   <body>
-    <%= link_to root_url, title: global_site_settings['Name'], class: "header-logo #{'with-notary' if defined?(notary)}" do %>
-      <%= image_tag "layout/header/logo.png", alt: global_site_settings['Name'], class: 'header-logo-primary' %>
-    <% end %>
+    <div class="quote-pdf-header">
+      <div class="quote-pdf-logo">
+        <%= link_to root_url, title: global_site_settings['Name'], class: "header-logo" do %>
+          <%= image_tag "layout/header/logo.png", alt: global_site_settings['Name'], class: 'header-logo-primary' %>
+        <% end %>
+      </div>
+    </div>
 
     <div class="container">
       <div class="page-content-wrap">

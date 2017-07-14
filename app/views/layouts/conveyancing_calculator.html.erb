@@ -54,9 +54,9 @@
             <%= link_to "tel:#{telephone.tr(' ', '')}", class: 'conveyancing-call-to-action' do %>
               <div class="conveyancing-call-to-action-title">
                 Call us for your conveyancing quote
-                <div class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
+                <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
                   <%= telephone %>
-                </div>
+                </span>
               </div>
 
               <div class="conveyancing-call-to-action-icon">

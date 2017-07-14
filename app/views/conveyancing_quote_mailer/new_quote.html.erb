@@ -11,11 +11,11 @@
   <%= @user.email %>
 </div>
 <%= l @user.created_at, format: :long %>
-<%= render 'optimadmin/conveyancing_quotes/users/purchase', purchase: @user.purchase %>
-<%= render 'optimadmin/conveyancing_quotes/users/sale', sale: @user.sale %>
-<%= render 'optimadmin/conveyancing_quotes/users/address', address: @user.addresses.correspondence if @user.addresses.correspondence.present? %>
-<%= render 'optimadmin/conveyancing_quotes/users/address', address: @user.addresses.property if @user.addresses.property.present? %>
+<%= render 'conveyancing_quote_mailer/new_quote/purchase', purchase: @user.purchase %>
+<%= render 'conveyancing_quote_mailer/new_quote/sale', sale: @user.sale %>
+<%= render 'conveyancing_quote_mailer/new_quote/address', address: @user.addresses.correspondence if @user.addresses.correspondence.present? %>
+<%= render 'conveyancing_quote_mailer/new_quote/address', address: @user.addresses.property if @user.addresses.property.present? %>
 <% if @user.deeds.present? %>
   <h3>Deeds</h3>
-  <%= content_tag :ul, (render partial: 'optimadmin/conveyancing_quotes/users/deed', collection: @user.deeds, as: :deed) %>
+  <%= render partial: 'conveyancing_quote_mailer/new_quote/deed', collection: @user.deeds, as: :deed %>
 <% end %>
