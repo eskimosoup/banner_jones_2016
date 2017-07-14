@@ -16,11 +16,11 @@
     Call:
     <%= render 'shared/calltracks_phone',
                 phone: global_site_settings['Phone'],
-                options: { class: 'submit-button' } %>
+                options: { class: 'inverted-submit-button' } %>
 
     <%= link_to 'Request a callback',
                 '#',
-                class: 'submit-button toggle-class',
+                class: 'inverted-submit-button toggle-class',
                 data: {
                   class: 'visible',
                   container: '.remote-callback-request-form-modal',
@@ -28,7 +28,7 @@
                   }  %>
     <%= link_to 'Email us',
                 '#',
-                class: 'submit-button toggle-class',
+                class: 'inverted-submit-button toggle-class',
                 data: {
                   class: 'visible',
                   container: '.remote-contact-form-modal',

@@ -4,17 +4,22 @@ module ConveyancingQuotes
 
     default_scope { order(created_at: :desc) }
 
+    attr_accessor :buying_and_selling
+
     # validates :title, inclusion: { in: ConveyancingQuotes::TITLES }
     validates :forename, presence: true
     validates :surname, presence: true
     validates :email, presence: true
     validates :phone, presence: true
     validates :buying,
-              presence: { message: 'can not be blank, unless buying' },
-              unless: :selling?
+              presence: { message: 'can not be blank, unless selling or buying and selling' },
+              if: proc{ |x| x.selling.blank? && (x.buying_and_selling == '0') }
     validates :selling,
-              presence: { message: 'can not be blank, unless selling' },
-              unless: :buying?
+              presence: { message: 'can not be blank, unless buying or buying and selling' },
+              if: proc{ |x| x.buying.blank? && (x.buying_and_selling == '0') }
+    validates :buying_and_selling,
+              presence: { message: 'can not be blank, unless buying or selling are set individually' },
+              if: proc{ |x| x.buying.blank? && x.selling.blank? }
 
     belongs_to :quote_location,
                foreign_key: 'conveyancing_quotes_quote_location_id'
@@ -46,6 +51,7 @@ module ConveyancingQuotes
     delegate :symbolised_location, to: :quote_location
 
     before_create { generate_token(:token) }
+    before_create :buying_and_selling_boolean
 
     def generate_token(column)
       loop do
@@ -53,6 +59,12 @@ module ConveyancingQuotes
         break unless ConveyancingQuotes::User.exists?(column => self[column])
       end
       self[column]
+    end
+
+    def buying_and_selling_boolean
+      return if buying_and_selling == '0'
+      self.buying = true
+      self.selling = true
     end
   end
 end

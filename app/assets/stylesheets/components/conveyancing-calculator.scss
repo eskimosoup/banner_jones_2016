@@ -167,9 +167,10 @@
 .conveyancing-call-to-action-title {
   @include grid-column($columns: 10, $gutter: (small: 0));
 
-  div {
-    font-size: rem(22px);
+  span {
     color: $black;
+    display: block;
+    font-size: rem(22px);
   }
 }
 
@@ -222,4 +223,21 @@
 
 .conveyancing-deed {
   margin-bottom: rem(2px);
+}
+
+.quote-pdf-header {
+  @include grid-row;
+}
+
+.quote-pdf-logo {
+  @include grid-column(12);
+  @media screen and (min-width: 40em) {
+    padding: 0;
+  }
+
+  .header-logo img {
+    display: block;
+    height: 70px;
+    width: auto;
+  }
 }
