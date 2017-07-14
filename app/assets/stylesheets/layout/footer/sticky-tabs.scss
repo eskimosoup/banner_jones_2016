@@ -10,6 +10,14 @@
     right: 0;
     width: 270px;
     z-index: 2;
+
+    &.three {
+      width: 415px;
+
+      a {
+        width: 33%;
+      }
+    }
   }
 
   img {
@@ -32,6 +40,24 @@
   &:hover,
   &:active {
     color: $orange
+  }
+}
+
+.send-an-enquiry {
+  background: $orange;
+  color: $black;
+  float: left;
+  font-size: rem(12px);
+  font-weight: $myriad-pro-semibold;
+  padding: rem(14px) rem(12px);
+  min-height: 75px;
+  width: 50%;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $black;
   }
 }
 

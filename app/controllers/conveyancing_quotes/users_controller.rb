@@ -32,7 +32,6 @@ module ConveyancingQuotes
     end
 
     def show
-      ConveyancingQuoteMailer.new_quote(User.where(submitted: true).last).deliver_now      
     end
 
     def thank_you
