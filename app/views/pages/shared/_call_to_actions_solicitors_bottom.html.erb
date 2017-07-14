@@ -12,6 +12,7 @@
   </div>
 <% end %>
 
+<!--
 <%= form_for @contact, url: contacts_path, remote: true, html: { id: 'landing-page-contact-form', class: 'contact-form' } do |f| %>
   <h2 class="request-contact-title">Contact us</h2>
 
@@ -36,6 +37,7 @@
     <%= render partial: 'contacts/shared/remote_form_fields_solicitors', locals: { f: f } %>
   <% end %>
 <% end %>
+-->
 
 <div class="promotion-row">
   <% unless defined?(hide_call_us) %>
