@@ -11,8 +11,8 @@
   <%= @user.email %>
 </div>
 <%= l @user.created_at, format: :long %>
-<%= render 'conveyancing_quote_mailer/new_quote/purchase', purchase: @user.purchase %>
-<%= render 'conveyancing_quote_mailer/new_quote/sale', sale: @user.sale %>
+<%= render 'conveyancing_quote_mailer/new_quote/purchase', purchase: @user.purchase if @user.purchase.present? %>
+<%= render 'conveyancing_quote_mailer/new_quote/sale', sale: @user.sale if @user.sale.present? %>
 <%= render 'conveyancing_quote_mailer/new_quote/address', address: @user.addresses.correspondence if @user.addresses.correspondence.present? %>
 <%= render 'conveyancing_quote_mailer/new_quote/address', address: @user.addresses.property if @user.addresses.property.present? %>
 <% if @user.deeds.present? %>
