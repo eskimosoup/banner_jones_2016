@@ -13,6 +13,6 @@
     testimonials = onpage_navigation.testimonials.displayed
     testimonials = @service.testimonials.displayed if testimonials.blank?
     %>
-    <%= render partial: 'testimonials/testimonial', collection: testimonials.limit(onpage_navigation.results_limit), as: :testimonial %>
+    <%= render partial: 'testimonials/testimonial', collection: testimonials.limit((onpage_navigation.results_limit.present? ? onpage_navigation.results_limit : 10)), as: :testimonial %>
   </div>
 </div>

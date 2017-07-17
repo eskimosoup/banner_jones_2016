@@ -10,3 +10,13 @@
     padding-right: 0;
   }
 }
+
+.home-solicitors-title {
+  display: none;
+  font-weight: $myriad-pro-semibold;
+  text-align: center;
+
+  @include media('>=768px') {
+    display: block;
+  }
+}
