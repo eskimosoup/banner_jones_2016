@@ -23,7 +23,7 @@
   </aside>
 
   <div class="page-content">
-    <h1 class="service-page-title"><%= @office.office_location_name %></h1>
+    <h1 class="service-page-title"><%= @office.page_title.present? ? @office.page_title : @office.office_location_name %></h1>
 
     <div class="offices-index-map" id="map-canvas" data-locations="[<%= @office.to_json %>]">
       <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>

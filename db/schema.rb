@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170711105951) do
+ActiveRecord::Schema.define(version: 20170719151924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -382,10 +382,22 @@ ActiveRecord::Schema.define(version: 20170711105951) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
+  create_table "job_applications", force: :cascade do |t|
+    t.integer  "job_listing_id"
+    t.string   "forename",       null: false
+    t.string   "surname",        null: false
+    t.string   "email"
+    t.string   "phone"
+    t.string   "cv",             null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["job_listing_id"], name: "index_job_applications_on_job_listing_id", using: :btree
+  end
+
   create_table "job_listings", force: :cascade do |t|
-    t.string   "title",                null: false
-    t.text     "summary",              null: false
-    t.text     "description",          null: false
+    t.string   "title",                              null: false
+    t.text     "summary",                            null: false
+    t.text     "description",                        null: false
     t.string   "salary"
     t.date     "start_date"
     t.string   "role_type"
@@ -393,12 +405,14 @@ ActiveRecord::Schema.define(version: 20170711105951) do
     t.string   "contract_type"
     t.integer  "office_id"
     t.date     "application_deadline"
-    t.datetime "publish_at",           null: false
+    t.datetime "publish_at",                         null: false
     t.datetime "expire_at"
     t.string   "slug"
     t.string   "suggested_url"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "job_applications_count", default: 0
+    t.string   "application_method"
     t.index ["office_id"], name: "index_job_listings_on_office_id", using: :btree
     t.index ["slug"], name: "index_job_listings_on_slug", using: :btree
   end
@@ -454,6 +468,7 @@ ActiveRecord::Schema.define(version: 20170711105951) do
     t.float    "longitude"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "page_title"
     t.index ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
     t.index ["slug"], name: "index_offices_on_slug", using: :btree
     t.index ["suggested_url"], name: "index_offices_on_suggested_url", using: :btree
@@ -848,7 +863,6 @@ ActiveRecord::Schema.define(version: 20170711105951) do
     t.text     "summary"
     t.integer  "position",                             default: 0, null: false
     t.index ["service_id"], name: "index_services_pages_on_service_id", using: :btree
-    t.index ["slug"], name: "index_services_pages_on_slug", unique: true, using: :btree
   end
 
   create_table "services_related_services", force: :cascade do |t|
@@ -1070,6 +1084,7 @@ ActiveRecord::Schema.define(version: 20170711105951) do
   add_foreign_key "events", "event_locations"
   add_foreign_key "events_categorisations", "event_categories"
   add_foreign_key "events_categorisations", "events"
+  add_foreign_key "job_applications", "job_listings"
   add_foreign_key "job_listings", "offices"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "onpage_navigations_accreditations", "accreditations"
