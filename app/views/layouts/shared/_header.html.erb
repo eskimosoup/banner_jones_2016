@@ -70,7 +70,9 @@
           </span>
         <% end %>
       <% end %>
-      <%= yield :additional_phone_cta %>
+      <div>
+        <%= link_to 'Send an enquiry', new_contact_path, class: 'ga-event', data: { event_category: 'Header', event_action: 'Click', event_label: 'Submit Enquiry CTA Button' } %>
+      </div>
     </div>
 
     <div class="header-rich-snippets">

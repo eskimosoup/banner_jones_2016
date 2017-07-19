@@ -1,17 +1,3 @@
-<%= content_for :additional_sticky_cta_classes do 'three' end %>
-<%= content_for :additional_sticky_cta do %>
-  <%= link_to '#landing-page-contact-form', class: 'send-an-enquiry toggle-class',
-    data: { container: '.remote-contact-form-modal', class: 'visible', return: 'false' } do %>
-    <%= image_tag 'components/icons/sticky-email.png', alt: 'Send an enquiry' %>
-    Make an Enquiry
-  <% end %>
-<% end %>
-<%= content_for :additional_phone_cta do %>
-  <div>
-    <%= link_to 'Send an enquiry', new_contact_path, class: 'header-cta-send-an-enquiry' %>
-  </div>
-<% end %>
-
 <!--
 <%= form_for @contact, url: contacts_path, remote: true, html: { id: 'landing-page-contact-form', class: 'contact-form' } do |f| %>
   <h2 class="request-contact-title">Contact us</h2>
