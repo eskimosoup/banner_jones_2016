@@ -28,7 +28,7 @@
         <span class="contact-method-accent">
           e:
         </span>
-        <%= mail_to email %>
+        <%= mail_to email, email, class: "ga-event", data: { event_category: 'Footer', event_action: 'Click', event_label: 'Email address' }  %>
       </div>
 
       <div class="contact-method">
@@ -84,13 +84,20 @@
 </div>
 
 <% unless @hide_sticky_cta.present? %>
-  <div class="sticky-call-to-actions <%= yield :additional_sticky_cta_classes %>">
-    <%= yield :additional_sticky_cta %>
-
+  <div class="sticky-call-to-actions three">
     <%= link_to '#footer-callback-request', class: 'request-callback toggle-class',
       data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
       <%= image_tag 'components/icons/sticky-callback.png', alt: 'Callback request' %>
       Request a Callback
+    <% end %>
+
+    <%= link_to '#landing-page-contact-form', class: 'send-an-enquiry toggle-class ga-event',
+      data: {
+        container: '.remote-contact-form-modal', class: 'visible', return: 'false',
+        event_category: 'Footer', event_action: 'Click', event_label: 'Submit Enquiry CTA Button'
+      } do %>
+      <%= image_tag 'components/icons/sticky-email.png', alt: 'Send an enquiry' %>
+      Make an Enquiry
     <% end %>
 
     <%= link_to team_members_path, class: 'find-a-lawyer' do %>

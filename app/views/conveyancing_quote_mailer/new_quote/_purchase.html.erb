@@ -1,14 +1,12 @@
 <% total = fees_total = vat_total = 0 %>
 <h2>For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
-
-<table style="width:640px">
+<table style="width:840px; text-align: left;">
   <tr>
     <th>Buying a property for <strong><%= number_to_currency purchase.price %></strong>.</th>
     <th>Fee</th>
     <th>VAT</th>
     <th>Total</th>
   </tr>
-
   <tr>
     <td>
       <strong>Banner Jones Conveyancing Costs</strong>
@@ -26,41 +24,37 @@
       <% total += purchase.total %>
     </td>
   </tr>
-</div>
-
-<% purchase.additional_costs.each do |additional_cost| %>
-  <% cost = ConveyancingCalculator.configuration.additional_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
-  <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+  <% purchase.additional_costs.each do |additional_cost| %>
+    <% cost = ConveyancingCalculator.configuration.additional_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
+    <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+    <tr>
+      <td><%= content_tag :strong, additional_cost.to_s.humanize.titlecase %></td>
+      <td>
+        <%= number_to_currency cost %>
+        <% fees_total += cost %>
+      </td>
+      <td>
+        <%= number_to_currency vat %>
+        <% vat_total += vat %>
+      </td>
+      <td>
+        <%= number_to_currency cost + vat %>
+        <% total += (cost + vat) %>
+      </td>
+    </tr>
+    <%= cost = vat = nil %>
+  <% end %>
   <tr>
-    <td><%= content_tag :strong, additional_cost.to_s.humanize.titlecase %></td>
-
-    <td>
-      <%= number_to_currency cost %>
-      <% fees_total += cost %>
-    </td>
-
-    <td>
-      <%= number_to_currency vat %>
-      <% vat_total += vat %>
-    </td>
-
-    <td>
-      <%= number_to_currency cost + vat %>
-      <% total += (cost + vat) %>
+    <td colspan="3">
+      <h3>This is what you have to pay other Government Agencies</h3>
     </td>
   </tr>
-  <%= cost = vat = nil %>
-<% end %>
-
-<h3>This is what you have to pay other Government Agencies</h3>
-
-<tr>
-  <th>Description.</th>
-  <th>Fee</th>
-  <th>VAT</th>
-  <th>Total</th>
-</tr>
-
+  <tr>
+    <th>Description.</th>
+    <th>Fee</th>
+    <th>VAT</th>
+    <th>Total</th>
+  </tr>
   <tr>
     <td><strong>Stamp Duty Land Tax</strong></td>
     <td>
@@ -75,7 +69,6 @@
       <% total += purchase.stamp_duty %>
     </td>
   </tr>
-
   <tr class="conveyancing-cost">
     <td>
       <strong>Land Registry Fee</strong>
@@ -92,7 +85,6 @@
       <% total += purchase.land_fee_calculator.fee  %>
     </td>
   </tr>
-
   <tr>
     <td>
       <strong>Premium Search Package</strong>
@@ -112,13 +104,11 @@
       <% total += (cost + vat)  %>
     </td>
   </tr>
-
   <tr>
     <td colspan="3" style="text-align: right;">
       Subtotal<br />
       <strong>Overall Total</strong>
     </td>
-
     <td>
       <%= number_to_currency fees_total %><br />
       <strong><%= number_to_currency total %></strong>

@@ -64,7 +64,9 @@ Rails.application.routes.draw do
   # FIXME: This is used in conjuction with the engine, so you end up with
   # /contacts/new and /contact-us/new - it should be one or the other.
   resources :contacts, only: %i[new create] # Here for legacy
-  resources :contacts, only: %i[new create], path: 'contact-us'
+  resources :contacts, only: %i[new create], path: 'contact-us' do
+    post 'inpage-contact', on: :collection, as: :inpage, to: 'contacts#inpage'
+  end
   resources :callback_requests, only: %i[new create], path: 'callback-request'
 
   %w[403 404 422 500].each do |code|

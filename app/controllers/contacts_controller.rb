@@ -10,6 +10,11 @@ class ContactsController < ApplicationController
     process_contact_request(@contact)
   end
 
+  def inpage
+    @contact = Contact.new(contact_params)
+    process_contact_request(@contact)
+  end
+
   private
 
   def process_contact_request(contact)
