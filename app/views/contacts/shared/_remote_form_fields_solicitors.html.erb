@@ -53,6 +53,6 @@
   <%= f.hidden_field :from_url, value: request.original_url %>
 
   <div class="actions">
-    <%= f.submit "Send", class: "submit-button" %>
+    <%= f.submit "Send", class: "submit-button ga-event", data: { event_category: 'Form Submission', event_action: 'Submit', event_label: 'Contact Us' } %>
   </div>
 </div>

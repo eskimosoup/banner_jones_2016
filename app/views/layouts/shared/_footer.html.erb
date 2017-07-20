@@ -28,7 +28,7 @@
         <span class="contact-method-accent">
           e:
         </span>
-        <%= mail_to email %>
+        <%= mail_to email, email, class: "ga-event", data: { event_category: 'Footer', event_action: 'Click', event_label: 'Email address' }  %>
       </div>
 
       <div class="contact-method">
