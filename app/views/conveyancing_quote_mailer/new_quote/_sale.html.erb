@@ -1,17 +1,12 @@
 <% total = fees_total = vat_total = 0 %>
-
-
-<table style="width:840px">
+<table style="width:840px; text-align: left;">
   <h2>For your standard <%= sale.leasehold? ? 'leasehold' : 'freehold' %> sale</h2>
-
-
   <tr>
     <th>Selling a property for <strong><%= number_to_currency sale.price %></strong>.</th>
     <th>Fee</th>
     <th>VAT</th>
     <th>Total</th>
   </tr>
-
   <tr>
     <td>
       <strong>Banner Jones Conveyancing Costs</strong>
@@ -29,7 +24,6 @@
       <% total += sale.total %>
     </td>
   </tr>
-
   <% sale.additional_costs.each do |additional_cost| %>
     <% cost = ConveyancingCalculator.configuration.additional_costs[sale.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
     <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
@@ -52,13 +46,11 @@
     </tr>
     <%= cost = vat = nil %>
   <% end %>
-
   <tr>
     <td colspan="3" style="text-align: right;">
       Subtotal<br />
       <strong>Overall Total</strong>
     </td>
-
     <td>
       <%= number_to_currency fees_total %><br />
       <strong><%= number_to_currency total %></strong>
