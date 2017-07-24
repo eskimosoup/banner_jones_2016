@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170720080643) do
+ActiveRecord::Schema.define(version: 20170721082218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -356,10 +356,10 @@ ActiveRecord::Schema.define(version: 20170720080643) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",        null: false
-    t.boolean  "enabled"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -716,6 +716,7 @@ ActiveRecord::Schema.define(version: 20170720080643) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.boolean  "homepage_highlight", default: false
+    t.boolean  "protected",          default: false, null: false
     t.index ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
   end
 
@@ -726,6 +727,16 @@ ActiveRecord::Schema.define(version: 20170720080643) do
     t.datetime "updated_at",           null: false
     t.index ["resource_category_id"], name: "index_resources_categorisations_on_resource_category_id", using: :btree
     t.index ["resource_id"], name: "index_resources_categorisations_on_resource_id", using: :btree
+  end
+
+  create_table "resources_downloads", force: :cascade do |t|
+    t.integer  "resource_id"
+    t.string   "forename",    null: false
+    t.string   "surname",     null: false
+    t.string   "email",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["resource_id"], name: "index_resources_downloads_on_resource_id", using: :btree
   end
 
   create_table "rich_snippets", force: :cascade do |t|
@@ -782,7 +793,7 @@ ActiveRecord::Schema.define(version: 20170720080643) do
     t.string   "layout",                   default: "application", null: false
     t.string   "style",                    default: "basic",       null: false
     t.boolean  "landing_page",             default: false
-    t.boolean  "show_contact_form"
+    t.boolean  "show_contact_form",        default: false
     t.index ["audience_id"], name: "index_services_on_audience_id", using: :btree
     t.index ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
     t.index ["slug"], name: "index_services_on_slug", using: :btree
@@ -845,6 +856,14 @@ ActiveRecord::Schema.define(version: 20170720080643) do
     t.index ["service_id"], name: "index_services_offices_on_service_id", using: :btree
   end
 
+  create_table "services_page_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "services_page_anc_desc_idx", unique: true, using: :btree
+    t.index ["descendant_id"], name: "services_page_desc_idx", using: :btree
+  end
+
   create_table "services_pages", force: :cascade do |t|
     t.string   "title",                                            null: false
     t.string   "suggested_url"
@@ -863,6 +882,7 @@ ActiveRecord::Schema.define(version: 20170720080643) do
     t.datetime "updated_at",                                       null: false
     t.text     "summary"
     t.integer  "position",                             default: 0, null: false
+    t.integer  "parent_id"
     t.index ["service_id"], name: "index_services_pages_on_service_id", using: :btree
   end
 
@@ -1107,6 +1127,7 @@ ActiveRecord::Schema.define(version: 20170720080643) do
   add_foreign_key "onpage_navigations_videos", "videos"
   add_foreign_key "resources_categorisations", "resource_categories"
   add_foreign_key "resources_categorisations", "resources"
+  add_foreign_key "resources_downloads", "resources"
   add_foreign_key "rich_snippets", "seo_entries"
   add_foreign_key "services", "audiences", on_delete: :nullify
   add_foreign_key "services_accreditations", "accreditations"
