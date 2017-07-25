@@ -5,6 +5,7 @@
   <div class="conveyancing-cost headers">
     <div class="conveyancing-cost-description">
       Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
+      <%= content_tag :p, 'This is a second home or buy to let purchase' if purchase.second_home_or_buy_to_let? %>      
     </div>
     <div class="conveyancing-cost-item">
       <strong>Fee</strong>
@@ -149,7 +150,7 @@
                       container: ".premium-search-package",
                       return: false
                       } %>
-        <%= render "conveyancing_quotes/shared/tooltips/premium_search_package" %>                      
+        <%= render "conveyancing_quotes/shared/tooltips/premium_search_package" %>
       </div>
       <div class="conveyancing-cost-item">
         <% cost = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>

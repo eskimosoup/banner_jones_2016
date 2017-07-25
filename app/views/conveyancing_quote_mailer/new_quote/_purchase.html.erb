@@ -2,7 +2,9 @@
 <h2>For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
 <table style="width:840px; text-align: left;">
   <tr>
-    <th>Buying a property for <strong><%= number_to_currency purchase.price %></strong>.</th>
+    <th>Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
+      <%= '<p>This is a second home or buy to let purchase</p>'.html_safe if purchase.second_home_or_buy_to_let? %>
+    </th>
     <th>Fee</th>
     <th>VAT</th>
     <th>Total</th>

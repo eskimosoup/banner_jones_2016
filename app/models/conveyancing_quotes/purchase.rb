@@ -24,7 +24,7 @@ module ConveyancingQuotes
     end
 
     def stamp_duty_calculator
-      @stamp_duty_calculator ||= StampDuty.for(price)
+      @stamp_duty_calculator ||= StampDuty.for(price, second_home_or_buy_to_let)
     end
 
     def stamp_duty

@@ -5,6 +5,7 @@
   <div class="row collapse">
     <div class="large-6 columns">
       Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
+      <%= content_tag :p, 'This is a second home or buy to let purchase' if purchase.second_home_or_buy_to_let? %>
     </div>
     <div class="large-2 columns">
       Fee
