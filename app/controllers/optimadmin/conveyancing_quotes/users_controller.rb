@@ -6,8 +6,9 @@ module Optimadmin
 
       def index
         @users = @location.users.where(submitted: true).field_order(params[:order])
-                                                                            .field_search(params[:search], 'location')
-                                                                            .pagination(params[:page], params[:per_page])
+                          .field_search(params[:search], 'location')
+        @incomplete = @location.users.where.not(submitted: true).field_order(params[:order])
+                               .field_search(params[:search], 'location')
             end
 
       def show; end
