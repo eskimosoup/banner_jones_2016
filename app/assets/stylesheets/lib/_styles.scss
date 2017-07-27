@@ -36,7 +36,9 @@
   padding: rem(15px);
   transition: color .25s ease;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active {
     background-color: $grey;
     color: $white;
   }
@@ -121,7 +123,7 @@
   margin: rem(15px) 0;
 }
 
-@mixin page-content {
+@mixin page-content($paragraph: true) {
   // https://benfrain.com/working-with-lists-and-each-loops-in-sass-with-the-index-and-nth-function/
   $heading-size: 23 21 19 17 16 15;
 
@@ -140,9 +142,11 @@
     }
   }
 
-  p,
-  li {
-    @include paragraph;
+  @if $paragraph {
+    p,
+    li {
+      @include paragraph;
+    }
   }
 
 

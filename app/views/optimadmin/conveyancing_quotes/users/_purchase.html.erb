@@ -5,6 +5,7 @@
   <div class="row collapse">
     <div class="large-6 columns">
       Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
+      <%= content_tag :p, 'This is a second home or buy to let purchase' if purchase.second_home_or_buy_to_let? %>
     </div>
     <div class="large-2 columns">
       Fee
@@ -25,7 +26,7 @@
       <%= number_to_currency purchase.fee %>
     </div>
     <div class="large-2 columns">
-      +<%= number_to_currency purchase.vat %>
+      <%= number_to_currency purchase.vat %>
     </div>
     <div class="large-2 columns">
       <%= number_to_currency purchase.total %>
@@ -44,7 +45,7 @@
         <%= number_to_currency cost %>
       </div>
       <div class="large-2 columns">
-        +<%= number_to_currency vat %>
+        <%= number_to_currency vat %>
       </div>
       <div class="large-2 columns">
         <%= number_to_currency cost + vat %>
@@ -100,7 +101,7 @@
     </div>
     <div class="large-2 columns">
       <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
-      +<%= number_to_currency vat %>
+      <%= number_to_currency vat %>
     </div>
     <div class="large-2 columns">
       <%= number_to_currency (cost + vat) %>

@@ -19,6 +19,7 @@
 //= require components/toggle-class
 //= require components/inline-modal
 //= require components/mobile-anchors
+//= require components/ga-events
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
 //= require vendor/jquery.unveil

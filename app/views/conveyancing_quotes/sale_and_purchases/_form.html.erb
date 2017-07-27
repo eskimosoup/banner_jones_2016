@@ -1,12 +1,17 @@
-<%= simple_form_for conveyancing_quote_sale_and_purchase do |f| %>
-  <%= f.input :title, collection: ConveyancingQuotes::TITLES %>
-  <%= f.input :forename %>
-  <%= f.input :surname %>
-  <%= f.input :phone, as: :tel %>
-  <%= f.input :email, as: :email %>
-  <%= f.input :timeframe, collection: ConveyancingQuotes::TIMEFRAMES %>
+<%= form_for @conveyancing_quote_sale_and_purchase, url: conveyancing_quotes_sale_and_purchases_path do |f| %>
+  <%= render 'shared/form_errors', object: @conveyancing_quote_sale_and_purchase %>
 
-  <%= f.input :sale_price, as: :decimal %>
-  <%= f.input :purchase_price, as: :decimal %>
-  <%= f.button :submit, "Continue" %>
+  <div id="purchase">
+    <%= f.fields_for :purchase do |purchase| %>
+      <%= render 'conveyancing_quotes/purchases/form_fields', f: purchase %>
+    <% end %>
+  </div>
+  <div id="sale">
+    <%= f.fields_for :sale do |sale| %>
+      <%= render 'conveyancing_quotes/sales/form_fields', f: sale %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Get Quote', class: 'inverted-submit-button' %>
+  </div>
 <% end %>

@@ -1,4 +1,17 @@
-<%= content_for :content_title do 'Your quote' end %>
+<%= content_for :content_title do 'Thank You for choosing Banner Jones to complete your conveyancing' end %>
+
+<p>
+  Your details will now be sent to our quotes team who will set up your file and
+  send out instructions to the correspondence address within 2 working days.
+  These instructions will need to be signed and returned to our office which
+  then gives us the permission to proceed with your matter.
+</p>
+
+<p>
+  If in the meantime you have any questions please call the quotes team on
+  <%= render 'shared/calltracks_phone', phone: global_site_settings['Phone'] %>
+</p>
+
 
 <h2>Your Details</h2>
 <div class="name">
@@ -16,11 +29,15 @@
 <%= render @user.sale  if @user.sale.present? %>
 
 <% if @user.addresses.correspondence.present? %>
-  <%= render @user.addresses.correspondence  %>
+  <div class="conveyancing-address">
+    <%= render @user.addresses.correspondence  %>
+  </div>
 <% end %>
 
 <% if @user.addresses.property.present? %>
-  <%= render @user.addresses.property %>
+  <div class="conveyancing-address">
+    <%= render @user.addresses.property %>
+  </div>
 <% end %>
 
 <% if @user.deeds.present? %>
@@ -28,4 +45,4 @@
   <%= content_tag :ul, (render @user.deeds) %>
 <% end %>
 
-<%= link_to 'Print quote', '#', class: 'submit-button print-page' %>
+<%= link_to 'Print quote', '#', class: 'inverted-submit-button print-page' %>

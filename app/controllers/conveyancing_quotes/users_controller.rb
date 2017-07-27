@@ -23,15 +23,16 @@ module ConveyancingQuotes
 
     def update
       if @user.update(user_params)
-        redirect_to thank_you_conveyancing_quotes_location_users_path
         @user.update_attributes(submitted: true)
-        ConveyancingQuoteMailer.new_quote(@user).deliver_now        
+        ConveyancingQuoteMailer.new_quote(@user).deliver_now
+        redirect_to thank_you_conveyancing_quotes_location_users_path(@user.quote_location)
       else
         render :edit
       end
     end
 
-    def show; end
+    def show
+    end
 
     def thank_you
       redirect_to root_url if @user.blank?
@@ -42,12 +43,14 @@ module ConveyancingQuotes
     def user_params
       params.require(:conveyancing_quotes_user).permit(
         :forename, :surname, :email, :phone, :buying, :selling,
-        :conveyancing_email_permission
+        :conveyancing_email_permission, :buying_and_selling
       )
     end
 
     def user_redirect_path
-      if @user.buying?
+      if @user.buying? && @user.selling?
+        new_conveyancing_quotes_sale_and_purchases_path
+      elsif @user.buying?
         new_conveyancing_quotes_purchase_path
       elsif @user.selling?
         new_conveyancing_quotes_sale_path

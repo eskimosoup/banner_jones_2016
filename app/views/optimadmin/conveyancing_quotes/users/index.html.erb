@@ -19,5 +19,7 @@
   <!-- <div class="module-sortable" data-module="ConveyancingQuotes::QuoteLocation"> -->
   <%= render partial: 'user', collection: @users, as: :user %>
   <!-- </div> -->
-  <%= paginate @users %>
+
+  <h2>Incomplete</h2>
+  <%= render partial: 'user', collection: @incomplete_users, as: :user %>  
 </div>

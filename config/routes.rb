@@ -6,22 +6,22 @@ Rails.application.routes.draw do
       resource :download, only: [:show]
     end
     # resources :equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
-    # resources :sale_and_purchases, only: [:new, :create, :show], concerns: [:downloadable]
     # resources :remortgages, only: [:new, :create, :show], concerns: [:downloadable]
     # resources :remortgage_with_equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
 
     resources :sales, only: %i[new create], concerns: [:downloadable]
     resources :purchases, only: %i[new create], concerns: [:downloadable]
+    resource :sale_and_purchases, only: %i[new create], concerns: [:downloadable], path: 'sale-and-purchases'
 
     resource :deeds, only: %i[new edit update]
 
     resource :property_addresses,
-              only: %i[new create edit update],
-              path: 'property-address'
+             only: %i[new create edit update],
+             path: 'property-address'
 
     resource :correspondence_addresses,
-              only: %i[new create edit update],
-              path: 'correspondence-address'
+             only: %i[new create edit update],
+             path: 'correspondence-address'
 
     resources :quote_locations, only: :show, path: '', shallow: true, as: :location do
       resource :users, only: %i[new create edit update show], path: 'request' do
@@ -64,7 +64,9 @@ Rails.application.routes.draw do
   # FIXME: This is used in conjuction with the engine, so you end up with
   # /contacts/new and /contact-us/new - it should be one or the other.
   resources :contacts, only: %i[new create] # Here for legacy
-  resources :contacts, only: %i[new create], path: 'contact-us'
+  resources :contacts, only: %i[new create], path: 'contact-us' do
+    post 'inpage-contact', on: :collection, as: :inpage, to: 'contacts#inpage'
+  end
   resources :callback_requests, only: %i[new create], path: 'callback-request'
 
   %w[403 404 422 500].each do |code|
@@ -130,7 +132,7 @@ Optimadmin::Engine.routes.draw do
   # Module routes go below concerns
   namespace :conveyancing_quotes do
     resources :quote_locations do
-      resources :users, only: [:index, :show]
+      resources :users, only: %i[index show]
     end
   end
 end

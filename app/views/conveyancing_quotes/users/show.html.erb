@@ -5,18 +5,22 @@
 
 
 <div class="conveyancing-quote-overview">
-  <h2>Request More Information</h2>
+  <h3>Proceed with Quote</h3>
+  <p>If you are happy with the quote, please proceed to accept it.</p>
+  <%= link_to 'Accept quote', new_conveyancing_quotes_deeds_path, class: 'inverted-submit-button' %>
+  <%= link_to 'Print quote', '#', class: 'inverted-submit-button print-page' %>
+
+  <h4>Request More Information</h4>
 
   <p>
-    Need more information?<br />
     Call:
     <%= render 'shared/calltracks_phone',
                 phone: global_site_settings['Phone'],
-                options: { class: 'conveyancing-secondary-button' } %>
+                options: { class: 'inverted-submit-button' } %>
 
     <%= link_to 'Request a callback',
                 '#',
-                class: 'conveyancing-secondary-button toggle-class',
+                class: 'inverted-submit-button toggle-class',
                 data: {
                   class: 'visible',
                   container: '.remote-callback-request-form-modal',
@@ -24,7 +28,7 @@
                   }  %>
     <%= link_to 'Email us',
                 '#',
-                class: 'conveyancing-secondary-button toggle-class',
+                class: 'inverted-submit-button toggle-class',
                 data: {
                   class: 'visible',
                   container: '.remote-contact-form-modal',
@@ -32,9 +36,4 @@
                   }  %>
 
   </p>
-
-  <h2>Proceed with Quote</h2>
-  <p>If you are happy with the quote, please proceed to accept it.</p>
-  <%= link_to 'Accept quote', new_conveyancing_quotes_deeds_path, class: 'submit-button' %>
-  <%= link_to 'Print quote', '#', class: 'conveyancing-secondary-button print-page' %>
 </div>

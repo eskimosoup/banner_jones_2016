@@ -54,3 +54,25 @@ $border-color: $light-slate-blue;
     font-weight: normal;
   }
 }
+
+.page-content {
+
+  .error_messages,
+  #error_explanation {
+    background: $error;
+    color: $white;
+
+    h2 {
+      @extend %flash-heading;
+      color: $text-color;
+    }
+
+    ul {
+      font-weight: normal;
+    }
+
+    li {
+      color: $text-color;
+    }
+  }
+}

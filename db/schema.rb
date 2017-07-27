@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170706140017) do
+ActiveRecord::Schema.define(version: 20170721082218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,16 +184,18 @@ ActiveRecord::Schema.define(version: 20170706140017) do
   create_table "conveyancing_quotes_purchases", force: :cascade do |t|
     t.string   "phone"
     t.string   "timeframe"
-    t.decimal  "price",                       precision: 10, scale: 2,                 null: false
-    t.datetime "created_at",                                                           null: false
-    t.datetime "updated_at",                                                           null: false
+    t.decimal  "price",                                     precision: 10, scale: 2,                 null: false
+    t.datetime "created_at",                                                                         null: false
+    t.datetime "updated_at",                                                                         null: false
     t.integer  "conveyancing_quotes_user_id"
-    t.boolean  "second_home_or_buy_to_let",                            default: false
-    t.boolean  "leasehold_house",                                      default: false
-    t.boolean  "leasehold_apartment",                                  default: false
-    t.boolean  "help_to_buy_scheme",                                   default: false
-    t.boolean  "help_to_buy_isa",                                      default: false
-    t.boolean  "shared_ownership_scheme",                              default: false
+    t.boolean  "second_home_or_buy_to_let",                                          default: false
+    t.boolean  "leasehold_house",                                                    default: false
+    t.boolean  "leasehold_apartment",                                                default: false
+    t.boolean  "help_to_buy_scheme",                                                 default: false
+    t.boolean  "help_to_buy_isa",                                                    default: false
+    t.boolean  "shared_ownership_scheme",                                            default: false
+    t.integer  "conveyancing_quotes_sale_and_purchases_id"
+    t.index ["conveyancing_quotes_sale_and_purchases_id"], name: "sale_and_purchases_purchase_id", using: :btree
     t.index ["conveyancing_quotes_user_id"], name: "purchases_user_id", using: :btree
   end
 
@@ -235,28 +237,26 @@ ActiveRecord::Schema.define(version: 20170706140017) do
   end
 
   create_table "conveyancing_quotes_sale_and_purchases", force: :cascade do |t|
-    t.string   "title",                                   null: false
-    t.string   "forename",                                null: false
-    t.string   "surname",                                 null: false
     t.string   "phone"
-    t.string   "email",                                   null: false
     t.string   "timeframe"
-    t.decimal  "sale_price",     precision: 10, scale: 2, null: false
-    t.decimal  "purchase_price", precision: 10, scale: 2, null: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "conveyancing_quotes_user_id"
+    t.index ["conveyancing_quotes_user_id"], name: "sales_and_purchases_user_id", using: :btree
   end
 
   create_table "conveyancing_quotes_sales", force: :cascade do |t|
     t.string   "phone"
     t.string   "timeframe"
-    t.decimal  "price",                       precision: 10, scale: 2,                 null: false
-    t.datetime "created_at",                                                           null: false
-    t.datetime "updated_at",                                                           null: false
+    t.decimal  "price",                                     precision: 10, scale: 2,                 null: false
+    t.datetime "created_at",                                                                         null: false
+    t.datetime "updated_at",                                                                         null: false
     t.integer  "conveyancing_quotes_user_id"
-    t.boolean  "leasehold_house",                                      default: false
-    t.boolean  "leasehold_apartment",                                  default: false
-    t.boolean  "shared_ownership_scheme",                              default: false
+    t.boolean  "leasehold_house",                                                    default: false
+    t.boolean  "leasehold_apartment",                                                default: false
+    t.boolean  "shared_ownership_scheme",                                            default: false
+    t.integer  "conveyancing_quotes_sale_and_purchases_id"
+    t.index ["conveyancing_quotes_sale_and_purchases_id"], name: "sale_and_purchases_sale_id", using: :btree
     t.index ["conveyancing_quotes_user_id"], name: "sales_user_id", using: :btree
   end
 
@@ -382,10 +382,22 @@ ActiveRecord::Schema.define(version: 20170706140017) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
   end
 
+  create_table "job_applications", force: :cascade do |t|
+    t.integer  "job_listing_id"
+    t.string   "forename",       null: false
+    t.string   "surname",        null: false
+    t.string   "email"
+    t.string   "phone"
+    t.string   "cv",             null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["job_listing_id"], name: "index_job_applications_on_job_listing_id", using: :btree
+  end
+
   create_table "job_listings", force: :cascade do |t|
-    t.string   "title",                null: false
-    t.text     "summary",              null: false
-    t.text     "description",          null: false
+    t.string   "title",                              null: false
+    t.text     "summary",                            null: false
+    t.text     "description",                        null: false
     t.string   "salary"
     t.date     "start_date"
     t.string   "role_type"
@@ -393,12 +405,14 @@ ActiveRecord::Schema.define(version: 20170706140017) do
     t.string   "contract_type"
     t.integer  "office_id"
     t.date     "application_deadline"
-    t.datetime "publish_at",           null: false
+    t.datetime "publish_at",                         null: false
     t.datetime "expire_at"
     t.string   "slug"
     t.string   "suggested_url"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "job_applications_count", default: 0
+    t.string   "application_method"
     t.index ["office_id"], name: "index_job_listings_on_office_id", using: :btree
     t.index ["slug"], name: "index_job_listings_on_slug", using: :btree
   end
@@ -454,6 +468,7 @@ ActiveRecord::Schema.define(version: 20170706140017) do
     t.float    "longitude"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.string   "page_title"
     t.index ["office_location_id"], name: "index_offices_on_office_location_id", using: :btree
     t.index ["slug"], name: "index_offices_on_slug", using: :btree
     t.index ["suggested_url"], name: "index_offices_on_suggested_url", using: :btree
@@ -701,6 +716,7 @@ ActiveRecord::Schema.define(version: 20170706140017) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.boolean  "homepage_highlight", default: false
+    t.boolean  "protected",          default: false, null: false
     t.index ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
   end
 
@@ -711,6 +727,16 @@ ActiveRecord::Schema.define(version: 20170706140017) do
     t.datetime "updated_at",           null: false
     t.index ["resource_category_id"], name: "index_resources_categorisations_on_resource_category_id", using: :btree
     t.index ["resource_id"], name: "index_resources_categorisations_on_resource_id", using: :btree
+  end
+
+  create_table "resources_downloads", force: :cascade do |t|
+    t.integer  "resource_id"
+    t.string   "forename",    null: false
+    t.string   "surname",     null: false
+    t.string   "email",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["resource_id"], name: "index_resources_downloads_on_resource_id", using: :btree
   end
 
   create_table "rich_snippets", force: :cascade do |t|
@@ -767,6 +793,7 @@ ActiveRecord::Schema.define(version: 20170706140017) do
     t.string   "layout",                   default: "application", null: false
     t.string   "style",                    default: "basic",       null: false
     t.boolean  "landing_page",             default: false
+    t.boolean  "show_contact_form",        default: false
     t.index ["audience_id"], name: "index_services_on_audience_id", using: :btree
     t.index ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
     t.index ["slug"], name: "index_services_on_slug", using: :btree
@@ -829,6 +856,14 @@ ActiveRecord::Schema.define(version: 20170706140017) do
     t.index ["service_id"], name: "index_services_offices_on_service_id", using: :btree
   end
 
+  create_table "services_page_hierarchies", id: false, force: :cascade do |t|
+    t.integer "ancestor_id",   null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations",   null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "services_page_anc_desc_idx", unique: true, using: :btree
+    t.index ["descendant_id"], name: "services_page_desc_idx", using: :btree
+  end
+
   create_table "services_pages", force: :cascade do |t|
     t.string   "title",                                            null: false
     t.string   "suggested_url"
@@ -847,8 +882,8 @@ ActiveRecord::Schema.define(version: 20170706140017) do
     t.datetime "updated_at",                                       null: false
     t.text     "summary"
     t.integer  "position",                             default: 0, null: false
+    t.integer  "parent_id"
     t.index ["service_id"], name: "index_services_pages_on_service_id", using: :btree
-    t.index ["slug"], name: "index_services_pages_on_slug", unique: true, using: :btree
   end
 
   create_table "services_related_services", force: :cascade do |t|
@@ -1062,11 +1097,15 @@ ActiveRecord::Schema.define(version: 20170706140017) do
   add_foreign_key "banners", "services"
   add_foreign_key "conveyancing_quotes_addresses", "conveyancing_quotes_users"
   add_foreign_key "conveyancing_quotes_deeds", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_purchases", "conveyancing_quotes_sale_and_purchases", column: "conveyancing_quotes_sale_and_purchases_id"
   add_foreign_key "conveyancing_quotes_purchases", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_sale_and_purchases", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_sales", "conveyancing_quotes_sale_and_purchases", column: "conveyancing_quotes_sale_and_purchases_id"
   add_foreign_key "conveyancing_quotes_sales", "conveyancing_quotes_users"
   add_foreign_key "events", "event_locations"
   add_foreign_key "events_categorisations", "event_categories"
   add_foreign_key "events_categorisations", "events"
+  add_foreign_key "job_applications", "job_listings"
   add_foreign_key "job_listings", "offices"
   add_foreign_key "offices", "office_locations"
   add_foreign_key "onpage_navigations_accreditations", "accreditations"
@@ -1088,6 +1127,7 @@ ActiveRecord::Schema.define(version: 20170706140017) do
   add_foreign_key "onpage_navigations_videos", "videos"
   add_foreign_key "resources_categorisations", "resource_categories"
   add_foreign_key "resources_categorisations", "resources"
+  add_foreign_key "resources_downloads", "resources"
   add_foreign_key "rich_snippets", "seo_entries"
   add_foreign_key "services", "audiences", on_delete: :nullify
   add_foreign_key "services_accreditations", "accreditations"

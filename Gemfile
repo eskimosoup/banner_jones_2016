@@ -65,6 +65,7 @@ group :development do
   gem 'flamegraph', '~> 0.1.0'
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet', '~> 5.1.0'
+  gem 'letter_opener'
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
@@ -74,8 +75,9 @@ gem 'geocoder'
 gem 'therubyracer', platforms: :ruby
 gem 'twitter'
 gem 'conveyancing_calculator', github: 'eskimosoup/conveyancing_calculator'
-#gem 'conveyancing_calculator', path: '../conveyancing_calculator'
-gem 'stamp_duty', '~> 0.1.0'
+# gem 'conveyancing_calculator', path: '../conveyancing_calculator'
+# gem 'stamp_duty', path: '../stamp_duty'
+gem 'stamp_duty', git: 'git@github.com:eskimosoup/stamp_duty.git', branch: 'master'
 gem 'simple_form', '~> 3.2.1'
 gem 'pdfkit', '~> 0.8.2'
 

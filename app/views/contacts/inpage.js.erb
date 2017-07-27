@@ -1,0 +1,5 @@
+$('.inpage-contact-form').html('<%= j render 'contacts/inpage_form' %>')
+<% if @contact.valid? %>
+  $('.inpage-contact-form .field input, .inpage-contact-form .field select, .inpage-contact-form textarea').val('');
+<% end %>
+$('.page-aside-navigation-content, .page-content').matchHeight();

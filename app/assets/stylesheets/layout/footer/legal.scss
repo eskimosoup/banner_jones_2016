@@ -24,4 +24,10 @@
       font-size: rem(12px);
     }
   }
+
+  &.text-left {
+    p {
+      text-align: left;
+    }
+  }
 }

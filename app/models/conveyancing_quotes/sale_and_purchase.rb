@@ -1,31 +1,30 @@
-class ConveyancingQuotes::SaleAndPurchase < ApplicationRecord
-  validates :email, presence: true
-  validates :forename, presence: true
-  validates :phone, presence: true
-  validates :purchase_price, presence: true, numericality: { greater_than: 0 }
-  validates :sale_price, presence: true, numericality: { greater_than: 0 }
-  validates :surname, presence: true
-  validates :title, presence: true
+module ConveyancingQuotes
+  class SaleAndPurchase < ApplicationRecord
+    belongs_to :user,
+               foreign_key: 'conveyancing_quotes_user_id'
 
-  delegate :stamp_duty, to: :stamp_duty_calculator
+    has_one :sale,
+            dependent: :destroy,
+            foreign_key: 'conveyancing_quotes_sale_and_purchases_id'
 
-  def sale_fee
-    sale_conveyancing_calculator.fee
-  end
+    has_one :purchase,
+            dependent: :destroy,
+            foreign_key: 'conveyancing_quotes_sale_and_purchases_id'
 
-  def purchase_fee
-    purchase_conveyancing_calculator.fee
-  end
+    after_create :set_user_sale_and_purchase
 
-  def purchase_conveyancing_calculator
-    @purchase_conveyancing_calculator ||= ConveyancingCalculator::Purchase.new(purchase_price)
-  end
+    accepts_nested_attributes_for :sale,
+                                  reject_if: :all_blank,
+                                  allow_destroy: true
 
-  def sale_conveyancing_calculator
-    @sale_conveyancing_calculator ||= ConveyancingCalculator::Sale.new(sale_price)
-  end
+    accepts_nested_attributes_for :purchase,
+                                  reject_if: :all_blank,
+                                  allow_destroy: true
 
-  def stamp_duty_calculator
-    @stamp_duty_calculator ||= StampDuty.for(purchase_price)
+    def set_user_sale_and_purchase
+      user.sale = sale
+      user.purchase = purchase
+      user.save!
+    end
   end
 end
