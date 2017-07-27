@@ -37,7 +37,7 @@
         </span>
         <% if yield(:custom_telephone).present? %>
           <% phone = yield(:custom_telephone) %>
-        <% elsif !defined?(phone) %>        
+        <% elsif !defined?(phone) %>
           <% phone = global_site_settings['Phone'] %>
         <% end %>
 
@@ -62,7 +62,7 @@
 
   <div class="primary-footer-navigation">
     <ul class="primary-footer-navigation-links">
-      <li>Copyright &copy; 2016</li>
+      <li>Copyright &copy; <%= Date.today.year %></li>
       <%= nested_menu_items(menu_items: @footer_menu.menu_items) %>
     </ul>
   </div>
