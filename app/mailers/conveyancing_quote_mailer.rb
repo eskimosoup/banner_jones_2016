@@ -1,5 +1,6 @@
 class ConveyancingQuoteMailer < ApplicationMailer
   # ConveyancingQuoteMailer.new_quote(ConveyancingQuotes::User.first).deliver_now
+  layout false, only: 'new_quote'
   def new_quote(user)
     @user = user
     mail to: conveyancing_email,
