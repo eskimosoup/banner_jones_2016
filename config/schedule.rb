@@ -21,5 +21,5 @@
 
 # rake conveyancing:incomplete_submissions_mailer
 every 1.day, at: '11:59 pm' do
-  runner 'rake conveyancing:incomplete_submissions_mailer'
+  rake 'conveyancing:incomplete_submissions_mailer'
 end
