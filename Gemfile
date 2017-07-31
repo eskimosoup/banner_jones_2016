@@ -82,3 +82,4 @@ gem 'simple_form', '~> 3.2.1'
 gem 'pdfkit', '~> 0.8.2'
 
 gem 'cocoon'
+gem 'whenever'

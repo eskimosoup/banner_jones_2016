@@ -7,7 +7,7 @@ module Optimadmin
       def index
         @users = @location.users.where(submitted: true).field_order(params[:order])
                           .field_search(params[:search], 'location')
-        @incomplete = @location.users.where.not(submitted: true).field_order(params[:order])
+        @incomplete_users = @location.users.where(submitted: nil).field_order(params[:order])
                                .field_search(params[:search], 'location')
             end
 

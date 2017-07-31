@@ -7,19 +7,13 @@
     <!-- <%= render 'optimadmin/shared/module/index/order', options: [['A-Z', 'title ASC'], ['Z-A', 'title DESC'], ['Displayed', 'display DESC'], ['Hidden', 'display ASC']] %> -->
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @users.size, path: root_url %>
   </div>
-  <div class="row collapse module-list-index header">
-    <%= list_item 'large-8 small-8' do %>
-      Name
-    <% end %>
-    <%= list_item('large-2')  { 'Date' } %>
-    <%= list_item('large-1')  { 'Submitted' } %>
-    <%= list_item('large-1 hide-for-medium-down text-center last')  { 'View' } %>
-    <%#= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
-  </div>
+
   <!-- <div class="module-sortable" data-module="ConveyancingQuotes::QuoteLocation"> -->
+  <%= render partial: 'user_header' %>
   <%= render partial: 'user', collection: @users, as: :user %>
   <!-- </div> -->
 
   <h2>Incomplete</h2>
-  <%= render partial: 'user', collection: @incomplete_users, as: :user %>  
+  <%= render partial: 'user_header' %>
+  <%= render partial: 'user', collection: @incomplete_users, as: :user %>
 </div>

@@ -1,0 +1,23 @@
+<h1>Incomplete Conveyancing Quote Submissions</h1>
+
+<%= l Date.today, format: :long %>
+
+<% @users.each do |location, users| %>
+  <h2><%= location.location %></h2>
+
+  <% users.each do |user| %>
+    <p>
+      <%= user.forename %>
+      <%= user.surname %>
+    </p>
+    <p>
+      <%= user.phone %>
+      <%= mail_to user.email %>
+    </p>
+
+    <p>Buying: <%= user.buying? ? 'Yes' : 'No' %> - selling: <%= user.selling? ? 'Yes' : 'No' %></p>
+
+    <%= link_to 'View more', optimadmin.conveyancing_quotes_quote_location_user_url(user.quote_location, user) %>
+    <hr />
+  <% end %>
+<% end %>
