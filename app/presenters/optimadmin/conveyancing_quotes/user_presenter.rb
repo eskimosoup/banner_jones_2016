@@ -4,10 +4,14 @@ module Optimadmin
       include Optimadmin::PresenterMethods
 
       presents :user
-      delegate :id, :forename, :surname, to: :user
+      delegate :id, :forename, :surname, :phone, to: :user
 
       def toggle_title
         h.link_to full_name, h.conveyancing_quotes_quote_location_user_path(user.quote_location, user)
+      end
+
+      def email
+        h.mail_to user.email
       end
 
       def created_date
@@ -20,6 +24,14 @@ module Optimadmin
 
       def submitted
         user.submitted? ? 'Yes' : 'No'
+      end
+
+      def buying
+        user.buying? ? 'Yes' : 'No'
+      end
+
+      def selling
+        user.selling? ? 'Yes' : 'No'
       end
 
       private
