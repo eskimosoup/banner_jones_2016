@@ -1,6 +1,7 @@
 <% total = fees_total = vat_total = 0 %>
-<h2>For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
-<table style="width:840px; text-align: left;">
+<h2 style="Margin: 0; Margin-bottom: 10px; Margin-top: 10px; border-bottom: 5px solid #fcb830; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 600; line-height: 1.2; margin: 0 0 15px; margin-bottom: 10px; padding: 0 0 10px 10px; text-align: left; word-wrap: normal;">For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
+
+<table style="text-align: left;font-size: 14px;">
   <tr>
     <th>Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
       <%= '<p>This is a second home or buy to let purchase</p>'.html_safe if purchase.second_home_or_buy_to_let? %>
