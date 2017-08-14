@@ -1,17 +1,18 @@
 class ConveyancingQuoteMailer < ApplicationMailer
-  # ConveyancingQuoteMailer.new_quote(ConveyancingQuotes::User.first).deliver_now
   layout false, only: 'new_quote'
+
+  # ConveyancingQuoteMailer.new_quote(ConveyancingQuotes::User.first).deliver_now
   def new_quote(user)
     @user = user
 
-     delivery_options = {
-       address: ENV['EMAIL_HOST']
-     }
+    delivery_options = {
+      address: ENV['EMAIL_HOST']
+    }
 
-    mail # to: conveyancing_email,
-         to: 'paul@optimisd.today',
+    # to: conveyancing_email,
+    mail to: 'paul@optimisd.today',
          from: 'info@bannerjones.co.uk',
-         subject: "Conveyancing Quote Completed #{site_name}" # ,
+         subject: "Conveyancing Quote Completed #{site_name}", # ,
          delivery_method_options: delivery_options
   end
 
