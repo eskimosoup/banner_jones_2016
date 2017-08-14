@@ -53,8 +53,6 @@
 }
 
 .header-contact {
-  display: none;
-
   @include breakpoint(large) {
     @include grid-column(6);
     display: block;
@@ -70,6 +68,10 @@
   line-height: 1.1;
   margin: rem(47px 70px 0 0);
   vertical-align: top;
+
+  @include breakpoint(small) {
+    margin: 0;
+  }
 
   @include media('<=1024px') {
     font-size: rem(22px);
@@ -88,6 +90,16 @@
   .header-cta-send-an-enquiry {
     font-size: rem(18px);
     color: $dark-purple;
+
+    @include breakpoint(small) {
+      display: none;
+    }
+  }
+
+  div {
+    @include breakpoint(small) {
+      display: none;
+    }
   }
 }
 
@@ -124,6 +136,10 @@
 .header-rich-snippets {
   display: inline-block;
   height: 76px;
+
+  @include breakpoint(small) {
+    display: none;
+  }
 
   @include breakpoint(large) {
     margin: rem(30px 0 0);

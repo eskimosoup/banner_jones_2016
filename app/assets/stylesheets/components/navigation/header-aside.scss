@@ -1,6 +1,10 @@
 .header-aside-navigation {
   list-style: none;
 
+  @include breakpoint(small) {
+    display: none;
+  }
+
   .menu-item {
     display: inline-block;
     margin: 0 rem(9px);
