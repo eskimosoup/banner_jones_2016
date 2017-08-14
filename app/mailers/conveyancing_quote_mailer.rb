@@ -10,10 +10,10 @@ class ConveyancingQuoteMailer < ApplicationMailer
     }
 
     # to: conveyancing_email,
-    mail to: 'paul@optimisd.today',
-         from: 'info@bannerjones.co.uk',
-         subject: "Conveyancing Quote Completed #{site_name}", # ,
-         delivery_method_options: delivery_options
+    # mail to: 'paul@optimisd.today',
+    #     from: 'info@bannerjones.co.uk',
+    #     subject: "Conveyancing Quote Completed #{site_name}", # ,
+    #     delivery_method_options: delivery_options
   end
 
   def incomplete_users(users)
