@@ -69,7 +69,7 @@
   margin: rem(47px 70px 0 0);
   vertical-align: top;
 
-  @include breakpoint(small) {
+  @include breakpoint(small only) {
     margin: 0;
   }
 
@@ -91,13 +91,13 @@
     font-size: rem(18px);
     color: $dark-purple;
 
-    @include breakpoint(small) {
+    @include breakpoint(small only) {
       display: none;
     }
   }
 
   div {
-    @include breakpoint(small) {
+    @include breakpoint(small only) {
       display: none;
     }
   }
@@ -137,7 +137,7 @@
   display: inline-block;
   height: 76px;
 
-  @include breakpoint(small) {
+  @include breakpoint(small only) {
     display: none;
   }
 
