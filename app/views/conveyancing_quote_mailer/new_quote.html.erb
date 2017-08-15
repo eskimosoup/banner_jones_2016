@@ -333,7 +333,7 @@
                             <%= render 'conveyancing_quote_mailer/new_quote/address', address: @user.addresses.correspondence if @user.addresses.correspondence.present? %>
                             <%= render 'conveyancing_quote_mailer/new_quote/address', address: @user.addresses.property if @user.addresses.property.present? %>
                             <% if @user.deeds.present? %>
-                              <h3 style="Margin: 0; Margin-bottom: 10px; Margin-top: 10px; border-bottom: 5px solid #fcb830; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 600; line-height: 1.2; margin: 0 0 15px; margin-bottom: 10px; padding: 0 0 10px 10px; text-align: left; word-wrap: normal;">Your Details</h3>                              
+                              <h3 style="Margin: 0; Margin-bottom: 10px; Margin-top: 10px; border-bottom: 5px solid #fcb830; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 600; line-height: 1.2; margin: 0 0 15px; margin-bottom: 10px; padding: 0 0 10px 10px; text-align: left; word-wrap: normal;">Deeds</h3>                              
                               <%= render partial: 'conveyancing_quote_mailer/new_quote/deed', collection: @user.deeds, as: :deed %>
                             <% end %>
                           </td>

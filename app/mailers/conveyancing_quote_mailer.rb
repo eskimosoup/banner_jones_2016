@@ -9,7 +9,8 @@ class ConveyancingQuoteMailer < ApplicationMailer
       address: ENV['EMAIL_HOST']
     }
 
-    mail to: conveyancing_email,
+    mail to: @user.email,
+         cc: conveyancing_email,
          from: 'info@bannerjones.co.uk',
          subject: "Conveyancing Quote Completed #{site_name}",
          delivery_method_options: delivery_options
