@@ -1,7 +1,7 @@
 .header-aside-navigation {
   list-style: none;
 
-  @include breakpoint(small) {
+  @include breakpoint(small only) {
     display: none;
   }
 
