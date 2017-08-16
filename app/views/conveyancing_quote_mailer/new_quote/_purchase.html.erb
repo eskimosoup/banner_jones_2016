@@ -1,28 +1,28 @@
 <% total = fees_total = vat_total = 0 %>
-<h2 style="Margin: 0; Margin-bottom: 10px; Margin-top: 10px; border-bottom: 5px solid #fcb830; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 600; line-height: 1.2; margin: 0 0 15px; margin-bottom: 10px; padding: 0 0 10px 10px; text-align: left; word-wrap: normal;">For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
+<h2 style="Margin: 0; Margin-bottom: 10px; Margin-top: 30px; border-bottom: 5px solid #fcb830; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 600; line-height: 1.2; margin: 0 0 15px; margin-bottom: 10px; padding: 0 0 10px 10px; text-align: left; word-wrap: normal;">For your standard <%= purchase.leasehold? ? 'leasehold' : 'freehold' %> purchase</h2>
 
 <table style="text-align: left;font-size: 14px;">
   <tr>
-    <th>Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
+    <th style="text-align: left;">Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
       <%= '<p>This is a second home or buy to let purchase</p>'.html_safe if purchase.second_home_or_buy_to_let? %>
     </th>
-    <th>Fee</th>
-    <th>VAT</th>
-    <th>Total</th>
+    <th style="text-align: left;">Fee</th>
+    <th style="text-align: left;">VAT</th>
+    <th style="text-align: left;">Total</th>
   </tr>
   <tr>
-    <td>
+    <td style="text-align: left;">
       <strong>Banner Jones Conveyancing Costs</strong>
     </td>
-    <td>
+    <td style="text-align: left;">
       <%= number_to_currency purchase.fee %>
       <% fees_total += purchase.fee %>
     </td>
-    <td>
+    <td style="text-align: left;">
       <%= number_to_currency purchase.vat %>
       <% vat_total += purchase.vat %>
     </td>
-    <td>
+    <td style="text-align: left;">
       <%= number_to_currency purchase.total %>
       <% total += purchase.total %>
     </td>
@@ -31,16 +31,16 @@
     <% cost = ConveyancingCalculator.configuration.additional_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
     <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
     <tr>
-      <td><%= content_tag :strong, additional_cost.to_s.humanize.titlecase %></td>
-      <td>
+      <td style="text-align: left;"><%= content_tag :strong, additional_cost.to_s.humanize.titlecase %></td>
+      <td style="text-align: left;">
         <%= number_to_currency cost %>
         <% fees_total += cost %>
       </td>
-      <td>
+      <td style="text-align: left;">
         <%= number_to_currency vat %>
         <% vat_total += vat %>
       </td>
-      <td>
+      <td style="text-align: left;">
         <%= number_to_currency cost + vat %>
         <% total += (cost + vat) %>
       </td>
@@ -53,56 +53,56 @@
     </td>
   </tr>
   <tr>
-    <th>Description.</th>
-    <th>Fee</th>
-    <th>VAT</th>
-    <th>Total</th>
+    <th style="text-align: left;">Description.</th>
+    <th style="text-align: left;">Fee</th>
+    <th style="text-align: left;">VAT</th>
+    <th style="text-align: left;">Total</th>
   </tr>
   <tr>
-    <td><strong>Stamp Duty Land Tax</strong></td>
-    <td>
+    <td style="text-align: left;"><strong>Stamp Duty Land Tax</strong></td>
+    <td style="text-align: left;">
       <%= number_to_currency purchase.stamp_duty %>
       <% fees_total += purchase.stamp_duty %>
     </td>
-    <td>
+    <td style="text-align: left;">
       -
     </td>
-    <td>
+    <td style="text-align: left;">
       <%= number_to_currency purchase.stamp_duty %>
       <% total += purchase.stamp_duty %>
     </td>
   </tr>
   <tr class="conveyancing-cost">
-    <td>
+    <td style="text-align: left;">
       <strong>Land Registry Fee</strong>
     </td>
-    <td>
+    <td style="text-align: left;">
       <%= number_to_currency purchase.land_fee_calculator.fee %>
       <% fees_total += purchase.land_fee_calculator.fee %>
     </td>
-    <td>
+    <td style="text-align: left;">
       -
     </td>
-    <td>
+    <td style="text-align: left;">
       <%= number_to_currency purchase.land_fee_calculator.fee %>
       <% total += purchase.land_fee_calculator.fee  %>
     </td>
   </tr>
   <tr>
-    <td>
+    <td style="text-align: left;">
       <strong>Premium Search Package</strong>
     </td>
-    <td>
+    <td style="text-align: left;">
       <% cost = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>
       <%= number_to_currency cost %>
       <% fees_total += cost %>
     </td>
-    <td>
+    <td style="text-align: left;">
       <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
       <%= number_to_currency vat %>
       <% vat_total += vat %>
     </td>
-    <td>
+    <td style="text-align: left;">
       <%= number_to_currency (cost + vat) %>
       <% total += (cost + vat)  %>
     </td>
@@ -112,7 +112,7 @@
       Subtotal<br />
       <strong>Overall Total</strong>
     </td>
-    <td>
+    <td style="text-align: left;">
       <%= number_to_currency fees_total %><br />
       <strong><%= number_to_currency total %></strong>
     </td>
