@@ -1,4 +1,4 @@
-$(document).on('click', '.ga-event', function(e) {
+$(document).on('click', '.ga-event:not(.remote-form-submit)', function(e) {
   var eventCategory = $(this).data('event-category');
   var eventAction = $(this).data('event-action');
   var eventLabel = $(this).data('event-label');
@@ -17,4 +17,18 @@ $(document).on('click', '.ga-event', function(e) {
       // }
     });
   }
+});
+
+$(document).ready(function() {
+  $('.remote-contact-form-event').bind('ajax:success', function(evt, data, status, xhr) {
+    if (typeof ga === 'function') {
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Form Submission', // required
+        eventAction: 'Submit', // required
+        eventLabel: 'Contact Us'
+      });
+      console.log('Landing page form submission successful');
+    }
+  });
 });

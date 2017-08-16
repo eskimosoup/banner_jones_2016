@@ -4,7 +4,7 @@
 
 <%= render 'shared/flash_messages' %>
 
-<%= form_for @contact, url: contacts_path, remote: true, html: { class: 'contact-form' } do |f| %>
+<%= form_for @contact, url: contacts_path, remote: true, html: { class: 'contact-form remote-contact-form-event' } do |f| %>
   <h2 class="request-contact-title">Contact us</h2>
 
   <% if @contact.errors.any? %>
