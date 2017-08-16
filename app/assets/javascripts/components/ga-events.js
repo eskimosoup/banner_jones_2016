@@ -20,7 +20,7 @@ $(document).on('click', '.ga-event:not(.remote-form-submit)', function(e) {
 });
 
 $(document).ready(function() {
-  $('#landing-page-contact-form').bind('ajax:success', function(evt, data, status, xhr) {
+  $('.remote-contact-form-event').bind('ajax:success', function(evt, data, status, xhr) {
     if (typeof ga === 'function') {
       ga('send', {
         hitType: 'event',
