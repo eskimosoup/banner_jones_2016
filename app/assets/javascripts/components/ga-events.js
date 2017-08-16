@@ -10,6 +10,7 @@ $(document).on('click', '.ga-event', function(e) {
       eventCategory: eventCategory, // required
       eventAction: eventAction, // required
       eventLabel: eventLabel,
+      transport: 'beacon',
       // eventValue: eventValue,
       // hitCallback: function() {
       //   console.log('ga Event, category: "' + eventCategory + '", action: "' + eventAction + '", label: "' + eventLabel + '"');
