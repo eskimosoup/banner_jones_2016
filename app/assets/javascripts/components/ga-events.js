@@ -11,9 +11,9 @@ $(document).on('click', '.ga-event', function(e) {
       eventAction: eventAction, // required
       eventLabel: eventLabel,
       // eventValue: eventValue,
-      // hitCallback: function() {
-      //   console.log('ga Event, category: "' + eventCategory + '", action: "' + eventAction + '", label: "' + eventLabel + '"');
-      // }
+      hitCallback: function() {
+        console.log('ga Event, category: "' + eventCategory + '", action: "' + eventAction + '", label: "' + eventLabel + '"');
+      }
     });
   }
 });
