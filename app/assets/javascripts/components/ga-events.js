@@ -4,8 +4,6 @@ $(document).on('click', '.ga-event', function(e) {
   var eventLabel = $(this).data('event-label');
   // var eventValue = $(this).data('event-value');
 
-  console.log('ga Event, category: "' + eventCategory + '", action: "' + eventAction + '", label: "' + eventLabel + '"');
-
   if (eventCategory && eventAction && typeof ga === 'function') {
     ga('send', {
       hitType: 'event',
@@ -13,9 +11,9 @@ $(document).on('click', '.ga-event', function(e) {
       eventAction: eventAction, // required
       eventLabel: eventLabel,
       // eventValue: eventValue,
-      hitCallback: function() {
-        console.log('ga Event, category: "' + eventCategory + '", action: "' + eventAction + '", label: "' + eventLabel + '"');
-      }
+      // hitCallback: function() {
+      //   console.log('ga Event, category: "' + eventCategory + '", action: "' + eventAction + '", label: "' + eventLabel + '"');
+      // }
     });
   }
 });
