@@ -6,7 +6,6 @@ class Services::PagesController < ApplicationController
     @onpage_navigations = @service.displayed_onpage_navigations
     @onpage_navigation_links = @onpage_navigations.displayed_navigation_link
     @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
-    @hide_sticky_cta = true
     render layout: @page.layout
   end
 

@@ -24,7 +24,7 @@ $(document).ready(function() {
     if (typeof ga === 'function') {
       ga('send', {
         hitType: 'event',
-        eventCategory: 'Form Submission', // required
+        eventCategory: 'Submission Form Landing Page', // required
         eventAction: 'Submit', // required
         eventLabel: 'Contact Us'
       });
