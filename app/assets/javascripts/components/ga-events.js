@@ -5,7 +5,9 @@ $(document).on('click', '.ga-event:not(.remote-form-submit)', function(e) {
   // var eventValue = $(this).data('event-value');
 
   if (eventCategory && eventAction && typeof ga === 'function') {
-    ga('send', {
+    // https://stackoverflow.com/a/29434548
+    var trackerName = ga.getAll()[0].get('name');
+    ga(trackerName + '.send', {
       hitType: 'event',
       eventCategory: eventCategory, // required
       eventAction: eventAction, // required
@@ -22,7 +24,9 @@ $(document).on('click', '.ga-event:not(.remote-form-submit)', function(e) {
 $(document).ready(function() {
   $('.remote-contact-form-event').bind('ajax:success', function(evt, data, status, xhr) {
     if (typeof ga === 'function') {
-      ga('send', {
+      // https://stackoverflow.com/a/29434548
+      var trackerName = ga.getAll()[0].get('name');
+      ga(trackerName + '.send', {
         hitType: 'event',
         eventCategory: 'Submission Form Landing Page', // required
         eventAction: 'Submit', // required
