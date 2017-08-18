@@ -1,7 +1,7 @@
 namespace :conveyancing do
   desc 'Send a daily email with incomplete conveyancing submissions'
   task incomplete_submissions_mailer: :environment do
-    date = Time.zone.now
+    date = (Time.zone.now - 1.day)
     users = ConveyancingQuotes::User.includes(:quote_location)
                                     .where(
                                       created_at: (date.beginning_of_day..date.end_of_day),
