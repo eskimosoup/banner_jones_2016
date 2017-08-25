@@ -109,7 +109,8 @@
 }
 
 // Let's just look over this
-.menu-item .meganav-button {
+.menu-item .meganav-button,
+.page-inner-content .meganav-button {
   background: $black;
   border-radius: 5px;
   color: $white;
@@ -128,6 +129,10 @@
     background: $red;
     color: $white;
   }
+}
+
+.page-inner-content .meganav-button {
+  float: none;
 }
 
 .meganav-dropdown-team-member {

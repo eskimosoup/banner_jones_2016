@@ -60,6 +60,23 @@
             </li>
           <% end %>
         <% end %>
+
+        <% if @service.title == 'London Property Solicitors' || (@service.root.present? && @service.root.title == 'London Property Solicitors') %>
+          <%= content_for :javascript do %>
+            <script>
+              $(function() {
+                // https://stackoverflow.com/a/6753486
+                var $select = $('.conveyancing-cta-button');
+                var $div = $('.conveyancing-cta-aside-button');
+                var attributes = $select.prop("attributes");
+                $.each(attributes, function() {
+                  $div.attr(this.name, this.value);
+                });
+              });
+            </script>
+          <% end %>
+          <li><%= link_to 'Conveyancing Calcuator', new_conveyancing_quotes_location_users_path(ConveyancingQuotes::QuoteLocation.find(1)), class: 'conveyancing-cta-aside-button' %></li>
+        <% end %>
       </ul>
 
       <ul class="page-aside-navigation-links-list page-aside-child-navigation-links-list">
