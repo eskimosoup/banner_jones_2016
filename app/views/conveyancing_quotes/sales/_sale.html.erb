@@ -75,7 +75,10 @@
         <%= link_to I18n.t("conveyancing_quotes.download_button"),
           conveyancing_quotes_sale_download_path(sale, format: "pdf"),
           target: "_blank",
-          class: "download-button inverted-submit-button" %>
+          class: "download-button inverted-submit-button ga-event",
+          data: {
+            event_category: 'Conveyancing Calculator', event_action: 'Save Quote', event_label: 'Save Quote'
+          } %>
       </div>
       <div class="conveyancing-cost-item">
         Subtotal<br />

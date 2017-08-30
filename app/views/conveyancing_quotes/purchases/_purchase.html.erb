@@ -5,7 +5,7 @@
   <div class="conveyancing-cost headers">
     <div class="conveyancing-cost-description">
       Buying a property for <strong><%= number_to_currency purchase.price %></strong>.
-      <%= content_tag :p, 'This is a second home or buy to let purchase' if purchase.second_home_or_buy_to_let? %>      
+      <%= content_tag :p, 'This is a second home or buy to let purchase' if purchase.second_home_or_buy_to_let? %>
     </div>
     <div class="conveyancing-cost-item">
       <strong>Fee</strong>
@@ -174,7 +174,10 @@
       <%= link_to I18n.t("conveyancing_quotes.download_button"),
         conveyancing_quotes_purchase_download_path(purchase, format: "pdf"),
         target: "_blank",
-        class: "download-button inverted-submit-button" %>
+        class: "download-button inverted-submit-button ga-event",
+        data: {
+          event_category: 'Conveyancing Calculator', event_action: 'Save Quote', event_label: 'Save Quote'
+        } %>
     </div>
     <div class="conveyancing-cost-item">
       Subtotal<br />

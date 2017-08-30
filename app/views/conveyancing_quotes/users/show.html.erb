@@ -7,8 +7,8 @@
 <div class="conveyancing-quote-overview">
   <h3>Proceed with Quote</h3>
   <p>If you are happy with the quote, please proceed to accept it.</p>
-  <%= link_to 'Accept quote', new_conveyancing_quotes_deeds_path, class: 'inverted-submit-button' %>
-  <%= link_to 'Print quote', '#', class: 'inverted-submit-button print-page' %>
+  <%= link_to 'Accept quote', new_conveyancing_quotes_deeds_path, class: 'inverted-submit-button ga-event', data: { event_category: 'Conveyancing Calculator', event_action: 'Accept Quote', event_label: 'Accept Quote' } %>
+  <%= link_to 'Print quote', '#', class: 'inverted-submit-button print-page ga-event', data: { event_category: 'Conveyancing Calculator', event_action: 'Print Quote', event_label: 'Print Quote' } %>
 
   <h4>Request More Information</h4>
 
