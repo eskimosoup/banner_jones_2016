@@ -10,7 +10,7 @@ module ConveyancingQuotes
     validates :forename, presence: true
     validates :surname, presence: true
     validates :email, presence: true
-    validates :phone, presence: true
+    # validates :phone, presence: true
     validates :buying,
               presence: { message: 'can not be blank, unless selling or buying and selling' },
               if: proc{ |x| x.selling.blank? && (x.buying_and_selling == '0') }
