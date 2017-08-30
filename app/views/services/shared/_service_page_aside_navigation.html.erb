@@ -70,6 +70,9 @@
                 var $div = $('.conveyancing-cta-aside-button');
                 var attributes = $select.prop("attributes");
                 $.each(attributes, function() {
+                  if(this.name == 'class') {
+                    return true;
+                  }
                   $div.attr(this.name, this.value);
                 });
               });
