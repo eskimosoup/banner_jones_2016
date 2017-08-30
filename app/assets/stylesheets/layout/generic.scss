@@ -81,3 +81,26 @@ body {
     }
   }
 }
+
+.inner-content-cta-button {
+  background: $secondary-orange;
+  border-radius: 5px;
+  color: $white;
+  display: block;
+  line-height: 45px;
+  min-height: 45px;
+  font-size: rem(16px);
+  padding: rem(5px) rem(20px);
+  width: 100%;
+
+  &:link,
+  &:visited {
+    color: $white;
+  }
+
+  &:hover,
+  &:active {
+    background: $red;
+    color: $white;
+  }
+}
