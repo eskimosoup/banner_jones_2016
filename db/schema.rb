@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170721082218) do
+ActiveRecord::Schema.define(version: 20170830130409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -265,7 +265,7 @@ ActiveRecord::Schema.define(version: 20170721082218) do
     t.string   "forename",                                              null: false
     t.string   "surname",                                               null: false
     t.string   "email",                                                 null: false
-    t.string   "phone",                                                 null: false
+    t.string   "phone"
     t.string   "token",                                                 null: false
     t.boolean  "buying",                                default: false
     t.boolean  "selling",                               default: false
@@ -356,10 +356,10 @@ ActiveRecord::Schema.define(version: 20170721082218) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",                        null: false
-    t.boolean  "enabled",    default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "key",        null: false
+    t.boolean  "enabled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -793,7 +793,7 @@ ActiveRecord::Schema.define(version: 20170721082218) do
     t.string   "layout",                   default: "application", null: false
     t.string   "style",                    default: "basic",       null: false
     t.boolean  "landing_page",             default: false
-    t.boolean  "show_contact_form",        default: false
+    t.boolean  "show_contact_form"
     t.index ["audience_id"], name: "index_services_on_audience_id", using: :btree
     t.index ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
     t.index ["slug"], name: "index_services_on_slug", using: :btree
