@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830130409) do
+ActiveRecord::Schema.define(version: 20170901131238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -769,10 +769,10 @@ ActiveRecord::Schema.define(version: 20170830130409) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.integer  "audience_id",                                      null: false
+    t.integer  "audience_id",                                            null: false
     t.integer  "parent_id"
-    t.string   "title",                                            null: false
-    t.text     "summary",                                          null: false
+    t.string   "title",                                                  null: false
+    t.text     "summary",                                                null: false
     t.text     "content"
     t.text     "social_share_title"
     t.text     "social_share_description"
@@ -780,20 +780,24 @@ ActiveRecord::Schema.define(version: 20170830130409) do
     t.string   "image"
     t.string   "colour"
     t.string   "icon"
-    t.boolean  "homepage_highlight",       default: false
+    t.boolean  "homepage_highlight",             default: false
     t.string   "slug"
     t.string   "suggested_url"
-    t.datetime "publish_at",                                       null: false
+    t.datetime "publish_at",                                             null: false
     t.datetime "expire_at"
-    t.datetime "created_at",                                       null: false
-    t.datetime "updated_at",                                       null: false
+    t.datetime "created_at",                                             null: false
+    t.datetime "updated_at",                                             null: false
     t.integer  "inheritance_id"
-    t.boolean  "audience_highlight",       default: false
+    t.boolean  "audience_highlight",             default: false
     t.integer  "position"
-    t.string   "layout",                   default: "application", null: false
-    t.string   "style",                    default: "basic",       null: false
-    t.boolean  "landing_page",             default: false
+    t.string   "layout",                         default: "application", null: false
+    t.string   "style",                          default: "basic",       null: false
+    t.boolean  "landing_page",                   default: false
     t.boolean  "show_contact_form"
+    t.boolean  "inherit_sidebar_text"
+    t.boolean  "inherit_page_layout_content"
+    t.boolean  "hide_preferred_office_on_forms"
+    t.string   "custom_page_title"
     t.index ["audience_id"], name: "index_services_on_audience_id", using: :btree
     t.index ["inheritance_id"], name: "index_services_on_inheritance_id", using: :btree
     t.index ["slug"], name: "index_services_on_slug", using: :btree

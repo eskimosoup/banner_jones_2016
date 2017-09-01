@@ -33,6 +33,7 @@
       <li><a href="#tabs-2">Media</a></li>
       <li><a href="#tabs-3">Settings</a></li>
       <li><a href="#tabs-4">Relationships</a></li>
+      <li><a href="#tabs-5">Special considerations</a></li>
       <li>
         <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
           <%= octicon('chevron-down') %>
@@ -161,6 +162,24 @@
         <%= render 'optimadmin/shared/form_fields/videos', f: f %>
         <%= render 'optimadmin/shared/form_fields/frequently_asked_questions', f: f %>
         <%= render 'optimadmin/shared/form_fields/offices', f: f %>
+      </div>
+    <% end %>
+    <%= field_set_tag nil, id: 'tabs-5' do %>
+      <div class="field">
+        <%= f.label :inherit_sidebar_text %><br />
+        <%= f.check_box :inherit_sidebar_text %>
+      </div>
+      <div class="field">
+        <%= f.label :inherit_page_layout_content %><br />
+        <%= f.check_box :inherit_page_layout_content %>
+      </div>
+      <div class="field">
+        <%= f.label :hide_preferred_office_on_forms %><br />
+        <%= f.check_box :hide_preferred_office_on_forms %>
+      </div>
+      <div class="field">
+        <%= f.label :custom_page_title %><br />
+        <%= f.text_field :custom_page_title %>
       </div>
     <% end %>
   </div>
