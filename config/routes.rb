@@ -98,6 +98,11 @@ Rails.application.routes.draw do
       resources :services, only: :show, path: '', param: :nested_id do
         get 'testimonials'
         get 'frequently-asked-questions'
+
+        resources :service_pages,
+                only: :show,
+                path: 'pages',
+                controller: 'services/pages'
       end
     end
   end
@@ -105,6 +110,10 @@ Rails.application.routes.draw do
   get '/:audience_id/services/:parent_service_id/:service_id/:id',
       to: 'services#show',
       as: :audience_child_service
+
+  get '/:audience_id/services/:grandparent_service_id/:parent_service_id/:service_id/pages/:id',
+      to: 'services/pages#show',
+      as: :audience_child_service_page
 
   # This has to be the last route in your list
   match '*path', to: 'errors#show', via: :all, code: 404 unless Rails.application.config.consider_all_requests_local
