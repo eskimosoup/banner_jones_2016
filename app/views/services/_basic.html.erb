@@ -1,5 +1,6 @@
 <%#= content_for :custom_telephone do global_site_settings['Phone - Mediation'] end if @service.title == 'Mediation' %>
 <%= content_for :custom_telephone do global_site_settings['Phone - Wealth Management'] end if @service.layout == 'wealth_management' %>
+<%= content_for :custom_title do @service.custom_page_title end if @service.custom_page_title? %>
 
 <%= render 'services/shared/show_header' %>
 

@@ -9,10 +9,11 @@ class ServicesController < ApplicationController
     @service = find_service
     # return redirect_to '/pages/wealth-management' if @service.title == 'Wealth Management' && params[:preview].blank?
     return redirect_to nested_services_path(@service), status: :moved_permanently if request.path != nested_services_path(@service) # unless @service.friendly_id == params[:id]
-    @onpage_navigations = @service.displayed_onpage_navigations
+    @onpage_navigations = @service.inherit_page_layout_content? ? @service.root.displayed_onpage_navigations : @service.displayed_onpage_navigations
     @onpage_navigation_links = @onpage_navigations.displayed_navigation_link
     @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
     @contact = Contact.new if @service.landing_page?
+    @offices = nil if @service.hide_preferred_office_on_forms?
     render layout: @service.layout
   end
 
