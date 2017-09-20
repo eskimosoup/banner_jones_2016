@@ -14,12 +14,14 @@ $(document).ready(function() {
 
 <%= image_tag 'https://servedby.ipromote.com/ad/?src=pixel_cid&cid=VTSTDHE9QG8&cat=2800&nid=1447', width: 1, height: 1, border: 0, alt: '' %>
 
-<script type='text/javascript'>
-  window.__lo_site_id = 92237;
+<% if @payment.blank? %>
+  <script type='text/javascript'>
+    window.__lo_site_id = 92237;
 
-  (function() {
-  var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
-  wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
-  })();
-</script>
+    (function() {
+    var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+    wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+    })();
+  </script>
+<% end %>
