@@ -61,4 +61,8 @@ class ApplicationController < ActionController::Base
   def friendly_id_redirect(item)
     redirect_to item, status: 301 unless item.friendly_id == params[:id]
   end
+
+  helper_method def tracking_code(layout = 'application')
+    @tracking_code ||= SeoTrackingCodeFacade.new(layout)
+  end
 end

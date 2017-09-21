@@ -1,30 +1,28 @@
-<head>
-  <title><%= "#{@title} - " if @title %><%= global_site_settings['Name'] %> <%= content_for?(:custom_title) ? yield(:custom_title) : 'Solicitors in Sheffield, Chesterfield & Mansfield' %></title>
+<title><%= "#{@title} - " if @title %><%= global_site_settings['Name'] %> <%= content_for?(:custom_title) ? yield(:custom_title) : 'Solicitors in Sheffield, Chesterfield & Mansfield' %></title>
 
-  <%= tag :meta, name: 'description', content: (@meta_description.present? ? @meta_description : 'Expert Solicitors in Chesterfield and Sheffield. Contact Us Today on 0330 017 6392 or Email Us At info@bannerjones.co.uk' )  %>
-  <%= tag :meta, name: 'keywords', content: @meta_tags if @meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<%= tag :meta, name: 'description', content: (@meta_description.present? ? @meta_description : 'Expert Solicitors in Chesterfield and Sheffield. Contact Us Today on 0330 017 6392 or Email Us At info@bannerjones.co.uk' )  %>
+<%= tag :meta, name: 'keywords', content: @meta_tags if @meta_tags %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+<%= stylesheet_link_tag 'application', media: 'all' %>
 
-  <%= csrf_meta_tags %>
+<%= csrf_meta_tags %>
 
-  <script async src="https://use.typekit.net/lis5abc.js"></script>
-  <script>try{Typekit.load({ async: true });}catch(e){}</script>
+<script async src="https://use.typekit.net/lis5abc.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
 
-  <!-- Foundation IE8 support: http://foundation.zurb.com/forum/posts/241-foundation-5-and-ie8 -->
-  <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
-    <script src="https://s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
-    <script src="https://html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
-  <![endif]-->
+<!-- Foundation IE8 support: http://foundation.zurb.com/forum/posts/241-foundation-5-and-ie8 -->
+<!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+  <script src="https://s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.5-min.js"></script>
+  <script src="https://html5base.googlecode.com/svn-history/r38/trunk/js/selectivizr-1.0.3b.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.1.0/respond.min.js"></script>
+<![endif]-->
 
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-NKZWMV');</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NKZWMV');</script>
 
-  <%= yield :head %>
-</head>
+<%= yield :head %>
