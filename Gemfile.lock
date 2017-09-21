@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: 363b06e3dac88085c83b6a8288a2ac039699e59d
+  revision: 91e984f4f9f2f1ecdefdb932ebe1cc58df5e1402
   specs:
     capybara (2.15.1)
       addressable
@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: ee6ebf07a3ea2f42ea4067096f658d3394a64a46
+  revision: 86b76b3929938a75b56e6f4bf4eca3903e457f01
   branch: master
   specs:
-    optimadmin (0.7.1)
+    optimadmin (0.7.2)
       bcrypt
       cancancan
       carrierwave
@@ -38,16 +38,16 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: 42545b8cc15e0d0a1dcb29ae8285ce86470650f5
+  revision: 1753a64aab9a86704af9e7013d69b43c11c33779
   specs:
-    optimadmin_generators (0.6.2)
+    optimadmin_generators (0.7.1)
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: e60897e90f1ad2c73ea93238df098bd1e691b408
+  revision: 200a8c38a9c993e6567b72ae565fe3f8f1872ac1
   branch: master
   specs:
-    optimised_site (0.6.1)
+    optimised_site (0.6.2)
       amoeba
       closure_tree (~> 6.0)
       deep_cloneable (~> 2.2.2)
@@ -257,14 +257,14 @@ GEM
     mime-types-data (3.2016.0521)
     mini_magick (4.8.0)
     mini_mime (0.1.4)
-    mini_portile2 (2.2.0)
+    mini_portile2 (2.3.0)
     minitest (5.10.3)
     multi_json (1.12.2)
     multipart-post (2.0.0)
     nenv (0.3.0)
     nio4r (2.1.0)
-    nokogiri (1.8.0)
-      mini_portile2 (~> 2.2.0)
+    nokogiri (1.8.1)
+      mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -277,10 +277,9 @@ GEM
       ttfunk
     pdfkit (0.8.2)
     pg (0.21.0)
-    pry (0.10.4)
+    pry (0.11.0)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
-      slop (~> 3.4)
     pry-byebug (3.5.0)
       byebug (~> 9.1)
       pry (~> 0.10)
@@ -378,7 +377,6 @@ GEM
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.2)
-    slop (3.6.0)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -393,7 +391,7 @@ GEM
     thor (0.20.0)
     thread_safe (0.3.6)
     tilt (2.0.8)
-    tinymce-rails (4.6.6)
+    tinymce-rails (4.6.7)
       railties (>= 3.1.1)
     ttfunk (1.5.1)
     twitter (4.4.2)

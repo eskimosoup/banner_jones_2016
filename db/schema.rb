@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170901131238) do
+ActiveRecord::Schema.define(version: 20170921092908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -274,6 +274,7 @@ ActiveRecord::Schema.define(version: 20170901131238) do
     t.datetime "updated_at",                                            null: false
     t.integer  "conveyancing_quotes_quote_location_id"
     t.boolean  "submitted",                             default: false
+    t.boolean  "allow_contact"
     t.index ["conveyancing_quotes_quote_location_id"], name: "quote_location_id", using: :btree
     t.index ["token"], name: "index_conveyancing_quotes_users_on_token", using: :btree
   end
@@ -716,7 +717,7 @@ ActiveRecord::Schema.define(version: 20170901131238) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.boolean  "homepage_highlight", default: false
-    t.boolean  "protected",          default: false, null: false
+    t.boolean  "protected",          default: false
     t.index ["slug"], name: "index_resources_on_slug", unique: true, using: :btree
   end
 
@@ -758,6 +759,15 @@ ActiveRecord::Schema.define(version: 20170901131238) do
     t.boolean  "in_sitemap",       default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "seo_tracking_codes", force: :cascade do |t|
+    t.string   "layout",     null: false
+    t.text     "head"
+    t.text     "footer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["layout"], name: "index_seo_tracking_codes_on_layout", using: :btree
   end
 
   create_table "service_hierarchies", id: false, force: :cascade do |t|
