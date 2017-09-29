@@ -1,0 +1,70 @@
+<div class="page-content-wrap">
+  <% if @side_menus.present? %>
+    <aside class="page-aside-navigation">
+      <div class="page-aside-navigation-content">
+        <% present @page do |page_presenter| %>
+          <h2 class="page-aside-navigation-title">
+            <%=
+            render partial: "pages/shared/top_level_menu_item",
+                   locals: { menu_item_presenter: MenuItemPresenter.new(object: @side_menus.last.related_menu_items(@page).first.first, view_template: self, descendants_hash: nil),
+                             sub_menu_items: nil, depth: 0 } %>
+          </h2>
+
+          <div class="page-aside-navigation-links">
+            <ul class="page-aside-navigation-links-list page-aside-navigation-links-tree">
+
+              <%#= @side_menus.last.related_menu_items(@page).first.first.link.menu_resource %>
+              <%#= page_sidebar_menu_items(menu_items: @side_menus.last.related_menu_items(@side_menus.last.related_menu_items(@page).first.first.link.menu_resource)) %>
+              <%= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
+    </aside>
+  <% end %>
+
+  <div class="page-content <%= 'full' unless @side_menus.present? %>">
+    <% present @page do |page_presenter| %>
+      <h1 class="service-page-title">
+        <%= page_presenter.title %>
+      </h1>
+
+      <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-show-image') if page_presenter.show_image.present? %>
+
+      <div class="page-inner-content" role="main">
+        <%= page_presenter.content %>
+      </div>
+    <% end %>
+  </div>
+
+  <aside class="page-additional-information">
+    <div class="page-call-to-actions-title-wrap">
+      <h3 class="page-call-to-actions-title">Talk to us</h3>
+    </div>
+    <%= render 'pages/shared/call_to_actions_wealth_management', hide_office: true if @page.layout == 'wealth_management' %>
+    <%= render 'pages/shared/call_to_actions_solicitors' unless @page.layout == 'wealth_management' %>
+  </aside>
+</div>
+
+<%= render 'pages/shared/team_members' if @page.layout == 'application' %>
+
+<%= content_for :javascript do %>
+<!-- Conscious chatbot script -->
+<!-- Add script as close to the closing </body> tag as possible -->
+<!-- This script sets cookies so we suggest you enable or disable this script accordingly based on your sites user cookies preferences -->
+<script src="https://consciousbot.eu-gb.mybluemix.net/consciousbot.min.js"></script>
+
+<script>
+  consciousBot({
+    key: 'E01',
+    image: "https://consciousbot.eu-gb.mybluemix.net/assets/E01/images/chat-advert.png", // path to image
+    mobileImage: "https://consciousbot.eu-gb.mybluemix.net/assets/E01/images/mobile-advert.png", // path to image
+    mobileStyle: "bottom: 0; left: 10px;",
+	chatStyle: "bottom: 0; left: 50px;",
+    autoOpen: false,
+    height: '500',
+    width: '400'
+  });
+</script>
+<!-- end Conscious chatbot script -->
+<% end %>
