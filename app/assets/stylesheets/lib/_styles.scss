@@ -139,6 +139,11 @@
       @include breakpoint(large) {
         font-size: rem(nth($heading-size, $i));
       }
+
+      &.without-underline {
+       border-bottom: 0;
+       padding-bottom: 0;
+      }
     }
   }
 
