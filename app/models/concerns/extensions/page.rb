@@ -4,7 +4,7 @@ module Extensions
 
     included do
       LAYOUTS = %w(application wealth_management notary).freeze
-      STYLES = %w(basic).freeze
+      STYLES = %w(basic chatbot).freeze
     end
 
     class_methods do
