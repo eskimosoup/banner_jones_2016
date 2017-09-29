@@ -6,7 +6,7 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: 91e984f4f9f2f1ecdefdb932ebe1cc58df5e1402
+  revision: 7f0141d1a053e3d8301ef9036a645e7a254c4193
   specs:
     capybara (2.15.1)
       addressable
@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 86b76b3929938a75b56e6f4bf4eca3903e457f01
+  revision: 8a7819f517c08aa413d2f02b5b159cddbba5c6fd
   branch: master
   specs:
-    optimadmin (0.7.2)
+    optimadmin (0.7.3)
       bcrypt
       cancancan
       carrierwave
@@ -44,10 +44,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 200a8c38a9c993e6567b72ae565fe3f8f1872ac1
+  revision: f98f2265b11ad201e78ac8a9cb81e0ca080a64ff
   branch: master
   specs:
-    optimised_site (0.6.2)
+    optimised_site (0.6.3)
       amoeba
       closure_tree (~> 6.0)
       deep_cloneable (~> 2.2.2)
@@ -128,7 +128,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    childprocess (0.7.1)
+    childprocess (0.8.0)
       ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
     closure_tree (6.6.0)
@@ -144,6 +144,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
+    crass (1.0.2)
     database_cleaner (1.5.3)
     deep_cloneable (2.2.2)
       activerecord (>= 3.1.0, < 5.2.0)
@@ -170,7 +171,7 @@ GEM
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     geocoder (1.4.4)
-    gibbon (3.1.0)
+    gibbon (3.1.1)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)
     globalid (0.4.0)
@@ -245,13 +246,14 @@ GEM
     logging (2.2.2)
       little-plugger (~> 1.1)
       multi_json (~> 1.10)
-    loofah (2.0.3)
+    loofah (2.1.1)
+      crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     lumberjack (1.0.12)
     mail (2.6.6)
       mime-types (>= 1.16, < 4)
     memoist (0.16.0)
-    method_source (0.8.2)
+    method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
@@ -277,9 +279,9 @@ GEM
       ttfunk
     pdfkit (0.8.2)
     pg (0.21.0)
-    pry (0.11.0)
+    pry (0.11.1)
       coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
+      method_source (~> 0.9.0)
     pry-byebug (3.5.0)
       byebug (~> 9.1)
       pry (~> 0.10)
@@ -355,7 +357,7 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    selenium-webdriver (3.5.2)
+    selenium-webdriver (3.6.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.0)
     shellany (0.0.1)
