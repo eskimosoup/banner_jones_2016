@@ -1,0 +1,41 @@
+.conveyancing-landing-hero {
+  position: relative;
+  height: 100%;
+
+  &__content {
+    background: linear-gradient(to bottom, rgba($black, 1) 0%,rgba($white, 0) 100%);
+    color: $white;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00ffffff',GradientType=0 );
+    height: 100%;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    &-inner {
+      font-family: $museo-sans;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 780px;
+      width: 95%;
+
+      @include media('>=1024px') {
+        padding-bottom: rem(100px);
+        padding-top: rem(100px);
+      }
+    }
+
+    p {
+      font-size: rem(30px);
+    }
+  }
+
+  &__title {
+    font-size: rem(60px);
+    font-weight: $museo-sans--heavy;
+    margin: rem(0 0 20px);
+    text-align: center;
+  }
+}

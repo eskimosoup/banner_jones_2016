@@ -1,4 +1,4 @@
-<%= content_for :content_title do "Thanks #{@user.forename.strip}, here's your conveyancing quote" end %>
+<%#= content_for :content_title do "Thanks #{@user.forename.strip}, here's your conveyancing quote" end %>
 
 <%= render @user.purchase if @user.purchase.present? %>
 <%= render @user.sale if @user.sale.present? %>

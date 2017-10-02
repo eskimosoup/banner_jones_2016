@@ -1,17 +1,16 @@
 <%= form_for @conveyancing_quote_sale_and_purchase, url: conveyancing_quotes_sale_and_purchases_path do |f| %>
   <%= render 'shared/form_errors', object: @conveyancing_quote_sale_and_purchase %>
+  <%= f.fields_for :purchase do |purchase| %>
+    <%= render 'conveyancing_quotes/purchases/form_fields', f: purchase %>
+  <% end %>
+  <%= f.fields_for :sale do |sale| %>
+    <%= render 'conveyancing_quotes/sales/form_fields', f: sale %>
+  <% end %>
 
-  <div id="purchase">
-    <%= f.fields_for :purchase do |purchase| %>
-      <%= render 'conveyancing_quotes/purchases/form_fields', f: purchase %>
-    <% end %>
-  </div>
-  <div id="sale">
-    <%= f.fields_for :sale do |sale| %>
-      <%= render 'conveyancing_quotes/sales/form_fields', f: sale %>
-    <% end %>
-  </div>
   <div class="actions">
-    <%= f.submit 'Get Quote', class: 'inverted-submit-button' %>
+    <%= f.submit 'Get Quote',
+                  class: 'conveyancing-landing-hero-form__submit
+                          conveyancing-landing-hero-form__submit--disabled
+                          conveyancing-landing-hero-form__submit--block' %>
   </div>
 <% end %>
