@@ -95,16 +95,18 @@
   </header>
 
   <div class="conveyancing-breakdown__details">
-    <h2 class="conveyancing-breakdown__title">
-      For Selling
-    </h2>
-
-    <h2 class="conveyancing-breakdown__title">
-      For Selling
-    </h2>
-
+    <%= render 'conveyancing_quotes/purchases/shared/conveyancing_costs',
+               purchase: @user.purchase if @user.purchase.present? %>
     <%= render 'conveyancing_quotes/sales/shared/conveyancing_costs',
                sale: @user.sale if @user.sale.present? %>
+
+    <footer class="conveyancing-breakdown__sub-total-overview">
+      Sub-total
+
+      <div class="conveyancing-breakdown__sub-total">
+        £1,048.00
+      </div>
+    </footer>
   </div>
 </section>
 
