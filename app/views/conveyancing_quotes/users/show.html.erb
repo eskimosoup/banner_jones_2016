@@ -104,7 +104,55 @@
       Sub-total
 
       <div class="conveyancing-breakdown__sub-total">
-        £1,048.00
+        <% sub_total = 0 %>
+        <% sub_total += @user.sale.fee if @user.sale.present? %>
+        <% sub_total += @user.purchase.fee if @user.purchase.present? %>
+        <%= number_to_currency sub_total %>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--second">
+    <h1 class="conveyancing-breakdown__main-title">
+      Optional extras
+    </h1>
+  </header>
+
+  <div class="conveyancing-breakdown__details">
+
+    <%= form_for @user.purchase, url: conveyancing_quotes_sale_and_purchases_path, remote: true do |f| %>
+      <%= render 'conveyancing_quotes/purchases/shared/optional_extras',
+                f: f %>
+    <% end %>
+
+    <footer class="conveyancing-breakdown__sub-total-overview">
+      Sub-total
+
+      <div class="conveyancing-breakdown__sub-total">
+        -
+      </div>
+    </footer>
+  </div>
+</section>
+
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--third">
+    <h1 class="conveyancing-breakdown__main-title">
+      Additional costs paid to
+      <span class="conveyancing-breakdown__emphasis">third parties</span>
+    </h1>
+  </header>
+
+  <div class="conveyancing-breakdown__details">
+    -
+
+    <footer class="conveyancing-breakdown__sub-total-overview">
+      Sub-total
+
+      <div class="conveyancing-breakdown__sub-total">
+        -
       </div>
     </footer>
   </div>
