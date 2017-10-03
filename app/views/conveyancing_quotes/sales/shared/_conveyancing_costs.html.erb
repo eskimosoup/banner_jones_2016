@@ -1,0 +1,12 @@
+<%# total = fees_total = vat_total = 0 %>
+<%# fees_total = sale.fee %>
+<%#= number_to_currency sale.vat %>
+<%# vat_total += sale.vat %>
+<%#= number_to_currency sale.total %>
+<%# total += sale.total %>
+
+<ul class="conveyancing-cost">
+  <li class="conveyancing-cost__item conveyancing-cost__item--bordered">
+    <%= number_to_currency sale.fee %>
+  </li>
+</ul>

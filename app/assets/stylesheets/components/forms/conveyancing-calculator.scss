@@ -39,7 +39,10 @@
     }
 
     &--valid {
-      @include success-checkmark;
+      .conveyancing-landing-page-hero-form__success {
+        @include success-checkmark;
+        opacity: 1;
+      }
     }
   }
 
@@ -91,13 +94,39 @@
       border-color: transparent;
     }
 
+    &--shake {
+      animation: shake .5s cubic-bezier(.36,.07,.19,.97) both;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
+      outline: none;
+      perspective: 1000px;
+    }
+
     &:hover {
       background: $orange;
     }
   }
 }
 
-// https://codepen.io/haniotis/pen/KwvYLO
+// https://css-tricks.com/snippets/css/shake-css-keyframe-animation/
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
 .conveyancing-landing-page-hero-form__success {
   height: 26px;
   position: absolute;
@@ -106,52 +135,70 @@
   width: 26px;
   opacity: 0;
   transition: opacity .15s linear;
+}
 
-  .checkmark__circle {
-    stroke-dasharray: 166;
-    stroke-dashoffset: 166;
-    stroke-width: 2;
-    stroke-miterlimit: 10;
-    stroke: $orange;
-    fill: none;
+.conveyancing-custom-checkbox {
+  position: relative;
+
+  input[type='checkbox'] {
+    display: none;
   }
 
-  .checkmark {
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: block;
-    stroke-width: 6;
-    stroke: $white;
-    stroke-miterlimit: 10;
-    margin: 10% auto;
-    box-shadow: inset 0px 0px 0px $orange;
+  label {
+    padding-left: rem(15px);
   }
 
-  .checkmark__check {
-    transform-origin: 50% 50%;
-    stroke-dasharray: 48;
-    stroke-dashoffset: 48;
-  }
+  // https://paulund.co.uk/style-checkboxes-with-css
+  & span {
+    cursor: pointer;
+    position: absolute;
+    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+    top: 5px;
+    left: 0;
+    background: $white;
+    border:1px solid $white;
 
-  @keyframes stroke {
-    100% {
-      stroke-dashoffset: 0;
+    &:hover::after {
+	    opacity: .5;
+    }
+
+    &:after {
+      opacity: .2;
+      content: '';
+      position: absolute;
+      width: 9px;
+      height: 5px;
+      background: transparent;
+      top: 3px;
+      left: 2px;
+      border: 3px solid $red;
+      border-top: none;
+      border-right: none;
+      transition: opacity .15s linear;
+
+      transform: rotate(-45deg);
     }
   }
 
-  @keyframes scale {
-    0%, 100% {
-      transform: none;
-    }
-    50% {
-      transform: scale3d(1.1, 1.1, 1);
-    }
-  }
-
-  @keyframes fill {
-    100% {
-      box-shadow: inset 0px 0px 0px 30px $orange;
-    }
+  input[type=checkbox]:checked + label span:after {
+    animation: custom-checkbox-confirmation .5s ease-in-out;
+    opacity: 1;
   }
 }
+
+@keyframes custom-checkbox-confirmation {
+  0% {
+    border-color: $red;
+  }
+
+  50% {
+    border-color: $black;
+  }
+
+  100% {
+    border-color: $red;
+  }
+}
+

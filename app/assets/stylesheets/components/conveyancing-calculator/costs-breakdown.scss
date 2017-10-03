@@ -1,0 +1,51 @@
+.conveyancing-breakdown {
+  @include flex-grid-row;
+  margin-top: rem(10px);
+
+  &__header {
+    @include breakpoint(large) {
+      @include flex-grid-column(3, (small: 0));
+      padding: rem(60px);
+    }
+
+    &--first {
+      background: $red;
+    }
+  }
+
+  &__main-title {
+    color: $white;
+    font-family: $museo-sans-rounded;
+    font-weight: $museo-sans--bold;
+  }
+
+  &__title {
+    color: $red;
+    font-family: $museo-sans-rounded;
+    font-size: rem(31px);
+    font-weight: $museo-sans--medium;
+  }
+
+  &__details {
+    background: $white;
+
+    @include breakpoint(large) {
+      @include flex-grid-column(9, (large: 100));
+      padding-bottom: rem(60px);
+      padding-top: rem(60px);
+    }
+  }
+}
+
+.conveyancing-cost {
+  list-style: none;
+  margin: 0;
+
+  &__item {
+    padding-bottom: rem(10px);
+
+    &--bordered {
+      border-bottom: 2px solid $orange;
+    }
+  }
+}

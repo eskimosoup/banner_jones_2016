@@ -62,6 +62,10 @@ module ConveyancingQuotes
       complete.present?
     end
 
+    def quote_reference
+      "#{quote_location.reference_code}-#{created_at.to_i}-#{id}".upcase
+    end
+
     def generate_token(column)
       loop do
         self[column] = SecureRandom.urlsafe_base64

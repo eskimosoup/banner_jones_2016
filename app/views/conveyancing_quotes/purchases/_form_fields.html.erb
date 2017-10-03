@@ -16,17 +16,21 @@
 
   <div class="conveyancing-landing-hero-form__options">
     <div class="conveyancing-landing-hero-form__options-field">
-      <%= f.check_box :leasehold_house %>
-      <%= f.label :leasehold_house,
-                  'Leasehold house',
-                  class: 'conveyancing-landing-hero-form__options-label' %>
+      <div class="conveyancing-custom-checkbox">
+        <%= f.check_box :leasehold_house %>
+        <%= f.label :leasehold_house,
+                    '<span></span> Leasehold house'.html_safe,
+                    class: 'conveyancing-landing-hero-form__options-label' %>
+      </div>
     </div>
 
     <div class="conveyancing-landing-hero-form__options-field">
-      <%= f.check_box :leasehold_apartment %>
-      <%= f.label :leasehold_apartment,
-                  'Leasehold apartment',
-                  class: 'conveyancing-landing-hero-form__options-label' %>
+      <div class="conveyancing-custom-checkbox">
+        <%= f.check_box :leasehold_apartment %>
+        <%= f.label :leasehold_apartment,
+                    '<span></span> Leasehold apartment'.html_safe,
+                    class: 'conveyancing-landing-hero-form__options-label' %>
+      </div>
     </div>
   </div>
 </div>
