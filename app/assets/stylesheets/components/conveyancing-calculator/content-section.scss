@@ -1,0 +1,40 @@
+.conveyancing-content {
+  @include flex-grid-row;
+  margin-top: rem(15px);
+
+  &__section {
+    background: $white;
+    position: relative;
+
+    &--full {
+      @include flex-grid-column(12);
+    }
+  }
+
+  &__main-title {
+    text-align: center;
+    margin-bottom: rem(40px);
+
+    @include breakpoint(xlarge) {
+      font-family: $museo-sans-rounded;
+      font-size: rem(31px);
+      font-weight: $museo-sans--medium;
+      line-height: 1.25;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 75%;
+    }
+  }
+
+  &__microcopy {
+    color: $offset-purple;
+    font-family: $museo-sans;
+    font-size: rem(16px);
+    font-weight: $museo-sans--medium;
+    text-align: center;
+
+    strong {
+      font-size: rem(21px);
+    }
+  }
+}

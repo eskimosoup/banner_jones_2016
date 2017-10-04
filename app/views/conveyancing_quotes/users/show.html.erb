@@ -1,4 +1,162 @@
-<%= content_for :content_title do "Thanks #{@user.forename.strip}, here's your conveyancing quote" end %>
+<%#= content_for :content_title do "Thanks #{@user.forename.strip}, here's your conveyancing quote" end %>
+
+<div class="conveyancing-content">
+  <div class="conveyancing-content__section conveyancing-content__section--full">
+    <nav class="conveyancing-navigation">
+      <ol class="conveyancing-navigation-breadcrumbs">
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--complete">
+              <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+              </svg>
+            </div>
+
+            <div class="conveyancing-navigation-breadcrumbs__title">
+              Step 1
+            </div>
+
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Your details
+            </div>
+          </div>
+        </li>
+
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--current">
+
+            </div>
+
+            <div class="conveyancing-navigation-breadcrumbs__title conveyancing-navigation-breadcrumbs__title--current">
+              Step 2
+            </div>
+
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Your results
+            </div>
+          </div>
+        </li>
+
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--incomplete">
+
+            </div>
+
+            <div class="conveyancing-navigation-breadcrumbs__title">
+              Step 3
+            </div>
+
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Instruct us
+            </div>
+          </div>
+        </li>
+      </ol>
+    </nav>
+
+    <h1 class="conveyancing-content__main-title">
+      Here is your fixed price quote based on
+      <% if @user.purchase.present? %>
+        your buying price of <strong><%= number_to_currency @user.purchase.price %></strong>
+      <% end %>
+      <% if @user.purchase.present? && @user.sale.present? %>
+        and
+      <% end %>
+      <% if @user.sale.present? %>
+        your selling price of <strong><%= number_to_currency @user.sale.price %></strong>
+      <% end %>
+    </h1>
+
+    <p class="conveyancing-content__microcopy">
+      Your quote reference is:
+      <strong>
+        <%= @user.quote_reference %>
+      </strong>
+    </p>
+
+    <div class="conveyancing-scroll-arrow">
+      <%= link_to '#pay-us',
+                  class: 'conveyancing-scroll-arrow__shape conveyancing-scroll-arrow__shape--bounce' do %>
+      <% end %>
+      Scroll for more
+    </div>
+  </div>
+</div>
+
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--first">
+    <h1 class="conveyancing-breakdown__main-title">
+      What you pay <span class="conveyancing-breakdown__emphasis">us</span>
+      for our services
+    </h1>
+  </header>
+
+  <div class="conveyancing-breakdown__details">
+    <%= render 'conveyancing_quotes/purchases/shared/conveyancing_costs',
+               purchase: @user.purchase if @user.purchase.present? %>
+    <%= render 'conveyancing_quotes/sales/shared/conveyancing_costs',
+               sale: @user.sale if @user.sale.present? %>
+
+    <footer class="conveyancing-breakdown__sub-total-overview">
+      Sub-total
+
+      <div class="conveyancing-breakdown__sub-total">
+        <% sub_total = 0 %>
+        <% sub_total += @user.sale.fee if @user.sale.present? %>
+        <% sub_total += @user.purchase.fee if @user.purchase.present? %>
+        <%= number_to_currency sub_total %>
+      </div>
+    </footer>
+  </div>
+</section>
+
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--second">
+    <h1 class="conveyancing-breakdown__main-title">
+      Optional extras
+    </h1>
+  </header>
+
+  <div class="conveyancing-breakdown__details">
+
+    <%= form_for @user.purchase, url: conveyancing_quotes_sale_and_purchases_path, remote: true do |f| %>
+      <%= render 'conveyancing_quotes/purchases/shared/optional_extras',
+                f: f %>
+    <% end %>
+
+    <footer class="conveyancing-breakdown__sub-total-overview">
+      Sub-total
+
+      <div class="conveyancing-breakdown__sub-total">
+        -
+      </div>
+    </footer>
+  </div>
+</section>
+
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--third">
+    <h1 class="conveyancing-breakdown__main-title">
+      Additional costs paid to
+      <span class="conveyancing-breakdown__emphasis">third parties</span>
+    </h1>
+  </header>
+
+  <div class="conveyancing-breakdown__details">
+    -
+
+    <footer class="conveyancing-breakdown__sub-total-overview">
+      Sub-total
+
+      <div class="conveyancing-breakdown__sub-total">
+        -
+      </div>
+    </footer>
+  </div>
+</section>
 
 <%= render @user.purchase if @user.purchase.present? %>
 <%= render @user.sale if @user.sale.present? %>

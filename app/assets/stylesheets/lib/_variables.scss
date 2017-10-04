@@ -15,6 +15,18 @@ $myriad-pro-semibold: 600;
 $open-sans: 'open-sans', $myriad-pro;
 $open-sans-semibold: 600;
 
+$museo-sans: 'museo-sans', $ubuntu;
+$museo-sans--medium: 500;
+$museo-sans--bold: 700;
+$museo-sans--heavy: 900;
+
+$museo-sans-rounded: 'museo-sans-rounded', $museo-sans;
+
+$roboto: 'roboto', $museo-sans;
+$roboto--light: 300;
+$roboto--medium: 600;
+$roboto--bold: 700;
+
 // Colours
 $red: #d71e48;
 
@@ -59,8 +71,13 @@ $offset-black: #3c353d;
 $dark-offset-black: #2b2b2b;
 
 $black: #000;
+$black-grey: #333333;
 $offset-black: #010101;
+
+$blue-dark: #22202d;
 
 $charcoal: #2d2d2d;
 
 $blue: #0078ae;
+
+$blue-light: #d2dcdd;

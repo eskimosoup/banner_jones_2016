@@ -1,0 +1,143 @@
+.conveyancing-breakdown {
+  @include flex-grid-row;
+  margin-top: rem(10px);
+
+  &__header {
+    @include breakpoint(large) {
+      @include flex-grid-column(3, (small: 0));
+      padding: rem(60px);
+    }
+
+    &--first {
+      background: $red;
+    }
+
+    &--second {
+      background: $deeper-grey;
+    }
+
+    &--third {
+      background: $black-grey;
+    }
+  }
+
+  &__main-title {
+    color: $white;
+    font-family: $museo-sans-rounded;
+    font-weight: $museo-sans--bold;
+  }
+
+  &__title {
+    color: $red;
+    font-family: $museo-sans-rounded;
+    font-size: rem(31px);
+    font-weight: $museo-sans--medium;
+  }
+
+  &__details {
+    background: $white;
+
+    @include breakpoint(large) {
+      @include flex-grid-column(9, (large: 100));
+      padding-bottom: rem(40px);
+      padding-top: rem(60px);
+    }
+  }
+
+  &__sub-total-overview {
+    @include clearfix;
+    background: $orange;
+    border-radius: 10px;
+    color: $white;
+    font-family: $museo-sans-rounded;
+    font-size: rem(25px);
+    font-weight: $museo-sans--heavy;
+    padding: rem(20px);
+  }
+
+  &__sub-total {
+    color: $black;
+
+    @include breakpoint(large) {
+      float: right;
+    }
+  }
+
+  &__emphasis {
+    color: $orange;
+  }
+}
+
+.conveyancing-cost {
+  list-style: none;
+  margin: 0 0 rem(30px) 0;
+
+  &__item {
+    @include clearfix;
+    color: $grey;
+    font-size: rem(19px);
+    padding-bottom: rem(10px);
+
+    &--bordered {
+      border-bottom: 2px solid $orange;
+    }
+  }
+
+  &__label {
+    color: $grey;
+    float: left;
+    font-size: rem(19px);
+    padding-bottom: rem(10px);
+  }
+
+  &__fee,
+  &__checkbox {
+    @include breakpoint(large) {
+      float: right;
+    }
+  }
+}
+
+
+
+
+// https://codepen.io/vissuel/pen/WwmOdO
+$color: $light-accent-grey;
+
+.cross__svg {
+    border-radius: 50%;
+    display: block;
+    height: 154px;
+    margin: 4rem auto;
+    stroke-width: 3;
+    width: 154px;
+}
+
+.cross__circle {
+    animation: 0.6s ease 2s normal forwards 1 running stroke;
+    fill: none;
+    margin: 0 auto;
+    stroke: $color;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    stroke-width: 2;
+}
+
+.cross__path {
+    stroke: $color;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    transform-origin: 50% 50% 0;
+    &--right {
+      animation: 0.3s ease 2.8s normal forwards 1 running stroke;
+    }
+    &--left {
+      animation: 1s ease 2.8s normal forwards 1 running stroke;
+    }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}

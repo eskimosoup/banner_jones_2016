@@ -1,53 +1,41 @@
-<div class="conveyancing-landing-hero-form__field">
-  <div class="conveyancing-landing-page-hero-form__success">
-    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-      <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-    </svg>
-  </div>
+<% costs = ConveyancingCalculator.configuration.additional_costs[f.object.user.symbolised_location].reduce(Hash.new, :merge) %>
 
-  <%= f.label :price,
-              'Purchase price',
-              class: 'conveyancing-landing-hero-form__label' %>
+<ul class="conveyancing-cost">
+  <li class="conveyancing-cost__item">
+    <%= f.label :second_home_or_buy_to_let,
+                'Is this a second home or buy-to-let purchase?',
+                class: 'conveyancing-cost__label' %>
 
-  <%= f.text_field :price,
-                   placeholder: 'e.g. £200,000',
-                   class: 'conveyancing-landing-hero-form__input' %>
+    <span class="conveyancing-cost__fee">
 
-  <div class="conveyancing-landing-hero-form__options">
-    <div class="conveyancing-landing-hero-form__options-field">
-      <div class="conveyancing-custom-checkbox">
-        <%= f.check_box :leasehold_house %>
-        <%= f.label :leasehold_house,
-                    '<span></span> Leasehold house'.html_safe,
-                    class: 'conveyancing-landing-hero-form__options-label' %>
-      </div>
-    </div>
+    </span>
+    <span class="conveyancing-cost__checkbox">
+      <%= f.check_box :second_home_or_buy_to_let %>
 
-    <div class="conveyancing-landing-hero-form__options-field">
-      <div class="conveyancing-custom-checkbox">
-        <%= f.check_box :leasehold_apartment %>
-        <%= f.label :leasehold_apartment,
-                    '<span></span> Leasehold apartment'.html_safe,
-                    class: 'conveyancing-landing-hero-form__options-label' %>
-      </div>
-    </div>
-  </div>
-</div>
+      <%= link_to '' do %>
+        <svg class="cross__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="cross__circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="cross__path cross__path--right" fill="none" d="M16,16 l20,20" />
+          <path class="cross__path cross__path--right" fill="none" d="M16,36 l20,-20" />
+        </svg>
+      <% end %>
 
-<!--
-<div class="field">
-  <%= f.check_box :second_home_or_buy_to_let %>
-  <%= f.label :second_home_or_buy_to_let, 'Is this a second home or buy-to-let purchase?', class: 'inline-label' %>
-</div>
+      <%= link_to '' do %>
+        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+          <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+          <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+        </svg>
+      <% end %>
+    </span>
+  </li>
 
-<p>Please tick any other requirements.</p>
+  <li class="conveyancing-cost__item">
 
-<div class="conveyancing-additional-requirements">
 
-  <div class="field">
-    <%= f.check_box :leasehold_house %>
+
+
     <%= f.label :leasehold_house, 'Leasehold house', class: 'inline-label' %>
+
     <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
                 '#leasehold-house',
                 class: 'toggle-class-closest',
@@ -58,9 +46,34 @@
                 } %>
 
     <%= render 'conveyancing_quotes/shared/tooltips/leasehold_house' %>
+
+    <span class="conveyancing-cost__fee">
+      <%= number_to_currency costs[:leasehold_house] %>
+    </span>
+    <span class="conveyancing-cost__checkbox">
+      <%= f.check_box :leasehold_house %>
+    </span>
+  </li>
+</ul>
+
+
+
+
+<div class="field">
+</div>
+
+<p>Please tick any other requirements.</p>
+
+<div class="conveyancing-additional-requirements">
+
+  <div class="field">
+
+
   </div>
 
   <div class="field">
+
+  <%= number_to_currency costs[:leasehold_apartment] %>
     <%= f.check_box :leasehold_apartment %>
     <%= f.label :leasehold_apartment, 'Leasehold apartment', class: 'inline-label' %>
 
@@ -77,6 +90,12 @@
   </div>
 
   <div class="field">
+
+
+
+
+  <%= number_to_currency costs[:help_to_buy_scheme] %>
+
     <%= f.check_box :help_to_buy_scheme %>
     <%= f.label :help_to_buy_scheme, 'Help to Buy Scheme', class: 'inline-label' %>
 
@@ -93,6 +112,8 @@
   </div>
 
   <div class="field">
+  <%= number_to_currency costs[:help_to_buy_isa] %>
+
     <%= f.check_box :help_to_buy_isa %>
     <%= f.label :help_to_buy_isa, 'Help to Buy ISA', class: 'inline-label' %>
 
@@ -109,6 +130,8 @@
   </div>
 
   <div class="field">
+  <%= number_to_currency costs[:shared_ownership_scheme] %>
+
     <%= f.check_box :shared_ownership_scheme %>
     <%= f.label :shared_ownership_scheme, 'Shared Ownership Scheme', class: 'inline-label'  %>
 
@@ -124,4 +147,3 @@
     <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
   </div>
 </div>
--->

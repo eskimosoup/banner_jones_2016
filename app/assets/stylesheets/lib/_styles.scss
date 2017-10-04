@@ -170,3 +170,18 @@
     }
   }
 }
+
+@mixin success-checkmark {
+  $curve: cubic-bezier(.650, .000, .450, 1);
+  .checkmark {
+    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  }
+
+  .checkmark__circle {
+    animation: stroke .6s $curve forwards;
+  }
+
+  .checkmark__check {
+    animation: stroke .3s $curve .8s forwards;
+  }
+}

@@ -7,6 +7,11 @@ module ConveyancingQuotes
     def new
       session.delete(:conveyancing_quote)
       @user = @location.users.new
+      @user.save!
+      session[:conveyancing_quote] = @user.token
+      @conveyancing_quote_sale_and_purchase = @user.build_sale_and_purchase
+      @conveyancing_quote_sale_and_purchase.build_sale
+      @conveyancing_quote_sale_and_purchase.build_purchase
     end
 
     def create
@@ -36,7 +41,7 @@ module ConveyancingQuotes
     end
 
     def thank_you
-      redirect_to root_url if @user.blank?
+      # redirect_to root_url if @user.blank?
     end
 
     private
