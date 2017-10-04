@@ -1,4 +1,27 @@
 <%#= content_for :content_title do "Thanks #{@user.forename.strip}, here's your conveyancing quote" end %>
+<% costs = ConveyancingCalculator.configuration.additional_costs[current_user.symbolised_location].reduce(Hash.new, :merge) %>
+
+<%= content_for :javascript do %>
+  <script>
+    $(document).on('click', '.conveyancing-cost__toggle', function() {
+      let $formId = $('#' + $(this).data('id'));
+
+      $formId.click();
+
+      $(this).addClass('conveyancing-cost__toggle--hidden');
+      $(this).siblings().removeClass('conveyancing-cost__toggle--hidden');
+
+      let $closestForm = $(this).closest('form')
+
+      $closestForm.submit();
+      $closestForm.parent()
+                  .find('.conveyancing-breakdown__sub-total-overview span')
+                  .html('<div class="loader" />');
+
+      return false;
+    });
+  </script>
+<% end %>
 
 <div class="conveyancing-content">
   <div class="conveyancing-content__section conveyancing-content__section--full">
@@ -7,10 +30,7 @@
         <li class="conveyancing-navigation-breadcrumbs__item">
           <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
             <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--complete">
-              <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
-                <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
-                <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
-              </svg>
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
             </div>
 
             <div class="conveyancing-navigation-breadcrumbs__title">
@@ -121,19 +141,62 @@
   </header>
 
   <div class="conveyancing-breakdown__details">
+    <% if @user.selling.present? %>
+      <div>
+        <h2 class="conveyancing-breakdown__title">
+          For Selling
+        </h2>
 
-    <%= form_for @user.purchase, url: conveyancing_quotes_sale_and_purchases_path, remote: true do |f| %>
-      <%= render 'conveyancing_quotes/purchases/shared/optional_extras',
-                f: f %>
+        <%= form_for @user.sale, url: conveyancing_quotes_sales_path, remote: true do |f| %>
+          <%= render 'conveyancing_quotes/sales/shared/optional_extras',
+                    f: f,
+                    costs: costs %>
+        <% end %>
+
+        <div class="conveyancing-breakdown__sub-total-overview">
+        Sub-total
+
+          <div class="conveyancing-breakdown__sub-total">
+            <% sub_total = 0 %>
+            <% @user.sale.additional_costs.each do |additional_cost| %>
+              <% sub_total += costs[additional_cost] %>
+            <% end %>
+            <span class="conveyancing-breakdown__sub-total-sale">
+              <%= number_to_currency sub_total %>
+            </span>
+          </div>
+        </div>
+      </div>
     <% end %>
 
-    <footer class="conveyancing-breakdown__sub-total-overview">
-      Sub-total
 
-      <div class="conveyancing-breakdown__sub-total">
-        -
+    <% if @user.purchase.present? %>
+      <div>
+        <h2 class="conveyancing-breakdown__title">
+          For Buying
+        </h2>
+
+        <%= form_for @user.purchase, url: conveyancing_quotes_purchases_path, remote: true do |f| %>
+          <%= render 'conveyancing_quotes/purchases/shared/optional_extras',
+                    f: f,
+                    costs: costs %>
+        <% end %>
+
+        <div class="conveyancing-breakdown__sub-total-overview">
+        Sub-total
+
+          <div class="conveyancing-breakdown__sub-total">
+            <% sub_total = 0 %>
+            <% @user.purchase.additional_costs.each do |additional_cost| %>
+              <% sub_total += costs[additional_cost] %>
+            <% end %>
+            <span class="conveyancing-breakdown__sub-total-purchase">
+              <%= number_to_currency sub_total %>
+            </span>
+          </div>
+        </div>
       </div>
-    </footer>
+  <% end %>
   </div>
 </section>
 
@@ -146,20 +209,52 @@
   </header>
 
   <div class="conveyancing-breakdown__details">
-    -
+    <% if @user.purchase.present? %>
+      <div>
+        <h2 class="conveyancing-breakdown__title">
+          For Buying
+        </h2>
 
-    <footer class="conveyancing-breakdown__sub-total-overview">
-      Sub-total
-
-      <div class="conveyancing-breakdown__sub-total">
-        -
+        <div class="conveyancing-breakdown__additional-costs
+                    conveyancing-breakdown__additional-costs--purchase">
+          <%= render 'conveyancing_quotes/purchases/shared/additional_costs',
+                    costs: costs,
+                    purchase: @user.purchase %>
+        </div>
       </div>
-    </footer>
+  <% end %>
+    <% if @user.sale.present? %>
+      <div>
+        <h2 class="conveyancing-breakdown__title">
+          For Selling
+        </h2>
+
+        <%= render 'conveyancing_quotes/sales/shared/additional_costs',
+                  costs: costs,
+                  sale: @user.sale %>
+      </div>
+  <% end %>
   </div>
 </section>
 
-<%= render @user.purchase if @user.purchase.present? %>
-<%= render @user.sale if @user.sale.present? %>
+<section class="conveyancing-breakdown">
+  <div class="conveyancing-content__section
+              conveyancing-content__section--cta
+              conveyancing-content__section--full">
+    <%= render @user.sale if @user.sale.present? %>
+    <%= render @user.purchase if @user.purchase.present? %>
+
+    <%= link_to '#' do %>
+      Email me with this quote
+    <% end %>
+
+    <p>
+      Your quote is valid for 30 days and fully inclusive, fixed price*
+    </p>
+  </div>
+</section>
+
+<%#= render @user.purchase if @user.purchase.present? %>
 
 
 <div class="conveyancing-quote-overview">

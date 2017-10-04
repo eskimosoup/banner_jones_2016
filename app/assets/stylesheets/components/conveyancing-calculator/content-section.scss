@@ -9,6 +9,13 @@
     &--full {
       @include flex-grid-column(12);
     }
+
+    &--cta {
+      background: $orange;
+      color: $white;
+      text-align: center;
+      padding: rem(50px);
+    }
   }
 
   &__main-title {
@@ -23,6 +30,16 @@
       margin-left: auto;
       margin-right: auto;
       max-width: 75%;
+    }
+  }
+
+  &__grand-total {
+    color: $black-grey;
+    font-family: $museo-sans-rounded;
+    font-size: rem(31px);
+
+    strong {
+      font-weight: $museo-sans--heavy;
     }
   }
 

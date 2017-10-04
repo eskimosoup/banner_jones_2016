@@ -1,0 +1,27 @@
+<% vat_total = 0 %>
+<% vat_total += sale.vat %>
+
+<% sale.additional_costs.each do |additional_cost| %>
+  <% cost = costs[additional_cost] %>
+  <% vat_total += cost * ConveyancingCalculator.configuration.vat_rate %>
+<% end %>
+
+<ul class="conveyancing-cost">
+  <li class="conveyancing-cost__item conveyancing-cost__item--bordered">
+    <div class="conveyancing-cost__label">
+      VAT (where applicable)
+    </div>
+
+    <span class="conveyancing-cost__fee">
+      <%= number_to_currency vat_total %>
+    </span>
+  </li>
+</ul>
+
+<div class="conveyancing-breakdown__sub-total-overview">
+  Sub-total
+
+  <div class="conveyancing-breakdown__sub-total">
+    <%= number_to_currency vat_total %>
+  </div>
+</div>

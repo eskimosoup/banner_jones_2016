@@ -15,7 +15,7 @@ $(document).on("click", ".toggle-class-closest", function(e) {
   var dataReturn      = $(this).data('return');
 
   console.log('test');
-  $(this).parent().parent().find(toggleContainer).toggleClass(toggleClass);
+  $(this).parent().parent().find(toggleContainer).slideToggle();
 
   if (dataReturn === false) {
     e.preventDefault();
