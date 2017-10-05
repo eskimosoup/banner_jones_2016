@@ -17,8 +17,15 @@
     &--cta {
       background: $orange;
       color: $white;
-      text-align: center;
       padding: rem(50px);
+      position: relative;
+      text-align: center;
+
+      &::after {
+        @include triangle('down', $orange, 40px);
+        bottom: -40px;
+        left: calc(50% - 20px);
+      }
     }
   }
 
@@ -83,6 +90,10 @@
       color: $white;
       margin-top: rem(20px);
     }
+
+    &--left {
+      text-align: left;
+    }
   }
 }
 
@@ -93,9 +104,12 @@
 
   &__content {
     @include flex-grid-column(7);
-    padding-bottom: rem(60px);
-    padding-top: rem(60px);
     text-align: center;
+
+    &:not(&--condensed) {
+    padding-bottom: rem(60px);
+      padding-top: rem(60px);
+    }
   }
 
   &__title {
@@ -157,12 +171,9 @@
     white-space: nowrap;
   }
 
-  &__cta-button {
-    color: $white;
+  &__contact {
     margin-bottom: rem(20px);
     margin-top: rem(20px);
-    padding: rem(15px 40px);
-    transition: color .15s ease-in-out;
 
     @include breakpoint(small only) {
       display: block;
@@ -174,12 +185,6 @@
       width: 50%;
     }
 
-    &:hover,
-    &:focus,
-    &:active {
-      color: $orange;
-    }
-
     &:first-of-type {
       text-align: right;
     }
@@ -188,5 +193,42 @@
       border-left: 4px solid $orange;
       text-align: left;
     }
+  }
+
+  &__cta-button {
+    color: $white;
+    display: inline-block;
+    padding: rem(15px 40px);
+    text-align: center;
+    transition: color .15s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $orange;
+    }
+  }
+}
+
+.conveyancing-completion {
+  @include flex-grid-row;
+  justify-content: space-between;
+  margin-bottom: rem(15px);
+
+  &__form {
+    @include breakpoint(large) {
+      @include flex-grid-column(5);
+    }
+  }
+
+  &__copy {
+    @include breakpoint(large) {
+      @include flex-grid-column(6);
+      align-self: center;
+    }
+  }
+
+  &__details {
+    text-align: left;
   }
 }

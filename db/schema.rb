@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002103325) do
+ActiveRecord::Schema.define(version: 20171005141000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -277,6 +277,7 @@ ActiveRecord::Schema.define(version: 20171002103325) do
     t.integer  "conveyancing_quotes_quote_location_id"
     t.boolean  "submitted",                             default: false
     t.boolean  "allow_contact"
+    t.boolean  "quote_emailed",                         default: false
     t.index ["conveyancing_quotes_quote_location_id"], name: "quote_location_id", using: :btree
     t.index ["token"], name: "index_conveyancing_quotes_users_on_token", using: :btree
   end

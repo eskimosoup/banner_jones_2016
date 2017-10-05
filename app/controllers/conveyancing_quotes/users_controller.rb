@@ -28,7 +28,7 @@ module ConveyancingQuotes
 
     def update
       @update = @user.update(user_params)
-      ConveyancingQuoteMailer.new_quote(@user).deliver_now if @update
+      deliver_quote_email(@user) if @update
 
       respond_to do |format|
         format.js do
@@ -40,7 +40,7 @@ module ConveyancingQuotes
             ConveyancingQuoteMailer.new_quote_notification(@user).deliver_now
             redirect_to thank_you_conveyancing_quotes_location_users_path(@user.quote_location)
           else
-            render :new
+            render :edit
           end
         end
       end
@@ -58,7 +58,7 @@ module ConveyancingQuotes
     def user_params
       params.require(:conveyancing_quotes_user).permit(
         :forename, :surname, :email, :phone, :buying, :selling,
-        :conveyancing_email_permission, :buying_and_selling
+        :conveyancing_email_permission, :buying_and_selling, :complete
       )
     end
 
@@ -70,6 +70,11 @@ module ConveyancingQuotes
       elsif @user.selling?
         new_conveyancing_quotes_sale_path
       end
+    end
+
+    def deliver_quote_email(user)
+      ConveyancingQuoteMailer.new_quote(user).deliver_now unless user.quote_emailed?
+      user.update_attributes(quote_emailed: true)
     end
   end
 end

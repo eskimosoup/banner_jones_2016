@@ -1,45 +1,79 @@
-<%= content_for :content_title do 'Thank You for choosing Banner Jones to complete your conveyancing' end %>
-
-<p>
-  Your details will now be sent to our quotes team who will set up your file and
-  send out instructions to the correspondence address within 2 working days.
-  These instructions will need to be signed and returned to our office which
-  then gives us the permission to proceed with your matter.
-</p>
-
-<p>
-  If in the meantime you have any questions please call the quotes team on
-  <%= render 'shared/calltracks_phone', phone: global_site_settings['Phone'] %>
-</p>
-
-
-<h2>Your Details</h2>
-<div class="name">
-  <%= @user.forename %>
-  <%= @user.surname %>
-</div>
-<div class="email">
-  <%= @user.email %>
-</div>
-
-<%= render @user.purchase if @user.purchase.present? %>
-<%= render @user.sale  if @user.sale.present? %>
-
-<% if @user.addresses.correspondence.present? %>
-  <div class="conveyancing-address">
-    <%= render @user.addresses.correspondence  %>
+<div class="conveyancing-content">
+  <div class="conveyancing-content__section conveyancing-content__section--full">
+    <nav class="conveyancing-navigation">
+      <ol class="conveyancing-navigation-breadcrumbs">
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--complete">
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__title">
+              Step 1
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Your details
+            </div>
+          </div>
+        </li>
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--complete">
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__title">
+              Step 2
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Your results
+            </div>
+          </div>
+        </li>
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--complete">
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__title">
+              Step 3
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Instruct us
+            </div>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    <div class="conveyancing-proceed">
+      <div class="conveyancing-proceed__content
+                  conveyancing-proceed__content--condensed">
+        <h1 class="conveyancing-proceed__title">
+          Thank you
+        </h1>
+        <p>
+          Your details will now be sent to our quotes team who will set up your file and
+          be in touch within 2 working days.
+        </p>
+        <p>
+          If in the meantime you have any questions please call the quotes
+          team on:<br />
+          <%= render 'shared/calltracks_phone',
+                    phone: global_site_settings['Phone'],
+                    options: {
+                      class: 'conveyancing-proceed__phone ga-event',
+                      data: {
+                        event_category: 'Conveyancing Calculator',
+                        event_action: 'Click',
+                        event_label:  'Phone'
+                      }
+                    } %>
+        </p>
+        <p class="conveyancing-content__microcopy">
+          Your quote reference is:
+          <strong>
+            <%= @user.quote_reference %>
+          </strong>
+        </p>
+      </div>
+    </div>
   </div>
-<% end %>
-
-<% if @user.addresses.property.present? %>
-  <div class="conveyancing-address">
-    <%= render @user.addresses.property %>
-  </div>
-<% end %>
-
-<% if @user.deeds.present? %>
-  <h3>Deeds</h3>
-  <%= content_tag :ul, (render @user.deeds) %>
-<% end %>
-
-<%= link_to 'Print quote', '#', class: 'inverted-submit-button print-page' %>
+</div>

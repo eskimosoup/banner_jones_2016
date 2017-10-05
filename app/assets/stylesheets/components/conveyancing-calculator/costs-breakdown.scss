@@ -1,8 +1,12 @@
 .conveyancing-breakdown {
   @include flex-grid-row;
   margin-top: rem(10px);
+  position: relative;
+  z-index: 1;
 
   &__header {
+    position: relative;
+
     @include breakpoint(large) {
       @include flex-grid-column(3, (small: 0));
       padding: rem(60px);
@@ -10,14 +14,32 @@
 
     &--first {
       background: $red;
+
+      &::after {
+        @include triangle('right', $red, 40px);
+        right: -20px;
+        top: 40px;
+      }
     }
 
     &--second {
       background: $deeper-grey;
+
+      &::after {
+        @include triangle('right', $deeper-grey, 40px);
+        right: -20px;
+        top: 40px;
+      }
     }
 
     &--third {
       background: $black-grey;
+
+      &::after {
+        @include triangle('right', $black-grey, 40px);
+        right: -20px;
+        top: 40px;
+      }
     }
   }
 
@@ -42,6 +64,10 @@
       padding-bottom: rem(40px);
       padding-top: rem(60px);
     }
+  }
+
+  &__group {
+    margin-bottom: rem(20px);
   }
 
   &__sub-total-overview {
@@ -76,7 +102,6 @@
     @include clearfix;
     color: $grey;
     font-size: rem(19px);
-    padding-bottom: rem(10px);
 
     &--bordered {
       border-bottom: 2px solid $orange;

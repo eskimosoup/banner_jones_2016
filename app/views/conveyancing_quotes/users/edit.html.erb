@@ -1,45 +1,140 @@
-<%= content_for :content_title do 'Accept Quote' end %>
-
-<%= render 'conveyancing_quotes/shared/acceptance_steps', current_step: 4 %>
-
-<%= render @user.purchase if @user.purchase.present? %>
-<%= render @user.sale if @user.sale.present? %>
-
-<% if @user.addresses.correspondence.present? %>
-  <div class="conveyancing-address">
-    <%= render @user.addresses.correspondence  %>
-    <%= link_to 'Edit', edit_conveyancing_quotes_property_addresses_path %>
-  </div>
-<% end %>
-
-<% if @user.addresses.property.present? %>
-  <div class="conveyancing-address">
-    <%= render @user.addresses.property %>
-    <%= link_to 'Edit', edit_conveyancing_quotes_correspondence_addresses_path %>
-  </div>
-<% end %>
-
-<% if @user.deeds.present? %>
-  <h3>Deeds</h3>
-  <%= render @user.deeds %>
-  <%= link_to 'Edit', edit_conveyancing_quotes_deeds_path %>
-<% end %>
-
-<%= form_for @user, url: conveyancing_quotes_location_users_path do |f| %>
-  <%= render 'shared/form_errors', object: @user %>
-
-  <div class="related-fields">
-    <div class="field">
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+<div class="conveyancing-content">
+  <div class="conveyancing-content__section conveyancing-content__section--full">
+    <nav class="conveyancing-navigation">
+      <ol class="conveyancing-navigation-breadcrumbs">
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--complete">
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__title">
+              Step 1
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Your details
+            </div>
+          </div>
+        </li>
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--complete">
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__title">
+              Step 2
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Your results
+            </div>
+          </div>
+        </li>
+        <li class="conveyancing-navigation-breadcrumbs__item">
+          <div class="conveyancing-navigation-breadcrumbs__breadcrumb conveyancing-navigation-breadcrumbs__breadcrumb--complete">
+            <div class="conveyancing-navigation-breadcrumbs__icon conveyancing-navigation-breadcrumbs__icon--current">
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__title conveyancing-navigation-breadcrumbs__title--current">
+              Step 3
+            </div>
+            <div class="conveyancing-navigation-breadcrumbs__microcopy">
+              Instruct us
+            </div>
+          </div>
+        </li>
+      </ol>
+    </nav>
+    <div class="conveyancing-completion">
+      <div class="conveyancing-completion__form">
+        <%= form_for @user,
+                    url: conveyancing_quotes_location_users_path,
+                    html: {
+                          class: 'conveyancing-content-form'
+                    } do |f| %>
+          <%= render 'shared/form_errors', object: @user %>
+          <div class="field">
+            <%= f.label :forename %>
+            <%= f.text_field :forename,
+                            class: 'conveyancing-content-form__input
+                                    conveyancing-content-form__input--bordered' %>
+          </div>
+          <div class="field">
+            <%= f.label :surname %>
+            <%= f.text_field :surname,
+                            class: 'conveyancing-content-form__input
+                                    conveyancing-content-form__input--bordered' %>
+          </div>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email,
+                            class: 'conveyancing-content-form__input
+                                    conveyancing-content-form__input--bordered' %>
+          </div>
+          <div class="actions">
+            <%= f.hidden_field :complete, value: 1 %>
+            <%= f.submit 'Instruct us',
+                          class: 'conveyancing-content-form__submit ga-event',
+                          data: {
+                            event_category: 'Conveyancing Calculator',
+                            event_action: 'Click',
+                            event_label:  'Instruct us'
+                          }  %>
+            <p class="conveyancing-content-form__inline">
+              For Banner Jones to act on your behalf in this transaction.
+            </p>
+          </div>
+        <% end %>
+      </div>
+      <div class="conveyancing-completion__copy">
+        <div class="conveyancing-completion__details">
+          <%= render @user.sale if @user.sale.present? %>
+          <%= render @user.purchase if @user.purchase.present? %>
+          <p class="conveyancing-content__microcopy
+                    conveyancing-content__microcopy--left">
+            Your quote reference is:
+            <strong>
+              <%= @user.quote_reference %>
+            </strong>
+          </p>
+          <ul class="conveyancing-checklist">
+            <li class="conveyancing-checklist__item
+                    conveyancing-checklist__item--stacked">
+              <span class="conveyancing-checklist__checkmark">
+                <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+              </span>
+              No payment today
+            </li>
+            <li class="conveyancing-checklist__item
+                    conveyancing-checklist__item--stacked">
+              <span class="conveyancing-checklist__checkmark">
+                <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+              </span>
+              Instant online access
+            </li>
+            <li class="conveyancing-checklist__item
+                    conveyancing-checklist__item--stacked">
+              <span class="conveyancing-checklist__checkmark">
+                <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+              </span>
+              No move, no fee and search guarantees
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit 'Accept quote', class: 'inverted-submit-button' %>
-  </div>
-<% end %>
-
-<p>
-  Once you have accepted the quote, our team will be in touch.
-</p>
+</div>
+<%#= content_for :content_title do 'Accept Quote' end %>
+<%#= render 'conveyancing_quotes/shared/acceptance_steps', current_step: 4 %>
+<%#= render @user.purchase if @user.purchase.present? %>
+<%#= render @user.sale if @user.sale.present? %>
+<% #if @user.addresses.correspondence.present? %>
+<%#= render @user.addresses.correspondence  %>
+<%#= link_to 'Edit', edit_conveyancing_quotes_property_addresses_path %>
+<%# end %>
+<%# if @user.addresses.property.present? %>
+<%#= render @user.addresses.property %>
+<%#= link_to 'Edit', edit_conveyancing_quotes_correspondence_addresses_path %>
+<% # end %>
+<%# if @user.deeds.present? %>
+<%#= render @user.deeds %>
+<%#= link_to 'Edit', edit_conveyancing_quotes_deeds_path %>
+<%# end %>
