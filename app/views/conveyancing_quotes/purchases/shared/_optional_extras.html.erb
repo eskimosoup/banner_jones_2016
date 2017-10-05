@@ -143,8 +143,6 @@
 
       <%= f.label :help_to_buy_scheme,
                   'Help to Buy Scheme' %>
-
-      <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_scheme' %>
     <% end %>
 
     <span class="conveyancing-cost__checkbox-wrap">
@@ -175,6 +173,8 @@
     <span class="conveyancing-cost__fee">
       <%= number_to_currency costs[:help_to_buy_scheme] %>
     </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_scheme' %>
   </li>
 
   <li class="conveyancing-cost__item">
@@ -191,8 +191,6 @@
 
       <%= f.label :help_to_buy_isa,
                   'Help to Buy ISA' %>
-
-      <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_isa' %>
     <% end %>
 
     <span class="conveyancing-cost__checkbox-wrap">
@@ -223,6 +221,8 @@
     <span class="conveyancing-cost__fee">
       <%= number_to_currency costs[:help_to_buy_isa] %>
     </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_isa' %>
   </li>
 
   <li class="conveyancing-cost__item">
@@ -239,8 +239,6 @@
 
       <%= f.label :shared_ownership_scheme,
                   'Shared Ownership Scheme' %>
-
-      <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
     <% end %>
 
     <span class="conveyancing-cost__checkbox-wrap">
@@ -271,5 +269,7 @@
     <span class="conveyancing-cost__fee">
       <%= number_to_currency costs[:shared_ownership_scheme] %>
     </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
   </li>
 </ul>
