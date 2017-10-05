@@ -110,3 +110,25 @@
     }
   }
 }
+
+.conveyancing-checklist {
+  list-style: none;
+  margin: 0;
+
+  &__item {
+    &--inline {
+      display: inline-block;
+      margin-left: rem(10px);
+      margin-right: rem(10px);
+    }
+  }
+
+  &__checkmark {
+    @include success-checkmark;
+    display: inline-block;
+    height: 26px;
+    margin-right: rem(10px);
+    vertical-align: middle;
+    width: 26px;
+  }
+}

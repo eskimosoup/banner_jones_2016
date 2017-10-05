@@ -1,0 +1,11 @@
+<% if @update %>
+  $('.conveyancing-content-form').slideUp(250, function() {
+    $('.conveyancing-content-form').replaceWith('<p>Thank you.</p>');
+    $('.conveyancing-content__cta-button')
+      .removeClass('toggle-class-closest')
+      .text('Email sent to <%= j current_user.email %>');
+    $('.conveyancing-content-form').slideDown(250);
+  });
+<% else %>
+  $('.conveyancing-content-form').prepend('<p>An error occued, please try again.</p>');
+<% end %>

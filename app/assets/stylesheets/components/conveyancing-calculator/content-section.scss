@@ -2,6 +2,10 @@
   @include flex-grid-row;
   margin-top: rem(15px);
 
+  &--combined {
+    margin-top: 0;
+  }
+
   &__section {
     background: $white;
     position: relative;
@@ -43,6 +47,27 @@
     }
   }
 
+
+  &__cta-button {
+    border: 4px solid $white;
+    border-radius: 10px;
+    color: $white;
+    display: inline-block;
+    font-family: $museo-sans-rounded;
+    font-size: rem(19px);
+    font-weight: $museo-sans--heavy;
+    padding: rem(7px 20px);
+    transition: border-color .15s .15s ease-in-out,
+                color .15s linear;
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-color: $red;
+      color: $red;
+    }
+  }
+
   &__microcopy {
     color: $offset-purple;
     font-family: $museo-sans;
@@ -52,6 +77,116 @@
 
     strong {
       font-size: rem(21px);
+    }
+
+    &--white {
+      color: $white;
+      margin-top: rem(20px);
+    }
+  }
+}
+
+.conveyancing-proceed {
+  @include flex-grid-row(nest);
+  align-items: center;
+  justify-content: center;
+
+  &__content {
+    @include flex-grid-column(7);
+    padding-bottom: rem(60px);
+    padding-top: rem(60px);
+    text-align: center;
+  }
+
+  &__title {
+    color: $black;
+    font-family: $museo-sans-rounded;
+    font-size: rem(32px);
+    font-weight: $museo-sans--medium;
+
+    @include breakpoint(large) {
+      margin-bottom: rem(40px);
+    }
+  }
+
+  &__button {
+    @include conveyancing-submit;
+    color: $white;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+
+    &--block {
+      margin-bottom: rem(26px);
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: rem(26px);
+      width: 50%;
+    }
+  }
+
+  &__team-member {
+    margin-bottom: rem(20px);
+    margin-top: rem(40px);
+  }
+
+  &__phone {
+    color: $black;
+    font-size: rem(33px);
+    transition: color .15s ease-in-out;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $red;
+    }
+  }
+}
+
+.conveyancing-footer {
+  @include flex-grid-row;
+  margin-bottom: rem(40px);
+  margin-top: rem(15px);
+
+  &__section {
+    @include flex-grid-column(12);
+    background: $black-grey;
+    white-space: nowrap;
+  }
+
+  &__cta-button {
+    color: $white;
+    margin-bottom: rem(20px);
+    margin-top: rem(20px);
+    padding: rem(15px 40px);
+    transition: color .15s ease-in-out;
+
+    @include breakpoint(small only) {
+      display: block;
+      width: 100%;
+    }
+
+    @include breakpoint(medium) {
+      display: inline-block;
+      width: 50%;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $orange;
+    }
+
+    &:first-of-type {
+      text-align: right;
+    }
+
+    &:last-of-type {
+      border-left: 4px solid $orange;
+      text-align: left;
     }
   }
 }

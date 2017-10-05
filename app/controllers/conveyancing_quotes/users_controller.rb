@@ -27,13 +27,22 @@ module ConveyancingQuotes
     def edit; end
 
     def update
-      if @user.update(user_params)
-        @user.update_attributes(submitted: true)
-        ConveyancingQuoteMailer.new_quote(@user).deliver_now
-        ConveyancingQuoteMailer.new_quote_notification(@user).deliver_now
-        redirect_to thank_you_conveyancing_quotes_location_users_path(@user.quote_location)
-      else
-        render :edit
+      @update = @user.update(user_params)
+      ConveyancingQuoteMailer.new_quote(@user).deliver_now if @update
+
+      respond_to do |format|
+        format.js do
+          render :update
+        end
+        format.html do
+          if @update
+            @user.update_attributes(submitted: true)
+            ConveyancingQuoteMailer.new_quote_notification(@user).deliver_now
+            redirect_to thank_you_conveyancing_quotes_location_users_path(@user.quote_location)
+          else
+            render :new
+          end
+        end
       end
     end
 
