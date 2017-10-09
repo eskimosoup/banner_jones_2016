@@ -1,0 +1,12 @@
+<div class="search-result">
+  <% present object do |service_page_presenter| %>
+    <%= link_to audience_service_service_page_path(object.service.audience, object.service, object) do %>
+      <div class="listing-title">
+        <%= service_page_presenter.title %>
+      </div>
+    <% end %>
+    <%= link_to 'Find out more',
+                audience_service_service_page_path(object.service.audience, object.service, object),
+                class: 'compact-primary-button custom-link' %>
+  <% end %>
+</div>

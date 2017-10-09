@@ -1,0 +1,18 @@
+<div class="search-result">
+  <div class="index-listing-item">
+    <%= link_to object do %>
+      <%#= image_tag object.image.index,
+                    alt: "Preview of #{object.title}",
+                    class: 'listing-image' if object.image? %>
+
+    <div class="listing-title">
+      <%= object.title %>
+    </div>
+
+    <%= tag.div (simple_format object.summary), class: 'listing-summary' if object.summary? %>
+
+    <%= button_tag (object.content.present? ? 'View' : 'Download'),
+                  class: 'listing-view' %>
+    <% end %>
+  </div>
+</div>

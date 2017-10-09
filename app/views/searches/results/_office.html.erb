@@ -1,0 +1,11 @@
+<div class="search-result">
+  <div class="object index-listing-item">
+    <h2><%= object.building_name %></h2>
+    <div class="office-address">
+      <%#= [object.address_line_1, object.address_line_2, (object.object_location.present? ? object.object_location_name : nil), object.postcode].reject(&:blank?)
+                                                                     .compact
+                                                                     .join(', ').gsub(', ', '<br />').html_safe %>
+    </div>
+    <%= link_to 'Find out more', object, class: 'compact-primary-button custom-link' %>
+  </div>
+</div>

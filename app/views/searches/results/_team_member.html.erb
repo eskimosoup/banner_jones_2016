@@ -1,0 +1,12 @@
+<div class="search-result">
+  <% present object do |team_member_presenter| %>
+    <%= link_to object do %>
+      <div class="listing-title">
+        <%= object.forename %> <%= object.surname %>
+      </div>
+    <% end %>
+    <%= link_to 'Find out more',
+                object,
+                class: 'compact-primary-button custom-link' %>
+  <% end %>
+</div>

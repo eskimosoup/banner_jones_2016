@@ -107,6 +107,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :searches, only: :new
+
   get '/:audience_id/services/:parent_service_id/:service_id/:id',
       to: 'services#show',
       as: :audience_child_service

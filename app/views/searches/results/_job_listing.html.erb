@@ -1,0 +1,11 @@
+<div class="search-result">
+  <div class="job-listing">
+    <h2 class="job-listing-title">
+      <%= link_to job_listing.title, job_listing %>
+    </h2>
+
+    <%= simple_format job_listing.summary %>
+
+    <%= link_to 'Find out more', job_listing, class: 'compact-primary-button' %>
+  </div>
+</div>

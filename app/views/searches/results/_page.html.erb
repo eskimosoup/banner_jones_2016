@@ -1,0 +1,12 @@
+<div class="search-result">
+  <% present object do |page_presenter| %>
+    <%= link_to object do %>
+      <div class="listing-title">
+        <%= page_presenter.title %>
+      </div>
+    <% end %>
+    <%= link_to 'Find out more',
+                object,
+                class: 'compact-primary-button custom-link' %>
+  <% end %>
+</div>

@@ -1,0 +1,14 @@
+.search-results {
+  background: $light-grey;
+
+  &__content {
+    @include flex-grid-row;
+  }
+
+  &__results {
+    @include flex-grid-column(12);
+    background: $white;
+    margin-bottom: rem(40px);
+    margin-top: rem(40px);
+  }
+}

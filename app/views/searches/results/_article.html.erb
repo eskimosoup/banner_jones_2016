@@ -1,0 +1,23 @@
+<div class="search-result">
+  <% present object do |article_presenter| %>
+  <%= link_to object do %>
+    <%#= article_presenter.homepage_image(class: 'article-image') if object.image? %>
+
+    <div class="article-date">
+      <%= article_presenter.date %>
+    </div>
+
+    <div class="listing-title">
+      <%= article_presenter.title %>
+    </div>
+
+    <div class="article-summary">
+      <%= article_presenter.summary %>
+    </div>
+    <% end %>
+
+    <%= link_to 'Find out more',
+                object,
+                class: 'compact-primary-button custom-link' %>
+  <% end %>
+</div>

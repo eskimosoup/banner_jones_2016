@@ -1,0 +1,14 @@
+<div class="search-result">
+  <div class="listing-title">
+    <%= object.question %>
+  </div>
+
+  <div id="faq-<%= object.id %>" class="hide">
+    <%= raw object.answer %>
+  </div>
+
+  <%= link_to 'Find out more',
+              "#faq-#{object.id}",
+              class: 'compact-primary-button custom-link toggle-class',
+              data: { class: 'hide', container: "#faq-#{object.id}" } %>
+</div>
