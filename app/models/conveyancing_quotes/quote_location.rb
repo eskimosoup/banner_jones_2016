@@ -18,14 +18,6 @@ module ConveyancingQuotes
              dependent: :destroy,
              foreign_key: 'conveyancing_quotes_quote_location_id'
 
-    before_validation :set_reference_code, unless: :reference_code?
-
-    validates :reference_code, uniqueness: true, presence: true
-
-    def set_reference_code
-      self.reference_code = symbolised_location.to_s
-    end
-
     def symbolised_location
       location.downcase.to_param.to_sym
     end

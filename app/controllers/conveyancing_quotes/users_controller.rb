@@ -7,11 +7,6 @@ module ConveyancingQuotes
     def new
       session.delete(:conveyancing_quote)
       @user = @location.users.new
-      @user.save!
-      session[:conveyancing_quote] = @user.token
-      @conveyancing_quote_sale_and_purchase = @user.build_sale_and_purchase
-      @conveyancing_quote_sale_and_purchase.build_sale
-      @conveyancing_quote_sale_and_purchase.build_purchase
     end
 
     def create
@@ -27,22 +22,13 @@ module ConveyancingQuotes
     def edit; end
 
     def update
-      @update = @user.update(user_params)
-      deliver_quote_email(@user) if @update
-
-      respond_to do |format|
-        format.js do
-          render :update
-        end
-        format.html do
-          if @update
-            @user.update_attributes(submitted: true)
-            ConveyancingQuoteMailer.new_quote_notification(@user).deliver_now
-            redirect_to thank_you_conveyancing_quotes_location_users_path(@user.quote_location)
-          else
-            render :edit
-          end
-        end
+      if @user.update(user_params)
+        @user.update_attributes(submitted: true)
+        ConveyancingQuoteMailer.new_quote(@user).deliver_now
+        ConveyancingQuoteMailer.new_quote_notification(@user).deliver_now
+        redirect_to thank_you_conveyancing_quotes_location_users_path(@user.quote_location)
+      else
+        render :edit
       end
     end
 
@@ -50,7 +36,7 @@ module ConveyancingQuotes
     end
 
     def thank_you
-      # redirect_to root_url if @user.blank?
+      redirect_to root_url if @user.blank?
     end
 
     private
@@ -58,7 +44,7 @@ module ConveyancingQuotes
     def user_params
       params.require(:conveyancing_quotes_user).permit(
         :forename, :surname, :email, :phone, :buying, :selling,
-        :conveyancing_email_permission, :buying_and_selling, :complete
+        :conveyancing_email_permission, :buying_and_selling
       )
     end
 
@@ -70,11 +56,6 @@ module ConveyancingQuotes
       elsif @user.selling?
         new_conveyancing_quotes_sale_path
       end
-    end
-
-    def deliver_quote_email(user)
-      ConveyancingQuoteMailer.new_quote(user).deliver_now unless user.quote_emailed?
-      user.update_attributes(quote_emailed: true)
     end
   end
 end

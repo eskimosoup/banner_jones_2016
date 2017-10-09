@@ -9,8 +9,8 @@ Rails.application.routes.draw do
     # resources :remortgages, only: [:new, :create, :show], concerns: [:downloadable]
     # resources :remortgage_with_equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
 
-    resource :sales, only: %i[new create update], concerns: [:downloadable]
-    resource :purchases, only: %i[new create update], concerns: [:downloadable]
+    resources :sales, only: %i[new create], concerns: [:downloadable]
+    resources :purchases, only: %i[new create], concerns: [:downloadable]
     resource :sale_and_purchases, only: %i[new create], concerns: [:downloadable], path: 'sale-and-purchases'
 
     resource :deeds, only: %i[new edit update]

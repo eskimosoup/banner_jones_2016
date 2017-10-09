@@ -1,39 +1,10 @@
-<div class="conveyancing-landing-hero-form__field">
-  <div class="conveyancing-landing-page-hero-form__success">
-    <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
-  </div>
+<div class="field">
+  <p>How much are you buying the property for?</p>
 
-  <%= f.label :price,
-              'Purchase price',
-              class: 'conveyancing-landing-hero-form__label' %>
-
-  <%= f.text_field :price,
-                   placeholder: 'e.g. £200,000',
-                   class: 'conveyancing-landing-hero-form__input
-                           conveyancing-landing-hero-form__input--currency' %>
-
-  <div class="conveyancing-landing-hero-form__options">
-    <div class="conveyancing-landing-hero-form__options-field">
-      <div class="conveyancing-custom-checkbox">
-        <%= f.check_box :leasehold_house %>
-        <%= f.label :leasehold_house,
-                    '<span></span> Leasehold house'.html_safe,
-                    class: 'conveyancing-landing-hero-form__options-label' %>
-      </div>
-    </div>
-
-    <div class="conveyancing-landing-hero-form__options-field">
-      <div class="conveyancing-custom-checkbox">
-        <%= f.check_box :leasehold_apartment %>
-        <%= f.label :leasehold_apartment,
-                    '<span></span> Leasehold apartment'.html_safe,
-                    class: 'conveyancing-landing-hero-form__options-label' %>
-      </div>
-    </div>
-  </div>
+  <%= f.label :price, 'Purchase price' %>
+  <%= f.text_field :price, placeholder: 'e.g. £200,000', class: 'conveyancing-small-input' %>
 </div>
 
-<!--
 <div class="field">
   <%= f.check_box :second_home_or_buy_to_let %>
   <%= f.label :second_home_or_buy_to_let, 'Is this a second home or buy-to-let purchase?', class: 'inline-label' %>
@@ -122,4 +93,3 @@
     <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
   </div>
 </div>
--->

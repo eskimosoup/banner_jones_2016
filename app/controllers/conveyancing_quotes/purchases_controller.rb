@@ -15,15 +15,6 @@ module ConveyancingQuotes
       end
     end
 
-    def update
-      @conveyancing_quote_sale = current_user.purchase
-      @update = @conveyancing_quote_sale.update(conveyancing_quotes_purchase_params)
-
-      respond_to do |format|
-        format.js
-      end
-    end
-
     def show
       @conveyancing_quote_purchase = @user.purchase
     end

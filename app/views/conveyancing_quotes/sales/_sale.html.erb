@@ -1,20 +1,98 @@
 <% total = fees_total = vat_total = 0 %>
-<% fees_total = sale.fee %>
-<% vat_total += sale.vat %>
-<% total += sale.total %>
-<% sale.additional_costs.each do |additional_cost| %>
-  <% cost = ConveyancingCalculator.configuration.additional_costs[sale.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
-  <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
-  <% number_to_currency cost %>
-  <% fees_total += cost %>
-  <% vat_total += vat %>
-  <% total += (cost + vat) %>
-  <%= cost = vat = nil %>
-<% end %>
+<div class="conveyancing-quote sale">
+  <h2>For your standard <%= sale.leasehold? ? 'leasehold' : 'freehold' %> sale</h2>
 
-<p class="conveyancing-content__grand-total">
-  Your grand total for selling is:
-  <strong>
-    <%= number_to_currency total %>
-  </strong>
-</p>
+  <div class="conveyancing-cost headers">
+    <div class="conveyancing-cost-description">
+      Selling a property for <strong><%= number_to_currency sale.price %></strong>.
+    </div>
+    <div class="conveyancing-cost-item">
+      <strong>Fee</strong>
+    </div>
+    <div class="conveyancing-cost-item">
+      <strong>VAT</strong>
+    </div>
+    <div class="conveyancing-cost-item">
+      <strong>Total</strong>
+    </div>
+  </div>
+
+  <div class="conveyancing-cost">
+    <div class="conveyancing-cost-description">
+      <strong>Banner Jones Conveyancing Costs</strong>
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency sale.fee %>
+      <% fees_total = sale.fee %>
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency sale.vat %>
+      <% vat_total += sale.vat %>
+    </div>
+    <div class="conveyancing-cost-item">
+      <%= number_to_currency sale.total %>
+      <% total += sale.total %>
+    </div>
+  </div>
+
+  <% sale.additional_costs.each do |additional_cost| %>
+    <% cost = ConveyancingCalculator.configuration.additional_costs[sale.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
+    <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+    <div class="conveyancing-cost additional-cost">
+      <div class="conveyancing-cost-description">
+        <strong><%= additional_cost.to_s.humanize.titlecase %></strong>
+        <%= link_to (image_tag 'components/icons/tooltip.gif', alt: 'Find out more'),
+                    "##{additional_cost.to_s.parameterize.tr('_', '-')}",
+                    class: 'toggle-class-closest',
+                    data: {
+                      class: 'hide',
+                      container: ".#{additional_cost.to_s.parameterize.tr('_', '-')}",
+                      return: false
+                      } %>
+        <%= render "conveyancing_quotes/shared/tooltips/#{additional_cost.to_s.parameterize}" %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency cost %>
+        <% fees_total += cost %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency vat %>
+        <% vat_total += vat %>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency cost + vat %>
+        <% total += (cost + vat) %>
+      </div>
+    </div>
+
+
+    <%= cost = vat = nil %>
+  <% end %>
+
+  <div class="conveyancing-sale-totals">
+    <div class="conveyancing-cost totals">
+      <div class="conveyancing-cost-summary">
+        <%= link_to I18n.t("conveyancing_quotes.download_button"),
+          conveyancing_quotes_sale_download_path(sale, format: "pdf"),
+          target: "_blank",
+          class: "download-button inverted-submit-button ga-event",
+          data: {
+            event_category: 'Conveyancing Calculator', event_action: 'Save Quote', event_label: 'Save Quote'
+          } %>
+      </div>
+      <div class="conveyancing-cost-item">
+        Subtotal<br />
+        <strong>Overall Total</strong>
+      </div>
+      <div class="conveyancing-cost-item">
+        <%= number_to_currency fees_total %><br />
+        <strong><%= number_to_currency total %></strong>
+      </div>
+    </div>
+  </div>
+
+  <%#= link_to I18n.t("conveyancing_quotes.download_button"),
+    conveyancing_quotes_sale_download_path(sale, format: "pdf"),
+    target: "_blank",
+    class: "download-button" %>
+</div>

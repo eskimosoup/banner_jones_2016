@@ -20,6 +20,21 @@
     </div>
   </div>
 
+  <div class="field">
+    <%= f.check_box :buying %>
+    <%= f.label :buying, 'I am buying', class: 'inline-label' %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :selling %>
+    <%= f.label :selling, 'I am selling', class: 'inline-label' %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :buying_and_selling %>
+    <%= f.label :buying_and_selling, 'I am buying and selling', class: 'inline-label' %>
+  </div>
+
   <!--
     <div class="field">
       <%#= f.check_box :conveyancing_email_permission %>

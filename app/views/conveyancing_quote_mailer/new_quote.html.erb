@@ -304,7 +304,7 @@
                             </p>
 
                             <p style="Margin: 0; Margin-bottom: 10px; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0; margin-bottom: 10px; padding: 0; text-align: left;">
-                              Hello, <%#= @user.forename.strip %>
+                              Hello <%= @user.forename.strip %>,
                             </p>
 
                             <p style="Margin: 0; Margin-bottom: 10px; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0; margin-bottom: 10px; padding: 0; text-align: left;">
@@ -313,11 +313,10 @@
 
                             <h2 style="Margin: 0; Margin-bottom: 10px; Margin-top: 10px; border-bottom: 5px solid #fcb830; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 600; line-height: 1.2; margin: 0 0 15px; margin-bottom: 10px; padding: 0 0 10px 10px; text-align: left; word-wrap: normal;">Your Details</h2>
 
-                            <!-- <p style="Margin: 0; Margin-bottom: 10px; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0; margin-bottom: 10px; padding: 0; text-align: left;">
+                            <p style="Margin: 0; Margin-bottom: 10px; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0; margin-bottom: 10px; padding: 0; text-align: left;">
                               <strong>Name:</strong>
-                              <%#= @user.forename %> <%= @user.surname %>
+                              <%= @user.forename %> <%= @user.surname %>
                             </p>
-                            -->
 
                             <p style="Margin: 0; Margin-bottom: 10px; color: #000; font-family: Helvetica, Arial, sans-serif; font-size: 16px; font-weight: normal; line-height: 1.3; margin: 0; margin-bottom: 10px; padding: 0; text-align: left;">
                               <strong>Email:</strong>
