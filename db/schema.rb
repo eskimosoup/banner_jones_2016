@@ -360,10 +360,10 @@ ActiveRecord::Schema.define(version: 20171005141000) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",        null: false
-    t.boolean  "enabled"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -806,7 +806,7 @@ ActiveRecord::Schema.define(version: 20171005141000) do
     t.string   "layout",                         default: "application", null: false
     t.string   "style",                          default: "basic",       null: false
     t.boolean  "landing_page",                   default: false
-    t.boolean  "show_contact_form"
+    t.boolean  "show_contact_form",              default: false
     t.boolean  "inherit_sidebar_text"
     t.boolean  "inherit_page_layout_content"
     t.boolean  "hide_preferred_office_on_forms"

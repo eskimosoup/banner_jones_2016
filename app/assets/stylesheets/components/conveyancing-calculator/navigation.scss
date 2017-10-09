@@ -1,9 +1,13 @@
 .conveyancing-navigation {
-  margin-bottom: rem(50px);
   margin-left: auto;
   margin-right: auto;
-  margin-top: rem(40px);
-  max-width: 551px;
+  max-width: 303px;
+
+  @include breakpoint(medium) {
+    margin-bottom: rem(50px);
+    margin-top: rem(40px);
+    max-width: 551px;
+  }
 }
 
 .conveyancing-navigation-breadcrumbs {
@@ -15,13 +19,26 @@
   margin: 0;
   text-align: center;
 
+  @include breakpoint(small only) {
+    margin-bottom: rem(20px);
+    margin-top: rem(20px);
+  }
+
   &__item {
     color: $deep-accent-grey;
     display: inline-block;
     font-family: $museo-sans;
     font-weight: $museo-sans--medium;
-    margin-left: rem(76px);
-    margin-right: rem(76px);
+
+    @include breakpoint(small only) {
+      margin-left: rem(14px);
+      margin-right: rem(14px);
+    }
+
+    @include breakpoint(medium) {
+      margin-left: rem(76px);
+      margin-right: rem(76px);
+    }
 
     &:first-of-type {
       margin-left: 0;

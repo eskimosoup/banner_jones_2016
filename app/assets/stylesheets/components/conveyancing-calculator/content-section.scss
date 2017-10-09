@@ -17,9 +17,14 @@
     &--cta {
       background: $orange;
       color: $white;
-      padding: rem(50px);
       position: relative;
       text-align: center;
+      padding-bottom: rem(20px);
+      padding-top: rem(20px);
+
+      @include breakpoint(medium) {
+        padding: rem(50px);
+      }
 
       &::after {
         @include triangle('down', $orange, 40px);
@@ -32,6 +37,10 @@
   &__main-title {
     text-align: center;
     margin-bottom: rem(40px);
+
+    @include breakpoint(small only) {
+      font-size: rem(25px);
+    }
 
     @include breakpoint(xlarge) {
       font-family: $museo-sans-rounded;
@@ -47,7 +56,14 @@
   &__grand-total {
     color: $black-grey;
     font-family: $museo-sans-rounded;
-    font-size: rem(31px);
+
+    @include breakpoint(small only) {
+      font-size: rem(24px);
+    }
+
+    @include breakpoint(medium) {
+      font-size: rem(31px);
+    }
 
     strong {
       font-weight: $museo-sans--heavy;
@@ -80,7 +96,10 @@
     font-family: $museo-sans;
     font-size: rem(16px);
     font-weight: $museo-sans--medium;
-    text-align: center;
+
+    @include breakpoint(large) {
+      text-align: center;
+    }
 
     strong {
       font-size: rem(21px);
@@ -103,12 +122,25 @@
   justify-content: center;
 
   &__content {
-    @include flex-grid-column(7);
-    text-align: center;
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(large) {
+      @include flex-grid-column(7);
+      text-align: center;
+    }
 
     &:not(&--condensed) {
-    padding-bottom: rem(60px);
-      padding-top: rem(60px);
+      @include breakpoint(small only) {
+        padding-bottom: rem(30px);
+        padding-top: rem(30px);
+      }
+
+      @include breakpoint(medium) {
+        padding-bottom: rem(60px);
+        padding-top: rem(60px);
+      }
     }
   }
 
@@ -138,13 +170,19 @@
       margin-left: auto;
       margin-right: auto;
       margin-top: rem(26px);
-      width: 50%;
+
+      @include breakpoint(medium) {
+        width: 50%;
+      }
     }
   }
 
   &__team-member {
-    margin-bottom: rem(20px);
     margin-top: rem(40px);
+
+    @include breakpoint(medium) {
+      margin-bottom: rem(20px);
+    }
   }
 
   &__phone {
@@ -172,18 +210,10 @@
   }
 
   &__contact {
+    display: inline-block;
     margin-bottom: rem(20px);
     margin-top: rem(20px);
-
-    @include breakpoint(small only) {
-      display: block;
-      width: 100%;
-    }
-
-    @include breakpoint(medium) {
-      display: inline-block;
-      width: 50%;
-    }
+    width: 50%;
 
     &:first-of-type {
       text-align: right;
@@ -216,13 +246,13 @@
   margin-bottom: rem(15px);
 
   &__form {
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       @include flex-grid-column(5);
     }
   }
 
   &__copy {
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       @include flex-grid-column(6);
       align-self: center;
     }

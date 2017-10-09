@@ -4,7 +4,7 @@
 
 body {
   opacity: 1;
-  padding-top: rem(77px);
+  padding-top: rem(86px);
   transition: opacity .15s ease-in-out;
 
   @include breakpoint(large) {

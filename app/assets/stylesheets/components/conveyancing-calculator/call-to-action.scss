@@ -13,7 +13,8 @@
     text-align: center;
 
     @include breakpoint(small only) {
-      @include flex-grid-column(12);
+      @include flex-grid-column(2);
+      padding-top: rem(25px);
     }
 
     @include breakpoint(medium) {
@@ -30,10 +31,18 @@
     font-weight: $museo-sans--bold;
 
     @include breakpoint(small only) {
-      @include flex-grid-column(12);
+      @include flex-grid-column(10);
+      padding-bottom: rem(10px);
+      padding-top: rem(10px);
     }
 
-    @include breakpoint(medium) {
+    @include breakpoint(medium only) {
+      @include flex-grid-column(4, (medium: 50));
+      padding-bottom: rem(50px);
+      padding-top: rem(50px);
+    }
+
+    @include breakpoint(large) {
       @include flex-grid-column(3, (medium: 50));
       padding-bottom: rem(50px);
       padding-top: rem(50px);
@@ -51,12 +60,24 @@
     border-width: 5px;
 
     &:not(&--left) {
-      @include flex-grid-column(3);
+      @include breakpoint(small only) {
+        @include flex-grid-column(6);
+      }
+
+      @include breakpoint(medium) {
+        @include flex-grid-column(3);
+      }
     }
 
     &--left {
-      @include flex-grid-column(3);
-      border-left: 0;
+      @include breakpoint(small only) {
+        @include flex-grid-column(6);
+      }
+
+      @include breakpoint(medium) {
+        @include flex-grid-column(3);
+        border-left: 0;
+      }
     }
   }
 
@@ -132,9 +153,16 @@
 
   &__item {
     &--inline {
-      display: inline-block;
-      margin-left: rem(10px);
-      margin-right: rem(10px);
+      @include breakpoint(small only) {
+        margin-bottom: rem(5px);
+        margin-top: rem(5px);
+      }
+
+      @include breakpoint(medium) {
+        display: inline-block;
+        margin-left: rem(10px);
+        margin-right: rem(10px);
+      }
     }
 
     &--stacked {
