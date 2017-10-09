@@ -1,10 +1,127 @@
-<%= content_for :content_title do 'Get your free instant conveyancing quote' end %>
+<% content_for :javascript do %>
+  <script>
+    const digitRegex = /^-?(\d+\.?\d*)$|(\d*\.?\d+)$/
 
-<%= raw @location.details %>
+    $(document).on('focusin', '.conveyancing-landing-hero-form__input', function() {
+      $(this)
+            .parent()
+            .find('.conveyancing-landing-hero-form__options')
+            .css('opacity', 1);
+    });
 
-<%= render 'form' %>
+    function validateForm() {
+      var validateForm = $('.conveyancing-landing-hero-form .conveyancing-landing-hero-form__input--valid').length;
+      if (validateForm) {
+        $('.conveyancing-landing-hero-form__submit').removeClass('conveyancing-landing-hero-form__submit--disabled');
+      } else {
+        $('.conveyancing-landing-hero-form__submit').addClass('conveyancing-landing-hero-form__submit--disabled');
+      }
+    }
 
-<p>
-  Need a remortgage or transfer of equity?<br />
-  Call: <%= render 'shared/calltracks_phone', phone: global_site_settings['Phone'] %>
-</p>
+    $(document).on('keyup', '.conveyancing-landing-hero-form__input', function() {
+      var input = $(this).val();
+
+      if(digitRegex.test(input)) {
+        $(this)
+          .parent()
+          .addClass('conveyancing-landing-hero-form__input--valid');
+      } else {
+        $(this)
+          .parent()
+          .removeClass('conveyancing-landing-hero-form__input--valid');
+      }
+
+      validateForm();
+    });
+
+    $(document).on('click', '.conveyancing-landing-hero-form__submit', function(){
+      let filled = false;
+
+      $('.conveyancing-landing-hero-form__input').each(function() {
+        if($(this).val() != '') {
+          filled = true;
+        }
+      });
+
+      if(!filled) {
+        $(this).addClass('conveyancing-landing-hero-form__submit--shake');
+
+        setTimeout(function() {
+          $('.conveyancing-landing-hero-form__submit')
+            .removeClass('conveyancing-landing-hero-form__submit--shake');
+        }, 500);
+
+        return false;
+      }
+    });
+  </script>
+<% end %>
+
+<section class="conveyancing-landing-hero">
+  <div class="conveyancing-landing-hero__content">
+    <div class="conveyancing-landing-hero__content-inner">
+      <h1 class="conveyancing-landing-hero__title">
+        <%= @location.title %>
+      </h1>
+      <%= raw @location.details %>
+      <div class="conveyancing-landing-hero-form">
+        <%= render partial: "conveyancing_quotes/sale_and_purchases/form",
+                  locals: {
+                    conveyancing_quote_sale_and_purchase:
+                    @conveyancing_quote_sale_and_purchase
+                  } %>
+      </div>
+    </div>
+  </div>
+  <%= image_srcset 'layout/conveyancing-calculator/hero-banner.jpg',
+                    {
+                      'layout/conveyancing-calculator/hero-banner@2x.jpg': '2x',
+                      'layout/conveyancing-calculator/hero-banner@3x.jpg': '3x',
+                    },
+                    class: 'conveyancing-landing-hero__image' %>
+</section>
+
+<section class="conveyancing-call-to-action-block">
+  <div class="conveyancing-call-to-action-block__team-member">
+    <%= render partial: 'services/shared/key_team_member_avatars',
+               collection: @service.team_members.key_team_members,
+               cached: true,
+               as: :team_member %>
+  </div>
+  <div class="conveyancing-call-to-action-block__action-text">
+    <p>
+      If you need a <strong>remortgage</strong> or
+      <strong>transfer of equity</strong>,
+      talk to our Residential Property Team today on:
+    </p>
+
+    <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
+                class: 'conveyancing-call-to-action ga-event',
+                data: {
+                  event_category: 'Conveyancing Calculator',
+                  event_action: 'Click',
+                  event_label:  'Phone'
+                } do %>
+      <span class="calltracks_bannerjonescouk-main">
+        <%= global_site_settings['Phone'] %>
+      </span>
+    <% end %>
+  </div>
+  <div class="conveyancing-call-to-action-block__content conveyancing-call-to-action-block__content--left">
+    <% if @rich_snippet.present? %>
+        <div class="service-rich-snippets">
+          <%= render(
+                  "rich_snippets/rich_snippet",
+                  rich_snippet: @rich_snippet
+                ) %>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="conveyancing-call-to-action-block__content conveyancing-call-to-action-block__content--left">
+    <div class="conveyancing-call-to-action-block__accreditations">
+      <%= image_tag 'components/conveyancing-calculator/conveyancing-accreditation.png', alt: 'Conveyancing Quality' %>
+      <%= image_tag 'components/conveyancing-calculator/conveyancing-award.png', alt: 'The Conveyancing Awards' %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,149 @@
+// https://codepen.io/haniotis/pen/KwvYLO
+.checkmark__circle {
+  fill: none;
+  stroke: $orange;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-miterlimit: 10;
+  stroke-width: 2;
+}
+
+.checkmark {
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 $orange;
+  display: block;
+  height: 26px;
+  margin: 10% auto;
+  width: 26px;
+
+  stroke: $white;
+  stroke-miterlimit: 10;
+  stroke-width: 6;
+
+  @include breakpoint(small only) {
+    margin: 0 auto;
+  }
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%,
+  100% {
+    transform: none;
+  }
+
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0 0 0 30px $orange;
+  }
+}
+
+// https://codepen.io/vissuel/pen/WwmOdO
+.cross__svg {
+  border-radius: 50%;
+  display: block;
+  height: 26px;
+  width: 26px;
+
+  stroke-width: 3;
+}
+
+.cross__circle {
+  margin: 0 auto;
+
+  fill: none;
+  stroke: $light-accent-grey;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+;
+
+  &--animate {
+    animation: .6s ease normal forwards 1 running stroke;
+  }
+}
+
+.cross__path {
+  transform-origin: 50% 50% 0;
+
+  stroke: $light-accent-grey;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;;
+
+  &--right {
+    animation: .3s ease .8s normal forwards 1 running stroke;
+  }
+
+  &--left {
+    animation: 1s ease .8s normal forwards 1 running stroke;
+  }
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+// https://projects.lukehaas.me/css-loaders/
+.loader,
+.loader:after {
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+
+.loader {
+  -ms-transform: translateZ(0);
+  -webkit-animation: load8 .75s infinite linear;
+  -webkit-transform: translateZ(0);
+  animation: load8 .75s infinite linear;
+  border-bottom: 10px solid rgba(255, 255, 255, .2);
+  border-left: 10px solid #ffffff;
+  border-right: 10px solid rgba(255, 255, 255, .2);
+  border-top: 10px solid rgba(255, 255, 255, .2);
+  font-size: 10px;
+  margin: 0 auto;
+  position: relative;
+  text-indent: -9999em;
+  transform: translateZ(0);
+}
+
+@-webkit-keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load8 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

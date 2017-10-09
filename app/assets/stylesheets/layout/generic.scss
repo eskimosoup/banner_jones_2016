@@ -1,5 +1,11 @@
+.wf-loading body {
+  opacity: 0;
+}
+
 body {
-  padding-top: rem(77px);
+  opacity: 1;
+  padding-top: rem(86px);
+  transition: opacity .15s ease-in-out;
 
   @include breakpoint(large) {
     padding: 0;

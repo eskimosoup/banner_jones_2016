@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921092908) do
+ActiveRecord::Schema.define(version: 20171005141000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,10 +203,12 @@ ActiveRecord::Schema.define(version: 20170921092908) do
     t.string   "location"
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.boolean  "display",        default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.text     "details"
+    t.string   "title"
+    t.string   "reference_code"
     t.index ["location"], name: "index_conveyancing_quotes_quote_locations_on_location", using: :btree
     t.index ["slug"], name: "index_conveyancing_quotes_quote_locations_on_slug", using: :btree
   end
@@ -262,9 +264,9 @@ ActiveRecord::Schema.define(version: 20170921092908) do
 
   create_table "conveyancing_quotes_users", force: :cascade do |t|
     t.string   "title"
-    t.string   "forename",                                              null: false
-    t.string   "surname",                                               null: false
-    t.string   "email",                                                 null: false
+    t.string   "forename"
+    t.string   "surname"
+    t.string   "email"
     t.string   "phone"
     t.string   "token",                                                 null: false
     t.boolean  "buying",                                default: false
@@ -275,6 +277,7 @@ ActiveRecord::Schema.define(version: 20170921092908) do
     t.integer  "conveyancing_quotes_quote_location_id"
     t.boolean  "submitted",                             default: false
     t.boolean  "allow_contact"
+    t.boolean  "quote_emailed",                         default: false
     t.index ["conveyancing_quotes_quote_location_id"], name: "quote_location_id", using: :btree
     t.index ["token"], name: "index_conveyancing_quotes_users_on_token", using: :btree
   end
@@ -357,10 +360,10 @@ ActiveRecord::Schema.define(version: 20170921092908) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",        null: false
-    t.boolean  "enabled"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -803,7 +806,7 @@ ActiveRecord::Schema.define(version: 20170921092908) do
     t.string   "layout",                         default: "application", null: false
     t.string   "style",                          default: "basic",       null: false
     t.boolean  "landing_page",                   default: false
-    t.boolean  "show_contact_form"
+    t.boolean  "show_contact_form",              default: false
     t.boolean  "inherit_sidebar_text"
     t.boolean  "inherit_page_layout_content"
     t.boolean  "hide_preferred_office_on_forms"

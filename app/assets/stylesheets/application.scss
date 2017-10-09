@@ -32,6 +32,8 @@
 @import 'layout/generic';
 @import 'layout/bilton-hammond-popup';
 @import 'layout/online-payments';
+@import 'layout/conveyancing-calculator/hero';
+@import 'layout/conveyancing-calculator/base';
 
 @import 'components/flash-messages';
 @import 'components/content-boxes';
@@ -45,6 +47,7 @@
 @import 'components/pagination';
 @import 'components/forms/callback-request';
 @import 'components/forms/header-search';
+@import 'components/forms/conveyancing-calculator';
 @import 'components/resources/home';
 @import 'components/resources/services';
 @import 'components/navigation/header-aside';
@@ -84,6 +87,11 @@
 @import 'components/frequently-asked-questions/shared';
 @import 'components/pages/call-to-action';
 @import 'components/shared/index';
-@import 'components/conveyancing-calculator';
+@import 'components/conveyancing-calculator/shared';
+@import 'components/conveyancing-calculator/call-to-action';
+@import 'components/conveyancing-calculator/navigation';
+@import 'components/conveyancing-calculator/content-section';
+@import 'components/conveyancing-calculator/costs-breakdown';
+@import 'components/conveyancing-calculator/tooltips';
 
 @import 'optimadmin/global/editor';

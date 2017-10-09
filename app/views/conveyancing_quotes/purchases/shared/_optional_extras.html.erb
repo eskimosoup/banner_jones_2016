@@ -1,0 +1,275 @@
+<ul class="conveyancing-cost">
+  <li class="conveyancing-cost__item">
+    <div class="conveyancing-cost__label">
+      <%= f.label :second_home_or_buy_to_let,
+                  'Is this a second home or buy-to-let purchase?' %>
+    </div>
+
+    <span class="conveyancing-cost__fee">
+
+    </span>
+    <span class="conveyancing-cost__checkbox-wrap">
+      <%= f.check_box :second_home_or_buy_to_let,
+                      class: 'conveyancing-cost__checkbox' %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' if f.object.second_home_or_buy_to_let?}
+                          conveyancing-cost__toggle--cross",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_second_home_or_buy_to_let'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/cross' %>
+      <% end %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' unless f.object.second_home_or_buy_to_let?}
+                          conveyancing-cost__toggle--checkmark",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_second_home_or_buy_to_let'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+      <% end %>
+    </span>
+  </li>
+
+  <li class="conveyancing-cost__item">
+    <%= link_to '#leasehold-house',
+                class: 'toggle-class-closest conveyancing-cost__label',
+                data: {
+                  class: 'hide',
+                  container: '.leasehold-house',
+                  return: false
+                } do %>
+      <%= image_tag 'components/icons/tooltip.gif',
+                    alt: 'Find out more',
+                    class: 'conveyancing-cost__tooltip' %>
+
+      <%= f.label :leasehold_house,
+                  'Leasehold house' %>
+    <% end %>
+
+    <span class="conveyancing-cost__checkbox-wrap">
+      <%= f.check_box :leasehold_house,
+                      class: 'conveyancing-cost__checkbox' %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' if f.object.leasehold_house?}
+                          conveyancing-cost__toggle--cross",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_leasehold_house'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/cross' %>
+      <% end %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' unless f.object.leasehold_house?}
+                          conveyancing-cost__toggle--checkmark",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_leasehold_house'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+      <% end %>
+    </span>
+
+    <span class="conveyancing-cost__fee">
+      <%= number_to_currency costs[:leasehold_house] %>
+    </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/leasehold_house' %>
+  </li>
+
+  <li class="conveyancing-cost__item">
+    <%= link_to '#leasehold-apartment',
+                class: 'toggle-class-closest conveyancing-cost__label',
+                data: {
+                  class: 'hide',
+                  container: '.leasehold-apartment',
+                  return: false
+                } do %>
+      <%= image_tag 'components/icons/tooltip.gif',
+                    alt: 'Find out more',
+                    class: 'conveyancing-cost__tooltip' %>
+
+      <%= f.label :leasehold_apartment %>
+    <% end %>
+
+    <span class="conveyancing-cost__checkbox-wrap">
+      <%= f.check_box :leasehold_apartment,
+                      class: 'conveyancing-cost__checkbox' %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' if f.object.leasehold_apartment?}
+                          conveyancing-cost__toggle--cross",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_leasehold_apartment'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/cross' %>
+      <% end %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' unless f.object.leasehold_apartment?}
+                          conveyancing-cost__toggle--checkmark",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_leasehold_apartment'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+      <% end %>
+    </span>
+
+    <span class="conveyancing-cost__fee">
+      <%= number_to_currency costs[:leasehold_apartment] %>
+    </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/leasehold_apartment' %>
+  </li>
+
+  <li class="conveyancing-cost__item">
+    <%= link_to '#help-to-buy-scheme',
+                class: 'toggle-class-closest conveyancing-cost__label',
+                data: {
+                  class: 'hide',
+                  container: '.help-to-buy-scheme',
+                  return: false
+                } do %>
+      <%= image_tag 'components/icons/tooltip.gif',
+                    alt: 'Find out more',
+                    class: 'conveyancing-cost__tooltip' %>
+
+      <%= f.label :help_to_buy_scheme,
+                  'Help to Buy Scheme' %>
+    <% end %>
+
+    <span class="conveyancing-cost__checkbox-wrap">
+      <%= f.check_box :help_to_buy_scheme,
+                      class: 'conveyancing-cost__checkbox' %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' if f.object.help_to_buy_scheme?}
+                          conveyancing-cost__toggle--cross",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_help_to_buy_scheme'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/cross' %>
+      <% end %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' unless f.object.help_to_buy_scheme?}
+                          conveyancing-cost__toggle--checkmark",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_help_to_buy_scheme'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+      <% end %>
+    </span>
+
+    <span class="conveyancing-cost__fee">
+      <%= number_to_currency costs[:help_to_buy_scheme] %>
+    </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_scheme' %>
+  </li>
+
+  <li class="conveyancing-cost__item">
+    <%= link_to '#help-to-buy-isa',
+                class: 'toggle-class-closest conveyancing-cost__label',
+                data: {
+                  class: 'hide',
+                  container: '.help-to-buy-isa',
+                  return: false
+                } do %>
+      <%= image_tag 'components/icons/tooltip.gif',
+                    alt: 'Find out more',
+                    class: 'conveyancing-cost__tooltip' %>
+
+      <%= f.label :help_to_buy_isa,
+                  'Help to Buy ISA' %>
+    <% end %>
+
+    <span class="conveyancing-cost__checkbox-wrap">
+      <%= f.check_box :help_to_buy_isa,
+                      class: 'conveyancing-cost__checkbox' %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' if f.object.help_to_buy_isa?}
+                          conveyancing-cost__toggle--cross",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_help_to_buy_isa'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/cross' %>
+      <% end %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' unless f.object.help_to_buy_isa?}
+                          conveyancing-cost__toggle--checkmark",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_help_to_buy_isa'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+      <% end %>
+    </span>
+
+    <span class="conveyancing-cost__fee">
+      <%= number_to_currency costs[:help_to_buy_isa] %>
+    </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_isa' %>
+  </li>
+
+  <li class="conveyancing-cost__item">
+    <%= link_to '#shared-ownership-scheme',
+                class: 'toggle-class-closest conveyancing-cost__label',
+                data: {
+                  class: 'hide',
+                  container: '.shared-ownership-scheme',
+                  return: false
+                } do %>
+      <%= image_tag 'components/icons/tooltip.gif',
+                    alt: 'Find out more',
+                    class: 'conveyancing-cost__tooltip' %>
+
+      <%= f.label :shared_ownership_scheme,
+                  'Shared Ownership Scheme' %>
+    <% end %>
+
+    <span class="conveyancing-cost__checkbox-wrap">
+      <%= f.check_box :shared_ownership_scheme,
+                      class: 'conveyancing-cost__checkbox' %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' if f.object.shared_ownership_scheme?}
+                          conveyancing-cost__toggle--cross",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_shared_ownership_scheme'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/cross' %>
+      <% end %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' unless f.object.shared_ownership_scheme?}
+                          conveyancing-cost__toggle--checkmark",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_shared_ownership_scheme'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+      <% end %>
+    </span>
+
+    <span class="conveyancing-cost__fee">
+      <%= number_to_currency costs[:shared_ownership_scheme] %>
+    </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
+  </li>
+</ul>

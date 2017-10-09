@@ -1,5 +1,5 @@
 .primary-header {
-  @include grid-row;
+  @include flex-grid-row;
 
   @include media('<1024px') {
     background: $white;
@@ -23,7 +23,12 @@
 
 .header-branding {
   @include clearfix;
-  @include grid-column($columns: 6, $gutter: (small: 0, medium: 30));
+  @include flex-grid-column($columns: 6, $gutter: (small: 0, medium: 30));
+  order: 1;
+
+  @include breakpoint(medium only) {
+    @include flex-grid-column(4);
+  }
 
   @include breakpoint(large) {
     margin: rem(25px) 0 0;
@@ -53,10 +58,15 @@
 }
 
 .header-contact {
-  @include breakpoint(large) {
-    @include grid-column(6);
+  @include breakpoint(medium) {
+    @include flex-grid-column(5);
     display: block;
+    order: 2;
     text-align: right;
+  }
+
+  @include breakpoint(large) {
+    @include flex-grid-column(6);
   }
 }
 
@@ -66,7 +76,8 @@
   font-family: $montserrat;
   font-size: rem(25px);
   line-height: 1.1;
-  margin: rem(47px 70px 0 0);
+  margin: rem(47px 50px 0 0);
+  order: 2;
   vertical-align: top;
 
   @include breakpoint(small only) {
@@ -76,6 +87,7 @@
   @include media('<=1024px') {
     font-size: rem(22px);
     margin-right: 0;
+    margin-top: 0;
   }
 
 
@@ -120,8 +132,13 @@
 }
 
 .header-hamburger-menu {
-  @include grid-column(6);
+  @include flex-grid-column(6);
   text-align: right;
+  order: 4;
+
+  @include breakpoint(medium) {
+    @include flex-grid-column(2);
+  }
 
   @include breakpoint(large) {
     display: none;
@@ -137,7 +154,7 @@
   display: inline-block;
   height: 76px;
 
-  @include breakpoint(small only) {
+  @include breakpoint(medium down) {
     display: none;
   }
 

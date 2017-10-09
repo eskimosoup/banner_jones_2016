@@ -26,6 +26,10 @@
         <%= f.select :location, ConveyancingQuotes::QuoteLocation::LOCATIONS %>
       </div>
       <div class="field">
+        <%= f.label :title %><br>
+        <%= f.text_field :title %>
+      </div>
+      <div class="field">
         <%= f.label :details %><br>
         <%= f.text_area :details, class: 'tinymce' %>
       </div>
@@ -34,6 +38,12 @@
     <% end %>
     <%= field_set_tag nil, id: 'tabs-3' do %>
       <%= render 'optimadmin/shared/suggested_url_field', f: f %>
+      <% if @conveyancing_quotes_location.new_record? || @conveyancing_quotes_location.reference_code.blank? %>
+        <div class="field">
+          <%= f.label :reference_code %><br>
+          <%= f.text_field :reference_code %>
+        </div>
+      <% end %>
       <div class="field">
         <%= f.label :display %><br>
         <%= f.check_box :display %>

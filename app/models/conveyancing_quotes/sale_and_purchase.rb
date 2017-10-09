@@ -13,17 +13,20 @@ module ConveyancingQuotes
 
     after_create :set_user_sale_and_purchase
 
+    validates :sale, presence: true, unless: proc { |x| x.purchase.present? }
+    validates :purchase, presence: true, unless: proc { |x| x.sale.present? }
+
     accepts_nested_attributes_for :sale,
-                                  reject_if: :all_blank,
+                                  reject_if: proc { |attributes| attributes['price'].blank? },
                                   allow_destroy: true
 
     accepts_nested_attributes_for :purchase,
-                                  reject_if: :all_blank,
+                                  reject_if: proc { |attributes| attributes['price'].blank? },
                                   allow_destroy: true
 
     def set_user_sale_and_purchase
-      user.sale = sale
-      user.purchase = purchase
+      user.sale = sale if sale
+      user.purchase = purchase if purchase
       user.save!
     end
   end
