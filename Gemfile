@@ -34,6 +34,10 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 3.0'
   gem 'listen', '~> 3.0.5'
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-passenger'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -69,8 +73,8 @@ group :development do
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
-# gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
-gem 'optimised_site', path: '../optimised_site'
+gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
+# gem 'optimised_site', path: '../optimised_site'
 gem 'friendly_id', '~> 5.1.0'
 gem 'geocoder'
 gem 'therubyracer', platforms: :ruby
