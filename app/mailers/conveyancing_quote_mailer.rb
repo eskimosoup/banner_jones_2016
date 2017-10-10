@@ -6,7 +6,7 @@ class ConveyancingQuoteMailer < ApplicationMailer
     @user = user
 
     delivery_options = {
-      address: ENV['EMAIL_HOST']
+      address: ENV['BANNER_JONES_EMAIL_HOST']
     }
 
     mail to: @user.email,

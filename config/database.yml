@@ -90,4 +90,10 @@ production:
   <<: *default
   database: banner_jones_production
   username: banner_jones
-  password: <%= ENV['BANNER_JONES_2016_DATABASE_PASSWORD'] %>
+  password: <%= ENV['BANNER_JONES_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  database: banner_jones_staging
+  username: banner_jones
+  password: <%= ENV['BANNER_JONES_DATABASE_PASSWORD'] %>
