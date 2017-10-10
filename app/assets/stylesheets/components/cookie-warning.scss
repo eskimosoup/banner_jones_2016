@@ -1,0 +1,31 @@
+.cookie-warning {
+  background: $orange;
+  color: $black;
+  display: none;
+  box-shadow: inset -2px -2px 8px rgba($black, .25);
+
+  &__content {
+    font-weight: $myriad-pro-semibold;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1350px;
+    padding-bottom: rem(10px);
+    padding-top: rem(10px);
+    width: 95%;
+
+    p {
+      font-size: rem(14px);
+      margin: 0;
+    }
+
+    a {
+      border-bottom: 1px solid $black;
+      color: $black;
+      text-decoration: none;
+    }
+  }
+
+  &__confirmation {
+    ext-align: right;
+  }
+}
