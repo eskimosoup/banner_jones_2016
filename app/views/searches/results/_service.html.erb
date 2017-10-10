@@ -1,15 +1,22 @@
 <div class="search-result">
-  <% present object do |service_presenter| %>
-    <%= link_to direct_service_path(object) do %>
-      <div class="listing-title">
-        <%= service_presenter.title %>
-      </div>
-      <div class="article-summary">
-        <%= service_presenter.summary %>
-      </div>
-    <% end %>
+  <%= link_to audience_service_path(object.audience, object) do %>
+    <div class="search-result__microcopy search-result__microcopy--type">
+      <%= object.class.model_name.human %> | <%= object.audience.title %>
+    </div>
+
+    <div class="search-result__title">
+      <%= object.title %>
+    </div>
+
+    <div class="search-result__summary">
+      <%= simple_format object.summary %>
+    </div>
+
     <%= link_to 'Find out more',
-                direct_service_path(object),
-                class: 'compact-primary-button custom-link' %>
+                audience_service_path(object.audience, object),
+                class: 'search-result__button' %>
   <% end %>
 </div>
+
+
+

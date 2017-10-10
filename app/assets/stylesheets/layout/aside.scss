@@ -1,0 +1,21 @@
+.shared-aside {
+  @include responsive-flex-grid-column((medium down: 12, large: 3));
+
+  &__title {
+    background: $red;
+    color: $white;
+    font-family: $museo-sans-rounded;
+    font-size: rem(22px);
+    font-weight: $museo-sans--bold;
+    margin: 0;
+    padding: rem(21px);
+  }
+
+  &__inner {
+    background: $white;
+
+    &--padded {
+      padding: rem(10px);
+    }
+  }
+}

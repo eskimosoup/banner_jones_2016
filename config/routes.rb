@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   resources :event_categories, only: :show, path: 'event-categories'
   resources :event_locations, only: :show, path: 'event-locations'
 
-  resources :case_studies, only: %i[index show], path: 'case-studies'
+  # resources :case_studies, only: %i[index show], path: 'case-studies'
   resources :articles, only: %i[index show]
   resources :offices, only: %i[index show]
   resources :resources, only: %i[index show]

@@ -3,21 +3,22 @@
   <%= link_to object do %>
     <%#= article_presenter.homepage_image(class: 'article-image') if object.image? %>
 
-    <div class="article-date">
+    <div class="search-result__microcopy search-result__microcopy--type">
+      <%= object.class.model_name.human %> |
       <%= article_presenter.date %>
     </div>
 
-    <div class="listing-title">
+    <div class="search-result__title">
       <%= article_presenter.title %>
     </div>
 
-    <div class="article-summary">
+    <div class="search-result__summary">
       <%= article_presenter.summary %>
     </div>
     <% end %>
 
     <%= link_to 'Find out more',
                 object,
-                class: 'compact-primary-button custom-link' %>
+                class: 'search-result__button' %>
   <% end %>
 </div>

@@ -103,12 +103,10 @@
     </div>
 
     <div class="primary-navigation-search" role="search">
-      <%= form_tag '', method: :get, class: 'header-search-form' do %>
-        <%= text_field_tag :search, params[:search],
-                                  placeholder: 'Search',
-                                    class: 'header-search-input' %>
-
-        <%= submit_tag 'Search', class: 'header-search-submit' %>
+      <%= form_tag new_search_path, method: :get, class: 'header-search-form' do %>
+        <%= text_field_tag :q, params[:q],
+                               placeholder: 'Search',
+                               class: 'header-search-form__input' %>
        <% end %>
     </div>
   </nav>

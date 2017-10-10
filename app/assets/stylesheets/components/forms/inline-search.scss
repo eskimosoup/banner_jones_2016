@@ -1,0 +1,14 @@
+.inline-search-form {
+  &__field,
+  &__actions {
+    display: inline-block;
+  }
+
+  &__input {
+    @include secondary-input;
+  }
+
+  &__submit {
+    @include secondary-submit;
+  }
+}

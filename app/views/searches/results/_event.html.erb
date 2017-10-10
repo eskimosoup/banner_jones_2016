@@ -1,0 +1,24 @@
+<div class="search-result">
+  <%= link_to object do %>
+    <div class="search-result__microcopy search-result__microcopy--type">
+      <%= object.class.model_name.human %> |
+      <% present object do |event_presenter| %>
+        <%= event_presenter.event_start(:long) %>
+        till
+        <%= event_presenter.event_end(:long) %>
+      <% end %>
+    </div>
+
+    <div class="search-result__title">
+      <%= object.title %>
+    </div>
+
+    <div class="search-result__summary">
+      <%= simple_format object.summary %>
+    </div>
+
+    <%= link_to 'Find out more',
+                object,
+                class: 'search-result__button' %>
+  <% end %>
+</div>

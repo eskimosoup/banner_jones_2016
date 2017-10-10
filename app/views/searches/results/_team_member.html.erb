@@ -1,12 +1,17 @@
 <div class="search-result">
-  <% present object do |team_member_presenter| %>
-    <%= link_to object do %>
-      <div class="listing-title">
-        <%= object.forename %> <%= object.surname %>
-      </div>
-    <% end %>
+  <%= link_to object do %>
+    <%#= article_presenter.homepage_image(class: 'article-image') if object.image? %>
+
+    <div class="search-result__microcopy search-result__microcopy--type">
+      <%= object.class.model_name.human %>
+    </div>
+
+    <div class="search-result__title">
+      <%= object.forename %> <%= object.surname %>
+    </div>
+
     <%= link_to 'Find out more',
                 object,
-                class: 'compact-primary-button custom-link' %>
+                class: 'search-result__button' %>
   <% end %>
 </div>

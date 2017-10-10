@@ -1,10 +1,50 @@
 <div class="search-results">
   <div class="search-results__content">
     <div class="search-results__results">
-      <%= render @facade.results %>
+      <div class="search-results__inner search-results__inner--padded">
+        <h1 class="search-results__title">
+          Search Results
+        </h1>
 
-      <%= paginate @facade.results %>
+        <%= form_tag new_search_path, method: :get, class: 'inline-search-form' do %>
+          <div class="inline-search-form__field">
+            <%= text_field_tag :q,
+                                params[:q],
+                                placeholder: 'Search',
+                                class: 'inline-search-form__input
+                                        inline-search-form__input--bordered' %>
+          </div>
+
+          <div class="inline-search-form__actions">
+            <%= submit_tag 'Search',
+                            class: 'inline-search-form__submit' %>
+          </div>
+       <% end %>
+
+        <p class="search-results__summary">
+          Your search for
+          <strong>
+            <%= params[:q] %>
+          </strong>
+          returned
+          <strong><%= pluralize(@facade.results.size, 'result', 'results') %></strong>.
+        </p>
+
+        <%= render @facade.results %>
+
+        <%= paginate @facade.results %>
+      </div>
     </div>
+
+    <aside class="shared-aside">
+      <div class="shared-aside__inner shared-aside__inner--padded">
+        <h1 class="shared-aside__title">
+          Talk to us
+        </h1>
+
+        <%= render 'pages/shared/call_to_actions_solicitors' %>
+      </div>
+    </aside>
   </div>
 </div>
 

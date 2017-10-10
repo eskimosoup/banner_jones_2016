@@ -1,13 +1,32 @@
 .search-result {
-  &__title {
+  border-bottom: 1px dotted $red;
+  padding-bottom: rem(10px);
+  margin-bottom: rem(10px);
 
+  &__title {
+    color: $black;
+    font-family: $museo-sans-rounded;
+    font-size: rem(20px);
+    font-weight: $museo-sans--medium;
+    margin-bottom: rem(10px);
+    margin-top: rem(10px);
+  }
+
+  &__microcopy {
+    color: $offset-blue;
+    font-size: rem(14px);
+
+    &--type {
+      font-size: rem(12px);
+      text-transform: uppercase;
+    }
   }
 
   &__summary {
-
+    color: $offset-purple;
   }
 
   &__button {
-
+    @include secondary-submit;
   }
 }
