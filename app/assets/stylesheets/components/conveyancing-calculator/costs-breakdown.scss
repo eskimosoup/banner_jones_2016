@@ -89,9 +89,9 @@
 
   &__sub-total-overview {
     @include clearfix;
-    background: $orange;
+    background: $secondary-offset-white;
     border-radius: 10px;
-    color: $white;
+    color: $black;
     font-family: $museo-sans-rounded;
     font-size: rem(25px);
     font-weight: $museo-sans--heavy;
@@ -103,7 +103,6 @@
   }
 
   &__sub-total {
-    color: $black;
     float: right;
   }
 

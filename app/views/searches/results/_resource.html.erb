@@ -10,7 +10,7 @@
       <%= object.title %>
     </div>
 
-    <%= content_tag :div, (simple_format object.summary), class: 'search-resilt__microcopy' if object.summary? %>
+    <%= content_tag :div, (simple_format object.summary), class: 'search-result__microcopy' if object.summary? %>
 
     <%= link_to 'Find out more',
                 object,
