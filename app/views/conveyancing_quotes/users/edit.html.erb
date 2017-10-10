@@ -49,24 +49,29 @@
                     html: {
                           class: 'conveyancing-content-form'
                     } do |f| %>
-          <%= render 'shared/form_errors', object: @user %>
+          <%= render 'shared/form_errors',
+             object: @user,
+             form_name: 'conveyancing quote' %>
           <div class="field">
             <%= f.label :forename %>
             <%= f.text_field :forename,
                             class: 'conveyancing-content-form__input
-                                    conveyancing-content-form__input--bordered' %>
+                                    conveyancing-content-form__input--bordered',
+                            required: true %>
           </div>
           <div class="field">
             <%= f.label :surname %>
             <%= f.text_field :surname,
                             class: 'conveyancing-content-form__input
-                                    conveyancing-content-form__input--bordered' %>
+                                    conveyancing-content-form__input--bordered',
+                            required: true %>
           </div>
           <div class="field">
             <%= f.label :email %>
             <%= f.email_field :email,
                             class: 'conveyancing-content-form__input
-                                    conveyancing-content-form__input--bordered' %>
+                                    conveyancing-content-form__input--bordered',
+                            required: true %>
           </div>
           <div class="actions">
             <%= f.hidden_field :complete, value: 1 %>
@@ -75,7 +80,8 @@
                           data: {
                             event_category: 'Conveyancing Calculator',
                             event_action: 'Click',
-                            event_label:  'Instruct us'
+                            event_label:  'Instruct us',
+                            disable_with: 'Submitting...'
                           }  %>
             <p class="conveyancing-content-form__inline">
               For Banner Jones to act on your behalf in this transaction.
