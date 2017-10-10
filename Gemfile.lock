@@ -43,14 +43,9 @@ GIT
     optimadmin_generators (0.7.1)
 
 GIT
-  remote: git@github.com:eskimosoup/stamp_duty.git
-  revision: 1ee476c1e57440d0bb551f29b34017c7d032f347
+  remote: git@github.com:eskimosoup/optimised_site.git
+  revision: 20dd5df6be8a11a83d500e7bbe0fc93e8f6da854
   branch: master
-  specs:
-    stamp_duty (0.1.1)
-
-PATH
-  remote: ../optimised_site
   specs:
     optimised_site (0.6.4)
       amoeba
@@ -63,6 +58,13 @@ PATH
       optimadmin
       pg_search
       rails (>= 5.0)
+
+GIT
+  remote: git@github.com:eskimosoup/stamp_duty.git
+  revision: 1ee476c1e57440d0bb551f29b34017c7d032f347
+  branch: master
+  specs:
+    stamp_duty (0.1.1)
 
 GEM
   remote: https://rubygems.org/
