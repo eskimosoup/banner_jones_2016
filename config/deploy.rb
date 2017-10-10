@@ -3,6 +3,7 @@
 # config valid only for current version of Capistrano
 lock '3.9.1'
 
+set :stages, %w[staging production]
 set :client, 'banner_jones'
 set :application, 'banner_jones_2016'
 set :deploy_via, :remote_cache
