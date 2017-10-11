@@ -13,13 +13,14 @@
     text-align: center;
 
     @include breakpoint(small only) {
-      @include flex-grid-column(2);
+      @include flex-grid-column(12);
+      padding-bottom: rem(25px);
       padding-top: rem(25px);
     }
 
     @include breakpoint(medium) {
-      @include flex-grid-column(2);
-      padding-top: rem(50px);
+      @include flex-grid-column(2, (medium: 10));
+      padding-top: rem(30px);
     }
   }
 
@@ -31,7 +32,7 @@
     font-weight: $museo-sans--bold;
 
     @include breakpoint(small only) {
-      @include flex-grid-column(10);
+      @include flex-grid-column(12);
       padding-bottom: rem(10px);
       padding-top: rem(10px);
     }

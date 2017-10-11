@@ -14,7 +14,6 @@ $(window).load(function() {
 // Adapted from http://stackoverflow.com/questions/7717527/jquery-smooth-scrolling-when-clicking-an-anchor-link
 function smoothScrollToPageAnchor(elem) {
   var scrollTo = $(elem).offset().top - offsetHeight;
-  console.log(scrollTo);
   $(window).scrollTop(scrollTo, 0);
   return false;
 }

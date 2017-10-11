@@ -24,6 +24,18 @@
     @include conveyancing-input;
   }
 
+  &__errors {
+    background: rgba($red, .75);
+    border-radius: 10px;
+    display: none;
+    margin-top: rem(10px);
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
   &__options {
     background: $black;
     border-radius: 10px;
@@ -40,6 +52,7 @@
 
       @include media('>=768px') {
         display: inline-block;
+        min-width: 50%;
       }
     }
 

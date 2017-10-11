@@ -84,7 +84,9 @@
     </p>
     <div class="conveyancing-scroll-arrow">
       <%= link_to '#pay-us',
-                  class: 'conveyancing-scroll-arrow__shape conveyancing-scroll-arrow__shape--bounce' do %>
+                  class: 'conveyancing-scroll-arrow__shape
+                          conveyancing-scroll-arrow__shape--bounce
+                          smooth-scroll' do %>
       <% end %>
       Scroll for more
     </div>
@@ -231,7 +233,8 @@
         <%= f.label :email %>
         <%= f.email_field :email,
                           class: 'conveyancing-content-form__input',
-                          placeholder: 'me@example.com' %>
+                          placeholder: 'me@example.com',
+                          required: true %>
       </div>
       <div class="conveyancing-content-form__actions">
         <%= f.submit 'Send',
@@ -239,7 +242,8 @@
                       data: {
                         event_category: 'Conveyancing Calculator',
                         event_action: 'Click',
-                        event_label:  'Email Quote'
+                        event_label:  'Email Quote',
+                        disable_with: 'Sending..'
                       } %>
       </div>
     <% end %>

@@ -14,9 +14,7 @@ module ConveyancingQuotes
         redirect_to conveyancing_quotes_location_users_path(@user.quote_location),
                     notice: 'Conveyancing Quote saved'
       else
-        @conveyancing_quote_sale_and_purchase.build_sale
-        @conveyancing_quote_sale_and_purchase.build_purchase
-        render :new
+        redirect_to new_conveyancing_quotes_location_users_path(@user.quote_location)
       end
     end
 

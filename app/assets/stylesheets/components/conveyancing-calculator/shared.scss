@@ -60,9 +60,9 @@
   border-radius: 50%;
   display: block;
   height: 26px;
-  width: 26px;
-
+  transform: rotate(45deg);
   stroke-width: 3;
+  width: 26px;
 }
 
 .cross__circle {
@@ -85,7 +85,7 @@
 
   stroke: $light-accent-grey;
   stroke-dasharray: 48;
-  stroke-dashoffset: 48;;
+  stroke-dashoffset: 48;
 
   &--right {
     animation: .3s ease .8s normal forwards 1 running stroke;

@@ -1,0 +1,15 @@
+<% cache team_member do %>
+  <div class="conveyancing-key-team-member">
+    <% present team_member do |team_member_presenter| %>
+      <div class="conveyancing-key-team-member__avatar team-member-avatar">
+        <%= team_member_presenter.related_footer_image(alt: team_member_presenter.full_name) %>
+      </div>
+      <div class="conveyancing-key-team-member__name">
+        <%= team_member_presenter.full_name %>
+      </div>
+      <div class="conveyancing-key-team-member__roles">
+        <%= team_member_presenter.department_roles(sentence_list: true) %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
