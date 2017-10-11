@@ -301,10 +301,10 @@
           </li>
         </ul>
         <div class="conveyancing-proceed__team-member">
-          <%= render partial: 'services/shared/key_team_member_avatars',
-                    collection: @service.team_members.key_team_members,
-                    cached: true,
-                    as: :team_member %>
+          <%= render partial: 'conveyancing_quotes/shared/key_team_members',
+                      collection: @service.team_members.key_team_members,
+                      cached: true,
+                      as: :team_member %>
         </div>
         <p>
           If you have any questions then call us for a no-obligation discussion to
