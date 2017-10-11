@@ -9,6 +9,7 @@ module ConveyancingQuotes
                foreign_key: 'conveyancing_quotes_sales_and_purchase_id'
 
     delegate :fee, :vat, :total, to: :conveyancing_calculator
+    attr_accessor :freehold_house, :freehold_apartment
 
     def price=(price)
       write_attribute(:price, price.gsub(/\D/, ''))

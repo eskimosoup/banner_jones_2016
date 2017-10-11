@@ -57,21 +57,24 @@
             <%= f.text_field :forename,
                             class: 'conveyancing-content-form__input
                                     conveyancing-content-form__input--bordered',
-                            required: true %>
+                            required: true,
+                            placeholder: 'Forename' %>
           </div>
           <div class="field">
             <%= f.label :surname %>
             <%= f.text_field :surname,
                             class: 'conveyancing-content-form__input
                                     conveyancing-content-form__input--bordered',
-                            required: true %>
+                            required: true,
+                            placeholder: 'Surname' %>
           </div>
           <div class="field">
             <%= f.label :email %>
             <%= f.email_field :email,
                             class: 'conveyancing-content-form__input
                                     conveyancing-content-form__input--bordered',
-                            required: true %>
+                            required: true,
+                            placeholder: 'me@example.com' %>
           </div>
           <div class="actions">
             <%= f.hidden_field :complete, value: 1 %>

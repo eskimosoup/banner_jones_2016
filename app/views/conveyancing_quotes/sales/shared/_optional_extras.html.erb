@@ -108,8 +108,6 @@
 
       <%= f.label :shared_ownership_scheme,
                   'Shared Ownership Scheme' %>
-
-      <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
     <% end %>
 
     <span class="conveyancing-cost__checkbox-wrap">
@@ -140,5 +138,7 @@
     <span class="conveyancing-cost__fee">
       <%= number_to_currency costs[:shared_ownership_scheme] %>
     </span>
+
+    <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
   </li>
 </ul>

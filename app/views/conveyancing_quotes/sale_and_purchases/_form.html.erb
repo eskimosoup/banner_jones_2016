@@ -7,7 +7,11 @@
     <%= render 'conveyancing_quotes/sales/form_fields', f: sale %>
   <% end %>
 
-
+  <div class="conveyancing-landing-hero-form__errors">
+    <p>
+      Please ensure you enter a valid number.
+    </p>
+  </div>
 
   <div class="actions">
     <%= f.submit 'Get Quote',

@@ -25,6 +25,8 @@
         $(this)
           .parent()
           .addClass('conveyancing-landing-hero-form__input--valid');
+
+        $('.conveyancing-landing-hero-form__errors').slideUp(250);
       } else {
         $(this)
           .parent()
@@ -37,14 +39,13 @@
     $(document).on('click', '.conveyancing-landing-hero-form__submit', function(){
       let filled = false;
 
-      $('.conveyancing-landing-hero-form__input').each(function() {
-        if($(this).val() != '') {
-          filled = true;
-        }
-      });
+      if($('.conveyancing-landing-hero-form__input--valid').length) {
+        filled = true;
+      }
 
       if(!filled) {
         $(this).addClass('conveyancing-landing-hero-form__submit--shake');
+        $('.conveyancing-landing-hero-form__errors').slideDown(250);
 
         setTimeout(function() {
           $('.conveyancing-landing-hero-form__submit')
@@ -53,6 +54,17 @@
 
         return false;
       }
+    });
+
+    $(document).on('click', '.conveyancing-landing-hero-form__options-label', function() {
+      $(this).parent()
+             .parent()
+             .parent()
+             .parent()
+             .find('input[type="checkbox"]')
+             .attr('checked', false);
+      $(this).closest('input[type="checkbox"]')
+             .attr('checked', true);
     });
   </script>
 <% end %>
@@ -83,7 +95,7 @@
 
 <section class="conveyancing-call-to-action-block">
   <div class="conveyancing-call-to-action-block__team-member">
-    <%= render partial: 'services/shared/key_team_member_avatars',
+    <%= render partial: 'conveyancing_quotes/shared/key_team_members',
                collection: @service.team_members.key_team_members,
                cached: true,
                as: :team_member %>
