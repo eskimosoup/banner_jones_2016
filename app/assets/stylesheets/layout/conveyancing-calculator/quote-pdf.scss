@@ -1,0 +1,15 @@
+@import 'lib/variables';
+@import 'lib/mixins';
+@import 'lib/styles';
+@import 'lib/fonts';
+
+@import 'vendor/foundation/foundation';
+@import 'vendor/include-media';
+
+.quote-pdf-header {
+  @include flex-grid-row;
+
+  &__logo {
+    @include flex-grid-column(12);
+  }
+}
