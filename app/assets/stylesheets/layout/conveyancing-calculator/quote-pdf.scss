@@ -44,7 +44,7 @@
   }
 
   &__details {
-    padding-bottom: 0;
+    // padding-bottom: 0;
   }
 }
 
@@ -69,6 +69,15 @@
 
 .conveyancing-cost {
   margin-bottom: 0;
+
+  &__fee {
+    float: right;
+    margin-right: rem(15px);
+  }
+
+  &__toggle {
+    display: none;
+  }
 
   &__item {
     &--deselected {

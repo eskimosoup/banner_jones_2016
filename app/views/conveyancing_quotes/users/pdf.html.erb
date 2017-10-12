@@ -16,8 +16,7 @@
     </h1>
     <p class="conveyancing-content__microcopy">
       Your quote reference is:
-      <strong><%= current_user.quote_reference %></strong>, generated:
-      <%= l current_user.created_at, format: :long %>.
+      <strong><%= current_user.quote_reference %></strong>.
     </p>
   </div>
 </div>
@@ -151,9 +150,6 @@
               conveyancing-content__section--full">
     <div class="conveyancing-proceed">
       <div class="conveyancing-proceed__content">
-        <h1 class="conveyancing-proceed__title">
-          Thank you for your interest
-        </h1>
         <p>
           If you have any questions then call us for a no-obligation discussion to
           see how we can help get you moving.
