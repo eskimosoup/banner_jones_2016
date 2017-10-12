@@ -50,30 +50,6 @@
     </h1>
   </header>
   <div class="conveyancing-breakdown__details">
-    <% if current_user.sale.present? %>
-      <div class="conveyancing-breakdown__group">
-        <h2 class="conveyancing-breakdown__title">
-          For Selling
-        </h2>
-        <%= form_for current_user.sale, url: conveyancing_quotes_sales_path, remote: true do |f| %>
-          <%= render 'conveyancing_quotes/sales/shared/optional_extras',
-                    f: f,
-                    costs: costs %>
-        <% end %>
-        <div class="conveyancing-breakdown__sub-total-overview">
-          Sub-total
-          <div class="conveyancing-breakdown__sub-total">
-            <% sub_total = 0 %>
-            <% current_user.sale.additional_costs.each do |additional_cost| %>
-              <% sub_total += costs[additional_cost] %>
-            <% end %>
-            <span class="conveyancing-breakdown__sub-total-sale">
-              <%= number_to_currency sub_total %>
-            </span>
-          </div>
-        </div>
-      </div>
-    <% end %>
     <% if current_user.purchase.present? %>
       <div class="conveyancing-breakdown__group">
         <h2 class="conveyancing-breakdown__title">
@@ -92,6 +68,30 @@
               <% sub_total += costs[additional_cost] %>
             <% end %>
             <span class="conveyancing-breakdown__sub-total-purchase">
+              <%= number_to_currency sub_total %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if current_user.sale.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Selling
+        </h2>
+        <%= form_for current_user.sale, url: conveyancing_quotes_sales_path, remote: true do |f| %>
+          <%= render 'conveyancing_quotes/sales/shared/optional_extras',
+                    f: f,
+                    costs: costs %>
+        <% end %>
+        <div class="conveyancing-breakdown__sub-total-overview">
+          Sub-total
+          <div class="conveyancing-breakdown__sub-total">
+            <% sub_total = 0 %>
+            <% current_user.sale.additional_costs.each do |additional_cost| %>
+              <% sub_total += costs[additional_cost] %>
+            <% end %>
+            <span class="conveyancing-breakdown__sub-total-sale">
               <%= number_to_currency sub_total %>
             </span>
           </div>
@@ -137,8 +137,8 @@
   <div class="conveyancing-content__section
               conveyancing-content__section--cta
               conveyancing-content__section--full">
-    <%= content_tag :div, (render current_user.sale), class: 'conveyancing-content__sale-total' if current_user.sale.present? %>
     <%= content_tag :div, (render current_user.purchase), class: 'conveyancing-content__purchase-total' if current_user.purchase.present? %>
+    <%= content_tag :div, (render current_user.sale), class: 'conveyancing-content__sale-total' if current_user.sale.present? %>
     <p class="conveyancing-content__microcopy
               conveyancing-content__microcopy--small-print">
       Your quote is valid for 30 days and fully inclusive, fixed price*

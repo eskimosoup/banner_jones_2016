@@ -89,3 +89,7 @@ gem 'pdfkit', '~> 0.8.2'
 gem 'cocoon'
 gem 'whenever'
 gem 'pg_search'
+
+gem 'inky-rb', require: 'inky'
+# Stylesheet inlining for email
+gem 'premailer-rails'

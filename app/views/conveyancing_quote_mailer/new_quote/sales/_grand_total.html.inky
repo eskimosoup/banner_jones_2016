@@ -1,0 +1,20 @@
+<% total = fees_total = vat_total = 0 %>
+<% fees_total = sale.fee %>
+<% vat_total += sale.vat %>
+<% total += sale.total %>
+<% sale.additional_costs.each do |additional_cost| %>
+  <% cost = ConveyancingCalculator.configuration.additional_costs[sale.user.symbolised_location].reduce(Hash.new, :merge)[additional_cost] %>
+  <% vat = cost * ConveyancingCalculator.configuration.vat_rate %>
+  <% number_to_currency cost %>
+  <% fees_total += cost %>
+  <% vat_total += vat %>
+  <% total += (cost + vat) %>
+  <%= cost = vat = nil %>
+<% end %>
+
+<p class="conveyancing-fee-header__grand-total">
+  Your grand total for selling is:
+  <strong>
+    <%= number_to_currency total %>
+  </strong>
+</p>

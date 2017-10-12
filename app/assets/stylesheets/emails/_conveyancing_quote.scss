@@ -1,0 +1,150 @@
+// These are the styles to make some of the templates look extra nice.conveyancing-
+// Feel free to remove these styles for production!
+
+// Body Styles
+body,
+html,
+.body {
+  background: $blue-light !important;
+}
+
+td {
+  word-break: keep-all;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  -webkit-hyphens: none;
+  hyphens: none;
+}
+
+.container {
+  background: $white;
+}
+
+.conveyancing-header {
+  &__lead-text {
+    font-size: 18px;
+    line-height: 1.25;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__quote-reference {
+    color: $offset-purple;
+  }
+}
+
+.conveyancing-fee-header {
+  &--first {
+    background: $red;
+  }
+
+  &--second {
+    background: $deeper-grey;
+  }
+
+  &--third {
+    background: $black-grey;
+  }
+
+  &--cta {
+    background: $orange;
+  }
+
+  &__title {
+    color: $white;
+    line-height: 1.25;
+    margin: 0;
+
+    &--first {
+      color: $white;
+    }
+
+    &--second {
+      color: $white;
+    }
+
+    &--third {
+      color: $white;
+    }
+  }
+
+  &__accent {
+    &--first {
+      color: $orange;
+    }
+
+    &--third {
+      color: $orange;
+    }
+  }
+
+  &__grand-total {
+    color: $black;
+    font-size: 22px;
+  }
+
+  &__microcopy {
+    font-size: 12px;
+  }
+}
+
+.conveyancing-fee-breakdown {
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    &--bordered {
+      border-bottom: 2px solid $orange;
+    }
+  }
+
+  &__label {
+    color: $grey;
+    font-size: 17px;
+  }
+
+  &__cost {
+    font-size: 18px;
+    font-weight: 700;
+
+    @media screen and (min-width: 1024px) {
+      text-align: right !important;
+    }
+  }
+}
+
+.conveyancing-fee-total {
+  background: $secondary-offset-white;
+  border-radius: 10px;
+
+  &__subtotal {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    padding-left: 10px;
+  }
+
+  &__cost {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 0;
+
+    @media screen and (max-width: 1023px) {
+      padding-left: 10px !important;
+    }
+
+    @media screen and (min-width: 1024px) {
+      text-align: right !important;
+      padding-right: 10px !important;
+    }
+  }
+}
+
+.conveyancing-footer {
+  &__microcopy {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,124 @@
+<row class="conveyancing-fee-breakdown">
+    <columns small="12" large="12">
+      <spacer size="10"></spacer>
+
+      <h2 class="conveyancing-fee-breakdown__title">
+        For Buying
+      </h2>
+
+      <spacer size="5"></spacer>
+
+      <ul class="conveyancing-fee-breakdown__list">
+        <% if purchase.second_home_or_buy_to_let? %>
+          <li class="conveyancing-fee-breakdown__item">
+            <div class="conveyancing-fee-breakdown__label">
+              This is a second home or buy-to-let purchase.
+            </div>
+          </li>
+        <% end %>
+        <% if purchase.leasehold_house? %>
+          <li class="conveyancing-fee-breakdown__item">
+            <row>
+              <columns small="12" large="8">
+                <div class="conveyancing-fee-breakdown__label">
+                  Leasehold house
+                </div>
+              </columns>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency costs[:leasehold_house] %>
+                </div>
+              </columns>
+            </row>
+          </li>
+        <% end %>
+        <% if purchase.leasehold_apartment? %>
+          <li class="conveyancing-fee-breakdown__item">
+            <row>
+              <columns small="12" large="8">
+                <div class="conveyancing-fee-breakdown__label">
+                  Leasehold apartment
+                </div>
+              </columns>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency costs[:leasehold_apartment] %>
+                </div>
+              </columns>
+            </row>
+          </li>
+        <% end %>
+        <% if purchase.help_to_buy_scheme? %>
+          <li class="conveyancing-fee-breakdown__item">
+            <row>
+              <columns small="12" large="8">
+                <div class="conveyancing-fee-breakdown__label">
+                  Help to Buy Scheme
+                </div>
+              </columns>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency costs[:help_to_buy_scheme] %>
+                </div>
+              </columns>
+            </row>
+          </li>
+        <% end %>
+        <% if purchase.help_to_buy_isa? %>
+          <li class="conveyancing-fee-breakdown__item">
+            <row>
+              <columns small="12" large="8">
+                <div class="conveyancing-fee-breakdown__label">
+                  Help to Buy ISA
+                </div>
+              </columns>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency costs[:help_to_buy_isa] %>
+                </div>
+              </columns>
+            </row>
+          </li>
+        <% end %>
+        <% if purchase.shared_ownership_scheme? %>
+          <li class="conveyancing-fee-breakdown__item">
+            <row>
+              <columns small="12" large="8">
+                <div class="conveyancing-fee-breakdown__label">
+                  Shared Ownership Scheme
+                </div>
+              </columns>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency costs[:shared_ownership_scheme] %>
+                </div>
+              </columns>
+            </row>
+          </li>
+        <% end %>
+      </ul>
+
+      <spacer size="20"></spacer>
+
+      <row class="conveyancing-collapse conveyancing-fee-total">
+        <columns small="12" large="8">
+          <spacer size="10"></spacer>
+          <p class="conveyancing-fee-total__subtotal">
+            Sub-total
+          </p>
+          <spacer size="10" class="show-for-large"></spacer>
+        </columns>
+        <columns small="12" large="4">
+          <spacer size="10" class="show-for-large"></spacer>
+          <p class="conveyancing-fee-total__cost">
+            <% sub_total = 0 %>
+            <% purchase.additional_costs.each do |additional_cost| %>
+              <% sub_total += costs[additional_cost] %>
+            <% end %>
+            <%= number_to_currency sub_total %>
+          </p>
+          <spacer size="10"></spacer>
+        </columns>
+      </row>
+    </columns>
+  </row>

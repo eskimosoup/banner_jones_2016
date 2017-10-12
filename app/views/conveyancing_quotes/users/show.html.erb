@@ -127,30 +127,6 @@
     </h1>
   </header>
   <div class="conveyancing-breakdown__details">
-    <% if @user.sale.present? %>
-      <div class="conveyancing-breakdown__group">
-        <h2 class="conveyancing-breakdown__title">
-          For Selling
-        </h2>
-        <%= form_for @user.sale, url: conveyancing_quotes_sales_path, remote: true do |f| %>
-          <%= render 'conveyancing_quotes/sales/shared/optional_extras',
-                    f: f,
-                    costs: costs %>
-        <% end %>
-        <div class="conveyancing-breakdown__sub-total-overview">
-          Sub-total
-          <div class="conveyancing-breakdown__sub-total">
-            <% sub_total = 0 %>
-            <% @user.sale.additional_costs.each do |additional_cost| %>
-              <% sub_total += costs[additional_cost] %>
-            <% end %>
-            <span class="conveyancing-breakdown__sub-total-sale">
-              <%= number_to_currency sub_total %>
-            </span>
-          </div>
-        </div>
-      </div>
-    <% end %>
     <% if @user.purchase.present? %>
       <div class="conveyancing-breakdown__group">
         <h2 class="conveyancing-breakdown__title">
@@ -169,6 +145,30 @@
               <% sub_total += costs[additional_cost] %>
             <% end %>
             <span class="conveyancing-breakdown__sub-total-purchase">
+              <%= number_to_currency sub_total %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if @user.sale.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Selling
+        </h2>
+        <%= form_for @user.sale, url: conveyancing_quotes_sales_path, remote: true do |f| %>
+          <%= render 'conveyancing_quotes/sales/shared/optional_extras',
+                    f: f,
+                    costs: costs %>
+        <% end %>
+        <div class="conveyancing-breakdown__sub-total-overview">
+          Sub-total
+          <div class="conveyancing-breakdown__sub-total">
+            <% sub_total = 0 %>
+            <% @user.sale.additional_costs.each do |additional_cost| %>
+              <% sub_total += costs[additional_cost] %>
+            <% end %>
+            <span class="conveyancing-breakdown__sub-total-sale">
               <%= number_to_currency sub_total %>
             </span>
           </div>
@@ -214,8 +214,8 @@
   <div class="conveyancing-content__section
               conveyancing-content__section--cta
               conveyancing-content__section--full">
-    <%= content_tag :div, (render @user.sale), class: 'conveyancing-content__sale-total' if @user.sale.present? %>
     <%= content_tag :div, (render @user.purchase), class: 'conveyancing-content__purchase-total' if @user.purchase.present? %>
+    <%= content_tag :div, (render @user.sale), class: 'conveyancing-content__sale-total' if @user.sale.present? %>
     <%= link_to '#email',
                 class: 'conveyancing-content__cta-button
                         slide-toggle',

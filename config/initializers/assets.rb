@@ -17,4 +17,5 @@ Rails.application.config.assets.precompile += %w(
   vendor/colorbox.scss
   vendor/slick.js
   layout/conveyancing-calculator/quote-pdf.scss
+  foundation_emails.scss
 )
