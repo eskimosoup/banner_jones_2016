@@ -1,0 +1,106 @@
+<% vat_total = 0 %>
+<% vat_total += purchase.vat %>
+<% vat_total += ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] * ConveyancingCalculator.configuration.vat_rate %>
+
+<% cost_total = 0 %>
+
+<% purchase.additional_costs.each do |additional_cost| %>
+  <% cost = costs[additional_cost] %>
+  <% vat_total += cost * ConveyancingCalculator.configuration.vat_rate %>
+<% end %>
+
+<% cost_total += vat_total %>
+
+<row class="conveyancing-fee-breakdown">
+    <columns small="12" large="12">
+      <spacer size="10"></spacer>
+
+      <h2 class="conveyancing-fee-breakdown__title">
+        For Buying
+      </h2>
+
+      <spacer size="5"></spacer>
+
+      <ul class="conveyancing-fee-breakdown__list">
+        <li class="conveyancing-fee-breakdown__item">
+          <row>
+            <columns small="12" large="8">
+              <div class="conveyancing-fee-breakdown__label">
+                Stamp Duty Land Tax
+              </div>
+            </columns>
+            <columns small="12" large="4">
+              <div class="conveyancing-fee-breakdown__cost">
+                <% cost_total += purchase.stamp_duty %>
+                <%= number_to_currency purchase.stamp_duty %>
+              </div>
+            </columns>
+          </row>
+        </li>
+        <li class="conveyancing-fee-breakdown__item">
+          <row>
+            <columns small="12" large="8">
+              <div class="conveyancing-fee-breakdown__label">
+                Land Registry Fee
+              </div>
+            </columns>
+            <columns small="12" large="4">
+              <div class="conveyancing-fee-breakdown__cost">
+                <% cost_total += purchase.land_fee_calculator.fee %>
+                <%= number_to_currency purchase.land_fee_calculator.fee %>
+              </div>
+            </columns>
+          </row>
+        </li>
+        <li class="conveyancing-fee-breakdown__item">
+          <row>
+            <columns small="12" large="8">
+              <div class="conveyancing-fee-breakdown__label">
+                Premium Search Package
+              </div>
+            </columns>
+            <columns small="12" large="4">
+              <div class="conveyancing-fee-breakdown__cost">
+                <% premium_search = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>
+                <% cost_total += premium_search %>
+                <%= number_to_currency premium_search %>
+              </div>
+            </columns>
+          </row>
+        </li>
+        <li class="conveyancing-fee-breakdown__item">
+          <row>
+            <columns small="12" large="8">
+              <div class="conveyancing-fee-breakdown__label">
+                VAT (where applicable)
+              </div>
+            </columns>
+            <columns small="12" large="4">
+              <div class="conveyancing-fee-breakdown__cost">
+                <%= number_to_currency vat_total %>
+              </div>
+            </columns>
+          </row>
+        </li>
+      </ul>
+
+      <spacer size="20"></spacer>
+
+      <row class="conveyancing-collapse conveyancing-fee-total">
+        <columns small="12" large="8">
+          <spacer size="10"></spacer>
+          <p class="conveyancing-fee-total__subtotal">
+            Sub-total
+          </p>
+          <spacer size="10" class="show-for-large"></spacer>
+        </columns>
+        <columns small="12" large="4">
+          <spacer size="10" class="show-for-large"></spacer>
+          <p class="conveyancing-fee-total__cost">
+            <%= number_to_currency cost_total %>
+          </p>
+          <spacer size="10"></spacer>
+        </columns>
+      </row>
+    </columns>
+  </row>

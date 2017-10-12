@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ConveyancingQuotes
   class UsersController < BaseController
     before_action :set_location
@@ -13,18 +15,6 @@ module ConveyancingQuotes
       @conveyancing_quote_sale_and_purchase.build_sale
       @conveyancing_quote_sale_and_purchase.build_purchase
     end
-
-    def create
-      @user = @location.users.new(user_params)
-      if @user.save
-        session[:conveyancing_quote] = @user.token
-        redirect_to user_redirect_path
-      else
-        render :new
-      end
-    end
-
-    def edit; end
 
     def update
       @update = @user.update(user_params)
@@ -46,12 +36,9 @@ module ConveyancingQuotes
       end
     end
 
-    def show
-    end
+    def show; end
 
-    def thank_you
-      # redirect_to root_url if @user.blank?
-    end
+    def thank_you; end
 
     private
 
@@ -62,18 +49,9 @@ module ConveyancingQuotes
       )
     end
 
-    def user_redirect_path
-      if @user.buying? && @user.selling?
-        new_conveyancing_quotes_sale_and_purchases_path
-      elsif @user.buying?
-        new_conveyancing_quotes_purchase_path
-      elsif @user.selling?
-        new_conveyancing_quotes_sale_path
-      end
-    end
-
     def deliver_quote_email(user)
-      ConveyancingQuoteMailer.new_quote(user).deliver_now unless user.quote_emailed?
+      return if user.quote_emailed?
+      ConveyancingQuoteMailer.new_quote(user).deliver_now
       user.update_attributes(quote_emailed: true)
     end
   end

@@ -1,0 +1,163 @@
+<% costs = ConveyancingCalculator.configuration.additional_costs[current_user.symbolised_location].reduce(Hash.new, :merge) %>
+
+<div class="conveyancing-content">
+  <div class="conveyancing-content__section conveyancing-content__section--full">
+    <h1 class="conveyancing-content__main-title">
+      Here is your fixed price quote based on
+      <% if current_user.purchase.present? %>
+        your buying price of <strong><%= number_to_currency current_user.purchase.price %></strong>
+      <% end %>
+      <% if current_user.purchase.present? && current_user.sale.present? %>
+        and
+      <% end %>
+      <% if current_user.sale.present? %>
+        your selling price of <strong><%= number_to_currency current_user.sale.price %></strong>
+      <% end %>
+    </h1>
+    <p class="conveyancing-content__microcopy">
+      Your quote reference is:
+      <strong><%= current_user.quote_reference %></strong>.
+    </p>
+  </div>
+</div>
+<section class="conveyancing-breakdown" id="pay-us">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--first">
+    <h1 class="conveyancing-breakdown__main-title">
+      What you pay <span class="conveyancing-breakdown__emphasis">us</span>
+      for our services
+    </h1>
+  </header>
+  <div class="conveyancing-breakdown__details">
+    <%= render 'conveyancing_quotes/purchases/shared/conveyancing_costs',
+               purchase: current_user.purchase if current_user.purchase.present? %>
+    <%= render 'conveyancing_quotes/sales/shared/conveyancing_costs',
+               sale: current_user.sale if current_user.sale.present? %>
+    <footer class="conveyancing-breakdown__sub-total-overview">
+      Sub-total
+      <div class="conveyancing-breakdown__sub-total">
+        <% sub_total = 0 %>
+        <% sub_total += current_user.sale.fee if current_user.sale.present? %>
+        <% sub_total += current_user.purchase.fee if current_user.purchase.present? %>
+        <%= number_to_currency sub_total %>
+      </div>
+    </footer>
+  </div>
+</section>
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--second">
+    <h1 class="conveyancing-breakdown__main-title">
+      Optional extras
+    </h1>
+  </header>
+  <div class="conveyancing-breakdown__details">
+    <% if current_user.purchase.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Buying
+        </h2>
+        <%= form_for current_user.purchase, url: conveyancing_quotes_purchases_path, remote: true do |f| %>
+          <%= render 'conveyancing_quotes/purchases/shared/optional_extras',
+                    f: f,
+                    costs: costs %>
+        <% end %>
+        <div class="conveyancing-breakdown__sub-total-overview">
+          Sub-total
+          <div class="conveyancing-breakdown__sub-total">
+            <% sub_total = 0 %>
+            <% current_user.purchase.additional_costs.each do |additional_cost| %>
+              <% sub_total += costs[additional_cost] %>
+            <% end %>
+            <span class="conveyancing-breakdown__sub-total-purchase">
+              <%= number_to_currency sub_total %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% if current_user.sale.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Selling
+        </h2>
+        <%= form_for current_user.sale, url: conveyancing_quotes_sales_path, remote: true do |f| %>
+          <%= render 'conveyancing_quotes/sales/shared/optional_extras',
+                    f: f,
+                    costs: costs %>
+        <% end %>
+        <div class="conveyancing-breakdown__sub-total-overview">
+          Sub-total
+          <div class="conveyancing-breakdown__sub-total">
+            <% sub_total = 0 %>
+            <% current_user.sale.additional_costs.each do |additional_cost| %>
+              <% sub_total += costs[additional_cost] %>
+            <% end %>
+            <span class="conveyancing-breakdown__sub-total-sale">
+              <%= number_to_currency sub_total %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--third">
+    <h1 class="conveyancing-breakdown__main-title">
+      Additional costs paid to
+      <span class="conveyancing-breakdown__emphasis">third parties</span>
+    </h1>
+  </header>
+  <div class="conveyancing-breakdown__details">
+    <% if current_user.purchase.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Buying
+        </h2>
+        <div class="conveyancing-breakdown__additional-costs
+                    conveyancing-breakdown__additional-costs--purchase">
+          <%= render 'conveyancing_quotes/purchases/shared/additional_costs',
+                    costs: costs,
+                    purchase: current_user.purchase %>
+        </div>
+      </div>
+    <% end %>
+    <% if current_user.sale.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Selling
+        </h2>
+        <%= render 'conveyancing_quotes/sales/shared/additional_costs',
+                  costs: costs,
+                  sale: current_user.sale %>
+      </div>
+    <% end %>
+  </div>
+</section>
+<section class="conveyancing-breakdown">
+  <div class="conveyancing-content__section
+              conveyancing-content__section--cta
+              conveyancing-content__section--full">
+    <%= content_tag :div, (render current_user.purchase), class: 'conveyancing-content__purchase-total' if current_user.purchase.present? %>
+    <%= content_tag :div, (render current_user.sale), class: 'conveyancing-content__sale-total' if current_user.sale.present? %>
+    <p class="conveyancing-content__microcopy
+              conveyancing-content__microcopy--small-print">
+      Your quote is valid for 30 days and fully inclusive, fixed price*
+    </p>
+  </div>
+</section>
+<section class="conveyancing-content conveyancing-content--combined">
+  <div class="conveyancing-content__section
+              conveyancing-content__section--full">
+    <div class="conveyancing-proceed">
+      <div class="conveyancing-proceed__content">
+        <p>
+          If you have any questions then call us for a no-obligation discussion to
+          see how we can help get you moving.
+        </p>
+        <%= render 'shared/calltracks_phone',
+                    phone: global_site_settings['Phone'],
+                    options: { class: 'conveyancing-proceed__phone' } %>
+      </div>
+    </div>
+  </div>
+</section>

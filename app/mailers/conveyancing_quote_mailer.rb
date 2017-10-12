@@ -1,5 +1,5 @@
 class ConveyancingQuoteMailer < ApplicationMailer
-  layout false, except: 'incomplete_users'
+  layout 'inky', except: 'incomplete_users'
 
   # ConveyancingQuoteMailer.new_quote(ConveyancingQuotes::User.where(submitted: true).first).deliver_now
   def new_quote(user)

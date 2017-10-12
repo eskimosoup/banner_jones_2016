@@ -1,0 +1,110 @@
+@import 'lib/variables';
+@import 'lib/mixins';
+@import 'lib/styles';
+@import 'lib/fonts';
+
+@import 'vendor/foundation/foundation';
+@import 'vendor/include-media';
+
+.quote-pdf-header {
+  @include grid-row;
+  margin-top: rem(20px);
+
+  &__logo {
+    @include grid-column(12);
+  }
+}
+
+.conveyancing-content {
+
+  &__main-title {
+    font-size: rem(20px);
+    margin-bottom: rem(12px);
+    text-align: left;
+  }
+
+  &__grand-total {
+    font-size: rem(20px);
+  }
+}
+
+.conveyancing-breakdown__header {
+  padding: rem(10px);
+}
+
+.conveyancing-breakdown__main-title {
+  font-size: rem(24px);
+  margin: 0;
+  text-align: left;
+}
+
+.conveyancing-breakdown {
+  &__group {
+    margin-bottom: 0;
+  }
+
+  &__details {
+    // padding-bottom: 0;
+  }
+}
+
+.conveyancing-content {
+  &__microcopy {
+    &--small-print {
+      margin-bottom: 0;
+    }
+  }
+
+  &__section {
+    &--cta {
+      padding: rem(20px);
+      text-align: left;
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+}
+
+.conveyancing-cost {
+  margin-bottom: 0;
+
+  &__fee {
+    float: right;
+    margin-right: rem(15px);
+  }
+
+  &__tooltip,
+  &__toggle {
+    display: none;
+  }
+
+  &__item {
+    &--deselected {
+      display: none;
+    }
+  }
+}
+
+.conveyancing-proceed {
+  margin: 0;
+
+  &__content {
+    &:not(&--condensed) {
+      padding-bottom: rem(10px);
+      padding-top: rem(10px);
+    }
+  }
+}
+
+.quote-pdf-footer {
+  @include grid-row;
+  border-top: 1px solid $black-grey;
+  margin-top: rem(20px);
+  padding-top: rem(20px);
+
+  &__content {
+    @include grid-column(12);
+  }
+}

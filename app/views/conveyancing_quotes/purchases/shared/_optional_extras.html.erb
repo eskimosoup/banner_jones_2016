@@ -1,5 +1,5 @@
 <ul class="conveyancing-cost">
-  <li class="conveyancing-cost__item">
+  <li class="conveyancing-cost__item <%= 'conveyancing-cost__item--deselected' unless f.object.second_home_or_buy_to_let? %>">
     <div class="conveyancing-cost__label">
       <%= f.label :second_home_or_buy_to_let,
                   'Is this a second home or buy-to-let purchase?' %>
@@ -34,7 +34,7 @@
     </span>
   </li>
 
-  <li class="conveyancing-cost__item">
+  <li class="conveyancing-cost__item <%= 'conveyancing-cost__item--deselected' unless f.object.leasehold_house? %>">
     <%= link_to '#leasehold-house',
                 class: 'toggle-class-closest conveyancing-cost__label',
                 data: {
@@ -82,7 +82,7 @@
     <%= render 'conveyancing_quotes/shared/tooltips/leasehold_house' %>
   </li>
 
-  <li class="conveyancing-cost__item">
+  <li class="conveyancing-cost__item <%= 'conveyancing-cost__item--deselected' unless f.object.leasehold_apartment? %>">
     <%= link_to '#leasehold-apartment',
                 class: 'toggle-class-closest conveyancing-cost__label',
                 data: {
@@ -129,7 +129,7 @@
     <%= render 'conveyancing_quotes/shared/tooltips/leasehold_apartment' %>
   </li>
 
-  <li class="conveyancing-cost__item">
+  <li class="conveyancing-cost__item <%= 'conveyancing-cost__item--deselected' unless f.object.help_to_buy_scheme? %>">
     <%= link_to '#help-to-buy-scheme',
                 class: 'toggle-class-closest conveyancing-cost__label',
                 data: {
@@ -177,7 +177,7 @@
     <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_scheme' %>
   </li>
 
-  <li class="conveyancing-cost__item">
+  <li class="conveyancing-cost__item <%= 'conveyancing-cost__item--deselected' unless f.object.help_to_buy_isa? %>">
     <%= link_to '#help-to-buy-isa',
                 class: 'toggle-class-closest conveyancing-cost__label',
                 data: {
@@ -225,7 +225,7 @@
     <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_isa' %>
   </li>
 
-  <li class="conveyancing-cost__item">
+  <li class="conveyancing-cost__item <%= 'conveyancing-cost__item--deselected' unless f.object.shared_ownership_scheme? %>">
     <%= link_to '#shared-ownership-scheme',
                 class: 'toggle-class-closest conveyancing-cost__label',
                 data: {
