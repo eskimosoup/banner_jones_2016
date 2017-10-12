@@ -225,6 +225,15 @@
                 } do %>
       Email me with this quote
     <% end %>
+
+    <%= link_to 'Download PDF',
+                conveyancing_quotes_location_users_download_path(
+                  @user.quote_location,
+                  format: :pdf
+                ),
+                class: 'conveyancing-content__cta-button',
+                target: '_blank' %>
+
     <%= form_for current_user,
                 url: conveyancing_quotes_location_users_path(
                       current_user.quote_location
