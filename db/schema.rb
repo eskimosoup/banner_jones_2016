@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009134401) do
+ActiveRecord::Schema.define(version: 20171012143605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,16 +184,16 @@ ActiveRecord::Schema.define(version: 20171009134401) do
   create_table "conveyancing_quotes_purchases", force: :cascade do |t|
     t.string   "phone"
     t.string   "timeframe"
-    t.decimal  "price",                                     precision: 10, scale: 2,                 null: false
-    t.datetime "created_at",                                                                         null: false
-    t.datetime "updated_at",                                                                         null: false
+    t.decimal  "price",                                     precision: 50,                 null: false
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
     t.integer  "conveyancing_quotes_user_id"
-    t.boolean  "second_home_or_buy_to_let",                                          default: false
-    t.boolean  "leasehold_house",                                                    default: false
-    t.boolean  "leasehold_apartment",                                                default: false
-    t.boolean  "help_to_buy_scheme",                                                 default: false
-    t.boolean  "help_to_buy_isa",                                                    default: false
-    t.boolean  "shared_ownership_scheme",                                            default: false
+    t.boolean  "second_home_or_buy_to_let",                                default: false
+    t.boolean  "leasehold_house",                                          default: false
+    t.boolean  "leasehold_apartment",                                      default: false
+    t.boolean  "help_to_buy_scheme",                                       default: false
+    t.boolean  "help_to_buy_isa",                                          default: false
+    t.boolean  "shared_ownership_scheme",                                  default: false
     t.integer  "conveyancing_quotes_sale_and_purchases_id"
     t.index ["conveyancing_quotes_sale_and_purchases_id"], name: "sale_and_purchases_purchase_id", using: :btree
     t.index ["conveyancing_quotes_user_id"], name: "purchases_user_id", using: :btree
@@ -250,13 +250,13 @@ ActiveRecord::Schema.define(version: 20171009134401) do
   create_table "conveyancing_quotes_sales", force: :cascade do |t|
     t.string   "phone"
     t.string   "timeframe"
-    t.decimal  "price",                                     precision: 10, scale: 2,                 null: false
-    t.datetime "created_at",                                                                         null: false
-    t.datetime "updated_at",                                                                         null: false
+    t.decimal  "price",                                     precision: 50,                 null: false
+    t.datetime "created_at",                                                               null: false
+    t.datetime "updated_at",                                                               null: false
     t.integer  "conveyancing_quotes_user_id"
-    t.boolean  "leasehold_house",                                                    default: false
-    t.boolean  "leasehold_apartment",                                                default: false
-    t.boolean  "shared_ownership_scheme",                                            default: false
+    t.boolean  "leasehold_house",                                          default: false
+    t.boolean  "leasehold_apartment",                                      default: false
+    t.boolean  "shared_ownership_scheme",                                  default: false
     t.integer  "conveyancing_quotes_sale_and_purchases_id"
     t.index ["conveyancing_quotes_sale_and_purchases_id"], name: "sale_and_purchases_sale_id", using: :btree
     t.index ["conveyancing_quotes_user_id"], name: "sales_user_id", using: :btree
@@ -360,10 +360,10 @@ ActiveRecord::Schema.define(version: 20171009134401) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",                        null: false
-    t.boolean  "enabled",    default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.string   "key",        null: false
+    t.boolean  "enabled"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -815,7 +815,7 @@ ActiveRecord::Schema.define(version: 20171009134401) do
     t.string   "layout",                         default: "application", null: false
     t.string   "style",                          default: "basic",       null: false
     t.boolean  "landing_page",                   default: false
-    t.boolean  "show_contact_form",              default: false
+    t.boolean  "show_contact_form"
     t.boolean  "inherit_sidebar_text"
     t.boolean  "inherit_page_layout_content"
     t.boolean  "hide_preferred_office_on_forms"

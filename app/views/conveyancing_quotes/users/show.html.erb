@@ -232,8 +232,15 @@
                   @user.quote_location,
                   format: :pdf
                 ),
-                class: 'conveyancing-content__cta-button',
-                target: '_blank' %>
+                class: 'conveyancing-content__cta-button
+                        ga-event',
+                target: '_blank',
+                data: {
+                        event_category: 'Conveyancing Calculator',
+                        event_action: 'Click',
+                        event_label:  'PDF Download'
+                      }
+                 %>
 
     <%= form_for current_user,
                 url: conveyancing_quotes_location_users_path(
