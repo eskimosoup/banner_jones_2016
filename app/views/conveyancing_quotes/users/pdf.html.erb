@@ -16,9 +16,8 @@
     </h1>
     <p class="conveyancing-content__microcopy">
       Your quote reference is:
-      <strong>
-        <%= current_user.quote_reference %>
-      </strong>
+      <strong><%= current_user.quote_reference %></strong>, generated:
+      <%= l current_user.created_at, format: :long %>.
     </p>
   </div>
 </div>
@@ -153,37 +152,8 @@
     <div class="conveyancing-proceed">
       <div class="conveyancing-proceed__content">
         <h1 class="conveyancing-proceed__title">
-          Here's what to do next
+          Thank you for your interest
         </h1>
-        <ul class="conveyancing-checklist">
-          <li class="conveyancing-checklist__item
-                    conveyancing-checklist__item--inline">
-            <span class="conveyancing-checklist__checkmark">
-              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
-            </span>
-            No payment today
-          </li>
-          <li class="conveyancing-checklist__item
-                    conveyancing-checklist__item--inline">
-            <span class="conveyancing-checklist__checkmark">
-              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
-            </span>
-            Instant online access
-          </li>
-          <li class="conveyancing-checklist__item
-                    conveyancing-checklist__item--inline">
-            <span class="conveyancing-checklist__checkmark">
-              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
-            </span>
-            No move, no fee and search guarantees
-          </li>
-        </ul>
-        <div class="conveyancing-proceed__team-member">
-          <%#= render partial: 'conveyancing_quotes/shared/key_team_members',
-                      collection: @service.team_members.key_team_members,
-                      cached: true,
-                      as: :team_member %>
-        </div>
         <p>
           If you have any questions then call us for a no-obligation discussion to
           see how we can help get you moving.

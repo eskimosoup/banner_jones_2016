@@ -2,6 +2,11 @@
 <% costs = ConveyancingCalculator.configuration.additional_costs[current_user.symbolised_location].reduce(Hash.new, :merge) %>
 <%= content_for :javascript do %>
   <script>
+    <% # Remove the deselected class as not to confuse anything as it can be toggled %>
+    $(document).ready(function() {
+      $('.conveyancing-cost__item--deselected').removeClass('conveyancing-cost__item--deselected');
+    });
+
     $(document).on('click', '.conveyancing-cost__toggle', function() {
       let $formId = $('#' + $(this).data('id'));
 
@@ -10,7 +15,7 @@
       $(this).addClass('conveyancing-cost__toggle--hidden');
       $(this).siblings().removeClass('conveyancing-cost__toggle--hidden');
 
-      let $closestForm = $(this).closest('form')
+      let $closestForm = $(this).closest('form');
 
       $closestForm.submit();
       $closestForm.parent()
