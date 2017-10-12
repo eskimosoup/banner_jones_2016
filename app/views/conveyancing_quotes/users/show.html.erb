@@ -218,6 +218,7 @@
     <%= content_tag :div, (render @user.sale), class: 'conveyancing-content__sale-total' if @user.sale.present? %>
     <%= link_to '#email',
                 class: 'conveyancing-content__cta-button
+                        conveyancing-content__cta-button--email
                         slide-toggle',
                 data: {
                   container: '.conveyancing-content-form',
