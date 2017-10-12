@@ -1,6 +1,6 @@
 <% if @update %>
   $('.conveyancing-content-form').slideUp(250, function() {
-    $('.conveyancing-content__cta-button')
+    $('.conveyancing-content__cta-button--email')
       .removeClass('toggle-class-closest')
       .text('Email sent to <%= j current_user.email %>');
   });
