@@ -1,6 +1,6 @@
 <row class="conveyancing-fee-breakdown">
     <columns small="12" large="12">
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
       <h2 class="conveyancing-fee-breakdown__title">
         For Buying
@@ -8,16 +8,16 @@
 
       <spacer size="5"></spacer>
 
-      <ul class="conveyancing-fee-breakdown__list">
+      <wrapper class="conveyancing-fee-breakdown__list">
         <% if purchase.second_home_or_buy_to_let? %>
-          <li class="conveyancing-fee-breakdown__item">
+          <wrapper class="conveyancing-fee-breakdown__item">
             <div class="conveyancing-fee-breakdown__label">
               This is a second home or buy-to-let purchase.
             </div>
-          </li>
+          </wrapper>
         <% end %>
         <% if purchase.leasehold_house? %>
-          <li class="conveyancing-fee-breakdown__item">
+          <wrapper class="conveyancing-fee-breakdown__item">
             <row>
               <columns small="12" large="8">
                 <div class="conveyancing-fee-breakdown__label">
@@ -30,10 +30,10 @@
                 </div>
               </columns>
             </row>
-          </li>
+          </wrapper>
         <% end %>
         <% if purchase.leasehold_apartment? %>
-          <li class="conveyancing-fee-breakdown__item">
+          <wrapper class="conveyancing-fee-breakdown__item">
             <row>
               <columns small="12" large="8">
                 <div class="conveyancing-fee-breakdown__label">
@@ -46,10 +46,10 @@
                 </div>
               </columns>
             </row>
-          </li>
+          </wrapper>
         <% end %>
         <% if purchase.help_to_buy_scheme? %>
-          <li class="conveyancing-fee-breakdown__item">
+          <wrapper class="conveyancing-fee-breakdown__item">
             <row>
               <columns small="12" large="8">
                 <div class="conveyancing-fee-breakdown__label">
@@ -62,10 +62,10 @@
                 </div>
               </columns>
             </row>
-          </li>
+          </wrapper>
         <% end %>
         <% if purchase.help_to_buy_isa? %>
-          <li class="conveyancing-fee-breakdown__item">
+          <wrapper class="conveyancing-fee-breakdown__item">
             <row>
               <columns small="12" large="8">
                 <div class="conveyancing-fee-breakdown__label">
@@ -78,10 +78,10 @@
                 </div>
               </columns>
             </row>
-          </li>
+          </wrapper>
         <% end %>
         <% if purchase.shared_ownership_scheme? %>
-          <li class="conveyancing-fee-breakdown__item">
+          <wrapper class="conveyancing-fee-breakdown__item">
             <row>
               <columns small="12" large="8">
                 <div class="conveyancing-fee-breakdown__label">
@@ -94,22 +94,22 @@
                 </div>
               </columns>
             </row>
-          </li>
+          </wrapper>
         <% end %>
-      </ul>
+      </wrapper>
 
-      <spacer size="20"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 20 %>
 
       <row class="conveyancing-collapse conveyancing-fee-total">
         <columns small="12" large="8">
-          <spacer size="10"></spacer>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
           <p class="conveyancing-fee-total__subtotal">
             Sub-total
           </p>
-          <spacer size="10" class="show-for-large"></spacer>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
         </columns>
         <columns small="12" large="4">
-          <spacer size="10" class="show-for-large"></spacer>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
           <p class="conveyancing-fee-total__cost">
             <% sub_total = 0 %>
             <% purchase.additional_costs.each do |additional_cost| %>
@@ -117,7 +117,7 @@
             <% end %>
             <%= number_to_currency sub_total %>
           </p>
-          <spacer size="10"></spacer>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
         </columns>
       </row>
     </columns>

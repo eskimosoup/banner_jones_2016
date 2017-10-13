@@ -12,7 +12,7 @@
         Your Conveyancing Quote
       </h1>
 
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
       <p class="conveyancing-header__lead-text">
         Here is your fixed price quote based on
@@ -27,7 +27,7 @@
         <% end %>
       </p>
 
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
       <p class="conveyancing-header__quote-reference">
         Your quote reference is: <strong><%= @user.quote_reference %></strong>
@@ -37,13 +37,13 @@
 
   <row class="conveyancing-fee-header conveyancing-fee-header--first">
     <columns small="12" large="12">
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
       <h2 class="conveyancing-fee-header__title conveyancing-fee-header__title--first">
         What you pay
         <span class="conveyancing-fee-header__accent conveyancing-fee-header__accent--first">us</span>
         for our services
       </h2>
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
     </columns>
   </row>
 
@@ -59,35 +59,35 @@
     <columns small="12" large="12">
       <row class="conveyancing-collapse conveyancing-fee-total">
         <columns small="12" large="8">
-          <spacer size="10"></spacer>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
           <p class="conveyancing-fee-total__subtotal">
             Sub-total
           </p>
-          <spacer size="10" class="show-for-large"></spacer>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
         </columns>
         <columns small="12" large="4">
-          <spacer size="10" class="show-for-large"></spacer>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
           <p class="conveyancing-fee-total__cost">
             <% sub_total = 0 %>
             <% sub_total += @user.sale.fee if @user.sale.present? %>
             <% sub_total += @user.purchase.fee if @user.purchase.present? %>
             <%= number_to_currency sub_total %>
           </p>
-          <spacer size="10"></spacer>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
         </columns>
       </row>
     </columns>
   </row>
 
-  <spacer size="10"></spacer>
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
   <row class="conveyancing-fee-header conveyancing-fee-header--second">
     <columns small="12" large="12">
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
       <h2 class="conveyancing-fee-header__title conveyancing-fee-header__title--second">
         Optional extras
       </h2>
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
     </columns>
   </row>
 
@@ -99,16 +99,16 @@
               costs: costs,
               sale: @user.sale if @user.sale.present? %>
 
-  <spacer size="10"></spacer>
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
   <row class="conveyancing-fee-header conveyancing-fee-header--third">
     <columns small="12" large="12">
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
       <h2 class="conveyancing-fee-header__title conveyancing-fee-header__title--third">
         Additional costs paid to
         <span class="conveyancing-fee-header__accent conveyancing-fee-header__accent--third">third parties</span>
       </h2>
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
     </columns>
   </row>
 
@@ -120,11 +120,11 @@
               costs: costs,
               sale: @user.sale if @user.sale.present? %>
 
-  <spacer size="10"></spacer>
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
   <row class="conveyancing-fee-header conveyancing-fee-header--cta">
     <columns small="12" large="12">
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
       <%= render 'conveyancing_quote_mailer/new_quote/sales/grand_total',
               costs: costs,
@@ -140,7 +140,7 @@
     </columns>
   </row>
 
-  <spacer size="20"></spacer>
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 20 %>
 
   <row>
     <columns small="12" large="12">
@@ -163,5 +163,5 @@
     </columns>
   </row>
 
-  <spacer size="10"></spacer>
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 </container>
