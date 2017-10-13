@@ -1,14 +1,14 @@
 <row class="conveyancing-fee-breakdown">
     <columns small="12" large="12">
-      <spacer size="10"></spacer>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
       <h2 class="conveyancing-fee-breakdown__title">
         For Selling
       </h2>
 
       <spacer size="5"></spacer>
 
-      <ul class="conveyancing-fee-breakdown__list">
-        <li class="conveyancing-fee-breakdown__item conveyancing-fee-breakdown__item--bordered">
+      <wrapper class="conveyancing-fee-breakdown__list">
+        <wrapper class="conveyancing-fee-breakdown__item conveyancing-fee-breakdown__item--bordered">
           <row>
             <columns small="12" large="8">
               <div class="conveyancing-fee-breakdown__label">
@@ -23,8 +23,8 @@
               </div>
             </columns>
           </row>
-        </li>
-      </ul>
-    <spacer size="20"></spacer>
+        </wrapper>
+      </wrapper>
+    <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 20 %>
   </columns>
 </row>

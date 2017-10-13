@@ -5,7 +5,7 @@
 body,
 html,
 .body {
-  background: $blue-light !important;
+  background: $white !important;
 }
 
 td {
@@ -39,7 +39,7 @@ td {
   }
 
   &--second {
-    background: $deeper-grey;
+    background: $black-grey;
   }
 
   &--third {
@@ -96,9 +96,11 @@ td {
   }
 
   &__item {
-    &--bordered {
-      border-bottom: 2px solid $orange;
-    }
+    /*
+      &--bordered {
+        border-bottom: 2px solid $orange;
+      }
+    */
   }
 
   &__label {
