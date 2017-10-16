@@ -10,6 +10,11 @@ module ConveyancingQuotes
       seo_settings
       session.delete(:conveyancing_quote)
       @user = @location.users.new
+      @user.save!
+      session[:conveyancing_quote] = @user.token
+      @conveyancing_quote_sale_and_purchase = @user.build_sale_and_purchase
+      @conveyancing_quote_sale_and_purchase.build_sale
+      @conveyancing_quote_sale_and_purchase.build_purchase
     end
 
     def update
@@ -50,7 +55,7 @@ module ConveyancingQuotes
     def user_params
       params.require(:conveyancing_quotes_user).permit(
         :forename, :surname, :email, :phone, :buying, :selling,
-        :conveyancing_email_permission, :buying_and_selling
+        :conveyancing_email_permission, :buying_and_selling, :complete
       )
     end
 
