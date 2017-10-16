@@ -148,8 +148,14 @@
 }
 
 .conveyancing-content-form {
-  padding-top: rem(20px);
+  background: $light-grey;
+  border-radius: 5px;
+  margin-bottom: rem(20px);
   text-align: left;
+
+  @include breakpoint(medium) {
+    padding: rem(20px);
+  }
 
   &--hidden {
     display: none;
