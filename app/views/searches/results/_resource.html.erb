@@ -1,0 +1,19 @@
+<div class="search-result">
+  <%= link_to object do %>
+    <%#= article_presenter.homepage_image(class: 'article-image') if object.image? %>
+
+    <div class="search-result__microcopy search-result__microcopy--type">
+      <%= object.class.model_name.human %>
+    </div>
+
+    <div class="search-result__title">
+      <%= object.title %>
+    </div>
+
+    <%= content_tag :div, (simple_format object.summary), class: 'search-result__microcopy' if object.summary? %>
+
+    <%= link_to 'Find out more',
+                object,
+                class: 'search-result__button' %>
+  <% end %>
+</div>

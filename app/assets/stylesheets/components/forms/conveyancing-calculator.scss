@@ -1,0 +1,200 @@
+.conveyancing-landing-hero-form {
+  white-space: nowrap;
+
+  @include media('>=768px') {
+    margin-top: rem(40px);
+  }
+
+  &__field {
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+    width: 50%;
+  }
+
+  &__label {
+    color: $white;
+    font-family: $roboto;
+    font-size: rem(16px);
+    text-align: left;
+    padding-left: rem(10px);
+  }
+
+  &__input {
+    @include conveyancing-input;
+  }
+
+  &__errors {
+    background: rgba($red, .75);
+    border-radius: 10px;
+    display: none;
+    margin-top: rem(10px);
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__options {
+    background: $black;
+    border-radius: 10px;
+    color: $white;
+    font-family: $roboto;
+    font-weight: $roboto--medium;
+    opacity: 0;
+    padding: rem(5px);
+    text-align: left;
+    transition: opacity .15s .2s ease-in;
+
+    &-field {
+      margin-left: rem(10px);
+
+      @include media('>=768px') {
+        display: inline-block;
+        min-width: 50%;
+      }
+    }
+
+    input[type="checkbox"] {
+      color: $white;
+      height: auto;
+      margin: 0;
+    }
+  }
+
+  &__options-label {
+    color: $white;
+  }
+
+  &__submit {
+    @include conveyancing-submit;
+  }
+}
+
+.conveyancing-landing-page-hero-form__success {
+  height: 26px;
+  position: absolute;
+  right: 16px;
+  top: 42px;
+  width: 26px;
+  opacity: 0;
+  transition: opacity .15s linear;
+}
+
+.conveyancing-custom-checkbox {
+  position: relative;
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  label {
+    padding-left: rem(15px);
+  }
+
+  // https://paulund.co.uk/style-checkboxes-with-css
+  & span {
+    cursor: pointer;
+    position: absolute;
+    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+    top: 5px;
+    left: 0;
+    background: $white;
+    border:1px solid $white;
+
+    &:hover::after {
+	    opacity: .5;
+    }
+
+    &:after {
+      opacity: .2;
+      content: '';
+      position: absolute;
+      width: 9px;
+      height: 5px;
+      background: transparent;
+      top: 3px;
+      left: 2px;
+      border: 3px solid $red;
+      border-top: none;
+      border-right: none;
+      transition: opacity .15s linear;
+
+      transform: rotate(-45deg);
+    }
+  }
+
+  input[type=checkbox]:checked + label span:after {
+    animation: custom-checkbox-confirmation .5s ease-in-out;
+    opacity: 1;
+  }
+}
+
+@keyframes custom-checkbox-confirmation {
+  0% {
+    border-color: $red;
+  }
+
+  50% {
+    border-color: $black;
+  }
+
+  100% {
+    border-color: $red;
+  }
+}
+
+.conveyancing-content-form {
+  &--full {
+    background: $light-grey;
+    border-radius: 5px;
+    margin-bottom: rem(20px);
+    text-align: left;
+
+    @include breakpoint(medium) {
+      padding: rem(20px);
+    }
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &__field-group {
+    @include breakpoint(large) {
+      @include flex-grid-row(nest);
+    }
+  }
+
+  &__field-grouped {
+    @include breakpoint(large) {
+      @include flex-grid-column(6);
+    }
+  }
+
+  &__field,
+  &__actions {
+    display: inline-block;
+  }
+
+  &__input {
+    @include conveyancing-input;
+  }
+
+  &__submit {
+    @include conveyancing-submit;
+
+    &:hover {
+      background-color: $black;
+    }
+  }
+
+  &__inline {
+    @include breakpoint(large) {
+      display: inline;
+    }
+  }
+}

@@ -154,3 +154,15 @@
     border-top: 1 / 2 * $size solid transparent;
   }
 }
+
+@mixin responsive-flex-grid-column($breakpoints) {
+  @each $breakpoint, $size in $breakpoints {
+    @if $breakpoint == null {
+      @include flex-grid-column($size);
+    } @else {
+      @include breakpoint($breakpoint) {
+        @include flex-grid-column($size);
+      }
+    }
+  }
+}

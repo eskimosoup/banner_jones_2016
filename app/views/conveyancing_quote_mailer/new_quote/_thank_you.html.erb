@@ -1,0 +1,34 @@
+<row class="conveyancing-fee-header conveyancing-fee-header--fourth">
+  <columns small="12" large="12">
+    <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+    <h2 class="conveyancing-fee-header__title">
+      Thank you
+    </h2>
+
+    <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+  </columns>
+</row>
+
+<%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+<row>
+  <columns small="12" large="12">
+    <p>
+      Your details will now be sent to our quotes team who will set up your file and be in touch within 2 working days.
+    </p>
+
+    <p>
+      If in the meantime you have any questions please call the quotes team on:
+      <strong>
+      <%= render 'shared/calltracks_phone',
+                    phone: @global_site_settings['Phone'],
+                    options: { class: 'conveyancing-proceed__phone' } %>
+      </strong>
+    </p>
+
+    <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+    <hr />
+  </columns>
+</row>

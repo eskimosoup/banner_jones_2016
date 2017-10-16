@@ -1,5 +1,7 @@
 <%= form_for @user, url: conveyancing_quotes_location_users_path do |f| %>
-  <%= render 'shared/form_errors', object: @user %>
+  <%= render 'shared/form_errors',
+             object: @user,
+             form_name: 'conveyancing quote' %>
 
   <div class="related-fields">
     <div class="field">

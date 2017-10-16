@@ -1,0 +1,18 @@
+<div class="search-result">
+  <div class="search-result__microcopy search-result__microcopy--type">
+    <%= object.class.model_name.human %>
+  </div>
+
+  <div class="search-result__title">
+    <%= object.question %>
+  </div>
+
+  <div id="faq-<%= object.id %>" class="hide search-result__summary">
+    <%= raw object.answer %>
+  </div>
+
+  <%= link_to 'Find out more',
+              "#faq-#{object.id}",
+              class: 'search-result__button toggle-class',
+              data: { class: 'hide', container: "#faq-#{object.id}" } %>
+</div>

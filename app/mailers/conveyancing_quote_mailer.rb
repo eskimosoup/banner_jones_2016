@@ -1,12 +1,13 @@
 class ConveyancingQuoteMailer < ApplicationMailer
-  layout false, except: 'incomplete_users'
+  layout 'inky', except: 'incomplete_users'
 
   # ConveyancingQuoteMailer.new_quote(ConveyancingQuotes::User.where(submitted: true).first).deliver_now
   def new_quote(user)
     @user = user
+    @global_site_settings = Optimadmin::SiteSetting.current_environment
 
     delivery_options = {
-      address: ENV['EMAIL_HOST']
+      address: ENV['BANNER_JONES_EMAIL_HOST']
     }
 
     mail to: @user.email,
@@ -18,6 +19,7 @@ class ConveyancingQuoteMailer < ApplicationMailer
   # ConveyancingQuoteMailer.new_quote_notification(ConveyancingQuotes::User.where(submitted: true).first).deliver_now
   def new_quote_notification(user)
     @user = user
+    @global_site_settings = Optimadmin::SiteSetting.current_environment
 
     mail to: conveyancing_email,
          subject: "Conveyancing Quote Completed #{site_name}" do |format|

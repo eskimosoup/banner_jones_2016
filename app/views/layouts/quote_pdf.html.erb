@@ -5,6 +5,7 @@
     <meta name="ROBOTS" content="NOODP" />
     <meta name="viewport" content="initial-scale=1" />
     <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'layout/conveyancing-calculator/quote-pdf' %>
     <style>
     a {
       color: #000;
@@ -17,21 +18,17 @@
   </head>
   <body>
     <div class="quote-pdf-header">
-      <div class="quote-pdf-logo">
+      <div class="quote-pdf-header__logo">
         <%= link_to root_url, title: global_site_settings['Name'], class: "header-logo" do %>
           <%= image_tag "layout/header/logo.png", alt: global_site_settings['Name'], class: 'header-logo-primary' %>
         <% end %>
       </div>
     </div>
 
-    <div class="container">
-      <div class="page-content-wrap">
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
 
-
-    <div class="legal-footer text-left">
+    <div class="quote-pdf-footer">
+      <div class="quote-pdf-footer__content">
       <p>
         All information on this website is property of Banner Jones Solicitors © <%= Date.today.year %>. All rights reserved. Banner Jones is the trading name of Banner Jones Ltd.
       </p>

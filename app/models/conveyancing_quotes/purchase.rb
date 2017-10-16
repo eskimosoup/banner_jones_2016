@@ -11,6 +11,8 @@ module ConveyancingQuotes
     delegate :fee, :vat, :total, to: :conveyancing_calculator
     # delegate :stamp_duty, to: :stamp_duty_calculator
 
+    attr_accessor :freehold_house, :freehold_apartment
+
     def price=(price)
       write_attribute(:price, price.gsub(/\D/, ''))
     end

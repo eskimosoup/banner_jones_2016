@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'sitemap', to: 'application#sitemap'
 
@@ -5,26 +7,37 @@ Rails.application.routes.draw do
     concern :downloadable do
       resource :download, only: [:show]
     end
-    # resources :equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
-    # resources :remortgages, only: [:new, :create, :show], concerns: [:downloadable]
-    # resources :remortgage_with_equity_transfers, only: [:new, :create, :show], concerns: [:downloadable]
 
-    resources :sales, only: %i[new create], concerns: [:downloadable]
-    resources :purchases, only: %i[new create], concerns: [:downloadable]
-    resource :sale_and_purchases, only: %i[new create], concerns: [:downloadable], path: 'sale-and-purchases'
+    resource :sales,
+             only: :update
 
-    resource :deeds, only: %i[new edit update]
+    resource :purchases,
+             only: :update
 
-    resource :property_addresses,
-             only: %i[new create edit update],
-             path: 'property-address'
+    resource :sale_and_purchases,
+             only: :create,
+             path: 'sale-and-purchase'
 
-    resource :correspondence_addresses,
-             only: %i[new create edit update],
-             path: 'correspondence-address'
+    # resource :deeds,
+    #         only: %i[new edit update]
 
-    resources :quote_locations, only: :show, path: '', shallow: true, as: :location do
-      resource :users, only: %i[new create edit update show], path: 'request' do
+    # resource :property_addresses,
+    #         only: %i[new create edit update],
+    #         path: 'property-address'
+
+    # resource :correspondence_addresses,
+    #         only: %i[new create edit update],
+    #         path: 'correspondence-address'
+
+    resources :quote_locations,
+              only: :show,
+              path: '',
+              shallow: true,
+              as: :location do
+      resource :users,
+               only: %i[new create edit update show],
+               path: 'request',
+               concerns: :downloadable do
         get 'thank-you', on: :collection
       end
     end
@@ -54,7 +67,7 @@ Rails.application.routes.draw do
   resources :event_categories, only: :show, path: 'event-categories'
   resources :event_locations, only: :show, path: 'event-locations'
 
-  resources :case_studies, only: %i[index show], path: 'case-studies'
+  # resources :case_studies, only: %i[index show], path: 'case-studies'
   resources :articles, only: %i[index show]
   resources :offices, only: %i[index show]
   resources :resources, only: %i[index show]
@@ -100,12 +113,14 @@ Rails.application.routes.draw do
         get 'frequently-asked-questions'
 
         resources :service_pages,
-                only: :show,
-                path: 'pages',
-                controller: 'services/pages'
+                  only: :show,
+                  path: 'pages',
+                  controller: 'services/pages'
       end
     end
   end
+
+  resources :searches, only: :new
 
   get '/:audience_id/services/:parent_service_id/:service_id/:id',
       to: 'services#show',

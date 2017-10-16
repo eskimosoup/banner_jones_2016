@@ -1,6 +1,9 @@
 <% present user do |user_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= user_presenter.id %>">
-    <div class="large-6 small-8 columns" data-equalizer-watch="module-list">
+    <div class="large-3 small-4 columns" data-equalizer-watch="module-list">
+      <%= user.quote_reference %>
+    </div>
+    <div class="large-3 small-4 columns" data-equalizer-watch="module-list">
       <%= user_presenter.toggle_title %>
       <div style="font-size: 14px;">
         <%= user_presenter.email %>

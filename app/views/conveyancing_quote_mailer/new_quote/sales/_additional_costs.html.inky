@@ -1,0 +1,55 @@
+<% vat_total = 0 %>
+<% vat_total += sale.vat %>
+
+<% sale.additional_costs.each do |additional_cost| %>
+  <% cost = costs[additional_cost] %>
+  <% vat_total += cost * ConveyancingCalculator.configuration.vat_rate %>
+<% end %>
+
+<row class="conveyancing-fee-breakdown">
+    <columns small="12" large="12">
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+      <h2 class="conveyancing-fee-breakdown__title">
+        For Selling
+      </h2>
+
+      <spacer size="5"></spacer>
+
+      <wrapper class="conveyancing-fee-breakdown__list">
+        <wrapper class="conveyancing-fee-breakdown__item">
+          <row>
+            <columns small="12" large="8">
+              <div class="conveyancing-fee-breakdown__label">
+                  VAT (where applicable)
+              </div>
+            </columns>
+            <columns small="12" large="4">
+              <div class="conveyancing-fee-breakdown__cost">
+                <%= number_to_currency vat_total %>
+              </div>
+            </columns>
+          </row>
+        </wrapper>
+      </wrapper>
+
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 20 %>
+
+      <row class="conveyancing-collapse conveyancing-fee-total">
+        <columns small="12" large="8">
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+          <p class="conveyancing-fee-total__subtotal">
+            Sub-total
+          </p>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+        </columns>
+        <columns small="12" large="4">
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+          <p class="conveyancing-fee-total__cost">
+            <%= number_to_currency vat_total %>
+          </p>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+        </columns>
+      </row>
+    </columns>
+  </row>
