@@ -4,7 +4,7 @@ module ConveyancingQuotes
 
     default_scope { order(created_at: :desc) }
 
-    attr_accessor :buying_and_selling
+    attr_accessor :buying_and_selling, :complete
 
     # validates :title, inclusion: { in: ConveyancingQuotes::TITLES }
 
