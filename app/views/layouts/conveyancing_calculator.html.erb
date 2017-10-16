@@ -3,6 +3,7 @@
 <html lang="en">
   <head>
     <%= render 'layouts/shared/head' %>
+    <%= content_for :custom_title do "#{global_site_settings['Name']} in London" end %>
     <%= raw tracking_code('application').head %>
   </head>
 

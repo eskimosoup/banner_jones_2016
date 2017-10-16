@@ -51,7 +51,9 @@ module ConveyancingQuotes
 
     def deliver_quote_email(user)
       ConveyancingQuoteMailer.new_quote(user).deliver_now
-      user.update_attributes(quote_emailed: true) unless user.quote_emailed?
+      return if user.quote_emailed?
+      @email_sent = true
+      user.update_attributes(quote_emailed: true)
     end
   end
 end

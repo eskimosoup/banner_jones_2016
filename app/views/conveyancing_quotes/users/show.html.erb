@@ -223,7 +223,7 @@
                         conveyancing-content__cta-button--email
                         slide-toggle',
                 data: {
-                  container: '.conveyancing-content-form',
+                  container: '.conveyancing-content-form--email',
                   return: true
                 } do %>
       Email me with this quote
@@ -250,6 +250,7 @@
                     ),
                 html: {
                   class: 'conveyancing-content-form
+                          conveyancing-content-form--email
                           conveyancing-content-form--hidden'
                 },
                 remote: true do |f| %>
@@ -305,7 +306,7 @@
                     } %>
 
         <div class="conveyancing-completion">
-          <div class="conveyancing-completion__form">
+          <div class="conveyancing-completion__form conveyancing-completion__form--full">
             <%= render partial: 'conveyancing_quotes/users/shared/full_form',
                       locals: {
                         user: current_user
