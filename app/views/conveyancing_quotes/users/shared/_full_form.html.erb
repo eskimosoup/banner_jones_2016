@@ -1,7 +1,8 @@
 <%= form_for user,
             url: conveyancing_quotes_location_users_path,
             html: {
-                  class: 'conveyancing-content-form'
+                  class: 'conveyancing-content-form
+                          conveyancing-content-form--full'
             } do |f| %>
   <%= render 'shared/form_errors',
       object: user,
@@ -44,16 +45,13 @@
   </div>
   <div class="actions">
     <%= f.hidden_field :complete, value: 1 %>
-    <%= f.submit 'Instruct us',
+    <%= f.submit 'Contact us',
                   class: 'conveyancing-content-form__submit ga-event',
                   data: {
                     event_category: 'Conveyancing Calculator',
                     event_action: 'Click',
-                    event_label:  'Instruct us',
+                    event_label:  'Contact us',
                     disable_with: 'Submitting...'
                   }  %>
-    <p class="conveyancing-content-form__inline">
-      For Banner Jones to act on your behalf in this transaction.
-    </p>
   </div>
 <% end %>
