@@ -28,6 +28,7 @@
 <% end %>
 <div class="conveyancing-content">
   <div class="conveyancing-content__section conveyancing-content__section--full">
+  <!--
     <nav class="conveyancing-navigation">
       <ol class="conveyancing-navigation-breadcrumbs">
         <li class="conveyancing-navigation-breadcrumbs__item">
@@ -69,6 +70,7 @@
         </li>
       </ol>
     </nav>
+    -->
     <h1 class="conveyancing-content__main-title">
       Here is your fixed price quote based on
       <% if @user.purchase.present? %>
@@ -283,12 +285,14 @@
         <h1 class="conveyancing-proceed__title">
           Here's what to do next
         </h1>
+
         <p>
-          If you would like to begin the legal process right away,
-          select the ‘<strong>Proceed</strong>’ button below and we’ll be in touch
-          to explain the next steps and get everything in place for your move.
+          If you are happy to proceed with the quote, please complete the small
+          form below and we will be in touch to explain the next steps and get
+          everything in place for your move.
         </p>
-        <%= link_to 'Proceed',
+
+        <%#= link_to 'Proceed',
                     edit_conveyancing_quotes_location_users_path,
                     class: 'conveyancing-proceed__button
                             conveyancing-proceed__button--action
@@ -299,6 +303,25 @@
                       event_action: 'Click',
                       event_label:  'Proceed'
                     } %>
+
+        <div class="conveyancing-completion">
+          <div class="conveyancing-completion__form">
+            <%= render partial: 'conveyancing_quotes/users/shared/full_form',
+                      locals: {
+                        user: current_user
+                        } %>
+          </div>
+        </div>
+
+        <p>
+          Or if you have any questions then call us for a no-obligation
+          discussion to see how we can help get you moving.
+        </p>
+
+        <%= render 'shared/calltracks_phone',
+                    phone: global_site_settings['Phone'],
+                    options: { class: 'conveyancing-proceed__phone' } %>
+
         <ul class="conveyancing-checklist">
           <li class="conveyancing-checklist__item
                     conveyancing-checklist__item--inline">
@@ -322,13 +345,7 @@
             No move, no fee and search guarantees
           </li>
         </ul>
-        <p>
-          If you have any questions then call us for a no-obligation discussion to
-          see how we can help get you moving.
-        </p>
-        <%= render 'shared/calltracks_phone',
-                    phone: global_site_settings['Phone'],
-                    options: { class: 'conveyancing-proceed__phone' } %>
+
         <div class="conveyancing-proceed__team-member">
           <%= render partial: 'conveyancing_quotes/shared/key_team_members',
                       collection: @service.team_members.key_team_members,

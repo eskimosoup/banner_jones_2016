@@ -11,8 +11,7 @@ module ConveyancingQuotes
     validates :forename, presence: true, if: :complete?
     validates :surname, presence: true, if: :complete?
     validates :email, presence: true, if: :complete?
-
-    # validates :phone, presence: true
+    validates :phone, presence: true, if: :complete?
 
     #validates :buying,
     #          presence: { message: 'can not be blank, unless selling or buying and selling' },

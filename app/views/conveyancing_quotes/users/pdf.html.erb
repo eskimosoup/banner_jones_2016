@@ -151,8 +151,15 @@
     <div class="conveyancing-proceed">
       <div class="conveyancing-proceed__content">
         <p>
-          If you have any questions then call us for a no-obligation discussion to
-          see how we can help get you moving.
+           If you are happy to proceed with the quote, please email or call
+           and we will be in touch to explain the next steps and get everything
+           in place for your move: <br />
+          <%= mail_to global_site_settings['Email - Conveyancing Quote'] %> or
+          <%= global_site_settings['Phone'] %>
+        </p>
+        <p>
+           Or if you have any questions then call us for a no-obligation discussion
+           to see how we can help get you moving.
         </p>
         <%= render 'shared/calltracks_phone',
                     phone: global_site_settings['Phone'],
