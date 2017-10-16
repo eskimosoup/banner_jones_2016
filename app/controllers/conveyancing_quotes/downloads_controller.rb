@@ -1,24 +1,21 @@
 
+# frozen_string_literal: true
+
 module ConveyancingQuotes
-  class DownloadsController < ::ApplicationController
+  class DownloadsController < BaseController
+    before_action :valid_user
+
     def show
       respond_to do |format|
         format.pdf { send_quote_pdf }
-
-        if Rails.env.development?
-          format.html { render_sample_html }
-        end
+        format.html { render_sample_html } if Rails.env.development?
       end
     end
 
     private
 
-    def quote
-      ConveyancingQuotes.for_download(params)
-    end
-
     def download
-      ConveyancingQuotes::Download.new(quote)
+      ConveyancingQuotes::Download.new(current_user)
     end
 
     def send_quote_pdf

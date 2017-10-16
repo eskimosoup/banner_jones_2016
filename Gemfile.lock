@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: 7f0141d1a053e3d8301ef9036a645e7a254c4193
+  revision: ec3cc1c6c2ae2fedf85f448989e3bd6313c5cf40
   specs:
-    capybara (2.15.1)
+    capybara (2.15.4)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 8a7819f517c08aa413d2f02b5b159cddbba5c6fd
+  revision: 9043e810d2001224c7c7a035007f7951ff66ee96
   branch: master
   specs:
-    optimadmin (0.7.3)
+    optimadmin (0.7.4)
       bcrypt
       cancancan
       carrierwave
@@ -44,10 +44,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: f98f2265b11ad201e78ac8a9cb81e0ca080a64ff
+  revision: 49cb7e855bfaa9fa06b9ab29770304c584b0d2eb
   branch: master
   specs:
-    optimised_site (0.6.3)
+    optimised_site (0.6.5)
       amoeba
       closure_tree (~> 6.0)
       deep_cloneable (~> 2.2.2)
@@ -56,6 +56,7 @@ GIT
       geocoder
       gibbon
       optimadmin
+      pg_search
       rails (>= 5.0)
 
 GIT
@@ -109,6 +110,8 @@ GEM
     addressable (2.5.2)
       public_suffix (>= 2.0.2, < 4.0)
     afm (0.2.2)
+    airbrussh (1.3.0)
+      sshkit (>= 1.6.1, != 1.7.0)
     amoeba (3.1.0)
       activerecord (>= 3.2.6)
     arel (7.1.4)
@@ -124,7 +127,23 @@ GEM
       uniform_notifier (~> 1.10.0)
     byebug (9.1.0)
     cancancan (2.0.0)
-    carrierwave (1.1.0)
+    capistrano (3.9.1)
+      airbrussh (>= 1.0.0)
+      i18n
+      rake (>= 10.0.0)
+      sshkit (>= 1.9.0)
+    capistrano-bundler (1.3.0)
+      capistrano (~> 3.1)
+      sshkit (~> 1.2)
+    capistrano-passenger (0.2.0)
+      capistrano (~> 3.0)
+    capistrano-rails (1.3.0)
+      capistrano (~> 3.1)
+      capistrano-bundler (~> 1.1)
+    capistrano-rbenv (2.1.2)
+      capistrano (~> 3.1)
+      sshkit (~> 1.3)
+    carrierwave (1.2.1)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
@@ -145,6 +164,8 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.2)
+    css_parser (1.6.0)
+      addressable
     database_cleaner (1.5.3)
     deep_cloneable (2.2.2)
       activerecord (>= 3.1.0, < 5.2.0)
@@ -168,6 +189,7 @@ GEM
     flipflop (2.3.1)
       activesupport (>= 4.0)
     formatador (0.2.5)
+    foundation_emails (2.2.1.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     geocoder (1.4.4)
@@ -210,7 +232,12 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashery (2.1.2)
-    i18n (0.8.6)
+    htmlentities (4.3.4)
+    i18n (0.9.0)
+      concurrent-ruby (~> 1.0)
+    inky-rb (1.3.7.2)
+      foundation_emails (~> 2)
+      nokogiri
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -222,18 +249,18 @@ GEM
       railties (>= 3.2.16)
     json (2.1.0)
     jwt (1.5.6)
-    kaminari (1.0.1)
+    kaminari (1.1.0)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.0.1)
-      kaminari-activerecord (= 1.0.1)
-      kaminari-core (= 1.0.1)
-    kaminari-actionview (1.0.1)
+      kaminari-actionview (= 1.1.0)
+      kaminari-activerecord (= 1.1.0)
+      kaminari-core (= 1.1.0)
+    kaminari-actionview (1.1.0)
       actionview
-      kaminari-core (= 1.0.1)
-    kaminari-activerecord (1.0.1)
+      kaminari-core (= 1.1.0)
+    kaminari-activerecord (1.1.0)
       activerecord
-      kaminari-core (= 1.0.1)
-    kaminari-core (1.0.1)
+      kaminari-core (= 1.1.0)
+    kaminari-core (1.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -264,6 +291,9 @@ GEM
     multi_json (1.12.2)
     multipart-post (2.0.0)
     nenv (0.3.0)
+    net-scp (1.2.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (4.2.0)
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -279,6 +309,17 @@ GEM
       ttfunk
     pdfkit (0.8.2)
     pg (0.21.0)
+    pg_search (2.1.1)
+      activerecord (>= 4.2)
+      activesupport (>= 4.2)
+      arel (>= 6)
+    premailer (1.11.0)
+      addressable
+      css_parser (>= 1.6.0)
+      htmlentities (>= 4.0.0)
+    premailer-rails (1.9.7)
+      actionmailer (>= 3, < 6)
+      premailer (~> 1.7, >= 1.7.9)
     pry (0.11.1)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -346,7 +387,7 @@ GEM
     rspec-support (3.6.0)
     ruby-rc4 (0.1.5)
     rubyzip (1.2.1)
-    sass (3.5.1)
+    sass (3.5.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -365,10 +406,10 @@ GEM
       activesupport (>= 3)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    signet (0.7.3)
+    signet (0.8.1)
       addressable (~> 2.3)
       faraday (~> 0.9)
-      jwt (~> 1.5)
+      jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
@@ -386,6 +427,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sshkit (1.14.0)
+      net-scp (>= 1.1.2)
+      net-ssh (>= 2.8.0)
     stackprof (0.2.10)
     therubyracer (0.12.3)
       libv8 (~> 3.16.14.15)
@@ -415,9 +459,8 @@ GEM
     websocket-extensions (0.1.2)
     whenever (0.9.7)
       chronic (>= 0.6.3)
-    with_advisory_lock (3.1.1)
+    with_advisory_lock (3.2.0)
       activerecord (>= 3.2)
-      thread_safe
     xpath (2.1.0)
       nokogiri (~> 1.3)
 
@@ -427,6 +470,10 @@ PLATFORMS
 DEPENDENCIES
   bullet (~> 5.1.0)
   byebug
+  capistrano
+  capistrano-passenger
+  capistrano-rails
+  capistrano-rbenv
   capybara!
   cocoon
   coffee-rails (~> 4.1.0)
@@ -437,6 +484,7 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   geocoder
   guard-rspec (~> 4.6.4)
+  inky-rb
   jbuilder (~> 2.0)
   jquery-rails
   launchy (~> 2.4.3)
@@ -448,6 +496,8 @@ DEPENDENCIES
   pdf-reader (~> 1.4)
   pdfkit (~> 0.8.2)
   pg (~> 0.18)
+  pg_search
+  premailer-rails
   pry-byebug
   pry-rails (~> 0.3.4)
   puma

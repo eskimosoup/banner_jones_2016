@@ -1,0 +1,9 @@
+<% if @update && params[:conveyancing_quotes_user][:complete].blank? %>
+  $('.conveyancing-content-form--email').slideUp(250, function() {
+    $('.conveyancing-content__cta-button--email')
+      .removeClass('toggle-class-closest')
+      .text('Email sent to <%= j current_user.email %>');
+  });
+<% else %>
+  $('.conveyancing-content-form--email').prepend('<p>An error occued, please try again.</p>');
+<% end %>

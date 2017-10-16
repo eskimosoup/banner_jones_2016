@@ -1,0 +1,175 @@
+<% costs = ConveyancingCalculator.configuration.additional_costs[@user.symbolised_location].reduce(Hash.new, :merge) %>
+<container>
+  <row class="collapse">
+    <columns small="12" large="12">
+      <img src="https://www.bannerjones.co.uk/emails/bannerjones-header.gif" alt="Banner Jones">
+    </columns>
+  </row>
+
+  <row class="conveyancing-header">
+    <columns small="12" large="12">
+      <h1 class="conveyancing-header__title">
+        Your Conveyancing Quote
+      </h1>
+
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+      <p class="conveyancing-header__lead-text">
+        Here is your fixed price quote based on
+        <% if @user.purchase.present? %>
+          your buying price of <strong><%= number_to_currency @user.purchase.price %></strong>
+        <% end %>
+        <% if @user.purchase.present? && @user.sale.present? %>
+          and
+        <% end %>
+        <% if @user.sale.present? %>
+          your selling price of <strong><%= number_to_currency @user.sale.price %></strong>
+        <% end %>
+      </p>
+
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+      <p class="conveyancing-header__quote-reference">
+        Your quote reference is: <strong><%= @user.quote_reference %></strong>
+      </p>
+    </columns>
+  </row>
+
+  <row class="conveyancing-fee-header conveyancing-fee-header--first">
+    <columns small="12" large="12">
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+      <h2 class="conveyancing-fee-header__title conveyancing-fee-header__title--first">
+        What you pay
+        <span class="conveyancing-fee-header__accent conveyancing-fee-header__accent--first">us</span>
+        for our services
+      </h2>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+    </columns>
+  </row>
+
+
+
+  <%= render 'conveyancing_quote_mailer/new_quote/purchases/conveyancing_costs',
+              purchase: @user.purchase if @user.purchase.present? %>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/sales/conveyancing_costs',
+              sale: @user.sale if @user.sale.present? %>
+
+  <row class="conveyancing-fee-breakdown">
+    <columns small="12" large="12">
+      <row class="conveyancing-collapse conveyancing-fee-total">
+        <columns small="12" large="8">
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+          <p class="conveyancing-fee-total__subtotal">
+            Sub-total
+          </p>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+        </columns>
+        <columns small="12" large="4">
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+          <p class="conveyancing-fee-total__cost">
+            <% sub_total = 0 %>
+            <% sub_total += @user.sale.fee if @user.sale.present? %>
+            <% sub_total += @user.purchase.fee if @user.purchase.present? %>
+            <%= number_to_currency sub_total %>
+          </p>
+          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+        </columns>
+      </row>
+    </columns>
+  </row>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+  <row class="conveyancing-fee-header conveyancing-fee-header--second">
+    <columns small="12" large="12">
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+      <h2 class="conveyancing-fee-header__title conveyancing-fee-header__title--second">
+        Additional services
+      </h2>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+    </columns>
+  </row>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/purchases/optional_extras',
+              costs: costs,
+              purchase: @user.purchase if @user.purchase.present? %>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/sales/optional_extras',
+              costs: costs,
+              sale: @user.sale if @user.sale.present? %>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+  <row class="conveyancing-fee-header conveyancing-fee-header--third">
+    <columns small="12" large="12">
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+      <h2 class="conveyancing-fee-header__title conveyancing-fee-header__title--third">
+        Additional costs paid to
+        <span class="conveyancing-fee-header__accent conveyancing-fee-header__accent--third">third parties</span>
+      </h2>
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+    </columns>
+  </row>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/purchases/additional_costs',
+              costs: costs,
+              purchase: @user.purchase if @user.purchase.present? %>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/sales/additional_costs',
+              costs: costs,
+              sale: @user.sale if @user.sale.present? %>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+  <row class="conveyancing-fee-header conveyancing-fee-header--cta">
+    <columns small="12" large="12">
+      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+      <%= render 'conveyancing_quote_mailer/new_quote/sales/grand_total',
+              costs: costs,
+              sale: @user.sale if @user.sale.present? %>
+
+      <%= render 'conveyancing_quote_mailer/new_quote/purchases/grand_total',
+              costs: costs,
+              purchase: @user.purchase if @user.purchase.present? %>
+
+      <p class="conveyancing-fee-header__microcopy">
+        Your quote is valid for 30 days from <%= l @user.created_at.to_date, format: :long %>.
+      </p>
+    </columns>
+  </row>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+  <% if @user.submitted? %>
+    <%= render 'conveyancing_quote_mailer/new_quote/thank_you' %>
+  <% else %>
+    <%= render 'conveyancing_quote_mailer/new_quote/next_steps' %>
+  <% end %>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 20 %>
+
+  <row>
+    <columns small="12" large="12">
+      <p class="conveyancing-footer__microcopy">
+        All information on this website is property of Banner Jones Solicitors © <%= Date.today.year %>. All rights reserved. Banner Jones is the trading
+        name of Banner Jones Ltd.
+      </p>
+      <p class="conveyancing-footer__microcopy">
+        Registered in England No. 6604123. Registered Office: 24 Glumangate, Chesterfield S40 1UA. Banner Jones Ltd is registered
+        for VAT purposes with VAT registration number 345980525.
+      </p>
+      <p class="conveyancing-footer__microcopy">
+        We are authorised and regulated by the Solicitors Regulation Authority (SRA number 493083) under the Solicitors' Code of
+        Conduct. You can access the Code by contacting the SRA, In writing to: The Cube, 199 Wharfside Street, Birmingham, B1 1RN.
+        Fax: 0121 616199. Tel: 0870 6062555 (UK) +44 0121 3296800 (International) or via www.sra.org.uk.
+      </p>
+      <p class="conveyancing-footer__microcopy">
+        The directors of Banner Jones Ltd are Solicitors of England and Wales.
+      </p>
+    </columns>
+  </row>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+</container>

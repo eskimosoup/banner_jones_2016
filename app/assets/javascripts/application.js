@@ -20,6 +20,7 @@
 //= require components/inline-modal
 //= require components/mobile-anchors
 //= require components/ga-events
+//= require components/smooth-scroll
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
 //= require vendor/jquery.unveil

@@ -1,0 +1,22 @@
+.conveyancing-key-team-member {
+  color: $blue-dark;
+  font-family: $roboto;
+
+  &__avatar {
+    margin-bottom: rem(10px);
+
+    img {
+      border-color: $white;
+    }
+  }
+
+  &__name {
+    font-size: rem(22px);
+    font-weight: $roboto--medium;
+  }
+
+  &__roles {
+    font-size: rem(14px);
+    line-height: 1.1;
+  }
+}

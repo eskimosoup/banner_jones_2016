@@ -1,0 +1,35 @@
+<row class="conveyancing-fee-header conveyancing-fee-header--fourth">
+  <columns small="12" large="12">
+    <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+    <h2 class="conveyancing-fee-header__title">
+      Here's what to do next
+    </h2>
+
+    <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+  </columns>
+</row>
+
+<%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+<row>
+  <columns small="12" large="12">
+    <p>
+      If you are happy to proceed with the quote, please complete the small form
+      below and we will be in touch to explain the next steps and get everything
+      in place for your move.
+    </p>
+
+    <p>
+      Or if you have any questions then call us for a no-obligation discussion
+      to see how we can help get you moving.
+      <strong><%= render 'shared/calltracks_phone',
+                    phone: @global_site_settings['Phone'],
+                    options: { class: 'conveyancing-proceed__phone' } %></strong>
+    </p>
+
+    <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+    <hr />
+  </columns>
+</row>

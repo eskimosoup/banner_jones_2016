@@ -1,5 +1,17 @@
 <%= form_for @conveyancing_quote_sale_and_purchase, url: conveyancing_quotes_sale_and_purchases_path do |f| %>
   <%= render 'shared/form_errors', object: @conveyancing_quote_sale_and_purchase %>
+  <%= f.fields_for :purchase do |purchase| %>
+    <%= render 'conveyancing_quotes/purchases/form_fields', f: purchase %>
+  <% end %>
+  <%= f.fields_for :sale do |sale| %>
+    <%= render 'conveyancing_quotes/sales/form_fields', f: sale %>
+  <% end %>
+
+  <div class="conveyancing-landing-hero-form__errors">
+    <p>
+      Please ensure you enter a valid number.
+    </p>
+  </div>
 
   <div id="purchase">
     <%= f.fields_for :purchase do |purchase| %>

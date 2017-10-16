@@ -138,28 +138,11 @@
     </div>
 
     <div class="primary-navigation-search" role="search">
-      <!--
-      <%= form_tag '', method: :get, class: 'header-search-form' do %>
-        <%= text_field_tag :search, params[:search],
-                                  placeholder: 'Search',
-                                    class: 'header-search-input' %>
-
-        <%= submit_tag 'Search', class: 'header-search-submit' %>
+      <%= form_tag new_search_path, method: :get, class: 'header-search-form' do %>
+        <%= text_field_tag :q, params[:q],
+                               placeholder: 'Search',
+                               class: 'header-search-form__input' %>
        <% end %>
-      -->
-
-      <script>
-        (function() {
-          var cx = '014374903494110971556:qvo4l6fimr8';
-          var gcse = document.createElement('script');
-          gcse.type = 'text/javascript';
-          gcse.async = true;
-          gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(gcse, s);
-        })();
-      </script>
-      <gcse:search></gcse:search>
     </div>
   </nav>
 </div>

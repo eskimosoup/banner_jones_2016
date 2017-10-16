@@ -1,0 +1,36 @@
+.search-results {
+  background: $light-grey;
+
+  &__content {
+    @include flex-grid-row;
+    padding-bottom: rem(40px);
+    padding-top: rem(40px);
+  }
+
+  &__breakdown {
+    @include responsive-flex-grid-column((medium down: 12, large: 3));
+  }
+
+  &__results {
+    @include responsive-flex-grid-column((medium down: 12, large: 9));
+  }
+
+  &__summary {
+    margin-bottom: rem(10px);
+    margin-top: rem(10px);
+  }
+
+  &__inner {
+    background: $white;
+
+    &--padded {
+      padding: rem(10px);
+    }
+  }
+
+  &__title {
+    color: $red;
+    font-family: $museo-sans-rounded;
+    font-weight: $museo-sans--bold;
+  }
+}
