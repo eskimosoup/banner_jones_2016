@@ -1,5 +1,38 @@
+<%= content_for :javascript do %>
+  <script>
+    const cookieName = 'bannerjones-cookies-allowed';
+    $(document).ready(function() {
+      if(Cookies.get(cookieName) == undefined) {
+        $('.cookie-warning').slideDown();
+      }
+    });
+    $(document).on('click', '.cookie-warning__button', function() {
+      Cookies.set(cookieName, '1', { expires: 365, secure: true });
+      $('.cookie-warning').slideUp();
+    });
+  </script>
+<% end %>
+
 <div class="sticky-sidebar hide">
 
+</div>
+
+<div class="cookie-warning">
+  <div class="cookie-warning__content">
+    <p>
+      Your continued usage of this website means you consent to it storing,
+      setting and using cookies and other tracking codes.
+      For more information, please read the
+      <%= link_to 'privacy policy', '/pages/privacy-policy' %> and
+      <%= link_to 'cookie policy', '/pages/cookie-policy' %>.
+    </p>
+
+    <p>
+      <%= link_to 'I understand, please close this message',
+                  '#header',
+                  class: 'cookie-warning__button' %>
+    </p>
+  </div>
 </div>
 
 <header class="primary-header">

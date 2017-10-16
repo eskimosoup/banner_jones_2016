@@ -13,3 +13,15 @@ $(document).ready(function() {
 <%= yield :javascript %>
 
 <%#= image_tag 'https://servedby.ipromote.com/ad/?src=pixel_cid&cid=VTSTDHE9QG8&cat=2800&nid=1447', width: 1, height: 1, border: 0, alt: '' %>
+
+<% if @payment.blank? %>
+  <script type="text/javascript">
+  window._mfq = window._mfq || [];
+  (function() {
+  var mf = document.createElement("script");
+  mf.type = "text/javascript"; mf.async = true;
+  mf.src = "//cdn.mouseflow.com/projects/ac26b77b-0545-43d8-b975-da2027f416cb.js";
+  document.getElementsByTagName("head")[0].appendChild(mf);
+  })();
+  </script>
+<% end %>
