@@ -7,6 +7,7 @@ module ConveyancingQuotes
     before_action :current_user, only: %i[thank_you]
 
     def new
+      seo_settings
       session.delete(:conveyancing_quote)
       @user = @location.users.new
       @user.save!
@@ -41,6 +42,15 @@ module ConveyancingQuotes
     def thank_you; end
 
     private
+
+    def seo_settings
+      seo_entry = SeoEntry.find_by(nominal_url: request.path.gsub('/request/new', ''))
+      return unless seo_entry
+      @rich_snippet = seo_entry.rich_snippet
+      @title = seo_entry.title
+      @meta_description = seo_entry.meta_description
+      @meta_tags = seo_entry.title
+    end
 
     def user_params
       params.require(:conveyancing_quotes_user).permit(

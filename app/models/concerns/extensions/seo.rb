@@ -33,6 +33,8 @@ module Extensions
           ::Service.order(:title)
         when 'team_members'
           ::TeamMember.order(:surname)
+        when 'conveyancing_quotes/quote_locations'
+          ::ConveyancingQuotes::QuoteLocation.order(:title)
 
         else
           []
@@ -69,6 +71,8 @@ module Extensions
           ::Service.displayed
         when 'team_members'
           ::TeamMember.displayed
+        when 'conveyancing_quotes/quote_locations'
+          ::ConveyancingQuotes::QuoteLocation.displayed.order(:title)
 
         else
           []
