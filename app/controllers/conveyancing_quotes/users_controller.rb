@@ -27,7 +27,7 @@ module ConveyancingQuotes
         format.html do
           if @update
             @user.update_attributes(submitted: true)
-            ConveyancingQuoteMailer.new_quote_notification(@user).deliver_now
+            ConveyancingQuoteMailer.new_quote_notification(@user).deliver_later
             redirect_to thank_you_conveyancing_quotes_location_users_path(@user.quote_location)
           else
             render :edit
@@ -50,7 +50,7 @@ module ConveyancingQuotes
     end
 
     def deliver_quote_email(user)
-      ConveyancingQuoteMailer.new_quote(user).deliver_now
+      ConveyancingQuoteMailer.new_quote(user).deliver_later
       return if user.quote_emailed?
       @email_sent = true
       user.update_attributes(quote_emailed: true)
