@@ -85,7 +85,7 @@
     <columns small="12" large="12">
       <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
       <h2 class="conveyancing-fee-header__title conveyancing-fee-header__title--second">
-        Optional extras
+        Additional services
       </h2>
       <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
     </columns>
@@ -139,6 +139,14 @@
       </p>
     </columns>
   </row>
+
+  <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+
+  <% if @user.submitted? %>
+    <%= render 'conveyancing_quote_mailer/new_quote/thank_you' %>
+  <% else %>
+    <%= render 'conveyancing_quote_mailer/new_quote/next_steps' %>
+  <% end %>
 
   <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 20 %>
 

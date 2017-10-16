@@ -61,7 +61,7 @@ module ConveyancingQuotes
     end
 
     def quote_reference
-      "#{quote_location.reference_code}-#{created_at.to_i}-#{id}".upcase
+      "#{quote_location.reference_code}-#{created_at.to_i.to_s[-3..-1]}-#{id}".upcase
     end
 
     def generate_token(column)
