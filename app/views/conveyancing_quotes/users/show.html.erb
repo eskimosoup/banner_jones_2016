@@ -123,7 +123,7 @@
 <section class="conveyancing-breakdown">
   <header class="conveyancing-breakdown__header conveyancing-breakdown__header--second">
     <h1 class="conveyancing-breakdown__main-title">
-      Optional extras
+      Additional services
     </h1>
   </header>
   <div class="conveyancing-breakdown__details">
@@ -322,12 +322,6 @@
             No move, no fee and search guarantees
           </li>
         </ul>
-        <div class="conveyancing-proceed__team-member">
-          <%= render partial: 'conveyancing_quotes/shared/key_team_members',
-                      collection: @service.team_members.key_team_members,
-                      cached: true,
-                      as: :team_member %>
-        </div>
         <p>
           If you have any questions then call us for a no-obligation discussion to
           see how we can help get you moving.
@@ -335,6 +329,12 @@
         <%= render 'shared/calltracks_phone',
                     phone: global_site_settings['Phone'],
                     options: { class: 'conveyancing-proceed__phone' } %>
+        <div class="conveyancing-proceed__team-member">
+          <%= render partial: 'conveyancing_quotes/shared/key_team_members',
+                      collection: @service.team_members.key_team_members,
+                      cached: true,
+                      as: :team_member %>
+        </div>
       </div>
     </div>
   </div>

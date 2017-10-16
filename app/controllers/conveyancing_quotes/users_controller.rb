@@ -50,9 +50,8 @@ module ConveyancingQuotes
     end
 
     def deliver_quote_email(user)
-      return if user.quote_emailed?
       ConveyancingQuoteMailer.new_quote(user).deliver_now
-      user.update_attributes(quote_emailed: true)
+      user.update_attributes(quote_emailed: true) unless user.quote_emailed?
     end
   end
 end
