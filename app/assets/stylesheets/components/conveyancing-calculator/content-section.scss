@@ -36,6 +36,7 @@
 
   &__main-title {
     text-align: center;
+    margin-top: rem(40px);
     margin-bottom: rem(40px);
 
     @include breakpoint(small only) {
@@ -240,6 +241,8 @@
   }
 }
 
+
+/*
 .conveyancing-completion {
   @include flex-grid-row;
   justify-content: space-between;
@@ -262,3 +265,4 @@
     text-align: left;
   }
 }
+*/

@@ -149,9 +149,22 @@
 
 .conveyancing-content-form {
   padding-top: rem(20px);
+  text-align: left;
 
   &--hidden {
     display: none;
+  }
+
+  &__field-group {
+    @include breakpoint(large) {
+      @include flex-grid-row(nest);
+    }
+  }
+
+  &__field-grouped {
+    @include breakpoint(large) {
+      @include flex-grid-column(6);
+    }
   }
 
   &__field,

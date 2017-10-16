@@ -16,6 +16,25 @@
     <div class="conveyancing-landing-hero-form__options-group">
       <div class="conveyancing-landing-hero-form__options-field">
         <div class="conveyancing-custom-checkbox">
+          <%= f.check_box :freehold_house, checked: true %>
+          <%= f.label :freehold_house,
+                      '<span></span> Freehold house'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+        </div>
+      </div>
+
+      <div class="conveyancing-landing-hero-form__options-field">
+        <div class="conveyancing-custom-checkbox">
+          <%= f.check_box :freehold_apartment %>
+          <%= f.label :freehold_apartment,
+                      '<span></span> Freehold apartment'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+        </div>
+      </div>
+    </div>
+    <div class="conveyancing-landing-hero-form__options-group">
+      <div class="conveyancing-landing-hero-form__options-field">
+        <div class="conveyancing-custom-checkbox">
           <%= f.check_box :leasehold_house %>
           <%= f.label :leasehold_house,
                       '<span></span> Leasehold house'.html_safe,
@@ -28,26 +47,6 @@
           <%= f.check_box :leasehold_apartment %>
           <%= f.label :leasehold_apartment,
                       '<span></span> Leasehold apartment'.html_safe,
-                      class: 'conveyancing-landing-hero-form__options-label' %>
-        </div>
-      </div>
-    </div>
-
-    <div class="conveyancing-landing-hero-form__options-group">
-      <div class="conveyancing-landing-hero-form__options-field">
-        <div class="conveyancing-custom-checkbox">
-          <%= f.check_box :freehold_house %>
-          <%= f.label :freehold_house,
-                      '<span></span> Freehold house'.html_safe,
-                      class: 'conveyancing-landing-hero-form__options-label' %>
-        </div>
-      </div>
-
-      <div class="conveyancing-landing-hero-form__options-field">
-        <div class="conveyancing-custom-checkbox">
-          <%= f.check_box :freehold_apartment %>
-          <%= f.label :freehold_apartment,
-                      '<span></span> Freehold apartment'.html_safe,
                       class: 'conveyancing-landing-hero-form__options-label' %>
         </div>
       </div>
