@@ -6,9 +6,9 @@ GIT
 
 GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: 7f0141d1a053e3d8301ef9036a645e7a254c4193
+  revision: ec3cc1c6c2ae2fedf85f448989e3bd6313c5cf40
   specs:
-    capybara (2.15.1)
+    capybara (2.15.4)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (>= 1.3.3)
@@ -18,10 +18,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 8a7819f517c08aa413d2f02b5b159cddbba5c6fd
+  revision: 9043e810d2001224c7c7a035007f7951ff66ee96
   branch: master
   specs:
-    optimadmin (0.7.3)
+    optimadmin (0.7.4)
       bcrypt
       cancancan
       carrierwave
@@ -44,10 +44,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 20dd5df6be8a11a83d500e7bbe0fc93e8f6da854
+  revision: 49cb7e855bfaa9fa06b9ab29770304c584b0d2eb
   branch: master
   specs:
-    optimised_site (0.6.4)
+    optimised_site (0.6.5)
       amoeba
       closure_tree (~> 6.0)
       deep_cloneable (~> 2.2.2)
@@ -143,7 +143,7 @@ GEM
     capistrano-rbenv (2.1.2)
       capistrano (~> 3.1)
       sshkit (~> 1.3)
-    carrierwave (1.1.0)
+    carrierwave (1.2.1)
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
@@ -233,7 +233,8 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hashery (2.1.2)
     htmlentities (4.3.4)
-    i18n (0.8.6)
+    i18n (0.9.0)
+      concurrent-ruby (~> 1.0)
     inky-rb (1.3.7.2)
       foundation_emails (~> 2)
       nokogiri
@@ -248,18 +249,18 @@ GEM
       railties (>= 3.2.16)
     json (2.1.0)
     jwt (1.5.6)
-    kaminari (1.0.1)
+    kaminari (1.1.0)
       activesupport (>= 4.1.0)
-      kaminari-actionview (= 1.0.1)
-      kaminari-activerecord (= 1.0.1)
-      kaminari-core (= 1.0.1)
-    kaminari-actionview (1.0.1)
+      kaminari-actionview (= 1.1.0)
+      kaminari-activerecord (= 1.1.0)
+      kaminari-core (= 1.1.0)
+    kaminari-actionview (1.1.0)
       actionview
-      kaminari-core (= 1.0.1)
-    kaminari-activerecord (1.0.1)
+      kaminari-core (= 1.1.0)
+    kaminari-activerecord (1.1.0)
       activerecord
-      kaminari-core (= 1.0.1)
-    kaminari-core (1.0.1)
+      kaminari-core (= 1.1.0)
+    kaminari-core (1.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     letter_opener (1.4.1)
@@ -308,7 +309,7 @@ GEM
       ttfunk
     pdfkit (0.8.2)
     pg (0.21.0)
-    pg_search (2.1.0)
+    pg_search (2.1.1)
       activerecord (>= 4.2)
       activesupport (>= 4.2)
       arel (>= 6)
@@ -386,7 +387,7 @@ GEM
     rspec-support (3.6.0)
     ruby-rc4 (0.1.5)
     rubyzip (1.2.1)
-    sass (3.5.1)
+    sass (3.5.2)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -405,10 +406,10 @@ GEM
       activesupport (>= 3)
     shoulda-matchers (2.8.0)
       activesupport (>= 3.0.0)
-    signet (0.7.3)
+    signet (0.8.1)
       addressable (~> 2.3)
       faraday (~> 0.9)
-      jwt (~> 1.5)
+      jwt (>= 1.5, < 3.0)
       multi_json (~> 1.10)
     simple_form (3.2.1)
       actionpack (> 4, < 5.1)
@@ -458,9 +459,8 @@ GEM
     websocket-extensions (0.1.2)
     whenever (0.9.7)
       chronic (>= 0.6.3)
-    with_advisory_lock (3.1.1)
+    with_advisory_lock (3.2.0)
       activerecord (>= 3.2)
-      thread_safe
     xpath (2.1.0)
       nokogiri (~> 1.3)
 
