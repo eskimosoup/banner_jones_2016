@@ -130,12 +130,20 @@
       </div>
     </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit 'Accept quote', class: 'inverted-submit-button' %>
-  </div>
-<% end %>
-
-<p>
-  Once you have accepted the quote, our team will be in touch.
-</p>
+</div>
+<%#= content_for :content_title do 'Accept Quote' end %>
+<%#= render 'conveyancing_quotes/shared/acceptance_steps', current_step: 4 %>
+<%#= render @user.purchase if @user.purchase.present? %>
+<%#= render @user.sale if @user.sale.present? %>
+<% #if @user.addresses.correspondence.present? %>
+<%#= render @user.addresses.correspondence  %>
+<%#= link_to 'Edit', edit_conveyancing_quotes_property_addresses_path %>
+<%# end %>
+<%# if @user.addresses.property.present? %>
+<%#= render @user.addresses.property %>
+<%#= link_to 'Edit', edit_conveyancing_quotes_correspondence_addresses_path %>
+<% # end %>
+<%# if @user.deeds.present? %>
+<%#= render @user.deeds %>
+<%#= link_to 'Edit', edit_conveyancing_quotes_deeds_path %>
+<%# end %>

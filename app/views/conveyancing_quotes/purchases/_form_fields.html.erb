@@ -1,5 +1,7 @@
-<div class="field">
-  <p>How much are you buying the property for?</p>
+<div class="conveyancing-landing-hero-form__field">
+  <div class="conveyancing-landing-page-hero-form__success">
+    <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+  </div>
 
   <%= f.label :price,
               'Purchase price',
@@ -53,6 +55,7 @@
   </div>
 </div>
 
+<!--
 <div class="field">
   <%= f.check_box :second_home_or_buy_to_let %>
   <%= f.label :second_home_or_buy_to_let, 'Is this a second home or buy-to-let purchase?', class: 'inline-label' %>
@@ -141,3 +144,4 @@
     <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
   </div>
 </div>
+-->

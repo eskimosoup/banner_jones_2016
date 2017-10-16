@@ -1,0 +1,20 @@
+<% costs = ConveyancingCalculator.configuration.additional_costs[current_user.symbolised_location].reduce(Hash.new, :merge) %>
+<% sub_total = 0 %>
+<% current_user.sale.additional_costs.each do |additional_cost| %>
+  <% sub_total += costs[additional_cost] %>
+<% end %>
+$('.conveyancing-breakdown__sub-total-sale').fadeOut(250, function() {
+  $('.conveyancing-breakdown__sub-total-sale')
+    .text("<%= number_to_currency sub_total %>");
+
+  $('.conveyancing-breakdown__sub-total-sale')
+    .fadeIn(250);
+
+  $('.conveyancing-breakdown__additional-costs--sale')
+    .html("<%= j render 'conveyancing_quotes/sales/shared/additional_costs',
+                    costs: costs,
+                    sale: current_user.sale %>");
+
+  $('.conveyancing-content__sale-total')
+    .html("<%= j render current_user.sale %>");
+})

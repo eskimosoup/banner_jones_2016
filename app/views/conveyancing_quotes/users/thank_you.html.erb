@@ -78,25 +78,3 @@
     </div>
   </div>
 </div>
-
-<%= render @user.purchase if @user.purchase.present? %>
-<%= render @user.sale  if @user.sale.present? %>
-
-<% if @user.addresses.correspondence.present? %>
-  <div class="conveyancing-address">
-    <%= render @user.addresses.correspondence  %>
-  </div>
-<% end %>
-
-<% if @user.addresses.property.present? %>
-  <div class="conveyancing-address">
-    <%= render @user.addresses.property %>
-  </div>
-<% end %>
-
-<% if @user.deeds.present? %>
-  <h3>Deeds</h3>
-  <%= content_tag :ul, (render @user.deeds) %>
-<% end %>
-
-<%= link_to 'Print quote', '#', class: 'inverted-submit-button print-page' %>
