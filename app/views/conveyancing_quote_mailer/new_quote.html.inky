@@ -6,6 +6,50 @@
     </columns>
   </row>
 
+  <% if @confirmation.present? %>
+    <row>
+      <columns small="12">
+        <h1>This is a copy of the conveyancing email</h1>
+
+        <p>
+          Please note that these details are also viewable at:
+          <%= link_to optimadmin.conveyancing_quotes_quote_location_user_url(@user.quote_location, @user),
+            optimadmin.conveyancing_quotes_quote_location_user_url(@user.quote_location, @user)
+          %>
+        </p>
+
+        <p>
+          Name<br />
+          <strong>
+            <%= @user.full_name %>
+          </strong>
+        </p>
+      </columns>
+    </row>
+
+    <row>
+      <columns small="12" large="6">
+        <p>
+          Email<br />
+          <strong>
+            <%= mail_to @user.email %>
+          </strong>
+        </p>
+      </columns>
+
+      <columns small="12" large="6">
+        <p>
+          Phone<br />
+          <strong>
+            <%= @user.phone %>
+          </strong>
+        </p>
+      </columns>
+    </row>
+
+    <hr />
+  <% end %>
+
   <row class="conveyancing-header">
     <columns small="12" large="12">
       <h1 class="conveyancing-header__title">
