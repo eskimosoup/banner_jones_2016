@@ -27,9 +27,9 @@ class ConveyancingQuoteMailer < ApplicationMailer
     end
   end
 
-  def incomplete_users(users)
-    @users = users
-    mail to: conveyancing_email,
-         subject: "Incomplete Conveyancing Quotes #{site_name}"
-  end
+  # def incomplete_users(users)
+  #  @users = users
+  #  mail to: conveyancing_email,
+  #       subject: "Incomplete Conveyancing Quotes #{site_name}"
+  # end
 end

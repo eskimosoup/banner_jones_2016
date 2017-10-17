@@ -1,3 +1,4 @@
+=begin
 namespace :conveyancing do
   desc 'Send a daily email with incomplete conveyancing submissions'
   task incomplete_submissions_mailer: :environment do
@@ -11,3 +12,4 @@ namespace :conveyancing do
     ConveyancingQuoteMailer.incomplete_users(users).deliver_now
   end
 end
+=end
