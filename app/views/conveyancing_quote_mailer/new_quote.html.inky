@@ -24,6 +24,11 @@
             <%= @user.full_name %>
           </strong>
         </p>
+
+        <p>
+          <%= @user.forename %> has received the email below and is waiting
+          for contact to proceed with the quote.
+        </p>
       </columns>
     </row>
 
