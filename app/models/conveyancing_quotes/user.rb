@@ -55,6 +55,10 @@ module ConveyancingQuotes
     before_create { generate_token(:token) }
     before_create :buying_and_selling_boolean
 
+    def full_name
+      [forename, surname].join(' ')
+    end
+
     def complete?
       complete.present?
     end

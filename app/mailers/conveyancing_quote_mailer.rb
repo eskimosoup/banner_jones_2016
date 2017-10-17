@@ -20,6 +20,7 @@ class ConveyancingQuoteMailer < ApplicationMailer
   def new_quote_notification(user)
     @user = user
     @global_site_settings = Optimadmin::SiteSetting.current_environment
+    @confirmation = true
 
     mail to: conveyancing_email,
          subject: "Conveyancing Quote Completed #{site_name}" do |format|
