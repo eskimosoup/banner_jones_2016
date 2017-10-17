@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 # rake conveyancing:incomplete_submissions_mailer
-every 1.day, at: '12:00 pm' do
-  rake 'conveyancing:incomplete_submissions_mailer'
-end
+# every 1.day, at: '12:00 pm' do
+#   rake 'conveyancing:incomplete_submissions_mailer'
+# end
