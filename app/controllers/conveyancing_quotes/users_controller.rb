@@ -9,7 +9,7 @@ module ConveyancingQuotes
     def new
       seo_settings
       session.delete(:conveyancing_quote)
-      @user = @location.users.new
+      @user = @location.users.new(ip_address: request.remote_ip)
       @user.save!
       session[:conveyancing_quote] = @user.token
       @conveyancing_quote_sale_and_purchase = @user.build_sale_and_purchase
