@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171012143605) do
+ActiveRecord::Schema.define(version: 20171020153741) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -203,10 +203,12 @@ ActiveRecord::Schema.define(version: 20171012143605) do
     t.string   "location"
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",       default: true
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.boolean  "display",        default: true
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.text     "details"
+    t.string   "title"
+    t.string   "reference_code"
     t.index ["location"], name: "index_conveyancing_quotes_quote_locations_on_location", using: :btree
     t.index ["slug"], name: "index_conveyancing_quotes_quote_locations_on_slug", using: :btree
   end
@@ -262,9 +264,9 @@ ActiveRecord::Schema.define(version: 20171012143605) do
 
   create_table "conveyancing_quotes_users", force: :cascade do |t|
     t.string   "title"
-    t.string   "forename",                                              null: false
-    t.string   "surname",                                               null: false
-    t.string   "email",                                                 null: false
+    t.string   "forename"
+    t.string   "surname"
+    t.string   "email"
     t.string   "phone"
     t.string   "token",                                                 null: false
     t.boolean  "buying",                                default: false
@@ -275,6 +277,9 @@ ActiveRecord::Schema.define(version: 20171012143605) do
     t.integer  "conveyancing_quotes_quote_location_id"
     t.boolean  "submitted",                             default: false
     t.boolean  "allow_contact"
+    t.boolean  "quote_emailed",                         default: false
+    t.boolean  "started"
+    t.string   "ip_address"
     t.index ["conveyancing_quotes_quote_location_id"], name: "quote_location_id", using: :btree
     t.index ["token"], name: "index_conveyancing_quotes_users_on_token", using: :btree
   end

@@ -55,6 +55,21 @@ module ConveyancingQuotes
     before_create { generate_token(:token) }
     before_create :buying_and_selling_boolean
 
+    delegate :price, to: :sale, prefix: true, allow_nil: true
+    delegate :price, to: :purchase, prefix: true, allow_nil: true
+
+    def purchase_price?
+      purchase_price.present?
+    end
+
+    def sale_price?
+      sale_price.present?
+    end
+
+    def price?
+      sale_price? || purchase_price?
+    end
+
     def full_name
       [forename, surname].join(' ')
     end

@@ -4,7 +4,8 @@ module Optimadmin
       include Optimadmin::PresenterMethods
 
       presents :user
-      delegate :id, :forename, :surname, :phone, to: :user
+      delegate :id, :forename, :surname, :phone, :purchase_price, :sale_price,
+                to: :user
 
       def toggle_title
         h.link_to full_name, h.conveyancing_quotes_quote_location_user_path(user.quote_location, user)

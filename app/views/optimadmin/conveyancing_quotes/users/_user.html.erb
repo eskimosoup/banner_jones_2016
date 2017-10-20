@@ -1,9 +1,9 @@
 <% present user do |user_presenter| %>
   <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= user_presenter.id %>">
-    <div class="large-3 small-4 columns" data-equalizer-watch="module-list">
+    <div class="large-2 small-4 columns" data-equalizer-watch="module-list">
       <%= user.quote_reference %>
     </div>
-    <div class="large-3 small-4 columns" data-equalizer-watch="module-list">
+    <div class="large-2 small-4 columns" data-equalizer-watch="module-list">
       <%= user_presenter.toggle_title %>
       <div style="font-size: 14px;">
         <%= user_presenter.email %>
@@ -12,11 +12,11 @@
     <div class="large-2 small-4 columns" data-equalizer-watch="module-list">
       <%= user_presenter.created_date %>
     </div>
-    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-      <%= user_presenter.buying %>
+    <div class="large-2 small-4 columns" data-equalizer-watch="module-list">
+      <%= number_to_currency user_presenter.purchase_price %>
     </div>
-    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
-      <%= user_presenter.selling %>
+    <div class="large-2 small-4 columns" data-equalizer-watch="module-list">
+      <%= number_to_currency user_presenter.sale_price %>
     </div>
     <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
       <%= user_presenter.submitted %>
