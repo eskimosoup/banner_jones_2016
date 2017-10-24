@@ -3,10 +3,13 @@ class ServicesController < ApplicationController
   # before_action :find_service, only: :show
   # before_action :find_member_service, except: :show
 
-  include ResourceHelper, TwitterHelper
+  include ResourceHelper
+  include TwitterHelper
+  include ConveyancingQuotes::UserSetup
 
   def show
     @service = find_service
+    set_up_conveyancing_quote(ConveyancingQuotes::QuoteLocation.first) if @service.style == 'conveyancing'
     # return redirect_to '/pages/wealth-management' if @service.title == 'Wealth Management' && params[:preview].blank?
     return redirect_to nested_services_path(@service), status: :moved_permanently if request.path != nested_services_path(@service) # unless @service.friendly_id == params[:id]
     @onpage_navigations = @service.inherit_page_layout_content? ? @service.root.displayed_onpage_navigations : @service.displayed_onpage_navigations

@@ -1,0 +1,5 @@
+<% @onpage_navigations.each do |onpage_navigation| %>
+  <% present onpage_navigation do |onpage_navigation_presenter| %>
+    <%= onpage_navigation_presenter.render_partial %>
+  <% end %>
+<% end %>

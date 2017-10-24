@@ -14,7 +14,8 @@ module Extensions
          %w(Videos videos),
          ['Service pages', 'service_pages'],
          ['Team members', 'team_members'],
-         %w(Accreditations accreditations)
+         %w(Accreditations accreditations),
+         ['Conveyancing - London header', 'conveyancing/london_header']
        ],
         # ['Team Members',
         # ['Frequently Asked Questions', 'faqs'],
