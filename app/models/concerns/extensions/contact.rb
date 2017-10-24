@@ -24,7 +24,7 @@ module Extensions
                     'Facebook advert',
                     'Recommendation',
                     'Existing client',
-                    'Peak FM advert',
+                    'Mansfield 103 radio',
                     'TV advert'].freeze
 
       ENQUIRY_TYPES = ['General'].freeze
