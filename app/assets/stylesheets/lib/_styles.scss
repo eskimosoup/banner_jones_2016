@@ -210,8 +210,9 @@
   }
 
   &--currency {
-    background: image-url('layout/conveyancing-calculator/pound-sign.png') no-repeat center left 12px,
-                $gradient;
+    background-image: image-url('layout/conveyancing-calculator/pound-sign.png'), $gradient;
+    background-repeat: no-repeat, repeat;
+    background-position: center left 12px, top left;
     background-clip: padding-box;
     padding-left: rem(45px);
   }
