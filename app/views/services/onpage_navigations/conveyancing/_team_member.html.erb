@@ -1,0 +1,17 @@
+<p>
+  If you need a <strong>remortgage</strong> or
+  <strong>transfer of equity</strong>,
+  talk to our Residential Property Team today on:
+</p>
+
+<%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
+            class: 'conveyancing-call-to-action ga-event',
+            data: {
+              event_category: 'Conveyancing Calculator',
+              event_action: 'Click',
+              event_label:  'Phone'
+            } do %>
+  <span class="calltracks_bannerjonescouk-main">
+    <%= global_site_settings['Phone'] %>
+  </span>
+<% end %>

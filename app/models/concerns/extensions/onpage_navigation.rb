@@ -15,7 +15,8 @@ module Extensions
          ['Service pages', 'service_pages'],
          ['Team members', 'team_members'],
          %w(Accreditations accreditations),
-         ['Conveyancing - London header', 'conveyancing/london_header']
+         ['Conveyancing - London header', 'conveyancing/london_header'],
+         ['Conveyancing - Team Member and Reviews', 'conveyancing/team_member_and_reviews'],
        ],
         # ['Team Members',
         # ['Frequently Asked Questions', 'faqs'],
