@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html lang="en" class="ie ie9 lte9"> <![endif]-->
+<html lang="en">
+  <head>
+    <%= render 'layouts/shared/head' %>
+    <%= raw tracking_code('application').head %>
+  </head>
+
+  <body>
+    <%= render 'layouts/tag_manager' %>
+    <%= render 'layouts/application/header' %>
+
+    <%= yield %>
+
+    <%= render 'layouts/application/footer' %>
+
+    <%= render 'layouts/shared/javascripts' %>
+    <%= raw tracking_code('application').footer %>
+  </body>
+</html>
