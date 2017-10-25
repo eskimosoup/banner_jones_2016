@@ -3,7 +3,7 @@
   padding: rem(20px);
 
   &__team-member {
-    @include flex-grid-column(8);
+    @include flex-grid-column(6);
     background: $black-grey-offset;
     border: 6px solid $orange;
     color: $white;
@@ -13,7 +13,56 @@
   }
 
   &__contact {
-    @include flex-grid-column(6);
+    @include flex-grid-column(5);
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  &__methods {
+    @include flex-grid-column(7);
+    display: flex;
+    flex-flow: row wrap;
+  }
+
+  .conveyancing-footer__contact {
+    &:first-of-type {
+      text-align: center;
+      border-right: 1px solid $white;
+    }
+
+    &:last-of-type {
+      border-color: $white;
+      border-left-width: 1px;
+    }
+  }
+
+  .conveyancing-footer__cta-button {
+    padding-left: rem(15px);
+    padding-right: rem(15px);
+  }
+
+  &__reviews {
+    @include flex-grid-column(3, (small: 0));
+    border: 3px solid $deep-grey;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__accreditations {
+    @include flex-grid-column(3, (small: 0));
+    align-items: center;
+    border: 3px solid $deep-grey;
+    display: flex;
+  }
+
+  &__accreditations-list {
+    text-align: center;
+    width: 100%;
+  }
+
+  .service-rich-snippets {
+    border: 0;
   }
 }
 
@@ -23,11 +72,11 @@
   color: $white;
 
   &__avatar {
-    @include flex-grid-column(2, (small: 0));
+    @include flex-grid-column(3, (small: 0));
   }
 
   &__details {
-    @include flex-grid-column(8);
+    @include flex-grid-column(9);
     font-size: rem(14px);
   }
 
