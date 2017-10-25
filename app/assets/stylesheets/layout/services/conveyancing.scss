@@ -1,0 +1,42 @@
+.conveyancing-service-cta-block {
+  @include flex-grid-row;
+  padding: rem(20px);
+
+  &__team-member {
+    @include flex-grid-column(8);
+    background: $black-grey-offset;
+    border: 6px solid $orange;
+    color: $white;
+    display: flex;
+    flex-flow: row wrap;
+    padding: rem(25px);
+  }
+
+  &__contact {
+    @include flex-grid-column(6);
+  }
+}
+
+.conveyancing-service-key-team-member {
+  @include flex-grid-row;
+  align-items: center;
+  color: $white;
+
+  &__avatar {
+    @include flex-grid-column(2, (small: 0));
+  }
+
+  &__details {
+    @include flex-grid-column(8);
+    font-size: rem(14px);
+  }
+
+  &__name {
+    font-weight: $roboto--bold;
+  }
+
+  &__roles {
+    line-height: 1.1;
+    margin-top: rem(3px);
+  }
+}
