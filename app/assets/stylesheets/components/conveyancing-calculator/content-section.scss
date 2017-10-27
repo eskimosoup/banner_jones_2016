@@ -204,6 +204,10 @@
   margin-bottom: rem(40px);
   margin-top: rem(15px);
 
+  &--combined {
+    margin-top: 0;
+  }
+
   &__section {
     @include flex-grid-column(12);
     background: $black-grey;

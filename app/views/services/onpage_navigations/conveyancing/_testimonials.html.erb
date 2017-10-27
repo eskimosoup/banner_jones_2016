@@ -1,0 +1,11 @@
+<div class="conveyancing-content">
+  <div class="conveyancing-content__section conveyancing-content__section--full">
+    <section class="conveyancing-service-cta-block">
+      <%
+      testimonials = onpage_navigation.testimonials.displayed
+      testimonials = @service.testimonials.displayed if testimonials.blank?
+      %>
+      <%= render partial: 'testimonials/testimonial', collection: testimonials.limit((onpage_navigation.results_limit.present? ? onpage_navigation.results_limit : 10)), as: :testimonial %>
+    </section>
+  </div>
+</div>

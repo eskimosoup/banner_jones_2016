@@ -17,6 +17,10 @@ module Extensions
          %w(Accreditations accreditations),
          ['Conveyancing - London header', 'conveyancing/london_header'],
          ['Conveyancing - Team Member and Reviews', 'conveyancing/team_member_and_reviews'],
+         ['Conveyancing - CTA points', 'conveyancing/cta_points'],
+         ['Conveyancing - Testimonials', 'conveyancing/testimonials'],
+         ['Conveyancing - Process', 'conveyancing/process'],
+         ['Conveyancing - Team Member', 'conveyancing/team_member']
        ],
         # ['Team Members',
         # ['Frequently Asked Questions', 'faqs'],
