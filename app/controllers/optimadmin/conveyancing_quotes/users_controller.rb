@@ -5,11 +5,12 @@ module Optimadmin
       before_action :set_user, only: %i[show edit update destroy]
 
       def index
+        User.where('created_at < ? AND started IS NULL', Date.yesterday).destroy_all
         @users = @location.users.where(submitted: true).field_order(params[:order])
                           .field_search(params[:search], 'location')
         @incomplete_users = @location.users.where(submitted: nil, started: true).field_order(params[:order])
-                               .field_search(params[:search], 'location')
-            end
+                                     .field_search(params[:search], 'location')
+      end
 
       def show; end
 
