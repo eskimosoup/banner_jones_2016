@@ -13,6 +13,10 @@
   <%= render partial: 'user', collection: @users, as: :user %>
   <!-- </div> -->
 
+  <h2>Quote email sent</h2>
+  <%= render partial: 'user_header' %>
+  <%= render partial: 'user', collection: @emailed_users, as: :user %>
+
   <h2>Incomplete</h2>
   <%= render partial: 'user_header' %>
   <%= render partial: 'user', collection: @incomplete_users, as: :user %>

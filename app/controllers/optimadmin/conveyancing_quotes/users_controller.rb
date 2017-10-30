@@ -8,7 +8,9 @@ module Optimadmin
         ::ConveyancingQuotes::User.where('created_at < ? AND started IS NULL', Date.yesterday).destroy_all
         @users = @location.users.where(submitted: true).field_order(params[:order])
                           .field_search(params[:search], 'location')
-        @incomplete_users = @location.users.where(submitted: nil, started: true).field_order(params[:order])
+        @emailed_users = @location.users.where(quote_emailed: true, started: true).field_order(params[:order])
+                                     .field_search(params[:search], 'location')
+        @incomplete_users = @location.users.where(submitted: nil, quote_emailed: nil, started: true).field_order(params[:order])
                                      .field_search(params[:search], 'location')
       end
 
