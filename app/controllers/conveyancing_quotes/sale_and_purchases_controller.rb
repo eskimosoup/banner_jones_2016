@@ -12,6 +12,7 @@ module ConveyancingQuotes
 
     def create
       @conveyancing_quote_sale_and_purchase = @user.build_sale_and_purchase(conveyancing_quotes_sale_and_purchase_params)
+      @user.update_attributes(started: true)
       if @conveyancing_quote_sale_and_purchase.save
         redirect_to conveyancing_quotes_location_users_path(@user.quote_location)
       else
