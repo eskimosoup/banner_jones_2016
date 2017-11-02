@@ -24,6 +24,7 @@
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
 //= require vendor/jquery.unveil
+//= require vendor/js-cookie
 //= require cocoon
 
 $(document).ready(function() {

@@ -1,7 +1,171 @@
-<div class="conveyancing-content conveyancing-content--combined">
-  <div class="conveyancing-content__section conveyancing-content__section--full">
-    <section class="conveyancing-service-cta-block">
-      Process
-    </section>
+<%= content_for :javascript do %>
+  <script>
+    $(document).on('click', '.conveyancing-service-process-navigation__link', function() {
+      var href = $(this).attr('href');
+
+      if(!$(href).is(':visible')) {
+        $('.conveyancing-service-process-item').slideUp();
+        $(href).slideDown();
+        $('.conveyancing-service-process-navigation__link--active').removeClass('conveyancing-service-process-navigation__link--active');
+        $(this).addClass('conveyancing-service-process-navigation__link--active');
+      }
+
+      return false;
+    });
+
+    $(document).on('click', '.conveyancing-service-stages-navigation__button', function() {
+      var href = $(this).attr('href');
+
+      if(!$(href).is(':visible')) {
+        $('.conveyancing-service-process').slideUp();
+        $(href).slideDown();
+        $('.conveyancing-service-stages-navigation__button--active').removeClass('conveyancing-service-stages-navigation__button--active');
+        $(this).addClass('conveyancing-service-stages-navigation__button--active');
+      }
+
+      return false;
+    });
+  </script>
+<% end %>
+
+
+<% present @service do |service_presenter| %>
+
+  <div class="conveyancing-content conveyancing-content--combined">
+    <nav class="conveyancing-content__section conveyancing-content__section--full">
+      <section class="conveyancing-service-cta-block">
+        <div class="conveyancing-service-content conveyancing-service-content--centered">
+          <div class="conveyancing-service-content__title">
+            <h2 style="<%= service_presenter.colour_property_helper('border-color') %>">See what happens in our conveyancing process</h2>
+          </div>
+
+          <div class="conveyancing-service-content__content">
+            <p>
+              Selling your home and buying a new one in London can be stressful. At
+              Banner Jones, we are expert conveyancing solicitors and we can take
+              away some of that pressure; we have a simplified and refined the
+              process that will do just that.
+            </p>
+          </div>
+        </div>
+
+        <div class="conveyancing-service-stages-navigation">
+          <%= link_to 'Buying Stages',
+                      '#buying-stages',
+                      class: 'conveyancing-service-stages-navigation__button
+                              conveyancing-service-stages-navigation__button--active' %>
+          <%= link_to 'Selling Stages',
+                      '#selling-stages',
+                      class: 'conveyancing-service-stages-navigation__button' %>
+        </div>
+      </section>
+
+      <div class="conveyancing-service-process conveyancing-service-process--selling" id="selling-stages">
+        Selling
+      </div>
+
+      <div class="conveyancing-service-process conveyancing-service-process--buying" id="buying-stages">
+        <h3 class="conveyancing-service-process__title">
+          The <strong>3 Buying Stages</strong> to our Conveyancing process
+        </h3>
+
+        <nav class="conveyancing-service-process-navigation">
+          <%= link_to 'Search and paperwork',
+                      '#stage-1',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--first
+                              conveyancing-service-process-navigation__link--active' %>
+          <%= link_to 'Exchange of contracts',
+                      '#stage-2',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--second' %>
+          <%= link_to 'Completion',
+                      '#stage-3',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--third' %>
+        </nav>
+
+        <div class="conveyancing-service-process-item" id="stage-1">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+              Agree quote then sign and return your Client care letter,
+              instructing us to work on your behalf
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We contact the sellers’ solicitor for the property information,
+              deeds and contract
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We conduct local authority searches (can take 2 weeks to come back)
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We receive your mortgage offer (where applicable)
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We review the search results and property info and raise any queries
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              You arrange the 10% deposit (where applicable)
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We request contract signing
+            </li>
+          </ul>
+        </div>
+
+        <div class="conveyancing-service-process-item" id="stage-2">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+          </ul>
+        </div>
+
+        <div class="conveyancing-service-process-item" id="stage-3">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+            <li class="conveyancing-service-process-point__item">
+
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
   </div>
-</div>
+<% end %>

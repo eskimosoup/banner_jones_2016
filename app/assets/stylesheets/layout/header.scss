@@ -190,3 +190,28 @@
 .header-notary-subtitle {
   font-size: em(16px, 25px);
 }
+
+
+.primary-full-header {
+  background: $white;
+  padding-left: rem(37px);
+  padding-right: rem(16px);
+}
+
+.primary-full-header-branding {
+  @include flex-grid-row(null, 100%);
+
+  &__logo {
+    @include flex-grid-column(6);
+  }
+
+  &__contact {
+    @include flex-grid-column(6);
+    text-align: right;
+  }
+
+  .header-telephone,
+  .header-rich-snippets {
+    margin-top: 0;
+  }
+}

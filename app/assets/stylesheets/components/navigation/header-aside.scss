@@ -35,3 +35,20 @@
     display: none;
   }
 }
+
+
+.primary-header-aside-navigtaion {
+  list-style: none;
+  margin-bottom: rem(30px);
+  text-align: right;
+
+  .menu-item {
+    display: inline-block;
+  }
+
+  .menu-link {
+    color: $light-slate-blue;
+    padding-left: rem(12px);
+    padding-right: rem(12px);
+  }
+}

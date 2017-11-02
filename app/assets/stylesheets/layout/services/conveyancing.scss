@@ -3,25 +3,35 @@
   padding: rem(20px);
 
   &__team-member {
-    @include flex-grid-column(6);
+    @include responsive-flex-grid-column((small only: 12, medium: 6));
     background: $black-grey-offset;
     border: 6px solid $orange;
     color: $white;
     display: flex;
     flex-flow: row wrap;
     padding: rem(25px);
+
+    @include breakpoint(small only) {
+      text-align: center;
+    }
   }
 
   &__contact {
-    @include flex-grid-column(5);
+    @include responsive-flex-grid-column((small only: 12, medium: 5));
     display: flex;
     flex-flow: row wrap;
   }
 
   &__methods {
-    @include flex-grid-column(7);
+    @include responsive-flex-grid-column((small only: 12, medium: 7));
     display: flex;
     flex-flow: row wrap;
+  }
+
+  .conveyancing-service-key-team-member__details {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
   }
 
   .conveyancing-footer__contact {
@@ -42,7 +52,14 @@
   }
 
   &__reviews {
-    @include flex-grid-column(3, (small: 0));
+    @include breakpoint(small only) {
+      @include flex-grid-column(12, (small: 0));
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(3, (small: 0));
+    }
+
     border: 3px solid $deep-grey;
     display: flex;
     align-items: center;
@@ -50,7 +67,14 @@
   }
 
   &__accreditations {
-    @include flex-grid-column(3, (small: 0));
+    @include breakpoint(small only) {
+      @include flex-grid-column(12, (small: 0));
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(3, (small: 0));
+    }
+
     align-items: center;
     border: 3px solid $deep-grey;
     display: flex;
@@ -59,6 +83,10 @@
   &__accreditations-list {
     text-align: center;
     width: 100%;
+  }
+
+  &__button {
+    @include conveyancing-submit;
   }
 
   .service-rich-snippets {
@@ -72,7 +100,13 @@
   color: $white;
 
   &__avatar {
-    @include flex-grid-column(3, (small: 0));
+    @include breakpoint(small only) {
+      @include flex-grid-column(12, (small: 0));
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(3, (small: 0));
+    }
   }
 
   &__details {
@@ -94,7 +128,17 @@
   @include refreshed-page-content;
 
   &--centered {
-    text-align: center;
+    @include breakpoint(medium) {
+      text-align: center;
+    }
+  }
+
+  &__content {
+    @include breakpoint(medium) {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 75%;
+    }
   }
 
   &__title {
@@ -104,9 +148,11 @@
     h4,
     h5,
     h6 {
-      display: inline-block;
-      padding-left: rem(15px);
-      padding-right: rem(15px);
+      @include breakpoint(medium) {
+        display: inline-block;
+        padding-left: rem(15px);
+        padding-right: rem(15px);
+      }
     }
   }
 }
@@ -142,11 +188,14 @@
   }
 
   &__image-circle {
+    @include breakpoint(medium) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
     background: $orange;
     border-radius: 50%;
     height: 87px;
-    margin-left: auto;
-    margin-right: auto;
     padding: rem(10px);
     position: relative;
     text-align: center;
@@ -166,7 +215,7 @@
       color: $blue-purple-offset;
       font-size: rem(16px);
 
-      @include breakpoint(medium) {
+      @include breakpoint(large) {
         margin-left: auto;
         margin-right: auto;
         max-width: 75%;
@@ -176,23 +225,284 @@
 }
 
 .service-testimonials {
-  background: image-url('components/icons/testimonial/dark-quote-open.png') no-repeat top 15% left 80px,
-              image-url('components/icons/testimonial/dark-quote-close.png') no-repeat top 15% right 80px,
-              $turquoise;
+  background-color: $turquoise;
   color: $white;
-  padding: rem(80px 200px);
   text-align: center;
 
+  @include breakpoint(medium down) {
+    padding: rem(20px);
+  }
+
+  @include breakpoint(large) {
+    background: image-url('components/icons/testimonial/dark-quote-open.png') no-repeat top 15% left 80px,
+                image-url('components/icons/testimonial/dark-quote-close.png') no-repeat top 15% right 80px,
+                $turquoise;
+    padding: rem(80px 200px);
+  }
+
   .slick-dots {
-    bottom: 40px;
-    left: 0;
+    @include breakpoint(small only) {
+      position: static;
+    }
+
+    @include breakpoint(medium) {
+      bottom: 40px;
+      left: 0;
+    }
   }
 }
 
 .service-testimonial {
   p {
     font-family: $museo-sans-rounded;
-    font-size: rem(31px);
     font-weight: $museo-sans--medium;
+
+    @include breakpoint(large) {
+      font-size: rem(31px);
+    }
+  }
+}
+
+.conveyancing-service-stages-navigation {
+  border: 1px solid $grey-slate;
+  border-radius: 10px;
+  text-align: center;
+  margin-right: auto;
+  margin-left: auto;
+  overflow: hidden;
+
+  &__button {
+    color: $black-grey;
+    display: inline-block;
+    font-family: $roboto;
+    font-weight: $roboto--bold;
+    padding: rem(12px 20px);
+    transition: all .25s linear;
+
+    &:hover {
+      background: $grey-slate;
+      color: $white;
+    }
+
+    &--active {
+      background: $black-grey;
+      color: $white;
+    }
+  }
+}
+
+.conveyancing-service-process {
+  &__title {
+    margin-bottom: rem(40px);
+    text-align: center;
+  }
+
+  &--selling {
+    display: none;
+  }
+}
+
+.conveyancing-service-process-navigation {
+  @include flex-grid-row;
+  counter-reset: process-navigation;
+
+  &__link {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+      background-position: bottom 10px center;
+      padding-bottom: rem(30px);
+      padding-top: rem(30px);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(4, (medium: 80));
+      background-position: bottom 40px center;
+      font-size: rem(20px);
+      font-weight: $museo-sans--medium;
+      padding-bottom: rem(90px);
+      padding-top: rem(140px);
+      transition: background-color .25s ease-in;
+    }
+
+    background-repeat: no-repeat;
+    position: relative;
+    text-align: center;
+
+    &--first {
+      background-color: $black-grey;
+      color: $white;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: $black;
+        color: $white;
+      }
+    }
+
+    &--second {
+      background-color: $orange;
+      color: $black;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: darken($orange, 15%);
+        color: $black;
+      }
+    }
+
+    &--third {
+      background-color: $red;
+      color: $white;
+
+      &:hover,
+      &:focus,
+      &:active {
+        background-color: darken($red, 15%);
+        color: $white;
+      }
+    }
+
+    &:not(&--active) {
+      background-image: image-url('components/icons/content-box/chevron-down.png');
+    }
+
+    &--active {
+      background-image: image-url('components/icons/content-box/chevron-up.png');
+    }
+
+    &::before {
+      @include breakpoint(small only) {
+        font-size: rem(28px);
+        left: 15px;
+        height: 40px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+      }
+
+      @include breakpoint(medium) {
+        font-size: rem(54px);
+        left: 50%;
+        line-height: 79px;
+        height: 79px;
+        top: 40px;
+        transform: translateX(-50%);
+        width: 79px;
+      }
+
+
+      background: rgba($black, .75);
+      border-radius: 50%;
+      color: $white;
+      content: counter(process-navigation);
+      counter-increment: process-navigation;
+      font-family: $museo-slab;
+      font-weight: $museo-sans--heavy;
+      position: absolute;
+      text-align: center;
+    }
+  }
+}
+
+.conveyancing-service-process-item {
+  border-top: 20px solid $black-grey;
+
+  &:not(:first-of-type) {
+    display: none;
+  }
+}
+
+.conveyancing-service-process-point {
+  counter-reset: process-alphabet;
+  display: block;
+  font-size: 0;
+  list-style: none;
+  margin: rem(40px);
+
+  &__item {
+    display: inline-block;
+    font-size: rem(14px);
+    line-height: 1.25;
+    padding-left: rem(60px);
+    padding-right: rem(20px);
+    margin-bottom: rem(40px);
+    position: relative;
+    vertical-align: top;
+
+    @include breakpoint(medium only) {
+      width: 33%;
+    }
+
+    @include breakpoint(large) {
+      width: 25%;
+    }
+
+    &::before {
+      background: $bullet-point-grey;
+      color: $white;
+      content: counter(process-alphabet, lower-alpha);
+      counter-increment: process-alphabet;
+      border-radius: 50%;
+      float: left;
+      font-family: $open-sans;
+      font-size: rem(16px);
+      height: 40px;
+      line-height: 40px;
+      left: 0;
+      position: absolute;
+      text-align: center;
+      width: 40px;
+    }
+  }
+}
+
+.conveyancing-service-team-member-footer {
+  padding: rem(40px);
+  text-align: center;
+
+  &__button {
+    @include conveyancing-submit;
+    border: 0;
+    width: 60%;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  &__phone {
+    font-family: $museo-sans-rounded;
+    font-weight: $museo-sans--medium;
+    font-size: rem(32px);
+
+    a {
+      color: $black;
+      transition: color .25s linear;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $red;
+      }
+    }
+  }
+}
+
+.conveyancing-service-team-member-footer-profile {
+  margin: rem(25px) auto;
+  max-width: 400px;
+
+  @include breakpoint(medium) {
+    text-align: left;
+  }
+
+  .conveyancing-service-key-team-member__details {
+    color: $black;
+
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
   }
 }
