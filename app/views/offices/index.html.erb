@@ -30,7 +30,7 @@
 
   <div class="offices-index">
     <div class="page-content full">
-      <%= render partial: 'offices/office', collection: @offices, as: :office %>
+      <%= render partial: 'offices/office', collection: @offices.includes(:office_location).order('office_locations.name asc'), as: :office %>
     </div>
 
     <aside class="page-additional-information">
