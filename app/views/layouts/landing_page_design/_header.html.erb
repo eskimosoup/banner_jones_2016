@@ -95,12 +95,22 @@
   </div>
 
   <div class="primary-header-main-navigation">
-    <ul class="primary-header-main-navigation">
-      <li>
-        <%= link_to root_url, class: 'primary-header-main-navigation__home', title: 'Go to the homepage' do %>
-          <%= image_tag 'components/icons/navigation/home-outline.png', alt: 'Home' %>
-        <% end %>
-      </li>
-      <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
-    </ul>
+    <div class="primary-header-main-navigation__navigation">
+      <ul class="primary-header-main-navigation__links">
+        <li class="menu-item">
+          <%= link_to root_url, class: 'primary-header-main-navigation__home', title: 'Go to the homepage' do %>
+            <%= image_tag 'components/icons/navigation/home-outline.png', alt: 'Home' %>
+          <% end %>
+        </li>
+        <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
+      </ul>
+    </div>
+
+    <div class="primary-header-main-navigation__search" role="search">
+      <%= form_tag new_search_path, method: :get, class: 'primary-header-search-form' do %>
+        <%= text_field_tag :q, params[:q],
+                               placeholder: 'Search',
+                               class: 'primary-header-search-form__input' %>
+       <% end %>
+    </div>
 </header>

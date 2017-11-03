@@ -129,5 +129,68 @@
 }
 
 .primary-header-main-navigation {
-  list-style: none;
+  @include flex-grid-row(null, 100%);
+  justify-content: space-between;
+  margin-top: rem(25px);
+
+  &__navigation {
+    @include flex-grid-column(9);
+  }
+
+  &__links {
+    bottom: -5px;
+    list-style: none;
+    margin-left: rem(400px);
+    position: relative;
+  }
+
+  &__search {
+    @include flex-grid-column(2);
+    margin-top: auto;
+  }
+
+  &__home {
+    padding-right: rem(25px);
+  }
+
+  .menu-item {
+    display: inline-block;
+  }
+
+  .dropdown {
+    display: none;
+  }
+
+  .menu-link {
+    display: block;
+    font-family: $myriad-pro;
+    font-size: rem(18px);
+    padding: rem(10px 15px);
+
+    &:link,
+    &:visited {
+      color: $offset-black;
+    }
+
+    &:hover,
+    &:focus,
+    &.active {
+      background: $red;
+      color: $white;
+    }
+  }
+}
+
+.primary-header-search-form {
+  &__input {
+    background-color: $background-grey;
+    background-image: image-url('components/icons/search.png');
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+    border: 2px solid $lighter-grey;
+    border-radius: 10px;
+    font-size: rem(14px);
+    margin-bottom: rem(5px);
+    padding-right: rem(45px);
+  }
 }
