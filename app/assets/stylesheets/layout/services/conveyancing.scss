@@ -4,12 +4,9 @@
 
   &__team-member {
     @include responsive-flex-grid-column((small only: 12, medium: 6));
-    background: $black-grey-offset;
-    border: 6px solid $orange;
-    color: $white;
+    @include large-design-team-member-styles;
     display: flex;
     flex-flow: row wrap;
-    padding: rem(25px);
 
     @include breakpoint(small only) {
       text-align: center;

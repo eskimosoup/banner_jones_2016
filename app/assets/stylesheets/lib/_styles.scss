@@ -450,3 +450,40 @@
     border-top: 1 / 2 * $size solid transparent;
   }
 }
+
+@mixin large-design-team-member-styles {
+  background: $black-grey-offset;
+  border: 6px solid $orange;
+  color: $white;
+  padding: rem(25px);
+}
+
+@mixin large-design-content-styles {
+  $heading-size: 28 25 23 21 19 16;
+
+  @for $i from 1 through length($heading-size) {
+    h#{$i} {
+      font-family: $museo-sans-rounded;
+      font-size: rem(nth($heading-size, $i));
+      font-weight: $museo-sans--medium;
+    }
+  }
+
+  a {
+    border-bottom: 2px solid $orange;
+    padding-bottom: rem(2px);
+
+    &:link,
+    &:visited {
+      color: $black;
+      font-weight: $myriad-pro-semibold;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-bottom-color: $black;
+      color: $black;
+    }
+  }
+}

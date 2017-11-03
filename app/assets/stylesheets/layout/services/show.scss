@@ -94,3 +94,75 @@
   @include grid-column($columns: 2, $gutter: (small: 0));
   padding-top: rem(-10px);
 }
+
+.large-content {
+  @include flex-grid-row(null, 100%);
+
+  &__aside {
+    @include flex-grid-column(2);
+    background: $white;
+  }
+
+  &__main {
+    @include flex-grid-column(10, (medium: 0));
+    background-position: top left;
+    background-repeat: no-repeat;
+    padding-top: rem(85px);
+  }
+}
+
+.large-content-element {
+  @include flex-grid-row;
+  margin-top: rem(15px);
+
+  &__section {
+    @include flex-grid-column(12, (large: 40));
+    background-color: $white;
+  }
+}
+
+.large-content-inner {
+  @include flex-grid-row;
+  margin-top: rem(40px);
+
+  &__main {
+    @include flex-grid-column(9);
+
+    h1:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  &__aside {
+    @include flex-grid-column(3);
+  }
+}
+
+.service-team-member {
+  @include large-design-team-member-styles;
+}
+
+.large-content-inner-styles {
+  @include large-design-content-styles;
+}
+
+.service-cta-block {
+  @include flex-grid-row;
+  margin-top: rem(35px);
+
+  &__contact {
+    &:first-of-type {
+      @include flex-grid-column(5);
+    }
+
+    &:last-of-type {
+      @include flex-grid-column(7);
+    }
+  }
+
+  .conveyancing-footer__cta-button {
+    font-size: rem(14px);
+    text-align: left;
+    padding: 0;
+  }
+}
