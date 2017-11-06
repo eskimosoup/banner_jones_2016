@@ -1,0 +1,18 @@
+<% cache frequently_asked_question do %>
+  <div class="onpage-navigation-frequently-asked-question">
+    <%= link_to "#faq-#{frequently_asked_question.id}",
+                class: 'onpage-navigation-frequently-asked-question__question
+                        toggle-class',
+                data: {
+                  container: "#faq-#{frequently_asked_question.id}",
+                  class: "onpage-navigation-frequently-asked-question__answer--hidden",
+                  return: true
+                } do %>
+      <%= frequently_asked_question.question %>
+    <% end %>
+
+    <div id="faq-<%= frequently_asked_question.id %>" class="onpage-navigation-frequently-asked-question__answer onpage-navigation-frequently-asked-question__answer--hidden">
+      <%= raw frequently_asked_question.answer %>
+    </div>
+  </div>
+<% end %>

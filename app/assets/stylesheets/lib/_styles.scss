@@ -463,9 +463,12 @@
 
   @for $i from 1 through length($heading-size) {
     h#{$i} {
+      border-bottom: 1px solid $blue-purple-offset;
       font-family: $museo-sans-rounded;
       font-size: rem(nth($heading-size, $i));
-      font-weight: $museo-sans--medium;
+      font-weight: $museo-sans--bold;
+      margin-bottom: rem(7px);
+      padding-bottom: rem(7px);
     }
   }
 

@@ -1,0 +1,46 @@
+.onpage-navigation-frequently-asked-question {
+  &__question {
+    color: $blue-offset;
+    border-bottom: 1px solid $orange;
+    display: block;
+    font-size: rem(16px);
+    margin: rem(15px) 0;
+    padding: 0 0 0 rem(38px);
+    position: relative;
+
+    @include media('>768px') {
+      padding: rem(3px) rem(44px) rem(10px);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $black;
+    }
+
+    &:before {
+      background: $even-lighter-grey;
+      border-radius: 50%;
+      color: $dark-purple;
+      content: 'Q';
+      display: inline-block;
+      font-family: $montserrat;
+      font-size: rem(17px);
+      font-weight: $montserrat-semibold;
+      height: 30px;
+      left: 0;
+      margin: 0 rem(14px) 0 0;
+      position: absolute;
+      text-align: center;
+      text-transform: uppercase;
+      top: 0;
+      width: 30px;
+    }
+  }
+
+  &__answer {
+    &--hidden {
+      display: none;
+    }
+  }
+}

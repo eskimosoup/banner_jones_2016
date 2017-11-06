@@ -1,0 +1,34 @@
+
+<%
+resources = onpage_navigation.resources.displayed
+resources = @service.resources.displayed if resources.blank?
+%>
+
+<section class="large-onpage-articles">
+  <h1 class="large-onpage-articles__title">
+    Our Helpful Guides
+  </h1>
+
+  <div class="large-onpage-navigation-element__section">
+    <% resources.each do |resource| %>
+    <% present resource do |resource_presenter| %>
+      <div>
+        <div>
+          <h2>
+            <%= resource_presenter.title %>
+          </h2>
+
+          <%= resource_presenter.linked_download(resource_presenter.index_image({alt: resource_presenter.title, class: 'service-resource-image'}), {title: resource_presenter.title , target: '_blank' }) if resource_presenter.index_image.present? %>
+
+          <%= resource_presenter.linked_download('Download', {class: 'service-resource-download-button', title: resource_presenter.title, target: '_blank' }) %>
+
+          <% present resource.services.first do |service_presenter| %>
+            <%= resource_presenter.linked_download((content_tag :div, resource_presenter.summary, class: 'helpful-guide-content', style: service_presenter.colour_property_helper('background-color')), target: '_blank') if resource.summary.present? %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</section>
+

@@ -118,6 +118,18 @@
   &__section {
     @include flex-grid-column(12, (large: 40));
     background-color: $white;
+    position: relative;
+
+    &--onpage-navigation {
+      padding-top: rem(40px);
+    }
+
+    &--articles {
+      @include breakpoint(medium) {
+        padding-bottom: rem(40px);
+        padding-top: rem(80px);
+      }
+    }
   }
 }
 
@@ -127,19 +139,32 @@
 
   &__main {
     @include flex-grid-column(9);
-
-    h1:first-of-type {
-      margin-top: 0;
-    }
   }
 
   &__aside {
     @include flex-grid-column(3);
   }
+
+  &__title {
+    border-bottom: 3px solid $orange;
+    color: $charcoal;
+    font-family: $museo-sans-rounded;
+    font-size: rem(28px);
+    font-weight: $museo-sans--medium;
+    margin-bottom: rem(10px);
+    margin-top: 0;
+    padding-bottom: rem(8px);
+  }
 }
 
 .service-team-member {
   @include large-design-team-member-styles;
+
+  &__phone {
+    font-family: $roboto;
+    font-weight: $roboto--bold;
+    font-size: rem(20px);
+  }
 }
 
 .large-content-inner-styles {
@@ -152,17 +177,31 @@
 
   &__contact {
     &:first-of-type {
-      @include flex-grid-column(5);
+      @include flex-grid-column(4, (medium: 0));
     }
 
     &:last-of-type {
-      @include flex-grid-column(7);
+      @include flex-grid-column(8);
+      border-left: 1px solid $white;
     }
   }
 
   .conveyancing-footer__cta-button {
+    color: $orange;
+    font-family: $open-sans;
     font-size: rem(14px);
-    text-align: left;
+    font-weight: $open-sans-semibold;
     padding: 0;
+    text-align: left;
+  }
+}
+
+.service-rich-snippets {
+  background: $offset-white;
+}
+
+.rich-snippet {
+  &__rating {
+    margin-top: rem(10px);
   }
 }

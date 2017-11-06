@@ -1,0 +1,60 @@
+.onpage-navigation-article {
+  @include breakpoint(medium) {
+    padding-left: rem(40px);
+    padding-right: rem(40px);
+  }
+
+  &__title {
+    color: $grey;
+    display: block;
+    font-family: $museo-sans;
+    font-size: rem(16px);
+    font-weight: $museo-sans--medium;
+  }
+
+  &__date {
+    color: $blue-purple-offset;
+    font-size: rem(12px);
+    margin-top: rem(20px);
+  }
+}
+
+.onpage-navigation-article-team-member {
+  @include flex-grid-row(collapse);
+  border-bottom: 2px solid $orange;
+  color: $blue-dark;
+  font-family: $roboto;
+  margin-bottom: rem(14px);
+  padding-bottom: rem(14px);
+  text-align: right;
+
+  &__details {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(9, (medium: 0));
+    }
+  }
+
+  &__image {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(3, (medium: 0));
+    }
+  }
+
+  &__name {
+    font-size: rem(14px);
+    font-weight: $roboto--medium;
+  }
+
+  &__roles {
+    font-size: rem(12px);
+    line-height: 1.1;
+  }
+}
