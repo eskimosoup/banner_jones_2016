@@ -1,0 +1,83 @@
+.large-onpage-resources {
+  @include flex-grid-row;
+  margin-top: rem(15px);
+
+  @include breakpoint(large) {
+    padding: rem(40px 80px 20px);
+  }
+
+  &__title {
+    border-bottom: 3px solid rgba($white, .75);
+    color: $white;
+    display: inline-block;
+    font-family: $museo-sans-rounded;
+    font-size: rem(28px);
+    margin-bottom: rem(30px);
+    padding-bottom: rem(10px);
+    padding-left: rem(10px);
+    padding-right: rem(10px);
+  }
+
+  &__section {
+    @include flex-grid-column(12);
+    position: relative;
+    text-align: center;
+
+    .onpage-navigation-slider {
+      top: 6px;
+    }
+
+    .onpage-navigation-button {
+      margin-right: rem(10px);
+    }
+  }
+}
+
+.onpage-resource {
+  @include clearfix;
+  color: $white;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+
+    .onpage-resource__summary {
+      display: block;
+    }
+  }
+
+  &__title {
+    font-family: $museo-sans-rounded;
+    font-size: rem(16px);
+    font-weight: $museo-sans--heavy;
+    margin-bottom: rem(10px);
+  }
+
+  &__image {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__summary {
+    background: rgba($black, .85);
+    bottom: 0;
+    display: none;
+    font-family: $museo-sans-rounded;
+    font-weight: $museo-sans--medium;
+    height: 100%;
+    left: 0;
+    padding: rem(20px);
+    position: absolute;
+    right: 0;
+    text-align: left;
+    transition: display .25s linear;
+
+    .onpage-resource__title {
+      margin-bottom: rem(10px);
+    }
+  }
+
+  &__download {
+    float: right;
+  }
+}

@@ -1,4 +1,5 @@
 <%= content_for :head do %>
+  <%= stylesheet_link_tag 'vendor/colorbox' %>
   <style>
     .large-content-inner__title,
     .onpage-navigation-article-team-member {
@@ -13,8 +14,17 @@
     .large-content-inner-styles h6 {
       color: <%= @service.colour %>
     }
+
+    .large-onpage-resources {
+      background: <%= @service.colour %>
+    }
   </style>
 <% end %>
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>
+  <%= javascript_include_tag 'components/service-components.js' %>
+<% end %>
+
 
 <div class="large-content">
   <aside class="large-content__aside">
@@ -109,7 +119,7 @@
       </div>
     </section>
 
-    <% @service.onpage_navigations.limit(2).each do |onpage_navigation| %>
+    <% @service.onpage_navigations.each do |onpage_navigation| %>
       <%= render partial: "services/onpage_navigations/service_large/#{onpage_navigation.partial}",
                  locals: {
                    onpage_navigation: onpage_navigation
