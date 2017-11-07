@@ -69,6 +69,7 @@ module Optimadmin
                                      :office_location_id, :postcode, :phone_number, :fax_number, :email,
                                      :dx_number, :details, :image, :publish_at, :expire_at,
                                      :remote_image_url, :remove_image, :image_cache, :page_title,
+                                     :latitude, :longitude,
                                      :suggested_url, service_ids: [], team_member_ids: [])
     end
 
