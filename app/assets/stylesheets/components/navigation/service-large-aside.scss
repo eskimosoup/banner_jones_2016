@@ -1,0 +1,33 @@
+.large-content-aside-title {
+  &__text {
+    border-bottom: 3px solid $black;
+    font-size: rem(18px);
+    margin-bottom: rem(20px);
+    padding-bottom: rem(10px);
+    vertical-align: bottom;
+  }
+}
+
+.large-content-aside-navigation {
+  list-style: none;
+  margin-left: rem(47px);
+
+  ul,
+  li {
+    margin: 0;
+  }
+
+  a {
+    color: $black-grey;
+    display: block;
+    font-size: rem(14px);
+    font-weight: $myriad-pro-semibold;
+    padding: rem(6px 0);
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $red;
+    }
+  }
+}
