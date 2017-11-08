@@ -2,7 +2,8 @@
   <%= stylesheet_link_tag 'vendor/colorbox' %>
   <style>
     .large-content-inner__title,
-    .onpage-navigation-article-team-member {
+    .onpage-navigation-article-team-member,
+    .large-content-aside-title__text {
       border-bottom-color: <%= @service.colour %>
     }
 
@@ -125,5 +126,9 @@
                    onpage_navigation: onpage_navigation
                  } %>
     <% end %>
+    <%= render partial: 'services/onpage_navigations/service_large/team_member',
+               locals: {
+                 service: @service
+              } %>
   </main>
 </div>

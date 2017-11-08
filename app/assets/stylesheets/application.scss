@@ -53,6 +53,7 @@
 @import 'components/forms/header-search';
 @import 'components/forms/conveyancing-calculator';
 @import 'components/forms/inline-search';
+@import 'components/forms/modal';
 @import 'components/resources/home';
 @import 'components/resources/services';
 @import 'components/navigation/header-aside';
@@ -105,5 +106,6 @@
 @import 'components/conveyancing-calculator/tooltips';
 @import 'components/conveyancing-calculator/team-members';
 @import 'components/searches/results';
+@import 'components/large-modal-overlay';
 
 @import 'optimadmin/global/editor';

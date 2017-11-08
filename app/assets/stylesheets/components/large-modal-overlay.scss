@@ -1,0 +1,83 @@
+.large-modal-overlay {
+  background-color: rgba($black, .75);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+
+  &__content {
+    background-color: $white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: rem(100px);
+    max-width: 1024px;
+    padding: rem(50px);
+    position: relative;
+  }
+
+  &__title {
+    font-family: $museo-sans;
+    font-size: rem(25px);
+    font-weight: $museo-sans--bold;
+    margin-bottom: rem(30px);
+  }
+
+  &__close {
+    font-family: $roboto;
+    font-weight: $roboto--bold;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+  }
+}
+
+.large-modal-overlay-navigation {
+  border-bottom: 1px solid $orange;
+  font-size: 0;
+
+  &__link {
+    background-position: 50% 15px;
+    background-repeat: no-repeat;
+    border-right: 2px solid $lighter-grey;
+    color: $black-grey;
+    display: inline-block;
+    font-family: $museo-sans-rounded;
+    font-size: rem(18px);
+    padding-bottom: rem(20px);
+    padding-left: rem(20px);
+    padding-right: rem(20px);
+    padding-top: rem(60px);
+
+
+    &--active {
+      background-color: $orange;
+
+      &.large-modal-overlay-navigation__link--email {
+        background-image: image-url('components/icons/modal/email-white.png');
+      }
+
+      &.large-modal-overlay-navigation__link--callback {
+        background-image: image-url('components/icons/modal/callback-white.png');
+      }
+
+      &:hover {
+        color: $white;
+      }
+    }
+
+    &--email {
+      background-image: image-url('components/icons/modal/email-orange.png');
+    }
+
+    &--callback {
+      background-image: image-url('components/icons/modal/callback-orange.png');
+    }
+
+    &--phone {
+      background-image: image-url('components/icons/modal/phone-orange.png');
+    }
+  }
+}

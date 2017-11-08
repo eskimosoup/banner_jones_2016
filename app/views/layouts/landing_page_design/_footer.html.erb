@@ -1,0 +1,41 @@
+<%= render partial: 'layouts/shared/footer', locals: { phone: global_site_settings['Phone'], email: global_site_settings['Email'] } %>
+
+
+<div class="large-modal-overlay">
+  <section class="large-modal-overlay__content">
+    <h1 class="large-modal-overlay__title">
+      Talk to our <%= yield :team_name %> team
+    </h1>
+
+    <nav class="large-modal-overlay-navigation">
+      <%= link_to 'Email Us',
+                  '#large-modal-overlay__email',
+                  class: 'large-modal-overlay-navigation__link
+                          large-modal-overlay-navigation__link--email
+                          large-modal-overlay-navigation__link--active' %>
+      <%= link_to 'Request a callback',
+                  '#large-modal-overlay__email',
+                  class: 'large-modal-overlay-navigation__link
+                          large-modal-overlay-navigation__link--callback' %>
+      <%= link_to '#large-modal-overlay__email',
+                  class: 'large-modal-overlay-navigation__link
+                          large-modal-overlay-navigation__link--phone' do %>
+        <span class="calltracks_bannerjonescouk-main">
+          <%= global_site_settings['Phone'] %>
+        </span>
+      <% end %>
+    </nav>
+
+    <div class="large-modal-overlay__form">
+      <%= render 'callback_requests/shared/large_modal' %>
+    </div>
+
+    <%= button_tag 'Close',
+                   class: 'large-modal-overlay__close',
+                   data: {
+                     container: '.large-modal-overlay',
+                     class: 'hide',
+                     return: false
+                   } %>
+  </section>
+</div>
