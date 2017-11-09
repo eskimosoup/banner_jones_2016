@@ -6,13 +6,15 @@
                 data: {
                   container: "#faq-#{frequently_asked_question.id}",
                   class: "onpage-navigation-frequently-asked-question__answer--hidden",
-                  return: true
+                  return: false
                 } do %>
       <%= frequently_asked_question.question %>
     <% end %>
 
     <div id="faq-<%= frequently_asked_question.id %>" class="onpage-navigation-frequently-asked-question__answer onpage-navigation-frequently-asked-question__answer--hidden">
-      <%= raw frequently_asked_question.answer %>
+      <div class="onpage-navigation-frequently-asked-question__inner">
+        <%= raw frequently_asked_question.answer %>
+      </div>
     </div>
   </div>
 <% end %>

@@ -1,10 +1,11 @@
 .onpage-navigation-frequently-asked-question {
+  margin: rem(15px) 0;
+
   &__question {
     color: $blue-offset;
     border-bottom: 1px solid $orange;
     display: block;
     font-size: rem(16px);
-    margin: rem(15px) 0;
     padding: 0 0 0 rem(38px);
     position: relative;
 
@@ -39,8 +40,31 @@
   }
 
   &__answer {
+    background: $tooltip-grey;
+    clear: both;
+    color: $white;
+
+    p {
+      font-size: rem(14px);
+      line-height: 1.25;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+
+    &__inner {
+      max-width: 640px;
+      padding: rem(20px);
+    }
+
     &--hidden {
       display: none;
     }
+  }
+
+  &__inner {
+    padding: rem(20px);
+    max-width: 640px;
   }
 }

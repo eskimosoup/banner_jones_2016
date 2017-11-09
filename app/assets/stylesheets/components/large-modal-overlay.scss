@@ -1,6 +1,28 @@
+.large-modal-overlay-toggle {
+  @include conveyancing-submit;
+  background-color: $orange;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  bottom: 0;
+  color: $black;
+  padding-right: rem(60px);
+  position: fixed;
+  right: 20px;
+
+  &--action {
+    background-image: image-url('components/icons/modal/button-arrow.png');
+  }
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+  }
+}
+
 .large-modal-overlay {
   background-color: rgba($black, .75);
   bottom: 0;
+  display: none;
   height: 100%;
   left: 0;
   position: fixed;
@@ -32,6 +54,14 @@
     right: 40px;
     top: 40px;
   }
+
+  &__form {
+    display: none;
+
+    &--email {
+      display: block;
+    }
+  }
 }
 
 .large-modal-overlay-navigation {
@@ -51,6 +81,9 @@
     padding-right: rem(20px);
     padding-top: rem(60px);
 
+    &:focus {
+      color: $black-grey;
+    }
 
     &--active {
       background-color: $orange;
@@ -61,6 +94,10 @@
 
       &.large-modal-overlay-navigation__link--callback {
         background-image: image-url('components/icons/modal/callback-white.png');
+      }
+
+      &.large-modal-overlay-navigation__link--phone {
+        background-image: image-url('components/icons/modal/phone-white.png');
       }
 
       &:hover {

@@ -128,37 +128,125 @@
   }
 }
 
+.primary-header-main-navigation-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
 .primary-header-main-navigation {
   @include flex-grid-row(null, 100%);
   justify-content: space-between;
-  margin-top: rem(25px);
+
+  /*
+  @include breakpoint(small only) {
+    margin-bottom: rem(10px);
+    margin-top: rem(10px);
+    padding-left: map-get($grid-column-gutter, small);
+    padding-right: map-get($grid-column-gutter, small);
+  }
+  */
+
+  @include breakpoint(small only) {
+    display: none;
+  }
+
+  @include breakpoint(medium) {
+    margin-top: rem(25px);
+  }
 
   &__navigation {
-    @include flex-grid-column(9);
+    @include breakpoint(small only) {
+      background-color: $deep-grey;
+      border-left: 2px solid $light-purple;
+      height: 100vh;
+      position: absolute;
+      right: 0;
+      width: 75%;
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(9);
+    }
   }
 
   &__links {
-    bottom: -5px;
     list-style: none;
-    margin-left: rem(400px);
-    position: relative;
+
+    @include breakpoint(medium) {
+      bottom: -5px;
+      margin-left: rem(400px);
+      position: relative;
+    }
   }
 
   &__search {
-    @include flex-grid-column(2);
     margin-top: auto;
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(2);
+    }
   }
 
   &__home {
     padding-right: rem(25px);
+
+    @include breakpoint(small only) {
+      display: none;
+    }
   }
 
   .menu-item {
-    display: inline-block;
+    @include breakpoint(medium) {
+      display: inline-block;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      .dropdown {
+        display: block;
+      }
+    }
+
+    &.has-children > .menu-link {
+      @include breakpoint(small only) {
+        background-image: image-url('components/icons/navigation/navigation-arrow-down.png');
+        background-position: center right 20px;
+        background-repeat: no-repeat;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-image: image-url('components/icons/navigation/navigation-arrow-up.png');
+        }
+      }
+    }
   }
 
   .dropdown {
+    background: $white;
     display: none;
+    list-style: none;
+    margin: 0;
+    padding-bottom: rem(10px);
+    padding-top: rem(10px);
+
+    .menu-link {
+      font-size: rem(16px);
+      padding: rem(5px 20px);
+
+      @include breakpoint(small only) {
+        border-bottom: 0;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: $deep-grey;
+          color: $black;
+        }
+      }
+    }
   }
 
   .menu-link {
@@ -167,21 +255,35 @@
     font-size: rem(18px);
     padding: rem(10px 15px);
 
+    @include breakpoint(small only) {
+      border-bottom: 1px solid $white;
+    }
+
     &:link,
     &:visited {
-      color: $offset-black;
+      @include breakpoint(small only) {
+        color: $black;
+      }
+
+      @include breakpoint(medium) {
+        color: $offset-black;
+      }
     }
 
     &:hover,
     &:focus,
     &.active {
-      background: $red;
+      background-color: $red;
       color: $white;
     }
   }
 }
 
 .primary-header-search-form {
+  @include breakpoint(small only) {
+    display: none;
+  }
+
   &__input {
     background-color: $background-grey;
     background-image: image-url('components/icons/search.png');

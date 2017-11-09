@@ -19,7 +19,7 @@ class MenuItemPresenter < BasePresenter
   end
 
   def special_layout
-    if destination.class.present? && destination.class.name == 'Audience' && menu_item.menu_name == 'primary_header'
+    if audience?
       h.render 'menu_items/meganav', audience: destination
     end
     # elsif destination.present? && menu_item.menu_name == 'primary_header' && menu_item.link.menu_resource_type == 'Optimadmin::ModulePage' && menu_item.link.menu_resource.route == 'new_contact_path'
@@ -49,6 +49,10 @@ class MenuItemPresenter < BasePresenter
 
   def has_children?
     sub_menu_items.present? || display_offices?
+  end
+
+  def audience?
+    destination.class.present? && destination.class.name == 'Audience' && menu_item.menu_name == 'primary_header'
   end
 
   def destination

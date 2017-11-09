@@ -42,6 +42,10 @@
   margin-bottom: rem(30px);
   text-align: right;
 
+  @include breakpoint(small only) {
+    display: none;
+  }
+
   .menu-item {
     display: inline-block;
   }

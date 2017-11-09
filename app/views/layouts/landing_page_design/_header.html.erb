@@ -94,6 +94,16 @@
     </div>
   </div>
 
+  <%= link_to '#header-main-navigation',
+              class: 'primary-header-main-navigation-toggle
+                      slide-toggle',
+              data: {
+                container: '.primary-header-main-navigation'
+              } do %>
+    <%= image_tag 'components/icons/navigation/burger.png',
+                  alt: 'Toggle navigation' %>
+  <% end %>
+
   <div class="primary-header-main-navigation">
     <div class="primary-header-main-navigation__navigation">
       <ul class="primary-header-main-navigation__links">
@@ -102,8 +112,7 @@
             <%= image_tag 'components/icons/navigation/home-outline.png', alt: 'Home' %>
           <% end %>
         </li>
-        <% # TODO: Uncomment %>
-        <%#= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
+        <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
       </ul>
     </div>
 

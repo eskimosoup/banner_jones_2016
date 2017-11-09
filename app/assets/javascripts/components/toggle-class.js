@@ -32,3 +32,14 @@ $(document).on("click", ".slide-toggle", function(e) {
     e.preventDefault();
   }
 });
+
+$(document).on("click", ".fade-toggle", function(e) {
+  var toggleContainer = $(this).data('container');
+  var dataReturn      = $(this).data('return');
+
+  $(toggleContainer).fadeToggle();
+
+  if (dataReturn === false) {
+    e.preventDefault();
+  }
+});
