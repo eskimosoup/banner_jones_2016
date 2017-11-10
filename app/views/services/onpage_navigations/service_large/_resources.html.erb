@@ -10,7 +10,16 @@
         slidesToShow: 4,
         slidesToScroll: 1,
         nextArrow: '.resources-slick-<%= onpage_navigation.id %>-next',
-        prevArrow: '.resources-slick-<%= onpage_navigation.id %>-prev'
+        prevArrow: '.resources-slick-<%= onpage_navigation.id %>-prev',
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
       });
     });
   </script>

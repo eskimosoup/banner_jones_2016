@@ -29,9 +29,10 @@
 .service-video-play-icon {
   height: 106px;
   left: 50%;
-  margin-left: -45px;
-  margin-top: -88px;
+  // margin-left: -45px;
+  // margin-top: -88px;
   position: absolute;
   top: 50%;
+  transform: translate(-50%, -50%);
   width: 89px;
 }

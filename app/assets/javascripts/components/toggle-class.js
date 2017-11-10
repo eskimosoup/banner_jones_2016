@@ -27,6 +27,7 @@ $(document).on("click", ".slide-toggle", function(e) {
   var dataReturn      = $(this).data('return');
 
   $(toggleContainer).slideToggle();
+  $(this).toggleClass('toggled');
 
   if (dataReturn === false) {
     e.preventDefault();

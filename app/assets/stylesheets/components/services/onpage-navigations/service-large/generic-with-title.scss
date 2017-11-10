@@ -31,6 +31,7 @@
     &:not(&--full):not(&--compact) {
       @include breakpoint(small only) {
         @include flex-grid-column(12);
+        padding-top: map-get($grid-column-gutter, small);
       }
 
       @include breakpoint(medium) {
@@ -70,7 +71,16 @@
   &__main-title {
     color: $white;
     font-family: $museo-sans-rounded;
-    font-size: rem(30px);
+
+    @include breakpoint(small only) {
+      font-size: rem(18px);
+      margin-bottom: map-get($grid-column-gutter, small);
+      margin-top: map-get($grid-column-gutter, small);
+    }
+
+    @include breakpoint(medium) {
+      font-size: rem(30px);
+    }
 
     @include breakpoint(large) {
       margin-bottom: rem(80px);

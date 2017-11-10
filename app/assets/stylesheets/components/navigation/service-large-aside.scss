@@ -25,10 +25,21 @@
   }
 
   &__toggle {
+    background-image: image-url('components/icons/navigation/navigation-arrow-down-white.png');
+    background-position: center right 40px;
+    background-repeat: no-repeat;
     color: $white;
     display: block;
     font-size: rem(18px);
     padding: rem(10px 5px);
+
+    @include breakpoint(medium) {
+      display: none;
+    }
+
+    &.toggled {
+      background-image: image-url('components/icons/navigation/navigation-arrow-up.png');
+    }
 
     &:hover,
     &:focus,

@@ -131,12 +131,19 @@
   margin-top: rem(15px);
 
   &__section {
-    @include flex-grid-column(12, (large: 40));
+    @include flex-grid-column(12, (small: map-get($grid-column-gutter, small), large: 40));
     background-color: $white;
     position: relative;
 
     &--onpage-navigation {
-      padding-top: rem(40px);
+      @include breakpoint(small only) {
+        padding-bottom: map-get($grid-column-gutter, small);
+        padding-top: map-get($grid-column-gutter, small);
+      }
+
+      @include breakpoint(medium) {
+        padding-top: rem(40px);
+      }
     }
 
     &--centered {
@@ -190,11 +197,18 @@
     border-bottom: 3px solid $orange;
     color: $charcoal;
     font-family: $museo-sans-rounded;
-    font-size: rem(28px);
     font-weight: $museo-sans--medium;
     margin-bottom: rem(10px);
     margin-top: 0;
     padding-bottom: rem(8px);
+
+    @include breakpoint(small only) {
+      font-size: rem(18px);
+    }
+
+    @include breakpoint(medium) {
+      font-size: rem(28px);
+    }
   }
 }
 
