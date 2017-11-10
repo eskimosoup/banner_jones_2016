@@ -19,6 +19,12 @@
     .large-onpage-resources {
       background: <%= @service.colour %>
     }
+
+    @media screen and (max-width: 39.9375em) and (min-width: 0em) {
+      .large-content__aside {
+        background: <%= @service.colour %>
+      }
+    }
   </style>
 <% end %>
 <%= content_for :javascript do %>

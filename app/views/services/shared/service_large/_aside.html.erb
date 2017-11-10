@@ -10,13 +10,22 @@
       </h2>
     </div>
 
+    <%= link_to @service.title,
+                '#large-content-aside-navigation',
+                class: 'slide-toggle
+                        large-content-aside-navigation__toggle',
+                data: {
+                  container: '.large-content-aside-navigation',
+                  return: false
+                } %>
+
     <% if @service.parent.present? %>>
       <%= link_to @service.parent.title,
                   audience_service_path(@service.parent.audience, @service.parent),
                   class: 'large-content-aside-parent-link' %>
     <% end %>
 
-    <ul class="large-content-aside-navigation">
+    <ul class="large-content-aside-navigation" id="large-content-aside-navigation">
       <%= render partial: 'services/shared/service_pages_links' if @service.root == @service %>
 
       <% @service.root.children.displayed_or_landing_page.order(:position).each do |child_service| %>

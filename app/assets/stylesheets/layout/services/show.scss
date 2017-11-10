@@ -120,7 +120,7 @@
     }
 
     @include breakpoint(medium) {
-      @include flex-grid-column(10, (medium: 0));
+      @include flex-grid-column(10);
       padding-top: rem(85px);
     }
   }
