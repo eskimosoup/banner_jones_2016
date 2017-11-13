@@ -1,3 +1,10 @@
+$('.large-modal-overlay').on('click', function (e) {
+  if (e.target !== this)
+    return;
+
+  $(this).fadeOut(250);
+});
+
 $('.inline-modal:not(.bilton-hammond-popup)').on('click', function(e) {
   if (e.target !== this)
     return;

@@ -1,0 +1,39 @@
+<%
+testimonials = onpage_navigation.testimonials.displayed
+testimonials = @service.testimonials.displayed if testimonials.blank?
+%>
+
+<% present @service do |service_presenter| %>
+  <%= content_for :javascript do %>
+    <script>
+      $(document).ready(function() {
+        $('.service-testimonials').slick({
+          arrows: false,
+          dots: true,
+          autoplay: true,
+          autoplaySpeed: 6000
+        });
+      });
+    </script>
+  <% end %>
+
+
+  <section class="large-onpage-navigation-element">
+    <div class="large-onpage-navigation-element__testimonials">
+      <p class="large-onpage-navigation-element__overview">
+        <strong class="large-onpage-navigation-element__overview-emphasis">
+          97%
+        </strong>
+        of our clients would recommend us to a friend<br />
+        (Ongoing Client Survey)
+      </p>
+    </div>
+    <div class="large-onpage-navigation-element__section large-onpage-navigation-element__section--compact">
+      <div class="service-testimonials" style="<%= service_presenter.colour_property_helper('background-color') %>">
+        <%= render partial: 'services/onpage_navigations/conveyancing/shared/testimonial',
+                  collection: testimonials.limit((onpage_navigation.results_limit.present? ? onpage_navigation.results_limit : 10)),
+                  as: :testimonial %>
+      </div>
+    </div>
+  </section>
+<% end %>

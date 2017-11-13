@@ -1,0 +1,15 @@
+<% cache testimonial do %>
+  <% present testimonial do |testimonial_presenter| %>
+    <div class="service-testimonial">
+      <div class="service-testimonial__content">
+        <%= testimonial_presenter.recommendation %>
+      </div>
+
+      <div class="service-testimonial__author">
+        <%= testimonial_presenter.author %>
+      </div>
+
+      <%= testimonial_presenter.show_image(alt: testimonial_presenter.author, class: 'service-testimonial__image') %>
+    </div>
+  <% end %>
+<% end %>

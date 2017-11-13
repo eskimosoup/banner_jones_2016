@@ -1,0 +1,25 @@
+<%= render 'shared/flash_messages' %>
+
+<%= form_for @callback_request, url: callback_requests_path, remote: true do |f| %>
+  <% if @callback_request.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize @callback_request.errors.count, 'error' %> prevented this message from being sent
+      </h2>
+      <ul>
+        <% @callback_request.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <% if (@page.present? && @page.layout == 'wealth_management') || @callback_request.wealth_management.present? %>
+    <%= render partial: 'callback_requests/shared/remote_form_fields_wealth_management', locals: { f: f }  %>
+  <% elsif (@service.present? && @service.title == 'Mediation') || @callback_request.mediation.present? %>
+    <%= render partial: 'callback_requests/shared/large_modal/fields_solicitors', locals: { f: f, mediation: true }  %>
+  <% else %>
+    <%= render partial: 'callback_requests/shared/large_modal/fields_solicitors', locals: { f: f }  %>
+  <% end %>
+<% end %>

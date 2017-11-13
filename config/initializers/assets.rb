@@ -12,7 +12,6 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w(
   components/*.js
   optimadmin/*
-  vendor/js-cookie.js
   vendor/jquery.colorbox.js
   vendor/colorbox.scss
   vendor/slick.js

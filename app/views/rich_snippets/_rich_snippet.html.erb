@@ -1,14 +1,14 @@
 <% cache rich_snippet do %>
-  <div itemscope itemtype="http://schema.org/Service">
+  <div class="rich-snippet" itemscope itemtype="http://schema.org/Service">
     <h4 itemprop="name"><%= rich_snippet.title %></h4>
     <% if rich_snippet.description.present? %>
       <div itemprop="description"><%= rich_snippet.description %></div>
     <% end %>
 
-    <%= image_tag "components/rich-snippets/#{rich_snippet.rating_value.to_s.tr('.', '')}.png", alt: "#{rich_snippet.rating_value} out of 5" %>    
+    <%= image_tag "components/rich-snippets/#{rich_snippet.rating_value.to_s.tr('.', '')}.png", alt: "#{rich_snippet.rating_value} out of 5" %>
 
     <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-      <div>
+      <div class="rich-snippet__rating">
         <span itemprop="ratingValue"><%= rich_snippet.rating_value %></span>
         <meta itemprop="bestRating" content="5"/>
         <meta itemprop="worstRating" content="1"/>

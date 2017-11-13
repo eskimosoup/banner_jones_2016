@@ -1,0 +1,41 @@
+<%
+videos = onpage_navigation.videos.displayed
+videos = @service.videos.displayed if videos.blank?
+%>
+
+<% cache [onpage_navigation, onpage_navigation.content_items.displayed.limit(onpage_navigation.results_limit).map(&:updated_at).max] do %>
+  <% videos.limit(onpage_navigation.results_limit).each do |video| %>
+    <section class="large-onpage-navigation-element">
+      <div class="large-onpage-navigation-element__aside">
+        <h1 class="large-onpage-navigation-element__main-title">
+          Watch Our Video
+        </h1>
+      </div>
+      <div class="large-onpage-navigation-element__section">
+        <% cache video do %>
+          <%= content_tag :h1, video.title, class: 'large-content-inner__title' %>
+
+          <div class="large-onpage-video">
+              <% present video do |video_presenter| %>
+                <%= link_to (image_tag 'components/icons/play-video.png', alt: 'Play video', class: 'service-video-play-icon'),
+                      "#service-video-#{video_presenter.id}",
+                      class: 'inline-colorbox',
+                      title: video_presenter.title if video_presenter.full_image.present? %>
+
+                <%= link_to video_presenter.full_image(alt: video_presenter.title),
+                        "#service-video-#{video_presenter.id}",
+                        class: 'inline-colorbox',
+                        title: video_presenter.title if video_presenter.full_image.present? %>
+                  <%= video_presenter.summary %>
+                <%= content_tag :div, video_presenter.youtube_embed(800, 0, false), class: 'service-video-embed-code flex-video', id: "service-video-#{video_presenter.id}" %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </section>
+  <% end %>
+
+
+
+

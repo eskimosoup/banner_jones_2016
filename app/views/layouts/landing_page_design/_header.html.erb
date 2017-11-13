@@ -1,0 +1,126 @@
+<%= content_for :javascript do %>
+  <script>
+    const cookieName = 'bannerjones-cookies-allowed';
+    $(document).ready(function() {
+      if(Cookies.get(cookieName) == undefined) {
+        $('.cookie-warning').slideDown();
+      }
+    });
+    $(document).on('click', '.cookie-warning__button', function() {
+      Cookies.set(cookieName, '1', { expires: 365, secure: true });
+      $('.cookie-warning').slideUp();
+    });
+  </script>
+<% end %>
+
+<div class="sticky-sidebar hide">
+
+</div>
+
+<div class="cookie-warning">
+  <div class="cookie-warning__content">
+    <p>
+      Your continued usage of this website means you consent to it storing,
+      setting and using cookies and other tracking codes.
+      For more information, please read the
+      <%= link_to 'privacy policy', '/pages/privacy-policy' %> and
+      <%= link_to 'cookie policy', '/pages/cookie-policy' %>.
+    </p>
+
+    <p>
+      <%= link_to 'I understand, please close this message',
+                  '#header',
+                  class: 'cookie-warning__button' %>
+    </p>
+  </div>
+</div>
+
+<header class="primary-full-header">
+  <ul class="primary-header-aside-navigtaion">
+    <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
+  </ul>
+
+  <div class="primary-full-header-branding">
+    <div class="primary-full-header-branding__logo">
+      <%= link_to root_url do %>
+        <%= image_tag 'layout/header/logo-small.png', alt: global_site_settings['Name'] %>
+      <% end %>
+
+      <%= image_tag 'layout/header/legal-500.jpg', alt: 'Legal 500',
+                                                    class: 'the-legal-500' %>
+    </div>
+
+    <div class="primary-full-header-branding__contact">
+      <%= content_for :javascript do %>
+        <script src="https://widget.reviews.co.uk/dropdown/dist.js"></script>
+        <script>
+        dropdownWidget('dropdown-300',{
+        store: 'banner-jones-solicitors',
+        primaryClr: '#fbaa07',
+        neutralClr: '#f4f4f4',
+        textClr: '#000',
+        height: 400,
+        numReviews: 10,
+        direction: 'down'
+        });
+        </script>
+      <% end %>
+
+      <div class="header-telephone">
+        <span class="header-telephone-accent">
+          t:
+        </span>
+        <% if yield(:custom_telephone).present? %>
+          <% phone = yield(:custom_telephone) %>
+        <% elsif !defined?(phone) %>
+        <% phone = global_site_settings['Phone'] %>
+        <% end %>
+
+        <% if phone.present? %>
+          <%= link_to "tel:#{phone.tr(' ', '')}" do %>
+            <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
+              <%= phone %>
+            </span>
+          <% end %>
+        <% end %>
+        <div>
+          <%= link_to 'Send an enquiry', new_contact_path, class: 'ga-event', data: { event_category: 'Header', event_action: 'Click', event_label: 'Submit Enquiry CTA Button' } %>
+        </div>
+      </div>
+
+      <div class="header-rich-snippets">
+        <div id="dropdown-300" style="width:300px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to '#header-main-navigation',
+              class: 'primary-header-main-navigation-toggle
+                      slide-toggle',
+              data: {
+                container: '.primary-header-main-navigation'
+              } do %>
+    <%= image_tag 'components/icons/navigation/burger.png',
+                  alt: 'Toggle navigation' %>
+  <% end %>
+
+  <div class="primary-header-main-navigation">
+    <div class="primary-header-main-navigation__navigation">
+      <ul class="primary-header-main-navigation__links">
+        <li class="menu-item">
+          <%= link_to root_url, class: 'primary-header-main-navigation__home', title: 'Go to the homepage' do %>
+            <%= image_tag 'components/icons/navigation/home-outline.png', alt: 'Home' %>
+          <% end %>
+        </li>
+        <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
+      </ul>
+    </div>
+
+    <div class="primary-header-main-navigation__search" role="search">
+      <%= form_tag new_search_path, method: :get, class: 'primary-header-search-form' do %>
+        <%= text_field_tag :q, params[:q],
+                               placeholder: 'Search',
+                               class: 'primary-header-search-form__input' %>
+       <% end %>
+    </div>
+</header>

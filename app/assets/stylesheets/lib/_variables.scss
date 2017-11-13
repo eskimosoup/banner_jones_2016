@@ -22,6 +22,8 @@ $museo-sans--heavy: 900;
 
 $museo-sans-rounded: 'museo-sans-rounded', $museo-sans;
 
+$museo-slab: 'museo-slab', $museo-sans;
+
 $roboto: 'roboto', $museo-sans;
 $roboto--light: 300;
 $roboto--medium: 600;
@@ -70,16 +72,26 @@ $offset-black: #3c353d;
 
 $dark-offset-black: #2b2b2b;
 
+$grey-slate: #d7d7d7;
+
 $black: #000;
 $black-grey: #333333;
+$black-grey-offset: #505050;
 $offset-black: #010101;
 
 $tooltip-grey: #878787;
+$bullet-point-grey: #737b7f;
 
 $blue-dark: #22202d;
+$blue-purple-offset: #9896a3;
+$blue-offset: #605e6e;
 
 $charcoal: #2d2d2d;
 
 $blue: #0078ae;
 
+$turquoise: #36a6b1;
+
 $blue-light: #d2dcdd;
+
+
