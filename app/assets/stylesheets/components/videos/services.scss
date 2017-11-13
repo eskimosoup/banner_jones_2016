@@ -20,6 +20,10 @@
 
 .service-video-embed-code {
   display: none;
+
+  @include breakpoint(small only) {
+    display: block;
+  }
 }
 
 .service-video {

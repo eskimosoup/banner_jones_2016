@@ -85,7 +85,7 @@
 
 <%= link_to 'Get in Touch',
             '#large-modal-overlay',
-            class: 'fade-toggle large-modal-overlay-toggle large-modal-overlay-toggle--action',
+            class: 'large-modal-overlay-toggle large-modal-overlay-toggle--action large-modal-overlay-toggle--click',
             data: {
               container: '.large-modal-overlay',
             } %>
@@ -145,11 +145,9 @@
     </div>
 
     <%= button_tag 'Close',
-                   class: 'large-modal-overlay__close toggle-class',
+                   class: 'large-modal-overlay__close large-modal-overlay-toggle--click',
                    data: {
-                     container: '.large-modal-overlay',
-                     class: 'hide',
-                     return: false
+                     container: '.large-modal-overlay'
                    } %>
   </section>
 </div>

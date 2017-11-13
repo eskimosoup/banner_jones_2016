@@ -1,3 +1,23 @@
+.onpage-navigation-controls {
+  @include breakpoint(small only) {
+    display: block;
+
+    .large-onpage-resources__title {
+      position: static;
+    }
+
+    .onpage-navigation-slider {
+      position: static;
+      text-align: right;
+    }
+
+    .onpage-navigation-button {
+      margin-bottom: rem(10px);
+      margin-top: rem(10px);
+    }
+  }
+}
+
 .large-onpage-resources {
   @include flex-grid-row;
   margin-top: rem(15px);

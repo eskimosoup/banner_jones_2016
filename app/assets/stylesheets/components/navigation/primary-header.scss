@@ -132,6 +132,10 @@
   position: absolute;
   top: 20px;
   right: 20px;
+
+  @include breakpoint(large) {
+    display: none;
+  }
 }
 
 .primary-header-main-navigation {
@@ -173,7 +177,7 @@
   &__links {
     list-style: none;
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       bottom: -5px;
       margin-left: rem(400px);
       position: relative;

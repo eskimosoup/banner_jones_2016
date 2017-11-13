@@ -10,7 +10,16 @@
         slidesToShow: 4,
         slidesToScroll: 1,
         nextArrow: '.articles-slick-<%= onpage_navigation.id %>-next',
-        prevArrow: '.articles-slick-<%= onpage_navigation.id %>-prev'
+        prevArrow: '.articles-slick-<%= onpage_navigation.id %>-prev',
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ]
       });
     });
   </script>
@@ -23,7 +32,7 @@ articles = @service.articles.displayed if articles.blank?
 %>
 <section class="large-content-element">
   <div class="large-content-element__section large-content-element__section--full large-content-element__section--articles">
-    <div class="onpage-navigation-slider">
+    <div class="onpage-navigation-slider onpage-navigation-slider--articles">
       <%= button_tag 'Previous', class: "onpage-navigation-slider__button onpage-navigation-slider__button--prev articles-slick-#{onpage_navigation.id}-prev" %>
       <%= button_tag 'Next', class: "onpage-navigation-slider__button onpage-navigation-slider__button--next articles-slick-#{onpage_navigation.id}-next" %>
     </div>

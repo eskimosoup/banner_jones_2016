@@ -13,7 +13,7 @@
         prevArrow: '.resources-slick-<%= onpage_navigation.id %>-prev',
         responsive: [
           {
-            breakpoint: 768,
+            breakpoint: 767,
             settings: {
               slidesToShow: 1,
               slidesToScroll: 1
@@ -32,18 +32,20 @@ resources = @service.resources.displayed if resources.blank?
 
 <section class="large-onpage-resources">
   <div class="large-onpage-resources__section">
-    <div class="onpage-navigation-slider">
-    <%= link_to 'See all',
-                  resources_path,
-                  class: 'onpage-navigation-button' %>
+    <div class="onpage-navigation-controls">
+      <div class="onpage-navigation-slider">
+      <%= link_to 'See all',
+                    resources_path,
+                    class: 'onpage-navigation-button' %>
 
-      <%= button_tag 'Previous', class: "onpage-navigation-slider__button onpage-navigation-slider__button--prev onpage-navigation-slider__button--inverted resources-slick-#{onpage_navigation.id}-prev" %>
-      <%= button_tag 'Next', class: "onpage-navigation-slider__button onpage-navigation-slider__button--next onpage-navigation-slider__button--inverted resources-slick-#{onpage_navigation.id}-next" %>
+        <%= button_tag 'Previous', class: "onpage-navigation-slider__button onpage-navigation-slider__button--prev onpage-navigation-slider__button--inverted resources-slick-#{onpage_navigation.id}-prev" %>
+        <%= button_tag 'Next', class: "onpage-navigation-slider__button onpage-navigation-slider__button--next onpage-navigation-slider__button--inverted resources-slick-#{onpage_navigation.id}-next" %>
+      </div>
+
+      <h1 class="large-onpage-resources__title">
+        Our Helpful Guides
+      </h1>
     </div>
-
-    <h1 class="large-onpage-resources__title">
-      Our Helpful Guides
-    </h1>
 
     <div class="large-onpage-resources__resources">
       <div class="resources-slick-<%= onpage_navigation.id %>">

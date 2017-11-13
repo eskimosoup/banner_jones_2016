@@ -44,3 +44,16 @@ $(document).on("click", ".fade-toggle", function(e) {
     e.preventDefault();
   }
 });
+
+$(document).on("click", ".large-modal-overlay-toggle--click", function(e) {
+  var toggleContainer = $(this).data('container');
+  var dataReturn      = $(this).data('return');
+
+  $(toggleContainer).fadeToggle(250, function(){
+    $('.large-modal-overlay').height($('body').height());
+  });
+
+  if (dataReturn === false) {
+    e.preventDefault();
+  }
+});

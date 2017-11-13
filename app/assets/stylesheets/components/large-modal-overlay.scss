@@ -25,10 +25,17 @@
   display: none;
   height: 100%;
   left: 0;
-  position: fixed;
   right: 0;
   top: 0;
   width: 100%;
+
+  @include breakpoint(small only) {
+    position: absolute;
+  }
+
+  @include breakpoint(medium) {
+    position: fixed;
+  }
 
   &__content {
     background-color: $white;
@@ -36,8 +43,15 @@
     margin-right: auto;
     margin-top: rem(100px);
     max-width: 1024px;
-    padding: rem(50px);
     position: relative;
+
+    @include breakpoint(small only) {
+      padding: rem(10px);
+    }
+
+    @include breakpoint(medium) {
+      padding: rem(50px);
+    }
   }
 
   &__title {
@@ -75,11 +89,31 @@
     color: $black-grey;
     display: inline-block;
     font-family: $museo-sans-rounded;
-    font-size: rem(18px);
-    padding-bottom: rem(20px);
-    padding-left: rem(20px);
-    padding-right: rem(20px);
-    padding-top: rem(60px);
+
+    @include breakpoint(small only) {
+      font-size: rem(14px);
+      max-width: 33%;
+      min-height: 62px;
+      padding: rem(10px);
+      vertical-align: bottom;
+    }
+
+    @include breakpoint(medium) {
+      font-size: rem(18px);
+      padding: rem(60 20px 20px);
+
+      &--email {
+        background-image: image-url('components/icons/modal/email-orange.png');
+      }
+
+      &--callback {
+        background-image: image-url('components/icons/modal/callback-orange.png');
+      }
+
+      &--phone {
+        background-image: image-url('components/icons/modal/phone-orange.png');
+      }
+    }
 
     &:focus {
       color: $black-grey;
@@ -88,33 +122,23 @@
     &--active {
       background-color: $orange;
 
-      &.large-modal-overlay-navigation__link--email {
-        background-image: image-url('components/icons/modal/email-white.png');
-      }
+      @include breakpoint(medium) {
+        &.large-modal-overlay-navigation__link--email {
+          background-image: image-url('components/icons/modal/email-white.png');
+        }
 
-      &.large-modal-overlay-navigation__link--callback {
-        background-image: image-url('components/icons/modal/callback-white.png');
-      }
+        &.large-modal-overlay-navigation__link--callback {
+          background-image: image-url('components/icons/modal/callback-white.png');
+        }
 
-      &.large-modal-overlay-navigation__link--phone {
-        background-image: image-url('components/icons/modal/phone-white.png');
+        &.large-modal-overlay-navigation__link--phone {
+          background-image: image-url('components/icons/modal/phone-white.png');
+        }
       }
 
       &:hover {
         color: $white;
       }
-    }
-
-    &--email {
-      background-image: image-url('components/icons/modal/email-orange.png');
-    }
-
-    &--callback {
-      background-image: image-url('components/icons/modal/callback-orange.png');
-    }
-
-    &--phone {
-      background-image: image-url('components/icons/modal/phone-orange.png');
     }
   }
 }

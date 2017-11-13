@@ -236,10 +236,17 @@
 
   &__cta-button {
     color: $white;
-    display: inline-block;
-    padding: rem(15px 40px);
     text-align: center;
     transition: color .15s ease-in-out;
+
+    @include breakpoint(small only) {
+      display: block;
+    }
+
+    @include breakpoint(medium) {
+      display: inline-block;
+      padding: rem(15px 40px);
+    }
 
     &:hover,
     &:focus,

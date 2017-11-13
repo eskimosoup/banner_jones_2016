@@ -108,6 +108,10 @@
 
 .onpage-navigation-view-more {
   text-align: center;
+
+  @include breakpoint(small only) {
+    margin-bottom: rem(10px);
+  }
 }
 
 .onpage-navigation-button {
@@ -131,6 +135,14 @@
   position: absolute;
   right: 20px;
   top: 20px;
+
+  &--articles {
+    @include breakpoint(small only) {
+      margin: rem(10px);
+      position: static;
+      text-align: right;
+    }
+  }
 
   &__button {
     background-repeat: no-repeat;
@@ -166,4 +178,10 @@
   margin-right: auto;
   max-width: 660px;
   position: relative;
+
+  @include breakpoint(small only) {
+    .inline-colorbox {
+      display: none;
+    }
+  }
 }

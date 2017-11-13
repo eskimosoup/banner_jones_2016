@@ -3,11 +3,30 @@
 }
 
 .modal-form {
+  @include breakpoint(medium) {
+    &__split {
+      @include flex-grid-row(collapse);
+    }
+
+    &__details {
+      @include flex-grid-column(9, (medium: 5));
+    }
+
+    &__aside {
+      @include flex-grid-column(3, (medium: 5));
+      padding-top: rem(24px);
+    }
+  }
+
   &__fields {
-    @include flex-grid-row(collapse);
+    @include breakpoint(medium) {
+      @include flex-grid-row(collapse);
+    }
 
     .field {
-      @include flex-grid-column(3, (medium: 5));
+      @include breakpoint(medium) {
+        @include flex-grid-column(3, (medium: 5));
+      }
     }
   }
 
@@ -23,7 +42,9 @@
     }
 
     &--full {
-      height: calc(100% - 103px);
+      @include breakpoint(medium) {
+        height: calc(100% - 103px);
+      }
     }
   }
 
@@ -64,18 +85,5 @@
       background-color: $red;
       color: $white;
     }
-  }
-
-  &__split {
-    @include flex-grid-row(collapse);
-  }
-
-  &__details {
-    @include flex-grid-column(9, (medium: 5));
-  }
-
-  &__aside {
-    @include flex-grid-column(3, (medium: 5));
-    padding-top: rem(24px);
   }
 }

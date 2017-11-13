@@ -26,7 +26,10 @@
   font-family: $roboto;
   margin-bottom: rem(14px);
   padding-bottom: rem(14px);
-  text-align: right;
+
+  @include breakpoint(medium) {
+    text-align: right;
+  }
 
   &__details {
     @include breakpoint(small only) {

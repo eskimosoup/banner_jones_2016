@@ -15,7 +15,7 @@
 
 .service-onpage-navigation {
   background: $offset-white;
-  padding:  0 0 rem(40px);
+  padding: 0 0 rem(40px);
 
   @media print {
     display: none;
@@ -186,6 +186,10 @@
   &__aside {
     @include breakpoint(small only) {
       @include flex-grid-column(12);
+
+      .service-team-member {
+        margin-bottom: rem(10px);
+      }
     }
 
     @include breakpoint(medium) {
@@ -217,8 +221,8 @@
 
   &__phone {
     font-family: $roboto;
-    font-weight: $roboto--bold;
     font-size: rem(20px);
+    font-weight: $roboto--bold;
   }
 }
 
