@@ -1,1 +1,0 @@
-$(document).ready(function(){$("img[data-src]").unveil()});
