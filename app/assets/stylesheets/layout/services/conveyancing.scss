@@ -224,6 +224,7 @@
 .service-testimonials {
   background-color: $turquoise;
   color: $white;
+  height: 100%;
   text-align: center;
 
   @include breakpoint(medium down) {
@@ -231,6 +232,10 @@
   }
 
   @include breakpoint(large) {
+    padding: rem(40px);
+  }
+
+  @include breakpoint(xlarge) {
     background: image-url('components/icons/testimonial/dark-quote-open.png') no-repeat top 15% left 80px,
                 image-url('components/icons/testimonial/dark-quote-close.png') no-repeat top 15% right 80px,
                 $turquoise;
@@ -254,7 +259,7 @@
     font-family: $museo-sans-rounded;
     font-weight: $museo-sans--medium;
 
-    @include breakpoint(large) {
+    @include breakpoint(xlarge) {
       font-size: rem(31px);
     }
   }

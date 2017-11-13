@@ -50,12 +50,15 @@
 
   &__select {
     @include conveyancing-select;
-    background: $white image-url('components/icons/modal/select-icon.png') no-repeat center right 10px;
-    background-size: 20px 20px;
     border-radius: 5px;
     cursor: pointer;
     margin: 0;
     padding: rem(7px);
+
+    @include breakpoint(large) {
+      background: $white image-url('components/icons/modal/select-icon.png') no-repeat center right 10px;
+      background-size: 20px 20px;
+    }
 
     &--bordered {
       border-width: 1px;

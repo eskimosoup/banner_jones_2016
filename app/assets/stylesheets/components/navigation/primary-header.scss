@@ -133,7 +133,7 @@
   top: 20px;
   right: 20px;
 
-  @include breakpoint(large) {
+  @include breakpoint(medium) {
     display: none;
   }
 }
@@ -169,7 +169,11 @@
       width: 75%;
     }
 
-    @include breakpoint(medium) {
+    @include breakpoint(medium only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(large) {
       @include flex-grid-column(9);
     }
   }
@@ -177,7 +181,7 @@
   &__links {
     list-style: none;
 
-    @include breakpoint(large) {
+    @include breakpoint(1636px) {
       bottom: -5px;
       margin-left: rem(400px);
       position: relative;
@@ -188,6 +192,10 @@
     margin-top: auto;
 
     @include breakpoint(medium) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(large) {
       @include flex-grid-column(2);
     }
   }
@@ -201,6 +209,8 @@
   }
 
   .menu-item {
+    position: relative;
+
     @include breakpoint(medium) {
       display: inline-block;
     }
@@ -236,6 +246,22 @@
     padding-bottom: rem(10px);
     padding-top: rem(10px);
 
+    @include breakpoint(medium) {
+      border: 1px solid $orange;
+      line-height: 1.25;
+      min-width: 250px;
+      position: absolute;
+      z-index: 10;
+    }
+
+    @include breakpoint(medium) {
+      .menu-item {
+        border-bottom: 1px dotted $orange;
+        display: block;
+      }
+    }
+
+
     .menu-link {
       font-size: rem(16px);
       padding: rem(5px 20px);
@@ -250,6 +276,10 @@
           color: $black;
         }
       }
+
+      @include breakpoint(medium) {
+        display: block;
+      }
     }
   }
 
@@ -261,6 +291,10 @@
 
     @include breakpoint(small only) {
       border-bottom: 1px solid $white;
+    }
+
+    @include breakpoint(medium only) {
+      padding: rem(10px 12px);
     }
 
     &:link,
