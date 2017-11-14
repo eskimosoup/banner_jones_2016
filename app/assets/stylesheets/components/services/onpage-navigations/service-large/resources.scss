@@ -81,6 +81,7 @@
   &__summary {
     background: rgba($black, .85);
     bottom: 0;
+    color: $white;
     display: none;
     font-family: $museo-sans-rounded;
     font-weight: $museo-sans--medium;
@@ -91,6 +92,13 @@
     right: 0;
     text-align: left;
     transition: display .25s linear;
+
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $white;
+    }
 
     .onpage-resource__title {
       margin-bottom: rem(10px);

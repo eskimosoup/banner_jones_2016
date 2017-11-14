@@ -4,7 +4,7 @@
   margin-top: rem(15px);
 
   &__aside {
-    @include responsive-flex-grid-column((small: 12, medium: 3));
+    @include responsive-flex-grid-column((small: 12, large: 3));
     background-color: $grey;
     position: relative;
 
@@ -29,12 +29,12 @@
     background-color: $white;
 
     &:not(&--full):not(&--compact) {
-      @include breakpoint(small only) {
+      @include breakpoint(medium down) {
         @include flex-grid-column(12);
         padding-top: map-get($grid-column-gutter, small);
       }
 
-      @include breakpoint(medium) {
+      @include breakpoint(large) {
         @include flex-grid-column(9, (medium: 80))
       }
 
