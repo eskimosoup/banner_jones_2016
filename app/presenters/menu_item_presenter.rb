@@ -20,7 +20,6 @@ class MenuItemPresenter < BasePresenter
 
   def special_layout
     if audience?
-      # TODO Uncomment
       h.render 'menu_items/meganav', audience: destination
     end
     # elsif destination.present? && menu_item.menu_name == 'primary_header' && menu_item.link.menu_resource_type == 'Optimadmin::ModulePage' && menu_item.link.menu_resource.route == 'new_contact_path'
