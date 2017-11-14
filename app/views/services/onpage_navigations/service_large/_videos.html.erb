@@ -19,12 +19,22 @@ videos = @service.videos.displayed if videos.blank?
               <% present video do |video_presenter| %>
                 <%= link_to (image_tag 'components/icons/play-video.png', alt: 'Play video', class: 'service-video-play-icon'),
                       "#service-video-#{video_presenter.id}",
-                      class: 'inline-colorbox',
+                      class: 'inline-colorbox ga-event',
+                      data: {
+                        event_category: 'Video',
+                        event_action: 'Click',
+                        event_title: video.title
+                      },
                       title: video_presenter.title if video_presenter.full_image.present? %>
 
                 <%= link_to video_presenter.full_image(alt: video_presenter.title),
                         "#service-video-#{video_presenter.id}",
-                        class: 'inline-colorbox',
+                        class: 'inline-colorbox ga-event',
+                        data: {
+                          event_category: 'Video',
+                          event_action: 'Click',
+                          event_title: video.title
+                        },
                         title: video_presenter.title if video_presenter.full_image.present? %>
                   <%= video_presenter.summary %>
                 <%= content_tag :div, video_presenter.youtube_embed(800, 0, false), class: 'service-video-embed-code flex-video', id: "service-video-#{video_presenter.id}" %>
