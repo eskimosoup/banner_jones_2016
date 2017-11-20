@@ -177,25 +177,39 @@
   margin-top: rem(40px);
 
   &__main {
-    @include breakpoint(large down) {
+    @include breakpoint(xlarge down) {
       @include flex-grid-column(12);
     }
 
-    @include breakpoint(xlarge) {
+    @include breakpoint(xxlarge) {
       @include flex-grid-column(9);
     }
   }
 
   &__aside {
-    @include breakpoint(large down) {
+    @include breakpoint(xlarge down) {
       @include flex-grid-column(12);
 
       .service-team-member {
-        margin-bottom: rem(10px);
+        @include flex-grid-row;
       }
     }
 
-    @include breakpoint(xlarge) {
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+      .service-team-member {
+        margin-bottom: rem(10px);
+      }
+
+      .conveyancing-service-key-team-member {
+        @include flex-grid-column(6);
+      }
+
+      .service-cta-block {
+        @include flex-grid-column(6);
+      }
+    }
+
+    @include breakpoint(xxlarge) {
       @include flex-grid-column(3);
     }
   }
@@ -227,6 +241,28 @@
     font-size: rem(20px);
     font-weight: $roboto--bold;
   }
+
+  &--full-width {
+    @media screen and (min-width: 768px)  {
+      @include flex-grid-row;
+
+      p {
+        @include flex-grid-column(12);
+      }
+
+      .conveyancing-service-key-team-member {
+        @include flex-grid-column(6);
+      }
+
+      .service-cta-block {
+        @include flex-grid-column(6);
+
+        &__contact {
+          text-align: center;
+        }
+      }
+    }
+  }
 }
 
 .large-content-inner-styles {
@@ -238,13 +274,24 @@
   margin-top: rem(35px);
 
   &__contact {
-    &:first-of-type {
-      @include flex-grid-column(4, (medium: 0));
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+      margin-bottom: rem(10px);
     }
 
-    &:last-of-type {
-      @include flex-grid-column(8);
-      border-left: 1px solid $white;
+    @include breakpoint(medium) {
+      @include flex-grid-column(6);
+    }
+
+    @media screen and (min-width: 768px) {
+      &:first-of-type {
+        @include flex-grid-column(4, (medium: 0));
+      }
+
+      &:last-of-type {
+        @include flex-grid-column(8);
+        border-left: 1px solid $white;
+      }
     }
   }
 
@@ -254,7 +301,6 @@
     font-size: rem(14px);
     font-weight: $open-sans-semibold;
     padding: 0;
-    text-align: left;
   }
 }
 
