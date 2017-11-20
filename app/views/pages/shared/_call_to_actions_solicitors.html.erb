@@ -7,7 +7,11 @@
   <% end %>
 
   <% if telephone.present? %>
-    <%= link_to "tel:#{telephone.tr(' ', '')}", class: 'page-call-to-action' do %>
+    <%= link_to "tel:#{telephone.tr(' ', '')}", class: 'page-call-to-action ga-event',
+                    data: {
+                      event_category: 'Offline contact',
+                      event_action: 'Phone call'
+                    } do %>
       <div class="page-call-to-action-title">
         <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
           <%= telephone %>
