@@ -10,6 +10,12 @@
       display: none;
     }
   }
+
+  &__icon {
+    @include breakpoint(xlarge down) {
+      display: block;
+    }
+  }
 }
 
 .large-content-aside-navigation {
@@ -20,7 +26,7 @@
     padding-bottom: rem(10px);
   }
 
-  @include breakpoint(xlarge) {
+  @include breakpoint(xxlarge) {
     margin-left: rem(47px);
   }
 
