@@ -7,5 +7,11 @@
 
 <p>
   Need a remortgage or transfer of equity?<br />
-  Call: <%= render 'shared/calltracks_phone', phone: global_site_settings['Phone'] %>
+  Call: <%= render 'shared/calltracks_phone', phone: global_site_settings['Phone'], options: {
+     class: 'ga-event',
+    data: {
+      event_category: 'Offline contact',
+      event_action: 'Phone call'
+    }
+  } %>
 </p>
