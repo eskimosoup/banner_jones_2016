@@ -1,5 +1,6 @@
 <%#= content_for :content_title do "Thanks #{@user.forename.strip}, here's your conveyancing quote" end %>
 <% costs = ConveyancingCalculator.configuration.additional_costs[current_user.symbolised_location].reduce(Hash.new, :merge) %>
+<%= content_for :custom_telephone do global_site_settings['Phone - London'] end %>
 <%= content_for :javascript do %>
   <script>
     <% # Remove the deselected class as not to confuse anything as it can be toggled %>
