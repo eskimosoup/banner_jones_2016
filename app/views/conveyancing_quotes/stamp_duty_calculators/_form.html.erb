@@ -1,0 +1,36 @@
+<div class="stamp-duty-calculator">
+  <%= form_for @stamp_duty_calculator,
+              remote: true,
+              url: conveyancing_quotes_stamp_duty_calculator_path,
+              html: {
+                class: 'stamp-duty-calculator-form'
+              } do |f| %>
+    <div class="field stamp-duty-calculator-form__input">
+      <%= f.label :price, 'Please enter the price of the purchase' %>
+      <%= f.text_field :price, required: true %>
+    </div>
+
+    <div class="field stamp-duty-calculator-form__radio">
+      <%= f.label :purchase_type_first_time_buyer, 'This is my first home purchase', class: 'stamp-duty-calculator-form__radio-label' %>
+      <%= f.radio_button :purchase_type, 'first_time_buyer' %>
+    </div>
+
+    <div class="field stamp-duty-calculator-form__radio">
+      <%= f.label :purchase_type_not_first_time_buyer, 'This is not my first home purchase', class: 'stamp-duty-calculator-form__radio-label' %>
+      <%= f.radio_button :purchase_type, 'not_first_time_buyer' %>
+    </div>
+
+    <div class="field stamp-duty-calculator-form__radio">
+      <%= f.label :purchase_type_second_home_or_buy_to_let, 'This is a second home or buy-to-let purchase', class: 'stamp-duty-calculator-form__radio-label' %>
+      <%= f.radio_button :purchase_type, 'second_home_or_buy_to_let' %>
+    </div>
+
+    <div class="actions stamp-duty-calculator-form__submit">
+      <%= f.submit 'Calculate', class: 'submit-button' %>
+    </div>
+  <% end %>
+
+  <div class="stamp-duty-calculator-result">
+
+  </div>
+</div>
