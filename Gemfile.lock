@@ -61,10 +61,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/stamp_duty.git
-  revision: 1ee476c1e57440d0bb551f29b34017c7d032f347
+  revision: 8fe524df58425cf945b6d55b317a604a14785b34
   branch: master
   specs:
-    stamp_duty (0.1.1)
+    stamp_duty (0.1.2)
 
 GEM
   remote: https://rubygems.org/

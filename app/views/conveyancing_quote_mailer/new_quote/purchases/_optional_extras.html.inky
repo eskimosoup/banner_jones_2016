@@ -16,6 +16,13 @@
             </div>
           </wrapper>
         <% end %>
+        <% if purchase.first_time_buyer? %>
+          <wrapper class="conveyancing-fee-breakdown__item">
+            <div class="conveyancing-fee-breakdown__label">
+              This is a first time purchase.
+            </div>
+          </wrapper>
+        <% end %>
         <% if purchase.leasehold_house? %>
           <wrapper class="conveyancing-fee-breakdown__item">
             <row>

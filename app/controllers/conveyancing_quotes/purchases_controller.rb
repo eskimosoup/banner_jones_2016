@@ -19,7 +19,7 @@ module ConveyancingQuotes
       params.require(:conveyancing_quotes_purchase).permit(
         :timeframe, :price, :second_home_or_buy_to_let, :leasehold_house,
         :leasehold_apartment, :help_to_buy_scheme, :help_to_buy_isa,
-        :shared_ownership_scheme
+        :shared_ownership_scheme, :first_time_buyer
       )
     end
   end
