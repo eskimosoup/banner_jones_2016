@@ -108,7 +108,13 @@
       talk to our Residential Property Team today on:
     </p>
 
-    <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
+    <% if global_site_settings["Phone - #{@location.location}"].present? %>
+      <% phone = global_site_settings["Phone - #{@location.location}"] %>
+    <% elsif !defined?(phone) %>
+      <% phone = global_site_settings['Phone'] %>
+    <% end %>
+
+    <%= link_to "tel:#{phone.tr(' ', '')}",
                 class: 'conveyancing-call-to-action ga-event',
                 data: {
                   event_category: 'Conveyancing Calculator',
@@ -116,7 +122,7 @@
                   event_label:  'Phone'
                 } do %>
       <span class="calltracks_bannerjonescouk-main">
-        <%= global_site_settings['Phone'] %>
+        <%= phone %>
       </span>
     <% end %>
   </div>

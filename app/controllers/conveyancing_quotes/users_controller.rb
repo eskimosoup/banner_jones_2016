@@ -44,7 +44,7 @@ module ConveyancingQuotes
     private
 
     def seo_settings
-      seo_entry = SeoEntry.find_by(nominal_url: request.path.gsub('/request/new', ''))
+      seo_entry = SeoEntry.find_by(nominal_url: '/conveyancing-quotes/:location_id/request/new')
       return unless seo_entry
       @rich_snippet = seo_entry.rich_snippet
       @title = seo_entry.title
