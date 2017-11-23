@@ -15,7 +15,8 @@
       <%= link_to '',
                   class: "conveyancing-cost__toggle
                           #{'conveyancing-cost__toggle--hidden' if f.object.second_home_or_buy_to_let?}
-                          conveyancing-cost__toggle--cross",
+                          conveyancing-cost__toggle--cross
+                          conveyancing-cost__toggle--radio-group",
                   data: {
                     id: 'conveyancing_quotes_purchase_second_home_or_buy_to_let'
                   } do %>
@@ -25,9 +26,47 @@
       <%= link_to '',
                   class: "conveyancing-cost__toggle
                           #{'conveyancing-cost__toggle--hidden' unless f.object.second_home_or_buy_to_let?}
-                          conveyancing-cost__toggle--checkmark",
+                          conveyancing-cost__toggle--checkmark
+                          conveyancing-cost__toggle--radio-group",
                   data: {
                     id: 'conveyancing_quotes_purchase_second_home_or_buy_to_let'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+      <% end %>
+    </span>
+  </li>
+
+  <li class="conveyancing-cost__item <%= 'conveyancing-cost__item--deselected' unless f.object.first_time_buyer? %>">
+    <div class="conveyancing-cost__label">
+      <%= f.label :first_time_buyer,
+                  'Is this your first home purchase?' %>
+    </div>
+
+    <span class="conveyancing-cost__fee">
+
+    </span>
+    <span class="conveyancing-cost__checkbox-wrap">
+      <%= f.check_box :first_time_buyer,
+                      class: 'conveyancing-cost__checkbox' %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' if f.object.first_time_buyer?}
+                          conveyancing-cost__toggle--cross
+                          conveyancing-cost__toggle--radio-group",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_first_time_buyer'
+                  } do %>
+        <%= render partial: 'conveyancing_quotes/shared/svgs/cross' %>
+      <% end %>
+
+      <%= link_to '',
+                  class: "conveyancing-cost__toggle
+                          #{'conveyancing-cost__toggle--hidden' unless f.object.first_time_buyer?}
+                          conveyancing-cost__toggle--checkmark
+                          conveyancing-cost__toggle--radio-group",
+                  data: {
+                    id: 'conveyancing_quotes_purchase_first_time_buyer'
                   } do %>
         <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
       <% end %>

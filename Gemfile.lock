@@ -59,10 +59,8 @@ GIT
       pg_search
       rails (>= 5.0)
 
-GIT
-  remote: git@github.com:eskimosoup/stamp_duty.git
-  revision: 1ee476c1e57440d0bb551f29b34017c7d032f347
-  branch: master
+PATH
+  remote: ../stamp_duty
   specs:
     stamp_duty (0.1.1)
 

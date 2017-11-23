@@ -13,6 +13,10 @@
 
       $formId.click();
 
+      if($(this).hasClass('conveyancing-cost__toggle--radio-group') && $(this).hasClass('conveyancing-cost__toggle--cross')) {
+        $('.conveyancing-cost__toggle--radio-group.conveyancing-cost__toggle--checkmark:not(.conveyancing-cost__toggle--hidden)').click();
+      }
+
       $(this).addClass('conveyancing-cost__toggle--hidden');
       $(this).siblings().removeClass('conveyancing-cost__toggle--hidden');
 

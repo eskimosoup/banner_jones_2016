@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020153741) do
+ActiveRecord::Schema.define(version: 20171123092802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(version: 20171020153741) do
     t.boolean  "help_to_buy_isa",                                          default: false
     t.boolean  "shared_ownership_scheme",                                  default: false
     t.integer  "conveyancing_quotes_sale_and_purchases_id"
+    t.boolean  "first_time_buyer",                                         default: false
     t.index ["conveyancing_quotes_sale_and_purchases_id"], name: "sale_and_purchases_purchase_id", using: :btree
     t.index ["conveyancing_quotes_user_id"], name: "purchases_user_id", using: :btree
   end
