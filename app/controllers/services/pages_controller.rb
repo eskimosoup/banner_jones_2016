@@ -7,10 +7,15 @@ class Services::PagesController < ApplicationController
     @onpage_navigations = @service.displayed_onpage_navigations
     @onpage_navigation_links = @onpage_navigations.displayed_navigation_link
     @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
+    stamp_duty if @page.style == 'stamp_duty_calculator'
     render layout: @page.layout
   end
 
   private
+
+  def stamp_duty
+    @stamp_duty_calculator = ConveyancingQuotes::StampDutyCalculator.new
+  end
 
   # oh my god, please forgive me :(
   def nested_service_page_route(service, page)
