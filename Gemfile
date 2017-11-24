@@ -92,4 +92,4 @@ gem 'pg_search'
 gem 'inky-rb', require: 'inky'
 # Stylesheet inlining for email
 gem 'premailer-rails'
-# gem 'tinymce-rails', '4.6.7'
+gem 'tinymce-rails', '4.6.7'
