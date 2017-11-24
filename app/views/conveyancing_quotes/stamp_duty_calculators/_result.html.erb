@@ -1,6 +1,4 @@
-<section class="stamp-duty-calculator-result-partial">
-  <p>
-    The stamp duty you will pay on this purchase of <%= number_to_currency price %> is:
-    <%= content_tag :strong, (number_to_currency stamp_duty), class: 'stamp-duty-calculator-result-partial__total' %>
-  </p>
-</section>
+<p>
+  Your stamp duty is
+  <%= content_tag :strong, (number_to_currency stamp_duty), class: 'stamp-duty-calculator-result-partial__total' %>
+</p>
