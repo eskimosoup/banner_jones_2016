@@ -31,6 +31,8 @@ module Extensions
         #  ::ResourceCategory.order(:title)
         when 'services'
           ::Service.order(:title)
+        when 'services/pages'
+          ::Services::Page.order(:title)
         when 'team_members'
           ::TeamMember.order(:surname)
         when 'conveyancing_quotes/quote_locations'
@@ -69,6 +71,8 @@ module Extensions
         #  ::ResourceCategory.displayed
         when 'services'
           ::Service.displayed
+        when 'services/pages'
+          ::Services::Page.displayed
         when 'team_members'
           ::TeamMember.displayed
         when 'conveyancing_quotes/quote_locations'
