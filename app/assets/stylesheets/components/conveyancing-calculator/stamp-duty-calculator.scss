@@ -25,23 +25,20 @@
   }
 }
 
-.stamp-duty-calculator-result {
-  @include breakpoint(large) {
-    @include flex-grid-column(5);
-  }
-}
-
 .stamp-duty-calculator-result-partial {
   background: $orange;
   border: 2px solid $black;
-  padding: rem(20px);
+  display: none;
   margin-top: rem(5px);
+  padding-top: rem(20px);
 
-  p {
-    margin: 0;
+  @include breakpoint(large) {
+    @include flex-grid-column(5);
   }
 
-  &__total {
-    display: block;
+  a,
+  strong {
+    color: $black;
+    font-weight: 700;
   }
 }
