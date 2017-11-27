@@ -1,6 +1,6 @@
 <%= render 'shared/flash_messages' %>
 
-<%= form_for @contact, url: contacts_path, remote: true, html: { class: 'remote-contact-form-event' } do |f| %>
+<%= form_for @contact, url: contacts_path, remote: true, html: { class: 'remote-contact-form-event large-modal-remote-contact-form' } do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2>

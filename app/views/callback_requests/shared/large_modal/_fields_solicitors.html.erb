@@ -43,7 +43,7 @@
     <% if Flipflop.services? %>
       <div class="field">
         <%= f.label :service, class: 'modal-form__label modal-form__label--hidden' %>
-        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), { prompt: 'Preferred service' }, class: 'modal-form__select modal-form__select--bordered' %>
+        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }, selected: (@service.title if @service.present?)), { prompt: 'Preferred service' }, class: 'modal-form__select modal-form__select--bordered' %>
       </div>
     <% end %>
 
@@ -54,6 +54,7 @@
 
     <%= f.hidden_field :mediation, value: 1 if defined?(mediation) %>
     <%= f.hidden_field :from_url, value: request.original_url %>
+    <%= f.hidden_field :large_modal, value: 1 %>
 
     <div class="actions">
       <%= f.submit "Send", class: "modal-form__submit modal-form__submit--action  modal-form__submit--block" %>

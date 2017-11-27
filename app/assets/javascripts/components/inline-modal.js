@@ -3,6 +3,7 @@ $('.large-modal-overlay').on('click', function (e) {
     return;
 
   $(this).fadeOut(250);
+  $('.remote-callback-request-form-modal.remote-contact-form-modal').removeClass('visible');
 });
 
 $('.inline-modal:not(.bilton-hammond-popup)').on('click', function(e) {

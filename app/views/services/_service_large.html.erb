@@ -45,6 +45,10 @@
           <div class="large-content-inner__main">
             <h1 class="large-content-inner__title">
               <%= @service.title %>
+
+              <%= image_tag @service.icon.small,
+                      alt: '',
+                      class: 'large-content-inner__icon' %>
             </h1>
 
             <div class="large-content-inner-styles">

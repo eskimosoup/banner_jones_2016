@@ -1,0 +1,11 @@
+const form = '<%= @contact.large_modal.present? ? '.large-modal-remote-contact-form' : '.remote-contact-form' %>'
+
+<% if @contact.large_modal.present? %>
+  $(form).html('<%= j render 'contacts/shared/large_modal' %>')
+<% else %>
+  $(form).html('<%= j render 'contacts/remote_form' %>')
+<% end %>
+
+<% if @contact.valid? %>
+  $(form + ' .field input, ' + form + ' .field select, ' + form + ' textarea').val('');
+<% end %>

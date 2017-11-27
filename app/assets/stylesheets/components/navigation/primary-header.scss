@@ -164,16 +164,21 @@
       background-color: $deep-grey;
       border-left: 2px solid $light-purple;
       height: 100vh;
+      overflow: scroll;
       position: absolute;
       right: 0;
       width: 75%;
     }
 
-    @include breakpoint(medium) {
+    @include media('>640px', '<770px') {
+      @include flex-grid-column(12);
+    }
+
+    @include media('>770px', '<1200px') {
       @include flex-grid-column(9);
     }
 
-    @include breakpoint(xlarge) {
+    @include media('>1200px') {
       @include flex-grid-column(8);
     }
   }
@@ -222,6 +227,12 @@
     &:active {
       .meganav-dropdown {
         display: block;
+      }
+
+      @include breakpoint(small only) {
+        .dropdown {
+          display: block;
+        }
       }
     }
 
@@ -305,7 +316,12 @@
     }
 
     @include breakpoint(medium only) {
+      font-size: rem(15px);
       padding: rem(10px 5px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(18px);
     }
 
     &:link,

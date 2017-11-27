@@ -1,3 +1,15 @@
+.large-content-aside-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1px;
+
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+}
+
 .large-content-aside-title {
   &__text {
     border-bottom: 3px solid $black;
@@ -12,6 +24,8 @@
   }
 
   &__icon {
+    margin-right: rem(10px);
+
     @include breakpoint(xlarge down) {
       display: block;
     }
@@ -27,7 +41,7 @@
   }
 
   @include breakpoint(xxlarge) {
-    margin-left: rem(47px);
+    margin-left: rem(57px);
   }
 
   &__toggle {

@@ -102,52 +102,54 @@
   </script>
 <% end %>
 
-<div class="large-modal-overlay" id="large-modal-overlay">
-  <section class="large-modal-overlay__content">
-    <h1 class="large-modal-overlay__title">
-      Talk to our <%= yield :team_name %> team
-    </h1>
+<div class="remote-callback-request-form-modal remote-contact-form-modal">
+  <div class="large-modal-overlay" id="large-modal-overlay">
+    <section class="large-modal-overlay__content">
+      <h1 class="large-modal-overlay__title">
+        Talk to our <%= yield :team_name %> team
+      </h1>
 
-    <nav class="large-modal-overlay-navigation">
-      <%= link_to 'Email Us',
-                  '#large-modal-overlay__email',
-                  class: 'large-modal-overlay-navigation__link
-                          large-modal-overlay-navigation__link--email
-                          large-modal-overlay-navigation__link--active',
-                  data: {
-                    container: '.large-modal-overlay__form--email'
-                  } %>
-      <%= link_to 'Request a callback',
-                  '#large-modal-overlay__email',
-                  class: 'large-modal-overlay-navigation__link
-                          large-modal-overlay-navigation__link--callback',
-                  data: {
-                    container: '.large-modal-overlay__form--callback'
-                  } %>
-      <%= link_to '#large-modal-overlay__email',
-                  class: 'large-modal-overlay-navigation__link
-                          large-modal-overlay-navigation__link--phone',
-                  data: {
-                    container: '.large-modal-overlay__form--callback'
-                  } do %>
-        <span class="calltracks_bannerjonescouk-main">
-          <%= global_site_settings['Phone'] %>
-        </span>
-      <% end %>
-    </nav>
+      <nav class="large-modal-overlay-navigation">
+        <%= link_to 'Email Us',
+                    '#large-modal-overlay__email',
+                    class: 'large-modal-overlay-navigation__link
+                            large-modal-overlay-navigation__link--email
+                            large-modal-overlay-navigation__link--active',
+                    data: {
+                      container: '.large-modal-overlay__form--email'
+                    } %>
+        <%= link_to 'Request a callback',
+                    '#large-modal-overlay__email',
+                    class: 'large-modal-overlay-navigation__link
+                            large-modal-overlay-navigation__link--callback',
+                    data: {
+                      container: '.large-modal-overlay__form--callback'
+                    } %>
+        <%= link_to '#large-modal-overlay__email',
+                    class: 'large-modal-overlay-navigation__link
+                            large-modal-overlay-navigation__link--phone',
+                    data: {
+                      container: '.large-modal-overlay__form--callback'
+                    } do %>
+          <span class="calltracks_bannerjonescouk-main">
+            <%= global_site_settings['Phone'] %>
+          </span>
+        <% end %>
+      </nav>
 
-    <div class="large-modal-overlay__form large-modal-overlay__form--email">
-      <%= render 'contacts/shared/large_modal' %>
-    </div>
+      <div class="large-modal-overlay__form large-modal-overlay__form--email">
+        <%= render 'contacts/shared/large_modal' %>
+      </div>
 
-    <div class="large-modal-overlay__form large-modal-overlay__form--callback">
-      <%= render 'callback_requests/shared/large_modal' %>
-    </div>
+      <div class="large-modal-overlay__form large-modal-overlay__form--callback">
+        <%= render 'callback_requests/shared/large_modal' %>
+      </div>
 
-    <%= button_tag 'Close',
-                   class: 'large-modal-overlay__close large-modal-overlay-toggle--click',
-                   data: {
-                     container: '.large-modal-overlay'
-                   } %>
-  </section>
+      <%= button_tag 'Close',
+                    class: 'large-modal-overlay__close large-modal-overlay-toggle--click',
+                    data: {
+                      container: '.large-modal-overlay'
+                    } %>
+    </section>
+  </div>
 </div>

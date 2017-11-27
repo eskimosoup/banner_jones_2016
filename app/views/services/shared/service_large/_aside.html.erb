@@ -1,69 +1,79 @@
+<%= content_for :javascript do %>
+  <script>
+    $(function() {
+      var elements = $('.large-content-aside-sticky');
+      Stickyfill.add(elements);
+    });
+  </script>
+<% end %>
 <% # cache [@service, @service.audience] do %>
   <% present @service do |service_presenter| %>
-    <div class="large-content-aside-title">
-      <h2 style="color:<%= @service.colour %>" class="large-content-aside-title__text">
-        <%= image_tag @service.icon.small,
-                    alt: '',
-                    class: 'large-content-aside-title__icon' %>
+    <div class="large-content-aside-sticky">
+      <div class="large-content-aside-title">
+        <h2 style="color:<%= @service.colour %>" class="large-content-aside-title__text">
+          <%= image_tag @service.icon.small,
+                      alt: '',
+                      class: 'large-content-aside-title__icon' %>
 
-        <%= @service.title %>
-      </h2>
-    </div>
+          <%= @service.title %>
+        </h2>
+      </div>
 
-    <%= link_to @service.title,
-                '#large-content-aside-navigation',
-                class: 'slide-toggle
-                        large-content-aside-navigation__toggle',
-                data: {
-                  container: '.large-content-aside-navigation',
-                  return: false
-                } %>
+      <%= link_to @service.title,
+                  '#large-content-aside-navigation',
+                  class: 'slide-toggle
+                          large-content-aside-navigation__toggle',
+                  data: {
+                    container: '.large-content-aside-navigation',
+                    return: false
+                  } %>
 
-    <% if @service.parent.present? %>>
-      <%= link_to @service.parent.title,
-                  audience_service_path(@service.parent.audience, @service.parent),
-                  class: 'large-content-aside-parent-link' %>
-    <% end %>
-
-    <ul class="large-content-aside-navigation" id="large-content-aside-navigation">
-      <%= render partial: 'services/shared/service_pages_links' if @service.root == @service %>
-
-      <% @service.root.children.displayed_or_landing_page.order(:position).each do |child_service| %>
-        <% present child_service do |service_presenter| %>
-          <li class="large-content-aside-navigation__item">
-            <%= service_presenter.linked_text(
-                  service_presenter.title,
-                  {
-                    title: "Read #{service_presenter.title}",
-                    class: "large-content-aside-navigation__link #{'active' if child_service == @service}" }
-                ) %>
-            <%= render partial: 'services/shared/service_pages_links' if child_service == @service %>
-            <% if child_service.children && (child_service == @service || child_service.descendant_ids.include?(@service.id)) %>
-              <%= render partial: 'services/shared/service_page_aside_nested_navigation', locals: { child_service: child_service, index: 0 } %>
-            <% end %>
-          </li>
-        <% end %>
+      <% if @service.parent.present? %>>
+        <%= link_to @service.parent.title,
+                    audience_service_path(@service.parent.audience, @service.parent),
+                    class: 'large-content-aside-parent-link' %>
       <% end %>
 
-      <% if @service.title == 'Residential Property in London' || (@service.root.present? && @service.root.title == 'Residential Property in London') %>
-        <%= content_for :javascript do %>
-          <script>
-            $(function() {
-              // https://stackoverflow.com/a/6753486
-              var $select = $('.conveyancing-cta-button');
-              var $div = $('.conveyancing-cta-aside-button');
-              var attributes = $select.prop("attributes");
-              $.each(attributes, function() {
-                if(this.name == 'class') {
-                  return true;
-                }
-                $div.attr(this.name, this.value);
+      <ul class="large-content-aside-navigation" id="large-content-aside-navigation">
+        <%= render partial: 'services/shared/service_pages_links' if @service.root == @service %>
+
+        <% @service.root.children.displayed_or_landing_page.order(:position).each do |child_service| %>
+          <% present child_service do |service_presenter| %>
+            <li class="large-content-aside-navigation__item">
+              <%= service_presenter.linked_text(
+                    service_presenter.title,
+                    {
+                      title: "Read #{service_presenter.title}",
+                      class: "large-content-aside-navigation__link #{'active' if child_service == @service}" }
+                  ) %>
+              <%= render partial: 'services/shared/service_pages_links' if child_service == @service %>
+              <% if child_service.children && (child_service == @service || child_service.descendant_ids.include?(@service.id)) %>
+                <%= render partial: 'services/shared/service_page_aside_nested_navigation', locals: { child_service: child_service, index: 0 } %>
+              <% end %>
+            </li>
+          <% end %>
+        <% end %>
+
+        <% if @service.title == 'Residential Property in London' || (@service.root.present? && @service.root.title == 'Residential Property in London') %>
+          <%= content_for :javascript do %>
+            <script>
+              $(function() {
+                // https://stackoverflow.com/a/6753486
+                var $select = $('.conveyancing-cta-button');
+                var $div = $('.conveyancing-cta-aside-button');
+                var attributes = $select.prop("attributes");
+                $.each(attributes, function() {
+                  if(this.name == 'class') {
+                    return true;
+                  }
+                  $div.attr(this.name, this.value);
+                });
               });
-            });
-          </script>
+            </script>
+          <% end %>
+          <li><%= link_to 'Conveyancing Calcuator', new_conveyancing_quotes_location_users_path(ConveyancingQuotes::QuoteLocation.find(1)), class: 'conveyancing-cta-aside-button ga-event' %></li>
         <% end %>
-        <li><%= link_to 'Conveyancing Calcuator', new_conveyancing_quotes_location_users_path(ConveyancingQuotes::QuoteLocation.find(1)), class: 'conveyancing-cta-aside-button ga-event' %></li>
-      <% end %>
-    </ul>
-  <% end %>
+      </ul>
+    <% end %>
+  </div>
 <% # end %>

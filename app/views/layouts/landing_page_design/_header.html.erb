@@ -10,6 +10,15 @@
       Cookies.set(cookieName, '1', { expires: 365, secure: true });
       $('.cookie-warning').slideUp();
     });
+
+
+    $(document).on('click', '[data-container=".remote-callback-request-form-modal"]', function() {
+      $('.large-modal-overlay-navigation__link--callback').click();
+    });
+
+    $(document).on('click', '[data-container=".remote-contact-form-modal"]', function() {
+      $('.large-modal-overlay-navigation__link--email').click();
+    });
   </script>
 <% end %>
 
