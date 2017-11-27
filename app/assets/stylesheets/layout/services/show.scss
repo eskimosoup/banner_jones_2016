@@ -221,6 +221,7 @@
     font-weight: $museo-sans--medium;
     margin-bottom: rem(10px);
     margin-top: 0;
+    overflow: auto;
     padding-bottom: rem(8px);
 
     @include breakpoint(medium down) {
