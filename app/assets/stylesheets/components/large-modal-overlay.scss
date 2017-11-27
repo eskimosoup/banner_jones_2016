@@ -19,6 +19,12 @@
   }
 }
 
+.remote-callback-request-form-modal.remote-contact-form-modal.visible {
+  .large-modal-overlay {
+    display: block !important; // oh you little rebel, you :)
+  }
+}
+
 .large-modal-overlay {
   background-color: rgba($black, .75);
   bottom: 0;

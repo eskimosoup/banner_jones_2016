@@ -10,6 +10,15 @@
       Cookies.set(cookieName, '1', { expires: 365, secure: true });
       $('.cookie-warning').slideUp();
     });
+
+
+    $(document).on('click', '[data-container=".remote-callback-request-form-modal"]', function() {
+      $('.large-modal-overlay-navigation__link--callback').click();
+    });
+
+    $(document).on('click', '[data-container=".remote-contact-form-modal"]', function() {
+      $('.large-modal-overlay-navigation__link--email').click();
+    });
   </script>
 <% end %>
 
@@ -105,8 +114,8 @@
   <% end %>
 
   <div class="primary-header-main-navigation">
-    <div class="primary-header-main-navigation__navigation">
-      <ul class="primary-header-main-navigation__links large-offset-1">
+    <div class="primary-header-main-navigation__navigation xlarge-offset-1">
+      <ul class="primary-header-main-navigation__links">
         <li class="menu-item">
           <%= link_to root_url, class: 'primary-header-main-navigation__home', title: 'Go to the homepage' do %>
             <%= image_tag 'components/icons/navigation/home-outline.png', alt: 'Home' %>

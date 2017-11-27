@@ -164,34 +164,44 @@
       background-color: $deep-grey;
       border-left: 2px solid $light-purple;
       height: 100vh;
+      overflow: scroll;
       position: absolute;
       right: 0;
       width: 75%;
     }
 
-    @include breakpoint(medium only) {
+    @include media('>640px', '<770px') {
       @include flex-grid-column(12);
     }
 
-    @include breakpoint(large) {
+    @include media('>770px', '<1200px') {
       @include flex-grid-column(9);
+    }
+
+    @include media('>1200px') {
+      @include flex-grid-column(8);
     }
   }
 
   &__links {
     list-style: none;
+    position: relative;
 
     @include breakpoint(1636px) {
       bottom: -5px;
-      position: relative;
+      margin-left: rem(112px);
     }
   }
 
   &__search {
     margin-top: auto;
 
-    @include breakpoint(medium) {
+    @include breakpoint(small only) {
       @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(3);
     }
 
     @include breakpoint(large) {
@@ -208,8 +218,6 @@
   }
 
   .menu-item {
-    position: relative;
-
     @include breakpoint(medium) {
       display: inline-block;
     }
@@ -217,8 +225,14 @@
     &:hover,
     &:focus,
     &:active {
-      .dropdown {
+      .meganav-dropdown {
         display: block;
+      }
+
+      @include breakpoint(small only) {
+        .dropdown {
+          display: block;
+        }
       }
     }
 
@@ -235,6 +249,10 @@
         }
       }
     }
+  }
+
+  .meganav-dropdown-wrap {
+    margin-top: 14px;
   }
 
   .dropdown {
@@ -276,6 +294,10 @@
         }
       }
 
+      @include breakpoint(medium only) {
+        padding: rem(5px);
+      }
+
       @include breakpoint(medium) {
         display: block;
       }
@@ -290,10 +312,16 @@
 
     @include breakpoint(small only) {
       border-bottom: 1px solid $white;
+      padding: rem(10px 10px);
     }
 
     @include breakpoint(medium only) {
-      padding: rem(10px 12px);
+      font-size: rem(15px);
+      padding: rem(10px 5px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(18px);
     }
 
     &:link,

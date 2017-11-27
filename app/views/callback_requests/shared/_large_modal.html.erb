@@ -1,6 +1,6 @@
 <%= render 'shared/flash_messages' %>
 
-<%= form_for @callback_request, url: callback_requests_path, remote: true do |f| %>
+<%= form_for @callback_request, url: callback_requests_path, remote: true, html: { class: 'large-modal-remote-callback-request-form' } do |f| %>
   <% if @callback_request.errors.any? %>
     <div id="error_explanation">
       <h2>

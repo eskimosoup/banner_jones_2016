@@ -3,16 +3,6 @@
     <%= menu_item_presenter.link_to_webpage %>
     <%= menu_item_presenter.special_layout %>
 
-    <% if menu_item_presenter.audience? %>
-       <ul class="dropdown">
-        <%= render(
-          partial: "menu_items/shared/navigation_link",
-          collection: menu_item_presenter.destination.services.roots.displayed.order(:position),
-          as: :service
-        ) %>
-      </ul>
-    <% end %>
-
 
     <% if menu_item_presenter.has_children? %>
       <%= content_tag :ul, class: "dropdown depth-#{ depth }" do %>
