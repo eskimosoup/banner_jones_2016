@@ -27,8 +27,7 @@
 
   <aside class="page-additional-information">
     <%= render 'services/shared/sidebar_content' %>
-    <%= render 'services/shared/onpage_navigations_sidebar' if @onpage_navigations.present? && @page.content.present? %>
   </aside>
 </div>
 
-<%= render 'services/shared/onpage_navigations' if @onpage_navigations.present? && @page.content.blank? %>
+<%= render 'services/shared/onpage_navigations' if @onpage_navigations.present?  %>
