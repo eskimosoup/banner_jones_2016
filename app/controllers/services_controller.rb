@@ -3,12 +3,15 @@ class ServicesController < ApplicationController
   # before_action :find_service, only: :show
   # before_action :find_member_service, except: :show
 
+  skip_before_action :set_seo_variables, only: :show
+
   include ResourceHelper, TwitterHelper
 
   def show
     @service = find_service
     # return redirect_to '/pages/wealth-management' if @service.title == 'Wealth Management' && params[:preview].blank?
     return redirect_to nested_services_path(@service), status: :moved_permanently if request.path != nested_services_path(@service) # unless @service.friendly_id == params[:id]
+    set_seo_variables(@service)
     @onpage_navigations = @service.inherit_page_layout_content? ? @service.root.displayed_onpage_navigations : @service.displayed_onpage_navigations
     @onpage_navigation_links = @onpage_navigations.displayed_navigation_link
     @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
@@ -83,5 +86,14 @@ class ServicesController < ApplicationController
     elsif params[:service_id].present?
       params[:service_id]
     end
+  end
+
+  def set_seo_variables(service)
+    seo_entry = SeoEntry.find_by(nominal_url: audience_service_path(service.audience, service))
+    return unless seo_entry
+    @rich_snippet = seo_entry.rich_snippet
+    @title = seo_entry.title
+    @meta_description = seo_entry.meta_description
+    @meta_tags = seo_entry.title
   end
 end
