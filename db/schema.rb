@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171020153741) do
+ActiveRecord::Schema.define(version: 20171127160502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -195,6 +195,7 @@ ActiveRecord::Schema.define(version: 20171020153741) do
     t.boolean  "help_to_buy_isa",                                          default: false
     t.boolean  "shared_ownership_scheme",                                  default: false
     t.integer  "conveyancing_quotes_sale_and_purchases_id"
+    t.boolean  "first_time_buyer",                                         default: false
     t.index ["conveyancing_quotes_sale_and_purchases_id"], name: "sale_and_purchases_purchase_id", using: :btree
     t.index ["conveyancing_quotes_user_id"], name: "purchases_user_id", using: :btree
   end
@@ -362,10 +363,10 @@ ActiveRecord::Schema.define(version: 20171020153741) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",        null: false
-    t.boolean  "enabled"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -754,6 +755,19 @@ ActiveRecord::Schema.define(version: 20171020153741) do
     t.index ["resource_id"], name: "index_resources_downloads_on_resource_id", using: :btree
   end
 
+  create_table "resources_sections", force: :cascade do |t|
+    t.integer  "resource_id"
+    t.integer  "position",    default: 0
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
+    t.boolean  "display",     default: true
+    t.string   "style"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["resource_id"], name: "index_resources_sections_on_resource_id", using: :btree
+  end
+
   create_table "rich_snippets", force: :cascade do |t|
     t.decimal  "rating_value", precision: 2, scale: 1,                null: false
     t.integer  "rating_count",                                        null: false
@@ -817,7 +831,7 @@ ActiveRecord::Schema.define(version: 20171020153741) do
     t.string   "layout",                         default: "application", null: false
     t.string   "style",                          default: "basic",       null: false
     t.boolean  "landing_page",                   default: false
-    t.boolean  "show_contact_form"
+    t.boolean  "show_contact_form",              default: false
     t.boolean  "inherit_sidebar_text"
     t.boolean  "inherit_page_layout_content"
     t.boolean  "hide_preferred_office_on_forms"
@@ -1156,6 +1170,7 @@ ActiveRecord::Schema.define(version: 20171020153741) do
   add_foreign_key "resources_categorisations", "resource_categories"
   add_foreign_key "resources_categorisations", "resources"
   add_foreign_key "resources_downloads", "resources"
+  add_foreign_key "resources_sections", "resources"
   add_foreign_key "rich_snippets", "seo_entries"
   add_foreign_key "services", "audiences", on_delete: :nullify
   add_foreign_key "services_accreditations", "accreditations"

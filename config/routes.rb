@@ -175,6 +175,14 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module routes go below concerns
+  resources :resources do
+    resources :resources_sections,
+              except: :show,
+              concerns: %i[orderable toggleable imageable],
+              path: 'sections',
+              controller: 'resources/sections'
+  end
+
   namespace :conveyancing_quotes do
     resources :quote_locations do
       resources :users, only: %i[index show]
