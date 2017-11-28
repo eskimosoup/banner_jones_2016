@@ -1,0 +1,30 @@
+<div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= resource_presenter.id %>">
+  <div class="large-7 small-8 columns" data-equalizer-watch="module-list">
+    <%= resource_presenter.toggle_title %>
+  </div>
+  <div class="large-2 hide-for-medium-down columns" data-equalizer-watch="module-list">
+    <%= resource_presenter.edit_image(:image) %>
+  </div>
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= resource_presenter.view_link %>
+  </div>
+  <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+    <%= resource_presenter.edit_link %>
+  </div>
+  <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+    <%= resource_presenter.delete_link %>
+  </div>
+  <div class="row module-list-detail hide" id="index-list-<%= resource_presenter.id %>">
+    <div class="small-12 columns module-list-summary last">
+      <%= resource_presenter.optimadmin_summary %>
+    </div>
+  </div>
+  <div class="small-12 module-list-additional-row columns">
+    <div class="row collapse" id="index-list-<%= resource_presenter.id %>">
+      <div class="large-12 columns">
+        <%= resource_presenter.show_resource_downloads %>
+        <%= link_to 'Manage sections', resource_resources_sections_path(resource_presenter.id) %>
+      </div>
+    </div>
+  </div>
+</div>

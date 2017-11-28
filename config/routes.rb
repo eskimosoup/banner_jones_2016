@@ -103,6 +103,10 @@ Rails.application.routes.draw do
       get 'testimonials'
       get 'frequently-asked-questions'
 
+      resources :resources,
+                only: :show,
+                controller: 'services/resources'
+
       resources :service_pages,
                 only: :show,
                 path: 'pages',

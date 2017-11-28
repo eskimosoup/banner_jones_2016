@@ -1,4 +1,4 @@
-<%= form_for(model) do |f| %>
+<%= form_for model, url: (model.new_record? ? resource_resources_sections_path(@resource) : resource_resources_section_path(@resource, model)) do |f| %>
   <%= render 'optimadmin/shared/form_errors', model: model %>
 
   <%= render 'form_fields', f: f %>
