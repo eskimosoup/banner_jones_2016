@@ -1,0 +1,33 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Resources' %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <%= render 'optimadmin/shared/module/index/new_item', title: 'Resource', object: Resource, path: new_resource_path %>
+    <%= render 'optimadmin/shared/search_form' %>
+    <%= render 'optimadmin/shared/module/index/pagination' %>
+    <!-- <%= render 'optimadmin/shared/module/index/order', options: [['Title', 'title', 'Display', 'display']] %> -->
+    <%= render 'optimadmin/shared/module/index/recycle_bin', items: @resources.size, path: root_url %>
+  </div>
+  <div class="tabs prevent-flash">
+    <%= render 'optimadmin/shared/module/index/display_status_navigation', object: Resource %>
+    <div id="tabs-1">
+      <div class="row collapse module-list-index header">
+        <%= list_item 'large-7 small-8' do %>
+          <%= link_to octicon('chevron-down'), '#', class: 'helper-link index-list-expand-all', data: { this_class: 'octicon-chevron-up octicon-chevron-down' } %>
+          Title
+        <% end %>
+        <%= list_item('large-2 hide-for-medium-down') { 'Image' } %>
+        <%= list_item { 'View' } %>
+        <%= list_item { 'Edit' } %>
+        <%= list_item('large-1 hide-for-medium-down text-center last') { 'Delete' } %>
+      </div>
+      <!-- <div class="module-sortable" data-module="Resource"> -->
+      <%= render partial: 'resource', collection: @resources, as: :resource_presenter %>
+      <!-- </div> -->
+      <%= paginate @resources %>
+      <%= pagination_helper(@pagination_helper, 'resource') %>
+    </div>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-2' %>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-3' %>
+    <%= content_tag :div, (image_tag 'optimadmin/vendor/slick/ajax-loader.gif'), id: 'tabs-4' %>
+  </div>
+</div>
