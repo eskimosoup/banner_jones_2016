@@ -17,6 +17,7 @@ class ServicesController < ApplicationController
     @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
     @contact = Contact.new if @service.landing_page?
     @offices = nil if @service.hide_preferred_office_on_forms?
+    stamp_duty if @service.style == 'stamp_duty_calculator'
     render layout: @service.layout
   end
 
@@ -31,6 +32,10 @@ class ServicesController < ApplicationController
   end
 
   private
+
+  def stamp_duty
+    @stamp_duty_calculator = ConveyancingQuotes::StampDutyCalculator.new
+  end
 
   def nested_testimonials_path(service)
     if service.parent.present? && service.parent.parent.present?
