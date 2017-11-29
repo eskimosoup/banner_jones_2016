@@ -6,6 +6,7 @@
       if(!$(href).is(':visible')) {
         $('.conveyancing-service-process-item').slideUp();
         $(href).slideDown();
+        $(href + ' div:first-child').slideDown();
         $('.conveyancing-service-process-navigation__link--active').removeClass('conveyancing-service-process-navigation__link--active');
         $(this).addClass('conveyancing-service-process-navigation__link--active');
       }
@@ -19,6 +20,8 @@
       if(!$(href).is(':visible')) {
         $('.conveyancing-service-process').slideUp();
         $(href).slideDown();
+        $(href + ' div').hide();
+        $(href + ' .conveyancing-service-process-navigation__link:first').click();
         $('.conveyancing-service-stages-navigation__button--active').removeClass('conveyancing-service-stages-navigation__button--active');
         $(this).addClass('conveyancing-service-stages-navigation__button--active');
       }
