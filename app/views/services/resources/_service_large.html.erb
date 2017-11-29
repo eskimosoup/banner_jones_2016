@@ -30,24 +30,27 @@
 
 <div class="large-content">
   <aside class="large-content__aside">
-    <%= render 'services/shared/service_large/aside' %>
+    <div class="large-content-aside-sticky">
+      <%= render 'services/shared/service_large/aside' %>
 
-    <h3 style="color:<%= @service.colour %>" class="large-content-aside-title__text">
-      Downloads
-    </h3>
+      <h3 style="color:<%= @service.colour %>" class="large-content-aside-title__text">
+        Downloads
+      </h3>
 
-    <ul class="resource-aside">
-      <% @service.resources.each do |resource| %>
-        <li class="resource-aside">
-          <%= link_to resource.title,
-                      audience_service_resource_path(
-                        @service.audience,
-                        @service,
-                        resource
-                      ) %>
-        </li>
-      <% end %>
-    </ul>
+      <ul class="resource-aside">
+        <% @service.resources.each do |resource| %>
+          <li class="resource-aside__item">
+            <%= link_to resource.title,
+                        audience_service_resource_path(
+                          @service.audience,
+                          @service,
+                          resource
+                        ),
+                        class: 'resource-aside__link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </aside>
 
   <main class="large-content__main" style="background-image:url(<%= @service.image.url %>)">
