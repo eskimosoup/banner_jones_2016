@@ -35,7 +35,9 @@
 
 <div class="large-content">
   <aside class="large-content__aside">
-    <%= render 'services/shared/service_large/aside' %>
+    <div class="large-content-aside-sticky">
+      <%= render 'services/shared/service_large/aside' %>
+    </div>
   </aside>
 
   <main class="large-content__main" style="background-image:url(<%= @service.image.url %>)">

@@ -142,3 +142,46 @@
     }
   }
 }
+
+.resource-aside {
+  list-style: none;
+  margin: rem(0 0 20px 0);
+
+  &__link {
+    display: block;
+    font-size: rem(14px);
+    font-weight: $myriad-pro-semibold;
+
+    @include breakpoint(small only) {
+      border-bottom: 1px solid rgba($black, .15);
+      color: $white;
+      padding: rem(6px 10px);
+
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: rgba($black, .15);
+        color: $white;
+      }
+    }
+
+    @include breakpoint(medium) {
+      color: $black-grey;
+      padding: rem(6px 0);
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $red;
+      }
+    }
+
+    @include breakpoint(xxlarge) {
+      background-image: image-url('components/icons/download-grey.png');
+      background-position: center left;
+      background-repeat: no-repeat;
+      padding-left: rem(57px);
+    }
+  }
+}

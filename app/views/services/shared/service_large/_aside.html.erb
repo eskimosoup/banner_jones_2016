@@ -8,7 +8,6 @@
 <% end %>
 <% # cache [@service, @service.audience] do %>
   <% present @service do |service_presenter| %>
-    <div class="large-content-aside-sticky">
       <div class="large-content-aside-title">
         <h2 style="color:<%= @service.colour %>" class="large-content-aside-title__text">
           <%= image_tag @service.icon.small,
@@ -75,5 +74,4 @@
         <% end %>
       </ul>
     <% end %>
-  </div>
 <% # end %>
