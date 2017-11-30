@@ -5,6 +5,7 @@ module Services
 
     def show
       @resource = @service.resources.displayed.find(params[:id])
+      @other_resources = @service.resources.displayed.where.not(id: @resource.id)
       set_seo_variables(@resource)
       @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
       @contact = Contact.new if @service.landing_page?
