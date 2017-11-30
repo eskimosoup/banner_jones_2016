@@ -22,7 +22,7 @@
 
   <% present service.team_members.key_team_members.first do |team_member_presenter| %>
     <div class="meganav-dropdown-team-member-wrap">
-      <%= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member') %>
+      <%= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member', width: 130, height: 195) %>
       <div class="meganav-dropdown-team-member-name">
         <%= team_member_presenter.full_name %>
       </div>
