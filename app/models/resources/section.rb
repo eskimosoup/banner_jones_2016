@@ -11,7 +11,7 @@ module Resources
 
     mount_uploader :image, Resources::SectionUploader
 
-    STYLES = ['basic'].freeze
+    STYLES = ['basic', 'related_resources'].freeze
     validates :style, inclusion: { in: STYLES }
 
     scope :positioned, -> { order(:position) }
