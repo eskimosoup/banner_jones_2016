@@ -26,7 +26,7 @@
     <h1 class="service-page-title"><%= @office.page_title.present? ? @office.page_title : @office.office_location_name %></h1>
 
     <div class="offices-index-map" id="map-canvas" data-locations="[<%= @office.to_json %>]">
-      <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
+      <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', width: 54, height: 54 %>
     </div>
 
     <div class="page-inner-content" role="main">

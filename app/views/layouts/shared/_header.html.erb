@@ -55,7 +55,9 @@
     <% end %>
 
     <%= image_tag 'layout/header/legal-500.png', alt: 'Legal 500',
-                                                 class: 'the-legal-500' if defined?(legal_500) %>
+                                                 class: 'the-legal-500',
+                                                 width: 76,
+                                                 height: 95 if defined?(legal_500) %>
   </div>
 
   <div class="header-hamburger-menu">
@@ -65,7 +67,7 @@
                   class: 'mobile-expanded',
                   return: 'false'
                 } do %>
-      <%= image_tag 'components/icons/navigation/hamburger.png', alt: 'Navigation' %>
+      <%= image_tag 'components/icons/navigation/hamburger.png', alt: 'Navigation', width: 47, height: 47 %>
     <% end %>
   </div>
 
@@ -128,13 +130,13 @@
       <ul class="primary-navigation-links">
         <li class="menu-item">
           <%= link_to root_url, class: 'primary-navigation-home', title: 'Home' do %>
-            <%= image_tag 'components/icons/navigation/home.png', alt: 'Home' %>
+            <%= image_tag 'components/icons/navigation/home.png', alt: 'Home', width: 23, height: 24 %>
           <% end %>
         </li>
         <%= Rails.application.config.cache_store if Rails.env.development? %>
         <%= nested_menu_items(menu_items: @primary_header_menu.menu_items) %>
       </ul>
-      <%= link_to (image_tag 'components/icons/header/email.png', alt: 'Email'), new_contact_path, class: 'toggle-class sticky-sidebar-toggle',
+      <%= link_to (image_tag 'components/icons/header/email.png', alt: 'Email', width: 22, height: 18), new_contact_path, class: 'toggle-class sticky-sidebar-toggle',
                   title: 'Contact us',
                   data: { container: '.sticky-sidebar', class: 'hide' } if defined?(solicitors) %>
     </div>

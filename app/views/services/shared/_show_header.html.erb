@@ -26,12 +26,12 @@
 <% end %>
 
 <%= content_for :javascript do %>
-  <%= javascript_include_tag 'components/testimonials/slider.js' %>
-  <%= javascript_include_tag 'components/shared-components.js' %>
+  <%= render 'shared/inline_js/testimonials_slider' %>
+  <%= render 'shared/inline_js/shared_components' %>
   <%= javascript_include_tag 'components/team-members/slider.js' %>
   <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>
   <%= javascript_include_tag 'components/service-components.js' %>
-  <%= javascript_include_tag 'components/resources/hover.js' %>
+  <%= render 'shared/inline_js/resources_hover' %>
   <script>
     $(window).load(function() {
       $('.page-aside-navigation-content, .page-content').matchHeight();

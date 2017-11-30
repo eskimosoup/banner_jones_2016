@@ -91,7 +91,7 @@
   <div class="sticky-call-to-actions three">
     <%= link_to '#footer-callback-request', class: 'request-callback toggle-class',
       data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
-      <%= image_tag 'components/icons/sticky-callback.png', alt: 'Callback request' %>
+      <%= image_tag 'components/icons/sticky-callback.png', alt: 'Callback request', width: 23, height: 22 %>
       Request a Callback
     <% end %>
 
@@ -100,12 +100,12 @@
         container: '.remote-contact-form-modal', class: 'visible', return: 'false',
         event_category: 'Footer', event_action: 'Click', event_label: 'Submit Enquiry CTA Button'
       } do %>
-      <%= image_tag 'components/icons/sticky-email.png', alt: 'Send an enquiry' %>
+      <%= image_tag 'components/icons/sticky-email.png', alt: 'Send an enquiry', width: 20, heigth: 22 %>
       Make an Enquiry
     <% end %>
 
     <%= link_to team_members_path, class: 'find-a-lawyer' do %>
-      <%= image_tag 'components/icons/sticky-search.png', alt: 'Find a lawyer search' %>
+      <%= image_tag 'components/icons/sticky-search.png', alt: 'Find a lawyer search', width: 23, heigth: 22 %>
       Find a Lawyer
     <% end %>
   </div>
