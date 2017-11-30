@@ -28,3 +28,83 @@
     }
   }
 }
+
+
+//TEST CODE ALISTAIR
+
+.basic-page-summary {
+background: $red;
+border-bottom: solid 10px $orange;
+p {
+  text-align: center;
+  padding: 50px;
+  color: $white;
+}
+
+h1 {
+  text-align: center;
+  color: $white;
+  background: $dark-slate-blue;
+  font-size: 21px;
+  padding: 20px;
+  margin: 0;
+}
+}
+
+.basic-ordered-list {
+
+}
+.basic-unordered-list {
+  h1 {
+    text-align: center;
+    color: $dark-slate-blue;
+    background: $orange;
+    font-size: 21px;
+    padding: 20px;
+    margin: 0;
+  }
+}
+
+.basic-text-block {
+
+}
+
+.basic-image-block {
+  background: $red;  
+  h1 {
+    color: $dark-slate-blue;
+    display: inline-block;
+    font-size: 21px;
+    margin: 0;
+  }
+              img {
+                display: inline-block;
+              }
+               p {
+                img {
+                  display: inline-block;
+                }
+               } 
+}
+.basic-other-articles {
+
+}
+
+.creative-page-summary {
+
+}
+.creative-ordered-list {
+
+}
+.creative-unordered-list {
+
+}
+.creative-text-block {
+
+}
+.creative-image-block {
+
+}
+.creative-other-articles {
+
+}
