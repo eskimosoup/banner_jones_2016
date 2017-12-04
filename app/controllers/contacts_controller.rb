@@ -52,7 +52,8 @@ class ContactsController < ApplicationController
           .permit(:forename, :surname, :telephone, :email,
                   :preferred_contact_method, :preferred_office,
                   :how_heard, :from_url, :mediation,
-                  :service, :enquiry_type, :message, :wealth_management)
+                  :service, :enquiry_type, :message, :wealth_management,
+                  :large_modal)
   end
 
   def load_modules

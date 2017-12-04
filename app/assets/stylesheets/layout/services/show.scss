@@ -15,7 +15,7 @@
 
 .service-onpage-navigation {
   background: $offset-white;
-  padding:  0 0 rem(40px);
+  padding: 0 0 rem(40px);
 
   @media print {
     display: none;
@@ -93,4 +93,228 @@
 .promotion-call-to-action-icon {
   @include grid-column($columns: 2, $gutter: (small: 0));
   padding-top: rem(-10px);
+}
+
+.large-content {
+  @include flex-grid-row(null, 100%);
+
+  &__aside {
+    background: $white;
+
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(2);
+    }
+  }
+
+  &__main {
+    background-position: top left;
+    background-repeat: no-repeat;
+    padding-bottom: rem(20px);
+
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(10);
+    }
+
+    @include breakpoint(large only) {
+      padding-top: rem(85px);
+    }
+  }
+}
+
+.large-content-element {
+  @include flex-grid-row;
+  margin-top: rem(15px);
+
+  &__section {
+    @include flex-grid-column(12, (small: map-get($grid-column-gutter, small), large: 40));
+    background-color: $white;
+    position: relative;
+
+    &--onpage-navigation {
+      @include breakpoint(small only) {
+        padding-bottom: map-get($grid-column-gutter, small);
+        padding-top: map-get($grid-column-gutter, small);
+      }
+
+      @include breakpoint(medium) {
+        padding-top: rem(40px);
+      }
+    }
+
+    &--centered {
+      text-align: center;
+    }
+
+    &--articles {
+      @include breakpoint(medium) {
+        padding-bottom: rem(40px);
+        padding-top: rem(80px);
+      }
+    }
+  }
+
+  &__phone {
+    @include breakpoint(medium) {
+      color: $black-grey;
+      display: block;
+      font-size: rem(33px);
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.large-content-inner {
+  @include flex-grid-row;
+  margin-top: rem(40px);
+
+  &__main {
+    @include breakpoint(xlarge down) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(xxlarge) {
+      @include flex-grid-column(9);
+    }
+  }
+
+  &__aside {
+    @include breakpoint(xlarge down) {
+      @include flex-grid-column(12);
+
+      .service-team-member {
+        @include flex-grid-row;
+      }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
+      .service-team-member {
+        margin-bottom: rem(10px);
+      }
+
+      .conveyancing-service-key-team-member {
+        @include flex-grid-column(6);
+      }
+
+      .service-cta-block {
+        @include flex-grid-column(6);
+      }
+    }
+
+    @include breakpoint(xxlarge) {
+      @include flex-grid-column(3);
+    }
+  }
+
+  &__title {
+    border-bottom: 3px solid $orange;
+    color: $charcoal;
+    font-family: $museo-sans-rounded;
+    font-weight: $museo-sans--medium;
+    margin-bottom: rem(10px);
+    margin-top: 0;
+    overflow: auto;
+    padding-bottom: rem(8px);
+
+    @include breakpoint(medium down) {
+      font-size: rem(18px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(28px);
+    }
+  }
+
+  &__icon {
+    float: right;
+  }
+}
+
+.service-team-member {
+  @include large-design-team-member-styles;
+
+  &__phone {
+    font-family: $roboto;
+    font-size: rem(20px);
+    font-weight: $roboto--bold;
+  }
+
+  &--full-width {
+    @media screen and (min-width: 768px)  {
+      @include flex-grid-row;
+
+      p {
+        @include flex-grid-column(12);
+      }
+
+      .conveyancing-service-key-team-member {
+        @include flex-grid-column(6);
+      }
+
+      .service-cta-block {
+        @include flex-grid-column(6);
+
+        &__contact {
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+.large-content-inner-styles {
+  @include large-design-content-styles;
+}
+
+.service-cta-block {
+  @include flex-grid-row;
+  margin-top: rem(35px);
+
+  &__contact {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+      margin-bottom: rem(10px);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(6);
+    }
+
+    @media screen and (min-width: 768px) {
+      &:first-of-type {
+        @include flex-grid-column(4, (medium: 0));
+      }
+
+      &:last-of-type {
+        @include flex-grid-column(8);
+        border-left: 1px solid $white;
+      }
+    }
+  }
+
+  .conveyancing-footer__cta-button {
+    color: $orange;
+    font-family: $open-sans;
+    font-size: rem(14px);
+    font-weight: $open-sans-semibold;
+    padding: 0;
+  }
+}
+
+.service-rich-snippets {
+  background: $offset-white;
+}
+
+.rich-snippet {
+  &__rating {
+    margin-top: rem(10px);
+  }
 }

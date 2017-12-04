@@ -1,0 +1,11 @@
+const form = '<%= @callback_request.large_modal.present? ? '.large-modal-remote-callback-request-form' : '.remote-callback-request-form' %>'
+
+<% if @callback_request.large_modal.present? %>
+  $(form).html('<%= j render 'callback_requests/shared/large_modal' %>')
+<% else %>
+  $(form).html('<%= j render 'callback_requests/remote_form' %>')
+<% end %>
+
+<% if @callback_request.valid? %>
+  $(form + ' .field input, ' + form + ' .field select, ' + form + ' textarea').val('');
+<% end %>

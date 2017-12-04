@@ -17,7 +17,7 @@
 
   @include breakpoint(large) {
     display: inline-block;
-    margin-left: rem(75px);
+    margin-left: rem(35px);
   }
 }
 
@@ -189,4 +189,51 @@
 
 .header-notary-subtitle {
   font-size: em(16px, 25px);
+}
+
+
+.primary-full-header {
+  @include breakpoint(small only) {
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  @include breakpoint(medium) {
+    background: $white;
+    border-bottom: 5px solid $orange;
+    padding-left: rem(37px);
+    padding-right: rem(16px);
+  }
+}
+
+.primary-full-header-branding {
+  @include flex-grid-row(null, 100%);
+
+  @include breakpoint(small only) {
+    background: $white;
+    border-bottom: 5px solid $orange;
+    padding-bottom: map-get($grid-column-gutter, small);
+    padding-top: map-get($grid-column-gutter, small);
+  }
+
+  &__logo {
+    @include flex-grid-column(6);
+  }
+
+  &__contact {
+    @include flex-grid-column(6);
+    text-align: right;
+
+    @include breakpoint(small only) {
+      display: none;
+    }
+  }
+
+  .header-telephone,
+  .header-rich-snippets {
+    margin-top: 0;
+  }
 }

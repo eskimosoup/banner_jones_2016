@@ -25,7 +25,7 @@ module Extensions
           ::Office.order(:building_name)
         when 'pages'
           ::Page.order(:title)
-        when 'resource'
+        when 'resources'
           ::Resource.order(:title)
         # when 'resource_categories'
         #  ::ResourceCategory.order(:title)
@@ -65,8 +65,8 @@ module Extensions
           ::Office.displayed
         when 'pages'
           ::Page.displayed
-        when 'resource'
-          ::Resource.displayed
+        #when 'resource'
+          #::Resource.displayed
         # when 'resource_categories'
         #  ::ResourceCategory.displayed
         when 'services'

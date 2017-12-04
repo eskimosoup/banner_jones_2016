@@ -1,0 +1,106 @@
+.large-content-aside-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 1px;
+
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+}
+
+.large-content-aside-title {
+  &__text {
+    border-bottom: 3px solid $black;
+    font-size: rem(18px);
+    margin-bottom: rem(20px);
+    padding-bottom: rem(10px);
+    vertical-align: bottom;
+
+    @include breakpoint(small only) {
+      display: none;
+    }
+  }
+
+  &__icon {
+    margin-right: rem(10px);
+
+    @include breakpoint(xlarge down) {
+      display: block;
+    }
+  }
+}
+
+.large-content-aside-navigation {
+  list-style: none;
+
+  @include breakpoint(small only) {
+    display: none;
+    padding-bottom: rem(10px);
+  }
+
+  @include breakpoint(xxlarge) {
+    margin-left: rem(57px);
+  }
+
+  &__toggle {
+    background-image: image-url('components/icons/navigation/navigation-arrow-down-white.png');
+    background-position: center right 40px;
+    background-repeat: no-repeat;
+    color: $white;
+    display: block;
+    font-size: rem(18px);
+    padding: rem(10px 5px);
+
+    @include breakpoint(medium) {
+      display: none;
+    }
+
+    &.toggled {
+      background-image: image-url('components/icons/navigation/navigation-arrow-up.png');
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $white;
+    }
+  }
+
+  ul,
+  li {
+    margin: 0;
+  }
+
+  a {
+    display: block;
+    font-size: rem(14px);
+    font-weight: $myriad-pro-semibold;
+
+    @include breakpoint(small only) {
+      border-bottom: 1px solid rgba($black, .15);
+      color: $white;
+      padding: rem(6px 10px);
+
+
+      &:hover,
+      &:focus,
+      &:active {
+        background: rgba($black, .15);
+        color: $white;
+      }
+    }
+
+    @include breakpoint(medium) {
+      color: $black-grey;
+      padding: rem(6px 0);
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $red;
+      }
+    }
+  }
+}

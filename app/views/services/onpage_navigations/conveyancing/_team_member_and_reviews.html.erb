@@ -1,0 +1,84 @@
+<div class="conveyancing-content">
+  <div class="conveyancing-content__section conveyancing-content__section--full">
+    <section class="conveyancing-service-cta-block">
+
+      <div class="conveyancing-service-cta-block__team-member">
+        <p>
+          If you need a <strong>remortgage</strong> or
+          <strong>transfer of equity</strong>,
+          talk to our Residential Property Team today on:
+
+          <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
+                      class: 'conveyancing-call-to-action ga-event',
+                      data: {
+                        event_category: 'Conveyancing Calculator',
+                        event_action: 'Click',
+                        event_label:  'Phone'
+                      } do %>
+            <span class="calltracks_bannerjonescouk-main">
+              <%= global_site_settings['Phone'] %>
+            </span>
+          <% end %>
+        </p>
+
+        <div class="conveyancing-service-cta-block__contact">
+          <%= render partial: 'services/onpage_navigations/conveyancing/shared/team_member',
+                     collection: @service.team_members.key_team_members,
+                     cached: true,
+                     as: :team_member %>
+        </div>
+
+        <div class="conveyancing-service-cta-block__methods">
+          <div class="conveyancing-footer__contact">
+          <%= link_to '#',
+                    class: 'conveyancing-footer__cta-button toggle-class ga-event',
+                    data: {
+                      class: 'visible',
+                      container: '.remote-contact-form-modal',
+                      return: false,
+                      event_category: 'Conveyancing Calculator',
+                      event_action: 'Click',
+                      event_label:  'Email'
+                      } do %>
+            <%= image_tag 'components/icons/sticky-email.png', alt: 'Send an enquiry' %><br />
+            Email us
+          <% end %>
+          </div>
+          <div class="conveyancing-footer__contact">
+            <%= link_to '#',
+                      class: 'conveyancing-footer__cta-button toggle-class ga-event',
+                      data: {
+                        class: 'visible',
+                        container: '.remote-callback-request-form-modal',
+                        return: false,
+                        event_category: 'Conveyancing Calculator',
+                        event_action: 'Click',
+                        event_label:  'Request a callback'
+                      } do %>
+              <%= image_tag 'components/icons/sticky-callback.png', alt: 'Callback request' %><br />
+              Request a callback
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="conveyancing-service-cta-block__reviews">
+        <% if @rich_snippet.present? %>
+          <div class="service-rich-snippets">
+            <%= render(
+                    "rich_snippets/rich_snippet",
+                    rich_snippet: @rich_snippet
+                  ) %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="conveyancing-service-cta-block__accreditations">
+        <div class="conveyancing-service-cta-block__accreditations-list">
+          <%= image_tag 'components/conveyancing-calculator/conveyancing-accreditation.png', alt: 'Conveyancing Quality' %>
+          <%= image_tag 'components/conveyancing-calculator/conveyancing-award.png', alt: 'The Conveyancing Awards' %>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

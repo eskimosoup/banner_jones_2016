@@ -1,0 +1,6 @@
+<%= render 'optimadmin/shared/help_guides/sidebar', object: Resources::Section, area: 'new' %>
+<%= render 'optimadmin/shared/header/main_title', title: "New #{Resources::Section.model_name.human.titleize}" %>
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: resource_resources_sections_path(@resource), title: Resources::Section.model_name.human.titleize %>
+  <%= render 'form', model: @section %>
+</div>

@@ -1,0 +1,85 @@
+<% present @service do |service_presenter| %>
+  <div class="conveyancing-content">
+    <div class="conveyancing-content__section conveyancing-content__section--full">
+      <section class="conveyancing-service-cta-block">
+        <div class="conveyancing-service-content conveyancing-service-content--centered">
+          <div class="conveyancing-service-content__title">
+            <h2 style="<%= service_presenter.colour_property_helper('border-color') %>">
+              You can rely on Banner Jones
+            </h2>
+          </div>
+          <p>
+            With over 100 years of experience our support staff are here to help
+            you every step of the way. Remember this will probably be one of the
+            most important transactions you will ever make, so it’s important to
+            choose the very best support.
+          </p>
+        </div>
+        <ul class="conveyancing-service-cta-points">
+          <li class="conveyancing-service-cta-points__action">
+            <div class="conveyancing-service-cta-points__image-circle">
+              <%= image_tag 'components/conveyancing-calculator/cta-icons/thumbs-up.png',
+                            alt: '',
+                            class: 'conveyancing-service-cta-points__image' %>
+            </div>
+            <h3 class="conveyancing-service-cta-points__title">
+              Fixed Fees
+            </h3>
+            <div class="conveyancing-service-cta-points__content">
+              <p>
+                Our coveyancing quote is all inclusive and fixed, so there are so
+                suprises.
+              </p>
+            </div>
+          </li>
+          <li class="conveyancing-service-cta-points__action">
+            <div class="conveyancing-service-cta-points__image-circle" style="<%= service_presenter.colour_property_helper('background-color') %>">
+              <%= image_tag 'components/conveyancing-calculator/cta-icons/stopwatch.png',
+                            alt: '',
+                            class: 'conveyancing-service-cta-points__image' %>
+            </div>
+            <h3 class="conveyancing-service-cta-points__title">
+              We Start Right Away
+            </h3>
+            <div class="conveyancing-service-cta-points__content">
+              <p>
+                If you are buying, we can make a start right away.
+              </p>
+            </div>
+          </li>
+          <li class="conveyancing-service-cta-points__action">
+            <div class="conveyancing-service-cta-points__image-circle">
+              <%= image_tag 'components/conveyancing-calculator/cta-icons/progress-tracker.png',
+                            alt: '',
+                            class: 'conveyancing-service-cta-points__image' %>
+            </div>
+            <h3 class="conveyancing-service-cta-points__title">
+              Progress Case Tracker
+            </h3>
+            <div class="conveyancing-service-cta-points__content">
+              <p>
+                Our online case tracker allows you to follow progress anytime.
+              </p>
+            </div>
+          </li>
+          <li class="conveyancing-service-cta-points__action">
+            <div class="conveyancing-service-cta-points__image-circle" style="<%= service_presenter.colour_property_helper('background-color') %>">
+              <%= image_tag 'components/conveyancing-calculator/cta-icons/remote.png',
+                            alt: '',
+                            class: 'conveyancing-service-cta-points__image' %>
+            </div>
+            <h3 class="conveyancing-service-cta-points__title">
+              No Need to Visit Us
+            </h3>
+            <div class="conveyancing-service-cta-points__content">
+              <p>
+                Your time is precious so we can communicate with you by phone,
+                text message or email.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </div>
+<% end %>

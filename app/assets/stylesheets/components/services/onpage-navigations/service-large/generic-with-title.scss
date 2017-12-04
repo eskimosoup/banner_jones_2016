@@ -1,0 +1,217 @@
+.large-onpage-navigation-element {
+  @include flex-grid-row;
+  margin-bottom: rem(15px);
+  margin-top: rem(15px);
+
+  &__aside {
+    @include responsive-flex-grid-column((small: 12, large: 3));
+    background-color: $grey;
+    position: relative;
+
+    &::after {
+      @include breakpoint(large) {
+        @include triangle('right', $grey, 40px);
+        right: -20px;
+        top: 80px;
+      }
+    }
+  }
+
+  &__testimonials {
+    @include responsive-flex-grid-column((small: 12, medium: 3));
+    align-items: center;
+    background-color: $orange;
+    color: $grey;
+    display: flex;
+  }
+
+  &__section {
+    background-color: $white;
+
+    &:not(&--full):not(&--compact) {
+      @include breakpoint(medium down) {
+        @include flex-grid-column(12);
+        padding-top: map-get($grid-column-gutter, small);
+      }
+
+      @include breakpoint(large) {
+        @include flex-grid-column(9, (medium: 80))
+      }
+
+      @include breakpoint(medium only) {
+        padding-bottom: rem(20px);
+        padding-top: rem(20px);
+      }
+
+      @include breakpoint(large) {
+        padding-bottom: rem(40px);
+        padding-top: rem(40px);
+      }
+    }
+
+    &--full {
+      @include flex-grid-column(12);
+
+      @include breakpoint(medium only) {
+        padding-bottom: rem(20px);
+        padding-top: rem(20px);
+      }
+
+      @include breakpoint(large) {
+        padding-bottom: rem(40px);
+        padding-top: rem(40px);
+      }
+    }
+
+    &--compact {
+      @include breakpoint(small only) {
+        @include flex-grid-column(12, (small: 0));
+      }
+
+      @include breakpoint(medium) {
+        @include flex-grid-column(9, (medium: 0))
+      }
+    }
+
+    &--container {
+      margin: 0;
+      padding: 0;
+    }
+
+    .service-testimonials {
+      margin-bottom: 0;
+
+      @include breakpoint(medium only) {
+        .slick-dots {
+          position: static;
+        }
+      }
+    }
+  }
+
+  &__main-title {
+    color: $white;
+    font-family: $museo-sans-rounded;
+
+    @include breakpoint(small only) {
+      font-size: rem(18px);
+      margin-bottom: map-get($grid-column-gutter, small);
+      margin-top: map-get($grid-column-gutter, small);
+    }
+
+    @include breakpoint(medium) {
+      font-size: rem(24px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(30px);
+      margin-bottom: rem(80px);
+      margin-top: rem(80px);
+    }
+  }
+
+  &__overview {
+    color: $black-grey;
+    font-size: rem(16px);
+    text-align: center;
+    width: 100%;
+
+    @include breakpoint(large) {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 70%;
+    }
+  }
+
+  &__overview-emphasis {
+    display: block;
+
+    @include breakpoint(medium) {
+      font-size: rem(34px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(77px);
+    }
+  }
+}
+
+.onpage-navigation-view-more {
+  text-align: center;
+
+  @include breakpoint(small only) {
+    margin-bottom: rem(10px);
+  }
+}
+
+.onpage-navigation-button {
+  background-color: $black-grey;
+  color: $orange;
+  display: inline-block;
+  border-radius: 10px;
+  font-family: $roboto;
+  font-size: rem(13px);
+  font-weight: $roboto--bold;
+  padding: rem(8px 20px);
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $black;
+  }
+}
+
+.onpage-navigation-slider {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+
+  &--articles {
+    @include breakpoint(small only) {
+      margin: rem(10px);
+      position: static;
+      text-align: right;
+    }
+  }
+
+  &__button {
+    background-repeat: no-repeat;
+    display: inline-block;
+    height: 18px;
+    text-indent: -9999px;
+    padding-left: rem(10px);
+    padding-right: rem(10px);
+    width: 11px;
+
+    &--next:not(&--inverted) {
+      background-image: image-url('components/icons/content-box/next.png');
+    }
+
+    &--prev:not(&--inverted) {
+      background-image: image-url('components/icons/content-box/previous.png');
+    }
+
+    &--inverted {
+      &.onpage-navigation-slider__button--next {
+        background-image: image-url('components/icons/content-box/next-white.png');
+      }
+
+      &.onpage-navigation-slider__button--prev {
+        background-image: image-url('components/icons/content-box/previous-white.png');
+      }
+    }
+  }
+}
+
+.large-onpage-video {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 660px;
+  position: relative;
+
+  @include breakpoint(small only) {
+    .inline-colorbox {
+      display: none;
+    }
+  }
+}

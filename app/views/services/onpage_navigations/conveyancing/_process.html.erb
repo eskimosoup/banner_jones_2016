@@ -1,0 +1,227 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).on('click', '.conveyancing-service-process-navigation__link', function() {
+      var href = $(this).attr('href');
+
+      if(!$(href).is(':visible')) {
+        $('.conveyancing-service-process-item').slideUp();
+        $(href).slideDown();
+        $('.conveyancing-service-process-navigation__link--active').removeClass('conveyancing-service-process-navigation__link--active');
+        $(this).addClass('conveyancing-service-process-navigation__link--active');
+      }
+
+      return false;
+    });
+
+    $(document).on('click', '.conveyancing-service-stages-navigation__button', function() {
+      var href = $(this).attr('href');
+
+      if(!$(href).is(':visible')) {
+        $('.conveyancing-service-process').slideUp();
+        $(href).slideDown();
+        $(href + ' div').hide();
+        $(href + ' .conveyancing-service-process-navigation__link:first').click();
+        $('.conveyancing-service-stages-navigation__button--active').removeClass('conveyancing-service-stages-navigation__button--active');
+        $(this).addClass('conveyancing-service-stages-navigation__button--active');
+      }
+
+      return false;
+    });
+  </script>
+<% end %>
+
+
+<% present @service do |service_presenter| %>
+
+  <div class="conveyancing-content conveyancing-content--combined">
+    <nav class="conveyancing-content__section conveyancing-content__section--full">
+      <section class="conveyancing-service-cta-block">
+        <div class="conveyancing-service-content conveyancing-service-content--centered">
+          <div class="conveyancing-service-content__title">
+            <h2 style="<%= service_presenter.colour_property_helper('border-color') %>">See what happens in our conveyancing process</h2>
+          </div>
+
+          <div class="conveyancing-service-content__content">
+            <p>
+              Selling your home and buying a new one in London can be stressful. At
+              Banner Jones, we are expert conveyancing solicitors and we can take
+              away some of that pressure; we have a simplified and refined the
+              process that will do just that.
+            </p>
+          </div>
+        </div>
+
+        <div class="conveyancing-service-stages-navigation">
+          <%= link_to 'Buying Stages',
+                      '#buying-stages',
+                      class: 'conveyancing-service-stages-navigation__button
+                              conveyancing-service-stages-navigation__button--active' %>
+          <%= link_to 'Selling Stages',
+                      '#selling-stages',
+                      class: 'conveyancing-service-stages-navigation__button' %>
+        </div>
+      </section>
+
+      <div class="conveyancing-service-process conveyancing-service-process--selling" id="selling-stages">
+         <h3 class="conveyancing-service-process__title">
+          The <strong>3 Selling Stages</strong> to our Conveyancing process
+        </h3>
+
+        <nav class="conveyancing-service-process-navigation">
+          <%= link_to 'Drafting a contract',
+                      '#s-stage-1',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--first
+                              conveyancing-service-process-navigation__link--active' %>
+          <%= link_to 'Exchange of contracts',
+                      '#s-stage-2',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--second' %>
+          <%= link_to 'Completion',
+                      '#s-stage-3',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--third' %>
+        </nav>
+
+        <div class="conveyancing-service-process-item" id="s-stage-1">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+              If you're happy to accept the quote, we will send the relevant paperwork to begin the conveyancing process.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Contact your mortgage lender. Ask for a Final Redemption Statement. This document will tell us how much money is left outstanding on your mortgage.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We will contact the Land Registry and obtain the relevant information to make a draft version of your contract.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Once the contract is drafted, and you're happy with the terms and conditions, the buyer's solicitor will receive a copy.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              The buyer's solicitor will read the contract and begin conducting mandatory local searches on the property. This part of the process may take some time.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              The buyer's solicitor may ask some questions regarding the contract if so these queries will need addressing.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Once both parties are happy with the terms and conditions, a completion date can be arranged.
+            </li>
+          </ul>
+        </div>
+
+        <div class="conveyancing-service-process-item" id="s-stage-2">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+              When the contracts begin the exchange, the transaction is now officially legally binding.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              The deposit from the buyer is transferred to us from the buyer's solicitor.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We will request that you provide us with the Final Redemption Statement from your mortgage lender.
+            </li>
+          </ul>
+        </div>
+
+        <div class="conveyancing-service-process-item" id="s-stage-3">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+              By or on the agreed moving date, the buyer's solicitor will transfer the remaining balance of the property's asking price over to us.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Once the property has been paid in full, the estate agent will release the keys over to the new owner.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We will use the funds from the buyer to pay off your existing mortgage. Any balance outstanding from selling the property will be paid and you will receive any remaining balance.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Congratulations.  You have sold your home.
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="conveyancing-service-process conveyancing-service-process--buying" id="buying-stages">
+        <h3 class="conveyancing-service-process__title">
+          The <strong>3 Buying Stages</strong> to our Conveyancing process
+        </h3>
+
+        <nav class="conveyancing-service-process-navigation">
+          <%= link_to 'Search and paperwork',
+                      '#b-stage-1',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--first
+                              conveyancing-service-process-navigation__link--active' %>
+          <%= link_to 'Exchange of contracts',
+                      '#b-stage-2',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--second' %>
+          <%= link_to 'Completion',
+                      '#b-stage-3',
+                      class: 'conveyancing-service-process-navigation__link
+                              conveyancing-service-process-navigation__link--third' %>
+        </nav>
+
+        <div class="conveyancing-service-process-item" id="b-stage-1">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+              Agree quote then sign and return your Client care letter,
+              instructing us to work on your behalf
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We contact the sellers’ solicitor for the property information,
+              deeds and contract
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We conduct local authority searches (can take 2 weeks to come back)
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We receive your mortgage offer (where applicable)
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We review the search results and property info and raise any queries
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              You arrange the 10% deposit (where applicable)
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              We request contract signing
+            </li>
+          </ul>
+        </div>
+
+        <div class="conveyancing-service-process-item" id="b-stage-2">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+              Agree on a completion date, so that both parties know when the ownership of the property will be exchanged.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Once you are happy with the agreement, you will need to pay the deposit and sign the contract. After signing the after, the transaction becomes legally binding.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Your solicitor will request money from your mortgage lender.
+            </li>
+          </ul>
+        </div>
+
+        <div class="conveyancing-service-process-item" id="b-stage-3">
+          <ul class="conveyancing-service-process-point">
+            <li class="conveyancing-service-process-point__item">
+              The financial transaction and ownership of the property must be processed on or by the completion date. Once done, the buyer will be given the keys to their new property.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Congratulations. You officially own the property.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              If any Stamp Duty Land Tax is owed on the property, your solicitor will arrange this transaction.
+            </li>
+            <li class="conveyancing-service-process-point__item">
+              Your solicitor will inform the Land Registry that the ownership of the property has changed.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<% end %>
