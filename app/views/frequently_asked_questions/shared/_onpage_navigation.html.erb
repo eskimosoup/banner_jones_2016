@@ -1,0 +1,24 @@
+<% cache frequently_asked_question do %>
+  <div class="onpage-navigation-frequently-asked-question">
+    <%= link_to "#faq-#{frequently_asked_question.id}",
+                class: 'onpage-navigation-frequently-asked-question__question
+                        toggle-class
+                        ga-event',
+                data: {
+                  container: "#faq-#{frequently_asked_question.id}",
+                  class: "onpage-navigation-frequently-asked-question__answer--hidden",
+                  return: false,
+                  event_category: 'Frequently Asked Question',
+                  event_action: 'Click',
+                  event_title: frequently_asked_question.question
+                } do %>
+      <%= frequently_asked_question.question %>
+    <% end %>
+
+    <div id="faq-<%= frequently_asked_question.id %>" class="onpage-navigation-frequently-asked-question__answer onpage-navigation-frequently-asked-question__answer--hidden">
+      <div class="onpage-navigation-frequently-asked-question__inner">
+        <%= raw frequently_asked_question.answer %>
+      </div>
+    </div>
+  </div>
+<% end %>

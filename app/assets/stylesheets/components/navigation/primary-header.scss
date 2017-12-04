@@ -127,3 +127,237 @@
     padding: rem(18px) 0 rem(12px);
   }
 }
+
+.primary-header-main-navigation-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  @include breakpoint(medium) {
+    display: none;
+  }
+}
+
+.primary-header-main-navigation {
+  @include flex-grid-row(null, 100%);
+  justify-content: space-between;
+
+  /*
+  @include breakpoint(small only) {
+    margin-bottom: rem(10px);
+    margin-top: rem(10px);
+    padding-left: map-get($grid-column-gutter, small);
+    padding-right: map-get($grid-column-gutter, small);
+  }
+  */
+
+  @include breakpoint(small only) {
+    display: none;
+  }
+
+  @include breakpoint(medium) {
+    margin-top: rem(25px);
+  }
+
+  &__navigation {
+    @include breakpoint(small only) {
+      background-color: $deep-grey;
+      border-left: 2px solid $light-purple;
+      height: 100vh;
+      overflow: scroll;
+      position: absolute;
+      right: 0;
+      width: 75%;
+    }
+
+    @include media('>640px', '<770px') {
+      @include flex-grid-column(12);
+    }
+
+    @include media('>770px', '<1200px') {
+      @include flex-grid-column(9);
+    }
+
+    @include media('>1200px') {
+      @include flex-grid-column(8);
+    }
+  }
+
+  &__links {
+    list-style: none;
+    position: relative;
+
+    @include breakpoint(1636px) {
+      bottom: -5px;
+      margin-left: rem(112px);
+    }
+  }
+
+  &__search {
+    margin-top: auto;
+
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(3);
+    }
+
+    @include breakpoint(large) {
+      @include flex-grid-column(2);
+    }
+  }
+
+  &__home {
+    padding-right: rem(25px);
+
+    @include breakpoint(small only) {
+      display: none;
+    }
+  }
+
+  .menu-item {
+    @include breakpoint(medium) {
+      display: inline-block;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      .meganav-dropdown {
+        display: block;
+      }
+
+      @include breakpoint(small only) {
+        .dropdown {
+          display: block;
+        }
+      }
+    }
+
+    &.has-children > .menu-link {
+      @include breakpoint(small only) {
+        background-image: image-url('components/icons/navigation/navigation-arrow-down.png');
+        background-position: center right 20px;
+        background-repeat: no-repeat;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-image: image-url('components/icons/navigation/navigation-arrow-up.png');
+        }
+      }
+    }
+  }
+
+  .meganav-dropdown-wrap {
+    margin-top: 14px;
+  }
+
+  .dropdown {
+    background: $white;
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding-bottom: rem(10px);
+    padding-top: rem(10px);
+
+    @include breakpoint(medium) {
+      border: 1px solid $orange;
+      line-height: 1.25;
+      min-width: 250px;
+      position: absolute;
+      z-index: 10;
+    }
+
+    @include breakpoint(medium) {
+      .menu-item {
+        border-bottom: 1px dotted $orange;
+        display: block;
+      }
+    }
+
+
+    .menu-link {
+      font-size: rem(16px);
+      padding: rem(5px 20px);
+
+      @include breakpoint(small only) {
+        border-bottom: 0;
+
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: $deep-grey;
+          color: $black;
+        }
+      }
+
+      @include breakpoint(medium only) {
+        padding: rem(5px);
+      }
+
+      @include breakpoint(medium) {
+        display: block;
+      }
+    }
+  }
+
+  .menu-link {
+    display: block;
+    font-family: $myriad-pro;
+    font-size: rem(18px);
+    padding: rem(10px 15px);
+
+    @include breakpoint(small only) {
+      border-bottom: 1px solid $white;
+      padding: rem(10px 10px);
+    }
+
+    @include breakpoint(medium only) {
+      font-size: rem(15px);
+      padding: rem(10px 5px);
+    }
+
+    @include breakpoint(large) {
+      font-size: rem(18px);
+    }
+
+    &:link,
+    &:visited {
+      @include breakpoint(small only) {
+        color: $black;
+      }
+
+      @include breakpoint(medium) {
+        color: $offset-black;
+      }
+    }
+
+    &:hover,
+    &:focus,
+    &.active {
+      background-color: $red;
+      color: $white;
+    }
+  }
+}
+
+.primary-header-search-form {
+  @include breakpoint(small only) {
+    display: none;
+  }
+
+  &__input {
+    background-color: $background-grey;
+    background-image: image-url('components/icons/search.png');
+    background-position: right 20px center;
+    background-repeat: no-repeat;
+    border: 2px solid $lighter-grey;
+    border-radius: 10px;
+    font-size: rem(14px);
+    margin-bottom: rem(5px);
+    padding-right: rem(45px);
+  }
+}

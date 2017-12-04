@@ -1,0 +1,97 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.articles-slick-<%= onpage_navigation.id %>').slick({
+        arrows: true,
+        dots: false,
+        autoplay: false,
+        autoplaySpeed: 6000,
+        infinite: true,
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        nextArrow: '.articles-slick-<%= onpage_navigation.id %>-next',
+        prevArrow: '.articles-slick-<%= onpage_navigation.id %>-prev',
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ],
+        responsive: [
+          {
+            breakpoint: 1024,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+    });
+  </script>
+<% end %>
+
+
+<%
+articles = onpage_navigation.articles.displayed
+articles = @service.articles.displayed if articles.blank?
+%>
+<section class="large-content-element">
+  <div class="large-onpage-navigation-element__aside">
+    <h1 class="large-onpage-navigation-element__main-title">
+      Latest News
+    </h1>
+  </div>
+  <div class="large-onpage-navigation-element__section large-content-element__section--articles">
+    <div class="onpage-navigation-slider onpage-navigation-slider--articles">
+      <%= button_tag 'Previous', class: "onpage-navigation-slider__button onpage-navigation-slider__button--prev articles-slick-#{onpage_navigation.id}-prev" %>
+      <%= button_tag 'Next', class: "onpage-navigation-slider__button onpage-navigation-slider__button--next articles-slick-#{onpage_navigation.id}-next" %>
+    </div>
+
+    <div class="articles-slick-<%= onpage_navigation.id %>">
+      <% articles.limit(onpage_navigation.results_limit).each_with_index do |article, index| %>
+        <% cache [article, article.team_members.map(&:updated_at).max].compact do %>
+          <div class="onpage-navigation-article">
+            <% present article do |article_presenter| %>
+              <% article.team_members.each do |team_member| %>
+                <div class="onpage-navigation-article-team-member">
+                  <% present team_member do |team_member_presenter| %>
+                    <div class="onpage-navigation-article-team-member__details">
+                      <div class="onpage-navigation-article-team-member__name">
+                        <%= team_member_presenter.full_name %>
+                      </div>
+                      <div class="onpage-navigation-article-team-member__roles">
+                        <%= team_member_presenter.service_titles %>
+                      </div>
+                    </div>
+                    <div class="onpage-navigation-article-team-member__image team-member-avatar">
+                      <%= team_member_presenter.small_image(alt: team_member_presenter.full_name) %>
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+
+              <%= article_presenter.linked_text(
+                  article.title,
+                  { title: "Read #{article_presenter.title}", class: 'onpage-navigation-article__title' }
+               ) %>
+
+              <div class="onpage-navigation-article__date">
+                <%= article_presenter.date(:short) %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="onpage-navigation-view-more">
+      <%= link_to 'See all news',
+                  articles_path,
+                  class: 'onpage-navigation-button' %>
+    </div>
+  </div>
+</section>

@@ -2,7 +2,7 @@ Rails.application.configure do
   config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
   Rails.application.routes.default_url_options[:host] = 'https://www.bannerjones.co.uk'
- config.action_controller.asset_host = "https://www.bannerjones.co.uk"
+  # config.action_controller.asset_host = "https://www.bannerjones.co.uk"
 
   # config.action_mailer.delivery_method = :sendmail
   # config.action_mailer.sendmail_settings = {
@@ -40,7 +40,7 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
   # Compress JavaScripts and CSS.
-  config.assets.js_compressor = :uglifier
+  #config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.

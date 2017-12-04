@@ -1,0 +1,24 @@
+<%= render 'shared/flash_messages' %>
+
+<%= form_for @contact, url: contacts_path, remote: true, html: { class: 'remote-contact-form-event large-modal-remote-contact-form' } do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize @contact.errors.count, 'error' %> prevented this message from being sent
+      </h2>
+      <ul>
+        <% @contact.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if (@page.present? && @page.layout == 'wealth_management') || @contact.wealth_management.present? %>
+    <%= render partial: 'contacts/shared/remote_form_fields_wealth_management', locals: { f: f }  %>
+  <% elsif (@service.present? && @service.title == 'Mediation') || @contact.mediation.present? %>
+    <%= render partial: 'contacts/shared/large_modal/fields_solicitors', locals: { f: f, mediation: true } %>
+  <% else %>
+    <%= render partial: 'contacts/shared/large_modal/fields_solicitors', locals: { f: f } %>
+  <% end %>
+<% end %>

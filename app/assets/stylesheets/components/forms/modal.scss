@@ -1,0 +1,92 @@
+.field--full {
+  height: 100%;
+}
+
+.modal-form {
+  @include breakpoint(medium) {
+    &__split {
+      @include flex-grid-row(collapse);
+    }
+
+    &__details {
+      @include flex-grid-column(9, (medium: 5));
+    }
+
+    &__aside {
+      @include flex-grid-column(3, (medium: 5));
+      padding-top: rem(24px);
+    }
+  }
+
+  &__fields {
+    @include breakpoint(medium) {
+      @include flex-grid-row(collapse);
+    }
+
+    .field {
+      @include breakpoint(medium) {
+        @include flex-grid-column(3, (medium: 5));
+      }
+    }
+  }
+
+  &__field {
+    @include conveyancing-input;
+
+    &--bordered {
+      border-width: 1px;
+
+      &:focus {
+        border-width: 1px;
+      }
+    }
+
+    &--full {
+      @include breakpoint(medium) {
+        height: calc(100% - 103px);
+      }
+    }
+  }
+
+  &__select {
+    @include conveyancing-select;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0;
+    padding: rem(7px);
+
+    @include breakpoint(large) {
+      background: $white image-url('components/icons/modal/select-icon.png') no-repeat center right 10px;
+      background-size: 20px 20px;
+    }
+
+    &--bordered {
+      border-width: 1px;
+
+      &:focus {
+        border-width: 1px;
+      }
+    }
+
+    &:focus {
+      outline: 0;
+    }
+  }
+
+  &__label {
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__submit {
+    @include secondary-submit;
+    background-color: $orange;
+    color: $black;
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+  }
+}

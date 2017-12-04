@@ -1,0 +1,18 @@
+<% cache [onpage_navigation, onpage_navigation.content_items.displayed.limit(onpage_navigation.results_limit).map(&:updated_at).max] do %>
+  <% onpage_navigation.content_items.displayed.limit(onpage_navigation.results_limit).each do |content_item| %>
+    <% present content_item do |content_item_presenter| %>
+      <section class="large-content-element">
+        <div class="large-onpage-navigation-element__aside">
+          <h1 class="large-onpage-navigation-element__main-title">
+            <%= content_tag :h1, content_item_presenter.title, class: 'large-onpage-navigation-element__main-title' if content_item_presenter.title.present? %>
+          </h1>
+        </div>
+        <div class="large-onpage-navigation-element__section">
+          <div class="large-content-inner-styles">
+            <%= content_item_presenter.content %>
+          </div>
+        </div>
+      </section>
+    <% end %>
+  <% end %>
+<% end %>

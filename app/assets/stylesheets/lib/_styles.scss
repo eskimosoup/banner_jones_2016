@@ -171,6 +171,60 @@
   }
 }
 
+
+@mixin refreshed-page-content($paragraph: true) {
+  // https://benfrain.com/working-with-lists-and-each-loops-in-sass-with-the-index-and-nth-function/
+  $heading-size: 33 31 29 27 26 25;
+
+  @for $i from 1 through length($heading-size) {
+    h#{$i} {
+      color: $black-grey;
+      border-bottom: 3px solid $orange;
+      font-family: $museo-sans-rounded;
+      font-size: rem((nth($heading-size, $i) - 3));
+      font-weight: $museo-sans--medium;
+      line-height: 1.1;
+      margin: rem(20px) 0;
+      padding-bottom: rem(5px);
+
+      @include breakpoint(large) {
+        font-size: rem(nth($heading-size, $i));
+      }
+
+      &.without-underline {
+       border-bottom: 0;
+       padding-bottom: 0;
+      }
+    }
+  }
+
+  @if $paragraph {
+    p,
+    li {
+      @include paragraph;
+      font-family: $open-sans;
+      font-size: rem(16px);
+    }
+  }
+
+
+  a:not(.see-all):not(.module-categories-dropdown-list a) {
+    color: $red;
+
+    &:link,
+    &:visited {
+      color: $red;
+    }
+
+    &:hover,
+    &:active {
+      color: $red;
+      text-decoration: underline;
+    }
+  }
+}
+
+
 @mixin success-checkmark {
   $curve: cubic-bezier(.650, .000, .450, 1);
 
@@ -210,8 +264,55 @@
   }
 
   &--currency {
-    background: image-url('layout/conveyancing-calculator/pound-sign.png') no-repeat center left 12px,
-                $gradient;
+    background-image: image-url('layout/conveyancing-calculator/pound-sign.png'), $gradient;
+    background-repeat: no-repeat, repeat;
+    background-position: center left 12px, top left;
+    background-clip: padding-box;
+    padding-left: rem(45px);
+  }
+
+  &:not(&--bordered) {
+    border-color: transparent;
+  }
+
+  &--bordered {
+    border-color: rgba($offset-blue, .5);
+  }
+
+  &:focus {
+    border-color: $orange;
+    border-width: 3px;
+    box-shadow: none;
+    transition: border .15s linear;
+  }
+}
+
+@mixin conveyancing-select {
+  $gradient: linear-gradient(to bottom, rgba($light-grey, 1) 0%, rgba($white, 1) 50%);
+  background: $gradient;
+  background-clip: padding-box;
+  background-color: $white;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  color: $grey;
+  font-family: $roboto;
+  font-size: rem(15px);
+  height: auto;
+  margin-bottom: rem(5px);
+  padding: rem(15px);
+
+  &--valid {
+    .conveyancing-landing-page-hero-form__success {
+      @include success-checkmark;
+      opacity: 1;
+    }
+  }
+
+  &--currency {
+    background-image: image-url('layout/conveyancing-calculator/pound-sign.png'), $gradient;
+    background-repeat: no-repeat, repeat;
+    background-position: center left 12px, top left;
     background-clip: padding-box;
     padding-left: rem(45px);
   }
@@ -368,6 +469,7 @@
   }
 }
 
+
 // Nice design elements
 // http://hackingui.com/front-end/10-best-scss-utilities/
 // @include triangle within a pseudo element and add positioning properties (ie. top, left)
@@ -393,5 +495,45 @@
     border-bottom: 1 / 2 * $size solid transparent;
     border-left: $size solid $color;
     border-top: 1 / 2 * $size solid transparent;
+  }
+}
+
+@mixin large-design-team-member-styles {
+  background: $black-grey-offset;
+  border: 6px solid $orange;
+  color: $white;
+  padding: rem(25px);
+}
+
+@mixin large-design-content-styles {
+  $heading-size: 28 25 23 21 19 16;
+
+  @for $i from 1 through length($heading-size) {
+    h#{$i} {
+      border-bottom: 1px solid $blue-purple-offset;
+      font-family: $museo-sans-rounded;
+      font-size: rem(nth($heading-size, $i));
+      font-weight: $museo-sans--bold;
+      margin-bottom: rem(7px);
+      padding-bottom: rem(7px);
+    }
+  }
+
+  a {
+    border-bottom: 2px solid $orange;
+    padding-bottom: rem(2px);
+
+    &:link,
+    &:visited {
+      color: $black;
+      font-weight: $myriad-pro-semibold;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      border-bottom-color: $black;
+      color: $black;
+    }
   }
 }

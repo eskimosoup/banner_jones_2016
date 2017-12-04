@@ -35,3 +35,28 @@
     display: none;
   }
 }
+
+
+.primary-header-aside-navigtaion {
+  list-style: none;
+  margin-bottom: rem(30px);
+  text-align: right;
+
+  @include breakpoint(small only) {
+    display: none;
+  }
+
+  .menu-item {
+    display: inline-block;
+  }
+
+  .menu-link {
+    color: $light-slate-blue;
+    padding-left: rem(12px);
+    padding-right: rem(12px);
+  }
+
+  .dropdown {
+    display: none;
+  }
+}

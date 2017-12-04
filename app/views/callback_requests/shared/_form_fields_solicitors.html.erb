@@ -19,7 +19,7 @@
     <%= f.label :callback_time %>
     <%= f.select :callback_time, options_for_select(CallbackRequest::TIMES) %>
   </div>
-  
+
   <% if @offices.present? %>
     <div class="field">
       <%= f.label :preferred_office %>

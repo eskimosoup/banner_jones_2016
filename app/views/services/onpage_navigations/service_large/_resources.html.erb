@@ -1,0 +1,109 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.resources-slick-<%= onpage_navigation.id %>').slick({
+        arrows: true,
+        dots: false,
+        autoplay: false,
+        autoplaySpeed: 6000,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        nextArrow: '.resources-slick-<%= onpage_navigation.id %>-next',
+        prevArrow: '.resources-slick-<%= onpage_navigation.id %>-prev',
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ],
+        responsive: [
+          {
+            breakpoint: 1440,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+    });
+  </script>
+<% end %>
+
+<%
+resources = onpage_navigation.resources.displayed
+resources = @service.resources.displayed if resources.blank?
+%>
+
+<section class="large-onpage-resources">
+  <div class="large-onpage-resources__section">
+    <div class="onpage-navigation-controls">
+      <div class="onpage-navigation-slider">
+      <%= link_to 'See all',
+                    resources_path,
+                    class: 'onpage-navigation-button' %>
+
+        <%= button_tag 'Previous', class: "onpage-navigation-slider__button onpage-navigation-slider__button--prev onpage-navigation-slider__button--inverted resources-slick-#{onpage_navigation.id}-prev" %>
+        <%= button_tag 'Next', class: "onpage-navigation-slider__button onpage-navigation-slider__button--next onpage-navigation-slider__button--inverted resources-slick-#{onpage_navigation.id}-next" %>
+      </div>
+
+      <h1 class="large-onpage-resources__title">
+        Our Helpful Guides
+      </h1>
+    </div>
+
+    <div class="large-onpage-resources__resources">
+      <div class="resources-slick-<%= onpage_navigation.id %>">
+        <% resources.each do |resource| %>
+          <% present resource do |resource_presenter| %>
+            <div class="onpage-resource">
+              <div class="onpage-resource__content">
+                <h2 class="onpage-resource__title">
+                  <%= resource_presenter.title %>
+                </h2>
+
+                <%= resource_presenter.linked_download(
+                      resource_presenter.show_image(
+                        {
+                          alt: resource_presenter.title,
+                          class: 'onpage-resource__image'
+                        }
+                      ),
+                      {
+                        title: resource_presenter.title,
+                        target: '_blank'
+                      }
+                    ) if resource_presenter.index_image.present? %>
+
+                <%= resource_presenter.linked_download(
+                      image_tag 'components/icons/download-bold.png',
+                                alt: '',
+                                class: 'onpage-resource__download'
+                    ) %>
+              </div>
+
+              <%= link_to resource.file.url,
+                          class: 'onpage-resource__summary ga-event',
+                          data: {
+                            event_category: 'Guide',
+                            event_action: 'Click',
+                            event_title: resource_presenter.title
+                          } do %>
+                <div class="onpage-resource__title">
+                  <%= resource_presenter.title %>
+                </div>
+
+                <%= resource_presenter.summary %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+

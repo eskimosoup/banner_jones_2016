@@ -1,0 +1,155 @@
+<% if defined?(wealth_management) %>
+  <div class="wealth-management-disclaimer-wrap">
+    <div class="wealth-management-content">
+      Banner Jones Wealth Management is:
+      <ul>
+        <li>the trading name of Banner Jones Wealth Management LLP (registered in England &amp; Wales, number OC380075)</li>
+        <li>a separate legal entity to Banner Jones ltd</li>
+        <li>is not a law firm authorised or regulated by the Solicitors Regulation Authority</li>
+        <li>an Appointed Representative of Future Life Wealth Management Ltd which is authorised and regulated by the Financial Conduct Authority.</li>
+    </div>
+  </div>
+<% end %>
+
+<div class="social-footer">
+  <div class="social-types">
+    <div class="social-networks">
+      <h5 class="social-title">Social</h5>
+
+      <%= social_icon 'Twitter' %>
+      <%= social_icon 'YouTube' %>
+      <%= social_icon 'LinkedIn' %>
+      <%= social_icon 'Google Plus' %>
+      <%= social_icon 'Facebook' %>
+    </div>
+
+    <div class="social-contact-methods">
+      <div class="contact-method">
+        <span class="contact-method-accent">
+          e:
+        </span>
+        <%= mail_to global_site_settings['Email'], global_site_settings['Email'], class: "ga-event", data: { event_category: 'Footer', event_action: 'Click', event_label: 'Email address' }  %>
+      </div>
+
+      <div class="contact-method">
+        <span class="contact-method-accent">
+          t:
+        </span>
+        <% if yield(:custom_telephone).present? %>
+          <% phone = yield(:custom_telephone) %>
+        <% elsif !defined?(phone) %>
+          <% phone = global_site_settings['Phone'] %>
+        <% end %>
+
+        <% if phone.present? %>
+          <%= link_to "tel:#{phone.tr(' ', '')}" do %>
+            <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
+              <%= phone %>
+            </span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="primary-footer">
+  <div class="awards-and-accreditations">
+    <div class="awards-and-accreditations-slick">
+      <%= render partial: 'awards/footer_awards', collection: @awards, cached: true, as: :award if @awards.present? %>
+    </div>
+  </div>
+
+  <div class="primary-footer-navigation">
+    <ul class="primary-footer-navigation-links">
+      <li>Copyright &copy; <%= Date.today.year %></li>
+      <%= nested_menu_items(menu_items: @footer_menu.menu_items) %>
+    </ul>
+  </div>
+</footer>
+
+<div class="legal-footer">
+  <p>
+    All information on this website is property of Banner Jones Solicitors © <%= Date.today.year %>. All rights reserved. Banner Jones is the trading name of Banner Jones Ltd.
+  </p>
+  <p>
+    Registered in England No. 6604123. Registered Office: 24 Glumangate, Chesterfield S40 1UA. Banner Jones Ltd is registered for VAT purposes with VAT registration number 345980525.
+  </p>
+  <p>
+    We are authorised and regulated by the Solicitors Regulation Authority (SRA number 493083) under the Solicitors' Code of Conduct. You can access the Code by contacting the SRA, In writing to: The Cube, 199 Wharfside Street, Birmingham, B1 1RN. Fax: 0121 616199. Tel: 0870 6062555 (UK) +44 0121 3296800 (International) or via www.sra.org.uk.
+  </p>
+  <p>
+    The directors of Banner Jones Ltd are Solicitors of England and Wales.
+  </p>
+</div>
+
+<%= link_to 'Get in Touch',
+            '#large-modal-overlay',
+            class: 'large-modal-overlay-toggle large-modal-overlay-toggle--action large-modal-overlay-toggle--click',
+            data: {
+              container: '.large-modal-overlay',
+            } %>
+
+<%= content_for :javascript do %>
+  <script>
+    $(document).on('click', '.large-modal-overlay-navigation__link', function() {
+      var container = $(this).data('container');
+      $('.large-modal-overlay__form').hide();
+      $(container).show();
+      $('.large-modal-overlay-navigation__link').removeClass('large-modal-overlay-navigation__link--active');
+      $(this).addClass('large-modal-overlay-navigation__link--active');
+    });
+  </script>
+<% end %>
+
+<div class="remote-callback-request-form-modal remote-contact-form-modal">
+  <div class="large-modal-overlay" id="large-modal-overlay">
+    <section class="large-modal-overlay__content">
+      <h1 class="large-modal-overlay__title">
+        Talk to our <%= yield :team_name %> team
+      </h1>
+
+      <nav class="large-modal-overlay-navigation">
+        <%= link_to 'Email Us',
+                    '#large-modal-overlay__email',
+                    class: 'large-modal-overlay-navigation__link
+                            large-modal-overlay-navigation__link--email
+                            large-modal-overlay-navigation__link--active',
+                    data: {
+                      container: '.large-modal-overlay__form--email'
+                    } %>
+        <%= link_to 'Request a callback',
+                    '#large-modal-overlay__email',
+                    class: 'large-modal-overlay-navigation__link
+                            large-modal-overlay-navigation__link--callback',
+                    data: {
+                      container: '.large-modal-overlay__form--callback'
+                    } %>
+        <%= link_to '#large-modal-overlay__email',
+                    class: 'large-modal-overlay-navigation__link
+                            large-modal-overlay-navigation__link--phone',
+                    data: {
+                      container: '.large-modal-overlay__form--callback'
+                    } do %>
+          <span class="calltracks_bannerjonescouk-main">
+            <%= global_site_settings['Phone'] %>
+          </span>
+        <% end %>
+      </nav>
+
+      <div class="large-modal-overlay__form large-modal-overlay__form--email">
+        <%= render 'contacts/shared/large_modal' %>
+      </div>
+
+      <div class="large-modal-overlay__form large-modal-overlay__form--callback">
+        <%= render 'callback_requests/shared/large_modal' %>
+      </div>
+
+      <%= button_tag 'Close',
+                    class: 'large-modal-overlay__close large-modal-overlay-toggle--click',
+                    data: {
+                      container: '.large-modal-overlay'
+                    } %>
+    </section>
+  </div>
+</div>

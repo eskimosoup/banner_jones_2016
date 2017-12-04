@@ -1,7 +1,9 @@
 <% if menu_item_presenter.link_to_webpage.present? %>
-  <li class="menu-item <%= ' has-children' if menu_item_presenter.has_children? %>">
+  <li class="menu-item <%= ' has-children' if menu_item_presenter.has_children? || menu_item_presenter.audience? %>">
     <%= menu_item_presenter.link_to_webpage %>
     <%= menu_item_presenter.special_layout %>
+
+
     <% if menu_item_presenter.has_children? %>
       <%= content_tag :ul, class: "dropdown depth-#{ depth }" do %>
         <% if menu_item_presenter.sub_menu_items.present? %>

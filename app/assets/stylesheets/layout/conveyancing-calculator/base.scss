@@ -1,5 +1,9 @@
 .conveyancing-calculator {
   background: $blue-light;
+
+  @include breakpoint(medium only) {
+    padding-top: 0;
+  }
 }
 
 .conveyancing-calculator-header {

@@ -18,10 +18,18 @@
   @include breakpoint(large) {
     top: 33px;
   }
+
+  @include breakpoint(small only) {
+    position: relative;
+  }
 }
 
 .meganav-dropdown-wrap {
   margin-top: rem(25px);
+
+  @include breakpoint(small only) {
+    margin-top: 0;
+  }
 }
 
 .meganav-dropdown-content {
@@ -29,6 +37,10 @@
   background: $white;
   border-bottom: 7px solid $orange;
   max-width: rem(1351px);
+
+  @include breakpoint(small only) {
+    border-bottom: 0;
+  }
 }
 
 .meganav-dropdown-primary-list {
@@ -36,6 +48,14 @@
   float: left;
   padding: rem(40px) 0 rem(75px);
   width: auto;
+
+  @include breakpoint(small only) {
+    @include flex-grid-column(12);
+    background-color: $white;
+    float: none;
+    padding-bottom: 0;
+    padding-top: 0;
+  }
 }
 
 .meganav-dropdown-secondary-list {
@@ -44,6 +64,10 @@
   @include breakpoint(large) {
     @include grid-column(6);
     padding: rem(40px) 0 rem(75px);
+  }
+
+  @include breakpoint(small only) {
+    display: none;
   }
 }
 
@@ -63,10 +87,18 @@
   font-size: rem(18px);
   font-weight: $myriad-pro-semibold;
   margin: 0 0 rem(25px) rem(25px);
+
+  @include breakpoint(small only) {
+    display: none;
+  }
 }
 
 .meganav-links {
   list-style: none;
+
+  @include breakpoint(small only) {
+    margin: 0;
+  }
 
   a {
     display: block;
@@ -74,9 +106,19 @@
     margin: rem(8px) 0;
     padding: 0 rem(10px);
 
+    @include breakpoint(small only) {
+      font-size: rem(16px);
+      margin: 0;
+      padding: 0;
+    }
+
     &:visited,
     &:link {
       color: $grey;
+
+      @include breakpoint(small only) {
+        color: $black;
+      }
     }
 
     &:hover,
@@ -89,6 +131,11 @@
 .meganav-primary-links {
   a {
     padding: rem(3px) rem(20px) rem(3px) rem(25px);
+
+    @include breakpoint(small only) {
+      padding-bottom: rem(5px);
+      padding-top: rem(5px);
+    }
 
     &:hover,
     &.active {

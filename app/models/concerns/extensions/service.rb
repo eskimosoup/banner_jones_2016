@@ -8,8 +8,8 @@ module Extensions
                       if: :searchable?
 
       RELATIONSHIPS = %w(related_services articles case_studies resources events videos frequently_asked_questions offices team_members testimonials).freeze
-      LAYOUTS = %w(application wealth_management notary).freeze
-      STYLES  = %w(basic purchase_plus london stamp_duty_calculator).freeze
+      LAYOUTS = %w(application wealth_management notary landing_page_design).freeze
+      STYLES  = %w(basic purchase_plus london stamp_duty_calculator conveyancing service_large).freeze
 
       def self.colours
         OptimisedSite.configuration.service_colours
