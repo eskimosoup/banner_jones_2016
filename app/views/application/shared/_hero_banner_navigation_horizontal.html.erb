@@ -1,17 +1,19 @@
 <% cache banner_services do %>
   <div class="hero-banner-navigation-wrap-horizontal">
     <div class="hero-banner-navigation-row-horizontal">
-      <ul class="hero-banner-navigation-horizontal">
-        <% banner_services.each do |banner_service| %>
-          <% present banner_service do |service_presenter| %>
-            <%= content_tag :li,
-              service_presenter.linked_text(
-                (service_presenter.lazy_medium_icon(alt: '') + banner_service.title),
-                class: 'hero-banner-navigation-link-horizontal loaded', data: { colour: service_presenter.colour }
-            ) if service_presenter.medium_icon.present? %>
+      <div class="hero-banner-navigation-horizontal-elements">
+        <ul class="hero-banner-navigation-horizontal">
+          <% banner_services.each do |banner_service| %>
+            <% present banner_service do |service_presenter| %>
+              <%= content_tag :li,
+                service_presenter.linked_text(
+                  (service_presenter.lazy_medium_icon(alt: '') + banner_service.title),
+                  class: 'hero-banner-navigation-link-horizontal loaded', data: { colour: service_presenter.colour }
+              ) if service_presenter.medium_icon.present? %>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
 <% end %>

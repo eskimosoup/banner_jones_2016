@@ -19,9 +19,156 @@
   ) %>
 <% end %>
 
+<section class="home-cta">
+  <%= link_to '', class: 'home-cta__highlight' do %>
+    <div class="content-section content-section--centered content-section--shadow content-section--bottom-border">
+      <div class="content-section__text">
+        <div class="content-section__title">
+          Relationship
+          <div class="content-section__emphasis">
+            Problems?
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section__image">
+        <%= image_tag 'http://placehold.it/200x200' %>
+      </div>
+    </div>
+  <% end %>
+</section>
+
+<div class="content-area">
+  <div class="content-area__inner">
+    <div class="content-section content-section--shadow">
+      <div class="content-section__full">
+        <h1 class="home-solicitors-title">
+          Solicitors in
+          <span class="home-solicitors-title__emphasis">Sheffield</span>,
+          <span class="home-solicitors-title__emphasis">Chesterfield</span> and
+          <span class="home-solicitors-title__emphasis">Mansfield</span>
+        </h1>
+
+        <% if @facade.team_members.present? %>
+          <%= render(
+            partial: "homes/team_members",
+            locals: { team_members: @facade.team_members }
+          ) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.resources-slider').slick({
+        dots: true,
+        arrows: false,
+        asNavFor: '.resources-home__list'
+      });
+
+      $('.testimonials-slider').slick({
+        dots: true,
+        arrows: false
+      });
+
+      $('.resources-home__list').slick({
+        dots: false,
+        arrows: false,
+        asNavFor: '.resources-slider',
+        slidesToShow: <%= @facade.resources.size %>,
+        vertical: true
+      });
+    });
+
+    $(document).on('click', '.resources-home__link', function() {
+      var index = $(this).parent().data('slick-index');
+      $('.resources-slider').slick('slickGoTo', index);
+    });
+  </script>
+<% end %>
+
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <section class="resources-home">
+      <div class="resources-home__navigation">
+        <h2 class="resources-home-title">
+          Guides to <span class="resources-home-title__emphasis">help you</span> with...
+        </h2>
+
+        <ul class="resources-home__list">
+          <% @facade.resources.each do |resource| %>
+            <li class="resources-home__item">
+            <%= link_to resource.title, '#resources', class: 'resources-home__link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="resources-home__preview" id="resources">
+        <div class="resources-slider">
+          <% @facade.resources.each do |resource| %>
+            <% present resource do |resource_presenter| %>
+              <div class="onpage-resource">
+                <div class="onpage-resource__content">
+                  <h2 class="onpage-resource__title">
+                    <%= resource_presenter.title %>
+                  </h2>
+
+                  <%= resource_presenter.linked_download(
+                        resource_presenter.show_image(
+                          {
+                            alt: resource_presenter.title,
+                            class: 'onpage-resource__image'
+                          }
+                        ),
+                        {
+                          title: resource_presenter.title,
+                          target: '_blank'
+                        }
+                      ) if resource_presenter.index_image.present? %>
+
+                  <%= resource_presenter.linked_download(
+                        image_tag 'components/icons/download-bold.png',
+                                  alt: '',
+                                  class: 'onpage-resource__download'
+                      ) %>
+                </div>
+
+                <%= link_to resource.file.url,
+                            class: 'onpage-resource__summary ga-event',
+                            data: {
+                              event_category: 'Guide',
+                              event_action: 'Click',
+                              event_title: resource_presenter.title
+                            } do %>
+                  <div class="onpage-resource__title">
+                    <%= resource_presenter.title %>
+                  </div>
+
+                  <%= resource_presenter.summary %>
+                <% end %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="testimonials-home">
+      <div class="testimonials-slider">
+        <%= render partial: 'services/onpage_navigations/conveyancing/shared/testimonial',
+                  collection: @facade.testimonials,
+                  as: :testimonial %>
+      </div>
+    </section>
+  </div>
+</div>
+
 <div class="content" role="main">
   <section class="home-content-box-wrap">
-    <h1 class="home-solicitors-title">Solicitors in Sheffield, Chesterfield and Mansfield</h1>
   </section>
 
   <%= render(
@@ -31,12 +178,7 @@
     }
   ) if @facade.resources.present? %>
 
-  <% if @facade.team_members.present? %>
-    <%= render(
-      partial: "homes/team_members",
-      locals: { team_members: @facade.team_members }
-    ) %>
-  <% end %>
+
 
   <% if @facade.testimonials.present? %>
     <%= render(
