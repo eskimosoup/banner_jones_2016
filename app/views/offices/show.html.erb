@@ -1,3 +1,4 @@
+<%= content_for :custom_telephone do global_site_settings['Phone - London'] end if @office.id == 21 %>
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'components/offices/map' %>
 <% end %>
