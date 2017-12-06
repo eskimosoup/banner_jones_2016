@@ -98,3 +98,26 @@
     color: $dark-purple;
   }
 }
+
+.articles-home {
+  @include breakpoint(small only) {
+    @include flex-grid-column(12);
+  }
+
+  @include breakpoint(medium) {
+    @include flex-grid-column(9);
+
+    @include breakpoint(medium) {
+      padding-right: map-get($grid-column-gutter, medium) / 2;
+      padding-left: 0;
+    }
+  }
+
+  .content-section__full {
+    padding: rem(20px);
+  }
+
+  .service-article.closed {
+    background: $white;
+  }
+}

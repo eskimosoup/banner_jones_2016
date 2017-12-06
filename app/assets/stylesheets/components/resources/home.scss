@@ -79,7 +79,7 @@
 
   @include breakpoint(medium) {
     padding-left: 0;
-    padding-right: map-get($grid-column-gutter, medium) / 4;
+    padding-right: map-get($grid-column-gutter, medium) / 2;
   }
 
   &__inner {
