@@ -36,6 +36,38 @@
       </div>
     </div>
   <% end %>
+  <%= link_to '', class: 'home-cta__highlight' do %>
+    <div class="content-section content-section--centered content-section--shadow content-section--bottom-border">
+      <div class="content-section__text">
+        <div class="content-section__title">
+          Relationship
+          <div class="content-section__emphasis">
+            Problems?
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section__image">
+        <%= image_tag 'http://placehold.it/200x200' %>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to '', class: 'home-cta__highlight' do %>
+    <div class="content-section content-section--centered content-section--shadow content-section--bottom-border">
+      <div class="content-section__text">
+        <div class="content-section__title">
+          Relationship
+          <div class="content-section__emphasis">
+            Problems?
+          </div>
+        </div>
+      </div>
+
+      <div class="content-section__image">
+        <%= image_tag 'http://placehold.it/200x200' %>
+      </div>
+    </div>
+  <% end %>
 </section>
 
 <div class="content-area">
@@ -172,30 +204,122 @@
   </div>
 </div>
 
-<div class="content" role="main">
-  <section class="home-content-box-wrap">
-  </section>
 
-  <%= render(
-    partial: 'application/shared/resources',
-    locals: {
-      resources: @facade.resources
-    }
-  ) if @facade.resources.present? %>
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <section class="articles-home">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <h2 class="standard-content-box-title standard-content-box-title--no-border">
+            Latest News
+          </h2>
 
+          <% @facade.articles.limit(4).each_with_index do |article, index| %>
+            <% cache [article, article.team_members.map(&:updated_at).max].compact do %>
+              <% present article do |article_presenter| %>
+                <div class="service-article <%= index >= 1 ? 'closed' : 'opened' %>">
+                  <%= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'service-article-image' if article_presenter.index_image.present? %>
 
+                  <div class="service-article-content">
+                    <div class="service-article-date">
+                      <%= article_presenter.date(:short) %>
+                    </div>
 
-  <% if @facade.testimonials.present? %>
-    <%= render(
-      partial: "homes/testimonials",
-      locals: { testimonials: @facade.testimonials }
-    ) %>
-  <% end %>
+                    <%= article_presenter.linked_text(article.title, {title: "Read #{article_presenter.title}", class: "#{article.team_members.present? ? 'service-article-title' : 'service-article-full-title' }"}) %>
 
-  <% if @facade.articles.present? || @facade.events.present? %>
-    <%= render(
-      partial: "homes/articles",
-      locals: { articles: @facade.articles, events: @facade.events }
-    ) %>
-  <% end %>
+                    <div class="service-article-summary">
+                      <%= article_presenter.summary %>
+                    </div>
+
+                    <div class="service-article-footer">
+                      <%= article_presenter.linked_text('Read more >', {title: "Read #{article_presenter.title}", class: 'service-article-read-more'}) %>
+
+                      <div class="service-article-team-members">
+                        <div class="multiple-team-members-slick">
+                          <% article.team_members.each do |team_member| %>
+                            <div>
+                              <% present team_member do |team_member_presenter| %>
+                                <div class="service-article-team-member-details">
+                                  <div class="service-article-team-member-name">
+                                    <%= team_member_presenter.full_name %>
+                                  </div>
+
+                                  <div class="service-article-team-member-services">
+                                    <%= team_member_presenter.service_titles %>
+                                  </div>
+                                </div>
+
+                                <div class="team-member-avatar">
+                                  <%= team_member_presenter.small_image(alt: team_member_presenter.full_name) %>
+                                </div>
+                              <% end %>
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+    <section class="twitter-home">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <div class="home-twitter-overview">
+            <%= image_tag 'components/icons/twitter.png',
+                          alt: 'Twitter',
+                          class: 'home-twitter-overview__icon' %>
+
+            <%= link_to "https://www.twitter.com/#{global_site_settings['Twitter']}", class: 'home-twitter-overview__title' do %>
+              @<%= global_site_settings['Twitter'] %>
+            <% end %>
+          </div>
+
+          <% cache('twitter', expires_in: 20.minutes) do %>
+            <% tweets = twitter_timeline(global_site_settings['Twitter'], 1) %>
+            <% if tweets.present? %>
+              <% tweets.each do |tweet| %>
+                <div class="home-twitter-content">
+                  <p class="home-twitter-content__tweet">
+                    <%= raw scan_for_links(tweet.text) %>
+                  </p>
+
+                  <div class="home-twitter-content__time">
+                    <%= tweet_time(tweet.created_at) %>
+                  </div>
+                </div>
+
+                <ul class="home-twitter-controls">
+                  <li class="home-twitter-controls__item">
+                    <%= link_to "https://twitter.com/intent/retweet?tweet_id=#{tweet.id}", class: 'home-twitter-controls__link' do %>
+                      <%= image_tag 'components/icons/twitter/retweet.png', alt: '' %>
+                    <% end %>
+                  </li>
+                  <li class="home-twitter-controls__item">
+                    <%= link_to "https://twitter.com/intent/like?tweet_id=#{tweet.id}", class: 'home-twitter-controls__link' do %>
+                      <%= image_tag 'components/icons/twitter/like.png', alt: '' %>
+                    <% end %>
+                  </li>
+                </ul>
+              </ul>
+            <% end %>
+          <% else %>
+            <div class="home-twitter-content">
+              <p class="home-twitter-content__tweet">
+                Follow us on Twitter
+                <%= link_to "https://www.twitter.com/#{global_site_settings['Twitter']}", class: 'home-twitter-overview__title' do %>
+                  @<%= global_site_settings['Twitter'] %>
+                <% end %>
+              </p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

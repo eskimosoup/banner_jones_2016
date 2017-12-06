@@ -64,7 +64,8 @@
 
 .content-area {
   @include flex-grid-row;
-  margin-top: rem(40px);
+  margin-bottom: rem(30px);
+  margin-top: rem(30px);
 
   &__inner {
     @include flex-grid-column(12);
@@ -128,4 +129,87 @@
   }
 }
 
+.twitter-home {
+  font-family: $museo-sans-rounded;
+  font-weight: $museo-sans--medium;
 
+  @include breakpoint(small only) {
+    @include flex-grid-column(12);
+  }
+
+  @include breakpoint(medium) {
+    @include flex-grid-column(3);
+    text-align: center;
+
+    @include breakpoint(medium) {
+      padding-left: map-get($grid-column-gutter, medium) / 2;
+      padding-right: 0;
+    }
+  }
+
+  .content-section {
+    height: 100%;
+  }
+
+  .content-section__full {
+    padding: rem(20px);
+  }
+}
+
+.home-twitter-overview {
+  &__icon {
+    margin-top: rem(10px);
+  }
+
+  &__title {
+    color: $light-slate-blue;
+    display: block;
+    font-size: rem(17px);
+    margin-bottom: rem(34px);
+    margin-top: rem(24px);
+  }
+}
+
+.home-twitter-content {
+  &__tweet {
+    color: $turquoise;
+    font-size: rem(17px);
+  }
+
+  &__time {
+    color: $light-slate-blue;
+  }
+
+  a {
+    &:link,
+    &:visited {
+      color: darken($turquoise, 10%);
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: darken($turquoise, 20%);
+    }
+  }
+}
+
+.home-twitter-controls {
+  list-style: none;
+  margin-top: rem(60px);
+
+  &__item {
+    display: inline-block;
+    padding-left: rem(10px);
+    padding-right: rem(10px);
+  }
+
+  &__link {
+    display: block;
+  }
+
+  img {
+    max-height: 20px;
+    vertical-align: bottom;
+  }
+}

@@ -58,6 +58,10 @@
     margin: rem(16px) 0;
     padding: 0 0 rem(9px);
   }
+
+  &--no-border {
+    border-bottom: 0;
+  }
 }
 
 @mixin home-content-box-title {
