@@ -28,3 +28,522 @@
     }
   }
 }
+
+.resource-section {
+  @include flex-grid-row;
+
+  &__image {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(3, (medium: 0));
+    }
+
+    @include breakpoint(large) {
+      @include flex-grid-column(2, (medium: 0));
+    }
+  }
+
+  &__content {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium only) {
+      @include flex-grid-column(9);
+    }
+
+    @include breakpoint(large) {
+      @include flex-grid-column(10);
+    }
+  }
+}
+
+
+//TEST CODE ALISTAIR
+.basic-page-summary {
+background: $red;
+border-bottom: solid 10px $orange;
+p {
+  text-align: center;
+  padding: 50px;
+  color: $white;
+}
+h1 {
+  text-align: center;
+  color: $white;
+  background: $dark-slate-blue;
+  font-size: 21px;
+  padding: 20px;
+  margin: 0;
+}
+}
+
+.basic-ordered-list {
+  h1 {
+    text-align: center;
+    color: $white;
+    background: $red;
+    font-size: 21px;
+    padding: 20px;
+    margin: 0;
+  }
+
+  p {
+    width: 70%;
+    margin-top: 20px;
+    padding-left: 15%;
+  }
+
+  ol {
+    counter-reset: section;
+  }
+  
+li {
+  padding: 0 50px 30px 0;
+  width: 70%;
+  margin: 15px;
+  list-style: none;  
+  &::before {
+    color: $red;
+    counter-increment: section;
+    content: counter(section);   
+    font-size: 50px;
+  }
+}
+}
+
+.basic-unordered-list {
+  h1 {
+    text-align: center;
+    color: $dark-slate-blue;
+    background: $orange;
+    font-size: 21px;
+    padding: 20px;
+    margin: 0;
+  }
+
+  p {
+    width: 70%;
+    margin-top: 20px;
+    padding-left: 15%;
+  }
+  
+  li::before { 
+    background-image: image-url('layout/header/bullet-orange.png');
+    content: " ";
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background-repeat: no-repeat;
+    color: red;
+    font-weight: bold;
+    margin: -7px 0 -7px 0;
+   }
+  li {
+    list-style-type: none;
+    padding: 20px 10px;
+}
+ul {
+  padding-bottom: 30px;
+  width: 70%;
+  margin-left: 15%;
+}
+}
+
+.basic-text-block {
+  h1 {
+    border-bottom: solid 5px $red;
+    font-size: 21px;
+    padding: 20px;
+    margin-left: 20px;
+    width: 80%;
+  }
+
+  h2 {
+    border-bottom: solid 3px $orange;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0 0 0 30px;
+    width: 80%;
+  }
+
+  p {
+    padding: 10px 40px;
+  }
+}
+
+.basic-image-block {
+  background: $red;  
+  h1 {
+    color: $white;
+    font-size: 21px;
+    margin: 0;
+  }
+  h2 {
+    color: $white;
+    font-size: 18px;
+  }
+  img {
+    display: inline-block;
+  }
+  p {
+    color: $white;
+  }
+} 
+.basic-other-articles {
+
+}
+
+.creative-page-summary {
+  h1 {
+    text-align: center;
+    color: $white;
+    font-size: 21px;
+    padding: 65px 0 75px 0;
+    margin: 0;
+    background-image: url(layout/header/banner-bg.png);
+    background-repeat: no-repeat;
+    z-index: 100;
+  }
+  h2 {
+    color: $turquoise;
+    font-size: 18px;
+    padding: 10px 20px;
+    margin: 0 0 0 30px;
+  }
+  p {
+    padding: 10px 50px;
+  }
+  img {
+    z-index: 0
+  }
+
+  &__title {
+    height: 400px;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__main-title {
+    left: 0; 
+    position: absolute;
+    top: 50%;
+    z-index: 3;
+    width: 100%;
+    transform: translateY(-50%);
+  }
+}
+
+.creative-ordered-list {
+  counter-reset: section;
+  list-style: none;
+  li {
+    @include clearfix;
+    font-size: 20px;
+    list-style: none;  
+    padding: 0 0 0 50px;    
+    position: relative;
+    &::before {
+      counter-increment: section;
+      content: counter(section);   
+      font-size: 150px;
+      position: absolute;
+    }
+    
+    &:nth-child(odd) {
+      &::before {
+        font-family: $museo-slab;
+      }
+      img {
+        float: right;
+        margin: 15px 15px 0 0;
+      }
+    }
+    
+    &:nth-child(even) {
+
+    &::before {
+        font-family: $roboto--light;  
+        left: 350px;  
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    img {
+margin-right: 150px;    
+    }
+    
+    }
+      
+    &:nth-child(1) {
+      color: $dark-slate-blue;
+      &::before {
+      color: $red;
+    }
+    }
+    &:nth-child(2) {
+      background: $turquoise;
+      color: $white;
+      &::before {
+      color: $orange;
+    }
+    }
+    &:nth-child(3) {
+      background: $orange;
+      color: $dark-slate-blue;
+      &::before {
+        color: $dark-slate-blue;
+    }
+    }
+    &:nth-child(4) {
+      background: $red;
+      color: $white;
+      &::before {
+        color: $orange;
+    }
+  }
+  &:nth-child(5) {
+    color: $dark-slate-blue;
+    &::before {
+    color: $red;
+  }
+  }
+  &:nth-child(6) {
+    background: $turquoise;
+    color: $white;
+    &::before {
+    color: $orange;
+  }
+  }
+  &:nth-child(7) {
+    background: $orange;
+    color: $dark-slate-blue;
+    &::before {
+      color: $dark-slate-blue;
+  }
+  }
+  &:nth-child(8) {
+    background: $red;
+    color: $white;
+    &::before {
+      color: $orange;
+  }
+}
+&:nth-child(9) {
+  color: $dark-slate-blue;
+  &::before {
+  color: $red;
+}
+}
+&:nth-child(10) {
+  background: $turquoise;
+  color: $white;
+  &::before {
+  color: $orange;
+}
+}
+&:nth-child(11) {
+  color: $dark-slate-blue;
+  &::before {
+  color: $red;
+}
+}
+&:nth-child(12) {
+  background: $turquoise;
+  color: $white;
+  &::before {
+  color: $orange;
+}
+}
+&:nth-child(13) {
+  background: $orange;
+  color: $dark-slate-blue;
+  &::before {
+    color: $dark-slate-blue;
+}
+}
+&:nth-child(14) {
+  background: $red;
+  color: $white;
+  &::before {
+    color: $orange;
+}
+}
+
+&:nth-child(15) {
+color: $dark-slate-blue;
+&::before {
+color: $red;
+}
+}
+&:nth-child(16) {
+background: $turquoise;
+color: $white;
+&::before {
+color: $orange;
+}
+}
+&:nth-child(17) {
+background: $orange;
+color: $dark-slate-blue;
+&::before {
+  color: $dark-slate-blue;
+}
+}
+&:nth-child(18) {
+background: $red;
+color: $white;
+&::before {
+  color: $orange;
+}
+}
+&:nth-child(19) {
+color: $dark-slate-blue;
+&::before {
+color: $red;
+}
+}
+&:nth-child(20) {
+background: $turquoise;
+color: $white;
+&::before {
+color: $orange;
+}
+}
+
+
+
+
+
+}
+}
+
+.creative-unordered-list {
+  background: $turquoise;
+  h1 {
+    text-align: center;
+    color: $white;
+    font-size: 21px;
+    padding: 20px;
+    margin: 0;
+  }
+  h2 {
+    background: $orange;
+    font-size: 18px;
+    padding: 10px 20px 10px 100px;
+    margin-top: 50px;
+  }
+  p {
+    text-align: center;
+    padding: 5px 20px;
+  }
+
+  li::before { 
+    background-image: image-url('layout/header/bullet-red.png');
+    content: " ";
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background-repeat: no-repeat;
+    color: red;
+    font-weight: bold;
+    margin: -12px 0 -12px 40px;
+   }
+  li {
+    list-style-type: none;
+    padding: 10px;
+}
+ul {
+  padding-bottom: 50px;
+}
+
+}
+.creative-text-block {
+background: $red;
+h1 {
+  color: $orange;
+  font-size: 21px;
+  padding: 30px;
+  margin: 0;
+}
+h2 {
+  color: $orange;
+  font-size: 18px;
+  padding-left: 50px;
+}
+p {
+  color: $white;
+  margin: 0;
+  padding: 10px 50px 25px 50px;
+}
+}
+.creative-image-block {
+  background: $orange;
+  h1 {
+    color: $red;
+    font-size: 21px;
+    padding: 30px;
+    margin: 0;
+  }
+  h2 {
+    color: $red;
+    font-size: 18px;
+    padding-left: 30px;
+  }
+  p {
+    padding-left: 30px;
+  }
+}
+.creative-other-articles {
+height: 150px;
+
+h1 {
+  color: $red;
+  font-size: 18px;
+  padding-left: 30px;
+}
+}
+
+
+// Individual Section
+
+.section-wrapper {
+@include flex-grid-row;
+}
+
+.section-container {
+  @include flex-grid-column(6);
+}
+
+.articles-container {
+  @include flex-grid-column(4);
+}
+
+.creative-image {
+  padding: 20px 0;
+}
+
+//Creative Ordered List
+.creative-image-text-container {
+  float: left;
+  width: 65%
+}
+
+//Creative Unordered List
+.cul-large-columns {
+  @include flex-grid-column(8);  
+}
+
+
+.resource-title {
+border-bottom: solid 5px $turquoise;
+color: $turquoise;
+
+  &:hover {
+border-bottom: solid 5px $turquoise +30;
+color: $turquoise +30;
+  }
+}
