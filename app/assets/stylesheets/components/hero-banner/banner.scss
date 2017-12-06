@@ -5,7 +5,6 @@
 }
 
 .hero-banner {
-  border-bottom: 8px solid $orange;
   height: 601px;
   overflow: hidden;
 
@@ -101,6 +100,7 @@
 .hero-banner-item-title {
   // border-bottom: 7px solid $white;
   // box-shadow: 0 2px $charcoal;
+  border-bottom: 8px solid $orange;
   color: $white;
   display: inline-block;
   font-family: $montserrat;

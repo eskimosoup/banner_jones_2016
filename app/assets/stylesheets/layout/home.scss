@@ -12,11 +12,120 @@
 }
 
 .home-solicitors-title {
-  display: none;
-  font-weight: $myriad-pro-semibold;
+  border-bottom: 6px solid $orange;
+  color: $deeper-grey;
+  font-family: $museo-sans-rounded;
+  font-size: rem(27px);
+  font-weight: $museo-sans--medium;
+  margin-left: rem(15px);
+  margin-right: rem(15px);
+  margin-top: rem(50px);
+  padding-bottom: rem(15px);
   text-align: center;
 
   @include media('>=768px') {
     display: block;
   }
+
+  &__emphasis {
+    color: $black;
+  }
 }
+
+.home-cta {
+  @include flex-grid-row;
+
+  @include breakpoint(medium) {
+    margin-top: rem(100px);
+  }
+
+  &__highlight {
+    color: $black;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $black;
+
+      .content-section {
+        background-color: $orange;
+      }
+    }
+
+    @include breakpoint(medium down) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(large) {
+      @include flex-grid-column(4);
+    }
+  }
+}
+
+.content-area {
+  @include flex-grid-row;
+  margin-top: rem(40px);
+
+  &__inner {
+    @include flex-grid-column(12);
+
+    &--row {
+     display: flex;
+    }
+  }
+}
+
+.content-section {
+  @include flex-grid-row;
+  background-color: $white;
+  transition: background-color 0.25s linear;
+
+  &--centered {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--shadow {
+    box-shadow: 5px 5px 9px 0 rgba($black, .21);
+  }
+
+  &--bottom-border {
+    background-image: image-url('components/content/content-box-background.png');
+    background-position: bottom left;
+    background-repeat: repeat-x;
+    padding-bottom: rem(14px);
+  }
+
+  &__text {
+    @include flex-grid-column(8, (small: 0));
+  }
+
+  &__image {
+    @include flex-grid-column(4, (small: 0));
+  }
+
+  &__full {
+    @include flex-grid-column(12, (small: 0));
+  }
+
+  &__title {
+    font-size: rem(20px);
+
+    @include breakpoint(medium) {
+      line-height: 1.25;
+      padding-left: rem(33px);
+    }
+  }
+
+  &__emphasis {
+    color: $black;
+    font-size: rem(26px);
+    font-weight: 700;
+  }
+
+  .slider-team-members {
+    box-shadow: none;
+  }
+}
+
+

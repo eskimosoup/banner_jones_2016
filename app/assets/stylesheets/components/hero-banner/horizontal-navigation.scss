@@ -6,12 +6,12 @@
   width: 50px;
 
   &.loaded {
-    border: 5px solid $white;    
+    border: 5px solid $white;
   }
 }
 
 .hero-banner-navigation-wrap-horizontal {
-  @extend %content-background;
+  // @extend %content-background;
   //display: none;
 
   @include breakpoint(medium) {
@@ -29,12 +29,16 @@
 }
 
 .hero-banner-navigation-row-horizontal {
-  @include grid-row;
+  @include flex-grid-row;
   position: relative;
 
   @include breakpoint(medium) {
     padding: 0 0 rem(75px);
   }
+}
+
+.hero-banner-navigation-horizontal-elements {
+  @include flex-grid-column(12);
 }
 
 .hero-banner-navigation-horizontal {
@@ -154,5 +158,37 @@
       top: -27px;
       width: 72px;
     }
+  }
+}
+
+
+
+.home-banner-services {
+  @include flex-grid-row;
+  position: relative;
+  z-index: 1;
+
+  &__navigation {
+    @include flex-grid-column(12);
+
+    @include breakpoint(medium) {
+      bottom: -70px;
+      position: absolute;
+    }
+  }
+
+  &__list {
+    background-color: $white;
+    margin: 0;
+  }
+
+  &__item {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
+  &__service {
+    display: block;
+    position: relative;
   }
 }
