@@ -76,11 +76,20 @@
 
 .resources-home {
   @include flex-grid-column(6);
-  background: $turquoise;
-  display: flex;
-  font-family: $museo-sans-rounded;
-  padding-bottom: rem(30px);
-  padding-top: rem(30px);
+
+  @include breakpoint(medium) {
+    padding-left: 0;
+    padding-right: map-get($grid-column-gutter, medium) / 4;
+  }
+
+  &__inner {
+    background: $turquoise;
+    display: flex;
+    font-family: $museo-sans-rounded;
+    padding-bottom: rem(30px);
+    padding-top: rem(30px);
+    height: 100%;
+  }
 
   &__navigation {
     @include flex-grid-column(7);
@@ -126,15 +135,5 @@
   &__emphasis {
     color: $orange;
     font-weight: $museo-sans--bold;
-  }
-}
-
-.testimonials-home {
-  @include breakpoint(small only) {
-    @include flex-grid-column(12);
-  }
-
-  @include breakpoint(medium) {
-    @include flex-grid-column(6);
   }
 }

@@ -86,6 +86,7 @@
     $(document).on('click', '.resources-home__link', function() {
       var index = $(this).parent().data('slick-index');
       $('.resources-slider').slick('slickGoTo', index);
+      return false;
     });
   </script>
 <% end %>
@@ -93,75 +94,79 @@
 <div class="content-area">
   <div class="content-area__inner content-area__inner--row">
     <section class="resources-home">
-      <div class="resources-home__navigation">
-        <h2 class="resources-home-title">
-          Guides to <span class="resources-home-title__emphasis">help you</span> with...
-        </h2>
+      <div class="resources-home__inner">
+        <div class="resources-home__navigation">
+          <h2 class="resources-home-title">
+            Guides to <span class="resources-home-title__emphasis">help you</span> with...
+          </h2>
 
-        <ul class="resources-home__list">
-          <% @facade.resources.each do |resource| %>
-            <li class="resources-home__item">
-            <%= link_to resource.title, '#resources', class: 'resources-home__link' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
+          <ul class="resources-home__list">
+            <% @facade.resources.each do |resource| %>
+              <li class="resources-home__item">
+              <%= link_to resource.title, '#resources', class: 'resources-home__link' %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
 
-      <div class="resources-home__preview" id="resources">
-        <div class="resources-slider">
-          <% @facade.resources.each do |resource| %>
-            <% present resource do |resource_presenter| %>
-              <div class="onpage-resource">
-                <div class="onpage-resource__content">
-                  <h2 class="onpage-resource__title">
-                    <%= resource_presenter.title %>
-                  </h2>
+        <div class="resources-home__preview" id="resources">
+          <div class="resources-slider">
+            <% @facade.resources.each do |resource| %>
+              <% present resource do |resource_presenter| %>
+                <div class="onpage-resource">
+                  <div class="onpage-resource__content">
+                    <h2 class="onpage-resource__title">
+                      <%= resource_presenter.title %>
+                    </h2>
 
-                  <%= resource_presenter.linked_download(
-                        resource_presenter.show_image(
+                    <%= resource_presenter.linked_download(
+                          resource_presenter.show_image(
+                            {
+                              alt: resource_presenter.title,
+                              class: 'onpage-resource__image'
+                            }
+                          ),
                           {
-                            alt: resource_presenter.title,
-                            class: 'onpage-resource__image'
+                            title: resource_presenter.title,
+                            target: '_blank'
                           }
-                        ),
-                        {
-                          title: resource_presenter.title,
-                          target: '_blank'
-                        }
-                      ) if resource_presenter.index_image.present? %>
+                        ) if resource_presenter.index_image.present? %>
 
-                  <%= resource_presenter.linked_download(
-                        image_tag 'components/icons/download-bold.png',
-                                  alt: '',
-                                  class: 'onpage-resource__download'
-                      ) %>
-                </div>
-
-                <%= link_to resource.file.url,
-                            class: 'onpage-resource__summary ga-event',
-                            data: {
-                              event_category: 'Guide',
-                              event_action: 'Click',
-                              event_title: resource_presenter.title
-                            } do %>
-                  <div class="onpage-resource__title">
-                    <%= resource_presenter.title %>
+                    <%= resource_presenter.linked_download(
+                          image_tag 'components/icons/download-bold.png',
+                                    alt: '',
+                                    class: 'onpage-resource__download'
+                        ) %>
                   </div>
 
-                  <%= resource_presenter.summary %>
-                <% end %>
-              </div>
+                  <%= link_to resource.file.url,
+                              class: 'onpage-resource__summary ga-event',
+                              data: {
+                                event_category: 'Guide',
+                                event_action: 'Click',
+                                event_title: resource_presenter.title
+                              } do %>
+                    <div class="onpage-resource__title">
+                      <%= resource_presenter.title %>
+                    </div>
+
+                    <%= resource_presenter.summary %>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="testimonials-home">
-      <div class="testimonials-slider">
-        <%= render partial: 'services/onpage_navigations/conveyancing/shared/testimonial',
-                  collection: @facade.testimonials,
-                  as: :testimonial %>
+      <div class="testimonials-home__inner">
+        <div class="testimonials-slider">
+          <%= render partial: 'services/onpage_navigations/conveyancing/shared/testimonial',
+                    collection: @facade.testimonials,
+                    as: :testimonial %>
+        </div>
       </div>
     </section>
   </div>

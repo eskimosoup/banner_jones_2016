@@ -61,3 +61,45 @@
   display: block;
   margin: rem(16px) auto;
 }
+
+
+.testimonials-home {
+  @include breakpoint(small only) {
+    @include flex-grid-column(12);
+  }
+
+  @include breakpoint(medium) {
+    @include flex-grid-column(6);
+
+    @include breakpoint(medium) {
+      padding-left: map-get($grid-column-gutter, medium) / 4;
+      padding-right: 0;
+    }
+  }
+
+  &__inner {
+    background: $black-grey-offset;
+    color: $white;
+    height: 100%;
+    text-align: center;
+
+    p {
+      font-size: rem(17px);
+    }
+  }
+
+  .service-testimonial {
+    @include breakpoint(medium) {
+      background-image: image-url('components/icons/testimonial/orange-quote-open.png'),
+                        image-url('components/icons/testimonial/orange-quote-close.png');
+      background-repeat: no-repeat;
+      background-position: 0 50px, bottom 10px right 50px;
+      padding-top: rem(50px);
+      padding-bottom: rem(50px);
+    }
+  }
+
+  .service-testimonial__author {
+    color: $orange;
+  }
+}
