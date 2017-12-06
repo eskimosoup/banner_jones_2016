@@ -2,15 +2,10 @@
   <div class="large-onpage-navigation-element__section large-onpage-navigation-element__section--full large-onpage-navigation-element__section--container">
     <div class="basic-other-articles">
 
-        <% if section.image? %>
-            <%= image_tag section.image.show %>
-        <% end %>
+<%= render partial: 'resources/shared/service',
+           collection: @other_resources,
+           as: :resource %>
 
-          <h1>
-            <%= section.title %>
-          </h1>
-
-          <%= raw section.content %>
     </div>
   </div>
 </section>
