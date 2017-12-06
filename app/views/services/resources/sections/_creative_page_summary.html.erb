@@ -1,0 +1,18 @@
+<section class="large-content-element">
+  <div class="large-onpage-navigation-element__section large-onpage-navigation-element__section--full large-onpage-navigation-element__section--container">
+    <div class="creative-page-summary">
+
+        <div class="creative-page-summary__title">
+          <% if section.image? %>
+              <%= image_tag section.image.show %>
+          <% end %>
+          
+          <h1 class="creative-page-summary__main-title">
+            <%= section.title %>
+          </h1>
+        </div>
+
+          <%= raw section.content %>
+    </div>
+  </div>
+</section>

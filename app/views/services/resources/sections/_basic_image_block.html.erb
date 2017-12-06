@@ -1,22 +1,23 @@
 <section class="large-content-element">
   <div class="large-onpage-navigation-element__section large-onpage-navigation-element__section--full large-onpage-navigation-element__section--container">
-    <div class="large-content-inner-styles">
+    <div class="basic-image-block">
+<div class="section-wrapper">
+<div class="section-container">
 
-      <div class="resource-section">
         <% if section.image? %>
-          <aside class="resource-section__image">
             <%= image_tag section.image.show %>
-          </aside>
         <% end %>
 
-        <div class="resource-section__content <%= 'resource-section__content--full' unless section.image? %>">
-          <h1 class="resouce-section__title">
+</div>
+<div class="section-container creative-image">
+          <h1>
             <%= section.title %>
           </h1>
 
           <%= raw section.content %>
-        </div>
-      </div>
     </div>
+</div>
   </div>
 </section>
+
+
