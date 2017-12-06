@@ -174,17 +174,30 @@
     @include breakpoint(medium) {
       bottom: -70px;
       position: absolute;
+      width: 100%;
     }
   }
 
   &__list {
     background-color: $white;
-    margin: 0;
+
+    @include breakpoint(small only) {
+      margin-bottom: rem(30px);
+    }
+
+    @include breakpoint(medium) {
+      margin: 0;
+    }
   }
 
   &__item {
     display: inline-block;
     vertical-align: bottom;
+
+    @include breakpoint(small only) {
+      vertical-align: top;
+      width: 25%;
+    }
   }
 
   &__service {

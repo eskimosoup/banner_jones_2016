@@ -23,6 +23,15 @@
   padding-bottom: rem(15px);
   text-align: center;
 
+  @include breakpoint(small only) {
+    font-size: rem(21px);
+    margin-top: rem(15px);
+  }
+
+  @include breakpoint(medium only) {
+    margin-top: rem(15px);
+  }
+
   @include media('>=768px') {
     display: block;
   }
@@ -52,11 +61,11 @@
       }
     }
 
-    @include breakpoint(medium down) {
+    @include breakpoint(small only) {
       @include flex-grid-column(12);
     }
 
-    @include breakpoint(large) {
+    @include breakpoint(medium) {
       @include flex-grid-column(4);
     }
   }
@@ -71,7 +80,9 @@
     @include flex-grid-column(12);
 
     &--row {
-     display: flex;
+      @include breakpoint(medium) {
+        display: flex;
+      }
     }
   }
 }
@@ -80,6 +91,10 @@
   @include flex-grid-row;
   background-color: $white;
   transition: background-color 0.25s linear;
+
+  @include breakpoint(small only) {
+    margin-bottom: rem(15px);
+  }
 
   &--centered {
     align-items: center;
@@ -112,8 +127,15 @@
   &__title {
     font-size: rem(20px);
 
+    @include breakpoint(medium down) {
+      padding: rem(5px);
+    }
+
     @include breakpoint(medium) {
       line-height: 1.25;
+    }
+
+    @include breakpoint(large) {
       padding-left: rem(33px);
     }
   }
@@ -126,6 +148,23 @@
 
   .slider-team-members {
     box-shadow: none;
+
+    @include breakpoint(medium down) {
+      padding-top: 0;
+    }
+  }
+
+  .module-see-all.home-team-members {
+    @include breakpoint(small only) {
+      margin: rem(10px);
+      position: static;
+    }
+  }
+
+  .slider-team-member-search-field:last-child {
+    @include breakpoint(small only) {
+      margin-top: rem(24px);
+    }
   }
 }
 
@@ -134,14 +173,24 @@
   font-weight: $museo-sans--medium;
 
   @include breakpoint(small only) {
-    @include flex-grid-column(12);
+    margin-top: rem(30px);
   }
 
-  @include breakpoint(medium) {
+  @include breakpoint(medium only) {
+    @include flex-grid-column(4);
+    text-align: center;
+
+    @include breakpoint(medium only) {
+      padding-left: map-get($grid-column-gutter, medium) / 2;
+      padding-right: 0;
+    }
+  }
+
+  @include breakpoint(large) {
     @include flex-grid-column(3);
     text-align: center;
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       padding-left: map-get($grid-column-gutter, medium) / 2;
       padding-right: 0;
     }
