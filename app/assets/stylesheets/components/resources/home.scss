@@ -75,28 +75,46 @@
 
 
 .resources-home {
-  @include flex-grid-column(6);
-
   @include breakpoint(medium) {
-    padding-left: 0;
-    padding-right: map-get($grid-column-gutter, medium) / 2;
+    @include flex-grid-column(6);
+
+    @include breakpoint(medium) {
+      padding-left: 0;
+      padding-right: map-get($grid-column-gutter, medium) / 2;
+    }
   }
 
   &__inner {
     background: $turquoise;
-    display: flex;
     font-family: $museo-sans-rounded;
     padding-bottom: rem(30px);
     padding-top: rem(30px);
     height: 100%;
+
+    @include breakpoint(medium) {
+      display: flex;
+    }
   }
 
   &__navigation {
-    @include flex-grid-column(7);
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+      margin-bottom: rem(15px);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(7);
+    }
   }
 
   &__preview {
-    @include flex-grid-column(5);
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(5);
+    }
   }
 
   &__list {

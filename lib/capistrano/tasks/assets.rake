@@ -21,11 +21,11 @@ namespace :deploy do
     task :precompile_local do
       # compile assets locally
       run_locally do
-        execute 'RAILS_ENV=production bundle exec rake assets:precompile'
+        execute "RAILS_ENV=#{fetch(:stage)} bundle exec rake assets:precompile"
       end
 
       # rsync to each server
-      dirs = ['./public/assets/']
+      dirs = ['./public/assets/', './public/packs/']
       on roles(fetch(:assets_roles, [:web])), in: :parallel do
         # this needs to be done outside run_locally in order for host to exist
         path = "#{host.user}@#{host.hostname}:#{release_path}"

@@ -9,6 +9,7 @@ module TwitterHelper
   end
 
   def twitter_timeline(twitter, limit)
+    return unless twitter
     twitter_connect.user_timeline(twitter.delete('@'), count: limit)
   end
 
