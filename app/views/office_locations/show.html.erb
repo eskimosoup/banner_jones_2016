@@ -1,0 +1,120 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/testimonials/slider.js' %>
+  <%= javascript_include_tag 'components/home-components.js' %>
+  <%= javascript_include_tag 'components/shared-components.js' %>
+  <script>
+    $(window).load(function() {
+      $('.hero-banner-navigation-link-horizontal img').addClass('loaded');
+    });
+  </script>
+<% end %>
+
+<% #if @facade.banners.present? %>
+  <%#= render(
+    partial: "homes/banners",
+    locals: {
+      banners: @facade.banners,
+      banner_services: @facade.banner_services
+    }
+  ) %>
+<% #end %>
+
+<% if @facade.image.present? %>
+  <div class="hero-banner hero-banner--inline" role="banner">
+    <div class="hero-banner-slick">
+      <div class="hero-banner-item">
+        <div class="hero-banner-item-wrap">
+          <section class="hero-banner-item-content">
+              <div class="hero-banner-item-title">
+                <%= @facade.title %>
+              </div>
+          </section>
+        </div>
+
+
+        <div class="hero-banner-image-overlay">
+
+        </div>
+
+        <%= image_tag @facade.image.show, alt: '', class: 'hero-banner-image' %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <% if @facade.title.present? || @facade.content.present? %>
+      <section class="office-location-content">
+        <div class="content-section content-section--shadow">
+          <div class="content-section__full">
+            <h1 class="standard-content-box-title standard-content-box-title--no-border">
+              <%= @facade.title %>
+            </h1>
+
+            <%= raw @facade.content %>
+          </div>
+        </div>
+      </section>
+    <% end %>
+
+    <aside class="office-location-aside">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <h2 class="standard-content-box-title standard-content-box-title--no-border">
+            Offices in <%= @facade.name %>
+          </h2>
+
+          <%= render partial: 'offices/shared/aside',
+                     collection: @facade.offices,
+                     as: :office %>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="content-area">
+  <div class="content-area__inner">
+    <div class="content-section content-section--shadow">
+      <div class="content-section__full">
+        <h1 class="home-solicitors-title">
+          Solicitors in
+          <span class="home-solicitors-title__emphasis"><%= @facade.name %></span>
+        </h1>
+
+        <% if @facade.team_members.present? %>
+          <%= render(
+            partial: "homes/team_members",
+            locals: { team_members: @facade.team_members }
+          ) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.testimonials-slider').slick({
+        dots: true,
+        arrows: false
+      });
+    });
+  </script>
+<% end %>
+
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <%= render 'homes/shared/resources', resources: @facade.resources %>
+    <%= render 'homes/shared/testimonials', testimonials: @facade.testimonials %>
+  </div>
+</div>
+
+
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <%= render 'homes/shared/articles', articles: @facade.articles %>
+    <%= render 'homes/shared/twitter' %>
+  </div>
+</div>

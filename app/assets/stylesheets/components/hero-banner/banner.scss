@@ -1,12 +1,19 @@
 .ie9 {
   .hero-banner-item {
-    padding: rem(80px) 0;
+    padding: rem(50px) 0;
   }
 }
 
 .hero-banner {
-  height: 601px;
   overflow: hidden;
+
+  &:not(&--inline) {
+    height: 601px;
+  }
+
+  &--inline {
+    height: 300px;
+  }
 
   @include media('<1024px') {
     display: none;
@@ -40,11 +47,11 @@
   }
 
   @include media('>=1280px', '<1920px') {
-    padding: rem(60px) 0;
+    padding: rem(50px) 0;
   }
 
   @include media('>=1920px') {
-    padding: rem(120px) 0;
+    padding: rem(50px) 0;
   }
 }
 
