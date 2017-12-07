@@ -122,7 +122,143 @@
     padding: rem(20px);
   }
 
-  .service-article.closed {
+  .home-article.closed {
     background: $white;
   }
+}
+
+.home-article {
+  @include grid-row;
+  font-family: $montserrat;
+
+  &.opened {
+    padding: 0 0 rem(12px);
+
+    .home-article-image {
+      margin: rem(24px) 0 0;
+
+      @include breakpoint(large) {
+        @include grid-column($columns: 4, $gutter: (medium: 10));
+      }
+    }
+
+    .home-article-content {
+      @include breakpoint(large) {
+        @include grid-column(8, (small: 0));
+      }
+    }
+
+    .home-article-team-members {
+      @include breakpoint(large) {
+        @include grid-column($columns: 4, $gutter: (small: 0));
+      }
+    }
+  }
+
+  &.closed {
+    background: $slate-white;
+    padding: rem(5px) 0;
+
+    .home-article-image,
+    .home-article-summary,
+    .home-article-read-more {
+      display: none;
+    }
+
+    .home-article-date {
+      @include breakpoint(large) {
+        @include grid-column(2, (small: 0));
+      }
+
+      font-family: $montserrat;
+      font-weight: 400;
+      margin-top: rem(3px);
+    }
+
+    .home-article-title {
+      @include breakpoint(large) {
+        @include grid-column($columns: 6, $gutter: (small: 0));
+      }
+
+      margin: 0;
+    }
+
+    .home-article-team-members {
+      @include breakpoint(large) {
+        @include grid-column($columns: 4, $gutter: (small: 0));
+        text-align: right;
+      }
+    }
+  }
+}
+
+.home-article-date {
+  color: $offset-blue;
+  font-family: $ubuntu;
+  font-size: rem(12px);
+  font-weight: $ubuntu-light;
+  margin: 0 0 rem(6px);
+}
+
+.home-article-title,
+.home-article-full-title {
+  @include service-item-title;
+}
+
+.home-article-summary {
+  @include page-content;
+
+  p {
+    margin: rem(12px) 0;
+  }
+}
+
+.home-article-footer {
+  @include grid-row;
+}
+
+.home-article-read-more {
+  @include service-read-more;
+
+  @include breakpoint(large) {
+    @include grid-column($columns: 6, $gutter: (small: 0));
+  }
+}
+
+.home-article-team-members {
+  .multiple-team-members-slick {
+    margin: 0;
+  }
+
+  .slick-slide {
+    @include clearfix;
+  }
+
+  .team-membe-avatar {
+    float: right;
+  }
+}
+
+.home-article-team-member-details {
+  display: block;
+  float: left;
+  padding: rem(6px) 0 0;
+  width: 70%;
+
+  @include breakpoint(large) {
+    text-align: right;
+  }
+}
+
+.home-article-team-member-name {
+  color: $dark-purple;
+  font-size: rem(13px);
+  font-weight: $montserrat-semibold;
+  line-height: 1.25;
+}
+
+.home-article-team-member-services {
+  font-family: $ubuntu;
+  font-size: rem(12px);
+  line-height: 1.25;
 }

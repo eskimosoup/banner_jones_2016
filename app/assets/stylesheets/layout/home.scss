@@ -45,6 +45,10 @@
   @include flex-grid-row;
 
   @include breakpoint(medium) {
+    margin-top: rem(30px);
+  }
+
+  @include breakpoint(large) {
     margin-top: rem(100px);
   }
 
@@ -68,6 +72,10 @@
     @include breakpoint(medium) {
       @include flex-grid-column(4);
     }
+  }
+
+  .content-section {
+    height: 100%;
   }
 }
 

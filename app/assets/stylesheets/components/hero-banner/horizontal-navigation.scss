@@ -126,6 +126,14 @@
       text-align: center;
     }
 
+    @include breakpoint(medium only) {
+      padding-top: rem(110px);
+    }
+
+    @include breakpoint(large only) {
+      padding-top: rem(110px);
+    }
+
     @include media('<1400px') {
       font-size: rem(14px);
       // width: 100px;
@@ -149,14 +157,20 @@
       left: 50%;
       margin: 0;
       position: absolute;
-      top: -55px;
       transform: translate(-50%, 0);
       width: auto;
     }
 
-    @include media('>768px', '<1400px') {
-      top: -27px;
-      width: 72px;
+    @include breakpoint(large only) {
+      top: 0;
+    }
+
+    @include breakpoint(medium only) {
+      top: 0;
+    }
+
+    @include breakpoint(xlarge) {
+      top: -55px;
     }
   }
 }
@@ -171,7 +185,7 @@
   &__navigation {
     @include flex-grid-column(12);
 
-    @include breakpoint(medium) {
+    @include breakpoint(large) {
       bottom: -70px;
       position: absolute;
       width: 100%;
