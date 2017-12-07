@@ -231,23 +231,24 @@
   &__tweet {
     color: $turquoise;
     font-size: rem(17px);
+
+    a {
+      &:link,
+      &:visited {
+        color: darken($turquoise, 10%);
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: darken($turquoise, 20%);
+      }
+    }
   }
 
   &__time {
     color: $light-slate-blue;
-  }
-
-  a {
-    &:link,
-    &:visited {
-      color: darken($turquoise, 10%);
-    }
-
-    &:hover,
-    &:focus,
-    &:active {
-      color: darken($turquoise, 20%);
-    }
+    display: block;
   }
 }
 

@@ -17,9 +17,12 @@
               <p class="home-twitter-content__tweet">
                 <%= raw scan_for_links(tweet.text) %>
               </p>
-              <div class="home-twitter-content__time">
-                <%= tweet_time(tweet.created_at) %>
-              </div>
+              <%= link_to "https://twitter.com/statuses/#{tweet.id}",
+                          class: 'home-twitter-content__time',
+                          target: '_blank',
+                          rel: 'noopener' do %>
+                  <%= tweet_time(tweet.created_at) %>
+              <% end %>
             </div>
             <ul class="home-twitter-controls">
               <li class="home-twitter-controls__item">

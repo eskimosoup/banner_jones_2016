@@ -151,6 +151,10 @@
     .home-article-team-members {
       @include breakpoint(large) {
         @include grid-column($columns: 4, $gutter: (small: 0));
+
+        .multiple-team-members-slick {
+          margin-top: rem(45px);
+        }
       }
     }
   }

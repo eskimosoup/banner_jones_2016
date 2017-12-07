@@ -9,7 +9,7 @@
 
       <% present office do |office_presenter| %>
         <div class="index-office-address-fields">
-          <%= raw office.address_fields.gsub(', ', '<br />') %>
+          <%= raw office_presenter.address_fields.gsub(', ', '<br />') %>
         </div>
 
         <div class="index-office-buttons">

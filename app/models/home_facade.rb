@@ -1,6 +1,6 @@
 class HomeFacade
   def articles
-    @articles ||= Article.homepage_highlight.limit(16)
+    @articles ||= Article.homepage_highlight.limit(5)
   end
 
   def events
