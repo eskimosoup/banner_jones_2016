@@ -21,6 +21,8 @@
         <%= service_page_presenter.content %>
       </div>
     <% end %>
+
+    <%= render 'pages/shared/call_to_actions_solicitors_bottom' if @page.show_contact_form? %>
   </div>
 
   <aside class="page-additional-information">
