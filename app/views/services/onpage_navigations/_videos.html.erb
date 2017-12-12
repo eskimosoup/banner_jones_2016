@@ -42,7 +42,7 @@ videos = @service.videos.displayed if videos.blank?
               </h4>
               <%= video_presenter.summary %>
             </div>
-            <%= content_tag :div, video_presenter.youtube_embed(800, 0, false), class: 'service-video-embed-code', id: "service-video-#{video_presenter.id}" %>
+            <%= content_tag :div, video_presenter.youtube_embed(800, 0, false), class: 'service-video-embed-code flex-video', id: "service-video-#{video_presenter.id}" %>
           <% end %>
         </div>
       </div>
