@@ -26,3 +26,11 @@ $(document).ready(function() {
   })();
   </script>
 <% end %>
+
+<!-- Reviews.co.uk Rich Snippet Code -->
+<div id='snippetWidget'></div>
+<script>
+$.get('https://widget.reviews.co.uk/rich-snippet-reviews/widget?store=banner-jones-solicitors&primaryClr=%231bd172&textClr=%23565656&bgClr=%23f9f9f9&height=600&headClr=%23ffffff&header=&headingSize=16px&numReviews=0&names=1&dates=0&footer=0', function(r){
+    $('#snippetWidget').html(r);
+});
+</script>
