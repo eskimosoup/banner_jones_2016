@@ -18,14 +18,34 @@
       margin: 0;
     }
 
-    a {
+    a:not(.cookie-warning__button) {
       border-bottom: 1px solid $black;
       color: $black;
       text-decoration: none;
+
+      @include breakpoint(small only) {
+        display: inline-block;
+        padding: rem(2px);
+      }
     }
   }
 
   &__confirmation {
     text-align: right;
+  }
+
+  &__button {
+    @include breakpoint(small only) {
+      border-bottom: 1px solid $black;
+      color: $black;
+      display: block;
+      padding: rem(10px 0 5px);
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $black;
+      }
+    }
   }
 }
