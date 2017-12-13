@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171207143315) do
+ActiveRecord::Schema.define(version: 20171212093011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -363,10 +363,10 @@ ActiveRecord::Schema.define(version: 20171207143315) do
   end
 
   create_table "flipflop_features", force: :cascade do |t|
-    t.string   "key",        null: false
-    t.boolean  "enabled"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "key",                        null: false
+    t.boolean  "enabled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "frequently_asked_questions", force: :cascade do |t|
@@ -834,7 +834,7 @@ ActiveRecord::Schema.define(version: 20171207143315) do
     t.string   "layout",                         default: "application", null: false
     t.string   "style",                          default: "basic",       null: false
     t.boolean  "landing_page",                   default: false
-    t.boolean  "show_contact_form"
+    t.boolean  "show_contact_form",              default: false
     t.boolean  "inherit_sidebar_text"
     t.boolean  "inherit_page_layout_content"
     t.boolean  "hide_preferred_office_on_forms"
@@ -928,6 +928,7 @@ ActiveRecord::Schema.define(version: 20171207143315) do
     t.text     "summary"
     t.integer  "position",                             default: 0, null: false
     t.integer  "parent_id"
+    t.boolean  "show_contact_form"
     t.index ["service_id"], name: "index_services_pages_on_service_id", using: :btree
   end
 
