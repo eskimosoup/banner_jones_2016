@@ -47,6 +47,10 @@
     text-align: left;
     transition: opacity .15s .2s ease-in;
 
+    &--visible {
+      opacity: 1;
+    }
+
     &-field {
       margin-left: rem(10px);
 

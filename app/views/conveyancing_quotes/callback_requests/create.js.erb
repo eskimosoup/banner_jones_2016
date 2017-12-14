@@ -1,0 +1,5 @@
+<% if @callback_request.valid? %>
+  $('.conveyancing-callback-request').html("<div class='flash-message notice'>Thank you for your submission. We will be in touch</div><%= j render 'conveyancing_quotes/callback_requests/form', callback_request: ConveyancingQuotes::CallbackRequest.new %>");
+<% else %>
+  $('.conveyancing-callback-request').html("<%= j render 'conveyancing_quotes/callback_requests/form', callback_request: @callback_request %>");
+<% end %>

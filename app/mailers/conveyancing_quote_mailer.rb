@@ -28,6 +28,14 @@ class ConveyancingQuoteMailer < ApplicationMailer
     end
   end
 
+  def new_callback_request(callback_request)
+    @callback_request = callback_request
+
+    mail to: conveyancing_email,
+         cc: site_email,
+         subject: "Conveyancing Callback Request #{site_name}"
+  end
+
   # def incomplete_users(users)
   #  @users = users
   #  mail to: conveyancing_email,
