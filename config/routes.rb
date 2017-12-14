@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     #         only: %i[new create edit update],
     #         path: 'correspondence-address'
 
+    resource :callback_requests,
+             only: %i[new create]
+
     resources :quote_locations,
               only: :show,
               path: '',
