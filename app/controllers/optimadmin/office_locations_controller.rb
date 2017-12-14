@@ -9,7 +9,7 @@ module Optimadmin
     edit_images_for ::OfficeLocation,
                       [
                         [:image, {
-                          show: ['fill', 1920, 723]
+                          show: ['fill', 1920, 300]
                         }]
                       ]
 
