@@ -12,11 +12,261 @@
 }
 
 .home-solicitors-title {
-  display: none;
-  font-weight: $myriad-pro-semibold;
+  border-bottom: 6px solid $orange;
+  color: $deeper-grey;
+  font-family: $museo-sans-rounded;
+  font-size: rem(27px);
+  font-weight: $museo-sans--medium;
+  margin-left: rem(15px);
+  margin-right: rem(15px);
+  margin-top: rem(50px);
+  padding-bottom: rem(15px);
   text-align: center;
+
+  @include breakpoint(small only) {
+    font-size: rem(21px);
+    margin-top: rem(15px);
+  }
+
+  @include breakpoint(medium only) {
+    margin-top: rem(15px);
+  }
 
   @include media('>=768px') {
     display: block;
+  }
+
+  &__emphasis {
+    color: $black;
+  }
+}
+
+.home-cta {
+  @include flex-grid-row;
+
+  @include breakpoint(medium) {
+    margin-top: rem(30px);
+  }
+
+  @include breakpoint(large) {
+    margin-top: rem(100px);
+  }
+
+  &__highlight {
+    color: $black;
+
+    &:hover,
+    &:focus,
+    &:active {
+      color: $black;
+
+      .content-section {
+        background-color: $orange;
+      }
+    }
+
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(4);
+    }
+  }
+
+  .content-section {
+    height: 100%;
+  }
+}
+
+.content-area {
+  @include flex-grid-row;
+  margin-bottom: rem(30px);
+  margin-top: rem(30px);
+
+  &__inner {
+    @include flex-grid-column(12);
+
+    &--row {
+      @include breakpoint(medium) {
+        display: flex;
+      }
+    }
+  }
+}
+
+.content-section {
+  @include flex-grid-row;
+  background-color: $white;
+  transition: background-color 0.25s linear;
+
+  @include breakpoint(small only) {
+    margin-bottom: rem(15px);
+  }
+
+  &--centered {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--shadow {
+    box-shadow: 5px 5px 9px 0 rgba($black, .21);
+  }
+
+  &--bottom-border {
+    background-image: image-url('components/content/content-box-background.png');
+    background-position: bottom left;
+    background-repeat: repeat-x;
+  }
+
+  &__text {
+    @include flex-grid-column(8, (small: 0));
+  }
+
+  &__image {
+    @include flex-grid-column(4, (small: 0));
+  }
+
+  &__full {
+    @include flex-grid-column(12, (small: 0));
+  }
+
+  &__title {
+    font-size: rem(20px);
+
+    @include breakpoint(medium down) {
+      padding: rem(5px);
+    }
+
+    @include breakpoint(medium) {
+      line-height: 1.25;
+    }
+
+    @include breakpoint(large) {
+      padding-left: rem(33px);
+    }
+  }
+
+  &__emphasis {
+    color: $black;
+    font-size: rem(26px);
+    font-weight: 700;
+  }
+
+  .slider-team-members {
+    box-shadow: none;
+
+    @include breakpoint(medium down) {
+      padding-top: 0;
+    }
+  }
+
+  .module-see-all.home-team-members {
+    @include breakpoint(small only) {
+      margin: rem(10px);
+      position: static;
+    }
+  }
+
+  .slider-team-member-search-field:last-child {
+    @include breakpoint(small only) {
+      margin-top: rem(24px);
+    }
+  }
+}
+
+.twitter-home {
+  font-family: $museo-sans-rounded;
+  font-weight: $museo-sans--medium;
+
+  @include breakpoint(small only) {
+    margin-top: rem(30px);
+  }
+
+  @include breakpoint(medium only) {
+    @include flex-grid-column(4);
+    text-align: center;
+
+    @include breakpoint(medium only) {
+      padding-left: map-get($grid-column-gutter, medium) / 2;
+      padding-right: 0;
+    }
+  }
+
+  @include breakpoint(large) {
+    @include flex-grid-column(3);
+    text-align: center;
+
+    @include breakpoint(large) {
+      padding-left: map-get($grid-column-gutter, medium) / 2;
+      padding-right: 0;
+    }
+  }
+
+  .content-section {
+    height: 100%;
+  }
+
+  .content-section__full {
+    padding: rem(20px);
+  }
+}
+
+.home-twitter-overview {
+  &__icon {
+    margin-top: rem(10px);
+  }
+
+  &__title {
+    color: $light-slate-blue;
+    display: block;
+    font-size: rem(17px);
+    margin-bottom: rem(34px);
+    margin-top: rem(24px);
+  }
+}
+
+.home-twitter-content {
+  &__tweet {
+    color: $turquoise;
+    font-size: rem(17px);
+
+    a {
+      &:link,
+      &:visited {
+        color: darken($turquoise, 10%);
+      }
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: darken($turquoise, 20%);
+      }
+    }
+  }
+
+  &__time {
+    color: $light-slate-blue;
+    display: block;
+  }
+}
+
+.home-twitter-controls {
+  list-style: none;
+  margin-top: rem(60px);
+
+  &__item {
+    display: inline-block;
+    padding-left: rem(10px);
+    padding-right: rem(10px);
+  }
+
+  &__link {
+    display: block;
+  }
+
+  img {
+    max-height: 20px;
+    vertical-align: bottom;
   }
 }

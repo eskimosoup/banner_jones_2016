@@ -1,0 +1,54 @@
+<section class="twitter-home">
+  <div class="content-section content-section--shadow">
+    <div class="content-section__full">
+      <div class="home-twitter-overview">
+        <%= image_tag 'components/icons/twitter.png',
+                          alt: 'Twitter',
+                          class: 'home-twitter-overview__icon' %>
+        <%= link_to "https://www.twitter.com/#{global_site_settings['Twitter']}", class: 'home-twitter-overview__title' do %>
+          @<%= global_site_settings['Twitter'] %>
+        <% end %>
+      </div>
+      <% cache('twitter', expires_in: 20.minutes) do %>
+        <% tweets = twitter_timeline(global_site_settings['Twitter'], 1) %>
+        <% if tweets.present? %>
+          <% tweets.each do |tweet| %>
+            <div class="home-twitter-content">
+              <p class="home-twitter-content__tweet">
+                <%= raw scan_for_links(tweet.text) %>
+              </p>
+              <%= link_to "https://twitter.com/statuses/#{tweet.id}",
+                          class: 'home-twitter-content__time',
+                          target: '_blank',
+                          rel: 'noopener' do %>
+                  <%= tweet_time(tweet.created_at) %>
+              <% end %>
+            </div>
+            <ul class="home-twitter-controls">
+              <li class="home-twitter-controls__item">
+                <%= link_to "https://twitter.com/intent/retweet?tweet_id=#{tweet.id}", class: 'home-twitter-controls__link' do %>
+                  <%= image_tag 'components/icons/twitter/retweet.png', alt: '' %>
+                <% end %>
+              </li>
+              <li class="home-twitter-controls__item">
+                <%= link_to "https://twitter.com/intent/like?tweet_id=#{tweet.id}", class: 'home-twitter-controls__link' do %>
+                  <%= image_tag 'components/icons/twitter/like.png', alt: '' %>
+                <% end %>
+              </li>
+            </ul>
+          </ul>
+        <% end %>
+      <% else %>
+        <div class="home-twitter-content">
+          <p class="home-twitter-content__tweet">
+            Follow us on Twitter
+            <%= link_to "https://www.twitter.com/#{global_site_settings['Twitter']}", class: 'home-twitter-overview__title' do %>
+              @<%= global_site_settings['Twitter'] %>
+            <% end %>
+          </p>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</section>

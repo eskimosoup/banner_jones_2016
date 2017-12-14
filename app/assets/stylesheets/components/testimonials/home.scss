@@ -61,3 +61,67 @@
   display: block;
   margin: rem(16px) auto;
 }
+
+
+.testimonials-home {
+  @include breakpoint(small only) {
+    margin-top: rem(30px);
+  }
+
+  @include breakpoint(medium) {
+    @include flex-grid-column(6);
+
+    @include breakpoint(medium) {
+      padding-left: map-get($grid-column-gutter, medium) / 2;
+      padding-right: 0;
+    }
+  }
+
+  &__inner {
+    background: $black-grey-offset;
+    color: $white;
+    height: 100%;
+    text-align: center;
+
+    p {
+      font-size: rem(17px);
+    }
+  }
+
+  .slick-slider {
+    @include breakpoint(small only) {
+      margin: 0;
+    }
+  }
+
+  .slick-dots {
+    position: static;
+  }
+
+  .service-testimonial {
+    &__content {
+      @include breakpoint(small only) {
+        background-image: image-url('components/icons/testimonial/orange-quote-open.png'),
+                          image-url('components/icons/testimonial/orange-quote-close.png');
+        background-position: 15px 15px, bottom 15px right 15px;
+        background-repeat: no-repeat;
+        padding: rem(30px 15px 50px);
+      }
+
+      @include breakpoint(medium) {
+        background-image: image-url('components/icons/testimonial/orange-quote-open.png'),
+                          image-url('components/icons/testimonial/orange-quote-close.png');
+        background-position: 0 50px, bottom 10px right 0;
+        background-repeat: no-repeat;
+        padding: rem(150px 25px 50px);
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 90%;
+      }
+    }
+  }
+
+  .service-testimonial__author {
+    color: $orange;
+  }
+}

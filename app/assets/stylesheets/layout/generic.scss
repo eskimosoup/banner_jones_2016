@@ -61,13 +61,12 @@ body {
     right: 90px;
     top: 48px;
 
-    @include media('>768px', '<=1340px') {
-      right: 48px;
+    @include breakpoint(medium only) {
+      top: -10px;
     }
 
-    @include media('<768px') {
-      right: 10px;
-      top: 84px;
+    @include media('>768px', '<=1340px') {
+      right: 48px;
     }
   }
 

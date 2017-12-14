@@ -1,0 +1,63 @@
+.office-location-content {
+  @include breakpoint(medium only) {
+    @include flex-grid-column(8);
+
+    @include breakpoint(medium only) {
+      padding-right: map-get($grid-column-gutter, medium) / 2;
+      padding-left: 0;
+    }
+  }
+
+  @include breakpoint(large) {
+    @include flex-grid-column(9);
+
+    @include breakpoint(large) {
+      padding-right: map-get($grid-column-gutter, medium) / 2;
+      padding-left: 0;
+    }
+  }
+
+  .content-section__full {
+    padding: rem(20px);
+  }
+}
+
+.office-location-aside {
+  @include breakpoint(small only) {
+    margin-top: rem(30px);
+  }
+
+  @include breakpoint(medium only) {
+    @include flex-grid-column(4);
+
+    @include breakpoint(medium only) {
+      padding-left: map-get($grid-column-gutter, medium) / 2;
+      padding-right: 0;
+    }
+  }
+
+  @include breakpoint(large) {
+    @include flex-grid-column(3);
+
+    @include breakpoint(large) {
+      padding-left: map-get($grid-column-gutter, medium) / 2;
+      padding-right: 0;
+    }
+  }
+
+  .content-section {
+    height: 100%;
+  }
+
+  .content-section__full {
+    padding: rem(20px);
+  }
+
+  .office {
+    @include grid-column(12, (small: 0));
+  }
+
+  .standard-content-box {
+    box-shadow: none;
+  }
+}

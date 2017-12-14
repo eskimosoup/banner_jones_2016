@@ -6,12 +6,12 @@
   width: 50px;
 
   &.loaded {
-    border: 5px solid $white;    
+    border: 5px solid $white;
   }
 }
 
 .hero-banner-navigation-wrap-horizontal {
-  @extend %content-background;
+  // @extend %content-background;
   //display: none;
 
   @include breakpoint(medium) {
@@ -29,12 +29,16 @@
 }
 
 .hero-banner-navigation-row-horizontal {
-  @include grid-row;
+  @include flex-grid-row;
   position: relative;
 
   @include breakpoint(medium) {
     padding: 0 0 rem(75px);
   }
+}
+
+.hero-banner-navigation-horizontal-elements {
+  @include flex-grid-column(12);
 }
 
 .hero-banner-navigation-horizontal {
@@ -122,6 +126,14 @@
       text-align: center;
     }
 
+    @include breakpoint(medium only) {
+      padding-top: rem(110px);
+    }
+
+    @include breakpoint(large only) {
+      padding-top: rem(110px);
+    }
+
     @include media('<1400px') {
       font-size: rem(14px);
       // width: 100px;
@@ -145,14 +157,65 @@
       left: 50%;
       margin: 0;
       position: absolute;
-      top: -55px;
       transform: translate(-50%, 0);
       width: auto;
     }
 
-    @include media('>768px', '<1400px') {
-      top: -27px;
-      width: 72px;
+    @include breakpoint(large only) {
+      top: 0;
     }
+
+    @include breakpoint(medium only) {
+      top: 0;
+    }
+
+    @include breakpoint(xlarge) {
+      top: -55px;
+    }
+  }
+}
+
+
+
+.home-banner-services {
+  @include flex-grid-row;
+  position: relative;
+  z-index: 1;
+
+  &__navigation {
+    @include flex-grid-column(12);
+
+    @include breakpoint(large) {
+      bottom: -70px;
+      position: absolute;
+      width: 100%;
+    }
+  }
+
+  &__list {
+    background-color: $white;
+
+    @include breakpoint(small only) {
+      margin-bottom: rem(30px);
+    }
+
+    @include breakpoint(medium) {
+      margin: 0;
+    }
+  }
+
+  &__item {
+    display: inline-block;
+    vertical-align: bottom;
+
+    @include breakpoint(small only) {
+      vertical-align: top;
+      width: 25%;
+    }
+  }
+
+  &__service {
+    display: block;
+    position: relative;
   }
 }

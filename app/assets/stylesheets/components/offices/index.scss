@@ -67,3 +67,15 @@
 .office-directions-form {
   clear: both;
 }
+
+.office-location-link {
+  color: $black;
+
+  &:link,
+  &:visited,
+  &:hover,
+  &:focus,
+  &:active {
+    color: $black;
+  }
+}

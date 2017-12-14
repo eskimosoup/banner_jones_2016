@@ -1,0 +1,86 @@
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.resources-slider').slick({
+        dots: true,
+        arrows: false,
+        asNavFor: '.resources-home__list'
+      });
+
+      $('.resources-home__list').slick({
+        dots: false,
+        arrows: false,
+        asNavFor: '.resources-slider',
+        slidesToShow: <%= @facade.resources.size %>,
+        vertical: true
+      });
+    });
+
+    $(document).on('click', '.resources-home__link', function() {
+      var index = $(this).parent().data('slick-index');
+      $('.resources-slider').slick('slickGoTo', index);
+      return false;
+    });
+  </script>
+<% end %>
+
+<section class="resources-home">
+  <div class="resources-home__inner">
+    <div class="resources-home__navigation">
+      <h2 class="resources-home-title">
+        Guides to <span class="resources-home-title__emphasis">help you</span> with...
+      </h2>
+      <ul class="resources-home__list">
+        <% resources.each do |resource| %>
+          <li class="resources-home__item">
+            <%= link_to resource.title, '#resources', class: 'resources-home__link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="resources-home__preview" id="resources">
+      <div class="resources-slider">
+        <% resources.each do |resource| %>
+          <% present resource do |resource_presenter| %>
+            <div class="onpage-resource">
+              <div class="onpage-resource__content">
+                <h2 class="onpage-resource__title">
+                  <%= resource_presenter.title %>
+                </h2>
+                <%= resource_presenter.linked_download(
+                          resource_presenter.show_image(
+                            {
+                              alt: resource_presenter.title,
+                              class: 'onpage-resource__image'
+                            }
+                          ),
+                          {
+                            title: resource_presenter.title,
+                            target: '_blank'
+                          }
+                        ) if resource_presenter.index_image.present? %>
+                <%= resource_presenter.linked_download(
+                          image_tag 'components/icons/download-bold.png',
+                                    alt: '',
+                                    class: 'onpage-resource__download'
+                        ) %>
+              </div>
+              <%= link_to resource.file.url,
+                              class: 'onpage-resource__summary ga-event',
+                              data: {
+                                event_category: 'Guide',
+                                event_action: 'Click',
+                                event_title: resource_presenter.title
+                              } do %>
+                <div class="onpage-resource__title">
+                  <%= resource_presenter.title %>
+                </div>
+                <%= resource_presenter.summary %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

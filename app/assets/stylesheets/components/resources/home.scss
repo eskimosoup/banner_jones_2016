@@ -72,3 +72,86 @@
     font-size: rem(14px);
   }
 }
+
+
+.resources-home {
+  @include breakpoint(medium) {
+    @include flex-grid-column(6);
+
+    @include breakpoint(medium) {
+      padding-left: 0;
+      padding-right: map-get($grid-column-gutter, medium) / 2;
+    }
+  }
+
+  &__inner {
+    background: $turquoise;
+    font-family: $museo-sans-rounded;
+    padding-bottom: rem(30px);
+    padding-top: rem(30px);
+    height: 100%;
+
+    @include breakpoint(medium) {
+      display: flex;
+    }
+  }
+
+  &__navigation {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+      margin-bottom: rem(15px);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(7);
+    }
+  }
+
+  &__preview {
+    @include breakpoint(small only) {
+      @include flex-grid-column(12);
+    }
+
+    @include breakpoint(medium) {
+      @include flex-grid-column(5);
+    }
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+  }
+
+  &__item.slick-current {
+    .resources-home__link {
+      background-image: image-url('components/icons/download-chevron.png');
+      background-position: 0 7px;
+      background-repeat: no-repeat;
+      background-size: 10px 11px;
+      color: $orange;
+    }
+  }
+
+  &__link {
+    border-bottom: 4px solid darken($turquoise, 15%);
+    color: $white;
+    display: block;
+    font-size: rem(15px);
+    padding-bottom: rem(5px);
+    padding-left: rem(17px);
+    margin-top: rem(7px);
+  }
+}
+
+.resources-home-title {
+  color: $white;
+  font-family: $museo-sans-rounded;
+  font-size: rem(25px);
+  font-weight: $museo-sans--medium;
+  margin-bottom: rem(30px);
+
+  &__emphasis {
+    color: $orange;
+    font-weight: $museo-sans--bold;
+  }
+}

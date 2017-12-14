@@ -1,13 +1,19 @@
 .ie9 {
   .hero-banner-item {
-    padding: rem(80px) 0;
+    padding: rem(50px) 0;
   }
 }
 
 .hero-banner {
-  border-bottom: 8px solid $orange;
-  height: 601px;
   overflow: hidden;
+
+  &:not(&--inline) {
+    height: 601px;
+  }
+
+  &--inline {
+    height: 300px;
+  }
 
   @include media('<1024px') {
     display: none;
@@ -41,11 +47,11 @@
   }
 
   @include media('>=1280px', '<1920px') {
-    padding: rem(60px) 0;
+    padding: rem(50px) 0;
   }
 
   @include media('>=1920px') {
-    padding: rem(120px) 0;
+    padding: rem(50px) 0;
   }
 }
 
@@ -101,6 +107,7 @@
 .hero-banner-item-title {
   // border-bottom: 7px solid $white;
   // box-shadow: 0 2px $charcoal;
+  border-bottom: 8px solid $orange;
   color: $white;
   display: inline-block;
   font-family: $montserrat;

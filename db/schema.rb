@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127160502) do
+ActiveRecord::Schema.define(version: 20171212093011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -451,6 +451,9 @@ ActiveRecord::Schema.define(version: 20171127160502) do
     t.string   "slug"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.string   "title"
+    t.text     "content"
+    t.string   "image"
     t.index ["slug"], name: "index_office_locations_on_slug", using: :btree
     t.index ["suggested_url"], name: "index_office_locations_on_suggested_url", using: :btree
   end
@@ -925,6 +928,7 @@ ActiveRecord::Schema.define(version: 20171127160502) do
     t.text     "summary"
     t.integer  "position",                             default: 0, null: false
     t.integer  "parent_id"
+    t.boolean  "show_contact_form"
     t.index ["service_id"], name: "index_services_pages_on_service_id", using: :btree
   end
 

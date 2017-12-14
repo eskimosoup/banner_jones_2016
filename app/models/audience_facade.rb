@@ -22,7 +22,7 @@ class AudienceFacade
   end
 
   def resources
-    @resources ||= audience.resources.displayed.limit(16)
+    @resources ||= audience.resources.displayed.limit(8)
   end
 
   def team_members
@@ -30,6 +30,6 @@ class AudienceFacade
   end
 
   def testimonials
-    @testimonials ||= audience.testimonials.displayed.limit(10)
+    @testimonials ||= audience.testimonials.displayed.limit(8)
   end
 end

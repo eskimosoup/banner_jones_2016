@@ -1,6 +1,6 @@
 class HomeFacade
   def articles
-    @articles ||= Article.homepage_highlight.limit(16)
+    @articles ||= Article.homepage_highlight.limit(5)
   end
 
   def events
@@ -16,7 +16,7 @@ class HomeFacade
   end
 
   def resources
-    @resources ||= Resource.homepage_highlight.includes(:services).limit(16)
+    @resources ||= Resource.homepage_highlight.includes(:services).limit(8)
   end
 
   def team_members
@@ -24,6 +24,6 @@ class HomeFacade
   end
 
   def testimonials
-    @testimonials ||= Testimonial.displayed.homepage_highlight.limit(10)
+    @testimonials ||= Testimonial.displayed.homepage_highlight.limit(8)
   end
 end

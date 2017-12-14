@@ -19,36 +19,74 @@
   ) %>
 <% end %>
 
-<div class="content" role="main">
-  <section class="home-content-box-wrap">
-    <h1 class="home-solicitors-title">Solicitors in Sheffield, Chesterfield and Mansfield</h1>
-  </section>
+<section class="home-cta">
+  <%= render partial: 'homes/shared/cta_link',
+             locals: {
+               line_1: 'Moving',
+               line_2: 'Home?',
+               image: image_url('layout/home/call-to-actions/moving-home.png'),
+               link: '/for-you-your-family/services/residential-property'
+             } %>
+  <%= render partial: 'homes/shared/cta_link',
+             locals: {
+               line_1: 'Relationship',
+               line_2: 'Problems?',
+               image: image_url('layout/home/call-to-actions/relationship-problems.png'),
+               link: '/for-you-your-family/services/family-law/relationships-and-children/divorce-and-separation'
+             } %>
+  <%= render partial: 'homes/shared/cta_link',
+             locals: {
+               line_1: 'Had an',
+               line_2: 'accident or injury?',
+               image: image_url('layout/header/logo.png'),
+               link: '/for-you-your-family/services/personal-injury'
+             } %>
+</section>
 
-  <%= render(
-    partial: 'application/shared/resources',
-    locals: {
-      resources: @facade.resources
-    }
-  ) if @facade.resources.present? %>
+<div class="content-area">
+  <div class="content-area__inner">
+    <div class="content-section content-section--shadow">
+      <div class="content-section__full">
+        <h1 class="home-solicitors-title">
+          Solicitors in
+          <span class="home-solicitors-title__emphasis">Sheffield</span>,
+          <span class="home-solicitors-title__emphasis">Chesterfield</span> and
+          <span class="home-solicitors-title__emphasis">Mansfield</span>
+        </h1>
 
-  <% if @facade.team_members.present? %>
-    <%= render(
-      partial: "homes/team_members",
-      locals: { team_members: @facade.team_members }
-    ) %>
-  <% end %>
+        <% if @facade.team_members.present? %>
+          <%= render(
+            partial: "homes/team_members",
+            locals: { team_members: @facade.team_members }
+          ) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <% if @facade.testimonials.present? %>
-    <%= render(
-      partial: "homes/testimonials",
-      locals: { testimonials: @facade.testimonials }
-    ) %>
-  <% end %>
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.testimonials-slider').slick({
+        dots: true,
+        arrows: false
+      });
+    });
+  </script>
+<% end %>
 
-  <% if @facade.articles.present? || @facade.events.present? %>
-    <%= render(
-      partial: "homes/articles",
-      locals: { articles: @facade.articles, events: @facade.events }
-    ) %>
-  <% end %>
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <%= render 'homes/shared/resources', resources: @facade.resources %>
+    <%= render 'homes/shared/testimonials', testimonials: @facade.testimonials %>
+  </div>
+</div>
+
+
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <%= render 'homes/shared/articles', articles: @facade.articles %>
+    <%= render 'homes/shared/twitter' %>
+  </div>
 </div>
