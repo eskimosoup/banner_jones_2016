@@ -51,7 +51,7 @@ module ConveyancingQuotes
     def user_params
       params.require(:conveyancing_quotes_user).permit(
         :forename, :surname, :email, :phone, :buying, :selling,
-        :conveyancing_email_permission, :buying_and_selling, :complete
+        :conveyancing_email_permission, :buying_and_selling, :details_required
       )
     end
 

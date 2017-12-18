@@ -7,44 +7,9 @@
   <%= render 'shared/form_errors',
       object: user,
       form_name: 'conveyancing quote' %>
-  <div class="conveyancing-content-form__field-group">
-    <div class="conveyancing-content-form__field-grouped">
-      <%= f.label :forename %>
-      <%= f.text_field :forename,
-                      class: 'conveyancing-content-form__input
-                              conveyancing-content-form__input--bordered',
-                      required: true,
-                      placeholder: 'Forename' %>
-    </div>
-    <div class="conveyancing-content-form__field-grouped">
-      <%= f.label :surname %>
-      <%= f.text_field :surname,
-                      class: 'conveyancing-content-form__input
-                              conveyancing-content-form__input--bordered',
-                      required: true,
-                      placeholder: 'Surname' %>
-    </div>
-  </div>
-  <div class="conveyancing-content-form__field-group">
-    <div class="conveyancing-content-form__field-grouped">
-      <%= f.label :email %>
-      <%= f.email_field :email,
-                      class: 'conveyancing-content-form__input
-                              conveyancing-content-form__input--bordered',
-                      required: true,
-                      placeholder: 'me@example.com' %>
-    </div>
-    <div class="conveyancing-content-form__field-grouped">
-      <%= f.label :phone, 'Phone number' %>
-      <%= f.text_field :phone,
-                      class: 'conveyancing-content-form__input
-                              conveyancing-content-form__input--bordered',
-                      required: true,
-                      placeholder: 'Phone number' %>
-    </div>
-  </div>
+  <%= render 'conveyancing_quotes/users/shared/form_fields', f: f %>
   <div class="actions">
-    <%= f.hidden_field :complete, value: 1 %>
+    <%= f.hidden_field :details_required, value: 1 %>
     <%= f.submit 'Contact us',
                   class: 'conveyancing-content-form__submit ga-event',
                   data: {

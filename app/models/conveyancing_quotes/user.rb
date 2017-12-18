@@ -4,14 +4,14 @@ module ConveyancingQuotes
 
     default_scope { order(created_at: :desc) }
 
-    attr_accessor :buying_and_selling, :complete
+    attr_accessor :buying_and_selling, :details_required
 
     # validates :title, inclusion: { in: ConveyancingQuotes::TITLES }
 
-    validates :forename, presence: true, if: :complete?
-    validates :surname, presence: true, if: :complete?
-    validates :email, presence: true, if: :complete?
-    validates :phone, presence: true, if: :complete?
+    validates :forename, presence: true, if: :details_required?
+    validates :surname, presence: true, if: :details_required?
+    validates :email, presence: true, if: :details_required?
+    validates :phone, presence: true, if: :details_required?
 
     #validates :buying,
     #          presence: { message: 'can not be blank, unless selling or buying and selling' },
@@ -74,8 +74,8 @@ module ConveyancingQuotes
       [forename, surname].join(' ')
     end
 
-    def complete?
-      complete.present?
+    def details_required?
+      details_required.present?
     end
 
     def quote_reference
