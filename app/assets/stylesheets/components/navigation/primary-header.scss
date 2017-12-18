@@ -139,7 +139,7 @@
 }
 
 .primary-header-main-navigation {
-  @include flex-grid-row(null, 100%);
+  @include flex-grid-row;
   justify-content: space-between;
 
   /*
@@ -189,7 +189,6 @@
 
     @include breakpoint(1636px) {
       bottom: -5px;
-      margin-left: rem(112px);
     }
   }
 
