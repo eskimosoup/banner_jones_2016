@@ -17,27 +17,32 @@
   </script>
 <% end %>
 
-<div class="offices-index-map" id="map-canvas" data-locations="<%= @offices.to_json %>">
-  <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
-</div>
 
-<div class="module-inner-content">
-  <div class="offices-index">
-    <div class="offices-index-content">
-      <h1>Offices <%= "in #{@office_location.name}" if @office_location.present? %></h1>
+
+<div class="large-content">
+  <aside class="large-content__aside">
+    <div class="large-content-aside-sticky">
+      <%= render 'services/shared/service_large/aside' %>
     </div>
-  </div>
+  </aside>
 
-  <div class="offices-index">
-    <div class="page-content full">
-      <%= render partial: 'offices/office', collection: @offices, as: :office %>
+  <main class="large-content__main">
+    <div class="offices-index-map" id="map-canvas" data-locations="<%= @offices.to_json %>">
+      <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
     </div>
 
-    <aside class="page-additional-information">
-      <div class="page-call-to-actions-title-wrap">
-        <h3 class="page-call-to-actions-title">Talk to us</h3>
+    <section class="large-content-element">
+      <div class="large-content-element__section">
+        <div class="large-content-inner">
+          <div class="large-content-inner__main">
+            <%= render partial: 'offices/office', collection: @offices, as: :office %>
+          </div>
+
+          <aside class="large-content-inner__aside">
+            aside
+          </aside>
+        </div>
       </div>
-      <%= render 'pages/shared/call_to_actions_solicitors', hide_office: true %>
-    </aside>
-  </div>
+    </section>
+  </main>
 </div>
