@@ -11,7 +11,7 @@
       <%= raw details %>
       <div class="conveyancing-landing-hero-form">
         <%= form_for @user,
-                    url: conveyancing_quotes_location_users_path,
+                    url: conveyancing_quotes_location_users_path(@location),
                     remote: true do |f| %>
           <%= render 'shared/form_errors',
               object: @user,
