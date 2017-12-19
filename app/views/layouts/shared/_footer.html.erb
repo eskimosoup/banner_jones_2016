@@ -47,7 +47,7 @@
                       event_category: 'Offline contact',
                       event_action: 'Phone call'
                     } do %>
-            <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
+            <span class="<%= yield(:custom_telephone).present? ? (yield(:custom_telephone) == global_site_settings['Phone - London'] ? 'calltracks_bannerjonescouk-banner-jones-london' : '') : 'calltracks_bannerjonescouk-main' %>">
               <%= phone %>
             </span>
           <% end %>
