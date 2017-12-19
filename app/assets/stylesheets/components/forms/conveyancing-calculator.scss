@@ -74,6 +74,11 @@
   &__submit {
     @include conveyancing-submit;
   }
+
+  .conveyancing-content-form__field-group label {
+    color: #fff;
+    text-align: left;
+  }
 }
 
 .conveyancing-landing-page-hero-form__success {

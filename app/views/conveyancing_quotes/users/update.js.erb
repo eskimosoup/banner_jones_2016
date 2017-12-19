@@ -1,4 +1,4 @@
-<% if @update && params[:conveyancing_quotes_user][:complete].blank? %>
+<% if @update && params[:conveyancing_quotes_user][:details_required].blank? %>
   $('.conveyancing-content-form--email').slideUp(250, function() {
     $('.conveyancing-content__cta-button--email')
       .removeClass('toggle-class-closest')
