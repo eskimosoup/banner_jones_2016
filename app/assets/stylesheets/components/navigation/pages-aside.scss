@@ -20,7 +20,7 @@
   .page-aside-navigation-links-list {
     display: block;
   }
-  
+
   @include breakpoint(large) {
     @include grid-column(6);
 
@@ -35,8 +35,6 @@
 }
 
 .page-aside-navigation-content {
-  background: $deep-grey;
-
   @include media('<1400px') {
     padding: rem(10px);
   }
@@ -44,6 +42,21 @@
   @include media('>1400px') {
     padding: rem(20px);
     margin: 0 rem(18px);
+  }
+
+  &:not(&--transparent) {
+    background: $deep-grey;
+  }
+
+  &--transparent {
+    background-color: transparent;
+  }
+
+  &--collapsed {
+    @include media('>1400px') {
+      margin: 0;
+      padding: 0;
+    }
   }
 }
 

@@ -22,24 +22,36 @@
 <div class="large-content">
   <aside class="large-content__aside">
     <div class="large-content-aside-sticky">
-      <%= render 'services/shared/service_large/aside' %>
+      <div class="large-content-aside-title">
+        <h2 class="large-content-aside-title__text">
+          Our Offices
+        </h2>
+      </div>
+
+      <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
+        <%= render partial: 'offices/shared/aside_navigation',
+                   collection: @offices,
+                   as: :office %>
+      </ul>
     </div>
   </aside>
 
-  <main class="large-content__main">
+  <main class="large-content__main large-content__main--no-padding">
     <div class="offices-index-map" id="map-canvas" data-locations="<%= @offices.to_json %>">
       <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
     </div>
 
     <section class="large-content-element">
-      <div class="large-content-element__section">
+      <div class="large-content-element__container">
         <div class="large-content-inner">
-          <div class="large-content-inner__main">
-            <%= render partial: 'offices/office', collection: @offices, as: :office %>
+          <div class="large-content-inner__main large-content-inner__main--full">
+            <div class="large-content-offices-index">
+              <%= render partial: 'offices/office', collection: @offices, as: :office %>
+            </div>
           </div>
 
           <aside class="large-content-inner__aside">
-            aside
+
           </aside>
         </div>
       </div>

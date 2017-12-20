@@ -12,7 +12,7 @@
 
 .large-content-aside-title {
   &__text {
-    border-bottom: 3px solid $black;
+    border-bottom: 3px solid $red;
     font-size: rem(18px);
     margin-bottom: rem(20px);
     padding-bottom: rem(10px);
@@ -41,7 +41,9 @@
   }
 
   @include breakpoint(xxlarge) {
-    margin-left: rem(57px);
+    &:not(&--without-icon) {
+      margin-left: rem(57px);
+    }
   }
 
   &__toggle {
