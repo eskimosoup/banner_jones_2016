@@ -169,6 +169,10 @@
 
   &__container {
     @include flex-grid-column(12, (small: map-get($grid-column-gutter, small), large: 40));
+
+    &--full {
+      @include flex-grid-column(12, (small: 0));
+    }
   }
 
   &__phone {
@@ -252,6 +256,10 @@
   &__icon {
     float: right;
   }
+}
+
+.large-content-masonry {
+  overflow: auto;
 }
 
 .service-team-member {
