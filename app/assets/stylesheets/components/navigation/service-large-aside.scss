@@ -75,6 +75,13 @@
     margin: 0;
   }
 
+  @include breakpoint(xxlarge) {
+    ul.large-content-aside-navigation--nested {
+      margin-left: rem(7px);
+    }
+  }
+
+
   a {
     display: block;
     font-size: rem(14px);
