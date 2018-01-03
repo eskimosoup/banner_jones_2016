@@ -3,7 +3,7 @@
 
   .field_with_errors {
     margin: 0 0 rem(10px);
-    
+
     input,
     select {
       border: 1px solid $red;
@@ -22,4 +22,11 @@
 
 .verified-by-visa {
   margin: 0 0 rem(10px);
+}
+
+.online-payments-form {
+  .field {
+    display: inline-block;
+    width: 49%;
+  }
 }

@@ -1,7 +1,17 @@
 <%= simple_form_for @payment do |f| %>
-  <%= f.input :invoice_number, label: 'Reference number' %>
-  <%= f.input :name %>
-  <%= f.input :contact_number %>
-  <%= f.input :amount, as: :decimal %>
-  <%= f.button :submit, "Continue", class: 'submit-button' %>
+  <div class="field">
+    <%= f.input :invoice_number, label: 'Reference number' %>
+  </div>
+  <div class="field">
+    <%= f.input :name %>
+  </div>
+  <div class="field">
+    <%= f.input :contact_number %>
+  </div>
+  <div class="field">
+    <%= f.input :amount, as: :decimal %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit, "Continue", class: 'submit-button' %>
+  </div>
 <% end %>
