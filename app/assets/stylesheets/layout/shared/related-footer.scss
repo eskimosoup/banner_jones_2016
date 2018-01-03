@@ -2,7 +2,7 @@
   border-top: 8px solid $orange;
 
   &--landing-page {
-    background-color: $white;
+    margin-bottom: rem(45px);
     margin-top: rem(90px);
     padding-bottom: rem(30px);
   }
@@ -20,6 +20,7 @@
 
   &--landing-page {
     background-color: $white;
+    margin-bottom: rem(60px);
     padding-bottom: rem(60px);
   }
 

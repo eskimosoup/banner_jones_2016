@@ -1,6 +1,3 @@
-<%= render 'events/shared/index_header' %>
-
-
 <% present @event do |event_presenter| %>
   <%= og_title event_presenter.social_share_title %>
   <%= og_description event_presenter.social_share_description %>
@@ -8,82 +5,77 @@
   <%= twitter_creator "@#{@event.team_members.first.twitter_link.split('/').last}" if @event.team_members.size == 1 && @event.team_members.first.twitter_link.present? %>
 <% end %>
 
-<div class="module-show">
-  <div class="module-show-content-overview">
-      <ul class="show-breadcrumbs">
-        <li><%= link_to 'Events', events_path %></li>
-        <li>
-          <%= render partial: 'shared/module_breadcrumbs', collection: @event.event_categories.displayed, as: :category, locals: { categories: @event.event_categories.displayed } %>
-        </li>
-      </ul>
-
-    <% present @event do |event_presenter| %>
-      <%= event_presenter.show_image(alt: event_presenter.title) %>
-    <% end %>
-
-    <div class="module-show-content-wrap">
-      <% if @event.team_members.present? %>
-        <div class="module-show-author">
-          <% present @event do |event_presenter| %>
-            <%= render partial: 'events/shared/show_team_members', collection: @event.team_members, as: :team_member, locals: { event_presenter: event_presenter } %>
+<div class="large-content">
+  <aside class="large-content__aside">
+    <div class="large-content-aside-sticky">
+      <div class="large-content-aside-title">
+        <h2 class="large-content-aside-title__text">
+          Categories
+        </h2>
+      </div>
+      <%= link_to 'events',
+                  '#large-content-aside-navigation',
+                  class: 'slide-toggle
+                          large-content-aside-navigation__toggle',
+                  data: {
+                    container: '.large-content-aside-navigation',
+                    return: false
+                  } %>
+      <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
+        <% @event_categories.in_groups_of(6, false) do |event_categories| %>
+          <% event_categories.each do |event_category| %>
+            <li class="large-content-aside-navigation__item">
+              <%= render 'event_categories/shared/link', event_category: event_category %>
+            </li>
           <% end %>
-        </div>
-      <% end %>
-
-      <div class="<%= module_show_content_classes(@event.team_members) %>" role="main">
-        <% present @event do |event_presenter| %>
-          <div class="index-module-details-date">
-            <%= event_presenter.date %>
-          </div>
-
-          <h1>
-            <%= event_presenter.title %>
-          </h1>
-
-          <%= event_presenter.content %>
-
-          <%= event_presenter.booking_link('Book now', { class: 'event-booking-button', title: "Book now for #{event_presenter.title}" }) if @event.booking_deadline >= DateTime.now %>
-
-          <%= render 'shared/social_share_buttons', object: @event %>
         <% end %>
-      </div>
+      </ul>
     </div>
-  </div>
-
-  <aside class="related-aside">
-    <h5 class="related-aside-title">Related Events</h5>
-
-    <%= render partial: 'events/aside_event', collection: @related_events, as: :event %>
   </aside>
+  <main class="large-content__main">
+    <section class="large-content-element">
+      <div class="large-content-element__section">
+        <div class="large-content-inner">
+          <div class="large-content-inner__main">
+            <ul class="show-breadcrumbs">
+              <li>
+                <%= link_to 'Events', events_path %>
+              </li>
+              <li>
+                <%= render partial: 'shared/module_breadcrumbs', collection: @event.event_categories.displayed, as: :category, locals: { categories: @event.event_categories.displayed } %>
+              </li>
+            </ul>
+            <% present @event do |event_presenter| %>
+              <%= event_presenter.show_image(alt: event_presenter.title) %>
+            <% end %>
+            <div class="module-show-content-wrap">
+              <% if @event.team_members.present? %>
+                <div class="events-show-author">
+                  <% present @event do |event_presenter| %>
+                    <%= render partial: 'events/shared/show_team_members', collection: @event.team_members, as: :team_member, locals: { event_presenter: event_presenter } %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="<%= module_show_content_classes(@event.team_members) %>" role="main">
+                <% present @event do |event_presenter| %>
+                  <div class="index-module-details-date">
+                    <%= event_presenter.date %>
+                  </div>
+                  <h1>
+                    <%= event_presenter.title %>
+                  </h1>
+                  <%= event_presenter.content %>
+                  <%= render 'shared/social_share_buttons', object: @event %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+          <aside class="large-content-inner__aside">
+            <h5 class="related-aside-title">Related Events</h5>
+            <%= render partial: 'events/aside_event', collection: @related_events, as: :event %>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
-
-<% if @event.team_members.present? %>
-  <div class="related-footer">
-    <div class="related-footer-details">
-      <% present @event.team_members.first do |team_member_presenter| %>
-        <%= content_tag :div,
-                        (team_member_presenter.linked_text(team_member_presenter.related_footer_image(alt: team_member_presenter.full_name))),
-                        class: 'team-member-avatar' if team_member_presenter.related_footer_image.present? %>
-        <%= possessive team_member_presenter.forename %> other events
-      <% end %>
-    </div>
-
-    <div class="module-inner-content">
-      <div class="module-index">
-        <%= render partial: 'events/event',
-                   collection: @event.team_members.first.events.displayed.limit(3).order(publish_at: :desc),
-                   as: :event %>
-      </div>
-
-      <div class="related-footer-navigation">
-        <% # TODO: Filter? Team member show? %>
-        <%#= link_to 'Show all',
-                team_member_path(@event.team_members.first, anchor: 'events'), class: 'related-footer-see-all' %>
-
-        <%= link_to 'Show all',
-                events_path,
-                class: 'related-footer-see-all' %>
-      </div>
-    </div>
-  </div>
-<% end %>
