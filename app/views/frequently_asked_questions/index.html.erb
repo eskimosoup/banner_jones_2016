@@ -37,9 +37,9 @@
         <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
           <% audience.services.roots.where('services.id IN (?)', @service_ids).displayed.each do |service| %>
             <li class="large-content-aside-navigation__item">
-              <%= link_to service.title, frequently_asked_questions_path(service_id: service.id), class: "#{@service == service || @service.root == service ? 'active' : 'inactive'}" %>
+              <%= link_to service.title, frequently_asked_questions_path(service_id: service.id), class: "#{@service == service || (@service.present? && @service.root.present? && @service.root == service) ? 'active' : 'inactive'}" %>
 
-              <% if @service == service || @service.root == service %>
+              <% if @service == service || (@service.present? && @service.root.present? && @service.root == service) %>
                 <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon large-content-aside-navigation--nested" id="large-content-aside-navigation">
                   <% service.children.displayed.where('services.id IN (?)', @service_ids).each do |child| %>
                     <li class="large-content-aside-navigation__item">

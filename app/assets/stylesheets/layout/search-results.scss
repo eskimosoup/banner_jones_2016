@@ -34,3 +34,10 @@
     font-weight: $museo-sans--bold;
   }
 }
+
+.search-results-index {
+  @include breakpoint(medium) {
+    margin-left: rem(5px);
+    margin-top: rem(10px);
+  }
+}
