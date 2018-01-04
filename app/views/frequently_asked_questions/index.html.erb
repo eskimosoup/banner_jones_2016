@@ -1,10 +1,5 @@
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'components/module-categories/toggle' %>
-  <script>
-    $(document).on('change', '.submit-on-change', function() {
-      $(this).closest('form').submit();
-    });
-  </script>
 <% end %>
 
 <%= render 'frequently_asked_questions/shared/javascript' %>

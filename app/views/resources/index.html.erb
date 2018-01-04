@@ -24,7 +24,7 @@
                   } %>
 
 
-      <%= form_tag frequently_asked_questions_path, method: :get do %>
+      <%= form_tag resources_path, method: :get do %>
         <div class="field">
           <%= select_tag :service_id, grouped_options_for_select(@audiences.order(:title).map{|x| [x.title, x.services.roots.displayed.order(:title).map{|y| [y.title, y.id] }]}, selected: params[:service_id]), prompt: 'Please select a service', class: 'submit-on-change' %>
         </div>
@@ -39,13 +39,13 @@
         <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
           <% audience.services.roots.where('services.id IN (?)', @service_ids).displayed.each do |service| %>
             <li class="large-content-aside-navigation__item">
-              <%= link_to service.title, frequently_asked_questions_path(service_id: service.id), class: "#{@service == service || (@service.present? && @service.root.present? && @service.root == service) ? 'active' : 'inactive'}" %>
+              <%= link_to service.title, resources_path(service_id: service.id), class: "#{@service == service || (@service.present? && @service.root.present? && @service.root == service) ? 'active' : 'inactive'}" %>
 
               <% if @service == service || (@service.present? && @service.root.present? && @service.root == service) %>
                 <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon large-content-aside-navigation--nested" id="large-content-aside-navigation">
                   <% service.children.displayed.where('services.id IN (?)', @service_ids).each do |child| %>
                     <li class="large-content-aside-navigation__item">
-                      <%= link_to child.title, frequently_asked_questions_path(service_id: child.id), class: "#{@service == service ? 'active' : 'inactive'}" %>
+                      <%= link_to child.title, resources_path(service_id: child.id), class: "#{@service == service ? 'active' : 'inactive'}" %>
                     </li>
                   <% end %>
                 </ul>
