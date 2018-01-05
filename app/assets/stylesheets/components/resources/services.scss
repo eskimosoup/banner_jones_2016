@@ -99,6 +99,7 @@ h1 {
 
   ol {
     counter-reset: section;
+    margin-right: rem(30px);
   }
 
 li {
@@ -177,6 +178,9 @@ ul {
 
 .basic-image-block {
   background: $red;
+  .section-container {
+    padding-left: 0;
+  }
   h1 {
     color: $white;
     font-size: 21px;
@@ -194,7 +198,6 @@ ul {
   }
 }
 .basic-other-articles {
-
 }
 
 .creative-page-summary {
@@ -203,7 +206,7 @@ ul {
     color: $white;
     font-size: 21px;
     padding: 65px 0 75px 0;
-    margin: 0;
+    margin: 190px 0 0 0;
     background-image: image-url('layout/header/banner-bg.png');
     background-repeat: no-repeat;
     z-index: 100;
@@ -212,7 +215,7 @@ ul {
     color: $turquoise;
     font-size: 18px;
     padding: 10px 20px;
-    margin: 0 0 0 30px;
+    margin:80px 0 0 30px;
   }
   p {
     padding: 10px 50px;
@@ -245,33 +248,31 @@ ul {
 
   li {
     @include clearfix;
-    font-size: 20px;
+    font-size: rem(20px);
     list-style: none;
-    min-height: 180px;
-    padding: rem(20px 0 20px 175px);
+    min-height: rem(180px);
+    padding: rem(20px 20px 20px 175px);
     position: relative;
 
     &::before {
       content: counter(section);
       counter-increment: section;
-      font-size: 150px;
-      left: 30px;
-      letter-spacing: -20px;
+      font-size: rem(150px);
+      left: rem(30px);
+      letter-spacing: rem(-20px);
       line-height: 1;
       position: absolute;
-      top: 20px;
+      top: rem(20px);
     }
-
-
+    img {
+      float: right;
+      margin: rem(10px 20px 10px 0);
+    }
     &:nth-child(odd) {
       &::before {
         font-family: $museo-slab;
       }
 
-      img {
-        float: right;
-        margin: 15px 15px 0 0;
-      }
     }
 
     &:nth-child(1) {
@@ -423,8 +424,9 @@ color: $orange;
   }
   h2 {
     background: $orange;
+    color: $white;
     font-size: 18px;
-    padding: 10px 20px 10px 100px;
+    padding: 10px 20px 10px 40px;
     margin-top: 50px;
   }
   p {
@@ -489,15 +491,14 @@ p {
   }
 }
 .creative-other-articles {
-height: 150px;
-
 h1 {
   color: $red;
   font-size: 18px;
-  padding-left: 30px;
+  font-weight: bold;
+  padding: 20px 0 0 30px;
+  text-align: center;
 }
 }
-
 
 // Individual Section
 
@@ -530,11 +531,17 @@ h1 {
 
 
 .resource-title {
-border-bottom: solid 5px $turquoise;
-color: $turquoise;
+  padding-top: 15px;
+  border-bottom: solid 5px $red;
+  color: $red;
 
   &:hover {
-border-bottom: solid 5px $turquoise +30;
-color: $turquoise +30;
+    border-bottom: solid 5px $red +30;
   }
+}
+
+.resource-download-description {
+  width: rem(200px);
+  text-align: center;
+  padding: rem(10px 0);
 }

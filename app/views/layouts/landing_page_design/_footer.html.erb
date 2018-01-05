@@ -92,7 +92,7 @@
 
 <%= content_for :javascript do %>
   <script>
-    $(document).on('click', '.large-modal-overlay-navigation__link', function() {
+    $(document).on('click', '.large-modal-overlay-navigation__link:not(.large-modal-overlay-navigation__link--phone)', function() {
       var container = $(this).data('container');
       $('.large-modal-overlay__form').hide();
       $(container).show();
@@ -125,16 +125,11 @@
                     data: {
                       container: '.large-modal-overlay__form--callback'
                     } %>
-        <%= link_to '#large-modal-overlay__email',
-                    class: 'large-modal-overlay-navigation__link
-                            large-modal-overlay-navigation__link--phone',
-                    data: {
-                      container: '.large-modal-overlay__form--callback'
-                    } do %>
+        <div class='large-modal-overlay-navigation__link large-modal-overlay-navigation__link--phone'>
           <span class="calltracks_bannerjonescouk-main">
             <%= global_site_settings['Phone'] %>
           </span>
-        <% end %>
+        </div>
       </nav>
 
       <div class="large-modal-overlay__form large-modal-overlay__form--email">
