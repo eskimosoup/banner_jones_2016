@@ -1,8 +1,8 @@
+<span class="suggested-resources">
 <%= link_to audience_service_resource_path(resource.services.first.audience, resource.services.first, resource) do %>
-    <span class="resource-title">
-    <%= resource.title %>
-    </span>
     <%= image_tag resource.image.show if resource.image? %>
-    <%#= debug resource %>
-
+    <div class="resource-title">
+    <%= resource.title %>
+    </div>
 <% end %>
+</span>
