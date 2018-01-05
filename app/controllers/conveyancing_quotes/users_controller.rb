@@ -10,7 +10,26 @@ module ConveyancingQuotes
 
     def new
       seo_settings
-      set_up_conveyancing_quote(@location)
+      # set_up_conveyancing_quote(@location)
+      session.delete(:conveyancing_quote)
+      @user = @location.users.new(ip_address: request.remote_ip)
+    end
+
+    def create
+      @user = @location.users.new(user_params.merge(ip_address: request.remote_ip))
+      respond_to do |format|
+        format.js do
+          if @user.save
+            session[:conveyancing_quote] = @user.token
+            @conveyancing_quote_sale_and_purchase = @user.build_sale_and_purchase
+            @conveyancing_quote_sale_and_purchase.build_sale
+            @conveyancing_quote_sale_and_purchase.build_purchase
+            render :create
+          else
+            render :new
+          end
+        end
+      end
     end
 
     def update
@@ -51,7 +70,7 @@ module ConveyancingQuotes
     def user_params
       params.require(:conveyancing_quotes_user).permit(
         :forename, :surname, :email, :phone, :buying, :selling,
-        :conveyancing_email_permission, :buying_and_selling, :complete
+        :conveyancing_email_permission, :buying_and_selling, :details_required
       )
     end
 

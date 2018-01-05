@@ -257,6 +257,18 @@
 }
 
 
+.conveyancing-request {
+  @include flex-grid-row(nest);
+
+  .field {
+    @include flex-grid-column(6);
+  }
+
+  .conveyancing-landing-hero-form__options-field {
+    min-width: 47%;
+  }
+}
+
 /*
 .conveyancing-completion {
   @include flex-grid-row;

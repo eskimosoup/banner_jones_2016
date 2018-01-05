@@ -10,11 +10,29 @@
       </h1>
       <%= raw details %>
       <div class="conveyancing-landing-hero-form">
-        <%= render partial: "conveyancing_quotes/sale_and_purchases/form",
-                  locals: {
-                    conveyancing_quote_sale_and_purchase:
-                    conveyancing_quote_sale_and_purchase
-                  } %>
+        <%= form_for @user,
+                    url: conveyancing_quotes_location_users_path(@location),
+                    remote: true do |f| %>
+          <%= render 'shared/form_errors',
+              object: @user,
+              form_name: 'conveyancing quote' %>
+          <%= render 'conveyancing_quotes/users/shared/form_fields', f: f %>
+          <div class="actions">
+            <%= f.hidden_field :details_required, value: 1 %>
+            <%= f.submit 'Next',
+                          class: 'conveyancing-landing-hero-form__submit
+                                  conveyancing-landing-hero-form__input--valid
+                                  conveyancing-landing-hero-form__submit--action
+                                  conveyancing-landing-hero-form__submit--block
+                                  ga-event',
+                          data: {
+                            event_category: 'Conveyancing Calculator',
+                            event_action: 'Click',
+                            event_label:  'Initial submission',
+                            disable_with: 'Submitting...'
+                          }  %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

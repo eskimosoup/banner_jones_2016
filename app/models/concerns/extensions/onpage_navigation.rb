@@ -15,6 +15,7 @@ module Extensions
          ['Service pages', 'service_pages'],
          ['Team members', 'team_members'],
          %w(Accreditations accreditations),
+         ['Request a Callback Conveyancing', 'request_a_callback_conveyancing'],
          ['Conveyancing - London header', 'conveyancing/london_header'],
          ['Conveyancing - Team Member and Reviews', 'conveyancing/team_member_and_reviews'],
          ['Conveyancing - CTA points', 'conveyancing/cta_points'],

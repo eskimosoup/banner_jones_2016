@@ -139,7 +139,7 @@
 }
 
 .primary-header-main-navigation {
-  @include flex-grid-row(null, 100%);
+  @include flex-grid-row;
   justify-content: space-between;
 
   /*
@@ -189,7 +189,6 @@
 
     @include breakpoint(1636px) {
       bottom: -5px;
-      margin-left: rem(112px);
     }
   }
 
@@ -251,8 +250,22 @@
     }
   }
 
+  .meganav-dropdown-secondary-list {
+    @include flex-grid-column(5);
+  }
+
+  .meganav-dropdown-team-member-wrap {
+    @include flex-grid-column(7);
+  }
+
   .meganav-dropdown-wrap {
     margin-top: 14px;
+  }
+
+  .meganav-dropdown-team-member-name,
+  .meganav-dropdown-team-member-role,
+  .meganav-dropdown-team-member-location {
+    margin-left: 0;
   }
 
   .dropdown {

@@ -32,7 +32,7 @@ namespace :deploy do
         dirs.each do |directory|
           run_locally do
             execute :rsync,
-                    "-a --delete #{directory} #{path}#{directory[1..-1]}"
+                    "-a --progress --delete #{directory} #{path}#{directory[1..-1]}"
           end
         end
       end

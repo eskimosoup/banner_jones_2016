@@ -1,0 +1,112 @@
+<% if @callback_request.forename.present? %>
+  <p>
+    <strong>Forename</strong><br />
+
+    <%= @callback_request.forename %>
+  </p>
+<% end %>
+
+
+<% if @callback_request.surname.present? %>
+  <p>
+    <strong>Surname</strong><br />
+
+    <%= @callback_request.surname %>
+  </p>
+<% end %>
+
+<% if @callback_request.email_address.present? %>
+  <p>
+    <strong>Email address</strong><br />
+
+    <%= @callback_request.email_address %>
+  </p>
+<% end %>
+
+<% if @callback_request.contact_telephone.present? %>
+  <p>
+    <strong>Contact telephone</strong><br />
+
+    <%= @callback_request.contact_telephone %>
+  </p>
+<% end %>
+
+
+<% if @callback_request.purchase_price.present? %>
+  <p>
+    <strong>Purchase price</strong><br />
+
+    <%= number_to_currency @callback_request.purchase_price %>
+  </p>
+<% end %>
+
+<% if @callback_request.purchase_freehold_house.present? %>
+  <p>
+    <strong>Purchase freehold house</strong><br />
+
+    <%= @callback_request.purchase_freehold_house %>
+  </p>
+<% end %>
+
+<% if @callback_request.purchase_freehold_apartment.present? %>
+  <p>
+    <strong>Purchase freehold apartment</strong><br />
+
+    <%= @callback_request.purchase_freehold_apartment %>
+  </p>
+<% end %>
+
+<% if @callback_request.purchase_leasehold_house.present? %>
+  <p>
+    <strong>Purchase leasehold house</strong><br />
+
+    <%= @callback_request.purchase_leasehold_house %>
+  </p>
+<% end %>
+
+<% if @callback_request.purchase_leasehold_apartment.present? %>
+  <p>
+    <strong>Purchase leasehold apartment</strong><br />
+
+    <%= @callback_request.purchase_leasehold_apartment %>
+  </p>
+<% end %>
+
+<% if @callback_request.sale_price.present? %>
+  <p>
+    <strong>Sale price</strong><br />
+
+    <%= number_to_currency @callback_request.sale_price %>
+  </p>
+<% end %>
+
+<% if @callback_request.sale_freehold_house.present? %>
+  <p>
+    <strong>Sale freehold house</strong><br />
+
+    <%= @callback_request.sale_freehold_house %>
+  </p>
+<% end %>
+
+<% if @callback_request.sale_freehold_apartment.present? %>
+  <p>
+    <strong>Sale freehold apartment</strong><br />
+
+    <%= @callback_request.sale_freehold_apartment %>
+  </p>
+<% end %>
+
+<% if @callback_request.sale_leasehold_house.present? %>
+  <p>
+    <strong>Sale freehold house</strong><br />
+
+    <%= @callback_request.sale_leasehold_house %>
+  </p>
+<% end %>
+<% if @callback_request.sale_leasehold_apartment.present? %>
+  <p>
+    <strong>Sale freehold apartment</strong><br />
+
+    <%= @callback_request.sale_leasehold_apartment %>
+  </p>
+<% end %>

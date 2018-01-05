@@ -27,7 +27,6 @@ module ConveyancingQuotes
                                 leasehold_apartment help_to_buy_scheme help_to_buy_isa
                                 shared_ownership_scheme],
         sale_attributes: %i[timeframe price leasehold_house leasehold_apartment shared_ownership_scheme]
-
       )
     end
   end

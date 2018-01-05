@@ -6,6 +6,14 @@ module Optimadmin
 
     before_action :set_office_location, only: %i[show edit update destroy]
 
+    edit_images_for ::OfficeLocation,
+                      [
+                        [:image, {
+                          show: ['fill', 1920, 300]
+                        }]
+                      ]
+
+
     def index
       @pagination_helper = OfficeLocation.field_order(params[:order])
                                          .field_search(params[:search], 'name')

@@ -1,0 +1,36 @@
+<div class="conveyancing-content-form__field-group">
+    <div class="conveyancing-content-form__field-grouped">
+      <%= f.label :forename %>
+      <%= f.text_field :forename,
+                      class: 'conveyancing-content-form__input
+                              conveyancing-content-form__input--bordered',
+                      required: true,
+                      placeholder: 'Forename' %>
+    </div>
+    <div class="conveyancing-content-form__field-grouped">
+      <%= f.label :surname %>
+      <%= f.text_field :surname,
+                      class: 'conveyancing-content-form__input
+                              conveyancing-content-form__input--bordered',
+                      required: true,
+                      placeholder: 'Surname' %>
+    </div>
+  </div>
+  <div class="conveyancing-content-form__field-group">
+    <div class="conveyancing-content-form__field-grouped">
+      <%= f.label :email %>
+      <%= f.email_field :email,
+                      class: 'conveyancing-content-form__input
+                              conveyancing-content-form__input--bordered',
+                      required: true,
+                      placeholder: 'me@example.com' %>
+    </div>
+    <div class="conveyancing-content-form__field-grouped">
+      <%= f.label :phone, 'Phone number' %>
+      <%= f.text_field :phone,
+                      class: 'conveyancing-content-form__input
+                              conveyancing-content-form__input--bordered',
+                      required: true,
+                      placeholder: 'Phone number' %>
+    </div>
+  </div>

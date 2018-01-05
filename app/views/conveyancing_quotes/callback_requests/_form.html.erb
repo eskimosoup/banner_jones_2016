@@ -1,0 +1,125 @@
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'components/conveyancing-quotes/form' %>
+<% end %>
+<%= form_for callback_request, remote: true do |f| %>
+  <%= render 'shared/form_errors', object: callback_request %>
+  <div class="conveyancing-request">
+    <div class="field">
+      <%= f.label :forename %>
+      <%= f.text_field :forename,
+                      class: 'conveyancing-landing-hero-form__input
+                              conveyancing-landing-hero-form__input--bordered' %>
+    </div>
+    <div class="field">
+      <%= f.label :surname %>
+      <%= f.text_field :surname,
+                     class: 'conveyancing-landing-hero-form__input
+                            conveyancing-landing-hero-form__input--bordered' %>
+    </div>
+    <div class="field">
+      <%= f.label :email_address %>
+      <%= f.text_field :email_address,
+                     class: 'conveyancing-landing-hero-form__input
+                            conveyancing-landing-hero-form__input--bordered' %>
+    </div>
+    <div class="field">
+      <%= f.label :contact_telephone %>
+      <%= f.text_field :contact_telephone,
+                     class: 'conveyancing-landing-hero-form__input
+                            conveyancing-landing-hero-form__input--bordered' %>
+    </div>
+    <div class="field">
+      <%= f.label :purchase_price %>
+      <%= f.text_field :purchase_price,
+                     class: 'conveyancing-landing-hero-form__input
+                            conveyancing-landing-hero-form__input--currency
+                            conveyancing-landing-hero-form__input--bordered' %>
+      <div class="conveyancing-landing-hero-form__options conveyancing-landing-hero-form__options--visible">
+        <div class="conveyancing-landing-hero-form__options-group">
+          <div class="conveyancing-landing-hero-form__options-field">
+            <div class="conveyancing-custom-checkbox">
+              <%= f.check_box :purchase_freehold_house, checked: true %>
+              <%= f.label :purchase_freehold_house,
+                      '<span></span> Freehold house'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+            </div>
+          </div>
+          <div class="conveyancing-landing-hero-form__options-field">
+            <div class="conveyancing-custom-checkbox">
+              <%= f.check_box :purchase_freehold_apartment %>
+              <%= f.label :purchase_freehold_apartment,
+                      '<span></span> Freehold apartment'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+            </div>
+          </div>
+        </div>
+        <div class="conveyancing-landing-hero-form__options-group">
+          <div class="conveyancing-landing-hero-form__options-field">
+            <div class="conveyancing-custom-checkbox">
+              <%= f.check_box :purchase_leasehold_house %>
+              <%= f.label :purchase_leasehold_house,
+                      '<span></span> Leasehold house'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+            </div>
+          </div>
+          <div class="conveyancing-landing-hero-form__options-field">
+            <div class="conveyancing-custom-checkbox">
+              <%= f.check_box :purchase_leasehold_apartment %>
+              <%= f.label :purchase_leasehold_apartment,
+                      '<span></span> Leasehold apartment'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <%= f.label :sale_price %>
+      <%= f.text_field :sale_price,
+                     class: 'conveyancing-landing-hero-form__input
+                            conveyancing-landing-hero-form__input--currency
+                            conveyancing-landing-hero-form__input--bordered' %>
+      <div class="conveyancing-landing-hero-form__options conveyancing-landing-hero-form__options--visible">
+        <div class="conveyancing-landing-hero-form__options-group">
+          <div class="conveyancing-landing-hero-form__options-field">
+            <div class="conveyancing-custom-checkbox">
+              <%= f.check_box :sale_freehold_house, checked: true %>
+              <%= f.label :sale_freehold_house,
+                      '<span></span> Freehold house'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+            </div>
+          </div>
+          <div class="conveyancing-landing-hero-form__options-field">
+            <div class="conveyancing-custom-checkbox">
+              <%= f.check_box :sale_freehold_apartment %>
+              <%= f.label :sale_freehold_apartment,
+                      '<span></span> Freehold apartment'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+            </div>
+          </div>
+        </div>
+        <div class="conveyancing-landing-hero-form__options-group">
+          <div class="conveyancing-landing-hero-form__options-field">
+            <div class="conveyancing-custom-checkbox">
+              <%= f.check_box :sale_leasehold_house %>
+              <%= f.label :sale_leasehold_house,
+                      '<span></span> Leasehold house'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+            </div>
+          </div>
+          <div class="conveyancing-landing-hero-form__options-field">
+            <div class="conveyancing-custom-checkbox">
+              <%= f.check_box :sale_leasehold_apartment %>
+              <%= f.label :sale_leasehold_apartment,
+                      '<span></span> Leasehold apartment'.html_safe,
+                      class: 'conveyancing-landing-hero-form__options-label' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Send', class: 'submit-button' %>
+  </div>
+<% end %>
