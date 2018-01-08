@@ -9,8 +9,10 @@
         </div>
       </div>
 
-      <div class="content-section__image">
-        <%= image_tag image %>
-      </div>
+      <% if defined? image %>
+        <div class="content-section__image">
+          <%= image_tag image %>
+        </div>
+      <% end %>
     </div>
   <% end %>
