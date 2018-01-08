@@ -1,7 +1,16 @@
 .search-result {
+  @include shadow-content-box;
   border-bottom: 1px dotted $red;
-  padding-bottom: rem(10px);
   margin-bottom: rem(10px);
+  padding: rem(10px);
+
+  @include breakpoint(small only) {
+    width: 100%;
+  }
+
+  @include breakpoint(medium) {
+    width: 315px;
+  }
 
   &__title {
     color: $black;

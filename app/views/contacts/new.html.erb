@@ -1,51 +1,37 @@
-<div class="page-content-wrap">
-  <div class="page-content">
-    <h1 class="service-page-title">
-      <%= @additional_content.present? ? @additional_content.title : 'Contact Us' %>
-    </h1>
 
-    <div class="page-inner-content" role="main">
-      <% if @additional_content.present? %>
-        <%= raw @additional_content.content %>
-      <% else %>
-        <% # TODO: Make this have dynamic content %>
-        <% if global_site_settings['Phone'].present? %>
-          <p>
-            Call us now on
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <section class="office-location-content">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <h1 class="standard-content-box-title standard-content-box-title--no-border">
+            Send an email
+          </h1>
 
-            <span class="calltracks_bannerjonescouk-main">
-              <%= global_site_settings['Phone'] %>
-            </span>
-          </p>
-        <% end %>
+          <%= render 'shared/flash_messages' %>
 
-        <p>
-          Our normal office hours are Monday - Friday: 9am-5pm.
-        </p>
+          <%= render 'form' %>
+        </div>
+      </div>
+    </section>
 
-        <p>Lines are open Monday - Friday 8-8pm, Sat 9-5pm, Sun 10-4pm.
+    <aside class="office-location-aside">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <h2 class="standard-content-box-title standard-content-box-title--no-border">
+            Talk to our team
+          </h2>
 
-        <p>
-          If outside of office hours, a message will be taken and your call will be
-          returned on the next working day. If you wish to send a fax to one of our
-          offices, please call the number above and ask for the relevant fax number.
-        </p>
+          <%= render 'pages/shared/call_to_actions_solicitors_landing_page' %>
 
-        <p>
-          <strong>Or</strong> you can e-mail your enquiry by simply completing the form below and
-          clicking '<strong>Send</strong>'. Email enquiries will be picked up during office hours only.
-        </p>
-      <% end %>
-    </div>
-  </div>
+          <h2 class="standard-content-box-title standard-content-box-title--no-border">
+            Our offices
+          </h2>
 
-  <div class="page-content">
-    <h2 class="service-page-title">
-      Send an email
-    </h2>
-
-    <%= render 'shared/flash_messages' %>
-
-    <%= render 'form' %>
+          <%= render partial: 'offices/shared/call_to_actions',
+                     collection: @locations,
+                     as: :location %>
+      </div>
+    </aside>
   </div>
 </div>

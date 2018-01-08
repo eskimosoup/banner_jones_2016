@@ -46,3 +46,22 @@
 .page-call-to-action-icon {
   @include grid-column($columns: 3, $gutter: (small: 0));
 }
+
+.call-to-action-link {
+  color: $black;
+  display: block;
+  border-bottom: 1px solid $orange;
+  font-family: $museo-sans;
+  font-size: rem(18px);
+  margin-top: rem(10px);
+  padding-bottom: rem(10px);
+
+  img {
+    margin-right: rem(10px);
+  }
+
+  &--location {
+    background: image-url('components/icons/office/icon-orange.png') no-repeat top left;
+    padding-left: rem(34px);
+  }
+}

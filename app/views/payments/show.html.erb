@@ -1,28 +1,30 @@
-<div class="page-content-wrap">
-  <div class="page-content full">
-    <h1 class="service-page-title">Confirm Details</h1>
-
-    <p>
-      <strong>Please check the the details below are correct before continuing</strong>
-    </p>
-
-    <div class="payment">
-      <div class="invoice-number">
-        <strong>Our reference:</strong> <%= @payment.invoice_number %>
-      </div>
-      <div class="name">
-        <strong>Name:</strong> <%= @payment.name %>
-      </div>
-      <div class="contact-number">
-        <strong>Contact number:</strong> <%= @payment.contact_number %>
-      </div>
-      <div class="amount">
-        <strong>Amount</strong> <%= number_to_currency @payment.amount %>
-      </div>
-    </div>
-
-    <h3>Debit Card - <%= number_to_currency @payment.amount %></h3>
-    <%= render(
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <section class="office-location-content">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <h1 class="standard-content-box-title standard-content-box-title--no-border">
+            Confirm your details
+          </h1>
+          <p>
+            <strong>Please check the the details below are correct before continuing</strong>
+          </p>
+          <div class="payment">
+            <div class="invoice-number">
+              <strong>Our reference:</strong> <%= @payment.invoice_number %>
+            </div>
+            <div class="name">
+              <strong>Name:</strong> <%= @payment.name %>
+            </div>
+            <div class="contact-number">
+              <strong>Contact number:</strong> <%= @payment.contact_number %>
+            </div>
+            <div class="amount">
+              <strong>Amount</strong> <%= number_to_currency @payment.amount %>
+            </div>
+          </div>
+          <h3>Debit Card - <%= number_to_currency @payment.amount %></h3>
+          <%= render(
       partial: "payments/worldpay",
       locals: {
         amount: @payment.amount,
@@ -30,7 +32,7 @@
         card_type: "Maestro",
       }
     ) %>
-    <%= render(
+          <%= render(
       partial: "payments/worldpay",
       locals: {
         amount: @payment.amount,
@@ -38,7 +40,7 @@
         card_type: "Visa Debit",
       }
     ) %>
-    <%= render(
+          <%= render(
       partial: "payments/worldpay",
       locals: {
         amount: @payment.amount,
@@ -46,9 +48,8 @@
         card_type: "Visa Electron",
       }
     ) %>
-
-    <h3>Credit Card - <%= number_to_currency @payment.credit_card_amount %></h3>
-    <%= render(
+          <h3>Credit Card - <%= number_to_currency @payment.credit_card_amount %></h3>
+          <%= render(
       partial: "payments/worldpay",
       locals: {
         amount: @payment.amount,
@@ -56,7 +57,7 @@
         card_type: "Visa Credit",
       }
     ) %>
-    <%= render(
+          <%= render(
       partial: "payments/worldpay",
       locals: {
         amount: @payment.amount,
@@ -64,7 +65,7 @@
         card_type: "Mastercard",
       }
     ) %>
-    <%= render(
+          <%= render(
       partial: "payments/worldpay",
       locals: {
         amount: @payment.amount,
@@ -72,7 +73,7 @@
         card_type: "JCB",
       }
     ) %>
-    <%= render(
+          <%= render(
       partial: "payments/worldpay",
       locals: {
         amount: @payment.amount,
@@ -80,7 +81,7 @@
         card_type: "American Express",
       }
     ) %>
-    <%= render(
+          <%= render(
       partial: "payments/worldpay",
       locals: {
         amount: @payment.amount,
@@ -88,12 +89,18 @@
         card_type: "Diners Card",
       }
     ) %>
-  </div>
-
-  <aside class="page-additional-information">
-    <div class="page-call-to-actions-title-wrap">
-      <h3 class="page-call-to-actions-title">Talk to us</h3>
+        </div>
+      </div>
+    </section>
+    <aside class="office-location-aside">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <h2 class="standard-content-box-title standard-content-box-title--no-border">
+            Talk to our team
+          </h2>
+          <%= render 'pages/shared/call_to_actions_solicitors_landing_page' %>
+        </div>
+      </aside>
     </div>
-    <%= render 'pages/shared/call_to_actions_solicitors' %>
-  </aside>
+  </div>
 </div>

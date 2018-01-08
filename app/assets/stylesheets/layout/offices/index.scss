@@ -25,3 +25,9 @@
     @include standard-content-box-title;
   }
 }
+
+.large-content-offices-index {
+  .office .standard-content-box {
+    background-color: $white;
+  }
+}

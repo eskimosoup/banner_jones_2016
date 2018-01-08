@@ -1,4 +1,4 @@
-<%= render 'articles/shared/index_header' %>
+<%#= render 'articles/shared/index_header' %>
 
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
@@ -11,13 +11,54 @@
   </script>
 <% end %>
 
+<div class="large-content">
+  <aside class="large-content__aside">
+    <div class="large-content-aside-sticky">
+      <div class="large-content-aside-title">
+        <h2 class="large-content-aside-title__text">
+          Categories
+        </h2>
+      </div>
 
-<div class="module-inner-content">
-  <div class="module-index" role="main">
-    <%= render partial: 'articles/article', collection: @articles, as: :article %>
-  </div>
+      <%= link_to 'Articles',
+                  '#large-content-aside-navigation',
+                  class: 'slide-toggle
+                          large-content-aside-navigation__toggle',
+                  data: {
+                    container: '.large-content-aside-navigation',
+                    return: false
+                  } %>
 
-  <div class="module-pagination">
-    <%= paginate @articles %>
-  </div>
+
+      <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
+        <% @article_categories.in_groups_of(6, false) do |article_categories| %>
+          <% article_categories.each do |article_category| %>
+            <li class="large-content-aside-navigation__item">
+              <%= render 'article_categories/shared/link', article_category: article_category %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="large-content__main">
+    <section class="large-content-element">
+      <div class="large-content-element__container">
+        <div class="large-content-inner">
+          <div class="large-content-inner__main large-content-inner__main--full">
+            <div class="large-content-masonry">
+              <%= render partial: 'articles/article',
+                        collection: @articles,
+                        as: :article %>
+            </div>
+
+            <div class="module-pagination">
+              <%= paginate @articles %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>

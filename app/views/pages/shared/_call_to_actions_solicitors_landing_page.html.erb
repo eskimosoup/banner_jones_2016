@@ -1,0 +1,33 @@
+<% unless defined?(hide_call_us) %>
+
+  <% if yield(:custom_telephone).present? %>
+    <% telephone = yield(:custom_telephone) %>
+  <% else %>
+    <% telephone = global_site_settings['Phone'] %>
+  <% end %>
+
+  <% if telephone.present? %>
+    <%= link_to "tel:#{telephone.tr(' ', '')}", class: 'call-to-action-link' do %>
+      <%= image_tag 'components/icons/office/icon-orange.png', alt: 'Telephone' %>
+      <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
+        <%= telephone %>
+      </span>
+    <% end %>
+  <% end %>
+<% end %>
+
+<% unless defined?(hide_callback) %>
+  <%= link_to '#new_callback_request', class: 'call-to-action-link toggle-class',
+    data: { container: '.remote-callback-request-form-modal', class: 'visible', return: 'false' } do %>
+    <%= image_tag 'components/icons/call-to-action/callback.png', alt: 'Callback' %>
+    Request a call back
+  <% end %>
+<% end %>
+
+<% unless defined?(hide_email) %>
+<%= link_to '#new_contact', class: 'call-to-action-link toggle-class',
+    data: { container: '.remote-contact-form-modal', class: 'visible', return: 'false' } do %>
+    <%= image_tag 'components/icons/call-to-action/email.png', alt: 'Email' %>
+    Email us
+  <% end %>
+<% end %>

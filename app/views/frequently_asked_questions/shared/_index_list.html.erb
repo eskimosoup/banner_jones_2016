@@ -1,0 +1,12 @@
+<% cache frequently_asked_question do %>
+  <div class="index-module index">
+    <div class="standard-content-box standalone index-module-details-overview frequently-asked-question-index">
+      <div class="index-module-details-wrap">
+        <%= render(
+              partial: "frequently_asked_questions/frequently_asked_question",
+              object: frequently_asked_question
+            ) %>
+      </div>
+    </div>
+  </div>
+<% end %>
