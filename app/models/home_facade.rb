@@ -1,4 +1,8 @@
 class HomeFacade
+  def audience
+    nil
+  end
+
   def articles
     @articles ||= Article.homepage_highlight.limit(5)
   end
