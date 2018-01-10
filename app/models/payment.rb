@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
-  validates :amount, presence: true, numericality: { less_than: 1000 }
+  validates :amount, presence: true, numericality: { less_than: 1000, greater_than: 0 }
   validates :contact_number, presence: true
   validates :invoice_number, presence: true
   validates :name, presence: true
