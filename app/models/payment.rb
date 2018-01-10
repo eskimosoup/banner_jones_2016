@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
-  validates :amount, presence: true, numericality: { greater_than: 0 }
+  validates :amount, presence: true, numericality: { less_than: 1000, greater_than: 0 }
   validates :contact_number, presence: true
   validates :invoice_number, presence: true
   validates :name, presence: true
@@ -13,6 +13,7 @@ class Payment < ApplicationRecord
   end
 
   def credit_card_amount
-    BigDecimal.new('1.022') * amount
+    amount
+    # BigDecimal.new('1.022') * amount
   end
 end
