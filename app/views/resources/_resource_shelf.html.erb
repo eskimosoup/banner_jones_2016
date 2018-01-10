@@ -1,6 +1,7 @@
 <% present resource do |resource_presenter| %>
   <div class="helpful-guide helpful-guide-hover">
-    <%= link_to resource.file.url, title: "Download #{resource_presenter.title}", target: '_blank' do %>
+    <%= link_to audience_service_resource_path(resource.services.first.audience, resource.services.first, resource) do %>
+    <%#= link_to resource.file.url, title: "Download #{resource_presenter.title}", target: '_blank' do %>
       <div class="helpful-guide-title">
         <%= resource_presenter.title %>
       </div>

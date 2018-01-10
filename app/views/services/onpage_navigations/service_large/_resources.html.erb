@@ -86,7 +86,14 @@ resources = @service.resources.displayed if resources.blank?
                     ) %>
               </div>
 
-              <%= link_to resource.file.url,
+              <%#= link_to resource.file.url,
+                          class: 'onpage-resource__summary ga-event',
+                          data: {
+                            event_category: 'Guide',
+                            event_action: 'Click',
+                            event_title: resource_presenter.title
+                          } do %>
+              <%= link_to audience_service_resource_path(resource.services.first.audience, resource.services.first, resource),
                           class: 'onpage-resource__summary ga-event',
                           data: {
                             event_category: 'Guide',
