@@ -120,6 +120,10 @@
     background-repeat: repeat-x;
   }
 
+  &--padded {
+    padding: rem(20px);
+  }
+
   &__text {
     @include flex-grid-column(8, (small: 0));
   }
