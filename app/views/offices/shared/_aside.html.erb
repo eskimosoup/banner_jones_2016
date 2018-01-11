@@ -13,7 +13,7 @@
         </div>
 
         <div class="index-office-buttons">
-          <%= office_presenter.linked_text('View map', { title: office.address_fields, class: 'index-office-button' } ) %>
+          <%= office_presenter.linked_text('View map', { title: office.address_fields, class: 'index-office-button' } ) unless defined?(aside) %>
 
           <%= render partial: 'offices/shared/directions', locals: { office: office, office_presenter: office_presenter } %>
         </div>

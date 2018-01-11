@@ -7,8 +7,8 @@ module Extensions
       multisearchable against: %i[title summary content],
                       if: :searchable?
 
-      LAYOUTS = %w(application wealth_management notary).freeze
-      STYLES = %w(basic chatbot).freeze
+      LAYOUTS = %w(application wealth_management notary landing_page_design).freeze
+      STYLES = %w(basic chatbot service_large).freeze
     end
 
     class_methods do

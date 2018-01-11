@@ -1,7 +1,7 @@
 <%= form_tag "https://secure.wp3.rbsworldpay.com/wcc/purchase" do %>
   <%# form_tag "https://select-test.wp3.rbsworldpay.com/wcc/purchase" do %>
   <%= hidden_field_tag "paymentType", payment_type %>
-  <%# hidden_field_tag "testMode", "100" %>
+  <%= hidden_field_tag "testMode", "100" if Rails.env.development? %>
   <%= hidden_field_tag "instId", "260533" %>
   <%= hidden_field_tag "cartId", @payment.id %>
   <%= hidden_field_tag "name", @payment.name %>

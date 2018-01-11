@@ -1,51 +1,81 @@
-<div class="search-results">
-  <div class="search-results__content">
-    <div class="search-results__results">
-      <div class="search-results__inner search-results__inner--padded">
-        <h1 class="search-results__title">
-          Search Results
-        </h1>
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
+  <script>
+    $(window).load(function() {
+      $('.module-index').masonry({
+        itemSelector: '.search-result',
+        gutter: 10,
+        columnWidth: 315
+      });
+    });
+  </script>
+<% end %>
 
-        <%= form_tag new_search_path, method: :get, class: 'inline-search-form' do %>
-          <div class="inline-search-form__field">
-            <%= text_field_tag :q,
-                                params[:q],
-                                placeholder: 'Search',
-                                class: 'inline-search-form__input
-                                        inline-search-form__input--bordered' %>
-          </div>
+<div class="content-area">
+  <div class="content-area__inner content-area__inner--row">
+    <section class="office-location-content">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <h1 class="standard-content-box-title standard-content-box-title--no-border">
+            Search results
+          </h1>
 
-          <div class="inline-search-form__actions">
-            <%= submit_tag 'Search',
-                            class: 'inline-search-form__submit' %>
-          </div>
-       <% end %>
+          <%= form_tag new_search_path, method: :get, class: 'inline-search-form' do %>
+            <div class="inline-search-form__field">
+              <%= text_field_tag :q,
+                                  params[:q],
+                                  placeholder: 'Search',
+                                  class: 'inline-search-form__input
+                                          inline-search-form__input--bordered' %>
+            </div>
 
-        <p class="search-results__summary">
-          Your search for
-          <strong>
-            <%= params[:q] %>
-          </strong>
-          returned
-          <strong><%= pluralize(@facade.results.size, 'result', 'results') %></strong>.
-        </p>
+            <div class="inline-search-form__actions">
+              <%= submit_tag 'Search',
+                              class: 'inline-search-form__submit' %>
+            </div>
+          <% end %>
 
+          <p class="search-results__summary">
+            Your search for
+            <strong>
+              <%= params[:q] %>
+            </strong>
+            returned
+            <strong><%= pluralize(@facade.results.size, 'result', 'results') %></strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="module-index search-results-index">
         <%= render @facade.results %>
 
+        <%#= render partial: 'resources/resource',
+                    collection: Resource.displayed.limit(10),
+                    as: :resource %>
+      </div>
+
+      <div class="module-pagination">
         <%= paginate @facade.results %>
       </div>
-    </div>
+    </section>
 
-    <aside class="shared-aside">
-      <div class="shared-aside__inner shared-aside__inner--padded">
-        <h1 class="shared-aside__title">
-          Talk to us
-        </h1>
+    <aside class="office-location-aside">
+      <div class="content-section content-section--shadow">
+        <div class="content-section__full">
+          <h2 class="standard-content-box-title standard-content-box-title--no-border">
+            Talk to our team
+          </h2>
 
-        <%= render 'pages/shared/call_to_actions_solicitors' %>
+          <%= render 'pages/shared/call_to_actions_solicitors_landing_page' %>
+
+          <h2 class="standard-content-box-title standard-content-box-title--no-border">
+            Our offices
+          </h2>
+
+          <%= render partial: 'offices/shared/call_to_actions',
+                     collection: @locations,
+                     as: :location %>
       </div>
     </aside>
   </div>
 </div>
-
-

@@ -20,27 +20,48 @@
 <% end %>
 
 <section class="home-cta">
-  <%= render partial: 'homes/shared/cta_link',
-             locals: {
-               line_1: 'Moving',
-               line_2: 'Home?',
-               image: image_url('layout/home/call-to-actions/moving-home.png'),
-               link: '/for-you-your-family/services/residential-property'
-             } %>
-  <%= render partial: 'homes/shared/cta_link',
-             locals: {
-               line_1: 'Relationship',
-               line_2: 'Problems?',
-               image: image_url('layout/home/call-to-actions/relationship-problems.png'),
-               link: '/for-you-your-family/services/family-law/relationships-and-children/divorce-and-separation'
-             } %>
-  <%= render partial: 'homes/shared/cta_link',
-             locals: {
-               line_1: 'Had an',
-               line_2: 'accident or injury?',
-               image: image_url('layout/header/logo.png'),
-               link: '/for-you-your-family/services/personal-injury'
-             } %>
+  <% if @facade.audience.present? && @facade.audience.id == 2 %>
+    <%= render partial: 'homes/shared/cta_link',
+              locals: {
+                line_1: 'Business',
+                line_2: 'Services',
+                link: '/for-business/services/business-services'
+              } %>
+    <%= render partial: 'homes/shared/cta_link',
+              locals: {
+                line_1: 'Employment',
+                line_2: 'Law',
+                link: '/for-business/services/employment-law'
+              } %>
+    <%= render partial: 'homes/shared/cta_link',
+              locals: {
+                line_1: 'Commercial',
+                line_2: 'Property',
+                link: '/for-business/services/business-services/commercial-property'
+              } %>
+  <% else %>
+    <%= render partial: 'homes/shared/cta_link',
+              locals: {
+                line_1: 'Moving',
+                line_2: 'Home?',
+                image: image_url('layout/home/call-to-actions/moving-home.png'),
+                link: '/for-you-your-family/services/residential-property'
+              } %>
+    <%= render partial: 'homes/shared/cta_link',
+              locals: {
+                line_1: 'Relationship',
+                line_2: 'Problems?',
+                image: image_url('layout/home/call-to-actions/relationship-problems.png'),
+                link: '/for-you-your-family/services/family-law/relationships-and-children/divorce-and-separation'
+              } %>
+    <%= render partial: 'homes/shared/cta_link',
+              locals: {
+                line_1: 'Had an',
+                line_2: 'accident or injury?',
+                image: image_url('layout/home/call-to-actions/personal-injury.png'),
+                link: '/for-you-your-family/services/personal-injury'
+              } %>
+  <% end %>
 </section>
 
 <div class="content-area">

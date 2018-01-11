@@ -126,6 +126,12 @@
     @include breakpoint(large only) {
       padding-top: rem(85px);
     }
+
+    &--no-padding {
+      @include breakpoint(medium) {
+        @include flex-grid-column(10, (medium: 0));
+      }
+    }
   }
 }
 
@@ -161,6 +167,14 @@
     }
   }
 
+  &__container {
+    @include flex-grid-column(12, (small: map-get($grid-column-gutter, small), large: 40));
+
+    &--full {
+      @include flex-grid-column(12, (small: 0));
+    }
+  }
+
   &__phone {
     @include breakpoint(medium) {
       color: $black-grey;
@@ -177,12 +191,18 @@
   margin-top: rem(40px);
 
   &__main {
-    @include breakpoint(xlarge down) {
-      @include flex-grid-column(12);
+    &:not(&--full) {
+      @include breakpoint(xlarge down) {
+        @include flex-grid-column(12);
+      }
+
+      @include breakpoint(xxlarge) {
+        @include flex-grid-column(9);
+      }
     }
 
-    @include breakpoint(xxlarge) {
-      @include flex-grid-column(9);
+    &--full {
+      @include flex-grid-column(12);
     }
   }
 
@@ -236,6 +256,10 @@
   &__icon {
     float: right;
   }
+}
+
+.large-content-masonry {
+  overflow: auto;
 }
 
 .service-team-member {

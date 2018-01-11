@@ -61,3 +61,12 @@
     line-height: 1.1;
   }
 }
+
+.articles-show-author {
+  @include flex-grid-column(12);
+
+  .show-article-author {
+    display: inline-block;
+    min-width: 20%;
+  }
+}

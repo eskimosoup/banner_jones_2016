@@ -1,5 +1,5 @@
-<%= render 'events/shared/index_header' if @event_location.blank? %>
-<%= render 'events/shared/location_header' if @event_location.present? %>
+<%#= render 'events/shared/index_header' if @event_location.blank? %>
+<%#= render 'events/shared/location_header' if @event_location.present? %>
 
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
@@ -13,25 +13,53 @@
 <% end %>
 
 
-<div class="module-inner-content">
-  <div class="module-index">
-    <%= render partial: 'events/event', collection: @events, as: :event %>
-  </div>
+<div class="large-content">
+  <aside class="large-content__aside">
+    <div class="large-content-aside-sticky">
+      <div class="large-content-aside-title">
+        <h2 class="large-content-aside-title__text">
+          Categories
+        </h2>
+      </div>
 
-  <div class="module-pagination">
-    <%= paginate @events %>
-  </div>
+      <%= link_to 'Articles',
+                  '#large-content-aside-navigation',
+                  class: 'slide-toggle
+                          large-content-aside-navigation__toggle',
+                  data: {
+                    container: '.large-content-aside-navigation',
+                    return: false
+                  } %>
+
+
+      <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
+        <% @event_categories.in_groups_of(6, false) do |event_categories| %>
+          <% event_categories.each do |event_category| %>
+            <li class="large-content-aside-navigation__item">
+              <%= render 'event_categories/shared/link', event_category: event_category %>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="large-content__main">
+    <section class="large-content-element">
+      <div class="large-content-element__container">
+        <div class="large-content-inner">
+          <div class="large-content-inner__main large-content-inner__main--full">
+            <div class="large-content-masonry">
+              <%= render partial: 'events/event', collection: @events, as: :event %>
+            </div>
+
+            <div class="module-pagination">
+              <%= paginate @events %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
 
-<!--
-<div class="events-index">
-  <h1>Events</h1>
-  <%#= render partial: 'event', collection: @events, as: :event %>
-
-  <h2>Categories</h2>
-  <%#= render partial: 'event_categories/event_category', collection: @event_categories, as: :event_category %>
-
-  <h2>Locations</h2>
-  <%#= render partial: 'event_locations/event_location', collection: @event_locations, as: :event_location %>
-</div>
--->

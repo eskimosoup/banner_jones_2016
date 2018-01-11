@@ -17,27 +17,44 @@
   </script>
 <% end %>
 
-<div class="offices-index-map" id="map-canvas" data-locations="<%= @offices.to_json %>">
-  <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
-</div>
 
-<div class="module-inner-content">
-  <div class="offices-index">
-    <div class="offices-index-content">
-      <h1>Offices <%= "in #{@office_location.name}" if @office_location.present? %></h1>
-    </div>
-  </div>
 
-  <div class="offices-index">
-    <div class="page-content full">
-      <%= render partial: 'offices/office', collection: @offices, as: :office %>
-    </div>
-
-    <aside class="page-additional-information">
-      <div class="page-call-to-actions-title-wrap">
-        <h3 class="page-call-to-actions-title">Talk to us</h3>
+<div class="large-content">
+  <aside class="large-content__aside">
+    <div class="large-content-aside-sticky">
+      <div class="large-content-aside-title">
+        <h2 class="large-content-aside-title__text">
+          Our Offices
+        </h2>
       </div>
-      <%= render 'pages/shared/call_to_actions_solicitors', hide_office: true %>
-    </aside>
-  </div>
+
+      <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
+        <%= render partial: 'offices/shared/aside_navigation',
+                   collection: @offices,
+                   as: :office %>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="large-content__main large-content__main--no-padding">
+    <div class="offices-index-map" id="map-canvas" data-locations="<%= @offices.to_json %>">
+      <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
+    </div>
+
+    <section class="large-content-element">
+      <div class="large-content-element__container">
+        <div class="large-content-inner">
+          <div class="large-content-inner__main large-content-inner__main--full">
+            <div class="large-content-offices-index">
+              <%= render partial: 'offices/office', collection: @offices, as: :office %>
+            </div>
+          </div>
+
+          <aside class="large-content-inner__aside">
+
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>

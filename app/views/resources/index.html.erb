@@ -1,4 +1,4 @@
-<%= render 'resources/shared/index_header' %>
+<%#= render 'resources/shared/index_header' %>
 
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js' %>
@@ -11,13 +11,69 @@
   </script>
 <% end %>
 
+<div class="large-content">
+  <aside class="large-content__aside">
+    <div class="large-content-aside-sticky">
+      <%= link_to 'Services',
+                  '#large-content-aside-navigation',
+                  class: 'slide-toggle
+                          large-content-aside-navigation__toggle',
+                  data: {
+                    container: '.large-content-aside-navigation',
+                    return: false
+                  } %>
 
-<div class="module-inner-content">
-  <div class="module-index">
-    <%= render partial: 'resources/resource', collection: @resources, as: :resource %>
-  </div>
 
-  <div class="module-pagination">
-    <%= paginate @resources %>
-  </div>
+      <%= form_tag resources_path, method: :get do %>
+        <div class="field">
+          <%= select_tag :service_id, grouped_options_for_select(@audiences.order(:title).map{|x| [x.title, x.services.roots.displayed.order(:title).map{|y| [y.title, y.id] }]}, selected: params[:service_id]), prompt: 'Please select a service', class: 'submit-on-change' %>
+        </div>
+      <% end %>
+
+      <% @audiences.each do |audience| %>
+        <h2 class="large-content-aside-title__text">
+          <%= audience.title %>
+        </h2>
+
+
+        <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
+          <% audience.services.roots.where('services.id IN (?)', @service_ids).displayed.each do |service| %>
+            <li class="large-content-aside-navigation__item">
+              <%= link_to service.title, resources_path(service_id: service.id), class: "#{@service == service || (@service.present? && @service.root.present? && @service.root == service) ? 'active' : 'inactive'}" %>
+
+              <% if @service == service || (@service.present? && @service.root.present? && @service.root == service) %>
+                <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon large-content-aside-navigation--nested" id="large-content-aside-navigation">
+                  <% service.children.displayed.where('services.id IN (?)', @service_ids).each do |child| %>
+                    <li class="large-content-aside-navigation__item">
+                      <%= link_to child.title, resources_path(service_id: child.id), class: "#{@service == service ? 'active' : 'inactive'}" %>
+                    </li>
+                  <% end %>
+                </ul>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </aside>
+
+  <main class="large-content__main">
+    <section class="large-content-element">
+      <div class="large-content-element__container">
+        <div class="large-content-inner">
+          <div class="large-content-inner__main large-content-inner__main--full">
+            <div class="large-content-masonry">
+              <%= render partial: 'resources/resource',
+                         collection: @resources,
+                         as: :resource %>
+            </div>
+
+            <div class="module-pagination">
+              <%= paginate @resources %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 </div>
