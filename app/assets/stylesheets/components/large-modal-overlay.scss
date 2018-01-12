@@ -3,6 +3,7 @@
   background-color: $orange;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border: none;
   bottom: 0;
   color: $black;
   padding-right: rem(60px);
@@ -15,7 +16,7 @@
   }
 
   &:hover {
-    background-color: $black;
+    background-color: $red;
     color: $white;
   }
 }
@@ -90,7 +91,7 @@
   border-bottom: 1px solid $orange;
   font-size: 0;
 
-  &__link {
+    &__link {
     background-position: 50% 15px;
     background-repeat: no-repeat;
     border-right: 2px solid $lighter-grey;
@@ -149,4 +150,27 @@
       }
     }
   }
+}
+
+.large-modal-overlay__close {
+  &:hover {
+    color: $orange;
+  }
+}
+
+.large-modal-overlay-navigation__link--active {
+  color: $white;
+
+  &:link {
+    color: $white;    
+    }
+    &:visited {
+    color: $white;
+    }
+    &:hover {
+      color: $white;    
+      }
+      &:active {
+      color: $white;
+      }
 }

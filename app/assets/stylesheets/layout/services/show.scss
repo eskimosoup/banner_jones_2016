@@ -215,10 +215,10 @@
       }
     }
 
+    .service-team-member {
+      margin-bottom: rem(40px);
+    }
     @media screen and (min-width: 768px) and (max-width: 1200px) {
-      .service-team-member {
-        margin-bottom: rem(10px);
-      }
 
       .conveyancing-service-key-team-member {
         @include flex-grid-column(6);
@@ -341,4 +341,31 @@
   &__rating {
     margin-top: rem(10px);
   }
+}
+
+.resource-download {
+  background-color: $orange;
+  border-radius: rem(5px);
+  color: $white;
+  font-weight: bold;
+  padding: rem(8px 12px);
+  margin: rem(20px 0 0 25px);
+  text-transform: uppercase;
+  
+  &:hover {
+    background-color: $red;
+    color: $white;
+  }
+}
+
+.suggested-resources {
+  padding: 10px;
+  text-align: center;
+  margin: 10px 0 20px 3px;
+
+&:hover {
+  .resource-title {
+      border-bottom: solid 5px $red +30;
+    }
+}
 }

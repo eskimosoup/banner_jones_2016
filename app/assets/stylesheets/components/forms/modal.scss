@@ -6,6 +6,7 @@
   @include breakpoint(medium) {
     &__split {
       @include flex-grid-row(collapse);
+      margin-top: rem(-15px);
     }
 
     &__details {
@@ -31,6 +32,7 @@
   }
 
   &__field {
+    max-width: 99%;
     @include conveyancing-input;
 
     &--bordered {
@@ -43,7 +45,7 @@
 
     &--full {
       @include breakpoint(medium) {
-        height: calc(100% - 103px);
+        height: calc(100% - 45px);
       }
     }
   }
@@ -80,9 +82,14 @@
   }
 
   &__submit {
-    @include secondary-submit;
+width: 100%;
     background-color: $orange;
-    color: $black;
+    border: none;
+    color: $white;
+    text-transform: uppercase;
+    padding: rem(10px);
+    font-weight: bold;
+    border-radius: rem(5px);
 
     &:hover {
       background-color: $red;
