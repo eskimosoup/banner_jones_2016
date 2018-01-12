@@ -3,6 +3,8 @@ class TeamMembersController < ApplicationController
   before_action :load_form_field_objects
   before_action :find_team_member, only: [:testimonials]
 
+  layout 'landing_page_design'
+
   def index
     @office = Office.displayed.find(params[:office_id]) if params[:office_id].present?
     @team_members = @office.present? ? @office.team_members.unscoped.displayed.order(:surname) : TeamMember.unscoped.displayed.order(:surname)

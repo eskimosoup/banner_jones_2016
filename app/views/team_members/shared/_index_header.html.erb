@@ -1,27 +1,18 @@
-<div class="index-fixed-team-members-search">
-  <div class="index-content-wrap">
-    <div class="index-content team-members-index-header">
-      <h1 class="standard-content-box-title team-members-title">Meet the team</h1>
+<div class="content-area">
+  <div class="content-area__inner text-center">
+    <div class="content-section__full content-section--padded content-section--shadow">
+      <h1 class="standard-content-box-title team-members-title">
+        Meet the team
+      </h1>
 
-      <% if @services.present? %>
-        <div class="slider-team-member-form-controls">
-          <h2 class="slider-team-member-form-title">
-            Find People By
-          </h2>
+      <h2 class="standard-content-box-title standard-content-box-title--no-border">
+        Find People By
+      </h2>
 
-
-          <%= form_tag search_team_members_path(index: 1), method: :get, remote: (defined?(index) ? true : false ), class: 'slider-team-member-search-form' do %>
-            <%= render 'team_members/shared/find_people_by_form_fields' %>
-          <% end %>
-        </div>
-      <% elsif @current_service.present? %>
-        <div class="slider-team-member-form-controls">
-          <h2 class="slider-team-member-form-title">
-            <%= @current_service.title %>
-          </h2>
-        </div>
+      <%= form_tag search_team_members_path(index: 1), method: :get, remote: (defined?(index) ? true : false ), class: 'slider-team-member-search-form' do %>
+        <%= render 'team_members/shared/find_people_by_form_fields' %>
       <% end %>
-
     </div>
   </div>
 </div>
+
