@@ -182,6 +182,7 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module routes go below concerns
+  get :resource_details, to: 'resources#details'
   resources :office_locations, concerns: %i[toggleable imageable]
 
   resources :resources do
