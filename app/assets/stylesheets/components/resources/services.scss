@@ -66,11 +66,6 @@
 .basic-page-summary {
 background: $red;
 border-bottom: solid 10px $orange;
-p {
-  text-align: center;
-  padding: 50px;
-  color: $white;
-}
 h1 {
   text-align: center;
   color: $white;
@@ -80,13 +75,16 @@ h1 {
   margin: 0;
 }
 h2 {
-  text-align: center;
-  color: $white;
-  background: $dark-slate-blue;
   font-size: 18px;
-  padding: 20px;
+  color: $white;
   margin: 0;
+  padding: 20px 20px 20px 50px;
 }
+  p {
+    color: $white;
+    padding: 0 50px 50px 50px;
+    text-align: center;
+  }
 }
 
 .basic-ordered-list {
@@ -98,10 +96,14 @@ h2 {
     padding: 20px;
     margin: 0;
   }
-
+  h2 {
+    font-size: 18px;
+    color: $red;
+    margin-top: 20px;
+    padding: 20px 20px 20px 200px;
+  }
   p {
     width: 70%;
-    margin-top: 20px;
     padding-left: 15%;
   }
 
@@ -133,10 +135,15 @@ li {
     padding: 20px;
     margin: 0;
   }
-
+  h2 {
+    font-size: 18px;
+    color: $orange;
+    margin-top: 20px;
+    padding: 20px 20px 20px 200px;
+    margin-top: 20px;
+  }
   p {
     width: 70%;
-    margin-top: 20px;
     padding-left: 15%;
   }
 
@@ -169,10 +176,12 @@ ul {
     padding: 20px;
     margin-left: 20px;
     width: 80%;
+    color: $red;
   }
-
+  
   h2 {
     border-bottom: solid 3px $orange;
+    color: $orange;
     font-size: 18px;
     padding: 10px 20px;
     margin: 0 0 0 30px;
@@ -192,11 +201,13 @@ ul {
   h1 {
     color: $white;
     font-size: 21px;
-    margin: 0;
+    margin: 10px 0 20px 0;
+    text-align: center;
   }
   h2 {
     color: $white;
     font-size: 18px;
+    margin: 0 0 10px 0;
   }
   img {
     display: inline-block;
@@ -210,20 +221,20 @@ ul {
 
 .creative-page-summary {
   h1 {
-    text-align: center;
-    color: $white;
-    font-size: 21px;
-    padding: 65px 0 75px 0;
-    margin: 190px 0 0 0;
     background-image: image-url('layout/header/banner-bg.png');
     background-repeat: no-repeat;
+    color: $white;
+    font-size: 21px;
+    margin: 190px 0 0 0;
+    padding: 65px 0 75px 0;
+    text-align: center;
     z-index: 100;
   }
   h2 {
-    color: $turquoise;
+    color: $orange;
     font-size: 18px;
-    padding: 10px 20px;
     margin:80px 0 0 30px;
+    padding: 10px 20px;
   }
   p {
     padding: 10px 50px;
@@ -234,8 +245,8 @@ ul {
 
   &__title {
     height: 400px;
-    width: 100%;
     position: relative;
+    width: 100%;
     z-index: 2;
   }
 
@@ -243,9 +254,9 @@ ul {
     left: 0;
     position: absolute;
     top: 50%;
+    transform: translateY(-50%);
     z-index: 3;
     width: 100%;
-    transform: translateY(-50%);
   }
 }
 
@@ -253,7 +264,23 @@ ul {
   counter-reset: section;
   list-style: none;
   margin: 0;
-
+  h1 {
+    background: $red;
+    color: $white;
+    font-size: 21px;
+    text-align: center;
+    padding: 18px 0 20px 0;
+    margin: 0 0 20px 0;
+  }
+  h2 {
+    color: $orange;
+    font-size: 18px;
+    padding-left: 50px;
+  }
+ p {
+    padding: 10px 55px;
+    margin: 0 0 20px 0;
+  }
   li {
     @include clearfix;
     font-size: rem(20px);
@@ -435,7 +462,7 @@ color: $orange;
     color: $white;
     font-size: 18px;
     padding: 10px 20px 10px 40px;
-    margin-top: 50px;
+    margin: 20px 0;
   }
   p {
     text-align: center;
