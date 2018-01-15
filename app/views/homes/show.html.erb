@@ -23,20 +23,23 @@
   <% if @facade.audience.present? && @facade.audience.id == 2 %>
     <%= render partial: 'homes/shared/cta_link',
               locals: {
-                line_1: 'Business',
-                line_2: 'Services',
-                link: '/for-business/services/business-services'
+                line_1: 'Dispute',
+                line_2: 'Resolution',
+                image: image_url('layout/home/call-to-actions/dispute.png'),
+                link: '/for-business/services/dispute-resolution'
               } %>
     <%= render partial: 'homes/shared/cta_link',
               locals: {
                 line_1: 'Employment',
                 line_2: 'Law',
+                image: image_url('layout/home/call-to-actions/employment-law.png'),
                 link: '/for-business/services/employment-law'
               } %>
     <%= render partial: 'homes/shared/cta_link',
               locals: {
                 line_1: 'Commercial',
                 line_2: 'Property',
+                image: image_url('layout/home/call-to-actions/commercial.png'),
                 link: '/for-business/services/business-services/commercial-property'
               } %>
   <% else %>
