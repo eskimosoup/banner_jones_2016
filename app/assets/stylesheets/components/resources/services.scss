@@ -138,13 +138,13 @@ li {
   h2 {
     font-size: 18px;
     color: $orange;
-    margin-top: 20px;
-    padding: 20px 20px 20px 200px;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding: 20px 20px 0 200px;
   }
   p {
     width: 70%;
     padding-left: 15%;
+    margin-top: 20px;
   }
 
   li::before {
@@ -160,7 +160,7 @@ li {
    }
   li {
     list-style-type: none;
-    padding: 20px 10px;
+    padding: 30px 10px 0 10px;
 }
 ul {
   padding-bottom: 30px;
