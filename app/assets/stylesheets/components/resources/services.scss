@@ -82,7 +82,7 @@ h2 {
 }
   p {
     color: $white;
-    padding: 0 50px 50px 50px;
+    padding: 0 50px 20px 50px;
     text-align: center;
   }
 }
@@ -189,8 +189,28 @@ ul {
   }
 
   p {
-    padding: 10px 40px;
+    padding: 0 40px;
   }
+
+  li::before {
+    background-image: image-url('layout/header/bullet-orange.png');
+    content: " ";
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background-repeat: no-repeat;
+    color: red;
+    font-weight: bold;
+    margin: -7px 0 -7px 0;
+   }
+  li {
+    list-style-type: none;
+    padding: 10px 10px;
+}
+ul {
+  padding-bottom: 20px;
+  margin-left: 35px;
+}
 }
 
 .basic-image-block {
@@ -298,6 +318,7 @@ ul {
       line-height: 1;
       position: absolute;
       top: rem(20px);
+      margin-top: 25px;
     }
     img {
       float: right;
