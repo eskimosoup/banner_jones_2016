@@ -11,12 +11,22 @@
     <%= render 'layouts/tag_manager' %>
 
     <div class="conveyancing-calculator-header">
-      <%= render 'layouts/application/header' %>
+      <%= render partial: 'layouts/shared/header',
+               locals: {
+                 phone: global_site_settings['Phone'],
+                 logo: 'logo.png',
+                 legal_500: true,
+                 solicitors: true
+              } %>
     </div>
 
     <%= yield %>
 
-    <%= render 'layouts/application/footer' %>
+    <%= render partial: 'layouts/shared/footer',
+               locals: {
+                 phone: global_site_settings['Phone'],
+                 email: global_site_settings['Email']
+              } %>
 
     <%= render 'layouts/shared/javascripts' %>
     <%= raw tracking_code('application').footer %>
