@@ -39,9 +39,10 @@
   <%= javascript_include_tag 'components/team-members/index-profile-card.js' %>
 <% end %>
 
-<%= render 'team_members/shared/index_header', index: true %>
 
 <div class="module-inner-content">
+  <%= render 'team_members/shared/index_header', index: true %>
+
   <div class="team-members-index-wrap">
     <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', class: 'slider-team-members-loading' %>
 
