@@ -1,0 +1,12 @@
+<%= render 'optimadmin/shared/header/main_title', title: 'Manage Resources' %>
+<div class="main-content">
+  <div class="row module-header collapse">
+    <% @resources.each do |resource| %>
+      <% if resource.sections.present? %>
+        <%= link_to main_app.audience_service_resource_path(resource.services.first.audience, resource.services.first, resource),
+                    main_app.audience_service_resource_path(resource.services.first.audience, resource.services.first, resource),
+                    style: 'display: block; margin: 15px 0;' if resource.services.present? %>
+      <% end %>
+    <% end %>
+  </div>
+</div>
