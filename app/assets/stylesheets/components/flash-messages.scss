@@ -44,7 +44,9 @@ $border-color: $light-slate-blue;
 .error_messages,
 #error_explanation {
   background: $error;
+  border-radius: 10px;
   color: $white;
+  padding: 10px 20px !important;
 
   h2 {
     @extend %flash-heading;
