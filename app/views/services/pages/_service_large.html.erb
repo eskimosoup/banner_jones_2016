@@ -4,7 +4,7 @@
     .large-content-inner__title,
     .onpage-navigation-article-team-member,
     .large-content-aside-title__text {
-      border-bottom-color: <%= @service.colour.present? ? @service.colour : '#d71e48' %>
+      border-bottom-color: <%= @service.colour %>
     }
 
     .large-content-inner-styles h1,
@@ -13,43 +13,30 @@
     .large-content-inner-styles h4,
     .large-content-inner-styles h5,
     .large-content-inner-styles h6 {
-      color: <%= @service.colour.present? ? @service.colour : '#d71e48' %>
+      color: <%= @service.colour %>
     }
 
     .large-onpage-resources {
-      background: <%= @service.colour.present? ? @service.colour : '#d71e48' %>
+      background: <%= @service.colour %>
     }
 
     @media screen and (max-width: 39.9375em) and (min-width: 0em) {
       .large-content__aside {
-        background: <%= @service.colour.present? ? @service.colour : '#d71e48' %>
+        background: <%= @service.colour %>
       }
     }
   </style>
 <% end %>
+<%= content_for :javascript do %>
+  <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>
+  <%= javascript_include_tag 'components/service-components.js' %>
+<% end %>
+
 
 <div class="large-content">
   <aside class="large-content__aside">
     <div class="large-content-aside-sticky">
       <%= render 'services/shared/service_large/aside' %>
-
-      <h3 style="color:<%= @service.colour %>" class="large-content-aside-title__text">
-        Downloads
-      </h3>
-
-      <ul class="resource-aside">
-        <% @service.resources.each do |resource| %>
-          <li class="resource-aside__item">
-            <%= link_to resource.title,
-                        audience_service_resource_path(
-                          @service.audience,
-                          @service,
-                          resource
-                        ),
-                        class: 'resource-aside__link' %>
-          </li>
-        <% end %>
-      </ul>
     </div>
   </aside>
 
@@ -59,23 +46,23 @@
         <div class="large-content-inner">
           <div class="large-content-inner__main">
             <h1 class="large-content-inner__title">
-              <%= @service.title %>
+             <%= @page.title %>
+
               <%= image_tag @service.icon.small,
                       alt: '',
                       class: 'large-content-inner__icon' %>
             </h1>
 
-            <%= render 'resources/shared/service_aside', resource: @resource %>
-
             <div class="large-content-inner-styles">
-              <%= raw @resource.content %>
+              <%= simple_format @page.summary %>
+              <%= raw @page.content %>
             </div>
           </div>
 
           <aside class="large-content-inner__aside">
             <div class="service-team-member">
                 <p>
-                  Talk to our team today on:
+                  Talk to our <%= @service.title %> Team today on:
 
                   <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
                               class: 'conveyancing-call-to-action
@@ -144,9 +131,15 @@
       </div>
     </section>
 
-
-<%= render partial: 'services/resources/sections/section',
-           collection: @resource.sections,
-           as: :section %>
+    <% @service.onpage_navigations.each do |onpage_navigation| %>
+      <%= render partial: "services/onpage_navigations/service_large/#{onpage_navigation.partial}",
+                 locals: {
+                   onpage_navigation: onpage_navigation
+                 } %>
+    <% end %>
+    <%= render partial: 'services/onpage_navigations/service_large/team_member',
+               locals: {
+                 service: @service
+              } %>
   </main>
 </div>

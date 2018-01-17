@@ -4,8 +4,8 @@ module Services
 
     default_scope { order(title: :asc) }
 
-    LAYOUTS = %w(application wealth_management notary).freeze
-    STYLES  = %w(basic).freeze
+    LAYOUTS = %w(application wealth_management wealth_management_2018 notary notary_2018 landing_page_redesign).freeze
+    STYLES  = %w(basic service_large).freeze
 
     extend FriendlyId
     friendly_id :slug_candidates, use: [:slugged, :history, :scoped], scope: :service

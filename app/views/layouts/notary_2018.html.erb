@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html lang="en" class="ie ie9 lte9"> <![endif]-->
+<html lang="en">
+  <head>
+    <%= render 'layouts/shared/head' %>
+    <%= raw tracking_code('application').head %>
+  </head>
+
+  <body class="conveyancing-calculator">
+    <%= render 'layouts/tag_manager' %>
+
+    <div class="conveyancing-c
+      <%= render 'layouts/shared/large_design/header',
+                  phone: global_site_settings['Phone - Notary'],
+                  logo: 'logo-wealth-small.png',
+                  notary: true %>
+    </div>
+
+    <%= yield %>
+
+    <%= render 'layouts/shared/large_design/footer' %>
+
+    <%= render 'layouts/shared/javascripts' %>
+    <%= raw tracking_code('application').footer %>
+  </body>
+</html>
