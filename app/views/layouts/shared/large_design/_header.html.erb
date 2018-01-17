@@ -52,11 +52,22 @@
   <div class="primary-full-header-branding">
     <div class="primary-full-header-branding__logo">
       <%= link_to root_url do %>
-        <%= image_tag 'layout/header/logo-small.png', alt: global_site_settings['Name'] %>
+        <% if defined?(notary) %>
+          <div class="header-notary-title">
+            Stephen Gordon
+
+            <div class="header-notary-subtitle">
+              Notary Public
+            </div>
+          </div>
+          <%= image_tag "layout/header/logo-notary.png", alt: '', class: 'header-notary-logo' %>
+        <% else %>
+          <%= image_tag "layout/header/#{logo}", alt: global_site_settings['Name'] %>
+        <% end %>
       <% end %>
 
       <%= image_tag 'layout/header/legal-500.jpg', alt: 'Legal 500',
-                                                    class: 'the-legal-500' %>
+                                                    class: 'the-legal-500' if defined?(legal_500) %>
     </div>
 
     <div class="primary-full-header-branding__contact">

@@ -124,6 +124,10 @@
     padding: rem(20px);
   }
 
+  &--white {
+    background-color: $white;
+  }
+
   &__text {
     @include flex-grid-column(8, (small: 0));
   }

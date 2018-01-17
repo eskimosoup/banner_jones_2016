@@ -1,11 +1,114 @@
-<section class="large-content-element">
-  <div class="large-onpage-navigation-element__section large-onpage-navigation-element__section--full large-onpage-navigation-element__section--container">
-    <div class="basic-other-articles">
 
-<%= render partial: 'resources/shared/service',
-           collection: @other_resources,
-           as: :resource %>
+<%= content_for :javascript do %>
+  <script>
+    $(document).ready(function() {
+      $('.resources-slick-1').slick({
+        arrows: true,
+        dots: false,
+        autoplay: false,
+        autoplaySpeed: 6000,
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        nextArrow: '.resources-slick-1-next',
+        prevArrow: '.resources-slick-1-prev',
+        responsive: [
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+            }
+          }
+        ],
+        responsive: [
+          {
+            breakpoint: 1440,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+            }
+          }
+        ]
+      });
+    });
+  </script>
+<% end %>
 
+<% resources = @other_resources %>
+
+<section class="large-onpage-resources">
+  <div class="large-onpage-resources__section">
+    <div class="onpage-navigation-controls">
+      <div class="onpage-navigation-slider">
+      <%= link_to 'See all',
+                    resources_path,
+                    class: 'onpage-navigation-button' %>
+
+        <%= button_tag 'Previous', class: "onpage-navigation-slider__button onpage-navigation-slider__button--prev onpage-navigation-slider__button--inverted resources-slick-1-prev" %>
+        <%= button_tag 'Next', class: "onpage-navigation-slider__button onpage-navigation-slider__button--next onpage-navigation-slider__button--inverted resources-slick-1-next" %>
+      </div>
+
+      <h1 class="large-onpage-resources__title">
+        Our Helpful Guides
+      </h1>
+    </div>
+
+    <div class="large-onpage-resources__resources">
+      <div class="resources-slick-1">
+        <% resources.each do |resource| %>
+          <% present resource do |resource_presenter| %>
+            <div class="onpage-resource">
+              <div class="onpage-resource__content">
+                <h2 class="onpage-resource__title">
+                  <%= resource_presenter.title %>
+                </h2>
+
+                <%= resource_presenter.linked_download(
+                      resource_presenter.show_image(
+                        {
+                          alt: resource_presenter.title,
+                          class: 'onpage-resource__image'
+                        }
+                      ),
+                      {
+                        title: resource_presenter.title,
+                        target: '_blank'
+                      }
+                    ) if resource_presenter.index_image.present? %>
+
+                <%= resource_presenter.linked_download(
+                      image_tag 'components/icons/download-bold.png',
+                                alt: '',
+                                class: 'onpage-resource__download'
+                    ) %>
+              </div>
+
+              <%#= link_to resource.file.url,
+                          class: 'onpage-resource__summary ga-event',
+                          data: {
+                            event_category: 'Guide',
+                            event_action: 'Click',
+                            event_title: resource_presenter.title
+                          } do %>
+              <%= link_to audience_service_resource_path(resource.services.first.audience, resource.services.first, resource),
+                          class: 'onpage-resource__summary ga-event',
+                          data: {
+                            event_category: 'Guide',
+                            event_action: 'Click',
+                            event_title: resource_presenter.title
+                          } do %>
+                <div class="onpage-resource__title">
+                  <%= resource_presenter.title %>
+                </div>
+
+                <%= resource_presenter.summary %>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </section>
+

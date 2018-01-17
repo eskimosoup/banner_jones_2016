@@ -10,12 +10,14 @@
     <%= render 'layouts/tag_manager' %>
 
     <div class="conveyancing-calculator-header">
-      <%= render 'layouts/landing_page_design/header' %>
+      <%= render 'layouts/shared/large_design/header',
+                  logo: 'logo-small.png',
+                  legal_500: true %>
     </div>
 
     <%= yield %>
 
-    <%= render 'layouts/landing_page_design/footer' %>
+    <%= render 'layouts/shared/large_design/footer' %>
 
     <%= render 'layouts/shared/javascripts' %>
     <%= raw tracking_code('application').footer %>
