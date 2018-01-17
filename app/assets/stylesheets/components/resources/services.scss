@@ -82,7 +82,7 @@ h2 {
 }
   p {
     color: $white;
-    padding: 0 50px 50px 50px;
+    padding: 0 50px 20px 50px;
     text-align: center;
   }
 }
@@ -138,13 +138,13 @@ li {
   h2 {
     font-size: 18px;
     color: $orange;
-    margin-top: 20px;
-    padding: 20px 20px 20px 200px;
-    margin-top: 20px;
+    margin-top: 40px;
+    padding: 20px 20px 0 200px;
   }
   p {
     width: 70%;
     padding-left: 15%;
+    margin-top: 20px;
   }
 
   li::before {
@@ -160,7 +160,7 @@ li {
    }
   li {
     list-style-type: none;
-    padding: 20px 10px;
+    padding: 30px 10px 0 10px;
 }
 ul {
   padding-bottom: 30px;
@@ -183,14 +183,35 @@ ul {
     border-bottom: solid 3px $orange;
     color: $orange;
     font-size: 18px;
-    padding: 10px 20px;
-    margin: 0 0 0 30px;
-    width: 80%;
+    padding: 10px 20px 5px 20px;
+    width: 80%;    
+    margin: 0 0 15px 30px;
   }
 
   p {
-    padding: 10px 40px;
+    padding: 0 40px;
+    margin-bottom: 10px;
   }
+
+  li::before {
+    background-image: image-url('layout/header/bullet-orange.png');
+    content: " ";
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background-repeat: no-repeat;
+    color: red;
+    font-weight: bold;
+    margin: -7px 0 -7px 0;
+   }
+  li {
+    list-style-type: none;
+    padding: 10px 10px;
+}
+ul {
+  padding-bottom: 20px;
+  margin-left: 35px;
+}
 }
 
 .basic-image-block {
@@ -298,6 +319,7 @@ ul {
       line-height: 1;
       position: absolute;
       top: rem(20px);
+      margin-top: 25px;
     }
     img {
       float: right;
