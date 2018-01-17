@@ -6,13 +6,14 @@
           <% if section.image? %>
               <%= image_tag section.image.banner %>
           <% end %>
-
           <h1 class="creative-page-summary__main-title">
             <%= section.title %>
           </h1>
         </div>
 
+<div class='creative-page-summary__content'>
           <%= raw section.content %>
+</div>
     </div>
   </div>
 </section>
