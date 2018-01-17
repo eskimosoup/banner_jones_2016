@@ -142,13 +142,14 @@ li {
   h2 {
     font-size: 18px;
     color: $orange;
-    margin-top: 40px;
+    margin-top: 10px;
     padding: 20px 20px 0 200px;
   }
   p {
     width: 70%;
     padding-left: 15%;
     margin-top: 20px;
+    margin-bottom: 0;
   }
 
   li::before {
@@ -258,7 +259,7 @@ ul {
   h2 {
     color: $orange;
     font-size: 18px;
-    margin:80px 0 0 30px;
+    margin: 0 0 0 30px;
     padding: 10px 20px;
   }
   p {
@@ -282,6 +283,9 @@ ul {
     transform: translateY(-50%);
     z-index: 3;
     width: 100%;
+  }
+  &__content {
+    margin-top: 80px;
   }
 }
 
