@@ -78,11 +78,11 @@ h2 {
   font-size: 18px;
   color: $white;
   margin: 0;
-  padding: 20px 20px 20px 50px;
+  padding: 20px 20px 5px 50px;
 }
   p {
     color: $white;
-    padding: 0 50px 20px 50px;
+    padding: 20px 50px 20px 50px;
     text-align: center;
   }
 }
@@ -113,15 +113,19 @@ h2 {
   }
 
 li {
-  padding: 0 50px 30px 0;
+  padding: 30px 50px 30px 40px;
   width: 70%;
   margin: 15px;
   list-style: none;
+  position: relative;
   &::before {
     color: $red;
     counter-increment: section;
     content: counter(section);
     font-size: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 }
 }
@@ -487,6 +491,7 @@ color: $orange;
     margin: 20px 0;
   }
   p {
+    color: $white;
     text-align: center;
     padding: 5px 20px;
   }
@@ -503,6 +508,7 @@ color: $orange;
     margin: -12px 0 -12px 40px;
    }
   li {
+    color: $white;
     list-style-type: none;
     padding: 10px;
 }
@@ -518,6 +524,7 @@ h1 {
   font-size: 21px;
   padding: 30px;
   margin: 0;
+  text-align: center;
 }
 h2 {
   color: $orange;
