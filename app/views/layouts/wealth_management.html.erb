@@ -8,11 +8,22 @@
 
   <body>
     <%= render 'layouts/tag_manager' %>
-    <%= render 'layouts/wealth_management/header' %>
+    <%= render partial: 'layouts/shared/header',
+               locals: {
+                phone: global_site_settings['Phone - Wealth Management'],
+                logo: 'logo-wealth-management.png'
+              } %>
+
 
     <%= yield %>
 
-    <%= render 'layouts/wealth_management/footer' %>
+    <%= render partial: 'layouts/shared/footer',
+               locals: {
+                 phone: global_site_settings['Phone - Wealth Management'],
+                 email: global_site_settings['Email - Wealth Management'],
+                 wealth_management: true
+              } %>
+
 
     <%= render 'layouts/shared/javascripts' %>
     <%= raw tracking_code('application').footer %>
