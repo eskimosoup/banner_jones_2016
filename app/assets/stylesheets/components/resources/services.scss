@@ -560,6 +560,27 @@ p {
   margin: 0;
   padding: 10px 50px 25px 50px;
 }
+li::before {
+  background-image: image-url('layout/header/bullet-white.png');
+  content: " ";
+  display: inline-block;
+  width:20px;
+  height:20px;
+  background-repeat: no-repeat;
+  color: red;
+  font-weight: bold;
+  margin: -7px 15px -7px 0;
+ }
+li {
+  color: $white;
+  list-style-type: none;
+  padding: 20px 10px 0 10px;
+}
+ul {
+padding-bottom: 30px;
+width: 70%;
+margin-left: 15%;
+}
 }
 .creative-image-block {
   background: $orange;
