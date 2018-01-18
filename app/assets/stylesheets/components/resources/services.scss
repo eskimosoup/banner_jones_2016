@@ -80,10 +80,31 @@ h2 {
   margin: 0;
   padding: 20px 20px 5px 50px;
 }
-  p {
+p {
     color: $white;
-    padding: 20px 50px 20px 50px;
+    padding: 20px 50px 10px 50px;
     text-align: center;
+  }
+  li::before {
+    background-image: image-url('layout/header/bullet-white.png');
+    content: " ";
+    display: inline-block;
+    width:20px;
+    height:20px;
+    background-repeat: no-repeat;
+    color: red;
+    font-weight: bold;
+    margin: -7px 15px -7px 0;
+   }
+  li {
+    color: $white;
+    list-style-type: none;
+    padding: 20px 10px 0 10px;
+  }
+  ul {
+  padding-bottom: 30px;
+  width: 70%;
+  margin-left: 15%;
   }
 }
 
@@ -151,7 +172,6 @@ li {
     margin-top: 20px;
     margin-bottom: 0;
   }
-
   li::before {
     background-image: image-url('layout/header/bullet-orange.png');
     content: " ";
@@ -166,12 +186,12 @@ li {
   li {
     list-style-type: none;
     padding: 30px 10px 0 10px;
-}
-ul {
+  }
+  ul {
   padding-bottom: 30px;
   width: 70%;
   margin-left: 15%;
-}
+  }
 }
 
 .basic-text-block {
@@ -526,7 +546,7 @@ background: $red;
 h1 {
   color: $orange;
   font-size: 21px;
-  padding: 30px;
+  padding: 20px;
   margin: 0;
   text-align: center;
 }
