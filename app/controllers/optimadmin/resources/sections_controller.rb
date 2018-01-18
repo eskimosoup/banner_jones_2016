@@ -48,7 +48,7 @@ module Optimadmin
 
       def destroy
         @section.destroy
-        redirect_to sections_url, notice: 'Section was successfully destroyed.'
+        redirect_to resource_resources_sections_path(@resource), notice: 'Section was successfully destroyed.'
       end
 
       private
