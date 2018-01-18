@@ -9,7 +9,7 @@ module Optimadmin
        edit_images_for ::Resources::Section,
                       [
                         [:image, {
-                          show: ['fit', 200, 200],
+                          show: ['fill', 675, 200],
                           index: ['fit', 200, 200]
                         }]
                       ]
