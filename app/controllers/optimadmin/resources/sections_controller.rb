@@ -10,6 +10,7 @@ module Optimadmin
                       [
                         [:image, {
                           show: ['fit', 675, 200],
+                          square: ['fit', 675, 675],
                           index: ['fit', 200, 200]
                         }]
                       ]
