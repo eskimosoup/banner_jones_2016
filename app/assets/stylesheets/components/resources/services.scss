@@ -346,8 +346,8 @@ ul {
       letter-spacing: rem(-20px);
       line-height: 1;
       position: absolute;
-      top: rem(20px);
-      margin-top: 25px;
+      top: 50%;
+      transform: translateY(-50%)
     }
     img {
       float: right;
