@@ -654,11 +654,10 @@ h1 {
   padding: rem(10px 0);
 }
 .large-content-section-download-box {
-  max-width: rem(200px);
-  display: inline-block;
+  @include flex-grid-column(3);
+
 }
 .large-content-section-content {
-  width: 78%;
-  display: inline-block;
-  padding: rem(0 30px);
+  @include flex-grid-column(9);
+
 }
