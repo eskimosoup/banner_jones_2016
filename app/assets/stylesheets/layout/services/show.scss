@@ -239,10 +239,9 @@
     color: $charcoal;
     font-family: $museo-sans-rounded;
     font-weight: $museo-sans--medium;
-    margin-bottom: rem(10px);
     margin-top: 0;
     overflow: auto;
-    padding-bottom: rem(8px);
+    padding: rem(20px 0 8px 0);
 
     @include breakpoint(medium down) {
       font-size: rem(18px);

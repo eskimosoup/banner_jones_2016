@@ -1,0 +1,127 @@
+var markers = [];
+var map, locations, latlngbounds, lastMarker;
+var infoWindows = [];
+
+function initialize() {
+  if (document.getElementById("map-canvas")) {
+    locations = $('#map-canvas').data('locations');
+
+    if (locations) {
+      var mapOptions = {
+        center: new google.maps.LatLng(53.743317, -0.331004),
+        zoom: 18,
+        scrollwheel: false
+      };
+
+      map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+      var latLngs = [];
+      $.each(locations, function(index, value) {
+        var myLatLng = new google.maps.LatLng(value.latitude, value.longitude);
+        latLngs[index] = myLatLng;
+        var contentString = '<div class="offices-info-window">';
+
+        if (value.building_name != null) {
+          contentString += '<strong>' + value.building_name + '</strong><br />';
+        }
+
+        if (value.address_line_1 != null) {
+          contentString += value.address_line_1 + '<br />';
+        }
+
+        if (value.address_line_2 != null) {
+          contentString += value.address_line_2 + '<br />';
+        }
+
+        if (value.postcode != null) {
+          contentString += value.postcode + '<br />';
+        }
+
+        if(latLngs.length > 1) {
+          contentString += '<a href="/offices/' + value.slug + '" title="View more detail" class="offices-view-more">Find out more</a>';
+        }
+        
+        contentString += '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var image = '/assets/components/icons/map/marker-0cdafba7c6861643c2318d4b7d3b07e969f52243f6605aad98df16a0efeb3108.png';
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          icon: image,
+          title: value.street,
+          zIndex: index
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+          closeInfoWindow();
+          // remove class from previously active location
+          if (lastMarker != null) {
+            $('.office-' + lastMarker).removeClass('active');
+          }
+
+          lastMarker = markers.indexOf(marker);
+          $('.office-' + lastMarker).toggleClass('active');
+          map.panTo(marker.getPosition());
+          //pan and then wait 2 secs then zoom and open info window
+          window.setTimeout(function() {
+            map.setZoom(18);
+            infowindow.open(map, marker);
+          }, 1000);
+        });
+
+        google.maps.event.addListener(map, 'click', function(event) {
+          this.setOptions({
+            scrollwheel: true
+          });
+        });
+
+        google.maps.event.addListener(infowindow, 'closeclick', function() {
+          if(latLngs.length > 1) {
+            map.fitBounds(latlngbounds);
+          }
+          $('.office-' + lastMarker).toggleClass('active');
+        });
+
+        //add info window and marker to respective arrays
+        infoWindows.push(infowindow);
+        markers.push(marker);
+      });
+
+      latlngbounds = new google.maps.LatLngBounds();
+      $.each(latLngs, function(index, n) {
+        latlngbounds.extend(n);
+      });
+      map.setCenter(latlngbounds.getCenter());
+      if(latLngs.length > 1) {
+        map.fitBounds(latlngbounds);
+      }
+    }
+  }
+}
+
+function closeInfoWindow() {
+  if (lastMarker != null) {
+    infoWindows[lastMarker].close();
+  }
+}
+
+function loadScript() {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ0P4rD0Fv4cGXxQdd-xAxIlJnWWMESw&callback=initialize';
+  script.async = 'async';
+  script.defer = 'defer';
+  document.body.appendChild(script);
+}
+
+// The function to trigger the marker click, 'id' is the reference index to the 'markers' array.
+function locationClick(id) {
+  google.maps.event.trigger(markers[id], 'click');
+}
+
+window.onload = loadScript;

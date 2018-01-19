@@ -2,7 +2,7 @@
   <div class="index-module index">
     <div class="standard-content-box standalone">
       <% present resource do |resource_presenter| %>
-        <%= link_to (resource.services.present? ? audience_service_resource_path(resource.services.first.audience, resource.services.first, resource) : resource.file.url) do %>
+        <%= link_to (resource.services.present? && resource.services.first.audience.present? ? audience_service_resource_path(resource.services.first.audience, resource.services.first, resource) : resource.file.url) do %>
         <%#= link_to resource.file.url, title: resource_presenter.title, class: 'index-module-link', target: '_blank' do %>
           <%= content_tag :div, resource_presenter.index_image(alt: resource_presenter.title), class: 'index-module-image' if resource_presenter.index_image.present? %>
 
