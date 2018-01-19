@@ -12,7 +12,9 @@ class ResourcesController < ApplicationController
   end
 
   def show
-    redirect_to resources_path
+    # redirect_to resources_path
+    resource = @resource
+    redirect_to (resource.services.present? && resource.services.first.audience.present? ? audience_service_resource_path(resource.services.first.audience, resource.services.first, resource) : resource.file.url)
   end
 
   private
