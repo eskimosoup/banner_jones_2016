@@ -143,6 +143,7 @@
     @include flex-grid-column(12, (small: map-get($grid-column-gutter, small), large: 40));
     background-color: $white;
     position: relative;
+    min-height: rem(400px);
 
     &--onpage-navigation {
       @include breakpoint(small only) {
@@ -358,9 +359,9 @@
 }
 
 .suggested-resources {
-  padding: 10px;
+  padding: rem(10px);
   text-align: center;
-  margin: 10px 0 20px 3px;
+  margin: rem(10px 0 20px 3px);
 
 &:hover {
   .resource-title {

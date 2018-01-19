@@ -6,7 +6,7 @@
 .standard-content-box {
   .service-resource-download-button {
     background: $black image-url('components/icons/download-orange.png') no-repeat 90% 50%;
-    border-radius: 2px;
+    border-radius: rem(2px);
     color: $white;
     display: block;
     font-family: $ubuntu;
@@ -70,39 +70,39 @@ h1 {
   text-align: center;
   color: $white;
   background: $dark-slate-blue;
-  font-size: 21px;
-  padding: 20px;
+  font-size: rem(21px);
+  padding: rem(20px);
   margin: 0;
 }
 h2 {
-  font-size: 18px;
+  font-size: rem(18px);
   color: $white;
   margin: 0;
-  padding: 20px 20px 5px 50px;
+  padding: rem(20px 20px 5px 50px);
 }
 p {
     color: $white;
-    padding: 20px 50px 10px 50px;
+    padding: rem(20px 50px 10px 50px);
     text-align: center;
   }
   li::before {
     background-image: image-url('layout/header/bullet-white.png');
     content: " ";
     display: inline-block;
-    width:20px;
-    height:20px;
+    width: rem(20px);
+    height: rem(20px);
     background-repeat: no-repeat;
     color: red;
     font-weight: bold;
-    margin: -7px 15px -7px 0;
+    margin: rem(-7px 15px -7px 0);
    }
   li {
     color: $white;
     list-style-type: none;
-    padding: 20px 10px 0 10px;
+    padding: rem(20px 10px 0 10px);
   }
   ul {
-  padding-bottom: 30px;
+  padding-bottom: rem(30px);
   width: 70%;
   margin-left: 15%;
   }
@@ -113,15 +113,15 @@ p {
     text-align: center;
     color: $white;
     background: $red;
-    font-size: 21px;
-    padding: 20px;
+    font-size: rem(21px);
+    padding: rem(20px);
     margin: 0;
   }
   h2 {
-    font-size: 18px;
+    font-size: rem(18px);
     color: $red;
-    margin-top: 20px;
-    padding: 20px 20px 20px 200px;
+    margin-top: rem(20px);
+    padding: rem(20px 20px 20px 200px);
   }
   p {
     width: 70%;
@@ -134,16 +134,16 @@ p {
   }
 
 li {
-  padding: 30px 50px 30px 40px;
+  padding: rem(30px 50px 30px 40px);
   width: 70%;
-  margin: 15px;
+  margin: rem(15px);
   list-style: none;
   position: relative;
   &::before {
     color: $red;
     counter-increment: section;
     content: counter(section);
-    font-size: 50px;
+    font-size: rem(50px);
     position: absolute;
     left: 0;
     top: 0;
@@ -156,39 +156,39 @@ li {
     text-align: center;
     color: $dark-slate-blue;
     background: $orange;
-    font-size: 21px;
-    padding: 20px;
+    font-size: rem(21px);
+    padding: rem(20px);
     margin: 0;
   }
   h2 {
-    font-size: 18px;
+    font-size: rem(18px);
     color: $orange;
-    margin-top: 10px;
-    padding: 20px 20px 0 200px;
+    margin-top: rem(10px);
+    padding: rem(20px 20px 0 200px);
   }
   p {
     width: 70%;
     padding-left: 15%;
-    margin-top: 20px;
+    margin-top: rem(20px);
     margin-bottom: 0;
   }
   li::before {
     background-image: image-url('layout/header/bullet-orange.png');
     content: " ";
     display: inline-block;
-    width:20px;
-    height:20px;
+    width: rem(20px);
+    height: rem(20px);
     background-repeat: no-repeat;
     color: red;
     font-weight: bold;
-    margin: -7px 0 -7px 0;
+    margin: rem(-7px 0 -7px 0);
    }
   li {
     list-style-type: none;
-    padding: 30px 10px 0 10px;
+    padding: rem(30px 10px 0 10px);
   }
   ul {
-  padding-bottom: 30px;
+  padding-bottom: rem(30px);
   width: 70%;
   margin-left: 15%;
   }
@@ -197,9 +197,9 @@ li {
 .basic-text-block {
   h1 {
     border-bottom: solid 5px $red;
-    font-size: 21px;
-    padding: 20px;
-    margin-left: 20px;
+    font-size: rem(21px);
+    padding: rem(20px);
+    margin-left: rem(20px);
     width: 80%;
     color: $red;
   }
@@ -207,35 +207,35 @@ li {
   h2 {
     border-bottom: solid 3px $orange;
     color: $orange;
-    font-size: 18px;
-    padding: 10px 20px 5px 20px;
+    font-size: rem(18px);
+    padding: rem(10px 20px 5px 20px);
     width: 80%;    
-    margin: 0 0 15px 30px;
+    margin: rem(0 0 15px 30px);
   }
 
   p {
-    padding: 0 40px;
-    margin-bottom: 10px;
+    padding: rem(0 40px);
+    margin-bottom: rem(10px);
   }
 
   li::before {
     background-image: image-url('layout/header/bullet-orange.png');
     content: " ";
     display: inline-block;
-    width:20px;
-    height:20px;
+    width: rem(20px);
+    height: rem(20px);
     background-repeat: no-repeat;
     color: red;
     font-weight: bold;
-    margin: -7px 0 -7px 0;
+    margin: rem(-7px 0 -7px 0);
    }
   li {
     list-style-type: none;
-    padding: 10px 10px;
+    padding: rem(10px 10px);
 }
 ul {
-  padding-bottom: 20px;
-  margin-left: 35px;
+  padding-bottom: rem(20px);
+  margin-left: rem(35px);
 }
 }
 
@@ -246,14 +246,14 @@ ul {
   }
   h1 {
     color: $white;
-    font-size: 21px;
-    margin: 10px 0 20px 0;
+    font-size: rem(21px);
+    margin: rem(10px 0 20px 0);
     text-align: center;
   }
   h2 {
     color: $white;
-    font-size: 18px;
-    margin: 0 0 10px 0;
+    font-size: rem(18px);
+    margin: rem(0 0 10px 0);
   }
   img {
     display: inline-block;
@@ -270,27 +270,27 @@ ul {
     background-image: image-url('layout/header/banner-bg.png');
     background-repeat: no-repeat;
     color: $white;
-    font-size: 21px;
-    margin: 190px 0 0 0;
-    padding: 65px 0 75px 0;
+    font-size: rem(21px);
+    margin: rem(190px 0 0 0);
+    padding: rem(65px 0 75px 0);
     text-align: center;
     z-index: 100;
   }
   h2 {
     color: $orange;
-    font-size: 18px;
-    margin: 0 0 0 30px;
-    padding: 10px 20px;
+    font-size: rem(18px);
+    margin: rem(0 0 0 30px);
+    padding: rem(10px 20px);
   }
   p {
-    padding: 10px 50px;
+    padding: rem(10px 50px);
   }
   img {
     z-index: 0
   }
 
   &__title {
-    height: 400px;
+    height: rem(400px);
     position: relative;
     width: 100%;
     z-index: 2;
@@ -305,7 +305,7 @@ ul {
     width: 100%;
   }
   &__content {
-    margin-top: 80px;
+    margin-top: rem(80px);
   }
 }
 
@@ -316,19 +316,19 @@ ul {
   h1 {
     background: $red;
     color: $white;
-    font-size: 21px;
+    font-size: rem(21px);
     text-align: center;
-    padding: 18px 0 20px 0;
-    margin: 0 0 20px 0;
+    padding: rem(18px 0 20px 0);
+    margin: rem(0 0 20px 0);
   }
   h2 {
     color: $orange;
-    font-size: 18px;
-    padding-left: 50px;
+    font-size: rem(18px);
+    padding-left: rem(50px);
   }
  p {
-  padding: 10px 55px;
-  margin: 0 0 20px 0;
+  padding: rem(10px 55px);
+  margin: rem(0 0 20px 0);
   }
   li {
     @include clearfix;
@@ -502,41 +502,41 @@ color: $orange;
   h1 {
     text-align: center;
     color: $white;
-    font-size: 21px;
-    padding: 20px;
+    font-size: rem(21px);
+    padding: rem(20px);
     margin: 0;
   }
   h2 {
     background: $orange;
     color: $white;
-    font-size: 18px;
-    padding: 10px 20px 10px 40px;
-    margin: 20px 0;
+    font-size: rem(18px);
+    padding: rem(10px 20px 10px 40px);
+    margin: rem(20px 0);
   }
   p {
     color: $white;
     text-align: center;
-    padding: 5px 20px;
+    padding: rem(5px 20px);
   }
 
   li::before {
     background-image: image-url('layout/header/bullet-red.png');
     content: " ";
     display: inline-block;
-    width:20px;
-    height:20px;
+    width: rem(20px);
+    height: rem(20px);
     background-repeat: no-repeat;
     color: red;
     font-weight: bold;
-    margin: -12px 0 -12px 40px;
+    margin: rem(-12px 0 -12px 40px);
    }
   li {
     color: $white;
     list-style-type: none;
-    padding: 10px;
+    padding: rem(10px);
 }
 ul {
-  padding-bottom: 50px;
+  padding-bottom: rem(50px);
 }
 
 }
@@ -544,39 +544,39 @@ ul {
 background: $red;
 h1 {
   color: $orange;
-  font-size: 21px;
-  padding: 20px;
+  font-size: rem(21px);
+  padding: rem(20px);
   margin: 0;
   text-align: center;
 }
 h2 {
   color: $orange;
-  font-size: 18px;
-  padding-left: 50px;
+  font-size: rem(18px);
+  padding-left: rem(50px);
 }
 p {
   color: $white;
   margin: 0;
-  padding: 10px 50px 25px 50px;
+  padding: rem(10px 50px 25px 50px);
 }
 li::before {
   background-image: image-url('layout/header/bullet-white.png');
   content: " ";
   display: inline-block;
-  width:20px;
-  height:20px;
+  width: rem(20px);
+  height: rem(20px);
   background-repeat: no-repeat;
   color: red;
   font-weight: bold;
-  margin: -7px 15px -7px 0;
+  margin: rem(-7px 15px -7px 0);
  }
 li {
   color: $white;
   list-style-type: none;
-  padding: 20px 10px 0 10px;
+  padding: rem(20px 10px 0 10px);
 }
 ul {
-padding-bottom: 30px;
+padding-bottom: rem(30px);
 width: 70%;
 margin-left: 15%;
 }
@@ -585,25 +585,25 @@ margin-left: 15%;
   background: $orange;
   h1 {
     color: $red;
-    font-size: 21px;
-    padding: 30px;
+    font-size: rem(21px);
+    padding: rem(30px);
     margin: 0;
   }
   h2 {
     color: $red;
-    font-size: 18px;
-    padding-left: 30px;
+    font-size: rem(18px);
+    padding-left: rem(30px);
   }
   p {
-    padding-left: 30px;
+    padding-left: rem(30px);
   }
 }
 .creative-other-articles {
 h1 {
   color: $red;
-  font-size: 18px;
+  font-size: rem(18px);
   font-weight: bold;
-  padding: 20px 0 0 30px;
+  padding: rem(20px 0 0 30px);
   text-align: center;
 }
 }
@@ -639,7 +639,7 @@ h1 {
 
 
 .resource-title {
-  padding-top: 15px;
+  padding-top: rem(15px);
   border-bottom: solid 5px $red;
   color: $red;
 
@@ -654,11 +654,11 @@ h1 {
   padding: rem(10px 0);
 }
 .large-content-section-download-box {
-  max-width: 200px;
+  max-width: rem(200px);
   display: inline-block;
 }
 .large-content-section-content {
   width: 78%;
   display: inline-block;
-  padding: 0 30px;
+  padding: rem(0 30px);
 }
