@@ -141,6 +141,16 @@
     padding-left: rem(17px);
     margin-top: rem(7px);
   }
+
+  &__button {
+    background-color: $grey-blue;
+    border-radius: 4px;
+    color: $white;
+    display: block;
+    margin: rem(5px);
+    padding: rem(5px);
+    text-align: center;
+  }
 }
 
 .resources-home-title {
