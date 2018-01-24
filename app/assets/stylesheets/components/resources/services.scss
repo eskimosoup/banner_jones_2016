@@ -5,7 +5,7 @@
 
 .standard-content-box {
   .service-resource-download-button {
-    background: $black image-url('components/icons/download-orange.png') no-repeat 90% 50%;
+    background: $black;
     border-radius: rem(2px);
     color: $white;
     display: block;
@@ -428,83 +428,83 @@ ul {
 }
 &:nth-child(11) {
   color: $dark-slate-blue;
-  &::before {
-  color: $red;
-}
-}
+    &::before {
+      color: $red;
+    }
+  }
 &:nth-child(12) {
   background: $turquoise;
   color: $white;
-  &::before {
-  color: $orange;
-}
-}
+    &::before {
+      color: $orange;
+    }
+  }
 &:nth-child(13) {
   background: $orange;
   color: $dark-slate-blue;
-  &::before {
-    color: $dark-slate-blue;
-}
+    &::before {
+      color: $dark-slate-blue;
+    }
 }
 &:nth-child(14) {
   background: $red;
   color: $white;
-  &::before {
-    color: $orange;
-}
+    &::before {
+      color: $orange;
+    }
 }
 
 &:nth-child(15) {
-color: $dark-slate-blue;
-&::before {
-color: $red;
-}
+  color: $dark-slate-blue;
+    &::before {
+      color: $red;
+    }
 }
 &:nth-child(16) {
-background: $turquoise;
-color: $white;
-&::before {
-color: $orange;
-}
+  background: $turquoise;
+  color: $white;
+    &::before {
+      color: $orange;
+    }
 }
 &:nth-child(17) {
-background: $orange;
-color: $dark-slate-blue;
-&::before {
+  background: $orange;
   color: $dark-slate-blue;
-}
+    &::before {
+      color: $dark-slate-blue;
+    }
 }
 &:nth-child(18) {
-background: $red;
-color: $white;
-&::before {
-  color: $orange;
-}
+  background: $red;
+  color: $white;
+    &::before {
+      color: $orange;
+    }
 }
 &:nth-child(19) {
-color: $dark-slate-blue;
-&::before {
-color: $red;
-}
+  color: $dark-slate-blue;
+    &::before {
+      color: $red;
+    }
 }
 &:nth-child(20) {
-background: $turquoise;
-color: $white;
-&::before {
-color: $orange;
-}
-}
+  background: $turquoise;
+  color: $white;
+  &::before {
+    color: $orange;
   }
+}
+}
 }
 
 .creative-unordered-list {
   background: $turquoise;
   h1 {
-    text-align: center;
     color: $white;
     font-size: rem(21px);
-    padding: rem(20px);
     margin: 0;
+    padding: rem(20px);
+    text-align: center;
   }
   h2 {
     background: $orange;
@@ -521,12 +521,12 @@ color: $orange;
 
   li::before {
     background-image: image-url('layout/header/bullet-red.png');
+    background-repeat: no-repeat;
     content: " ";
+    color: red;
     display: inline-block;
     width: rem(20px);
     height: rem(20px);
-    background-repeat: no-repeat;
-    color: red;
     font-weight: bold;
     margin: rem(-12px 0 -12px 40px);
    }
@@ -541,8 +541,8 @@ ul {
 
 }
 .creative-text-block {
-background: $red;
-h1 {
+  background: $red;
+  h1 {
   color: $orange;
   font-size: rem(21px);
   padding: rem(20px);
@@ -561,14 +561,14 @@ p {
 }
 li::before {
   background-image: image-url('layout/header/bullet-white.png');
-  content: " ";
-  display: inline-block;
-  width: rem(20px);
-  height: rem(20px);
   background-repeat: no-repeat;
+  content: " ";
   color: red;
+  display: inline-block;
   font-weight: bold;
+  height: rem(20px);
   margin: rem(-7px 15px -7px 0);
+  width: rem(20px);
  }
 li {
   color: $white;
