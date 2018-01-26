@@ -103,8 +103,7 @@
   a {
     display: block;
     font-size: rem(14px);
-    margin: rem(8px) 0;
-    padding: 0 rem(10px);
+    padding: rem(6px) rem(5px) rem(6px) rem(25px);
 
     @include breakpoint(small only) {
       font-size: rem(16px);
@@ -123,14 +122,15 @@
 
     &:hover,
     &:active {
-      color: $red;
+      background: $red !important;
+      color: $white;
     }
   }
 }
 
 .meganav-primary-links {
   a {
-    padding: rem(3px) rem(20px) rem(3px) rem(25px);
+    padding: rem(10px) rem(25px);
 
     @include breakpoint(small only) {
       padding-bottom: rem(5px);
@@ -138,8 +138,9 @@
     }
 
     &:hover,
-    &.active {
-      background: $white;
+    &:active {
+      background: $red !important;
+      color: $white;
     }
   }
 }

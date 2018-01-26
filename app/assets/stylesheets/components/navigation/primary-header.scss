@@ -224,7 +224,8 @@
     &:hover,
     &:focus,
     &:active {
-      .meganav-dropdown {
+      .meganav-dropdown,
+      .dropdown {
         display: block;
       }
 
