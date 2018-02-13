@@ -57,6 +57,9 @@
     <section class="large-content-element">
       <div class="large-content-element__section">
         <div class="large-content-inner">
+
+
+
           <div class="large-content-inner__main">
             <h1 class="large-content-inner__title">
               <%= @service.title %>
@@ -64,13 +67,23 @@
                       alt: '',
                       class: 'large-content-inner__icon' %>
             </h1>
+        <div class="large-content-inner">
+            
 
-            <%= render 'resources/shared/service_aside', resource: @resource %>
 
-            <div class="large-content-inner-styles">
-              <%= raw @resource.content %>
-            </div>
-          </div>
+<div class="large-content-inner__header-download">
+<%= render 'resources/shared/service_aside', resource: @resource %>
+</div>
+
+  <div class="large-content-inner__header-content">
+  <div class="large-content-inner-styles">
+    <%= raw @resource.content %>
+  </div>
+  </div>
+  </div>
+  </div>
+
+      
 
           <aside class="large-content-inner__aside">
             <div class="service-team-member">

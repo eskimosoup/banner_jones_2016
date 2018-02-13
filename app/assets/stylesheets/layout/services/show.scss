@@ -191,6 +191,21 @@
   @include flex-grid-row;
   margin-top: rem(40px);
 
+  &__header-download {
+    @media screen and (min-width: 940px) {
+    @include flex-grid-column(3);
+    }
+      @media screen and(max-width: 940px) {
+        @include flex-grid-column(12);
+      }    
+  }
+  &__header-content {
+    @include flex-grid-column(9);
+    @media screen and(max-width: 940px) {
+      @include flex-grid-column(12);
+    }  
+  }
+
   &__main {
     &:not(&--full) {
       @include breakpoint(xlarge down) {
@@ -314,11 +329,11 @@
 
     @media screen and (min-width: 768px) {
       &:first-of-type {
-        @include flex-grid-column(4, (medium: 0));
+        @include flex-grid-column(5, (medium: 0));
       }
 
       &:last-of-type {
-        @include flex-grid-column(8);
+        @include flex-grid-column(7);
         border-left: 1px solid $white;
       }
     }
@@ -351,6 +366,19 @@
   padding: rem(8px 12px);
   margin: rem(20px 0 0 25px);
   text-transform: uppercase;
+  @media screen and (max-width: 939px) {
+    display: block;
+    margin: rem(20px 0);
+    max-width: 200px;
+    text-align: center;
+  }
+  @media screen and (min-width: 940px) and (max-width: 1140px) {
+    font-size: 15px;
+    margin: 0;
+    max-width: 220px;
+    padding: rem(6px 9px);
+}
+  
   
   &:hover {
     background-color: $red;
