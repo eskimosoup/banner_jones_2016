@@ -649,9 +649,15 @@ h1 {
 }
 
 .resource-download-description {
-  width: rem(200px);
+  @include breakpoint(medium) {
+  max-width: rem(200px);
   text-align: center;
   padding: rem(10px 0);
+  }
+  @include breakpoint(small) {
+    display: inline-block;
+    text-align: left
+  } 
 }
 .large-content-section-download-box {
   @include flex-grid-column(3);

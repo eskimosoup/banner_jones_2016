@@ -2,7 +2,13 @@
   margin: 0 0 rem(30px);
 
   &.index {
-    @include breakpoint(medium) {
+    @media screen and (max-width: 750px) {
+      @include grid-column(12);
+    }
+    @media screen and (max-width: 1000px) and (min-width: 751px) {
+      @include grid-column(6);
+    }
+    @media screen and (min-width: 1000px) {
       @include grid-column(4);
       //width: grid-column(4);
 
