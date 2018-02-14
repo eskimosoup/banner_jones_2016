@@ -280,6 +280,10 @@
 .service-team-member {
   @include large-design-team-member-styles;
 
+  @media screen and (min-width: 1440px) {
+    margin-top: 58px;
+  }
+
   &__phone {
     font-family: $roboto;
     font-size: rem(20px);
@@ -372,11 +376,12 @@
     max-width: 200px;
     text-align: center;
   }
-  @media screen and (min-width: 940px) and (max-width: 1140px) {
-    font-size: 15px;
-    margin: 0;
+  @media screen and (min-width: 940px) {
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 0 30px 0;
     max-width: 220px;
-    padding: rem(6px 9px);
+    padding: rem(6px 8px);
 }
   
   
