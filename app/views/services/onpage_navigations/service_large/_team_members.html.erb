@@ -1,0 +1,21 @@
+<div class="onpage-navigation-item">
+
+  <%#= render 'team_members/shared/slider', team_members: team_members.limit(onpage_navigation.results_limit), title: onpage_navigation.title, partial_width: onpage_navigation.layout %>
+</div>
+
+<%
+team_members = onpage_navigation.team_members.displayed
+team_members = @service.team_members.displayed if team_members.blank?
+%>
+
+<section class="large-content-element">
+  <div class="large-onpage-navigation-element__section large-onpage-navigation-element__section--full  large-onpage-navigation-element__section--container">
+    <%= render(
+          partial: 'team_members/shared/service_slider',
+          locals: {
+            team_members: team_members,
+            title: 'Specialist Team'
+          }
+        ) if team_members.present? %>
+  </div>
+</section>

@@ -1,0 +1,46 @@
+<%= content_for :javascript do %>
+  <% if defined? partial_width %>
+    <script>
+      var partialWidth = <%= partial_width %>
+    </script>
+  <% end %>
+
+  <%= javascript_include_tag 'components/team-members/slider.js' %>
+  <script>
+    $(function() {
+      teamMembersSlick();
+    });
+  </script>
+<% end %>
+
+<div class="service-slider-team-members">
+  <div class="slider-team-members-title">
+    <%= content_tag :h2, title, class: 'slider-content-box-title' if defined?(title) %>
+  </div>
+
+  <%= link_to 'See All', team_members_path, class: 'module-see-all home-team-members' %>
+
+  <div class="slider-team-members-slider-content-box-slider-controls" id="team-members-slider">
+    <%= link_to '#team-members-slider', class: 'slider-content-box-previous', title: 'Previous' do %>
+      <%= image_tag 'components/icons/content-box/previous.png', alt: 'Previous' %>
+    <% end %>
+
+    <%= link_to '#team-members-slider', class: 'slider-content-box-next', title: 'Next' do %>
+      <%= image_tag 'components/icons/content-box/next.png', alt: 'Next' %>
+    <% end %>
+  </div>
+
+
+  <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', class: 'slider-team-members-loading' %>
+
+  <div class="slider-team-members-profiles">
+    <div class="slider-team-members-slick">
+      <%= render partial: 'team_members/shared/slider_team_member',
+                collection: team_members, cached: true, as: :team_member if team_members.present? %>
+    </div>
+
+    <div class="slider-team-members-slick-profile">
+      <%= render 'team_members/shared/slider_profile_card', team_member: team_members.first if team_members.present? %>
+    </div>
+  </div>
+</div>

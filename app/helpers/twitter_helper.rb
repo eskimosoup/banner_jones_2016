@@ -8,9 +8,11 @@ module TwitterHelper
     end
   end
 
-  def twitter_timeline(twitter, limit)
+  def twitter_timeline(twitter, limit, extended = false)
     return unless twitter
-    twitter_connect.user_timeline(twitter.delete('@'), count: limit)
+    options = { count: limit }
+    options = options.merge(tweet_mode: 'extended') if extended
+    twitter_connect.user_timeline( twitter.delete('@'), options)
   end
 
   def tweet_text(text)
