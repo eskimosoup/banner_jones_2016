@@ -7,6 +7,15 @@
   }
 }
 
+.service-slider-team-members {
+  padding: rem(60px) 0 0;
+  position: relative;
+
+  @media print {
+    display: none;
+  }
+}
+
 .slider-content-box-title {
   @include home-content-box-title;
 }

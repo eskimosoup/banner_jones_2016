@@ -1,0 +1,34 @@
+<%= content_for :javascript do %>
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<% end %>
+
+<section class="large-content-element">
+  <div class="large-onpage-navigation-element__aside">
+    <h1 class="large-onpage-navigation-element__main-title">
+      <%= content_tag :h1, onpage_navigation.title, class: 'large-onpage-navigation-element__main-title' %>
+    </h1>
+  </div>
+  <div class="large-onpage-navigation-element__section">
+    <% cache('services-twitter', expires_in: 15.minutes) do %>
+      <% begin %>
+        <% tweets = twitter_timeline(global_site_settings['Twitter'], (onpage_navigation.results_limit || 1), true) %>
+
+        <% tweets.each do |tweet| %>
+          <div class="tweet">
+            <p class="tweet-text">
+              <%= raw tweet_text(tweet.attrs[:full_text]) %>
+            </p>
+
+            <p class="tweet-time">
+              <%= link_to tweet_time(tweet.created_at), "https://twitter.com/statuses/#{tweet.id}" %>
+            </p>
+          </div>
+        <% end %>
+
+        <a href="https://twitter.com/<%= global_site_settings['Twitter'] %>" class="twitter-follow-button" data-show-count="false">Follow <%= global_site_settings['Twitter'] %></a>
+      <% rescue %>
+        <p>Twitter is not currently loading</p>
+      <% end %>
+    <% end %>
+  </div>
+</section>
