@@ -5,9 +5,7 @@ service_pages = @service.service_pages.displayed if service_pages.blank?
 
 <section class="large-content-element">
   <div class="large-onpage-navigation-element__aside">
-    <h1 class="large-onpage-navigation-element__main-title">
-      <%= content_tag :h1, onpage_navigation.title, class: 'large-onpage-navigation-element__main-title' if onpage_navigation.title.present? %>
-    </h1>
+    <%= content_tag :h1, onpage_navigation.title, class: 'large-onpage-navigation-element__main-title' if onpage_navigation.title.present? %>
   </div>
   <div class="large-onpage-navigation-element__section">
     <% service_pages.limit(onpage_navigation.results_limit).each do |service_page| %>
