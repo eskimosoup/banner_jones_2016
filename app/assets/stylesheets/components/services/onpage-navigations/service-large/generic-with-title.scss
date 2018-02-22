@@ -15,6 +15,17 @@
         top: 80px;
       }
     }
+
+    &--twitter {
+      background: $twitter-blue;
+      color: $white;
+
+      &::after {
+        @include breakpoint(large) {
+          @include triangle('right', $twitter-blue, 40px);
+        }
+      }
+    }
   }
 
   &__testimonials {
