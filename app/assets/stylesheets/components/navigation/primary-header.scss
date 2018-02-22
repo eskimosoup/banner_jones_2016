@@ -278,7 +278,7 @@
     padding-top: rem(10px);
 
     @include breakpoint(medium) {
-      border: 1px solid $orange;
+      border: 1px solid $red;
       line-height: 1.25;
       min-width: 250px;
       position: absolute;
@@ -287,15 +287,20 @@
 
     @include breakpoint(medium) {
       .menu-item {
-        border-bottom: 1px dotted $orange;
+        // border-bottom: 1px dotted $red;
         display: block;
       }
     }
 
 
     .menu-link {
-      font-size: rem(16px);
+      font-size: rem(14px);
       padding: rem(5px 20px);
+
+      &:link,
+      &:visited {
+        color: $grey;
+      }
 
       @include breakpoint(small only) {
         border-bottom: 0;
@@ -314,6 +319,12 @@
 
       @include breakpoint(medium) {
         display: block;
+
+        &:hover,
+        &:focus,
+        &:active {
+          color: $white;
+        }
       }
     }
   }
@@ -340,13 +351,7 @@
 
     &:link,
     &:visited {
-      @include breakpoint(small only) {
-        color: $black;
-      }
-
-      @include breakpoint(medium) {
-        color: $offset-black;
-      }
+      color: $black;
     }
 
     &:hover,
