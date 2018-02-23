@@ -197,13 +197,13 @@
     }
       @media screen and(max-width: 940px) {
         @include flex-grid-column(12);
-      }    
+      }
   }
   &__header-content {
     @include flex-grid-column(9);
     @media screen and(max-width: 940px) {
       @include flex-grid-column(12);
-    }  
+    }
   }
 
   &__main {
@@ -311,6 +311,10 @@
       }
     }
   }
+
+  &--no-top-margin {
+    margin-top: 0;
+  }
 }
 
 .large-content-inner-styles {
@@ -383,8 +387,8 @@
     max-width: 220px;
     padding: rem(6px 8px);
 }
-  
-  
+
+
   &:hover {
     background-color: $red;
     color: $white;
