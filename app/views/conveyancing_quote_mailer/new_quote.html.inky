@@ -11,6 +11,8 @@
       <columns small="12">
         <h1>This is a copy of the conveyancing email</h1>
 
+        <h2>Please respond within two days.</h2>
+
         <p>
           Please note that these details are also viewable at:
           <%= link_to optimadmin.conveyancing_quotes_quote_location_user_url(@user.quote_location, @user),
