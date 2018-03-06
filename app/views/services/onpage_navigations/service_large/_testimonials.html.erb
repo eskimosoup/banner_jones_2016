@@ -1,3 +1,4 @@
+
 <%
 testimonials = onpage_navigation.testimonials.displayed
 testimonials = @service.testimonials.displayed if testimonials.blank?
@@ -7,6 +8,18 @@ testimonials = @service.testimonials.displayed if testimonials.blank?
   <%= content_for :javascript do %>
     <script>
       $(document).ready(function() {
+        <% # HAPPY DANCE: https://coderwall.com/p/_8jxgw/autoresize-text-to-fit-into-a-div-width-height %>
+        var elements = $('.service-testimonial__content p');
+        if(elements.length < 0) {
+          return;
+        }
+        elements.each(function(i, element) {
+          while(element.scrollWidth > element.offsetWidth || element.scrollHeight > element.offsetHeight) {
+            var newFontSize = (parseFloat($(element).css('font-size').slice(0, -2)) * 0.95) + 'px';
+            console.log(newFontSize);
+            $(element).css('font-size', newFontSize);
+          }
+        });
         $('.service-testimonials').slick({
           arrows: false,
           dots: true,

@@ -42,7 +42,7 @@
 
   @include breakpoint(xxlarge) {
     &:not(&--without-icon) {
-      margin-left: rem(57px);
+      margin-left: rem(41px);
     }
   }
 
@@ -95,7 +95,8 @@
 
       &:hover,
       &:focus,
-      &:active {
+      &:active,
+      &.active {
         background: rgba($black, .15);
         color: $white;
       }
@@ -107,7 +108,8 @@
 
       &:hover,
       &:focus,
-      &:active {
+      &:active,
+      &.active {
         color: $red;
       }
     }

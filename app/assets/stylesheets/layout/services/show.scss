@@ -143,7 +143,7 @@
     @include flex-grid-column(12, (small: map-get($grid-column-gutter, small), large: 40));
     background-color: $white;
     position: relative;
-    min-height: rem(500px);
+    // min-height: rem(500px);
 
     &--onpage-navigation {
       @include breakpoint(small only) {
