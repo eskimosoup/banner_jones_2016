@@ -14,11 +14,6 @@ module BannerJones2016
     config.time_zone = 'London'
     config.active_record.default_timezone = :local
 
-    # Mailer log
-    config.action_mailer.logger = ActiveSupport::Logger.new(
-      Rails.root.join('log', 'mailer.log')
-    )
-
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
