@@ -1,24 +1,8 @@
-## README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```ruby
+Services::Page.where(layout: 'application').update_all(layout: 'landing_page_design')
+Service.where(layout: 'application').update_all(layout: 'landing_page_design')
+Services::Page.where(style: 'basic').update_all(style: 'service_large')
+Service.where(style: 'basic').update_all(style: 'service_large')
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

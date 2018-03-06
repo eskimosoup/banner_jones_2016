@@ -1,6 +1,7 @@
 <%
 #cache child_service do
 %>
+<% if child_service.children.present? %>
   <ul class="page-aside-navigation-links-list nested depth-<%= index %>">
     <% child_service.children.each do |grandchild_service| %>
       <% present grandchild_service do |service_presenter| %>
@@ -14,6 +15,7 @@
       <% end %>
     <% end %>
   </ul>
+<% end %>
 <%
 # end
 %>

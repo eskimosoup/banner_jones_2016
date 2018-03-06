@@ -14,7 +14,11 @@
                       alt: '',
                       class: 'large-content-aside-title__icon' %>
 
-          <%= @service.title %>
+          <% if @service.root == @service %>
+            <%= @service.title %>
+          <% else %>
+            <%= link_to @service.root.title, audience_service_path(@service.root.audience, @service.root), style: "color:#{@service.colour}" %>
+          <% end %>
         </h2>
       </div>
 

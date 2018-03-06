@@ -7,6 +7,17 @@
       border-bottom-color: <%= @service.colour %>
     }
 
+    .nested {
+      border-top: 2px solid <%= @service.colour %>;
+      border-bottom: 1px solid <%= @service.colour %>;
+    }
+
+    .nested a {
+      border-bottom: 1px solid <%= @service.colour %>;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+
     .large-content-inner-styles h1,
     .large-content-inner-styles h2,
     .large-content-inner-styles h3,

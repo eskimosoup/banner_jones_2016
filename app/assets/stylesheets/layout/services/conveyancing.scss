@@ -272,6 +272,8 @@
 
     @include breakpoint(xxlarge) {
       font-size: rem(31px);
+      max-height: 200px;
+      width: 100%;
     }
   }
 }
