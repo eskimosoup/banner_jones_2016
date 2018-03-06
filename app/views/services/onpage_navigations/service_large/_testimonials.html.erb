@@ -6,7 +6,6 @@ testimonials = @service.testimonials.displayed if testimonials.blank?
 
 <% present @service do |service_presenter| %>
   <%= content_for :javascript do %>
-    <%= javascript_include_tag 'vendor/jquery.fittext' %>
     <script>
       $(document).ready(function() {
         <% # HAPPY DANCE: https://coderwall.com/p/_8jxgw/autoresize-text-to-fit-into-a-div-width-height %>
