@@ -2,14 +2,14 @@
 <section class="large-content-element">
   <div class="large-onpage-navigation-element__section large-onpage-navigation-element__section--container large-onpage-navigation-element__section--full">
     <div class="service-team-member service-team-member--full-width service-team-member--no-top-margin">
-      <p>
+      <p <%= 'class=split' if @service.team_members.key_team_members.blank? %>>
         Talk to our friendly team today on:
         <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
                 class: 'conveyancing-call-to-action
                         service-team-member__phone
                         ga-event',
                 data: {
-                  event_category: 'Conveyancing Calculator',
+                  event_category: 'Service',
                   event_action: 'Click',
                   event_label:  'Phone'
                 } do %>
@@ -22,7 +22,7 @@
               collection: @service.team_members.key_team_members,
               cached: true,
               as: :team_member %>
-      <div class="service-cta-block">
+      <div class="service-cta-block <%= 'service-cta-block--without-key-team-member' if @service.team_members.key_team_members.blank? %>">
         <div class="service-cta-block__contact">
           <%= link_to '#',
               class: 'conveyancing-footer__cta-button toggle-class ga-event',
@@ -30,7 +30,7 @@
                 class: 'visible',
                 container: '.remote-contact-form-modal',
                 return: false,
-                event_category: 'Conveyancing Calculator',
+                event_category: 'Service',
                 event_action: 'Click',
                 event_label:  'Email'
                 } do %>
@@ -45,7 +45,7 @@
                   class: 'visible',
                   container: '.remote-callback-request-form-modal',
                   return: false,
-                  event_category: 'Conveyancing Calculator',
+                  event_category: 'Service',
                   event_action: 'Click',
                   event_label:  'Request a callback'
                 } do %>
