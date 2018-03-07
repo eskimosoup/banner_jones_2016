@@ -2,6 +2,9 @@
 ---
 en:
   activerecord:
+    attributes:
+      conveyancing_quotes/quote_location:
+        conveyancing_quotes_configuration_id: Configuration
     errors:
       messages:
         record_invalid: 'Validation failed: %{errors}'
