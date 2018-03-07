@@ -47,8 +47,8 @@ module Optimadmin
 
       def conveyancing_quotes_location_params
         params.require(:conveyancing_quotes_quote_location).permit(
-          :location, :suggested_url, :display, :details,
-          :title, :reference_code
+          :suggested_url, :display, :details,
+          :title, :reference_code, :conveyancing_quotes_configuration_id
         )
       end
     end

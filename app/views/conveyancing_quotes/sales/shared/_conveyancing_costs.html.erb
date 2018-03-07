@@ -13,8 +13,10 @@
   <li class="conveyancing-cost__item conveyancing-cost__item--bordered">
     Legal fee
 
-    <span class="conveyancing-cost__fee">
-      <%= number_to_currency sale.fee %>
-    </span>
+    <% if configuration.show_legal_fee_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency sale.fee %>
+      </span>
+    <% end %>
   </li>
 </ul>

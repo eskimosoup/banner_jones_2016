@@ -22,6 +22,8 @@
         Manage Content
       </div>
       <ul id="modules" class="content-category-list">
+<%= module_link(content: ConveyancingQuotes::Configuration.model_name.human.pluralize.titleize, model: ConveyancingQuotes::Configuration, path: conveyancing_quotes_configurations_path) %>
+
         <%= module_link(content: "Conveyancing Quotes", model: ConveyancingQuotes::QuoteLocation, path: conveyancing_quotes_quote_locations_path) %>
         <%= module_link(content: "Case Studies", model: CaseStudy, path: case_studies_path) if Flipflop.case_studies? %>
         <%= module_link(content: 'Pages', model: Page, path: pages_path) %>

@@ -22,7 +22,7 @@
       <%= f.email_field :email,
                       class: 'conveyancing-content-form__input
                               conveyancing-content-form__input--bordered',
-                      required: true,
+                      required: current_user.configuration.email_required?,
                       placeholder: 'me@example.com' %>
     </div>
     <div class="conveyancing-content-form__field-grouped">
@@ -30,7 +30,7 @@
       <%= f.text_field :phone,
                       class: 'conveyancing-content-form__input
                               conveyancing-content-form__input--bordered',
-                      required: true,
+                      required: current_user.configuration.phone_required?,
                       placeholder: 'Phone number' %>
     </div>
   </div>

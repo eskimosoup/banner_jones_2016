@@ -1,0 +1,365 @@
+
+<div class="conveyancing-content">
+  <div class="conveyancing-content__section conveyancing-content__section--full">
+    <h1 class="conveyancing-content__main-title">
+      <% if configuration.show_total? %>
+        Here is your fixed price quote based on
+        <% if user.purchase.present? %>
+          your buying price of <strong><%= number_to_currency user.purchase.price %></strong>
+        <% end %>
+        <% if user.purchase.present? && user.sale.present? %>
+          and
+        <% end %>
+        <% if user.sale.present? %>
+          your selling price of <strong><%= number_to_currency user.sale.price %></strong>
+        <% end %>
+      <% else %>
+        Please configure your quote
+      <% end %>
+    </h1>
+    <p class="conveyancing-content__microcopy">
+      Your quote reference is:
+      <strong>
+        <%= user.quote_reference %>
+      </strong>
+    </p>
+    <div class="conveyancing-scroll-arrow">
+      <%= link_to '#pay-us',
+                  class: 'conveyancing-scroll-arrow__shape
+                          conveyancing-scroll-arrow__shape--bounce
+                          smooth-scroll' do %>
+      <% end %>
+      Scroll for more
+    </div>
+  </div>
+</div>
+<section class="conveyancing-breakdown" id="pay-us">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--first">
+    <h1 class="conveyancing-breakdown__main-title">
+      What you pay <span class="conveyancing-breakdown__emphasis">us</span>
+      for our services
+    </h1>
+  </header>
+  <div class="conveyancing-breakdown__details">
+    <%= render 'conveyancing_quotes/purchases/shared/conveyancing_costs',
+               configuration: configuration,
+               purchase: user.purchase if user.purchase.present? %>
+    <%= render 'conveyancing_quotes/sales/shared/conveyancing_costs',
+               configuration: configuration,
+               sale: user.sale if user.sale.present? %>
+
+    <% if configuration.show_legal_fee_subtotal? %>
+      <footer class="conveyancing-breakdown__sub-total-overview">
+        Sub-total
+        <div class="conveyancing-breakdown__sub-total">
+          <% sub_total = 0 %>
+          <% sub_total += user.sale.fee if user.sale.present? %>
+          <% sub_total += user.purchase.fee if user.purchase.present? %>
+          <%= number_to_currency sub_total %>
+        </div>
+      </footer>
+    <% end %>
+  </div>
+</section>
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--second">
+    <h1 class="conveyancing-breakdown__main-title">
+      Additional services
+    </h1>
+  </header>
+  <div class="conveyancing-breakdown__details">
+    <% if user.purchase.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Buying
+        </h2>
+        <%= form_for user.purchase, url: conveyancing_quotes_purchases_path, remote: true do |f| %>
+          <%= render 'conveyancing_quotes/purchases/shared/optional_extras',
+                    f: f,
+                    configuration: configuration,
+                    costs: costs %>
+        <% end %>
+
+        <% if configuration.show_additional_services_subtotal? %>
+          <div class="conveyancing-breakdown__sub-total-overview">
+            Sub-total
+            <div class="conveyancing-breakdown__sub-total">
+              <% sub_total = 0 %>
+              <% user.purchase.additional_costs.each do |additional_cost| %>
+                <% sub_total += costs[additional_cost] %>
+              <% end %>
+              <span class="conveyancing-breakdown__sub-total-purchase">
+                <%= number_to_currency sub_total %>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    <% if user.sale.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Selling
+        </h2>
+        <%= form_for user.sale, url: conveyancing_quotes_sales_path, remote: true do |f| %>
+          <%= render 'conveyancing_quotes/sales/shared/optional_extras',
+                    f: f,
+                    configuration: configuration,
+                    costs: costs %>
+        <% end %>
+
+        <% if configuration.show_additional_services_subtotal? %>
+          <div class="conveyancing-breakdown__sub-total-overview">
+            Sub-total
+            <div class="conveyancing-breakdown__sub-total">
+              <% sub_total = 0 %>
+              <% user.sale.additional_costs.each do |additional_cost| %>
+                <% sub_total += costs[additional_cost] %>
+              <% end %>
+              <span class="conveyancing-breakdown__sub-total-sale">
+                <%= number_to_currency sub_total %>
+              </span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
+<section class="conveyancing-breakdown">
+  <header class="conveyancing-breakdown__header conveyancing-breakdown__header--third">
+    <h1 class="conveyancing-breakdown__main-title">
+      Additional costs paid to
+      <span class="conveyancing-breakdown__emphasis">third parties</span>
+    </h1>
+  </header>
+  <div class="conveyancing-breakdown__details">
+    <% if user.purchase.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Buying
+        </h2>
+        <div class="conveyancing-breakdown__additional-costs
+                    conveyancing-breakdown__additional-costs--purchase">
+          <%= render 'conveyancing_quotes/purchases/shared/additional_costs',
+                    costs: costs,
+                    configuration: configuration,
+                    purchase: user.purchase %>
+        </div>
+      </div>
+    <% end %>
+    <% if user.sale.present? %>
+      <div class="conveyancing-breakdown__group">
+        <h2 class="conveyancing-breakdown__title">
+          For Selling
+        </h2>
+        <%= render 'conveyancing_quotes/sales/shared/additional_costs',
+                  costs: costs,
+                  configuration: configuration,
+                  sale: user.sale %>
+      </div>
+    <% end %>
+  </div>
+</section>
+<% if configuration.show_total? %>
+  <section class="conveyancing-breakdown">
+    <div class="conveyancing-content__section
+                conveyancing-content__section--cta
+                conveyancing-content__section--full">
+      <%= content_tag :div, (render user.purchase), class: 'conveyancing-content__purchase-total' if user.purchase.present? %>
+      <%= content_tag :div, (render user.sale), class: 'conveyancing-content__sale-total' if user.sale.present? %>
+      <%= link_to '#email',
+                  class: 'conveyancing-content__cta-button
+                          conveyancing-content__cta-button--email
+                          slide-toggle',
+                  data: {
+                    container: '.conveyancing-content-form--email',
+                    return: true
+                  } do %>
+        Email me with this quote
+      <% end %>
+
+      <%= link_to 'Download PDF',
+                  conveyancing_quotes_location_users_download_path(
+                    user.quote_location,
+                    format: :pdf
+                  ),
+                  class: 'conveyancing-content__cta-button
+                          ga-event',
+                  target: '_blank',
+                  data: {
+                          event_category: 'Conveyancing Calculator',
+                          event_action: 'Click',
+                          event_label:  'PDF Download'
+                        }
+                  %>
+
+      <%= form_for current_user,
+                  url: conveyancing_quotes_location_users_path(
+                        current_user.quote_location
+                      ),
+                  html: {
+                    class: 'conveyancing-content-form
+                            conveyancing-content-form--email
+                            conveyancing-content-form--hidden'
+                  },
+                  remote: true do |f| %>
+        <div class="conveyancing-content-form__field">
+          <%= f.label :email %>
+          <%= f.email_field :email,
+                            class: 'conveyancing-content-form__input',
+                            placeholder: 'me@example.com',
+                            required: true %>
+        </div>
+        <div class="conveyancing-content-form__actions">
+          <%= f.submit 'Send',
+                        class: 'conveyancing-content-form__submit ga-event',
+                        data: {
+                          event_category: 'Conveyancing Calculator',
+                          event_action: 'Click',
+                          event_label:  'Email Quote',
+                          disable_with: 'Sending..'
+                        } %>
+        </div>
+      <% end %>
+      <p class="conveyancing-content__microcopy
+                conveyancing-content__microcopy--small-print">
+        Your quote is valid for 30 days and fully inclusive, fixed price*
+      </p>
+    </div>
+  </section>
+<% end %>
+<section class="conveyancing-content conveyancing-content--combined">
+  <div class="conveyancing-content__section
+              conveyancing-content__section--full">
+    <div class="conveyancing-proceed">
+      <div class="conveyancing-proceed__content">
+        <h1 class="conveyancing-proceed__title">
+          Here's what to do next
+        </h1>
+
+        <p>
+          If you are happy to proceed with the quote, please complete the small
+          form below and we will be in touch to explain the next steps and get
+          everything in place for your move.
+        </p>
+
+        <%#= link_to 'Proceed',
+                    edit_conveyancing_quotes_location_users_path,
+                    class: 'conveyancing-proceed__button
+                            conveyancing-proceed__button--action
+                            conveyancing-proceed__button--block
+                            ga-event',
+                    data: {
+                      event_category: 'Conveyancing Calculator',
+                      event_action: 'Click',
+                      event_label:  'Proceed'
+                    } %>
+
+        <div class="conveyancing-completion">
+          <div class="conveyancing-completion__form conveyancing-completion__form--full">
+            <%= render partial: 'conveyancing_quotes/users/shared/full_form',
+                      locals: {
+                        user: current_user
+                        } %>
+          </div>
+        </div>
+
+        <p>
+          Or if you have any questions then call us for a no-obligation
+          discussion to see how we can help get you moving.
+        </p>
+
+        <%= render 'shared/calltracks_phone',
+                    phone: global_site_settings['Phone'],
+                    options: { class: 'conveyancing-proceed__phone' } %>
+
+        <ul class="conveyancing-checklist">
+          <li class="conveyancing-checklist__item
+                    conveyancing-checklist__item--inline">
+            <span class="conveyancing-checklist__checkmark">
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+            </span>
+            No payment today
+          </li>
+          <li class="conveyancing-checklist__item
+                    conveyancing-checklist__item--inline">
+            <span class="conveyancing-checklist__checkmark">
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+            </span>
+            Instant online access
+          </li>
+          <li class="conveyancing-checklist__item
+                    conveyancing-checklist__item--inline">
+            <span class="conveyancing-checklist__checkmark">
+              <%= render partial: 'conveyancing_quotes/shared/svgs/checkmark' %>
+            </span>
+            No move, no fee and search guarantees
+          </li>
+        </ul>
+
+        <div class="conveyancing-proceed__team-member">
+          <%= render partial: 'conveyancing_quotes/shared/key_team_members',
+                      collection: service.team_members.key_team_members,
+                      cached: true,
+                      as: :team_member %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="conveyancing-footer">
+  <div class="conveyancing-footer__section">
+    <div class="conveyancing-footer__contact">
+      <%= link_to '#',
+    class: 'conveyancing-footer__cta-button toggle-class ga-event',
+    data: {
+      class: 'visible',
+      container: '.remote-callback-request-form-modal',
+      return: false,
+      event_category: 'Conveyancing Calculator',
+      event_action: 'Click',
+      event_label:  'Request a callback'
+    } do %>
+        <%= image_tag 'components/icons/sticky-callback.png', alt: 'Callback request' %><br />
+        Request a callback
+      <% end %>
+    </div>
+    <div class="conveyancing-footer__contact">
+      <%= link_to '#',
+                class: 'conveyancing-footer__cta-button toggle-class ga-event',
+                data: {
+                  class: 'visible',
+                  container: '.remote-contact-form-modal',
+                  return: false,
+                  event_category: 'Conveyancing Calculator',
+                  event_action: 'Click',
+                  event_label:  'Email'
+                  } do %>
+        <%= image_tag 'components/icons/sticky-email.png', alt: 'Send an enquiry' %><br />
+        Email us
+      <% end %>
+    </div>
+  </div>
+</section>
+<%#= render user.purchase if user.purchase.present? %>
+<!--
+<div class="conveyancing-quote-overview">
+  <h3>Proceed with Quote</h3>
+  <p>If you are happy with the quote, please proceed to accept it.</p>
+  <%#= link_to 'Accept quote', new_conveyancing_quotes_deeds_path, class: 'inverted-submit-button ga-event', data: { event_category: 'Conveyancing Calculator', event_action: 'Accept Quote', event_label: 'Accept Quote' } %>
+  <%#= link_to 'Print quote', '#', class: 'inverted-submit-button print-page ga-event', data: { event_category: 'Conveyancing Calculator', event_action: 'Print Quote', event_label: 'Print Quote' } %>
+
+  <h4>Request More Information</h4>
+
+  <p>
+    Call:
+    <%#= render 'shared/calltracks_phone',
+                phone: global_site_settings['Phone'],
+                options: { class: 'inverted-submit-button' } %>
+
+
+
+  </p>
+</div>
+-->

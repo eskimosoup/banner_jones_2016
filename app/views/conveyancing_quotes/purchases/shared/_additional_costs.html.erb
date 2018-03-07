@@ -26,10 +26,12 @@
       Stamp Duty Land Tax
     <% end %>
 
-    <span class="conveyancing-cost__fee">
-      <% cost_total += purchase.stamp_duty %>
-      <%= number_to_currency purchase.stamp_duty %>
-    </span>
+    <% cost_total += purchase.stamp_duty %>
+    <% if configuration.show_additional_costs_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency purchase.stamp_duty %>
+      </span>
+    <% end %>
 
     <%= render "conveyancing_quotes/shared/tooltips/stamp_duty_land_tax" %>
   </li>
@@ -48,10 +50,12 @@
       Land Registry Fee
     <% end %>
 
-    <span class="conveyancing-cost__fee">
-      <% cost_total += purchase.land_fee_calculator.fee %>
-      <%= number_to_currency purchase.land_fee_calculator.fee %>
-    </span>
+    <% cost_total += purchase.land_fee_calculator.fee %>
+    <% if configuration.show_additional_costs_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency purchase.land_fee_calculator.fee %>
+      </span>
+    <% end %>
 
     <%= render "conveyancing_quotes/shared/tooltips/land_registry_fee" %>
   </li>
@@ -70,11 +74,13 @@
       Premium Search Package
     <% end %>
 
-    <span class="conveyancing-cost__fee">
-      <% premium_search = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>
-      <% cost_total += premium_search %>
-      <%= number_to_currency premium_search %>
-    </span>
+    <% premium_search = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>
+    <% cost_total += premium_search %>
+    <% if configuration.show_additional_costs_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency premium_search %>
+      </span>
+    <% end %>
 
     <%= render "conveyancing_quotes/shared/tooltips/premium_search_package" %>
   </li>
@@ -84,16 +90,20 @@
       VAT (where applicable)
     </div>
 
-    <span class="conveyancing-cost__fee">
-      <%= number_to_currency vat_total %>
-    </span>
+    <% if configuration.show_additional_costs_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency vat_total %>
+      </span>
+    <% end %>
   </li>
 </ul>
 
-<div class="conveyancing-breakdown__sub-total-overview">
-  Sub-total
+<% if configuration.show_additional_costs_subtotal? %>
+  <div class="conveyancing-breakdown__sub-total-overview">
+    Sub-total
 
-  <div class="conveyancing-breakdown__sub-total">
-    <%= number_to_currency cost_total %>
+    <div class="conveyancing-breakdown__sub-total">
+      <%= number_to_currency cost_total %>
+    </div>
   </div>
-</div>
+<% end %>

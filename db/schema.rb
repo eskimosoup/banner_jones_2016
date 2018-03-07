@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171212093011) do
+ActiveRecord::Schema.define(version: 20180307122324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -160,6 +160,23 @@ ActiveRecord::Schema.define(version: 20171212093011) do
     t.index ["conveyancing_quotes_user_id"], name: "addresses_user_id", using: :btree
   end
 
+  create_table "conveyancing_quotes_configurations", force: :cascade do |t|
+    t.string   "title"
+    t.string   "location"
+    t.string   "style"
+    t.boolean  "email_required",                    default: true
+    t.boolean  "phone_required",                    default: false
+    t.boolean  "show_legal_fee_prices",             default: false
+    t.boolean  "show_legal_fee_subtotal",           default: false
+    t.boolean  "show_additional_services_prices",   default: false
+    t.boolean  "show_additional_services_subtotal", default: false
+    t.boolean  "show_additional_costs_prices",      default: false
+    t.boolean  "show_additional_costs_subtotal",    default: false
+    t.boolean  "show_total",                        default: false
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+  end
+
   create_table "conveyancing_quotes_deeds", force: :cascade do |t|
     t.integer  "conveyancing_quotes_user_id"
     t.string   "full_name",                   null: false
@@ -204,12 +221,14 @@ ActiveRecord::Schema.define(version: 20171212093011) do
     t.string   "location"
     t.string   "suggested_url"
     t.string   "slug"
-    t.boolean  "display",        default: true
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.boolean  "display",                              default: true
+    t.datetime "created_at",                                          null: false
+    t.datetime "updated_at",                                          null: false
     t.text     "details"
     t.string   "title"
     t.string   "reference_code"
+    t.integer  "conveyancing_quotes_configuration_id"
+    t.index ["conveyancing_quotes_configuration_id"], name: "index_quote_locations_on_conveyancing_quotes_configuration_id", using: :btree
     t.index ["location"], name: "index_conveyancing_quotes_quote_locations_on_location", using: :btree
     t.index ["slug"], name: "index_conveyancing_quotes_quote_locations_on_slug", using: :btree
   end
@@ -1145,6 +1164,7 @@ ActiveRecord::Schema.define(version: 20171212093011) do
   add_foreign_key "conveyancing_quotes_deeds", "conveyancing_quotes_users"
   add_foreign_key "conveyancing_quotes_purchases", "conveyancing_quotes_sale_and_purchases", column: "conveyancing_quotes_sale_and_purchases_id"
   add_foreign_key "conveyancing_quotes_purchases", "conveyancing_quotes_users"
+  add_foreign_key "conveyancing_quotes_quote_locations", "conveyancing_quotes_configurations"
   add_foreign_key "conveyancing_quotes_sale_and_purchases", "conveyancing_quotes_users"
   add_foreign_key "conveyancing_quotes_sales", "conveyancing_quotes_sale_and_purchases", column: "conveyancing_quotes_sale_and_purchases_id"
   add_foreign_key "conveyancing_quotes_sales", "conveyancing_quotes_users"

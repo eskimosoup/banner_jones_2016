@@ -182,20 +182,26 @@ Optimadmin::Engine.routes.draw do
   end
 
   # Module routes go below concerns
+
   get :resource_details, to: 'resources#details'
   resources :office_locations, concerns: %i[toggleable imageable]
 
   resources :resources do
     resources :resources_sections,
-              except: :show,
-              concerns: %i[orderable toggleable imageable],
-              path: 'sections',
-              controller: 'resources/sections'
+    except: :show,
+    concerns: %i[orderable toggleable imageable],
+    path: 'sections',
+    controller: 'resources/sections'
   end
 
   namespace :conveyancing_quotes do
+    resources :configurations,
+              except: :show,
+              concerns: %i[orderable toggleable imageable]
     resources :quote_locations do
-      resources :users, only: %i[index show]
+      resources :users, only: %i[index show] do
+        get 'incomplete', on: :collection
+      end
     end
   end
 end

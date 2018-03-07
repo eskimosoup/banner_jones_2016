@@ -1,0 +1,6 @@
+<%= render 'optimadmin/shared/help_guides/sidebar', object: ::ConveyancingQuotes::Configuration, area: 'edit' %>
+<%= render 'optimadmin/shared/header/main_title', title: "Edit #{::ConveyancingQuotes::Configuration.model_name.human.titleize}" %>
+<div class="main-content">
+  <%= render 'optimadmin/shared/module/form/back', path: conveyancing_quotes_configurations_path, title: ::ConveyancingQuotes::Configuration.model_name.human.titleize %>
+  <%= render 'form', model: @conveyancing_quotes_configuration %>
+</div>
