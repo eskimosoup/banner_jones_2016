@@ -29,12 +29,14 @@
                 Stamp Duty Land Tax
               </div>
             </columns>
-            <columns small="12" large="4">
-              <div class="conveyancing-fee-breakdown__cost">
-                <% cost_total += purchase.stamp_duty %>
-                <%= number_to_currency purchase.stamp_duty %>
-              </div>
-            </columns>
+            <% cost_total += purchase.stamp_duty %>
+            <% if configuration.show_additional_costs_prices? || @confirmation.present? %>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency purchase.stamp_duty %>
+                </div>
+              </columns>
+            <% end %>
           </row>
         </wrapper>
         <wrapper class="conveyancing-fee-breakdown__item">
@@ -44,12 +46,14 @@
                 Land Registry Fee
               </div>
             </columns>
-            <columns small="12" large="4">
-              <div class="conveyancing-fee-breakdown__cost">
-                <% cost_total += purchase.land_fee_calculator.fee %>
-                <%= number_to_currency purchase.land_fee_calculator.fee %>
-              </div>
-            </columns>
+            <% cost_total += purchase.land_fee_calculator.fee %>
+            <% if configuration.show_additional_costs_prices? || @confirmation.present? %>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency purchase.land_fee_calculator.fee %>
+                </div>
+              </columns>
+            <% end %>
           </row>
         </wrapper>
         <wrapper class="conveyancing-fee-breakdown__item">
@@ -59,13 +63,15 @@
                 Premium Search Package
               </div>
             </columns>
-            <columns small="12" large="4">
-              <div class="conveyancing-fee-breakdown__cost">
-                <% premium_search = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>
-                <% cost_total += premium_search %>
-                <%= number_to_currency premium_search %>
-              </div>
-            </columns>
+            <% premium_search = ConveyancingCalculator.configuration.additional_static_costs[purchase.user.symbolised_location].reduce(Hash.new, :merge)[:premium_search] %>
+            <% cost_total += premium_search %>
+            <% if configuration.show_additional_costs_prices? || @confirmation.present? %>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency premium_search %>
+                </div>
+              </columns>
+            <% end %>
           </row>
         </wrapper>
         <wrapper class="conveyancing-fee-breakdown__item">
@@ -75,32 +81,36 @@
                 VAT (where applicable)
               </div>
             </columns>
-            <columns small="12" large="4">
-              <div class="conveyancing-fee-breakdown__cost">
-                <%= number_to_currency vat_total %>
-              </div>
-            </columns>
+            <% if configuration.show_additional_costs_prices? || @confirmation.present? %>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency vat_total %>
+                </div>
+              </columns>
+            <% end %>
           </row>
         </wrapper>
       </wrapper>
 
       <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 20 %>
 
-      <row class="conveyancing-collapse conveyancing-fee-total">
-        <columns small="12" large="8">
-          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
-          <p class="conveyancing-fee-total__subtotal">
-            Sub-total
-          </p>
-          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
-        </columns>
-        <columns small="12" large="4">
-          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
-          <p class="conveyancing-fee-total__cost">
-            <%= number_to_currency cost_total %>
-          </p>
-          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
-        </columns>
-      </row>
+      <% if configuration.show_additional_costs_subtotal? || @confirmation.present? %>
+        <row class="conveyancing-collapse conveyancing-fee-total">
+          <columns small="12" large="8">
+            <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+            <p class="conveyancing-fee-total__subtotal">
+              Sub-total
+            </p>
+            <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+          </columns>
+          <columns small="12" large="4">
+            <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+            <p class="conveyancing-fee-total__cost">
+              <%= number_to_currency cost_total %>
+            </p>
+            <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+          </columns>
+        </row>
+      <% end %>
     </columns>
   </row>

@@ -55,6 +55,19 @@
     </row>
 
     <hr />
+
+    <p>This quote was sent and requested using the following configuration:</p>
+
+    <ul>
+      <% @user.configuration.attributes.each do |attribute, value| %>
+        <li>
+          <strong><%= attribute.humanize %></strong>:
+          <%= value.present? ? value : 'nil'  %>
+        </li>
+      <% end %>
+    </ul>
+
+    <hr />
   <% end %>
 
   <row class="conveyancing-header">
@@ -66,15 +79,19 @@
       <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
       <p class="conveyancing-header__lead-text">
-        Here is your fixed price quote based on
-        <% if @user.purchase.present? %>
-          your buying price of <strong><%= number_to_currency @user.purchase.price %></strong>
-        <% end %>
-        <% if @user.purchase.present? && @user.sale.present? %>
-          and
-        <% end %>
-        <% if @user.sale.present? %>
-          your selling price of <strong><%= number_to_currency @user.sale.price %></strong>
+        <% if @configuration.show_total? || @confirmation.present? %>
+          Here is your fixed price quote based on
+          <% if @user.purchase.present? %>
+            your buying price of <strong><%= number_to_currency @user.purchase.price %></strong>
+          <% end %>
+          <% if @user.purchase.present? && @user.sale.present? %>
+            and
+          <% end %>
+          <% if @user.sale.present? %>
+            your selling price of <strong><%= number_to_currency @user.sale.price %></strong>
+          <% end %>
+        <% else %>
+          Here is a review of the quote you requested.
         <% end %>
       </p>
 
@@ -101,11 +118,14 @@
 
 
   <%= render 'conveyancing_quote_mailer/new_quote/purchases/conveyancing_costs',
+              configuration: @configuration,
               purchase: @user.purchase if @user.purchase.present? %>
 
   <%= render 'conveyancing_quote_mailer/new_quote/sales/conveyancing_costs',
+              configuration: @configuration,
               sale: @user.sale if @user.sale.present? %>
 
+  <% if @configuration.show_legal_fee_subtotal? || @confirmation.present? %>
   <row class="conveyancing-fee-breakdown">
     <columns small="12" large="12">
       <row class="conveyancing-collapse conveyancing-fee-total">
@@ -129,6 +149,7 @@
       </row>
     </columns>
   </row>
+  <% end %>
 
   <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
@@ -144,10 +165,12 @@
 
   <%= render 'conveyancing_quote_mailer/new_quote/purchases/optional_extras',
               costs: costs,
+              configuration: @configuration,
               purchase: @user.purchase if @user.purchase.present? %>
 
   <%= render 'conveyancing_quote_mailer/new_quote/sales/optional_extras',
               costs: costs,
+              configuration: @configuration,
               sale: @user.sale if @user.sale.present? %>
 
   <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
@@ -165,31 +188,35 @@
 
   <%= render 'conveyancing_quote_mailer/new_quote/purchases/additional_costs',
               costs: costs,
+              configuration: @configuration,
               purchase: @user.purchase if @user.purchase.present? %>
 
   <%= render 'conveyancing_quote_mailer/new_quote/sales/additional_costs',
               costs: costs,
+              configuration: @configuration,
               sale: @user.sale if @user.sale.present? %>
 
   <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
-  <row class="conveyancing-fee-header conveyancing-fee-header--cta">
-    <columns small="12" large="12">
-      <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+  <% if @configuration.show_total? || @confirmation.present? %>
+    <row class="conveyancing-fee-header conveyancing-fee-header--cta">
+      <columns small="12" large="12">
+        <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 
-      <%= render 'conveyancing_quote_mailer/new_quote/sales/grand_total',
-              costs: costs,
-              sale: @user.sale if @user.sale.present? %>
+        <%= render 'conveyancing_quote_mailer/new_quote/sales/grand_total',
+                costs: costs,
+                sale: @user.sale if @user.sale.present? %>
 
-      <%= render 'conveyancing_quote_mailer/new_quote/purchases/grand_total',
-              costs: costs,
-              purchase: @user.purchase if @user.purchase.present? %>
+        <%= render 'conveyancing_quote_mailer/new_quote/purchases/grand_total',
+                costs: costs,
+                purchase: @user.purchase if @user.purchase.present? %>
 
-      <p class="conveyancing-fee-header__microcopy">
-        Your quote is valid for 30 days from <%= l @user.created_at.to_date, format: :long %>.
-      </p>
-    </columns>
-  </row>
+        <p class="conveyancing-fee-header__microcopy">
+          Your quote is valid for 30 days from <%= l @user.created_at.to_date, format: :long %>.
+        </p>
+      </columns>
+    </row>
+  <% end %>
 
   <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
 

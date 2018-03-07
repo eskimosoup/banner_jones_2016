@@ -17,11 +17,13 @@
                 </div>
               </div>
             </columns>
-            <columns small="12" large="4">
-              <div class="conveyancing-fee-breakdown__cost">
-                <%= number_to_currency purchase.fee %>
-              </div>
-            </columns>
+            <% if @configuration.show_legal_fee_prices? || @confirmation.present? %>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency purchase.fee %>
+                </div>
+              </columns>
+            <% end %>
           </row>
         </wrapper>
       </wrapper>
