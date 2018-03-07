@@ -1,16 +1,18 @@
-<div class="large-content">
-  <aside class="large-content__aside">
-    <div class="large-content-aside-sticky">
-    <%#= @side_menus.last.related_menu_items(@page).first.first.link.menu_resource %>
-    <%#= page_sidebar_menu_items(menu_items: @side_menus.last.related_menu_items(@side_menus.last.related_menu_items(@page).first.first.link.menu_resource)) %>
-    <%#= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
-      <%= render 'pages/shared/navigation',
-                  menu_items: @side_menus.last.root_menu_items(@page),
-                  page: @page if @side_menus.present? %>
-    </div>
-  </aside>
+<div class="<%= @side_menus.blank? ? 'content-area' : 'large-content' %>">
+  <% if @side_menus.present? %>
+    <aside class="large-content__aside">
+      <div class="large-content-aside-sticky">
+      <%#= @side_menus.last.related_menu_items(@page).first.first.link.menu_resource %>
+      <%#= page_sidebar_menu_items(menu_items: @side_menus.last.related_menu_items(@side_menus.last.related_menu_items(@page).first.first.link.menu_resource)) %>
+      <%#= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
+        <%= render 'pages/shared/navigation',
+                    menu_items: @side_menus.last.root_menu_items(@page),
+                    page: @page %>
+      </div>
+    </aside>
+  <% end %>
 
-  <main class="large-content__main">
+  <main class="large-content__main <%= "large-content__main--full" if @side_menus.blank? %>">
     <section class="large-content-element">
       <div class="large-content-element__section">
         <div class="large-content-inner">

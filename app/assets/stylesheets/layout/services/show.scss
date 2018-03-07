@@ -132,6 +132,10 @@
         @include flex-grid-column(10, (medium: 0));
       }
     }
+
+    &--full {
+      @include flex-grid-column(12);
+    }
   }
 }
 
