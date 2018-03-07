@@ -294,8 +294,14 @@
     @media screen and (min-width: 768px)  {
       @include flex-grid-row;
 
-      p {
+      p:not(.split) {
         @include flex-grid-column(12);
+      }
+
+      .split {
+        @include breakpoint(xlarge) {
+          @include flex-grid-column(6);
+        }
       }
 
       .conveyancing-service-key-team-member {
@@ -324,6 +330,10 @@
 .service-cta-block {
   @include flex-grid-row;
   margin-top: rem(35px);
+
+  &--without-key-team-member {
+    margin-top: 0;
+  }
 
   &__contact {
     @include breakpoint(small only) {
