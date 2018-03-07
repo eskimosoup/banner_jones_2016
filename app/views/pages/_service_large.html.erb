@@ -6,7 +6,7 @@
     <%#= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
       <%= render 'pages/shared/navigation',
                   menu_items: @side_menus.last.root_menu_items(@page),
-                  page: @page %>
+                  page: @page if @side_menus.present? %>
     </div>
   </aside>
 
