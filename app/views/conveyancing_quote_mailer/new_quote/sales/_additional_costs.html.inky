@@ -24,32 +24,36 @@
                   VAT (where applicable)
               </div>
             </columns>
-            <columns small="12" large="4">
-              <div class="conveyancing-fee-breakdown__cost">
-                <%= number_to_currency vat_total %>
-              </div>
-            </columns>
+            <% if configuration.show_additional_costs_prices? %>
+              <columns small="12" large="4">
+                <div class="conveyancing-fee-breakdown__cost">
+                  <%= number_to_currency vat_total %>
+                </div>
+              </columns>
+            <% end %>
           </row>
         </wrapper>
       </wrapper>
 
       <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 20 %>
 
-      <row class="conveyancing-collapse conveyancing-fee-total">
-        <columns small="12" large="8">
-          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
-          <p class="conveyancing-fee-total__subtotal">
-            Sub-total
-          </p>
-          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
-        </columns>
-        <columns small="12" large="4">
-          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
-          <p class="conveyancing-fee-total__cost">
-            <%= number_to_currency vat_total %>
-          </p>
-          <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
-        </columns>
-      </row>
+      <% if configuration.show_additional_costs_subtotal? %>
+        <row class="conveyancing-collapse conveyancing-fee-total">
+          <columns small="12" large="8">
+            <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+            <p class="conveyancing-fee-total__subtotal">
+              Sub-total
+            </p>
+            <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+          </columns>
+          <columns small="12" large="4">
+            <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+            <p class="conveyancing-fee-total__cost">
+              <%= number_to_currency vat_total %>
+            </p>
+            <%= render 'conveyancing_quote_mailer/new_quote/spacer', size: 10 %>
+          </columns>
+        </row>
+      <% end %>
     </columns>
   </row>

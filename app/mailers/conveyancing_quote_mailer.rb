@@ -5,6 +5,7 @@ class ConveyancingQuoteMailer < ApplicationMailer
   def new_quote(user)
     @user = user
     @global_site_settings = Optimadmin::SiteSetting.current_environment
+    @configuration = user.configuration
 
     delivery_options = {
       address: ENV['BANNER_JONES_EMAIL_HOST']
@@ -21,6 +22,7 @@ class ConveyancingQuoteMailer < ApplicationMailer
     @user = user
     @global_site_settings = Optimadmin::SiteSetting.current_environment
     @confirmation = true
+    @configuration = user.configuration
 
     mail to: conveyancing_email,
          subject: "Conveyancing Quote Completed #{site_name}" do |format|
