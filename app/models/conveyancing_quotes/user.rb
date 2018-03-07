@@ -10,8 +10,10 @@ module ConveyancingQuotes
 
     validates :forename, presence: true, if: :details_required?
     validates :surname, presence: true, if: :details_required?
-    validates :email, presence: true, if: :details_required?
-    validates :phone, presence: true, if: :details_required?
+    validates :email, presence: true, if: proc { details_required? && configuration.email_required? }
+    validates :phone, presence: true, if: proc { details_required? && configuration.phone_required? }
+
+    delegate :configuration, to: :quote_location
 
     #validates :buying,
     #          presence: { message: 'can not be blank, unless selling or buying and selling' },

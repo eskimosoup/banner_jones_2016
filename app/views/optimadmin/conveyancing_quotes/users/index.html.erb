@@ -1,4 +1,4 @@
-<%= render 'optimadmin/shared/header/main_title', title: "Manage Conveyancing Quotes #{@location.location}" %>
+<%= render 'optimadmin/shared/header/main_title', title: "Manage Conveyancing Quotes for #{content_tag :strong, @location.location} #{@incomplete.blank? ? '- Submitted' : '- Not submitted'}".html_safe %>
 <div class="main-content">
   <div class="row module-header collapse">
     <%= render 'optimadmin/shared/module/index/new_item', title: 'Conveyancing Quotes', object: ConveyancingQuotes::QuoteLocation, path: new_conveyancing_quotes_quote_location_path %>
@@ -8,12 +8,14 @@
     <%= render 'optimadmin/shared/module/index/recycle_bin', items: @users.size, path: root_url %>
   </div>
 
+  <%= link_to 'View locations', conveyancing_quotes_quote_locations_path %> |
+  <%= link_to 'Submitted', conveyancing_quotes_quote_location_users_path(@location) %> |
+  <%= link_to 'Not submitted (incomplete)', incomplete_conveyancing_quotes_quote_location_users_path(@location) %>
+
+
   <!-- <div class="module-sortable" data-module="ConveyancingQuotes::QuoteLocation"> -->
   <%= render partial: 'user_header' %>
   <%= render partial: 'user', collection: @users, as: :user %>
+  <%= paginate @users %>
   <!-- </div> -->
-
-  <h2>Incomplete</h2>
-  <%= render partial: 'user_header' %>
-  <%= render partial: 'user', collection: @incomplete_users, as: :user %>
 </div>

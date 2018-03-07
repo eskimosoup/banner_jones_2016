@@ -75,9 +75,11 @@
       <% end %>
     </span>
 
-    <span class="conveyancing-cost__fee">
-      <%= number_to_currency costs[:leasehold_house] %>
-    </span>
+    <% if configuration.show_additional_services_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency costs[:leasehold_house] %>
+      </span>
+    <% end %>
 
     <%= render 'conveyancing_quotes/shared/tooltips/leasehold_house' %>
   </li>
@@ -122,9 +124,11 @@
       <% end %>
     </span>
 
-    <span class="conveyancing-cost__fee">
-      <%= number_to_currency costs[:leasehold_apartment] %>
-    </span>
+    <% if configuration.show_additional_services_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency costs[:leasehold_apartment] %>
+      </span>
+    <% end %>
 
     <%= render 'conveyancing_quotes/shared/tooltips/leasehold_apartment' %>
   </li>
@@ -170,9 +174,11 @@
       <% end %>
     </span>
 
-    <span class="conveyancing-cost__fee">
-      <%= number_to_currency costs[:help_to_buy_scheme] %>
-    </span>
+    <% if configuration.show_additional_services_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency costs[:help_to_buy_scheme] %>
+      </span>
+    <% end %>
 
     <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_scheme' %>
   </li>
@@ -218,9 +224,11 @@
       <% end %>
     </span>
 
-    <span class="conveyancing-cost__fee">
-      <%= number_to_currency costs[:help_to_buy_isa] %>
-    </span>
+    <% if configuration.show_additional_services_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency costs[:help_to_buy_isa] %>
+      </span>
+    <% end %>
 
     <%= render 'conveyancing_quotes/shared/tooltips/help_to_buy_isa' %>
   </li>
@@ -266,9 +274,11 @@
       <% end %>
     </span>
 
-    <span class="conveyancing-cost__fee">
-      <%= number_to_currency costs[:shared_ownership_scheme] %>
-    </span>
+    <% if configuration.show_additional_services_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency costs[:shared_ownership_scheme] %>
+      </span>
+    <% end %>
 
     <%= render 'conveyancing_quotes/shared/tooltips/shared_ownership_scheme' %>
   </li>

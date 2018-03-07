@@ -6,13 +6,13 @@ module ConveyancingQuotes
     extend FriendlyId
     friendly_id :slug_candidates, use: %i[slugged history]
 
-    # Outside Location doesn't have correct fees set up
-    # LOCATIONS = ['London', 'Outside London'].freeze
-    LOCATIONS = ['London'].freeze
-
-    validates :location, inclusion: { in: LOCATIONS }, uniqueness: true
-
     scope :displayed, (-> { where(display: true) })
+
+    belongs_to :configuration,
+               class_name: 'Configuration',
+               foreign_key: :conveyancing_quotes_configuration_id
+
+    delegate :location, to: :configuration, prefix: false, allow_nil: true
 
     has_many :users,
              dependent: :destroy,

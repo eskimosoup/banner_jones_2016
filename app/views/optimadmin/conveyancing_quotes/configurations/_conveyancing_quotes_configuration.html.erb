@@ -1,0 +1,25 @@
+<% present conveyancing_quotes_configuration do |configuration_presenter| %>
+  <div class="row collapse module-list-index <%= cycle('odd', 'even') %>" data-equalizer="module-list" id="item_<%= configuration_presenter.id %>">
+    <div class="large-10 small-8 columns" data-equalizer-watch="module-list">
+      <%= configuration_presenter.toggle_title %>
+    </div>
+    <div class="large-1 small-4 columns" data-equalizer-watch="module-list">
+      <%= configuration_presenter.edit_link %>
+    </div>
+    <div class="large-1 hide-for-medium-down columns last" data-equalizer-watch="module-list">
+      <%= configuration_presenter.delete_link %>
+    </div>
+    <div class="row module-list-detail hide" id="index-list-<%= configuration_presenter.id %>">
+      <div class="small-12 columns module-list-summary last">
+        <ul>
+          <% conveyancing_quotes_configuration.attributes.each do |attribute, value| %>
+            <li>
+              <strong><%= attribute.humanize %></strong>:
+              <%= value %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+<% end %>

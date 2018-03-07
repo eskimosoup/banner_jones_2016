@@ -1,0 +1,63 @@
+<div class="field">
+  <%= f.label :title %><br />
+  <%= f.text_field :title %>
+</div>
+<div class="tabs prevent-flash">
+  <ul class="tab-list">
+    <li><a href="#tabs-1">Content</a></li>
+    <li><a href="#tabs-3">Settings</a></li>
+    <li>
+      <%= link_to '#', class: 'destroy-tabs right', data: { class: 'tabs' } do %>
+        <%= octicon('chevron-down') %>
+      <% end %>
+    </li>
+  </ul>
+  <%= field_set_tag nil, id: 'tabs-1' do %>
+    <div class="field">
+      <%= f.label :location %><br>
+      <%= f.select :location, ::ConveyancingQuotes::Configuration::LOCATIONS, prompt: 'Please select' %>
+    </div>
+    <div class="field">
+      <%= f.label :style %><br>
+      <%= f.select :style, ::ConveyancingQuotes::Configuration::STYLES.map{ |x| [x.humanize, x] } %>
+    </div>
+  <% end %>
+  <%= field_set_tag nil, id: 'tabs-3' do %>
+    <div class="field">
+      <%= f.label :email_required %><br>
+      <%= f.check_box :email_required %>
+    </div>
+    <div class="field">
+      <%= f.label :phone_required %><br>
+      <%= f.check_box :phone_required %>
+    </div>
+    <div class="field">
+      <%= f.label :show_legal_fee_prices %><br>
+      <%= f.check_box :show_legal_fee_prices %>
+    </div>
+    <div class="field">
+      <%= f.label :show_legal_fee_subtotal %><br>
+      <%= f.check_box :show_legal_fee_subtotal %>
+    </div>
+    <div class="field">
+      <%= f.label :show_additional_services_prices %><br>
+      <%= f.check_box :show_additional_services_prices %>
+    </div>
+    <div class="field">
+      <%= f.label :show_additional_services_subtotal %><br>
+      <%= f.check_box :show_additional_services_subtotal %>
+    </div>
+    <div class="field">
+      <%= f.label :show_additional_costs_prices %><br>
+      <%= f.check_box :show_additional_costs_prices %>
+    </div>
+    <div class="field">
+      <%= f.label :show_additional_costs_subtotal %><br>
+      <%= f.check_box :show_additional_costs_subtotal %>
+    </div>
+    <div class="field">
+      <%= f.label :show_total %><br>
+      <%= f.check_box :show_total %>
+    </div>
+  <% end %>
+</div>

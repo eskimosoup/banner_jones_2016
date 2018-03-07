@@ -13,6 +13,7 @@ $('.conveyancing-breakdown__sub-total-sale').fadeOut(250, function() {
   $('.conveyancing-breakdown__additional-costs--sale')
     .html("<%= j render 'conveyancing_quotes/sales/shared/additional_costs',
                     costs: costs,
+                    configuration: current_user.configuration,
                     sale: current_user.sale %>");
 
   $('.conveyancing-content__sale-total')

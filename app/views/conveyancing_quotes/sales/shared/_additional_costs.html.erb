@@ -12,16 +12,20 @@
       VAT (where applicable)
     </div>
 
-    <span class="conveyancing-cost__fee">
-      <%= number_to_currency vat_total %>
-    </span>
+    <% if configuration.show_additional_costs_prices? %>
+      <span class="conveyancing-cost__fee">
+        <%= number_to_currency vat_total %>
+      </span>
+    <% end %>
   </li>
 </ul>
 
-<div class="conveyancing-breakdown__sub-total-overview">
-  Sub-total
+<% if configuration.show_additional_costs_subtotal? %>
+  <div class="conveyancing-breakdown__sub-total-overview">
+    Sub-total
 
-  <div class="conveyancing-breakdown__sub-total">
-    <%= number_to_currency vat_total %>
+    <div class="conveyancing-breakdown__sub-total">
+      <%= number_to_currency vat_total %>
+    </div>
   </div>
-</div>
+<% end %>

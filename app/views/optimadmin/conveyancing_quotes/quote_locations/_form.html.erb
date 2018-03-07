@@ -22,8 +22,8 @@
     </ul>
     <%= field_set_tag nil, id: 'tabs-1' do %>
       <div class="field">
-        <%= f.label :location %><br>
-        <%= f.select :location, ConveyancingQuotes::QuoteLocation::LOCATIONS %>
+        <%= f.label :conveyancing_quotes_configuration_id %><br>
+        <%= f.select :conveyancing_quotes_configuration_id, ConveyancingQuotes::Configuration.pluck(:title, :id), prompt: 'Please select' %>
       </div>
       <div class="field">
         <%= f.label :title %><br>

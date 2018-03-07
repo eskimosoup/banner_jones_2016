@@ -7,9 +7,16 @@ module Optimadmin
       def index
         @users = @location.users.where(submitted: true).field_order(params[:order])
                           .field_search(params[:search], 'location')
-        @incomplete_users = @location.users.where(submitted: nil, started: true).field_order(params[:order])
-                               .field_search(params[:search], 'location')
-            end
+                          .pagination(params[:page], params[:per_page])
+      end
+
+      def incomplete
+        @users = @location.users.where(submitted: nil, started: true).field_order(params[:order])
+                                .field_search(params[:search], 'location')
+                                .pagination(params[:page], params[:per_page])
+        @incomplete = true
+        render 'optimadmin/conveyancing_quotes/users/index'
+      end
 
       def show; end
 
