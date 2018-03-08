@@ -302,6 +302,11 @@
         color: $grey;
       }
 
+      &.active {
+        background-color: $red;
+        color: $white;
+      }
+
       @include breakpoint(small only) {
         border-bottom: 0;
 
