@@ -1,7 +1,7 @@
 Rails.application.configure do
   config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
-  Rails.application.routes.default_url_options[:host] = 'https://www.bannerjones.co.uk'
+  Rails.application.routes.default_url_options[:host] = 'http://bannerjones.ludo5.co.uk'
   config.action_controller.asset_host = "http://bannerjones.ludo5.co.uk"
 
   # config.action_mailer.delivery_method = :sendmail
