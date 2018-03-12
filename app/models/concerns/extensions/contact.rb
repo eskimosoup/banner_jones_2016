@@ -25,6 +25,7 @@ module Extensions
                     'Recommendation',
                     'Existing client',
                     'Mansfield 103 radio',
+                    'Hallam 2 Radio',
                     'TV advert'].freeze
 
       ENQUIRY_TYPES = ['General'].freeze
