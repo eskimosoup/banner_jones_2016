@@ -3,7 +3,9 @@
   <style>
     .large-content-inner__title,
     .onpage-navigation-article-team-member,
-    .large-content-aside-title__text {
+    .large-content-aside-title__text,
+    .large-content-inner-styles a,
+    .onpage-navigation-frequently-asked-question__question {
       border-bottom-color: <%= @service.colour %>
     }
 
@@ -23,12 +25,24 @@
     .large-content-inner-styles h3,
     .large-content-inner-styles h4,
     .large-content-inner-styles h5,
-    .large-content-inner-styles h6 {
+    .large-content-inner-styles h6,
+    .large-content-aside-navigation a:hover,
+    .large-content-aside-navigation a.active {
       color: <%= @service.colour %>
     }
 
     .large-onpage-resources {
       background: <%= @service.colour %>
+    }
+
+    .large-onpage-resources__title {
+      border-bottom-color: <%= @service.text_colour %>;
+      color: <%= @service.text_colour %>;
+    }
+
+    .service-testimonial__content,
+    .service-testimonial__author {
+      color: <%= @service.text_colour %>;
     }
 
     @media screen and (max-width: 39.9375em) and (min-width: 0em) {

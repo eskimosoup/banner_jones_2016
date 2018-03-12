@@ -40,7 +40,7 @@ function initialize() {
         if(latLngs.length > 1) {
           contentString += '<a href="/offices/' + value.slug + '" title="View more detail" class="offices-view-more">Find out more</a>';
         }
-        
+
         contentString += '</div>';
 
         var infowindow = new google.maps.InfoWindow({
@@ -113,7 +113,9 @@ function closeInfoWindow() {
 function loadScript() {
   var script = document.createElement('script');
   script.type = 'text/javascript';
-  <% # https://console.developers.google.com/apis/credentials?project=rock-arc-88714 %>
+  <%
+  # https://console.developers.google.com/apis/credentials?project=rock-arc-88714
+  %>
   script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDMJ0P4rD0Fv4cGXxQdd-xAxIlJnWWMESw&callback=initialize';
   script.async = 'async';
   script.defer = 'defer';

@@ -416,7 +416,7 @@
 
 &:hover {
   .resource-title {
-      border-bottom: solid 5px $red +30;
+      border-bottom: solid 5px darken($red, 30%);
     }
 }
 }
