@@ -203,13 +203,13 @@ li {
     width: 80%;
     color: $red;
   }
-  
+
   h2 {
     border-bottom: solid 3px $orange;
     color: $orange;
     font-size: rem(18px);
     padding: rem(10px 20px 5px 20px);
-    width: 80%;    
+    width: 80%;
     margin: rem(0 0 15px 30px);
   }
 
@@ -644,7 +644,7 @@ h1 {
   color: $red;
 
   &:hover {
-    border-bottom: solid 5px $red +30;
+    border-bottom: solid 5px darken($red, 30%);
   }
 }
 
@@ -657,7 +657,7 @@ h1 {
   @include breakpoint(small) {
     display: inline-block;
     text-align: left
-  } 
+  }
 }
 .large-content-section-download-box {
   @include flex-grid-column(3);

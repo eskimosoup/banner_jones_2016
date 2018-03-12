@@ -97,6 +97,11 @@
         </div>
       <% end %>
 
+      <div class="field">
+        <%= f.label :text_colour %><br>
+        <%= f.text_field :text_colour, class: 'colour-picker' %>
+      </div>
+
       <div class="field<%= ' hide' if Service::LAYOUTS.size < 2 %>">
         <%= f.label :layout %><br />
         <%= f.select :layout, Service::LAYOUTS.map{ |x| [t(x), x] } %>

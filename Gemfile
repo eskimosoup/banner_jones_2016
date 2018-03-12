@@ -1,8 +1,13 @@
 source 'https://rubygems.org'
 
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 # gem 'rails', '~> 5.0', '< 5.1'
-gem 'rails', '~> 5.0', '< 5.1'
+gem 'rails', '~> 5.1'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
@@ -17,7 +22,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+# gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -41,7 +46,7 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
@@ -53,7 +58,6 @@ end
 
 group :test do
   gem 'database_cleaner', '~> 1.5.0'
-  # gem 'capybara', '~> 2.5.0'
   gem 'capybara', github: 'jnicklas/capybara'
   gem 'launchy', '~> 2.4.3'
   gem 'selenium-webdriver'
@@ -68,22 +72,19 @@ group :development do
   gem 'rack-mini-profiler', '~> 0.10.1'
   gem 'flamegraph', '~> 0.1.0'
   gem 'stackprof', '~> 0.2.7'
-  gem 'bullet', '~> 5.1.0'
+  gem 'bullet'
   gem 'letter_opener'
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'
 gem 'optimised_site', git: 'git@github.com:eskimosoup/optimised_site.git', branch: 'master'
-# gem 'optimised_site', path: '../optimised_site'
 gem 'friendly_id', '~> 5.1.0'
 gem 'geocoder'
 gem 'therubyracer', platforms: :ruby
 gem 'twitter'
 gem 'conveyancing_calculator', github: 'eskimosoup/conveyancing_calculator'
-# gem 'conveyancing_calculator', path: '../conveyancing_calculator'
-# gem 'stamp_duty', path: '../stamp_duty'
 gem 'stamp_duty', git: 'git@github.com:eskimosoup/stamp_duty.git', branch: 'master'
-gem 'simple_form', '~> 3.2.1'
+gem 'simple_form'
 gem 'pdfkit', '~> 0.8.2'
 
 gem 'cocoon'
