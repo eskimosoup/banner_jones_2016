@@ -1,4 +1,4 @@
-<% cache [service, service.team_members.key_team_members.first, service.descendants.map(&:updated_at).max] do %>
+<% cache [service, service.descendants.map(&:updated_at).max] do %>
   <% present service do |service_presenter| %>
   <div class="meganav-dropdown-content-inner meganav-dropdown-content-<%= service_presenter.id %> hide">
     <div class="meganav-dropdown-secondary-list">
@@ -6,7 +6,7 @@
           <h3 class="meganav-secondary-title">
             Services
           </h3>
-          <%= service_presenter.linked_text('View full department page', { title: service_presenter.title, class: 'meganav-button' }) %>
+          <%#= service_presenter.linked_text('View full department page', { title: service_presenter.title, class: 'meganav-button' }) %>
         </div>
 
         <ul class="meganav-links meganav-secondary-links">
@@ -20,19 +20,21 @@
     </div>
   <% end %>
 
-  <% present service.team_members.key_team_members.first do |team_member_presenter| %>
+  <!--
+  <% #present service.team_members.key_team_members.first do |team_member_presenter| %>
     <div class="meganav-dropdown-team-member-wrap">
-      <%= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member') %>
+      <%#= team_member_presenter.navigation_image(alt: team_member_presenter.full_name, class: 'meganav-dropdown-team-member') %>
       <div class="meganav-dropdown-team-member-name">
-        <%= team_member_presenter.full_name %>
+        <%#= team_member_presenter.full_name %>
       </div>
       <div class="meganav-dropdown-team-member-role">
-        <%= team_member_presenter.job_roles %>
+        <%#= team_member_presenter.job_roles %>
       </div>
       <div class="meganav-dropdown-team-member-location">
-        <%= team_member_presenter.office_locations %>
+        <%#= team_member_presenter.office_locations %>
       </div>
     </div>
-  <% end %>
+  <% #end %>
+  -->
   </div>
 <% end %>

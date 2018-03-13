@@ -1,5 +1,11 @@
 <ul class="page-aside-navigation-links-list">
-  <% @service.service_pages.displayed.each do |service_page| %>
-    <li><%= link_to service_page.title, audience_service_service_page_path(@service.audience, @service, service_page), title: "Read #{service_page.title}", class: "#{'active' if @page.present? && service_page == @page}" %></li>
+  <% if defined?(service_pages) %>
+    <% service_pages.each do |service_page| %>
+      <li><%= link_to service_page.title, audience_service_service_page_path(@service.audience, @service, service_page), title: "Read #{service_page.title}", class: "#{'active' if @page.present? && service_page == @page}" %></li>
+    <% end %>
+  <% else %>
+    <% @service.service_pages.displayed.each do |service_page| %>
+      <li><%= link_to service_page.title, audience_service_service_page_path(@service.audience, @service, service_page), title: "Read #{service_page.title}", class: "#{'active' if @page.present? && service_page == @page}" %></li>
+    <% end %>
   <% end %>
 </ul>

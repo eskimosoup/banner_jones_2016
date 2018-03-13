@@ -20,7 +20,7 @@
         <div>
           <%= render(
             partial: "audiences/navigation_content",
-            collection: audience.services.displayed.includes(:children).order(:position),
+            collection: audience.services.roots.displayed.includes(:children).order(:position),
             as: :service,
             locals: { audience: audience }
           ) %>
