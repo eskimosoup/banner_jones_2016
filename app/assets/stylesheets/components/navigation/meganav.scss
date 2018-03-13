@@ -103,7 +103,7 @@
   a {
     display: block;
     font-size: rem(14px);
-    padding: rem(6px) rem(5px) rem(6px) rem(25px);
+    padding: rem(4px) rem(5px) rem(4px) rem(25px);
 
     @include breakpoint(small only) {
       font-size: rem(16px);
@@ -130,7 +130,7 @@
 
 .meganav-primary-links {
   a {
-    padding: rem(7px) rem(25px);
+    padding: rem(4px) rem(25px);
 
     @include breakpoint(small only) {
       padding-bottom: rem(5px);
