@@ -62,7 +62,8 @@
   padding: rem(20px) 0;
 
   @include breakpoint(large) {
-    @include grid-column(6);
+    // @include grid-column(6);
+    @include grid-column(8);
     padding: rem(40px) 0 rem(75px);
   }
 
@@ -125,6 +126,13 @@
       background: $red !important;
       color: $white;
     }
+  }
+
+  &.meganav-secondary-links {
+    display: inline-block;
+    margin: 0;
+    vertical-align: top;
+    width: 49%;
   }
 }
 

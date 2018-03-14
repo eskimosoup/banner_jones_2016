@@ -252,7 +252,8 @@
   }
 
   .meganav-dropdown-secondary-list {
-    @include flex-grid-column(5);
+    // @include flex-grid-column(5);
+    @include flex-grid-column(12);
   }
 
   .meganav-dropdown-team-member-wrap {
