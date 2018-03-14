@@ -101,7 +101,7 @@ Rails.application.routes.draw do
       to: 'services#frequently_asked_questions',
       as: :audience_child_service_frequently_asked_questions
 
-  resources :audiences, only: :show, path: '' do
+  resources :audiences, only: :show, path: '', constraints: AudienceConstraint.new(Audience) do
     resources :services, only: :show do
       get 'testimonials'
       get 'frequently-asked-questions'
