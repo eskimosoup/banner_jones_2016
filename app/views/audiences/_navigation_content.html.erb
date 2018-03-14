@@ -9,14 +9,22 @@
           <%#= service_presenter.linked_text('View full department page', { title: service_presenter.title, class: 'meganav-button' }) %>
         </div>
 
-        <ul class="meganav-links meganav-secondary-links">
-          <%= render(
+        <% service.children.in_groups_of(11, false).each do |group| %>
+          <ul class="meganav-links meganav-secondary-links">
+            <% group.each do |service| %>
+              <%= render(
+                    partial: "services/navigation_link",
+                    locals: { audience: audience, service: service }
+                  ) %>
+            <% end %>
+          </ul>
+        <% end %>
+          <%#= render(
             partial: "services/navigation_link",
             collection: service.children.displayed,
             as: :service,
             locals: { audience: audience }
           ) %>
-        </ul>
     </div>
   <% end %>
 
