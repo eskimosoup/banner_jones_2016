@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
     logger.error "#{error.class}: #{error.message}"
     respond_to do |format|
       format.html { render "errors/#{status}", status: status }
-      format.any { head status, content_type: 'text/html' }
+      format.all { head status }
     end
   end
 
