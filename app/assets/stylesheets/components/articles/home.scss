@@ -142,6 +142,10 @@
       }
     }
 
+    .team-member-avatar {
+      text-align: right;
+    }
+
     .home-article-content {
       @include breakpoint(large) {
         @include grid-column(8, (small: 0));

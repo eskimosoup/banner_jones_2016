@@ -10,7 +10,7 @@ faqs = @service.frequently_asked_questions.displayed if faqs.blank?
   </div>
   <div class="large-onpage-navigation-element__section">
     <%= render partial: "frequently_asked_questions/shared/onpage_navigation",
-                collection: faqs.limit(onpage_navigation.results_limit),
+                collection: faqs, #.limit(onpage_navigation.results_limit),
                 as: :frequently_asked_question %>
   </div>
 </section>

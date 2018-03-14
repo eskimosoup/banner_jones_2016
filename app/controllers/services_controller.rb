@@ -22,12 +22,17 @@ class ServicesController < ApplicationController
 
   def testimonials
     @service = find_service
-    return redirect_to nested_testimonials_path(@service), status: :moved_permanently if request.path != nested_testimonials_path(@service)
+    if request.path != nested_testimonials_path(@service)
+      return redirect_to nested_testimonials_path(@service), status: :moved_permanently
+    else
+      render layout: @service.layout
+    end
   end
 
   def frequently_asked_questions
     @service = find_service
-    return redirect_to nested_faqs_path(@service), status: :moved_permanently if request.path != nested_faqs_path(@service)
+    # return redirect_to nested_faqs_path(@service), status: :moved_permanently if request.path != nested_faqs_path(@service)
+    return redirect_to audience_service_path(@service.audience, @service), status: 302
   end
 
   private

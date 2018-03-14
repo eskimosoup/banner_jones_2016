@@ -42,8 +42,7 @@
           render partial: 'services/shared/service_pages_links',
                  locals: {
                   service_pages: @service.root.service_pages.displayed
-                 }
-                          # if @service.root == @service
+                 } # if @service.root == @service
         %>
 
         <% @service.root.children.displayed_or_landing_page.order(:position).each do |child_service| %>
