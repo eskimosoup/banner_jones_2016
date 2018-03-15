@@ -17,6 +17,7 @@ class ServicesController < ApplicationController
     @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
     @contact = Contact.new if @service.landing_page?
     @offices = nil if @service.hide_preferred_office_on_forms?
+    find_parent_rich_snippet
     render layout: @service.layout
   end
 
@@ -36,6 +37,14 @@ class ServicesController < ApplicationController
   end
 
   private
+
+  def find_parent_rich_snippet
+    return if @rich_snippet.present?
+    route = nested_services_path(@service.root)
+    seo_entry = SeoEntry.find_by(nominal_url: route)
+    return unless seo_entry
+    @rich_snippet = seo_entry.rich_snippet
+  end
 
   def nested_testimonials_path(service)
     if service.parent.present? && service.parent.parent.present?
