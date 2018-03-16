@@ -49,37 +49,17 @@
 <%= render 'pages/shared/team_members' if @page.layout == 'application' %>
 
 <%= content_for :javascript do %>
-<!-- Conscious chatbot script -->
-
-<!-- Add script as close to the closing </body> tag as possible -->
-
-<!-- This script sets cookies so we suggest you enable or disable this script accordingly based on your sites user cookies preferences -->
-
-<script src="https://consciousbot.eu-gb.mybluemix.net/consciousbot.min.js"></script>
+<!-- chatbot script -->
+<script src="https://conscious-chatbot.eu-gb.mybluemix.net/consciousbot.min.js"></script>
 
 <script>
-
-consciousBot({
-
-key: 'e01',
-
-image: "https://consciousbot.eu-gb.mybluemix.net/assets/e01/images/chat-advert.png", // path to image
-
-mobileImage: "https://consciousbot.eu-gb.mybluemix.net/assets/e01/images/mobile-advert.png", // path to image
-
-mobileStyle: "bottom: 0; left: 10px;",
-
-chatStyle: "bottom: 0; left: 50px;",
-
-autoOpen: false,
-
-height: '500',
-
-width: '400'
-
-});
-
+  consciousBot({
+    key: 'e01',
+    mobileStyle: "right: 0; bottom: 100px",
+    autoOpen: false,
+    height: '500',
+    width: '500'
+  });
 </script>
-
-<!-- end Conscious chatbot script -->
+<!-- end chatbot script -->
 <% end %>
