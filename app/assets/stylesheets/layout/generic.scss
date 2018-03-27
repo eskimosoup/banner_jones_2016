@@ -79,6 +79,12 @@ body {
       top: 10px;
     }
   }
+
+  &--home-articles {
+    float: right;
+    margin-top: 0;
+    position: static;
+  }
 }
 
 .inner-main-content-cta-button {
@@ -103,3 +109,26 @@ body {
     color: $white;
   }
 }
+
+
+.wf-loading {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.ie.wf-loading {
+  visibility: hidden;
+}
+
+.ie.wf-active {
+  visibility: visible;
+}
+
+.wf-active {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: opacity .2s ease-in-out;
+     -moz-transition: opacity .2s ease-in-out;
+          transition: opacity .2s ease-in-out;
+}
+

@@ -3,12 +3,12 @@
     const cookieName = 'bannerjones-cookies-allowed';
     $(document).ready(function() {
       if(Cookies.get(cookieName) == undefined) {
-        $('.cookie-warning').slideDown();
+        $('.cookie-warning').show();
       }
     });
     $(document).on('click', '.cookie-warning__button', function() {
       Cookies.set(cookieName, '1', { expires: 365, secure: true });
-      $('.cookie-warning').slideUp();
+      $('.cookie-warning').hide();
     });
 
 

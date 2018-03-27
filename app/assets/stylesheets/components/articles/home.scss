@@ -124,6 +124,8 @@
 
   .home-article.closed {
     background: $white;
+    border-top: 1px dotted rgba($grey, .25);
+    padding-bottom: 5px;
   }
 }
 
@@ -230,6 +232,12 @@
 
   @include breakpoint(large) {
     @include grid-column($columns: 6, $gutter: (small: 0));
+  }
+}
+
+.home-article-team-member {
+  &--1 {
+    margin-top: 7px;
   }
 }
 
