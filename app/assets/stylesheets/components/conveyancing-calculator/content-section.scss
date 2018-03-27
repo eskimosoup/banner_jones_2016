@@ -236,7 +236,6 @@
 
   &__cta-button {
     color: $white;
-    text-align: center;
     transition: color .15s ease-in-out;
 
     @include breakpoint(small only) {

@@ -333,40 +333,41 @@
 
 .service-cta-block {
   @include flex-grid-row;
-  margin-top: rem(35px);
+  margin-top: rem(15px);
 
   &--without-key-team-member {
     margin-top: 0;
   }
 
   &__contact {
+    @include flex-grid-column(12, (medium: 0));
+
     @include breakpoint(small only) {
-      @include flex-grid-column(12);
       margin-bottom: rem(10px);
-    }
-
-    @include breakpoint(medium) {
-      @include flex-grid-column(6);
-    }
-
-    @media screen and (min-width: 768px) {
-      &:first-of-type {
-        @include flex-grid-column(5, (medium: 0));
-      }
-
-      &:last-of-type {
-        @include flex-grid-column(7);
-        border-left: 1px solid $white;
-      }
     }
   }
 
   .conveyancing-footer__cta-button {
-    color: $orange;
+    background-color: $orange;
+    color: $black;
+    display: block;
     font-family: $open-sans;
     font-size: rem(14px);
     font-weight: $open-sans-semibold;
-    padding: 0;
+    padding: 10px;
+    margin-bottom: 2px;
+    text-align: left;
+
+    img {
+      margin-right: 5px;
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $red;
+      color: $white;
+    }
   }
 }
 
