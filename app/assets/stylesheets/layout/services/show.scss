@@ -193,7 +193,7 @@
 
 .large-content-inner {
   @include flex-grid-row;
-  margin-top: rem(40px);
+  margin-top: rem(20px);
 
   &__header-download {
     @media screen and (min-width: 940px) {
@@ -236,10 +236,10 @@
     }
 
     .service-team-member {
-      margin-bottom: rem(40px);
+      margin-bottom: rem(20px);
     }
-    @media screen and (min-width: 768px) and (max-width: 1200px) {
 
+    @media screen and (min-width: 768px) and (max-width: 1200px) {
       .conveyancing-service-key-team-member {
         @include flex-grid-column(6);
       }
@@ -261,7 +261,7 @@
     font-weight: $museo-sans--medium;
     margin-top: 0;
     overflow: auto;
-    padding: rem(20px 0 8px 0);
+    padding-bottom: rem(8px);
 
     @include breakpoint(medium down) {
       font-size: rem(18px);
@@ -274,6 +274,7 @@
 
   &__icon {
     float: right;
+    max-height: 30px;
   }
 }
 
@@ -284,13 +285,9 @@
 .service-team-member {
   @include large-design-team-member-styles;
 
-  @media screen and (min-width: 1440px) {
-    margin-top: 58px;
-  }
-
   &__phone {
     font-family: $roboto;
-    font-size: rem(20px);
+    font-size: rem(33px);
     font-weight: $roboto--bold;
   }
 
@@ -329,6 +326,14 @@
 
 .large-content-inner-styles {
   @include large-design-content-styles;
+
+  &--with-emphasis {
+    p:first-of-type {
+      color: $black;
+      font-size: rem(19px);
+      line-height: 1.5;
+    }
+  }
 }
 
 .service-cta-block {

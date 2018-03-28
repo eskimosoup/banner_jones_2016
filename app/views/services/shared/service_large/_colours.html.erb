@@ -1,0 +1,57 @@
+<% colour = defined?(colour) && colour.present? ? colour: '#d71e48' %>
+<%= content_for :head do %>
+  <style>
+        .large-content-inner__title,
+        .large-content-aside-title__text,
+        .large-content-inner-styles a,
+        .onpage-navigation-frequently-asked-question__question {
+          border-bottom-color: <%= colour %>
+        }
+
+        .onpage-navigation-article-team-member {
+          border-top-color: <%= colour.present? ? colour : '#d71e48' %>
+        }
+
+        .nested {
+          border-top: 2px solid <%= colour %>;
+          border-bottom: 1px solid <%= colour %>;
+        }
+
+        .nested a {
+          border-bottom: 1px solid <%= colour %>;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+
+        .large-content-inner-styles h1,
+        .large-content-inner-styles h2,
+        .large-content-inner-styles h3,
+        .large-content-inner-styles h4,
+        .large-content-inner-styles h5,
+        .large-content-inner-styles h6,
+        .large-content-aside-navigation a:hover,
+        .large-content-aside-navigation a.active {
+          color: <%= colour %>
+        }
+
+        .large-onpage-resources {
+          background: <%= colour %>
+        }
+
+        .large-onpage-resources__title {
+          border-bottom-color: <%= text_colour %>;
+          color: <%= text_colour %>;
+        }
+
+        .service-testimonial__content,
+        .service-testimonial__author {
+          color: <%= text_colour %>;
+        }
+
+        @media screen and (max-width: 39.9375em) and (min-width: 0em) {
+          .large-content__aside {
+            background: <%= colour %>
+          }
+        }
+    </style>
+<% end %>

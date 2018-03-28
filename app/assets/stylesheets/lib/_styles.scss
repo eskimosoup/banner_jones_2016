@@ -523,7 +523,7 @@
     }
   }
 
-  a {
+  a:not(.submit-button) {
     border-bottom: 2px solid $orange;
     padding-bottom: rem(2px);
 
@@ -539,5 +539,12 @@
       border-bottom-color: $black;
       color: $black;
     }
+  }
+
+  ul,
+  ol {
+    list-style-position: outside;
+    margin-left: rem(18px);
+    margin-bottom: rem(10px);
   }
 }

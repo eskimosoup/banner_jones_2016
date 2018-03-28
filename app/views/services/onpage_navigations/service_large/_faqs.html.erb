@@ -2,15 +2,17 @@
 faqs = onpage_navigation.frequently_asked_questions.displayed
 faqs = @service.frequently_asked_questions.displayed if faqs.blank?
 %>
-<section class="large-onpage-navigation-element">
-  <div class="large-onpage-navigation-element__aside">
-    <h1 class="large-onpage-navigation-element__main-title">
-      Frequently Asked Questions
-    </h1>
-  </div>
-  <div class="large-onpage-navigation-element__section">
-    <%= render partial: "frequently_asked_questions/shared/onpage_navigation",
-                collection: faqs, #.limit(onpage_navigation.results_limit),
-                as: :frequently_asked_question %>
-  </div>
-</section>
+<% if faqs.present? %>
+  <section class="large-onpage-navigation-element">
+    <div class="large-onpage-navigation-element__aside">
+      <h1 class="large-onpage-navigation-element__main-title">
+        Frequently Asked Questions
+      </h1>
+    </div>
+    <div class="large-onpage-navigation-element__section">
+      <%= render partial: "frequently_asked_questions/shared/onpage_navigation",
+                  collection: faqs, #.limit(onpage_navigation.results_limit),
+                  as: :frequently_asked_question %>
+    </div>
+  </section>
+<% end %>

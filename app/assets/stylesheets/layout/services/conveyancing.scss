@@ -130,6 +130,11 @@
     line-height: 1.1;
     margin-top: rem(3px);
   }
+
+  &:nth-child(3) {
+    margin-bottom: rem(10px);
+    margin-top: rem(10px);
+  }
 }
 
 .conveyancing-service-content {

@@ -1,0 +1,47 @@
+<%#= debug resource %>
+<% present resource do |resource_presenter| %>
+  <div class="onpage-single-resource">
+    <div class="onpage-single-resource__content">
+      <%= resource_presenter.linked_download(
+                        resource_presenter.show_image(
+                          {
+                            alt: resource_presenter.title,
+                            class: 'onpage-single-resource__image'
+                          }
+                        ),
+                        {
+                          title: resource_presenter.title,
+                          target: '_blank'
+                        }
+                      ) if resource_presenter.index_image.present? %>
+    </div>
+    <%#= link_to resource.file.url,
+                            class: 'onpage-resource__summary ga-event',
+                            data: {
+                              event_category: 'Guide',
+                              event_action: 'Click',
+                              event_title: resource_presenter.title
+                            } do %>
+    <div class="onpage-single-resource__summary">
+      <%= link_to audience_service_resource_path(resource.services.first.audience, resource.services.first, resource),
+                  class: 'ga-event onpage-single-resource__linked-text',
+                  data: {
+                    event_category: 'Guide',
+                    event_action: 'Click',
+                    event_title: resource_presenter.title
+                  } do %>
+        <h2 class="onpage-single-resource__title">
+          <%= resource_presenter.title %>
+        </h2>
+
+        <%= resource_presenter.summary %>
+
+        <%= resource_presenter.linked_download(
+                          image_tag 'components/icons/download-bold.png',
+                                    alt: '',
+                                    class: 'onpage-single-resource__download'
+                        ) %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

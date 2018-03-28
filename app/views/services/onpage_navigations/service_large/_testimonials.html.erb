@@ -8,18 +8,32 @@ testimonials = @service.testimonials.displayed if testimonials.blank?
   <%= content_for :javascript do %>
     <script>
       $(document).ready(function() {
-        <% # HAPPY DANCE: https://coderwall.com/p/_8jxgw/autoresize-text-to-fit-into-a-div-width-height %>
-        var elements = $('.service-testimonial__content p');
-        if(elements.length < 0) {
-          return;
-        }
-        elements.each(function(i, element) {
-          while(element.scrollWidth > element.offsetWidth || element.scrollHeight > element.offsetHeight) {
-            var newFontSize = (parseFloat($(element).css('font-size').slice(0, -2)) * 0.95) + 'px';
-            console.log(newFontSize);
-            $(element).css('font-size', newFontSize);
+        var count = 0;
+        $('.service-testimonial__content').each(function(i, element) {
+          var individualCount = $(element).find('p').size();
+          if (individualCount > count) {
+            count = individualCount;
           }
         });
+
+        <% # HAPPY DANCE: https://coderwall.com/p/_8jxgw/autoresize-text-to-fit-into-a-div-width-height %>
+        if(count < 2) {
+          var elements = $('.service-testimonial__content p');
+
+          if(elements.length < 0) {
+            return;
+          }
+
+          elements.each(function(i, element) {
+            while(element.scrollWidth > element.offsetWidth || element.scrollHeight > element.offsetHeight) {
+              var newFontSize = (parseFloat($(element).css('font-size').slice(0, -2)) * 0.95) + 'px';
+              $(element).css('font-size', newFontSize);
+            }
+          });
+        } else {
+          $('.service-testimonial__content p').css({ 'font-size': '20px', 'max-height': 'none' });
+        }
+
         $('.service-testimonials').slick({
           arrows: false,
           dots: true,
