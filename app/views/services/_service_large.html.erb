@@ -1,56 +1,9 @@
+<%= render 'services/shared/service_large/colours',
+            colour: @service.colour,
+            text_colour: @service.text_colour %>
+
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'vendor/colorbox' %>
-  <style>
-    .large-content-inner__title,
-    .onpage-navigation-article-team-member,
-    .large-content-aside-title__text,
-    .large-content-inner-styles a,
-    .onpage-navigation-frequently-asked-question__question {
-      border-bottom-color: <%= @service.colour %>
-    }
-
-    .nested {
-      border-top: 2px solid <%= @service.colour %>;
-      border-bottom: 1px solid <%= @service.colour %>;
-    }
-
-    .nested a {
-      border-bottom: 1px solid <%= @service.colour %>;
-      padding-left: 5px;
-      padding-right: 5px;
-    }
-
-    .large-content-inner-styles h1,
-    .large-content-inner-styles h2,
-    .large-content-inner-styles h3,
-    .large-content-inner-styles h4,
-    .large-content-inner-styles h5,
-    .large-content-inner-styles h6,
-    .large-content-aside-navigation a:hover,
-    .large-content-aside-navigation a.active {
-      color: <%= @service.colour %>
-    }
-
-    .large-onpage-resources {
-      background: <%= @service.colour %>
-    }
-
-    .large-onpage-resources__title {
-      border-bottom-color: <%= @service.text_colour %>;
-      color: <%= @service.text_colour %>;
-    }
-
-    .service-testimonial__content,
-    .service-testimonial__author {
-      color: <%= @service.text_colour %>;
-    }
-
-    @media screen and (max-width: 39.9375em) and (min-width: 0em) {
-      .large-content__aside {
-        background: <%= @service.colour %>
-      }
-    }
-  </style>
 <% end %>
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'vendor/jquery.colorbox.js' %>
@@ -78,7 +31,7 @@
                       class: 'large-content-inner__icon' %>
             </h1>
 
-            <div class="large-content-inner-styles">
+            <div class="large-content-inner-styles large-content-inner-styles--with-emphasis">
               <%= raw @service.content %>
             </div>
           </div>
@@ -86,7 +39,7 @@
           <aside class="large-content-inner__aside">
             <div class="service-team-member">
                 <p>
-                  Talk to our <%#= @service.title %> team today on:<br />
+                  Talk to our team today on:<br />
 
                   <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
                               class: 'conveyancing-call-to-action

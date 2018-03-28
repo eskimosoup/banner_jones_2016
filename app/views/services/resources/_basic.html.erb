@@ -1,31 +1,9 @@
+<%= render 'services/shared/service_large/colours',
+            colour: @service.colour,
+            text_colour: @service.text_colour %>
+
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'vendor/colorbox' %>
-  <style>
-    .large-content-inner__title,
-    .onpage-navigation-article-team-member,
-    .large-content-aside-title__text {
-      border-bottom-color: <%= @service.colour.present? ? @service.colour : '#d71e48' %>
-    }
-
-    .large-content-inner-styles h1,
-    .large-content-inner-styles h2,
-    .large-content-inner-styles h3,
-    .large-content-inner-styles h4,
-    .large-content-inner-styles h5,
-    .large-content-inner-styles h6 {
-      color: <%= @service.colour.present? ? @service.colour : '#d71e48' %>
-    }
-
-    .large-onpage-resources {
-      background: <%= @service.colour.present? ? @service.colour : '#d71e48' %>
-    }
-
-    @media screen and (max-width: 39.9375em) and (min-width: 0em) {
-      .large-content__aside {
-        background: <%= @service.colour.present? ? @service.colour : '#d71e48' %>
-      }
-    }
-  </style>
 <% end %>
 
 <div class="large-content">

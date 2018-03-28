@@ -5,6 +5,15 @@
       <div itemprop="description"><%= rich_snippet.description %></div>
     <% end %>
 
+    <div class="rich-snippet-star-mask">
+      <div class="rich-snippet-star-mask__highlight"
+            style="width: calc(<%= number_to_percentage((rich_snippet.rating_value.to_s.tr('.', '').to_i * 2)) %> - 18px)">
+      </div>
+      <%= image_tag 'components/rich-snippets/star-mask.png',
+                    alt: "#{rich_snippet.rating_value} out of 5",
+                    class: 'rich-snippet-star-mask__stars' %>
+    </div>
+
     <%= image_tag "components/rich-snippets/#{rich_snippet.rating_value.to_s.tr('.', '')}.png", alt: "#{rich_snippet.rating_value} out of 5" %>
 
     <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">

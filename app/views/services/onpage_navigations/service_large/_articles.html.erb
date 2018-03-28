@@ -2,8 +2,8 @@
   <script>
     $(document).ready(function() {
       $('.articles-slick-<%= onpage_navigation.id %>').slick({
-        arrows: true,
-        dots: false,
+        arrows: false,
+        dots: true,
         autoplay: false,
         autoplaySpeed: 6000,
         infinite: true,
@@ -52,10 +52,20 @@ articles = @service.articles.displayed if articles.blank?
     </div>
 
     <div class="articles-slick-<%= onpage_navigation.id %>">
-      <% articles.limit(onpage_navigation.results_limit).each_with_index do |article, index| %>
+      <% # articles.limit(onpage_navigation.results_limit).each_with_index do |article, index| %>
+      <% articles.limit(3).each_with_index do |article, index| %>
         <% cache [article, article.team_members.map(&:updated_at).max].compact do %>
           <div class="onpage-navigation-article">
             <% present article do |article_presenter| %>
+              <%= article_presenter.linked_text(
+                  article.title,
+                  { title: "Read #{article_presenter.title}", class: 'onpage-navigation-article__title' }
+               ) %>
+
+              <div class="onpage-navigation-article__date">
+                <%= article_presenter.date(:short) %>
+              </div>
+
               <% article.team_members.each do |team_member| %>
                 <div class="onpage-navigation-article-team-member">
                   <% present team_member do |team_member_presenter| %>
@@ -73,15 +83,6 @@ articles = @service.articles.displayed if articles.blank?
                   <% end %>
                 </div>
               <% end %>
-
-              <%= article_presenter.linked_text(
-                  article.title,
-                  { title: "Read #{article_presenter.title}", class: 'onpage-navigation-article__title' }
-               ) %>
-
-              <div class="onpage-navigation-article__date">
-                <%= article_presenter.date(:short) %>
-              </div>
             <% end %>
           </div>
         <% end %>

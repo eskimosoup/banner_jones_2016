@@ -17,3 +17,23 @@
     margin: rem(11px) 0 0;
   }
 }
+
+.rich-snippet-star-mask {
+  background-color: $white;
+  position: relative;
+
+  &__highlight {
+    background-color: $orange;
+    bottom: 0;
+    height: 50px;
+    left: 18px;
+    right: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  &__stars {
+    position: relative;
+    z-index: 2;
+  }
+}

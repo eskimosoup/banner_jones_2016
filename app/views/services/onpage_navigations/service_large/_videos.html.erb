@@ -11,6 +11,7 @@ videos = @service.videos.displayed if videos.blank?
           Watch Our Video
         </h1>
       </div>
+
       <div class="large-onpage-navigation-element__section">
         <% cache video do %>
           <%= content_tag :h1, video.title, class: 'large-content-inner__title' %>
@@ -42,9 +43,9 @@ videos = @service.videos.displayed if videos.blank?
             </div>
           </div>
         <% end %>
-      <% end %>
     </section>
   <% end %>
+<% end %>
 
 
 

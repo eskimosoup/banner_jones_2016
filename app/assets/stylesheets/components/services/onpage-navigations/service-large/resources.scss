@@ -111,6 +111,58 @@
   }
 }
 
+.onpage-single-resource {
+  @include clearfix;
+  @include flex-grid-row;
+  color: $white;
+  position: relative;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+
+  &__content {
+    @include flex-grid-column(4);
+  }
+
+  &__title {
+    font-family: $museo-sans-rounded;
+    font-size: rem(22px);
+    font-weight: $museo-sans--heavy;
+    margin-top: 0;
+  }
+
+  &__image {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__summary {
+    @include flex-grid-column(8);
+    color: $white;
+    font-family: $museo-sans-rounded;
+    font-weight: $museo-sans--medium;
+    text-align: left;
+    transition: display .25s linear;
+
+    .onpage-resource__title {
+      margin-bottom: rem(10px);
+    }
+  }
+
+  &__linked-text {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active {
+      color: $white;
+    }
+  }
+
+  &__download {
+    float: right;
+  }
+}
+
 .resource-section {
   @include flex-grid-row;
 

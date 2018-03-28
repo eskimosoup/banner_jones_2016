@@ -17,7 +17,7 @@
 }
 
 .home-content-box {
-  @include shadow-content-box;
+  // @include shadow-content-box;
   margin: rem(17px);
 
   @include breakpoint(large) {

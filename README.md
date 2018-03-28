@@ -18,6 +18,9 @@ Page.where(layout: 'wealth_management').update_all(layout: 'wealth_management_20
 
 Services::Page.where(style: 'basic').update_all(style: 'service_large')
 Services::Page.where(style: 'purchase_plus_offer').update_all(style: 'service_large')
+Service.where(style: 'purchase_plus_offer').update_all(style: 'service_large')
+Services::Page.where(style: 'purchase_plus').update_all(style: 'service_large')
+Service.where(style: 'purchase_plus').update_all(style: 'service_large')
 Service.where(style: 'basic').update_all(style: 'service_large')
 ```
 ```ruby

@@ -15,21 +15,17 @@
   &__date {
     color: $blue-purple-offset;
     font-size: rem(12px);
-    margin-top: rem(20px);
   }
 }
 
 .onpage-navigation-article-team-member {
   @include flex-grid-row(collapse);
-  border-bottom: 2px solid $orange;
+  border-top: 2px solid $orange;
   color: $blue-dark;
   font-family: $roboto;
-  margin-bottom: rem(14px);
-  padding-bottom: rem(14px);
-
-  @include breakpoint(medium) {
-    text-align: right;
-  }
+  margin-top: rem(7px);
+  padding-bottom: rem(7px);
+  padding-top: rem(7px);
 
   &__details {
     @include breakpoint(small only) {
