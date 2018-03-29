@@ -1,7 +1,6 @@
 <%= render 'services/shared/service_large/colours',
             colour: @service.colour,
             text_colour: @service.text_colour %>
-
 <%= content_for :head do %>
   <%= stylesheet_link_tag 'vendor/colorbox' %>
 <% end %>
@@ -10,11 +9,9 @@
   <aside class="large-content__aside">
     <div class="large-content-aside-sticky">
       <%= render 'services/shared/service_large/aside' %>
-
       <h3 style="color:<%= @service.colour %>" class="large-content-aside-title__text">
         Downloads
       </h3>
-
       <ul class="resource-aside">
         <% @service.resources.each do |resource| %>
           <li class="resource-aside__item">
@@ -30,36 +27,34 @@
       </ul>
     </div>
   </aside>
+
   <main class="large-content__main" style="background-image:url(<%= @service.image.url %>)">
     <section class="large-content-element">
       <div class="large-content-element__section">
-   <h1 class="large-content-inner__title">
-              <%= @service.title %>
-              <%= image_tag @service.icon.small,
-                              alt: '',
-                      class: 'large-content-inner__icon' %>
-            </h1>
         <div class="large-content-inner">
           <div class="large-content-inner__main">
+            <h1 class="large-content-inner__title">
+              <%= @resource.title %>
+            </h1>
 
-<div class="large-content-inner">
-         <div class="large-content-section-download-box">
-            <%= render 'resources/shared/service_aside', resource: @resource %>
-         </div>
+            <div class="large-content-section-download">
+              <div class="large-content-section-download-information">
+                <div class="large-content-inner-styles">
+                  <%= raw @resource.content? ? @resource.content : @resource.summary %>
+                </div>
+              </div>
 
-            <div class="large-content-section-content">
-              <%= raw @resource.content %>
+              <div class="large-content-section-download-box">
+                <%= render 'resources/shared/service_aside', resource: @resource %>
+              </div>
             </div>
           </div>
-          </div>
-
-
-
 
           <aside class="large-content-inner__aside">
             <div class="service-team-member">
                 <p>
-                  Talk to our team today on:<br>
+                  Talk to our <%#= @service.title %> team today on:
+
                   <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
                               class: 'conveyancing-call-to-action
                                       service-team-member__phone
@@ -127,9 +122,12 @@
       </div>
     </section>
 
-
 <%= render partial: 'services/resources/sections/section',
            collection: @resource.sections,
            as: :section %>
+    <%= render partial: 'services/onpage_navigations/service_large/team_member',
+               locals: {
+                 service: @service
+              } %>
   </main>
 </div>
