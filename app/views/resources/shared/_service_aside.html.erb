@@ -1,5 +1,7 @@
-<%= image_tag resource.image.show if resource.image? %>
-<p class="resource-download-description">
-The guide is available as a pdf download, get it here.
-</p>
-<%= link_to 'Download now', resource.file.url, class: "resource-download" %>
+<div class="text-center resource-show-cta">
+  <%= image_tag resource.image.show, alt: '' if resource.image? %>
+
+  <%= link_to 'Download now',
+              resource.file.url,
+              class: "resource-download resource-show-cta__button" %>
+</div>

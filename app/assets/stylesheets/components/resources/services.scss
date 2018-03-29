@@ -67,7 +67,6 @@
 background: $red;
 border-bottom: solid 10px $orange;
 h1 {
-  text-align: center;
   color: $white;
   background: $dark-slate-blue;
   font-size: rem(21px);
@@ -78,12 +77,11 @@ h2 {
   font-size: rem(18px);
   color: $white;
   margin: 0;
-  padding: rem(20px 20px 5px 50px);
+  padding: rem(20px 20px 5px 20px);
 }
 p {
     color: $white;
-    padding: rem(20px 50px 10px 50px);
-    text-align: center;
+    padding: rem(10px 20px 0 20px);
   }
   li::before {
     background-image: image-url('layout/header/bullet-white.png');
@@ -103,8 +101,9 @@ p {
   }
   ul {
   padding-bottom: rem(30px);
-  width: 70%;
-  margin-left: 15%;
+  //width: 70%;
+  //margin-left: 15%;
+  margin-left: rem(20px);
   }
 }
 
@@ -153,7 +152,7 @@ li {
 
 .basic-unordered-list {
   h1 {
-    text-align: center;
+    //text-align: center;
     color: $dark-slate-blue;
     background: $orange;
     font-size: rem(21px);
@@ -167,10 +166,7 @@ li {
     padding: rem(20px 20px 0 200px);
   }
   p {
-    width: 70%;
-    padding-left: 15%;
-    margin-top: rem(20px);
-    margin-bottom: 0;
+    margin: rem(20px);
   }
   li::before {
     background-image: image-url('layout/header/bullet-orange.png');
@@ -185,12 +181,12 @@ li {
    }
   li {
     list-style-type: none;
-    padding: rem(30px 10px 0 10px);
+    padding: rem(15px 10px 0 10px);
   }
   ul {
-  padding-bottom: rem(30px);
-  width: 70%;
-  margin-left: 15%;
+  padding-bottom: rem(15px);
+  //width: 70%;
+  margin-left: rem(20px);
   }
 }
 
@@ -198,9 +194,9 @@ li {
   h1 {
     border-bottom: solid 5px $red;
     font-size: rem(21px);
-    padding: rem(20px);
-    margin-left: rem(20px);
-    width: 80%;
+    padding: rem(20px 20px 5px);
+    //margin-left: rem(20px);
+    //width: 80%;
     color: $red;
   }
 
@@ -209,12 +205,12 @@ li {
     color: $orange;
     font-size: rem(18px);
     padding: rem(10px 20px 5px 20px);
-    width: 80%;
-    margin: rem(0 0 15px 30px);
+    //width: 80%;
+    // margin: rem(0 0 15px 30px);
   }
 
   p {
-    padding: rem(0 40px);
+    padding: rem(0 20px);
     margin-bottom: rem(10px);
   }
 
@@ -248,7 +244,7 @@ ul {
     color: $white;
     font-size: rem(21px);
     margin: rem(10px 0 20px 0);
-    text-align: center;
+    // text-align: center;
   }
   h2 {
     color: $white;
@@ -258,8 +254,15 @@ ul {
   img {
     display: inline-block;
   }
+  ul,
   p {
     color: $white;
+  }
+
+  ul {
+    list-style-position: outside;
+    margin-left: rem(20px);
+    margin-right: rem(40px);
   }
 }
 .basic-other-articles {
@@ -504,7 +507,7 @@ ul {
     font-size: rem(21px);
     margin: 0;
     padding: rem(20px);
-    text-align: center;
+    //text-align: center;
   }
   h2 {
     background: $orange;
@@ -515,7 +518,7 @@ ul {
   }
   p {
     color: $white;
-    text-align: center;
+    //text-align: center;
     padding: rem(5px 20px);
   }
 
@@ -547,17 +550,17 @@ ul {
   font-size: rem(21px);
   padding: rem(20px);
   margin: 0;
-  text-align: center;
+  //text-align: center;
 }
 h2 {
   color: $orange;
   font-size: rem(18px);
-  padding-left: rem(50px);
+  padding-left: rem(20px);
 }
 p {
   color: $white;
   margin: 0;
-  padding: rem(10px 50px 25px 50px);
+  padding: rem(10px 20px 25px 20px);
 }
 li::before {
   background-image: image-url('layout/header/bullet-white.png');
@@ -577,8 +580,8 @@ li {
 }
 ul {
 padding-bottom: rem(30px);
-width: 70%;
-margin-left: 15%;
+//width: 70%;
+margin-left: rem(10px);
 }
 }
 .creative-image-block {
@@ -595,7 +598,7 @@ margin-left: 15%;
     padding-left: rem(30px);
   }
   p {
-    padding-left: rem(30px);
+    // padding-left: rem(30px);
   }
 }
 .creative-other-articles {
@@ -659,11 +662,31 @@ h1 {
     text-align: left
   }
 }
+
 .large-content-section-download-box {
-  @include flex-grid-column(3);
+  @include flex-grid-column(3, (medium: 0));
 
 }
-.large-content-section-content {
+
+.large-content-section-content,
+.large-content-section-download-information {
   @include flex-grid-column(9);
 
+}
+
+.large-content-section-download {
+  @include flex-grid-row;
+}
+
+.resource-show-cta {
+  background: $grey;
+  border: 5px solid $orange;
+  padding: rem(10px 10px 0);
+  margin: rem(5px 0);
+
+  &__button {
+    display: block;
+    margin-bottom: rem(10px);
+    margin-top: rem(10px);
+  }
 }

@@ -1,4 +1,6 @@
 class ErrorsController < ApplicationController
+  layout 'landing_page_design'
+
   before_action :status_code
 
   def show

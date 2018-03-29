@@ -1,24 +1,21 @@
 <%= content_for :javascript do %>
   <%= javascript_include_tag 'components/offices/map' %>
   <script>
-  function equalHeightOffices() {
-    $('.office').matchHeight({
-      byRow: false
+    function equalHeightOffices() {
+      $('.office').matchHeight({
+        byRow: false
+      });
+    }
+
+    $(document).ready(function() {
+      equalHeightOffices();
     });
-  }
 
-  $(document).ready(function() {
-    equalHeightOffices();
-  });
-
-  $(document).on('click', '.toggle-class', function() {
-    equalHeightOffices();
-  });
+    $(document).on('click', '.toggle-class', function() {
+      equalHeightOffices();
+    });
   </script>
 <% end %>
-
-
-
 <div class="large-content">
   <aside class="large-content__aside">
     <div class="large-content-aside-sticky">
@@ -27,7 +24,6 @@
           Our Offices
         </h2>
       </div>
-
       <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
         <%= render partial: 'offices/shared/aside_navigation',
                    collection: @offices,
@@ -35,12 +31,10 @@
       </ul>
     </div>
   </aside>
-
   <main class="large-content__main large-content__main--no-padding">
     <div class="offices-index-map" id="map-canvas" data-locations="<%= @offices.to_json %>">
       <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
     </div>
-
     <section class="large-content-element">
       <div class="large-content-element__container">
         <div class="large-content-inner">
@@ -50,30 +44,10 @@
                 <h1 class="standard-content-box-title standard-content-box-title--no-border">
                   <%= @office.office_location_name %>
                 </h1>
-
                 <%= raw @office.details %>
-
-                <% @office.services.roots.group_by(&:audience).each do |audience, services| %>
-                  <div class="inpage-navigation-item">
-                    <div class="page-aside-navigation-content page-aside-navigation-content--transparent page-aside-navigation-content--collapsed">
-                      <h2 class="page-aside-navigation-title">
-                        <%= link_to audience.title, audience %>
-                      </h2>
-
-                      <div class="page-aside-navigation-links">
-                        <ul class="page-aside-navigation-links-list">
-                          <%= render partial: 'offices/shared/service',
-                                    collection: services,
-                                    as: :service %>
-                        </ul>
-                    </div>
-                  </div>
-                </div>
-                <% end %>
               </div>
             </div>
           </section>
-
           <aside class="office-location-aside">
             <div class="content-section content-section--shadow">
               <div class="content-section__full">
@@ -81,16 +55,29 @@
                            office: @office,
                            office_counter: 0,
                            aside: true %>
+              </div>
             </div>
-          </aside>
-        </div>
+              <% @office.services.roots.group_by(&:audience).each do |audience, services| %>
+                <div class="content-section content-section--shadow">
+                  <div class="content-section__full">
+                    <h2 class="page-aside-navigation-title">
+                      <%= link_to audience.title, audience %>
+                    </h2>
+                    <div class="page-aside-navigation-links">
+                      <ul class="page-aside-navigation-links-list">
+                        <%= render partial: 'offices/shared/service',
+                                      collection: services,
+                                      as: :service %>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </aside>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
+</main>
 </div>
-
-
-
-
-
-
