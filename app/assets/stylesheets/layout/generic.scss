@@ -105,6 +105,8 @@ body {
   }
 }
 
-div#chat-trigger {
-  left: 30px;
+@media screen and (min-width: 1024px) {
+  div#chat-trigger {
+    left: 30px;
+  }
 }
