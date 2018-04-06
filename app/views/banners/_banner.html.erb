@@ -10,6 +10,8 @@
           <%= banner_presenter.summary %>
         </div>
 
+        <%= image_tag 'components/hallam2.png', alt: 'Hallam 2', class: 'hallam-fm-logo' if banner.id == 16  %>
+
         <%= banner_presenter.button(class: 'hero-banner-item-button') %>
       <% end %>
     </section>
