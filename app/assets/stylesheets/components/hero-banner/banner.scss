@@ -42,10 +42,18 @@
 
   @include media('>=1280px', '<1920px') {
     padding: rem(60px) 0;
+
+    .hero-banner-item-wrap {
+      margin-top: -50px;
+    }
   }
 
   @include media('>=1920px') {
     padding: rem(120px) 0;
+
+    .hero-banner-item-wrap {
+      margin-top: -80px;
+    }
   }
 }
 
@@ -230,4 +238,9 @@
   @include breakpoint(large) {
     right: 0;
   }
+}
+
+.hallam-fm-logo {
+  width: 230px;
+  height: auto;
 }
