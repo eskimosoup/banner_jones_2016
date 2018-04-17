@@ -27,16 +27,18 @@ $(document).ready(function() {
   </script>
 <% end %>
 
-<!-- chatbot script -->
-<script src="https://conscious-chatbot.eu-gb.mybluemix.net/consciousbot.min.js"></script>
+<% unless @service.present? && (@service.root.id = 152 || @service.id == 152) %>
+  <!-- chatbot script -->
+  <script src="https://conscious-chatbot.eu-gb.mybluemix.net/consciousbot.min.js"></script>
 
-<script>
-  consciousBot({
-    key: 'e01',
-    mobileStyle: "right: 0; bottom: 100px",
-    autoOpen: false,
-    height: '500',
-    width: '500'
-  });
-</script>
-<!-- end chatbot script -->
+  <script>
+    consciousBot({
+      key: 'e01',
+      mobileStyle: "right: 0; bottom: 100px",
+      autoOpen: false,
+      height: '500',
+      width: '500'
+    });
+  </script>
+  <!-- end chatbot script -->
+<% end %>
