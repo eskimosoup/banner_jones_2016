@@ -160,14 +160,10 @@
   }
 
   &.active {
-    border-top-color: $red;
+    border-top-color: $orange;
 
     &::after {
       background: $red;
-    }
-
-    .slider-team-member-forename {
-      display: none;
     }
   }
 }
