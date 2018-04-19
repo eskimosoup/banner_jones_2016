@@ -8,6 +8,7 @@ module Optimadmin
                         [:image, {
                           small: ['fill', 45, 45],
                           slider: ['fill', 117, 146],
+                          slider_service: ['fill', 250, 250],
                           navigation: ['fill', 130, 195],
                           show: ['fill', 220, 220],
                           index: ['fill', 296, 296]

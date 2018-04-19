@@ -18,18 +18,24 @@
   }
 }
 
+.rich-snippet-rating {
+  height: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 120px;
+}
+
 .rich-snippet-star-mask {
-  background-color: $white;
+  background-color: $offset-white;
   position: relative;
 
   &__highlight {
     background-color: $orange;
     bottom: 0;
-    height: 50px;
-    left: 18px;
+    height: 25px;
+    left: 0;
     right: 0;
     position: absolute;
-    top: 0;
   }
 
   &__stars {

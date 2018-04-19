@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  teamMembersSlick();
+  teamMembersSlick(12);
 });
 
 $(document).on('click', '.print-page', function() {

@@ -8,39 +8,55 @@
   <%= javascript_include_tag 'components/team-members/slider.js' %>
   <script>
     $(function() {
-      teamMembersSlick();
+      teamMembersSlick(<%= team_members.size < 8 ? team_members.size : 8 %>);
     });
   </script>
 <% end %>
 
-<div class="service-slider-team-members">
-  <div class="slider-team-members-title">
-    <%= content_tag :h2, title, class: 'slider-content-box-title' if defined?(title) %>
+<section class="large-content-element">
+  <div class="large-onpage-navigation-element__aside">
+    <%= content_tag :h1, title, class: 'large-onpage-navigation-element__main-title' if defined?(title) %>
   </div>
+  <div class="large-onpage-navigation-element__section large-onpage-navigation-element__section--compact">
+    <div class="slider-team-member-form-controls <%= 'hide' if (defined? partial_width) && team_members.size < partial_width.to_i %>">
+      <h2 class="slider-team-member-form-title">
+        Find People By
+      </h2>
 
-  <%= link_to 'See All', team_members_path, class: 'module-see-all home-team-members' %>
-
-  <div class="slider-team-members-slider-content-box-slider-controls" id="team-members-slider">
-    <%= link_to '#team-members-slider', class: 'slider-content-box-previous', title: 'Previous' do %>
-      <%= image_tag 'components/icons/content-box/previous.png', alt: 'Previous' %>
-    <% end %>
-
-    <%= link_to '#team-members-slider', class: 'slider-content-box-next', title: 'Next' do %>
-      <%= image_tag 'components/icons/content-box/next.png', alt: 'Next' %>
-    <% end %>
-  </div>
-
-
-  <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', class: 'slider-team-members-loading' %>
-
-  <div class="slider-team-members-profiles">
-    <div class="slider-team-members-slick">
-      <%= render partial: 'team_members/shared/slider_team_member',
-                collection: team_members, cached: true, as: :team_member if team_members.present? %>
+      <%= form_tag search_team_members_path, method: :get, remote: true, class: 'slider-team-member-search-form' do %>
+        <%= render 'team_members/shared/find_people_by_form_fields' %>
+        <% end %>
     </div>
 
-    <div class="slider-team-members-slick-profile">
-      <%= render 'team_members/shared/slider_profile_card', team_member: team_members.first if team_members.present? %>
+    <%= link_to 'See All', team_members_path, class: 'module-see-all home-team-members' %>
+
+    <div class="slider-team-members-slider-content-box-slider-controls" id="team-members-slider">
+      <%= link_to '#team-members-slider', class: 'slider-content-box-previous', title: 'Previous' do %>
+        <%= image_tag 'components/icons/content-box/previous.png', alt: 'Previous' %>
+      <% end %>
+
+      <%= link_to '#team-members-slider', class: 'slider-content-box-next', title: 'Next' do %>
+        <%= image_tag 'components/icons/content-box/next.png', alt: 'Next' %>
+      <% end %>
+    </div>
+
+
+    <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', class: 'slider-team-members-loading' %>
+
+    <div class="slider-team-members-profiles">
+      <div class="slider-team-members-slick">
+        <%= render partial: 'team_members/shared/slider_team_member',
+                  collection: team_members,
+                  locals: {
+                    service: true
+                  },
+                  cached: true,
+                  as: :team_member if team_members.present? %>
+      </div>
+
+      <div class="slider-team-members-slick-profile">
+        <%= render 'team_members/shared/slider_profile_card', team_member: team_members.first if team_members.present? %>
+      </div>
     </div>
   </div>
-</div>
+</section>
