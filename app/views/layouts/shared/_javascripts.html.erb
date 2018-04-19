@@ -42,3 +42,7 @@ $(document).ready(function() {
   </script>
   <!-- end chatbot script -->
 <% end %>
+
+<% if @service.present? && (@service.root.id == 152 || @service.id == 152) %>
+  <%= render 'layouts/shared/london_mouseflow' %>
+<% end %>

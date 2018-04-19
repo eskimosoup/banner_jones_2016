@@ -2,6 +2,7 @@
 <% costs = ConveyancingCalculator.configuration.additional_costs[current_user.symbolised_location].reduce(Hash.new, :merge) %>
 <%= content_for :custom_telephone do global_site_settings['Phone - London'] end %>
 <%= content_for :javascript do %>
+  <%= render 'layouts/shared/london_mouseflow' %>
   <script>
     <% # Remove the deselected class as not to confuse anything as it can be toggled %>
     $(document).ready(function() {

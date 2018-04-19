@@ -1,3 +1,7 @@
+<%= content_for :javascript do %>
+  <%= render 'layouts/shared/london_mouseflow' %>
+<% end %>
+
 <%= render partial: 'conveyancing_quotes/users/shared/hero',
            locals: {
              title: @location.title,
