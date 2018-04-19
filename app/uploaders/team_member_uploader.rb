@@ -7,6 +7,10 @@ class TeamMemberUploader < Optimadmin::ImageUploader
     process resize_to_fill: [117, 146]
   end
 
+  version :slider_service do
+    process resize_to_fill: [250, 250]
+  end
+
   version :navigation do
     process resize_to_fill: [130, 195]
   end

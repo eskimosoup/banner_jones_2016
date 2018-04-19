@@ -13,6 +13,7 @@
         @include triangle('right', $grey, 40px);
         right: -20px;
         top: 80px;
+        z-index: 1;
       }
     }
 
