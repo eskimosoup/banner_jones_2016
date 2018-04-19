@@ -36,3 +36,5 @@
 <% end %>
 
 <%= yield :head %>
+
+<%= raw @additional_code if @additional_code.present? %>
