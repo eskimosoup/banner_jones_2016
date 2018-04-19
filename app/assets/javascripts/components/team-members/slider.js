@@ -26,7 +26,7 @@ function teamMembersSlick(slidesToShowCount) {
   });
 }
 
-$(document).on('click', '.slider-team-member-profile-card-update', function() {
+$(document).on('mouseover', '.slider-team-member-profile-card-update', function() {
   var $teamMemberProfileCard = $($(this).data('container'));
   $('.slider-team-members-slick-profile').html($teamMemberProfileCard.html());
   $('.slider-team-member-profile-card-update.active').removeClass('active');
