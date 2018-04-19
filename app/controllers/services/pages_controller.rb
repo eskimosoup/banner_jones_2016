@@ -4,6 +4,7 @@ class Services::PagesController < ApplicationController
   def show
     # return redirect_to audience_service_service_page_path(@page.service.audience, @page.service, @page), status: :moved_permanently if request.path != audience_service_service_page_path(@page.service.audience, @page.service, @page)
     return redirect_to nested_service_page_route(@service, @page) if request.path != nested_service_page_route(@service, @page)
+    @title = @page.title
     @onpage_navigations = @service.displayed_onpage_navigations
     @onpage_navigation_links = @onpage_navigations.displayed_navigation_link
     @offices = Office.unscoped.displayed.joins(:office_location).order('office_locations.name ASC')
