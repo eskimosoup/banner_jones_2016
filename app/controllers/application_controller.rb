@@ -33,6 +33,7 @@ class ApplicationController < ActionController::Base
     @title = seo_entry.title
     @meta_description = seo_entry.meta_description
     @meta_tags = seo_entry.title
+    @additional_code = seo_entry.additional_code
   end
 
   def load_global_objects
