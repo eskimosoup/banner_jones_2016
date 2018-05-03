@@ -39,6 +39,7 @@
 
   &__section {
     background-color: $white;
+    position: relative;
 
     &:not(&--full):not(&--compact) {
       @include breakpoint(medium down) {
