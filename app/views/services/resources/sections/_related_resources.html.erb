@@ -38,7 +38,7 @@
 <% resources = @other_resources %>
 
 <% if resources.present? %>
-  <% cache "services_resources_#{resources}" %>
+  <% cache "services_resources_#{resources}" do %>
     <section class="large-onpage-resources">
       <div class="large-onpage-resources__section">
         <div class="onpage-navigation-controls">
