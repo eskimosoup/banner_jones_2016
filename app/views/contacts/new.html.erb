@@ -15,23 +15,25 @@
       </div>
     </section>
 
-    <aside class="office-location-aside">
-      <div class="content-section content-section--shadow">
-        <div class="content-section__full">
-          <h2 class="standard-content-box-title standard-content-box-title--no-border">
-            Talk to our team
-          </h2>
+    <% cache 'contacts_aside' do %>
+      <aside class="office-location-aside">
+        <div class="content-section content-section--shadow">
+          <div class="content-section__full">
+            <h2 class="standard-content-box-title standard-content-box-title--no-border">
+              Talk to our team
+            </h2>
 
-          <%= render 'pages/shared/call_to_actions_solicitors_landing_page' %>
+            <%= render 'pages/shared/call_to_actions_solicitors_landing_page' %>
 
-          <h2 class="standard-content-box-title standard-content-box-title--no-border">
-            Our offices
-          </h2>
+            <h2 class="standard-content-box-title standard-content-box-title--no-border">
+              Our offices
+            </h2>
 
-          <%= render partial: 'offices/shared/call_to_actions',
-                     collection: @locations,
-                     as: :location %>
-      </div>
-    </aside>
+            <%= render partial: 'offices/shared/call_to_actions',
+                      collection: @locations,
+                      as: :location %>
+        </div>
+      </aside>
+    <% end %>
   </div>
 </div>

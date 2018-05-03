@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require components/team-members/slider
 //= require components/meganav
 //= require components/hover-toggle
 //= require components/footer-awards

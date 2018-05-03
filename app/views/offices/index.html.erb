@@ -31,7 +31,8 @@
       <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
         <%= render partial: 'offices/shared/aside_navigation',
                    collection: @offices,
-                   as: :office %>
+                   as: :office,
+                   cached: true %>
       </ul>
     </div>
   </aside>
@@ -46,7 +47,7 @@
         <div class="large-content-inner">
           <div class="large-content-inner__main large-content-inner__main--full">
             <div class="large-content-offices-index">
-              <%= render partial: 'offices/office', collection: @offices, as: :office %>
+              <%= render partial: 'offices/office', collection: @offices, as: :office, cached: true %>
             </div>
           </div>
 

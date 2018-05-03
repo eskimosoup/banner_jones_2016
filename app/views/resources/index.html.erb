@@ -71,7 +71,8 @@
             <div class="large-content-masonry">
               <%= render partial: 'resources/resource',
                          collection: @resources,
-                         as: :resource %>
+                         as: :resource,
+                         cached: true %>
             </div>
 
             <div class="module-pagination">

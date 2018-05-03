@@ -1,28 +1,30 @@
-<div class="hero-banner-item banner-<%= banner.id %>">
-  <div class="hero-banner-item-wrap">
-    <section class="hero-banner-item-content">
-      <% present banner do |banner_presenter| %>
-        <div class="hero-banner-item-title">
-          <%= banner_presenter.title %>
-        </div>
+<% cache banner do %>
+  <div class="hero-banner-item banner-<%= banner.id %>">
+    <div class="hero-banner-item-wrap">
+      <section class="hero-banner-item-content">
+        <% present banner do |banner_presenter| %>
+          <div class="hero-banner-item-title">
+            <%= banner_presenter.title %>
+          </div>
 
-        <div class="hero-banner-item-summary">
-          <%= banner_presenter.summary %>
-        </div>
+          <div class="hero-banner-item-summary">
+            <%= banner_presenter.summary %>
+          </div>
 
-        <%= image_tag 'components/hallam2.png', alt: 'Hallam 2', class: 'hallam-fm-logo' if banner.id == 16  %>
+          <%= image_tag 'components/hallam2.png', alt: 'Hallam 2', class: 'hallam-fm-logo' if banner.id == 16  %>
 
-        <%= banner_presenter.button(class: 'hero-banner-item-button') %>
-      <% end %>
-    </section>
-  </div>
-
-
-    <div class="hero-banner-image-overlay">
-
+          <%= banner_presenter.button(class: 'hero-banner-item-button') %>
+        <% end %>
+      </section>
     </div>
 
-    <% present banner do |banner_presenter| %>
-      <%= banner_presenter.homepage_image(class: 'hero-banner-image') %>
-    <% end %>
-</div>
+
+      <div class="hero-banner-image-overlay">
+
+      </div>
+
+      <% present banner do |banner_presenter| %>
+        <%= banner_presenter.homepage_image(class: 'hero-banner-image') %>
+      <% end %>
+  </div>
+<% end %>

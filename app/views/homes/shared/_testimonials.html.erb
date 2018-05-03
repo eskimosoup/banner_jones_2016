@@ -1,9 +1,11 @@
-<section class="testimonials-home">
-  <div class="testimonials-home__inner">
-    <div class="testimonials-slider">
-      <%= render partial: 'services/onpage_navigations/conveyancing/shared/testimonial',
-                collection: @facade.testimonials,
-                as: :testimonial %>
+<% cache cached do %>
+  <section class="testimonials-home">
+    <div class="testimonials-home__inner">
+      <div class="testimonials-slider">
+        <%= render partial: 'services/onpage_navigations/conveyancing/shared/testimonial',
+                  collection: @facade.testimonials,
+                  as: :testimonial %>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+<% end %>

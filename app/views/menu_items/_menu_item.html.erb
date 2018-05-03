@@ -1,23 +1,25 @@
-<% if menu_item_presenter.link_to_webpage.present? %>
-  <li class="menu-item <%= ' has-children' if menu_item_presenter.has_children? || menu_item_presenter.audience? %>">
-    <%= menu_item_presenter.link_to_webpage %>
-    <%= menu_item_presenter.special_layout %>
+<% cache menu_item_presenter do %>
+  <% if menu_item_presenter.link_to_webpage.present? %>
+    <li class="menu-item <%= ' has-children' if menu_item_presenter.has_children? || menu_item_presenter.audience? %>">
+      <%= menu_item_presenter.link_to_webpage %>
+      <%= menu_item_presenter.special_layout %>
 
 
-    <% if menu_item_presenter.has_children? %>
-      <%= content_tag :ul, class: "dropdown depth-#{ depth }" do %>
-        <% if menu_item_presenter.sub_menu_items.present? %>
-          <%= nested_menu_items(menu_items: menu_item_presenter.sub_menu_items, depth: depth + 1) %>
-        <% end %>
-        <% if menu_item_presenter.display_offices? %>
-          <%= render(
-            partial: "menu_items/office_sub_menu_item",
-            collection: office_data,
-            as: :office,
-            locals: { destination: menu_item_presenter.destination },
-          ) %>
+      <% if menu_item_presenter.has_children? %>
+        <%= content_tag :ul, class: "dropdown depth-#{ depth }" do %>
+          <% if menu_item_presenter.sub_menu_items.present? %>
+            <%= nested_menu_items(menu_items: menu_item_presenter.sub_menu_items, depth: depth + 1) %>
+          <% end %>
+          <% if menu_item_presenter.display_offices? %>
+            <%= render(
+              partial: "menu_items/office_sub_menu_item",
+              collection: office_data,
+              as: :office,
+              locals: { destination: menu_item_presenter.destination },
+            ) %>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </li>
+    </li>
+  <% end %>
 <% end %>

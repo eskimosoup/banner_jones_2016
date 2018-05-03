@@ -67,7 +67,7 @@
         <div class="large-content-inner">
           <div class="large-content-inner__main large-content-inner__main--full">
             <div class="large-content-masonry">
-              <%= render partial: 'testimonials/shared/single_content_box', collection: @testimonials, as: :testimonial %>
+              <%= render partial: 'testimonials/shared/single_content_box', collection: @testimonials, as: :testimonial, cached: true %>
             </div>
 
             <div class="module-pagination">

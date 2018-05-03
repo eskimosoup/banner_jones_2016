@@ -1,81 +1,83 @@
-<section class="articles-home">
-  <div class="content-section content-section--shadow">
-    <div class="content-section__full">
-      <%= link_to 'See All', articles_path, class: 'module-see-all module-see-all--home-articles' %>
+<% cache cached do %>
+  <section class="articles-home">
+    <div class="content-section content-section--shadow">
+      <div class="content-section__full">
+        <%= link_to 'See All', articles_path, class: 'module-see-all module-see-all--home-articles' %>
 
-      <h2 class="standard-content-box-title standard-content-box-title--no-border">
-        Latest News
-      </h2>
+        <h2 class="standard-content-box-title standard-content-box-title--no-border">
+          Latest News
+        </h2>
 
-      <% articles.limit(4).each_with_index do |article, index| %>
-        <% cache [article, article.team_members.map(&:updated_at).max].compact do %>
-          <% present article do |article_presenter| %>
-            <div class="home-article <%= index >= 1 ? 'closed' : 'opened' %>">
-              <%#= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'home-article-image' if article_presenter.index_image.present? %>
-              <div class="home-article-content">
-                <div class="home-article-date">
-                  <%= article_presenter.date(:short) %>
-                </div>
-                <%= article_presenter.linked_text(article.title, {title: "Read #{article_presenter.title}", class: "#{article.team_members.present? ? 'home-article-title' : 'home-article-full-title' }"}) %>
-                <div class="home-article-summary">
-                  <%= article_presenter.summary %>
-                </div>
-                <div class="home-article-footer">
-                  <%= article_presenter.linked_text('Read more >', {title: "Read #{article_presenter.title}", class: 'home-article-read-more'}) %>
-                  <% if index != 0 %>
-                    <div class="home-article-team-members">
-                      <div class="multiple-team-members-slick">
-                        <% article.team_members.each_with_index do |team_member, index| %>
-                          <div class="home-article-team-member home-article-team-member--<%= index %>">
-                            <% present team_member do |team_member_presenter| %>
-                              <div class="home-article-team-member-details">
-                                <div class="home-article-team-member-name">
-                                  <%= team_member_presenter.full_name %>
+        <% articles.limit(4).each_with_index do |article, index| %>
+          <% cache [article, article.team_members.map(&:updated_at).max].compact do %>
+            <% present article do |article_presenter| %>
+              <div class="home-article <%= index >= 1 ? 'closed' : 'opened' %>">
+                <%#= content_tag :div, article_presenter.index_image(alt: article_presenter.title), class: 'home-article-image' if article_presenter.index_image.present? %>
+                <div class="home-article-content">
+                  <div class="home-article-date">
+                    <%= article_presenter.date(:short) %>
+                  </div>
+                  <%= article_presenter.linked_text(article.title, {title: "Read #{article_presenter.title}", class: "#{article.team_members.present? ? 'home-article-title' : 'home-article-full-title' }"}) %>
+                  <div class="home-article-summary">
+                    <%= article_presenter.summary %>
+                  </div>
+                  <div class="home-article-footer">
+                    <%= article_presenter.linked_text('Read more >', {title: "Read #{article_presenter.title}", class: 'home-article-read-more'}) %>
+                    <% if index != 0 %>
+                      <div class="home-article-team-members">
+                        <div class="multiple-team-members-slick">
+                          <% article.team_members.each_with_index do |team_member, index| %>
+                            <div class="home-article-team-member home-article-team-member--<%= index %>">
+                              <% present team_member do |team_member_presenter| %>
+                                <div class="home-article-team-member-details">
+                                  <div class="home-article-team-member-name">
+                                    <%= team_member_presenter.full_name %>
+                                  </div>
+                                  <div class="home-article-team-member-services">
+                                    <%= team_member_presenter.service_titles %>
+                                  </div>
                                 </div>
-                                <div class="home-article-team-member-services">
-                                  <%= team_member_presenter.service_titles %>
+                                <div class="team-member-avatar">
+                                  <%= team_member_presenter.small_image(alt: team_member_presenter.full_name) %>
                                 </div>
-                              </div>
-                              <div class="team-member-avatar">
-                                <%= team_member_presenter.small_image(alt: team_member_presenter.full_name) %>
-                              </div>
-                            <% end %>
-                          </div>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
-              </div>
-
-              <% if index == 0 %>
-                <div class="home-article-team-members">
-                  <div class="multiple-team-members-slick">
-                    <% article.team_members.each do |team_member| %>
-                      <div>
-                        <% present team_member do |team_member_presenter| %>
-                          <div class="home-article-team-member-details">
-                            <div class="home-article-team-member-name">
-                              <%= team_member_presenter.full_name %>
+                              <% end %>
                             </div>
-                            <div class="home-article-team-member-services">
-                              <%= team_member_presenter.service_titles %>
-                            </div>
-                          </div>
-                          <div class="team-member-avatar">
-                            <%= team_member_presenter.small_image(alt: team_member_presenter.full_name) %>
-                          </div>
-                        <% end %>
+                          <% end %>
+                        </div>
                       </div>
                     <% end %>
                   </div>
                 </div>
-              <% end %>
 
-            </div>
+                <% if index == 0 %>
+                  <div class="home-article-team-members">
+                    <div class="multiple-team-members-slick">
+                      <% article.team_members.each do |team_member| %>
+                        <div>
+                          <% present team_member do |team_member_presenter| %>
+                            <div class="home-article-team-member-details">
+                              <div class="home-article-team-member-name">
+                                <%= team_member_presenter.full_name %>
+                              </div>
+                              <div class="home-article-team-member-services">
+                                <%= team_member_presenter.service_titles %>
+                              </div>
+                            </div>
+                            <div class="team-member-avatar">
+                              <%= team_member_presenter.small_image(alt: team_member_presenter.full_name) %>
+                            </div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+
+              </div>
+            <% end %>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+<% end %>

@@ -12,35 +12,37 @@
 <% end %>
 
 <div class="large-content">
-  <aside class="large-content__aside">
-    <div class="large-content-aside-sticky">
-      <div class="large-content-aside-title">
-        <h2 class="large-content-aside-title__text">
-          Categories
-        </h2>
-      </div>
+  <% cache @article_categories do %>
+    <aside class="large-content__aside">
+      <div class="large-content-aside-sticky">
+        <div class="large-content-aside-title">
+          <h2 class="large-content-aside-title__text">
+            Categories
+          </h2>
+        </div>
 
-      <%= link_to 'Articles',
-                  '#large-content-aside-navigation',
-                  class: 'slide-toggle
-                          large-content-aside-navigation__toggle',
-                  data: {
-                    container: '.large-content-aside-navigation',
-                    return: false
-                  } %>
+        <%= link_to 'Articles',
+                    '#large-content-aside-navigation',
+                    class: 'slide-toggle
+                            large-content-aside-navigation__toggle',
+                    data: {
+                      container: '.large-content-aside-navigation',
+                      return: false
+                    } %>
 
 
-      <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
-        <% @article_categories.in_groups_of(6, false) do |article_categories| %>
-          <% article_categories.each do |article_category| %>
-            <li class="large-content-aside-navigation__item">
-              <%= render 'article_categories/shared/link', article_category: article_category %>
-            </li>
+        <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
+          <% @article_categories.in_groups_of(6, false) do |article_categories| %>
+            <% article_categories.each do |article_category| %>
+              <li class="large-content-aside-navigation__item">
+                <%= render 'article_categories/shared/link', article_category: article_category %>
+              </li>
+            <% end %>
           <% end %>
-        <% end %>
-      </ul>
-    </div>
-  </aside>
+        </ul>
+      </div>
+    </aside>
+  <% end %>
 
   <main class="large-content__main">
     <section class="large-content-element">
@@ -50,7 +52,8 @@
             <div class="large-content-masonry">
               <%= render partial: 'articles/article',
                         collection: @articles,
-                        as: :article %>
+                        as: :article,
+                        cached: true %>
             </div>
 
             <div class="module-pagination">

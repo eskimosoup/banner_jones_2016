@@ -36,4 +36,4 @@
   <%= render 'services/shared/sidebar' %>
 </div>
 
-<%= render 'services/shared/onpage_navigations' if @onpage_navigations.present? %>
+<%= render 'services/shared/onpage_navigations', cached: "onpage_navigation_#{@service.id}" if @onpage_navigations.present? %>

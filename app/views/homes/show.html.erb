@@ -14,8 +14,9 @@
     partial: "homes/banners",
     locals: {
       banners: @facade.banners,
-      banner_services: @facade.banner_services
-    }
+      banner_services: @facade.banner_services,
+      cached: (@facade.audience.present? ? "home_services_audience_#{@facade.audience.id}" : 'home_services')
+    },
   ) %>
 <% end %>
 
@@ -81,7 +82,7 @@
         <% if @facade.team_members.present? %>
           <%= render(
             partial: "homes/team_members",
-            locals: { team_members: @facade.team_members }
+            locals: { team_members: @facade.team_members, cached: 'office_show_team_members' }
           ) %>
         <% end %>
       </div>
@@ -102,15 +103,15 @@
 
 <div class="content-area">
   <div class="content-area__inner content-area__inner--row">
-    <%= render 'homes/shared/resources', resources: @facade.resources %>
-    <%= render 'homes/shared/testimonials', testimonials: @facade.testimonials %>
+    <%= render 'homes/shared/resources', resources: @facade.resources, cached: @facade.resources %>
+    <%= render 'homes/shared/testimonials', testimonials: @facade.testimonials, cached: @facade.testimonials %>
   </div>
 </div>
 
 
 <div class="content-area">
   <div class="content-area__inner content-area__inner--row">
-    <%= render 'homes/shared/articles', articles: @facade.articles %>
+    <%= render 'homes/shared/articles', articles: @facade.articles, cached: @facade.articles %>
     <%= render 'homes/shared/twitter' %>
   </div>
 </div>
