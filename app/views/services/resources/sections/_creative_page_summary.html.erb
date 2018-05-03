@@ -4,7 +4,7 @@
 
         <div class="creative-page-summary__title">
           <% if section.image? %>
-              <%= image_tag section.image.banner %>
+              <%= image_tag section.image.banner.url %>
           <% end %>
           <h1 class="creative-page-summary__main-title">
             <%= section.title %>
