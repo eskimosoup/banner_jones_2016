@@ -59,14 +59,16 @@
       <%= render partial: 'awards/footer_awards', collection: @awards, cached: true, as: :award if @awards.present? %>
     </div>
   </div>
+</footer>
 
+<div class="footer-microcopy">
   <div class="primary-footer-navigation">
     <ul class="primary-footer-navigation-links">
       <li>Copyright &copy; <%= Date.today.year %></li>
       <%= nested_menu_items(menu_items: @footer_menu.menu_items) %>
     </ul>
   </div>
-</footer>
+</div>
 
 <div class="legal-footer">
   <p>

@@ -1,16 +1,22 @@
 .primary-footer {
-  background: $dark-offset-black;
-  box-shadow: 0 6px 15px 1px rgba($dark-offset-black, .33);
-  padding: rem(33px) 0 rem(41px);
+  background: $white;
+  // box-shadow: 0 6px 15px 1px rgba($dark-offset-black, .33);
+  padding: rem(33px) 0 rem(31px);
 
   @include breakpoint(large) {
-    padding: rem(63px) 0 rem(81px);
+    padding: rem(63px) 0 rem(31px);
   }
 }
 
 .awards-and-accreditations {
-  @include grid-row;
+  //@include grid-row;
+  width: 1350px;
+  max-width: 90%;
   margin: 0 auto;
+
+  .slick-slider {
+    margin-bottom: 0;
+  }
 
   .slick-dots {
     bottom: 0;
@@ -29,4 +35,11 @@
   a[href]:after {
     content: '';
   }
+}
+
+.footer-microcopy {
+  background: $dark-offset-black;
+  box-shadow: 0 6px 15px 1px rgba($dark-offset-black, .33);
+  padding-bottom: rem(40px);
+  padding-top: rem(40px);
 }
