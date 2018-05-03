@@ -1,6 +1,6 @@
 <span class="suggested-resources">
 <%= link_to audience_service_resource_path(resource.services.first.audience, resource.services.first, resource) do %>
-    <%= image_tag resource.image.show if resource.image? %>
+    <%= image_tag resource.image.show.url if resource.image? %>
     <div class="resource-title">
     <%= resource.title %>
     </div>

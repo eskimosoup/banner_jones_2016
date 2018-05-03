@@ -10,7 +10,7 @@
   <% present @service do |service_presenter| %>
       <div class="large-content-aside-title">
         <h2 style="color:<%= @service.colour %>" class="large-content-aside-title__text">
-          <%= image_tag @service.icon.small,
+          <%= image_tag @service.icon.small.url,
                       alt: '',
                       class: 'large-content-aside-title__icon' %>
 

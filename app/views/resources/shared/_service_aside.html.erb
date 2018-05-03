@@ -1,5 +1,5 @@
 <div class="text-center resource-show-cta">
-  <%= image_tag resource.image.show, alt: '' if resource.image? %>
+  <%= image_tag resource.image.show.url, alt: '' if resource.image? %>
 
   <%= link_to 'Download now',
               resource.file.url,
