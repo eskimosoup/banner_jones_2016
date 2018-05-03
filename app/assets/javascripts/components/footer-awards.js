@@ -6,7 +6,7 @@ $(function() {
     slidesToScroll: 6,
     dots: true,
     arrows: false,
-    centerMode: true,
+    // centerMode: true,
     responsive: [
       {
         breakpoint: 768,
