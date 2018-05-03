@@ -4,7 +4,7 @@
       <% present resource do |resource_presenter| %>
         <%= link_to (resource.services.present? && resource.services.first.audience.present? ? audience_service_resource_path(resource.services.first.audience, resource.services.first, resource) : resource.file.url) do %>
         <%#= link_to resource.file.url, title: resource_presenter.title, class: 'index-module-link', target: '_blank' do %>
-          <%= content_tag :div, resource_presenter.index_image(alt: resource_presenter.title), class: 'index-module-image' if resource_presenter.index_image.present? %>
+          <%= content_tag :div, resource_presenter.show_image(alt: resource_presenter.title), class: 'index-module-image' if resource_presenter.index_image.present? %>
           <div class="index-module-details-overview">
             <div class="index-module-shares">
               <div class="social-share-count" href="<%= url_for([resource, only_path: false]) %>">
