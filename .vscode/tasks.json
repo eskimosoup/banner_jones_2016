@@ -58,15 +58,6 @@
       }
     },
     {
-      "taskName": "bin/server",
-      "type": "shell",
-      "command": "./bin/server",
-      "problemMatcher": [],
-      "presentation": {
-        "reveal": "always"
-      }
-    },
-    {
       "taskName": "cap production deploy",
       "type": "shell",
       "command": "cap production deploy",
