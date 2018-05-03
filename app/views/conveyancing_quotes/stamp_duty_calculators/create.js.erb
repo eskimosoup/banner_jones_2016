@@ -1,0 +1,2 @@
+$('.stamp-duty-calculator-result-partial').fadeIn();
+$('.stamp-duty-calculator-result-calculation').html("<%= j render 'conveyancing_quotes/stamp_duty_calculators/result', stamp_duty: @stamp_duty, price: @stamp_duty_calculator.price.gsub(/\D/, '') %>");

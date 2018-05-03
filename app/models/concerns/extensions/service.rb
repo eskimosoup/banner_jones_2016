@@ -9,7 +9,7 @@ module Extensions
 
       RELATIONSHIPS = %w(related_services articles case_studies resources events videos frequently_asked_questions offices team_members testimonials).freeze
       LAYOUTS = %w(application wealth_management notary landing_page_design).freeze
-      STYLES  = %w(basic purchase_plus conveyancing service_large).freeze
+      STYLES  = %w(basic purchase_plus conveyancing stamp_duty_calculator service_large).freeze
 
       def self.colours
         OptimisedSite.configuration.service_colours
