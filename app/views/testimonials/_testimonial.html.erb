@@ -9,7 +9,7 @@
         <%= testimonial_presenter.author %>
       </div>
 
-      <%= testimonial_presenter.show_image(alt: testimonial_presenter.author, class: 'testimonial-photo') %>
+      <%= testimonial_presenter.lazy_show_image(alt: testimonial_presenter.author, class: 'testimonial-photo') %>
     </div>
   <% end %>
 <% end %>

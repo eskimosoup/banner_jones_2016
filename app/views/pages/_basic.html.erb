@@ -29,7 +29,7 @@
         <%= page_presenter.title %>
       </h1>
 
-      <%= page_presenter.show_image(alt: page_presenter.title, class: 'page-show-image') if page_presenter.show_image.present? %>
+      <%= page_presenter.lazy_show_image(alt: page_presenter.title, class: 'page-show-image') if page_presenter.show_image.present? %>
 
       <div class="page-inner-content" role="main">
         <%= page_presenter.content %>

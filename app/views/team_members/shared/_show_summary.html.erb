@@ -4,7 +4,7 @@
       <div class="team-member-show-profile">
         <% present @team_member do |team_member_presenter| %>
           <div class="team-member-show-profile-image">
-            <%= team_member_presenter.show_image(alt: team_member_presenter.full_name) %>
+            <%= team_member_presenter.lazy_show_image(alt: team_member_presenter.full_name) %>
           </div>
 
           <div class="team-member-show-profile-content">

@@ -2,7 +2,7 @@
   <div class="index-team-member-profile-wrap">
     <% present team_member do |team_member_presenter| %>
       <%= link_to team_member, title: team_member_presenter.full_name do %>
-        <%= team_member_presenter.index_image %>
+        <%= team_member_presenter.lazy_index_image %>
       <% end %>
 
       <div class="index-team-member-profile-content">
