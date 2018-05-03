@@ -15,6 +15,7 @@ set :rbenv_map_bins, %w[rake gem bundle ruby rails]
 set :rbenv_roles, :all
 set :rbenv_ruby, File.read('.ruby-version').strip
 set :repo_url, 'git@github.com:eskimosoup/banner_jones_2016.git'
+set :bundle_flags, '--deployment'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
