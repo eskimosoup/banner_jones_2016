@@ -140,7 +140,7 @@
     background: $orange;
     content: '';
     display: block;
-    height: 19px;
+    height: 25px;
     width: 100%;
   }
 
@@ -150,12 +150,12 @@
 
   .slider-team-member-forename {
     bottom: 0;
-    color: $white;
+    color: $black;
     font-size: rem(15px);
-    line-height: 1.25;
     position: absolute;
     text-align: center;
     text-transform: uppercase;
+    margin-bottom: rem(5px);
     width: 100%;
   }
 
