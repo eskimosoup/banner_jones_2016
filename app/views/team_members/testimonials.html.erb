@@ -6,7 +6,7 @@
 
   <div class="team-members-content-wrap">
     <div class="testimonials-list-wrap">
-      <%= render partial: 'testimonials/shared/single_content_box', collection: @team_member.testimonials.displayed.limit(20), as: :testimonial %>
+      <%= render partial: 'testimonials/shared/single_content_box', collection: @team_member.testimonials.displayed.limit(20), as: :testimonial, cached: true %>
     </div>
   </div>
 

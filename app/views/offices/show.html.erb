@@ -27,7 +27,8 @@
       <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
         <%= render partial: 'offices/shared/aside_navigation',
                    collection: @offices,
-                   as: :office %>
+                   as: :office,
+                   cached: true %>
       </ul>
     </div>
   </aside>
@@ -35,49 +36,52 @@
     <div class="offices-index-map" id="map-canvas" data-locations="<%= @offices.to_json %>">
       <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
     </div>
-    <section class="large-content-element">
-      <div class="large-content-element__container">
-        <div class="large-content-inner">
-          <section class="office-location-content">
-            <div class="content-section content-section--shadow">
-              <div class="content-section__full">
-                <h1 class="standard-content-box-title standard-content-box-title--no-border">
-                  <%= @office.office_location_name %>
-                </h1>
-                <%= raw @office.details %>
+    <% cache @office.services.map(&:updated_at).max do %>
+      <section class="large-content-element">
+        <div class="large-content-element__container">
+          <div class="large-content-inner">
+            <section class="office-location-content">
+              <div class="content-section content-section--shadow">
+                <div class="content-section__full">
+                  <h1 class="standard-content-box-title standard-content-box-title--no-border">
+                    <%= @office.office_location_name %>
+                  </h1>
+                  <%= raw @office.details %>
+                </div>
               </div>
-            </div>
-          </section>
-          <aside class="office-location-aside">
-            <div class="content-section content-section--shadow">
-              <div class="content-section__full">
-                <%= render 'offices/shared/aside',
-                           office: @office,
-                           office_counter: 0,
-                           aside: true %>
+            </section>
+            <aside class="office-location-aside">
+              <div class="content-section content-section--shadow">
+                <div class="content-section__full">
+                  <%= render 'offices/shared/aside',
+                            office: @office,
+                            office_counter: 0,
+                            aside: true %>
+                </div>
               </div>
-            </div>
-              <% @office.services.roots.group_by(&:audience).each do |audience, services| %>
-                <div class="content-section content-section--shadow">
-                  <div class="content-section__full">
-                    <h2 class="page-aside-navigation-title">
-                      <%= link_to audience.title, audience %>
-                    </h2>
-                    <div class="page-aside-navigation-links">
-                      <ul class="page-aside-navigation-links-list">
-                        <%= render partial: 'offices/shared/service',
-                                      collection: services,
-                                      as: :service %>
-                      </ul>
+                <% @office.services.roots.group_by(&:audience).each do |audience, services| %>
+                  <div class="content-section content-section--shadow">
+                    <div class="content-section__full">
+                      <h2 class="page-aside-navigation-title">
+                        <%= link_to audience.title, audience %>
+                      </h2>
+                      <div class="page-aside-navigation-links">
+                        <ul class="page-aside-navigation-links-list">
+                          <%= render partial: 'offices/shared/service',
+                                        collection: services,
+                                        as: :service,
+                                        cached: true %>
+                        </ul>
+                      </div>
                     </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
-          </div>
-        </aside>
+          </aside>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+    <% end %>
 </main>
 </div>

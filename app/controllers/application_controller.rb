@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :global_site_settings, :load_global_objects, :set_seo_variables
+  before_action :page_load_speed, :global_site_settings, :load_global_objects, :set_seo_variables
 
   include Optimadmin::AdminSessionsHelper
 
@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def page_load_speed
+    @page_load_start = Time.new
+  end
 
   def set_seo_variables
     seo_entry = SeoEntry.find_by(nominal_url: request.path)

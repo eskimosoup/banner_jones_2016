@@ -47,7 +47,8 @@
     <%= image_tag 'components/icons/loading.gif', alt: 'Loading...', class: 'slider-team-members-loading' %>
 
     <div class="team-members-index-content">
-      <%= render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member %>
+      <%= render partial: 'team_members/shared/index_profile_card', collection: @team_members, as: :team_member, cached: true %>
     </div>
   </div>
 </div>
+

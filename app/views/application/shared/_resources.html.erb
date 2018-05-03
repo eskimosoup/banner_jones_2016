@@ -6,22 +6,25 @@
     });
   </script>
 <% end %>
-<section class="home-content-box-wrap">
-  <div class="home-content-box inner">
-    <%= link_to 'See All', resources_path, class: 'module-see-all home-resources' %>
 
-    <div class="helpful-guide-home-content-box-slider-controls">
-      <%= image_tag 'components/icons/content-box/previous.png', alt: 'Previous', class: 'home-content-box-previous' %>
-      <%= image_tag 'components/icons/content-box/next.png', alt: 'Next', class: 'home-content-box-next' %>
+<% cache resources do %>
+  <section class="home-content-box-wrap">
+    <div class="home-content-box inner">
+      <%= link_to 'See All', resources_path, class: 'module-see-all home-resources' %>
+
+      <div class="helpful-guide-home-content-box-slider-controls">
+        <%= image_tag 'components/icons/content-box/previous.png', alt: 'Previous', class: 'home-content-box-previous' %>
+        <%= image_tag 'components/icons/content-box/next.png', alt: 'Next', class: 'home-content-box-next' %>
+      </div>
+
+      <h2 class="home-content-box-title">
+        Our Helpful Guides
+      </h2>
+
+      <div class="helpful-guides-slick">
+        <%= render partial: 'resources/resource_shelf',
+                  collection: resources, cached: true, as: :resource if resources.present? %>
+      </div>
     </div>
-
-    <h2 class="home-content-box-title">
-      Our Helpful Guides
-    </h2>
-
-    <div class="helpful-guides-slick">
-      <%= render partial: 'resources/resource_shelf',
-                collection: resources, cached: true, as: :resource if resources.present? %>
-    </div>
-  </div>
-</section>
+  </section>
+<% end %>

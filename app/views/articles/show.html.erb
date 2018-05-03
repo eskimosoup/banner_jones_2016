@@ -5,106 +5,110 @@
   <%= twitter_creator "@#{@article.team_members.first.twitter_link.split('/').last}" if @article.team_members.size == 1 && @article.team_members.first.twitter_link.present? %>
 <% end %>
 <div class="large-content">
-  <aside class="large-content__aside">
-    <div class="large-content-aside-sticky">
-      <div class="large-content-aside-title">
-        <h2 class="large-content-aside-title__text">
-          Categories
-        </h2>
-      </div>
-      <%= link_to 'Articles',
-                  '#large-content-aside-navigation',
-                  class: 'slide-toggle
-                          large-content-aside-navigation__toggle',
-                  data: {
-                    container: '.large-content-aside-navigation',
-                    return: false
-                  } %>
-      <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
-        <% @article_categories.in_groups_of(6, false) do |article_categories| %>
-          <% article_categories.each do |article_category| %>
-            <li class="large-content-aside-navigation__item">
-              <%= render 'article_categories/shared/link', article_category: article_category %>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
-  </aside>
-  <main class="large-content__main">
-    <section class="large-content-element">
-      <div class="large-content-element__section">
-        <div class="large-content-inner">
-          <div class="large-content-inner__main">
-            <ul class="show-breadcrumbs">
-              <li>
-                <%= link_to 'News', articles_path %>
+  <% cache @article_categories do %>
+    <aside class="large-content__aside">
+      <div class="large-content-aside-sticky">
+        <div class="large-content-aside-title">
+          <h2 class="large-content-aside-title__text">
+            Categories
+          </h2>
+        </div>
+        <%= link_to 'Articles',
+                    '#large-content-aside-navigation',
+                    class: 'slide-toggle
+                            large-content-aside-navigation__toggle',
+                    data: {
+                      container: '.large-content-aside-navigation',
+                      return: false
+                    } %>
+        <ul class="large-content-aside-navigation large-content-aside-navigation--without-icon" id="large-content-aside-navigation">
+          <% @article_categories.in_groups_of(6, false) do |article_categories| %>
+            <% article_categories.each do |article_category| %>
+              <li class="large-content-aside-navigation__item">
+                <%= render 'article_categories/shared/link', article_category: article_category %>
               </li>
-              <li>
-                <%= render partial: 'shared/module_breadcrumbs', collection: @article.article_categories.displayed, as: :category, locals: { categories: @article.article_categories.displayed } %>
-              </li>
-            </ul>
-            <% present @article do |article_presenter| %>
-              <%= article_presenter.show_image(alt: article_presenter.title) %>
             <% end %>
-            <div class="module-show-content-wrap">
-              <% if @article.team_members.present? %>
-                <div class="articles-show-author">
+          <% end %>
+        </ul>
+      </div>
+    </aside>
+  <% end %>
+  <% cache @article do %>
+    <main class="large-content__main">
+      <section class="large-content-element">
+        <div class="large-content-element__section">
+          <div class="large-content-inner">
+            <div class="large-content-inner__main">
+              <ul class="show-breadcrumbs">
+                <li>
+                  <%= link_to 'News', articles_path %>
+                </li>
+                <li>
+                  <%= render partial: 'shared/module_breadcrumbs', collection: @article.article_categories.displayed, as: :category, cached: true, locals: { categories: @article.article_categories.displayed } %>
+                </li>
+              </ul>
+              <% present @article do |article_presenter| %>
+                <%= article_presenter.show_image(alt: article_presenter.title) %>
+              <% end %>
+              <div class="module-show-content-wrap">
+                <% if @article.team_members.present? %>
+                  <div class="articles-show-author">
+                    <% present @article do |article_presenter| %>
+                      <%= render partial: 'articles/shared/show_team_members', collection: @article.team_members, as: :team_member, cached: true, locals: { article_presenter: article_presenter } %>
+                    <% end %>
+                  </div>
+                <% end %>
+                <div class="<%= module_show_content_classes(@article.team_members) %>" role="main">
                   <% present @article do |article_presenter| %>
-                    <%= render partial: 'articles/shared/show_team_members', collection: @article.team_members, as: :team_member, locals: { article_presenter: article_presenter } %>
+                    <div class="index-module-details-date">
+                      <%= article_presenter.date %>
+                    </div>
+                    <h1>
+                      <%= article_presenter.title %>
+                    </h1>
+                    <%= article_presenter.content %>
+                    <%= render 'shared/social_share_buttons', object: @article %>
                   <% end %>
                 </div>
-              <% end %>
-              <div class="<%= module_show_content_classes(@article.team_members) %>" role="main">
-                <% present @article do |article_presenter| %>
-                  <div class="index-module-details-date">
-                    <%= article_presenter.date %>
-                  </div>
-                  <h1>
-                    <%= article_presenter.title %>
-                  </h1>
-                  <%= article_presenter.content %>
-                  <%= render 'shared/social_share_buttons', object: @article %>
+              </div>
+            </div>
+            <aside class="large-content-inner__aside">
+              <h5 class="related-aside-title">Related Stories</h5>
+              <%= render partial: 'articles/aside_article', collection: @related_articles, as: :article, cached: true %>
+            </aside>
+          </div>
+        </div>
+        <div class="large-content-element__container large-content-element__container--full">
+          <% if @article.team_members.present? && @article.team_members.first.articles.size > 1 %>
+            <div class="related-footer related-footer--landing-page">
+              <div class="related-footer-details related-footer-details--landing-page">
+                <% present @article.team_members.first do |team_member_presenter| %>
+                  <%= content_tag :div,
+                                  (team_member_presenter.linked_text(team_member_presenter.related_footer_image(alt: team_member_presenter.full_name))),
+                                  class: 'team-member-avatar' if team_member_presenter.related_footer_image.present? %>
+                  Latest from <%= possessive team_member_presenter.forename %> blog
                 <% end %>
               </div>
+
+                <div class="module-index">
+                  <%= render partial: 'articles/article',
+                            collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
+                            as: :article %>
+                </div>
+
+                <div class="related-footer-navigation">
+                  <% # TODO: Filter? Team member show? %>
+                  <%#= link_to 'Show all',
+                          team_member_path(@article.team_members.first, anchor: 'articles'),
+                          class: 'related-footer-see-all' %>
+                  <%= link_to 'Show all',
+                          articles_path,
+                          class: 'related-footer-see-all' %>
+                </div>
             </div>
-          </div>
-          <aside class="large-content-inner__aside">
-            <h5 class="related-aside-title">Related Stories</h5>
-            <%= render partial: 'articles/aside_article', collection: @related_articles, as: :article %>
-          </aside>
+          <% end %>
         </div>
-      </div>
-      <div class="large-content-element__container large-content-element__container--full">
-        <% if @article.team_members.present? && @article.team_members.first.articles.size > 1 %>
-          <div class="related-footer related-footer--landing-page">
-            <div class="related-footer-details related-footer-details--landing-page">
-              <% present @article.team_members.first do |team_member_presenter| %>
-                <%= content_tag :div,
-                                (team_member_presenter.linked_text(team_member_presenter.related_footer_image(alt: team_member_presenter.full_name))),
-                                class: 'team-member-avatar' if team_member_presenter.related_footer_image.present? %>
-                Latest from <%= possessive team_member_presenter.forename %> blog
-              <% end %>
-            </div>
-
-              <div class="module-index">
-                <%= render partial: 'articles/article',
-                          collection: @article.team_members.first.articles.displayed.limit(3).order(publish_at: :desc),
-                          as: :article %>
-              </div>
-
-              <div class="related-footer-navigation">
-                <% # TODO: Filter? Team member show? %>
-                <%#= link_to 'Show all',
-                        team_member_path(@article.team_members.first, anchor: 'articles'),
-                        class: 'related-footer-see-all' %>
-                <%= link_to 'Show all',
-                        articles_path,
-                        class: 'related-footer-see-all' %>
-              </div>
-          </div>
-        <% end %>
-      </div>
-    </section>
-  </main>
+      </section>
+    </main>
+  <% end %>
 </div>

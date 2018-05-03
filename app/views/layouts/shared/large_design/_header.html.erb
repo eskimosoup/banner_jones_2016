@@ -90,11 +90,8 @@
         <span class="header-telephone-accent">
           t:
         </span>
-        <% if yield(:custom_telephone).present? %>
-          <% phone = yield(:custom_telephone) %>
-        <% elsif !defined?(phone) %>
-        <% phone = global_site_settings['Phone'] %>
-        <% end %>
+        <% phone = yield(:custom_telephone) if yield(:custom_telephone).present? %>
+        <% phone = global_site_settings['Phone'] if phone.blank? %>
 
         <% if phone.present? %>
           <%= link_to "tel:#{phone.tr(' ', '')}" do %>
