@@ -49,7 +49,7 @@ class ServicePresenter < BasePresenter
   private
 
   def social_share_image_setter
-    if service.social_share_image.present?
+    if servicelarge-onpage-navigation-element.present?
       h.root_url[0..-2] + service.social_share_image.show.url
     elsif service.image.present? && service.image.show.present?
       h.root_url[0..-2] + service.image.show.url
