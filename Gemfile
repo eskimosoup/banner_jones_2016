@@ -33,7 +33,6 @@ gem 'jbuilder', '~> 2.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'bootsnap'
 end
 
 group :development do
@@ -96,3 +95,4 @@ gem 'inky-rb', require: 'inky'
 # Stylesheet inlining for email
 gem 'premailer-rails'
 gem 'tinymce-rails', '4.6.7'
+gem 'bootsnap'
