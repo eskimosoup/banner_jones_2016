@@ -49,7 +49,7 @@
                 </li>
               </ul>
               <% present @event do |event_presenter| %>
-                <%= event_presenter.show_image(alt: event_presenter.title) %>
+                <%= event_presenter.lazy_show_image(alt: event_presenter.title) %>
               <% end %>
               <div class="module-show-content-wrap">
                 <% if @event.team_members.present? %>
