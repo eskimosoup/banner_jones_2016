@@ -18,6 +18,7 @@ class ServicesController < ApplicationController
     @contact = Contact.new if @service.landing_page?
     @offices = nil if @service.hide_preferred_office_on_forms?
     find_parent_rich_snippet
+    stamp_duty if @service.style == 'stamp_duty_calculator'
     render layout: @service.layout
   end
 
@@ -44,6 +45,10 @@ class ServicesController < ApplicationController
     seo_entry = SeoEntry.find_by(nominal_url: route)
     return unless seo_entry
     @rich_snippet = seo_entry.rich_snippet
+  end
+
+  def stamp_duty
+    @stamp_duty_calculator = ConveyancingQuotes::StampDutyCalculator.new
   end
 
   def nested_testimonials_path(service)

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
       resource :download, only: [:show]
     end
 
+    resource :stamp_duty_calculator,
+              only: :create,
+              path: 'stamp-duty-calculator'
+
     resource :sales,
              only: :update
 

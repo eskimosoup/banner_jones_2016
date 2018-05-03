@@ -1,0 +1,45 @@
+.stamp-duty-calculator {
+  border: 2px solid lighten($border-grey, 5%);
+  padding: rem(15px);
+  margin-bottom: rem(15px);
+
+  @include breakpoint(large) {
+    @include flex-grid-row(nest collapse);
+  }
+}
+
+.stamp-duty-calculator-form {
+  @include breakpoint(large) {
+    @include flex-grid-column(7);
+  }
+
+  &__radio.field {
+    margin: rem(2px 0 0);
+  }
+
+  &__submit.actions {
+    margin: 0;
+  }
+
+  &__radio-label {
+    display: inline-block;
+  }
+}
+
+.stamp-duty-calculator-result-partial {
+  background: $orange;
+  border: 2px solid $black;
+  display: none;
+  margin-top: rem(5px);
+  padding-top: rem(20px);
+
+  @include breakpoint(large) {
+    @include flex-grid-column(5);
+  }
+
+  a,
+  strong {
+    color: $black;
+    font-weight: 700;
+  }
+}
