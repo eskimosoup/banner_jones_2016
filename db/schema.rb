@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180312125214) do
+ActiveRecord::Schema.define(version: 2018_05_03_082349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -621,6 +621,7 @@ ActiveRecord::Schema.define(version: 20180312125214) do
     t.datetime "password_reset_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "password_changed_at"
     t.index ["auth_token"], name: "index_optimadmin_administrators_on_auth_token"
     t.index ["email"], name: "index_optimadmin_administrators_on_email"
     t.index ["username"], name: "index_optimadmin_administrators_on_username"
@@ -809,6 +810,7 @@ ActiveRecord::Schema.define(version: 20180312125214) do
     t.boolean "in_sitemap", default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text "additional_code"
   end
 
   create_table "seo_tracking_codes", id: :serial, force: :cascade do |t|
