@@ -271,7 +271,7 @@
   }
 
   .dropdown {
-    background: $white;
+    background: $light-grey;
     display: none;
     list-style: none;
     margin: 0;
@@ -279,7 +279,7 @@
     padding-top: rem(10px);
 
     @include breakpoint(medium) {
-      border: 1px solid $red;
+      border: 1px solid $orange;
       line-height: 1.25;
       min-width: 250px;
       position: absolute;
