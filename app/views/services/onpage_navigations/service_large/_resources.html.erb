@@ -39,6 +39,8 @@ resources = onpage_navigation.resources.displayed
 resources = @service.resources.displayed if resources.blank?
 %>
 
+<% resources = resources + resources %>
+
 <section class="large-onpage-resources">
   <div class="large-onpage-resources__section">
     <div class="onpage-navigation-controls">
@@ -56,8 +58,8 @@ resources = @service.resources.displayed if resources.blank?
       </h1>
     </div>
 
-    <div class="large-onpage-resources__resources">
-      <% if resources.size > 1 %>
+    <div class="large-onpage-resources__resources <%= 'large-onpage-resources__resources--stacked' if resources.size < 3 %>">
+      <% if resources.size > 2 %>
         <%= render 'services/resources/shared/services_slick',
                     resources: resources,
                     onpage_navigation: onpage_navigation %>

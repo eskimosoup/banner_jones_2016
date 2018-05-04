@@ -26,6 +26,12 @@
     padding: rem(40px 80px 20px);
   }
 
+  &__resources {
+    &--stacked {
+      display: flex;
+    }
+  }
+
   &__title {
     border-bottom: 3px solid rgba($white, .75);
     color: $white;
@@ -119,6 +125,10 @@
   max-width: 640px;
   margin-left: auto;
   margin-right: auto;
+
+  @include breakpoint(large) {
+    @include flex-grid-column(6);
+  }
 
   &__content {
     @include flex-grid-column(4);
