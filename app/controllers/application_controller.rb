@@ -47,10 +47,8 @@ class ApplicationController < ActionController::Base
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
     @callback_request = CallbackRequest.new
     @contact = Contact.new
-    Rails.cache.fetch("#{Award.displayed.pluck(:updated_at).max}_#{Office.displayed.pluck(:updated_at).max}") do
-      @awards ||= Award.displayed
-      @navigation_offices ||= Office.displayed
-    end
+    @awards ||= Award.displayed
+    @navigation_offices ||= Office.displayed
   end
 
   def global_site_settings
