@@ -3,76 +3,95 @@
   // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
+    // For Windows, requires Git bash to be configured along with local SSH keys
     {
-      "taskName": "beautify",
+      "label": "ssh",
+      "type": "shell",
+      "command": "ssh server -t 'cd paul/${workspaceFolderBasename}; bash --login'",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "beautify",
       "type": "shell",
       "command": "htmlbeautifier ${relativeFile}",
       "problemMatcher": [],
       "presentation": {
-        "reveal": "never"
+        "reveal": "never",
+        "panel": "shared"
       }
     },
     {
-      "taskName": "rubocop",
+      "label": "rubocop",
       "type": "shell",
       "command": "rubocop --auto-correct ${relativeFile}",
       "problemMatcher": [],
       "presentation": {
-        "reveal": "never"
+        "reveal": "never",
+        "panel": "shared"
       }
     },
     {
-      "taskName": "rspec",
+      "label": "rspec",
       "type": "shell",
       "command": "bundle exec rspec",
       "problemMatcher": [],
       "presentation": {
-        "reveal": "always"
+        "reveal": "always",
+        "panel": "shared"
       }
     },
     {
-      "taskName": "rspec file",
+      "label": "rspec file",
       "type": "shell",
       "command": "bundle exec rspec ${relativeFile}",
       "problemMatcher": [],
       "presentation": {
-        "reveal": "always"
+        "reveal": "always",
+        "panel": "shared"
       }
     },
     {
-      "taskName": "rails c",
+      "label": "rails c",
       "type": "shell",
       "command": "bundle exec rails console",
       "problemMatcher": [],
       "presentation": {
-        "reveal": "always"
+        "reveal": "always",
+        "panel": "dedicated"
       }
     },
     {
-      "taskName": "rails s",
+      "label": "rails s",
       "type": "shell",
       "command": "bundle exec rails server",
       "problemMatcher": [],
       "presentation": {
-        "reveal": "always"
+        "reveal": "always",
+        "panel": "dedicated"
       }
     },
     {
-      "taskName": "cap production deploy",
+      "label": "cap production deploy",
       "type": "shell",
       "command": "cap production deploy",
       "problemMatcher": [],
       "presentation": {
-        "reveal": "always"
+        "reveal": "always",
+        "panel": "dedicated"
       }
     },
     {
-      "taskName": "configure",
+      "label": "configure",
       "type": "shell",
       "command": "gem install ruby-debug-ide:0.6.0 debase:0.2.2.beta10 rcodetools rubocop fastri htmlbeautifier scss_lint --no-ri --no-rdoc",
       "problemMatcher": [],
       "presentation": {
-        "reveal": "always"
+        "reveal": "always",
+        "panel": "shared"
       }
     }
   ]
