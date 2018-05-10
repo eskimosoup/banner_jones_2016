@@ -3,6 +3,7 @@ module Extensions
     extend ActiveSupport::Concern
 
     included do
+      default_scope { order(:name) }
       mount_uploader :image, OfficeLocationUploader
     end
 

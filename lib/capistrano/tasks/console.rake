@@ -9,7 +9,7 @@ namespace :rails do
 
     on roles :app do
       current = "cd #{fetch(:deploy_to)}/current"
-      bundle_exec = "#{fetch(:rbenv_prefix)} bundle exec rails console #{fetch(:rails_env)}"
+      bundle_exec = "#{fetch(:rbenv_prefix)} bundle exec rails console -e #{fetch(:rails_env)}"
       ssh = "ssh #{server.user}@#{server.hostname} -t '#{current} && #{bundle_exec}'"
       exec ssh
     end

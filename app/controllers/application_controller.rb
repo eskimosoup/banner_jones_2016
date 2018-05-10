@@ -33,20 +33,24 @@ class ApplicationController < ActionController::Base
   def set_seo_variables
     seo_entry = SeoEntry.find_by(nominal_url: request.path)
     return unless seo_entry
-    @rich_snippet = seo_entry.rich_snippet
-    @title = seo_entry.title
-    @meta_description = seo_entry.meta_description
-    @meta_tags = seo_entry.title
+    Rails.cache.fetch(seo_entry) do
+      @rich_snippet = seo_entry.rich_snippet
+      @title = seo_entry.title
+      @meta_description = seo_entry.meta_description
+      @meta_tags = seo_entry.title
+    end
   end
 
   def load_global_objects
     @header_aside_menu = Optimadmin::Menu.new(name: 'header_aside')
     @primary_header_menu = Optimadmin::Menu.new(name: 'primary_header')
     @footer_menu = Optimadmin::Menu.new(name: 'footer')
-    @awards ||= Award.displayed
     @callback_request = CallbackRequest.new
     @contact = Contact.new
-    @navigation_offices ||= Office.displayed
+    Rails.cache.fetch("#{@awards}_#{@navigation_offices}") do
+      @awards ||= Award.displayed
+      @navigation_offices ||= Office.displayed
+    end
   end
 
   def global_site_settings
