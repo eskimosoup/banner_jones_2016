@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 736906bc0f0c0bb23f2cae77199ed3e7365c343c
+  revision: 1b14b6e051ac9338665a95736b531dff33d53703
   branch: master
   specs:
-    optimadmin (0.9.2)
+    optimadmin (0.9.3.1)
       bcrypt
       cancancan
       carrierwave
@@ -181,7 +181,7 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faraday (0.15.0)
+    faraday (0.15.1)
       multipart-post (>= 1.2, < 3)
     fast_stack (0.2.0)
     fastimage (2.1.3)
