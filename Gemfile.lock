@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 1b14b6e051ac9338665a95736b531dff33d53703
+  revision: e258cb2adfcf0b62df60a52edc5172d86afcf9d4
   branch: master
   specs:
-    optimadmin (0.9.3.1)
+    optimadmin (0.9.3.4)
       bcrypt
       cancancan
       carrierwave
@@ -26,10 +26,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 0be938c9241eaf6ef92fc3f88b32c12196f5c703
+  revision: e935ce42e147d5c8e74122f8c546b7b8ac047a62
   branch: master
   specs:
-    optimised_site (0.6.7)
+    optimised_site (0.6.8)
       amoeba
       closure_tree (~> 6.0)
       deep_cloneable (~> 2.3.2)

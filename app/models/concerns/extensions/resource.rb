@@ -3,7 +3,7 @@ module Extensions
     extend ActiveSupport::Concern
 
     included do
-      default_scope { order(:title) }
+      # default_scope { order(:title) }
 
       include PgSearchScope
       multisearchable against: %i[title summary content],

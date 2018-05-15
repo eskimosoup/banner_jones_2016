@@ -1,57 +1,59 @@
-<div class="modal-form__fields">
-  <div class="field">
-    <%= f.label :forename %>
-    <%= f.text_field :forename, class: 'modal-form__field modal-form__field--bordered' %>
-  </div>
-  <div class="field">
-    <%= f.label :surname %>
-    <%= f.text_field :surname, class: 'modal-form__field modal-form__field--bordered' %>
-  </div>
-  <div class="field">
-    <%= f.label :telephone %>
-    <%= f.text_field :telephone, class: 'modal-form__field modal-form__field--bordered' %>
-  </div>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email, class: 'modal-form__field modal-form__field--bordered' %>
-  </div>
-</div>
-
-<div class="modal-form__split">
-  <div class="modal-form__details">
-    <div class="field field--full">
-      <%= f.label :message %>
-      <%= f.text_area :message,
-                      class: 'modal-form__field
-                              modal-form__field--bordered
-                              modal-form__field--full' %>
-    </div>
-  </div>
-  <div class="modal-form__aside">
+<% cache "contacts_fields_solicitors_#{request.original_url}_#{defined?(mediation) ? mediation : 'nil'}" do %>
+  <div class="modal-form__fields">
     <div class="field">
-      <%= f.label :preferred_contact_method, class: 'modal-form__label modal-form__label--hidden' %>
-      <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, { prompt: 'Preferred contact method' }, class: 'modal-form__select modal-form__select--bordered' %>
+      <%= f.label :forename %>
+      <%= f.text_field :forename, class: 'modal-form__field modal-form__field--bordered' %>
     </div>
     <div class="field">
-      <%= f.label :preferred_office, class: 'modal-form__label modal-form__label--hidden' %>
-      <%= f.select :preferred_office, options_for_select(@navigation_offices.map{|x| x.address_fields }, selected: (@office.address_fields if @office.present?)), { prompt: 'Preferred office' }, class: 'modal-form__select modal-form__select--bordered' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :service, class: 'modal-form__label modal-form__label--hidden' %>
-      <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }, selected: (@service.title if @service.present?)), { prompt: 'Preferred service' }, class: 'modal-form__select modal-form__select--bordered' %>
+      <%= f.label :surname %>
+      <%= f.text_field :surname, class: 'modal-form__field modal-form__field--bordered' %>
     </div>
     <div class="field">
-      <%= f.label :how_heard, 'How did you find us?', class: 'modal-form__label modal-form__label--hidden' %>
-      <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), { include_blank: 'How did you find us?' }, class: 'modal-form__select modal-form__select--bordered' %>
+      <%= f.label :telephone %>
+      <%= f.text_field :telephone, class: 'modal-form__field modal-form__field--bordered' %>
     </div>
-
-    <%= f.hidden_field :mediation, value: 1 if defined?(mediation) %>
-    <%= f.hidden_field :from_url, value: request.original_url %>
-    <%= f.hidden_field :large_modal, value: 1 %>
-
-    <div class="actions">
-      <%= f.submit "Send", class: "submit-button ga-event modal-form__submit modal-form__submit--action  modal-form__submit--block", data: { event_category: 'Form Submission', event_action: 'Submit', event_label: 'Contact Us' }  %>
+    <div class="field">
+      <%= f.label :email %>
+      <%= f.text_field :email, class: 'modal-form__field modal-form__field--bordered' %>
     </div>
   </div>
-</div>
+
+  <div class="modal-form__split">
+    <div class="modal-form__details">
+      <div class="field field--full">
+        <%= f.label :message %>
+        <%= f.text_area :message,
+                        class: 'modal-form__field
+                                modal-form__field--bordered
+                                modal-form__field--full' %>
+      </div>
+    </div>
+    <div class="modal-form__aside">
+      <div class="field">
+        <%= f.label :preferred_contact_method, class: 'modal-form__label modal-form__label--hidden' %>
+        <%= f.select :preferred_contact_method, Contact::CONTACT_METHODS, { prompt: 'Preferred contact method' }, class: 'modal-form__select modal-form__select--bordered' %>
+      </div>
+      <div class="field">
+        <%= f.label :preferred_office, class: 'modal-form__label modal-form__label--hidden' %>
+        <%= f.select :preferred_office, options_for_select(@navigation_offices.map{|x| x.address_fields }, selected: (@office.address_fields if @office.present?)), { prompt: 'Preferred office' }, class: 'modal-form__select modal-form__select--bordered' %>
+      </div>
+
+      <div class="field">
+        <%= f.label :service, class: 'modal-form__label modal-form__label--hidden' %>
+        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }, selected: (@service.title if @service.present?)), { prompt: 'Preferred service' }, class: 'modal-form__select modal-form__select--bordered' %>
+      </div>
+      <div class="field">
+        <%= f.label :how_heard, 'How did you find us?', class: 'modal-form__label modal-form__label--hidden' %>
+        <%= f.select :how_heard, options_for_select(Contact::HOW_HEARDS), { include_blank: 'How did you find us?' }, class: 'modal-form__select modal-form__select--bordered' %>
+      </div>
+
+      <%= f.hidden_field :mediation, value: 1 if defined?(mediation) %>
+      <%= f.hidden_field :from_url, value: request.original_url %>
+      <%= f.hidden_field :large_modal, value: 1 %>
+
+      <div class="actions">
+        <%= f.submit "Send", class: "submit-button ga-event modal-form__submit modal-form__submit--action  modal-form__submit--block", data: { event_category: 'Form Submission', event_action: 'Submit', event_label: 'Contact Us' }  %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,16 +1,18 @@
 <div class="<%= @side_menus.blank? ? 'content-area' : 'large-content' %>">
   <% if @side_menus.present? %>
-    <aside class="large-content__aside">
-      <div class="large-content-aside-sticky">
-      <%#= @side_menus.last.related_menu_items(@page).first.first.link.menu_resource %>
-      <%#= page_sidebar_menu_items(menu_items: @side_menus.last.related_menu_items(@side_menus.last.related_menu_items(@page).first.first.link.menu_resource)) %>
-      <%#= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
-        <%= render 'pages/shared/navigation',
-                    menu_items: @side_menus.last.root_menu_items(@page),
-                    page: @page,
-                    cached: "page_#{@page.id}" %>
-      </div>
-    </aside>
+    <% cache @side_menus do %>
+      <aside class="large-content__aside">
+        <div class="large-content-aside-sticky">
+        <%#= @side_menus.last.related_menu_items(@page).first.first.link.menu_resource %>
+        <%#= page_sidebar_menu_items(menu_items: @side_menus.last.related_menu_items(@side_menus.last.related_menu_items(@page).first.first.link.menu_resource)) %>
+        <%#= page_sidebar_menu_items(menu_items: @side_menus.last.root_menu_items(@page)) %>
+          <%= render 'pages/shared/navigation',
+                      menu_items: @side_menus.last.root_menu_items(@page),
+                      page: @page,
+                      cached: "page_#{@page.id}" %>
+        </div>
+      </aside>
+    <% end %>
   <% end %>
 
   <main class="large-content__main <%= "large-content__main--full" if @side_menus.blank? %>">
@@ -87,12 +89,14 @@
             </div>
 
             <% if @rich_snippet.present? %>
-              <div class="service-rich-snippets">
-                <%= render(
-                        "rich_snippets/rich_snippet",
-                        rich_snippet: @rich_snippet
-                      ) %>
-              </div>
+              <% cache @rich_snippet do %>
+                <div class="service-rich-snippets">
+                  <%= render(
+                          "rich_snippets/rich_snippet",
+                          rich_snippet: @rich_snippet
+                        ) %>
+                </div>
+              <% end %>
             <% end %>
           </aside>
         </div>
