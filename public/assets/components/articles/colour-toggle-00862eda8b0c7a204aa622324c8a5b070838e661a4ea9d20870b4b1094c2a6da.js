@@ -1,0 +1,1 @@
+$(document).on({mouseenter:function(){var o=$(this).data("service-colour");void 0!==o&&$(this).find(".article-title").css({backgroundColor:o,borderColor:o,color:"#fff"})},mouseleave:function(){$(this).find(".article-title").css({backgroundColor:"",borderColor:"",color:""})}},".article");

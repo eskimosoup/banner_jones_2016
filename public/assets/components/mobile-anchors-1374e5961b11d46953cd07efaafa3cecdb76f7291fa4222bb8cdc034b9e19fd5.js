@@ -1,0 +1,1 @@
+function smoothScrollToPageAnchor(o){var n=$(o).offset().top-offsetHeight;return $(window).scrollTop(n,0),!1}$(window).load(function(){if(Modernizr.mq("only screen and (max-width: 768px)")){offsetHeight=parseInt($(".primary-header").height())+40;var o=window.location.hash;o!==undefined&&1===$(o).length&&smoothScrollToPageAnchor(o)}});

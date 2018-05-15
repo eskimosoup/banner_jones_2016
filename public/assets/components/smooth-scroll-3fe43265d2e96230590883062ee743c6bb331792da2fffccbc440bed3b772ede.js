@@ -1,0 +1,1 @@
+function smoothScroll(o){$root.animate({scrollTop:$(o).offset().top},500,function(){window.location.hash=o})}var $root;$(function(){$root=$("html, body")}),$(document).on("click",".smooth-scroll",function(){var o=$.attr(this,"href");if(-1!=o.indexOf("#")&&(o=o.substr(o.indexOf("#"))),$(o).length)return smoothScroll(o),!1});
