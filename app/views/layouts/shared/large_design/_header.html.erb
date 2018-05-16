@@ -45,10 +45,6 @@
 </div>
 
 <header class="primary-full-header">
-  <ul class="primary-header-aside-navigtaion">
-    <%= nested_menu_items(menu_items: @header_aside_menu.menu_items) %>
-  </ul>
-
   <div class="primary-full-header-branding">
     <div class="primary-full-header-branding__logo">
       <%= link_to root_url do %>
@@ -66,7 +62,7 @@
         <% end %>
       <% end %>
 
-      <%= image_tag 'layout/header/legal-500.jpg', alt: 'Legal 500',
+      <%= image_tag 'layout/header/legal-500.png', alt: 'Legal 500',
                                                     class: 'the-legal-500' if defined?(legal_500) %>
     </div>
 
@@ -86,6 +82,10 @@
         </script>
       <% end %>
 
+      <div class="header-rich-snippets">
+        <div id="dropdown-300" style="width:300px;"></div>
+      </div>
+
       <div class="header-telephone">
         <span class="header-telephone-accent">
           t:
@@ -103,10 +103,6 @@
         <div>
           <%= link_to 'Send an enquiry', new_contact_path, class: 'ga-event', data: { event_category: 'Header', event_action: 'Click', event_label: 'Submit Enquiry CTA Button' } %>
         </div>
-      </div>
-
-      <div class="header-rich-snippets">
-        <div id="dropdown-300" style="width:300px;"></div>
       </div>
     </div>
   </div>

@@ -25,6 +25,7 @@
 
   &__icon {
     margin-right: rem(10px);
+    max-height: 38px;
 
     @include breakpoint(xlarge down) {
       display: block;

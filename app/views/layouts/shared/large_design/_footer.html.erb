@@ -85,11 +85,19 @@
   </p>
 </div>
 
-<%= link_to 'Get in Touch',
+<%= link_to 'Email us',
             '#large-modal-overlay',
-            class: 'large-modal-overlay-toggle large-modal-overlay-toggle--action large-modal-overlay-toggle--click',
+            class: 'large-modal-overlay-toggle large-modal-overlay-toggle--action large-modal-overlay-toggle--email large-modal-overlay-toggle--click',
             data: {
               container: '.large-modal-overlay',
+            } %>
+
+<%= link_to 'Request a callback',
+            '#large-modal-overlay',
+            class: 'large-modal-overlay-toggle large-modal-overlay-toggle--action large-modal-overlay-toggle--callback toggle-class',
+            data: {
+              container: '.remote-callback-request-form-modal',
+              class: 'visible'
             } %>
 
 <%= content_for :javascript do %>
