@@ -1,7 +1,13 @@
 .large-onpage-navigation-element {
+  /*
   @include flex-grid-row;
   margin-bottom: rem(15px);
   margin-top: rem(15px);
+  */
+  @include flex-grid-row(null, rem(1279px));
+  margin-bottom: rem(15px);
+  margin-top: rem(15px);
+  margin-left: 0;
 
   &__aside {
     @include responsive-flex-grid-column((small: 12, large: 3));
@@ -83,6 +89,10 @@
 
       @include breakpoint(medium) {
         @include flex-grid-column(9, (medium: 0))
+      }
+
+      .module-see-all.home-team-members {
+        display: none;
       }
     }
 

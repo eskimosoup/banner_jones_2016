@@ -15,9 +15,9 @@
 .the-legal-500 {
   display: none;
 
-  @include breakpoint(large) {
+  @include breakpoint(xlarge) {
     display: inline-block;
-    margin-left: rem(35px);
+    margin-left: rem(30px);
   }
 }
 
@@ -81,7 +81,7 @@
   font-family: $montserrat;
   font-size: rem(25px);
   line-height: 1.1;
-  margin: rem(47px 50px 0 0);
+  margin: rem(47px 0 0 0);
   order: 2;
   vertical-align: top;
 
@@ -164,7 +164,7 @@
   display: inline-block;
   height: 76px;
 
-  @include breakpoint(medium down) {
+  @include breakpoint(large down) {
     display: none;
   }
 
@@ -204,13 +204,16 @@
   @include breakpoint(medium) {
     background: $white;
     border-bottom: 5px solid $orange;
-    padding-left: rem(37px);
+    padding-left: map-get($grid-column-gutter, medium) / 2;
     padding-right: rem(16px);
   }
 }
 
 .primary-full-header-branding {
-  @include flex-grid-row(null, 100%);
+  @include flex-grid-row(null, null);
+  padding-top: rem(10px);
+  margin-left: 0;
+  max-width: 1600px;
 
   @include breakpoint(small only) {
     background: $white;
@@ -220,11 +223,11 @@
   }
 
   &__logo {
-    @include flex-grid-column(6);
+    @include flex-grid-column(4, (large: 0));
   }
 
   &__contact {
-    @include flex-grid-column(6);
+    @include flex-grid-column(8);
     text-align: right;
 
     @include breakpoint(small only) {
@@ -232,8 +235,15 @@
     }
   }
 
-  .header-telephone,
+  .header-telephone {
+    margin-top: rem(10px);
+  }
+
   .header-rich-snippets {
     margin-top: 0;
+
+    @include breakpoint(1920px) {
+      margin-right: rem(76px);
+    }
   }
 }

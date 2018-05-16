@@ -175,11 +175,7 @@
     }
 
     @include media('>770px', '<1200px') {
-      @include flex-grid-column(9);
-    }
-
-    @include media('>1200px') {
-      @include flex-grid-column(8);
+      @include flex-grid-column(10);
     }
   }
 
@@ -200,10 +196,6 @@
     }
 
     @include breakpoint(medium) {
-      @include flex-grid-column(3);
-    }
-
-    @include breakpoint(large) {
       @include flex-grid-column(2);
     }
   }
@@ -346,12 +338,12 @@
       padding: rem(10px 10px);
     }
 
-    @include breakpoint(medium only) {
+    @include breakpoint(large down) {
       font-size: rem(15px);
       padding: rem(10px 5px);
     }
 
-    @include breakpoint(large) {
+    @include breakpoint(1400px) {
       font-size: rem(18px);
     }
 
@@ -379,10 +371,9 @@
     background-image: image-url('components/icons/search.png');
     background-position: right 20px center;
     background-repeat: no-repeat;
-    border: 2px solid $lighter-grey;
-    border-radius: 10px;
+    border: 2px solid $orange;
     font-size: rem(14px);
     margin-bottom: rem(5px);
-    padding-right: rem(45px);
+    padding: rem(6px 45px 6px 6px);
   }
 }

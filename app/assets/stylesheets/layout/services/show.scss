@@ -100,6 +100,7 @@
 
   &__aside {
     background: $white;
+    padding-top: rem(19px);
 
     @include breakpoint(small only) {
       @include flex-grid-column(12);
@@ -123,10 +124,6 @@
       @include flex-grid-column(10);
     }
 
-    @include breakpoint(large only) {
-      padding-top: rem(85px);
-    }
-
     &--no-padding {
       @include breakpoint(medium) {
         @include flex-grid-column(10, (medium: 0));
@@ -140,8 +137,9 @@
 }
 
 .large-content-element {
-  @include flex-grid-row;
+  @include flex-grid-row(null, rem(1279px));
   margin-top: rem(15px);
+  margin-left: 0;
 
   &__section {
     @include flex-grid-column(12, (small: map-get($grid-column-gutter, small), large: 40));
@@ -250,7 +248,7 @@
     }
 
     @include breakpoint(xxlarge) {
-      @include flex-grid-column(3);
+      @include flex-grid-column(3, (xxlarge: 0));
     }
   }
 
@@ -287,7 +285,7 @@
 
   &__phone {
     font-family: $roboto;
-    font-size: rem(33px);
+    font-size: rem(31px);
     font-weight: $roboto--bold;
   }
 

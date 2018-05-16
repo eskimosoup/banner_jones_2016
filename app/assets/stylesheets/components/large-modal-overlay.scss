@@ -6,13 +6,30 @@
   border: none;
   bottom: 0;
   color: $black;
+  font-size: rem(20px);
   padding-right: rem(60px);
   position: fixed;
   right: 20px;
   z-index: 10;
 
   &--action {
-    background-image: image-url('components/icons/modal/button-arrow.png');
+    background-image: image-url('components/icons/sticky-callback.png');
+  }
+
+  &--email {
+    background-color: $red;
+    background-image: image-url('components/icons/sticky-email.png');
+    color: $white;
+
+    @include breakpoint(large) {
+      right: 280px;
+    }
+  }
+
+  &--callback {
+    @include breakpoint(medium down) {
+      display: none;
+    }
   }
 
   &:hover {
@@ -162,13 +179,13 @@
   color: $white;
 
   &:link {
-    color: $white;    
+    color: $white;
     }
     &:visited {
     color: $white;
     }
     &:hover {
-      color: $white;    
+      color: $white;
       }
       &:active {
       color: $white;

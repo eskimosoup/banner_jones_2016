@@ -19,8 +19,14 @@
 }
 
 .large-onpage-resources {
+  /*
   @include flex-grid-row;
   margin-top: rem(15px);
+  */
+  @include flex-grid-row(null, rem(1279px));
+  margin-bottom: rem(15px);
+  margin-top: rem(15px);
+  margin-left: 0;
 
   @include breakpoint(large) {
     padding: rem(40px 80px 20px);
