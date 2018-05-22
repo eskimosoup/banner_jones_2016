@@ -1,29 +1,20 @@
 <%= javascript_include_tag 'application' %>
 
-<script>
-$(document).ready(function() {
-  $('head').prepend('<link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />');
-  $('head').prepend('<link rel="stylesheet" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.css" />');
-});
-</script>
-
 <%= javascript_include_tag 'vendor/slick.js' %>
-<%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js' %>
 
 <%= yield :javascript %>
 
 <%#= image_tag 'https://servedby.ipromote.com/ad/?src=pixel_cid&cid=VTSTDHE9QG8&cat=2800&nid=1447', width: 1, height: 1, border: 0, alt: '' %>
 
-<% if @payment.blank? %>
-  <script type="text/javascript">
-  window._mfq = window._mfq || [];
-  (function() {
-  var mf = document.createElement("script");
-  mf.type = "text/javascript"; mf.async = true;
-  mf.src = "//cdn.mouseflow.com/projects/ac26b77b-0545-43d8-b975-da2027f416cb.js";
-  document.getElementsByTagName("head")[0].appendChild(mf);
-  })();
-  </script>
-<% end %>
-
 <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="76e0a9bd-e962-41fd-9e52-f23b397a4e1a" type="text/javascript" async></script>
+
+<img width="1" height="1" border="0" alt="" data-src="https://servedby.ipromote.com/ad/?src=pixel_cid&cid=VTSTDHE9QG8&cat=2800&nid=1447" id="ipromote" />
+
+<script>
+function CookiebotCallback_OnAccept() {
+  if (Cookiebot.consent.marketing) {
+    $('#ipromote').attr('src', $('#ipromote').data('src'));
+  }
+}
+</script>
+
