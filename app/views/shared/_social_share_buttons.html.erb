@@ -1,12 +1,12 @@
 <%= content_for :head do %>
   <!-- Place this tag in your head or just before your close body tag. -->
-  <script src="https://apis.google.com/js/platform.js" async defer>
+  <script src="https://apis.google.com/js/platform.js" async defer type="text/plain" data-cookieconsent="marketing">
     {lang: 'en-GB'}
   </script>
 <% end %>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script type="text/plain" data-cookieconsent="marketing">(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
@@ -21,12 +21,12 @@
 
   <div class="social-media">
     <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script type="text/plain" data-cookieconsent="marketing">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
   </div>
 
   <div class="social-media">
-    <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-    <script type="IN/Share" data-counter="right"></script>
+    <script src="//platform.linkedin.com/in.js" type="text/plain" data-cookieconsent="marketing"> lang: en_US</script>
+    <script type="IN/Share" data-counter="right" type="text/plain" data-cookieconsent="marketing"></script>
   </div>
 
   <div class="social-media">
