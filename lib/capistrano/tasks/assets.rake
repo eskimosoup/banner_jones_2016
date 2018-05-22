@@ -26,7 +26,7 @@ namespace :deploy do
       end
 
       # rsync to each server
-      dirs = ['./public/assets/']
+      dirs = ['./public/assets/', './public/packs/']
       on roles(fetch(:assets_roles, [:web])), in: :parallel do
         # this needs to be done outside run_locally in order for host to exist
         path = "#{host.user}@#{host.hostname}:#{release_path}"

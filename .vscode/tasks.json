@@ -2,6 +2,14 @@
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
   "version": "2.0.0",
+  /*
+  "options": {
+    "env": {
+      // ${VAR}
+      "VAR": "`git branch`"
+    }
+  },
+  */
   "tasks": [
     // For Windows, requires Git bash to be configured along with local SSH keys
     {
@@ -82,6 +90,44 @@
       "presentation": {
         "reveal": "always",
         "panel": "dedicated"
+      }
+    },
+    {
+      "label": "GitHub - open repo",
+      "type": "shell",
+      "command": "chrome.exe",
+      "windows": {
+        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "osx": {
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      },
+      "args": [
+        "https://github.com/${config:github.username}/${workspaceFolderBasename}"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
+    },
+    {
+      "label": "GitHub - master pull request",
+      "type": "shell",
+      "command": "chrome.exe",
+      "windows": {
+        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "osx": {
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      },
+      "args": [
+        "https://github.com/${config:github.username}/${workspaceFolderBasename}/pull/new/master"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
       }
     },
     {
