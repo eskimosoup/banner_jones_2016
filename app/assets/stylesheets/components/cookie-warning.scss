@@ -35,17 +35,15 @@
   }
 
   &__button {
-    @include breakpoint(small only) {
-      border-bottom: 1px solid $black;
-      color: $black;
-      display: block;
-      padding: rem(10px 0 5px);
+    border-bottom: 1px solid $black;
+    color: $black;
+    display: inline-block;
+    padding: rem(10px 0 5px);
 
-      &:hover,
-      &:focus,
-      &:active {
-        color: $black;
-      }
+    &:hover,
+    &:focus,
+    &:active {
+      color: $black;
     }
   }
 }
