@@ -1,11 +1,24 @@
 <%= content_for :javascript do %>
   <script>
     const cookieName = 'bannerjones-cookies-allowed';
-    $(document).ready(function() {
+
+    $(window).load(function() {
       if(Cookies.get(cookieName) == undefined) {
         $('.cookie-warning').slideDown();
+      } else {
+        console.log('Cookies enabled');
+        $('[data-script-type="Marketing"]').removeAttr('type');
+        $('[data-script-type="Statistics"]').removeAttr('type');
       }
     });
+
+    $(document).on('click', '.cookie-warning__button', function() {
+      $('.cookie-warning').slideUp();
+      $('[data-script-type="Marketing"]').removeAttr('type');
+      $('[data-script-type="Statistics"]').removeAttr('type');
+      Cookies.set(cookieName, '1', { expires: 365, secure: true });
+    });
+
     $(document).on('click', '.cookie-warning__button', function() {
       Cookies.set(cookieName, '1', { expires: 365, secure: true });
       $('.cookie-warning').slideUp();
