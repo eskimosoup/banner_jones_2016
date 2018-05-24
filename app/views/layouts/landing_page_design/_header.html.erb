@@ -1,54 +1,8 @@
-<%= content_for :javascript do %>
-  <script>
-    const cookieName = 'bannerjones-cookies-allowed';
-
-    $(window).load(function() {
-      if(Cookies.get(cookieName) == undefined) {
-        $('.cookie-warning').slideDown();
-      } else {
-        console.log('Cookies enabled');
-        $('[data-script-type="Marketing"]').removeAttr('type');
-      }
-    });
-
-    $(document).on('click', '.cookie-warning__button', function() {
-      $('.cookie-warning').slideUp();
-      $('[data-script-type="Marketing"]').removeAttr('type');
-      Cookies.set(cookieName, '1', { expires: 365, secure: true });
-    });
-
-
-    $(document).on('click', '[data-container=".remote-callback-request-form-modal"]', function() {
-      $('.large-modal-overlay-navigation__link--callback').click();
-    });
-
-    $(document).on('click', '[data-container=".remote-contact-form-modal"]', function() {
-      $('.large-modal-overlay-navigation__link--email').click();
-    });
-  </script>
-<% end %>
 
 <div class="sticky-sidebar hide">
 
 </div>
 
-<div class="cookie-warning">
-  <div class="cookie-warning__content">
-    <p>
-      Your continued usage of this website means you consent to it storing,
-      setting and using cookies and other tracking codes.
-      For more information, please read the
-      <%= link_to 'privacy policy', '/pages/privacy-policy' %> and
-      <%= link_to 'cookie policy', '/pages/cookie-policy' %>.
-    </p>
-
-    <p>
-      <%= link_to 'I understand, please close this message',
-                  '#header',
-                  class: 'cookie-warning__button' %>
-    </p>
-  </div>
-</div>
 
 <header class="primary-full-header">
   <ul class="primary-header-aside-navigtaion">
