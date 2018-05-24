@@ -16,7 +16,7 @@ $(document).ready(function() {
 <%#= image_tag 'https://servedby.ipromote.com/ad/?src=pixel_cid&cid=VTSTDHE9QG8&cat=2800&nid=1447', width: 1, height: 1, border: 0, alt: '' %>
 
 <% if @payment.blank? %>
-  <script type="text/javascript">
+  <script type="text/plain" data-cookie-type="marketing">
   window._mfq = window._mfq || [];
   (function() {
   var mf = document.createElement("script");

@@ -80,7 +80,7 @@ gem 'geocoder'
 gem 'therubyracer', platforms: :ruby
 gem 'twitter'
 gem 'conveyancing_calculator', github: 'eskimosoup/conveyancing_calculator'
-# gem 'conveyancing_calculator', path: '../conveyancing_calculator'
+gem 'cookie_consent', git: 'git@github.com:eskimosoup/cookie_consent.git', branch: :master
 gem 'stamp_duty', git: 'git@github.com:eskimosoup/stamp_duty.git', branch: 'master'
 gem 'simple_form', '~> 3.2.1'
 gem 'pdfkit', '~> 0.8.2'
