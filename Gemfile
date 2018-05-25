@@ -96,3 +96,5 @@ gem 'inky-rb', require: 'inky'
 gem 'premailer-rails'
 gem 'tinymce-rails', '4.6.7'
 gem 'bootsnap'
+gem 'cookie_consent', git: 'git@github.com:eskimosoup/cookie_consent.git', branch: :master
+
