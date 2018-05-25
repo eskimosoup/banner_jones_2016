@@ -1,17 +1,5 @@
 <%= content_for :javascript do %>
   <script>
-    const cookieName = 'bannerjones-cookies-allowed';
-    $(document).ready(function() {
-      if(Cookies.get(cookieName) == undefined) {
-        $('.cookie-warning').show();
-      }
-    });
-    $(document).on('click', '.cookie-warning__button', function() {
-      Cookies.set(cookieName, '1', { expires: 365, secure: true });
-      $('.cookie-warning').hide();
-    });
-
-
     $(document).on('click', '[data-container=".remote-callback-request-form-modal"]', function() {
       $('.large-modal-overlay-navigation__link--callback').click();
     });
@@ -26,23 +14,7 @@
 
 </div>
 
-<div class="cookie-warning">
-  <div class="cookie-warning__content">
-    <p>
-      Your continued usage of this website means you consent to it storing,
-      setting and using cookies and other tracking codes.
-      For more information, please read the
-      <%= link_to 'privacy policy', '/pages/privacy-policy' %> and
-      <%= link_to 'cookie policy', '/pages/cookie-policy' %>.
-    </p>
-
-    <p>
-      <%= link_to 'I understand, please close this message',
-                  '#header',
-                  class: 'cookie-warning__button' %>
-    </p>
-  </div>
-</div>
+<%= render 'cookie_consent/message' %>
 
 <header class="primary-full-header">
   <div class="primary-full-header-branding">

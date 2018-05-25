@@ -27,8 +27,8 @@
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
 //= require vendor/jquery.unveil
-//= require vendor/js-cookie
 //= require vendor/stickyfill.min
+//= require cookie-consent/consent
 //= require cocoon
 
 $(document).ready(function() {
