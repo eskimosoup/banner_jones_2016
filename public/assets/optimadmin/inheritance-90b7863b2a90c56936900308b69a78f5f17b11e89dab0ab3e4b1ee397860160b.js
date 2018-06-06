@@ -1,1 +1,0 @@
-function checkInheritance(){""!==$(".inheritance-select").val()?$(".relationships").hide():$(".relationships").show()}$(window).load(function(){checkInheritance()}),$(document).on("change",".inheritance-select",function(){checkInheritance()});

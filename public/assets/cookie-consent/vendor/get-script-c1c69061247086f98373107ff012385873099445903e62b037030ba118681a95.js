@@ -1,1 +1,0 @@
-function getScript(e,t){var n=document.createElement("script"),a=document.getElementsByTagName("script")[0];n.async=1,n.onload=n.onreadystatechange=function(e,a){(a||!n.readyState||/loaded|complete/.test(n.readyState))&&(n.onload=n.onreadystatechange=null,n=undefined,a||t&&t())},n.src=e,a.parentNode.insertBefore(n,a)}

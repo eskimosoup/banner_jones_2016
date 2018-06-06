@@ -1,1 +1,0 @@
-window.tinymce=window.tinymce||{base:"http://bannerjones.ludo5.co.uk/assets/tinymce",suffix:""},"undefined"!=typeof Turbolinks&&Turbolinks.supported&&document.addEventListener("turbolinks:before-render",function(){tinymce.remove()});

@@ -1,1 +1,0 @@
-$(document).ready(function(){$(".testimonials-slick, .service-testimonials").slick({arrows:!1,dots:!0,autoplay:!0,autoplaySpeed:6e3})});

@@ -1,1 +1,0 @@
-$(document).on({mouseenter:function(){$(this).find(".helpful-guide-content").slideToggle()},mouseleave:function(){$(this).find(".helpful-guide-content").slideToggle()}},".helpful-guide-hover");
