@@ -1,0 +1,1 @@
+if(forEach===undefined)var forEach=function(f,a,n){for(var r=0;r<f.length;r++)a.call(n,r,f[r])};

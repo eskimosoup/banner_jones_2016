@@ -1,12 +1,13 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 58a9be1f67e148e3b6c42490fec7af18c1db8525
+  revision: 36e01a80aaf1d76587f5562df88e68f00f89600f
   branch: master
   specs:
-    optimadmin (0.9.8)
+    optimadmin (0.9.9)
       bcrypt
       cancancan
       carrierwave
+      carrierwave-imageoptimizer
       closure_tree
       fastimage
       google-api-client (= 0.8.6)
@@ -162,6 +163,9 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    carrierwave-imageoptimizer (1.4.0)
+      carrierwave (>= 0.8, < 2.0)
+      image_optimizer (~> 1.6)
     childprocess (0.9.0)
       ffi (~> 1.0, >= 1.0.11)
     closure_tree (6.6.0)
@@ -189,11 +193,11 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
-    faraday (0.15.1)
+    faraday (0.15.2)
       multipart-post (>= 1.2, < 3)
     fast_stack (0.2.0)
     fastimage (2.1.3)
-    ffi (1.9.23)
+    ffi (1.9.25)
     flamegraph (0.1.0)
       fast_stack
     flipflop (2.4.0)
@@ -254,6 +258,7 @@ GEM
     http_parser.rb (0.6.0)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
+    image_optimizer (1.7.2)
     inky-rb (1.3.7.2)
       foundation_emails (~> 2)
       nokogiri
