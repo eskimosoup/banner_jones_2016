@@ -27,6 +27,7 @@ namespace :deploy do
         execute "RAILS_ENV=#{fetch(:stage)} bundle exec rake assets:precompile"
 
         dirs.each do |directory|
+          next unless File.directory?(directory)
           execute "find #{directory} -type f -name '*.jpg' -exec jpegoptim -m70 --strip-all --all-progressive --force {} \\;"
           execute "find #{directory} -type f -name '*.JPG' -exec jpegoptim -m70 --strip-all --all-progressive --force {} \\;"
           execute "find #{directory} -type f -name '*.png' -exec optipng -quiet -strip all -o7 {} \\;"
