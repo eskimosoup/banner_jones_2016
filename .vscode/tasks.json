@@ -129,6 +129,25 @@
         "reveal": "never",
         "panel": "shared"
       }
+    },    
+    {
+      "label": "Project - open Chrome",
+      "type": "shell",
+      "command": "chrome.exe",
+      "windows": {
+        "command": "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "osx": {
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+      },
+      "args": [
+        "https://localhost.ssl:3000"
+      ],
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "never",
+        "panel": "shared"
+      }
     },
     {
       "label": "configure",

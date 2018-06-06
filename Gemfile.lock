@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 4fdb43a4e36ebcfe0614976cf7ad2ccb909db9c6
+  revision: 58a9be1f67e148e3b6c42490fec7af18c1db8525
   branch: master
   specs:
-    optimadmin (0.9.4.1)
+    optimadmin (0.9.8)
       bcrypt
       cancancan
       carrierwave
@@ -20,17 +20,17 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
-  revision: 5e87e9aeea168bb1eee2a1c0315fefdb5cc09e87
+  revision: 2ffdd2777d4fccebaef3a0808698e08e00e2495d
   branch: master
   specs:
-    cookie_consent (0.1.0)
+    cookie_consent (0.1.0.1)
       rails (>= 4.0.0)
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: d4216c16a39cc78f89447f25f6a7e5e6af315303
+  revision: bd9977a8731863ccd6f37120f3de8b9106227d93
   specs:
-    optimadmin_generators (0.8.3)
+    optimadmin_generators (0.8.6.3)
 
 GIT
   remote: git@github.com:eskimosoup/optimised_site.git
@@ -555,4 +555,4 @@ DEPENDENCIES
   web-console (~> 3.0)
 
 BUNDLED WITH
-   1.16.1
+   1.16.2

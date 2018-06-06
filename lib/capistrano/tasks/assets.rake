@@ -19,21 +19,29 @@ namespace :deploy do
   namespace :assets do
     desc 'Precompile assets locally and then rsync to web servers'
     task :precompile_local do
+      dirs = ['./public/assets/', './public/packs/']
+
       # compile assets locally
       run_locally do
         # execute 'RAILS_ENV=production bundle exec rake assets:precompile'
         execute "RAILS_ENV=#{fetch(:stage)} bundle exec rake assets:precompile"
+
+        dirs.each do |directory|
+          execute "find #{directory} -type f -name '*.jpg' -exec jpegoptim -m70 --strip-all --all-progressive --force {} \\;"
+          execute "find #{directory} -type f -name '*.JPG' -exec jpegoptim -m70 --strip-all --all-progressive --force {} \\;"
+          execute "find #{directory} -type f -name '*.png' -exec optipng -quiet -strip all -o7 {} \\;"
+          execute "find #{directory} -type f -name '*.PNG' -exec optipng -quiet -strip all -o7 {} \\;"
+        end
       end
 
       # rsync to each server
-      dirs = ['./public/assets/']
       on roles(fetch(:assets_roles, [:web])), in: :parallel do
         # this needs to be done outside run_locally in order for host to exist
         path = "#{host.user}@#{host.hostname}:#{release_path}"
         dirs.each do |directory|
           run_locally do
             execute :rsync,
-                    "-a --progress --delete #{directory} #{path}#{directory[1..-1]}"
+                    "-a --delete #{directory} #{path}#{directory[1..-1]}"
           end
         end
       end
