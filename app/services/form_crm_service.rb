@@ -8,17 +8,21 @@ class FormCrmService
   end
 
   def call
-    raise CdVisitorKeyMissing, 'Visitor key missing' if object.cd_visitorkey.blank? && !Rails.env.development?
+    check_visitor_key
     Post.new(map_postable_fields.merge(map_combined_fields), referer).call
-  rescue CdVisitorKeyMissing => e
-    CustomLogger
-      .new('click_dimensions')
-      .fatal([Time.zone.now, '-', e.message].join(' '))
   end
 
   private
 
   attr_reader :object, :referer, :visitor_key
+
+  def check_visitor_key
+    raise CdVisitorKeyMissing, 'Visitor key missing' if visitor_key.blank?
+  rescue CdVisitorKeyMissing => e
+    CustomLogger
+      .new('click_dimensions')
+      .fatal([Time.zone.now, '-', e.message].join(' '))
+  end
 
   def map_postable_fields
     {
@@ -28,6 +32,7 @@ class FormCrmService
       'contact[surname]' => object.try(:surname),
       'contact[preferred_contact_method]' => object.try(:preferred_contact_method),
       'contact[how_heard]' => object.try(:how_heard),
+      'contact[subject]' => object.class.name.humanize,
       'cd_visitorkey' => visitor_key
     }
   end
