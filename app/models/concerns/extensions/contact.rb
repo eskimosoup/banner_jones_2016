@@ -6,7 +6,8 @@ module Extensions
       attr_accessor :forename, :surname, :telephone, :email,
                     :preferred_contact_method, :mediation,
                     :preferred_office, :service, :enquiry_type, :message,
-                    :how_heard, :wealth_management, :from_url, :large_modal
+                    :how_heard, :wealth_management, :from_url, :large_modal,
+                    :cd_visitorkey
 
       validates :forename, :surname,
                 :preferred_contact_method,

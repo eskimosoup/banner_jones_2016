@@ -24,6 +24,7 @@
 //= require components/ga-events
 //= require components/smooth-scroll
 //= require components/forms
+//= require components/click-dimensions-cookie
 //= require vendor/modernizr
 //= require vendor/doubletaptogo
 //= require vendor/jquery.unveil
