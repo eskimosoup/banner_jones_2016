@@ -129,7 +129,7 @@
         "reveal": "never",
         "panel": "shared"
       }
-    },    
+    },
     {
       "label": "Project - open Chrome",
       "type": "shell",

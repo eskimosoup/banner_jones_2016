@@ -19,6 +19,7 @@ namespace :deploy do
   namespace :assets do
     desc 'Precompile assets locally and then rsync to web servers'
     task :precompile_local do
+      # rsync to each server
       dirs = ['./public/assets/', './public/packs/']
 
       # compile assets locally
@@ -26,20 +27,27 @@ namespace :deploy do
         # execute 'RAILS_ENV=production bundle exec rake assets:precompile'
         execute "RAILS_ENV=#{fetch(:stage)} bundle exec rake assets:precompile"
 
+        jpegoptim = system('which jpegoptim')
+        optipng = system('which optipng')
+
         dirs.each do |directory|
           next unless File.directory?(directory)
-          execute "find #{directory} -type f -name '*.jpg' -exec jpegoptim -m70 --strip-all --all-progressive --force {} \\;"
-          execute "find #{directory} -type f -name '*.JPG' -exec jpegoptim -m70 --strip-all --all-progressive --force {} \\;"
-          execute "find #{directory} -type f -name '*.png' -exec optipng -quiet -strip all -o7 {} \\;"
-          execute "find #{directory} -type f -name '*.PNG' -exec optipng -quiet -strip all -o7 {} \\;"
+          if jpegoptim
+            execute "find #{directory} -type f -name '*.jpg' -exec jpegoptim -m70 --strip-all --all-progressive --force {} \\;"
+            execute "find #{directory} -type f -name '*.JPG' -exec jpegoptim -m70 --strip-all --all-progressive --force {} \\;"
+          end
+          if optipng
+            execute "find #{directory} -type f -name '*.png' -exec optipng -quiet -strip all -o7 {} \\;"
+            execute "find #{directory} -type f -name '*.PNG' -exec optipng -quiet -strip all -o7 {} \\;"
+          end
         end
       end
 
-      # rsync to each server
       on roles(fetch(:assets_roles, [:web])), in: :parallel do
         # this needs to be done outside run_locally in order for host to exist
         path = "#{host.user}@#{host.hostname}:#{release_path}"
         dirs.each do |directory|
+          next unless File.directory?(directory)
           run_locally do
             execute :rsync,
                     "-a --delete #{directory} #{path}#{directory[1..-1]}"
@@ -50,6 +58,7 @@ namespace :deploy do
       # clean up
       run_locally do
         dirs.each do |local|
+          next unless File.directory?(local)
           execute :rm,
                   "-rf #{local}"
         end
