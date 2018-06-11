@@ -7,9 +7,8 @@ class FormCrmService
   end
 
   def call
-    raise CdVisitorKeyMissing, 'Visitor key missing' if object.cd_visitorkey.blank?
+    raise CdVisitorKeyMissing, 'Visitor key missing' if object.cd_visitorkey.blank? && !Rails.env.development?
     Post.new(map_postable_fields.merge(map_combined_fields), referer).call
-    raise combined_fields.map { |x| [x.humanize.titleize, "#{object.public_send(x)}\n"] }.join("\n").to_yaml
   rescue CdVisitorKeyMissing => e
     CustomLogger
       .new('click_dimensions')
@@ -54,7 +53,7 @@ class FormCrmService
 
   class Post
     URL = 'http://analytics-eu.clickdimensions.com/forms/h/aPbb09lIdt0mVE5hnWx0QA'
-    #URL = 'http://192.168.0.26:3000'
+    # URL = 'http://192.168.0.26:3000'
 
     def initialize(hash, referer)
       @hash = hash
@@ -84,12 +83,15 @@ class FormCrmService
       case res
       when Net::HTTPSuccess, Net::HTTPRedirection
         CustomLogger
-            .new('click_dimensions')
-            .fatal(res.value)
+          .new('click_dimensions')
+          .fatal(res.value)
+        CustomLogger
+          .new('click_dimensions')
+          .fatal(res.to_yaml)
       else
-        #CustomLogger
-        #  .new('click_dimensions')
-        #  .fatal([Time.zone.now, '-', e.message].join(' '))
+        CustomLogger
+          .new('click_dimensions')
+          .fatal(res.to_yaml)
       end
     end
 
