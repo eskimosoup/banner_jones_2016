@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   before_action :page_load_speed, :global_site_settings, :load_global_objects, :set_seo_variables
 
   include Optimadmin::AdminSessionsHelper
+  include FormCrmSubmission
 
   helper_method :current_administrator
 
