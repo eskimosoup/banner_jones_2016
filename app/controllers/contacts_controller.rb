@@ -22,7 +22,7 @@ class ContactsController < ApplicationController
   def process_contact_request(contact)
     if contact.valid?
       record_form_submission(contact)
-      #ContactMailer.new_contact(@contact).deliver_now
+      ContactMailer.new_contact(@contact).deliver_now
       subscribe_to_mailchimp(contact)
     end
     respond_to do |format|
