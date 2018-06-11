@@ -25,7 +25,7 @@ var clickDimensions = (function () {
   }
 
   self.init = function() {
-    var cookieValue = getCookie('cookies-allowed');
+    var cookieValue = getCookie('cuvid');
     if (cookieValue != '') {
       setValue(cookieValue);
     }
