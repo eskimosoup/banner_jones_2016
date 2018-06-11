@@ -21,7 +21,7 @@ class ContactsController < ApplicationController
 
   def process_contact_request(contact)
     if contact.valid?
-      FormCrmService.new(contact, [request.protocol, request.host].join).call
+      FormCrmService.new(contact, [request.protocol, request.host].join, cookies[:cuvid]).call
       #ContactMailer.new_contact(@contact).deliver_now
       subscribe_to_mailchimp(contact)
     end
@@ -56,7 +56,7 @@ class ContactsController < ApplicationController
                   :preferred_contact_method, :preferred_office,
                   :how_heard, :from_url, :mediation,
                   :service, :enquiry_type, :message, :wealth_management,
-                  :large_modal, :cd_visitorkey)
+                  :large_modal)
   end
 
   def load_modules

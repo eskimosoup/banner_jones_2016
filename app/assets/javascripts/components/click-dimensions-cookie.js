@@ -1,3 +1,4 @@
+/*
 var clickDimensions = (function () {
   var self = {};
 
@@ -38,3 +39,4 @@ document.addEventListener('DOMContentLoaded',
   clickDimensions.init,
   false
 );
+*/
