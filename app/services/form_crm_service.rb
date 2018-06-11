@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class FormCrmService
-  def initialize(object, referer)
+  def initialize(object, referer, visitor_key)
     @object = object
     @referer = referer
+    @visitor_key = visitor_key
   end
 
   def call
@@ -17,7 +18,7 @@ class FormCrmService
 
   private
 
-  attr_reader :object, :referer
+  attr_reader :object, :referer, :visitor_key
 
   def map_postable_fields
     {
@@ -27,8 +28,7 @@ class FormCrmService
       'contact[surname]' => object.try(:surname),
       'contact[preferred_contact_method]' => object.try(:preferred_contact_method),
       'contact[how_heard]' => object.try(:how_heard),
-      # 'cd_visitorkey' => object.cd_visitorkey
-      'cd_visitorkey' => 'cb50b25721f941a1ac838172d1504c31'
+      'cd_visitorkey' => visitor_key
     }
   end
 
@@ -76,7 +76,11 @@ class FormCrmService
       req = Net::HTTP::Post.new(uri, headers)
       req.set_form_data(hash)
 
-      res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+      CustomLogger
+        .new('click_dimensions')
+        .fatal(req.to_yaml)
+
+      res = Net::HTTP.start(uri.host, uri.port) do |http|
         http.request(req)
       end
 
