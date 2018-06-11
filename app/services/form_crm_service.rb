@@ -13,7 +13,7 @@ class FormCrmService
   rescue CdVisitorKeyMissing => e
     CustomLogger
       .new('click_dimensions')
-      .fatal([Time.zone.now, '-', e.message].join(' '))
+      .fatal(e.message)
   end
 
   private
@@ -32,21 +32,25 @@ class FormCrmService
       'contact[surname]' => object.try(:surname),
       'contact[preferred_contact_method]' => object.try(:preferred_contact_method),
       'contact[how_heard]' => object.try(:how_heard),
-      'contact[subject]' => object.class.model_name.human.titleize,
       'cd_visitorkey' => visitor_key
     }
   end
 
   def map_combined_fields
     {
-      'contact[message]' => combined_fields
-        .map { |x| [x.humanize, [object.public_send(x), "\n"].join] }
-        .join("\n")
+      'contact[message]' => [form_subject,
+                             combined_fields
+                               .map { |x| [x.humanize, [object.public_send(x), "\n"].join] }
+                               .join("\n")].join
     }
   end
 
+  def form_subject
+    "Subject\n#{[object.class.model_name.human.titleize, 'submission'].join(' ')}\n"
+  end
+
   def excluded_keys
-    %w[errors validation_context]
+    %w[errors validation_context cd_visitorkey]
   end
 
   def combined_fields
@@ -81,22 +85,21 @@ class FormCrmService
       req = Net::HTTP::Post.new(uri, headers)
       req.set_form_data(hash)
 
-      CustomLogger
-        .new('click_dimensions')
-        .fatal(req.to_yaml)
-
       res = Net::HTTP.start(uri.host, uri.port) do |http|
         http.request(req)
       end
 
+      post_callback(res)
+    end
+
+    def post_callback(res)
       case res
       when Net::HTTPSuccess, Net::HTTPRedirection
-        CustomLogger
-          .new('click_dimensions')
-          .fatal(res.value)
-        CustomLogger
-          .new('click_dimensions')
-          .fatal(res.to_yaml)
+        if res.header.location.include?('form-success')
+          CustomLogger.new('click_dimensions').info('Successful submission')
+        else
+          CustomLogger.new('click_dimensions').fatal(res.to_yaml)
+        end
       else
         CustomLogger
           .new('click_dimensions')
@@ -123,12 +126,12 @@ class FormCrmService
     # debug, info, warn, error, fatal
     def fatal(message = nil)
       return if message.blank?
-      custom_logger.fatal(message)
+      custom_logger.fatal([Time.zone.now, message].join(' '))
     end
 
     def info(message = nil)
       return if message.blank?
-      custom_logger.info(message)
+      custom_logger.info([Time.zone.now, message].join(' '))
     end
 
     def custom_logger
