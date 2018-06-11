@@ -94,12 +94,15 @@ class FormCrmService
     end
 
     def post_callback(exception)
-      if exception.header.to_hash.include?('location') &&
-         exception.header.location.include?('form-success')
+      header = exception.header.to_hash
+      if header.include?('location') &&
+         header['location'].include?('form-success')
         CustomLogger.info('Successful submission')
       else
         CustomLogger.fatal(exception.to_yaml)
       end
+    rescue => e
+      CustomLogger.fatal(e)
     end
 
     def headers
