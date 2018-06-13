@@ -91,6 +91,8 @@ class FormCrmService
     rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
            Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
       CustomLogger.fatal(e.to_yaml)
+    rescue => e
+      CustomLogger.fatal(e)
     end
 
     def post_request
