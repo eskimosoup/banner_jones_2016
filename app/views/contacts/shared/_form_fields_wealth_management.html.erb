@@ -40,7 +40,7 @@
     <% if Flipflop.services? %>
       <div class="field">
         <%= f.label :service %>
-        <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }), prompt: 'Please select' %>
+        <%= f.select :service, grouped_options_for_select(@form_audiences), prompt: 'Please select' %>
       </div>
     <% end %>
   </div>

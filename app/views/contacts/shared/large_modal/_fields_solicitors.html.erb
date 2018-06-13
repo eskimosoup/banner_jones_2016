@@ -39,7 +39,7 @@
 
     <div class="field">
       <%= f.label :service, class: 'modal-form__label modal-form__label--hidden' %>
-      <%= f.select :service, grouped_options_for_select(Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }, selected: (@service.title if @service.present?)), { prompt: 'Preferred service' }, class: 'modal-form__select modal-form__select--bordered' %>
+      <%= f.select :service, grouped_options_for_select(@form_audiences, selected: (@service.title if @service.present?)), { prompt: 'Preferred service' }, class: 'modal-form__select modal-form__select--bordered' %>
     </div>
     <div class="field">
       <%= f.label :how_heard, 'How did you find us?', class: 'modal-form__label modal-form__label--hidden' %>
