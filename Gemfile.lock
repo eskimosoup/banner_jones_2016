@@ -1,9 +1,9 @@
 GIT
   remote: git@github.com:eskimosoup/Optimadmin.git
-  revision: 87cb7db93e6a7012931e3673eb9275116768354b
+  revision: f7f9c5ff6ad745822b7c295f751f4ad2496c9c02
   branch: master
   specs:
-    optimadmin (0.9.9.6)
+    optimadmin (0.9.9.15)
       bcrypt
       cancancan
       carrierwave
@@ -29,26 +29,9 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/optimadmin_generators.git
-  revision: caa3d042e3cfcb5fceaa77e841b86a11983f0d28
+  revision: 9dfe64535c7d10f79cf92bff88b38e4b579910aa
   specs:
-    optimadmin_generators (0.8.8.5)
-
-GIT
-  remote: git@github.com:eskimosoup/optimised_site.git
-  revision: 17ad4a0ba40554066e2dfa7dbeaf44c49fecd435
-  branch: master
-  specs:
-    optimised_site (0.6.8.1)
-      amoeba
-      closure_tree (~> 6.0)
-      deep_cloneable (~> 2.3.2)
-      flipflop
-      friendly_id (~> 5.1)
-      geocoder
-      gibbon
-      optimadmin
-      pg_search
-      rails (>= 5.0)
+    optimadmin_generators (0.8.8.6)
 
 GIT
   remote: git@github.com:eskimosoup/stamp_duty.git
@@ -74,6 +57,21 @@ GIT
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.0)
+
+PATH
+  remote: ../optimised_site
+  specs:
+    optimised_site (0.6.8.1)
+      amoeba
+      closure_tree (~> 6.0)
+      deep_cloneable (~> 2.3.2)
+      flipflop
+      friendly_id (~> 5.1)
+      geocoder
+      gibbon
+      optimadmin
+      pg_search
+      rails (>= 5.0)
 
 GEM
   remote: https://rubygems.org/
@@ -206,7 +204,7 @@ GEM
     foundation_emails (2.2.1.0)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
-    geocoder (1.4.8)
+    geocoder (1.4.9)
     gibbon (3.2.0)
       faraday (>= 0.9.1)
       multi_json (>= 1.11.0)

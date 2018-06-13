@@ -7,14 +7,17 @@ class ApplicationController < ActionController::Base
 
   include Optimadmin::AdminSessionsHelper
   include FormCrmSubmission
+  include ErrorHandling
 
   helper_method :current_administrator
 
+=begin
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, with: ->(e) { render_error(500, e) }
     rescue_from ActiveRecord::RecordNotFound, with: ->(e) { render_error(404, e) }
     rescue_from ActionController::RoutingError, with: ->(e) { render_error(404, e) }
   end
+=end
 
   def sitemap
     @seo_entries = SeoEntry.where(in_sitemap: true).order(:nominal_url)
@@ -50,6 +53,7 @@ class ApplicationController < ActionController::Base
     @contact = Contact.new
     @awards ||= Award.displayed
     @navigation_offices ||= Office.displayed
+    @form_audiences = Audience.displayed.map{ |x| [x.title, x.services.displayed.root_services.map { |c| ['- ' * c.depth + c.title , c.title] }] }
   end
 
   def global_site_settings
@@ -57,6 +61,7 @@ class ApplicationController < ActionController::Base
   end
   helper_method :global_site_settings
 
+=begin
   def render_error(status, error)
     logger.error "#{error.class}: #{error.message}"
     respond_to do |format|
@@ -64,6 +69,7 @@ class ApplicationController < ActionController::Base
       format.all { head status }
     end
   end
+=end
 
   def friendly_id_redirect(item)
     redirect_to item, status: 301 unless item.friendly_id == params[:id]

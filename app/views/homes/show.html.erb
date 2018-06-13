@@ -15,7 +15,7 @@
     locals: {
       banners: @facade.banners,
       banner_services: @facade.banner_services,
-      cached: (@facade.audience.present? ? "home_services_audience_#{@facade.audience.id}" : 'home_services')
+      cached: (@facade.audience.present? ? ['home_banners', @facade.audience.updated_at, @facade.banners.maximum(:updated_at)] : ['home_banners', @facade.banners.maximum(:updated_at)])
     },
   ) %>
 <% end %>
@@ -103,15 +103,15 @@
 
 <div class="content-area">
   <div class="content-area__inner content-area__inner--row">
-    <%= render 'homes/shared/resources', resources: @facade.resources, cached: @facade.resources %>
-    <%= render 'homes/shared/testimonials', testimonials: @facade.testimonials, cached: @facade.testimonials %>
+    <%= render 'homes/shared/resources', resources: @facade.resources, cached: @facade.resources.maximum(:updated_at) %>
+    <%= render 'homes/shared/testimonials', testimonials: @facade.testimonials, cached: @facade.testimonials.maximum(:updated_at) %>
   </div>
 </div>
 
 
 <div class="content-area">
   <div class="content-area__inner content-area__inner--row">
-    <%= render 'homes/shared/articles', articles: @facade.articles, cached: @facade.articles %>
+    <%= render 'homes/shared/articles', articles: @facade.articles, cached: @facade.articles.maximum(:updated_at) %>
     <%= render 'homes/shared/twitter' %>
   </div>
 </div>
