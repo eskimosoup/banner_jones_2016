@@ -83,7 +83,7 @@ class FormCrmService
       req = post_request
       req.set_form_data(hash)
       Net::HTTP.start(URL.host, URL.port) do |http|
-        http.request(req)
+        response = http.request(req)
         CustomLogger.info(response.headers.to_hash)
       end
     rescue Net::HTTPSuccess, Net::HTTPRedirection, Net::HTTPFound => e
