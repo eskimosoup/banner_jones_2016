@@ -8,6 +8,7 @@ class FormCrmService
   end
 
   def call
+    CustomLogger.info('Begin submission')
     check_visitor_key
     Post.new(map_postable_fields.merge(map_combined_fields), referer).call
   rescue CdVisitorKeyMissing => e

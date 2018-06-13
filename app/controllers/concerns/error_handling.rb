@@ -23,10 +23,6 @@ module ErrorHandling
     end
   end
 
-  def generate_static_pages
-    ErrorHandlingService.generate_static_pages([request.protocol, request.host].join)
-  end
-
   private
 
   def log_error(error)
