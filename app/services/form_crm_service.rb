@@ -25,8 +25,8 @@ class FormCrmService
 
   def map_postable_fields
     {
-      'contact[email]' => object.try(:email),
-      'contact[telephone]' => object.try(:telephone),
+      'contact[email]' => (object.try(:email) || object.try(:email_address)),
+      'contact[telephone]' => (object.try(:telephone) || object.try(:contact_telephone)),
       'contact[forename]' => object.try(:forename),
       'contact[surname]' => object.try(:surname),
       'contact[preferred_contact_method]' => object.try(:preferred_contact_method),
