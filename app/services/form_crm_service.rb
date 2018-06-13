@@ -96,6 +96,7 @@ class FormCrmService
 
     def post_callback(exception)
       header = exception.header.to_hash
+      CustomLogger.info(header)
       if header.include?('location') &&
          header['location'].include?('form-success')
         CustomLogger.info('Successful submission')
