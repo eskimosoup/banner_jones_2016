@@ -34,6 +34,23 @@ GIT
     optimadmin_generators (0.8.8.6)
 
 GIT
+  remote: git@github.com:eskimosoup/optimised_site.git
+  revision: b63a71f5ead48f49072825ff91314269ce97d7a8
+  branch: master
+  specs:
+    optimised_site (0.6.8.1)
+      amoeba
+      closure_tree (~> 6.0)
+      deep_cloneable (~> 2.3.2)
+      flipflop
+      friendly_id (~> 5.1)
+      geocoder
+      gibbon
+      optimadmin
+      pg_search
+      rails (>= 5.0)
+
+GIT
   remote: git@github.com:eskimosoup/stamp_duty.git
   revision: 8fe524df58425cf945b6d55b317a604a14785b34
   branch: master
@@ -57,21 +74,6 @@ GIT
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.0)
-
-PATH
-  remote: ../optimised_site
-  specs:
-    optimised_site (0.6.8.1)
-      amoeba
-      closure_tree (~> 6.0)
-      deep_cloneable (~> 2.3.2)
-      flipflop
-      friendly_id (~> 5.1)
-      geocoder
-      gibbon
-      optimadmin
-      pg_search
-      rails (>= 5.0)
 
 GEM
   remote: https://rubygems.org/
