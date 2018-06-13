@@ -8,10 +8,10 @@ class FormCrmService
   end
 
   def call
-    #  check_visitor_key
+    check_visitor_key
     Post.new(map_postable_fields.merge(map_combined_fields), referer).call
-    # rescue CdVisitorKeyMissing => e
-    #  CustomLogger.fatal(e.message)
+  rescue CdVisitorKeyMissing => e
+    CustomLogger.fatal(e.message)
   end
 
   private
@@ -101,7 +101,7 @@ class FormCrmService
       else
         CustomLogger.fatal(exception.to_yaml)
       end
-    rescue => e
+    rescue StandardError => e
       CustomLogger.fatal(e)
     end
 
