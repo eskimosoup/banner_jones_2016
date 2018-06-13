@@ -34,7 +34,11 @@ module ConveyancingQuotes
 
     def update
       @update = @user.update(user_params)
-      deliver_quote_email(@user) if @update
+
+      if @update
+        deliver_quote_email(@user)
+        record_form_submission(user)
+      end
 
       respond_to do |format|
         format.js do
