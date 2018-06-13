@@ -82,7 +82,10 @@ class FormCrmService
     def post_action
       req = post_request
       req.set_form_data(hash)
-      Net::HTTP.start(URL.host, URL.port) { |http| http.request(req) }
+      Net::HTTP.start(URL.host, URL.port) do |http|
+        http.request(req)
+        CustomLogger.info(response.headers.to_hash)
+      end
     rescue Net::HTTPSuccess, Net::HTTPRedirection, Net::HTTPFound => e
       post_callback(e)
     rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError,
