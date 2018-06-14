@@ -1,6 +1,4 @@
 class OfficesController < ApplicationController
-  layout 'landing_page_design'
-
   def index
     @offices = displayed_offices
   end

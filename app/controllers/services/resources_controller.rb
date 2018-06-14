@@ -10,7 +10,6 @@ module Services
       @offices = ::Office.displayed.joins(:office_location).order('office_locations.name ASC')
       @contact = ::Contact.new if @service.landing_page?
       @offices = nil if @service.hide_preferred_office_on_forms?
-      render layout: 'landing_page_design'
     end
 
     private

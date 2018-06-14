@@ -18,8 +18,7 @@ module ErrorHandling
     respond_to do |format|
       format.html do
         render "errors/#{status}",
-               locals: { status: status, error: error },
-               layout: 'landing_page_design'
+               locals: { status: status, error: error }
       end
 
       format.all { head status }
@@ -29,6 +28,7 @@ module ErrorHandling
   private
 
   def log_error(error)
+    error_handling_logger.info [request.method, request.path].join(' ')
     error_handling_logger.error error.message
     error_handling_logger.debug error.backtrace.join("\n")
   end

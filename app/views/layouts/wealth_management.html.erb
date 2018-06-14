@@ -6,24 +6,18 @@
     <%= raw tracking_code('application').head %>
   </head>
 
-  <body>
+  <body class="conveyancing-calculator">
     <%= render 'layouts/tag_manager' %>
-    <%= render partial: 'layouts/shared/header',
-               locals: {
-                phone: global_site_settings['Phone - Wealth Management'],
-                logo: 'logo-wealth-management.png'
-              } %>
 
+    <div class="conveyancing-calculator-header">
+      <%= render 'layouts/shared/large_design/header',
+                  phone: global_site_settings['Phone - Wealth Management'],
+                  logo: 'logo-wealth-management.png' %>
+    </div>
 
     <%= yield %>
 
-    <%= render partial: 'layouts/shared/footer',
-               locals: {
-                 phone: global_site_settings['Phone - Wealth Management'],
-                 email: global_site_settings['Email - Wealth Management'],
-                 wealth_management: true
-              } %>
-
+    <%= render 'layouts/shared/large_design/footer', wealth_management: true %>
 
     <%= render 'layouts/shared/javascripts' %>
     <%= raw tracking_code('application').footer %>

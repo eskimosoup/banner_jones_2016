@@ -1,8 +1,6 @@
 class ArticleCategoriesController < ApplicationController
   before_action :find_article_category
 
-  layout 'landing_page_design'
-
   def show
     return redirect_to article_category_path(@article_category), status: :moved_permanently if request.path != article_category_path(@article_category)
     @articles = @article_category.articles.displayed.page(params[:page]).per(params[:per_page] || 15)

@@ -6,24 +6,19 @@
     <%= raw tracking_code('application').head %>
   </head>
 
-  <body>
+  <body class="conveyancing-calculator">
     <%= render 'layouts/tag_manager' %>
-    <%= render partial: 'layouts/shared/header',
-               locals: {
-                 phone: global_site_settings['Phone - Notary'],
-                 logo: 'logo.png',
-                 notary: true
-              } %>
 
+    <div class="conveyancing-calculator-header">
+      <%= render 'layouts/shared/large_design/header',
+                  phone: global_site_settings['Phone - Notary'],
+                  logo: 'logo-wealth-small.png',
+                  notary: true %>
+    </div>
 
     <%= yield %>
 
-    <%= render partial: 'layouts/shared/footer',
-               locals: {
-                 phone: global_site_settings['Phone - Notary'],
-                 email: global_site_settings['Email - Notary']
-              } %>
-
+    <%= render 'layouts/shared/large_design/footer' %>
 
     <%= render 'layouts/shared/javascripts' %>
     <%= raw tracking_code('application').footer %>

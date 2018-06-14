@@ -2,8 +2,6 @@ class ResourcesController < ApplicationController
   before_action :find_resource, only: :show
   before_action :load_resource_categories
 
-  layout 'landing_page_design'
-
   def index
     @service_ids = Services::Resource.select(:service_id).distinct.pluck(:service_id)
     @audiences = Audience.displayed

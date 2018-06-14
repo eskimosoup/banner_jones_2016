@@ -2,8 +2,6 @@ class ArticlesController < ApplicationController
   before_action :find_article, only: :show
   before_action :load_article_categories
 
-  layout 'landing_page_design'
-
   def index
     @service = Service.find(params[:service_id]) if params[:service_id]
     @articles = (@service.present? ? @service.articles.displayed.page(params[:page]).per(params[:per_page] || 15) : Article.displayed.page(params[:page]).per(params[:per_page] || 15) )
