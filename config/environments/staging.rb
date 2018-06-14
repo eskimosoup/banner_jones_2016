@@ -6,15 +6,15 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = {
     host: Rails.application.routes.default_url_options[:host],
-    protocol: 'https'
+    protocol: 'http'
   }
   config.action_mailer.asset_host = [
-    'https://',
+    'http://',
     Rails.application.routes.default_url_options[:host]
   ].join
 
   config.action_controller.asset_host = [
-    'https://',
+    'http://',
     Rails.application.routes.default_url_options[:host]
   ].join
 
