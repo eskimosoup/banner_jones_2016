@@ -74,6 +74,7 @@ group :development do
   gem 'stackprof', '~> 0.2.7'
   gem 'bullet'
   gem 'letter_opener'
+  gem 'thin'
 end
 
 gem 'optimadmin', git: 'git@github.com:eskimosoup/Optimadmin.git', branch: 'master'

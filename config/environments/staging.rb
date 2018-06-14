@@ -2,11 +2,21 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
-  #Rails.application.routes.default_url_options[:host] = 'https://www.bannerjones.co.uk'
-  #config.action_controller.asset_host = "https://www.bannerjones.co.uk"
+  Rails.application.routes.default_url_options[:host] = 'bannerjones.ludo5.co.uk'
 
-  Rails.application.routes.default_url_options[:host] = 'http://bannerjones.ludo5.co.uk'
-  config.action_controller.asset_host = "http://bannerjones.ludo5.co.uk"
+  config.action_mailer.default_url_options = {
+    host: Rails.application.routes.default_url_options[:host],
+    protocol: 'https'
+  }
+  config.action_mailer.asset_host = [
+    'https://',
+    Rails.application.routes.default_url_options[:host]
+  ].join
+
+  config.action_controller.asset_host = [
+    'https://',
+    Rails.application.routes.default_url_options[:host]
+  ].join
 
   # config.action_mailer.delivery_method = :sendmail
   # config.action_mailer.sendmail_settings = {
