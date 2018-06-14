@@ -10,7 +10,7 @@ module Extensions
                       if: :searchable?
 
       LAYOUTS = %w(application wealth_management notary).freeze
-      STYLES = %w(basic chatbot service_large).freeze
+      STYLES = %w(service_large chatbot).freeze
     end
 
     class_methods do
