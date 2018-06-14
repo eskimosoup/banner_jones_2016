@@ -28,6 +28,7 @@ module ErrorHandling
   private
 
   def log_error(error)
+    error_handling_logger.info [request.method, request.path].join(' ')
     error_handling_logger.error error.message
     error_handling_logger.debug error.backtrace.join("\n")
   end

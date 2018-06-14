@@ -206,7 +206,7 @@ GEM
       activesupport (>= 4.0)
     formatador (0.2.5)
     foundation_emails (2.2.1.0)
-    friendly_id (5.1.0)
+    friendly_id (5.2.4)
       activerecord (>= 4.0.0)
     geocoder (1.4.9)
     gibbon (3.2.0)
@@ -514,7 +514,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootsnap
+  bootsnap (>= 1.1.0)
   bullet
   byebug
   capistrano
@@ -528,7 +528,7 @@ DEPENDENCIES
   database_cleaner (~> 1.5.0)
   factory_girl_rails (~> 4.5.0)
   flamegraph (~> 0.1.0)
-  friendly_id (~> 5.1.0)
+  friendly_id (~> 5.2.0)
   geocoder
   guard-rspec (~> 4.6.4)
   inky-rb
