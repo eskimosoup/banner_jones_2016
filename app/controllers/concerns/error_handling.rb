@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module ErrorHandling
   extend ActiveSupport::Concern
 
@@ -16,7 +18,8 @@ module ErrorHandling
     respond_to do |format|
       format.html do
         render "errors/#{status}",
-               locals: { status: status, error: error }
+               locals: { status: status, error: error },
+               layout: 'landing_page_design'
       end
 
       format.all { head status }
@@ -26,6 +29,15 @@ module ErrorHandling
   private
 
   def log_error(error)
-    logger.error [error.message, error.backtrace.join("\n")].join("\n")
+    error_handling_logger.error error.message
+    error_handling_logger.debug error.backtrace.join("\n")
+  end
+
+  def error_handling_logger
+    @error_handling_logger ||= ::Logger.new(
+      File.join(Rails.root, 'log', 'error_handling.log'),
+      3,
+      5_242_880
+    )
   end
 end
