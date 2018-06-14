@@ -3,18 +3,19 @@ Rails.application.configure do
   config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
   Rails.application.routes.default_url_options[:host] = 'bannerjones.ludo5.co.uk'
+  Rails.application.routes.default_url_options[:protocol] = 'http'
 
   config.action_mailer.default_url_options = {
     host: Rails.application.routes.default_url_options[:host],
-    protocol: 'https'
+    protocol: 'http'
   }
   config.action_mailer.asset_host = [
-    'https://',
+    'http://',
     Rails.application.routes.default_url_options[:host]
   ].join
 
   config.action_controller.asset_host = [
-    'https://',
+    'http://',
     Rails.application.routes.default_url_options[:host]
   ].join
 
