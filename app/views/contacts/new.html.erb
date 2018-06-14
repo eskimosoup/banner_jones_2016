@@ -15,7 +15,7 @@
       </div>
     </section>
 
-    <% cache 'contacts_aside' do %>
+    <% cache ['contacts_aside', @locations.maximum(:updated_at)] do %>
       <aside class="office-location-aside">
         <div class="content-section content-section--shadow">
           <div class="content-section__full">

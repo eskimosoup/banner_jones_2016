@@ -3,6 +3,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :letter_opener
+  config.logger = ActiveSupport::Logger.new(STDOUT)
 
   Rails.application.routes.default_url_options[:host] = 'localhost.ssl:3000'
   Rails.application.routes.default_url_options[:protocol] = 'https'
