@@ -21,10 +21,10 @@ GIT
 
 GIT
   remote: git@github.com:eskimosoup/cookie_consent.git
-  revision: d5ecda60393ed1468bac3d44f62b10221abb04c9
+  revision: 06527f44e98b24ae304c5f35aa1f89742abebd2e
   branch: master
   specs:
-    cookie_consent (0.1.2)
+    cookie_consent (0.1.3.1)
       rails (>= 4.0.0)
 
 GIT
