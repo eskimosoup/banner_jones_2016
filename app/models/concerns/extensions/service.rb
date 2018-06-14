@@ -10,7 +10,7 @@ module Extensions
                       if: :searchable?
 
       RELATIONSHIPS = %w(related_services articles case_studies resources events videos frequently_asked_questions offices team_members testimonials).freeze
-      LAYOUTS = %w(application wealth_management_2018 notary_2018).freeze
+      LAYOUTS = %w(application wealth_management_2018 notary).freeze
       STYLES  = %w(basic purchase_plus conveyancing stamp_duty_calculator service_large).freeze
 
       def self.colours
