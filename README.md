@@ -35,8 +35,8 @@ end
 
 Page.where(layout: 'landing_page_design').update_all(layout: 'application')
 Services::Page.where(layout: 'landing_page_design').update_all(layout: 'application')
-Service.where(layout: 'landing_page_design').update_all(layout: 'application')
 
+Service.where(layout: 'landing_page_design').update_all(layout: 'application')
 Service.where(layout: 'notary_2018').update_all(layout: 'notary')
 Service.where(layout: 'wealth_management_2018').update_all(layout: 'wealth_management')
 
