@@ -2,8 +2,6 @@ class EventsController < ApplicationController
   before_action :find_event, only: :show
   before_action :set_event_categories
 
-  layout 'landing_page_design'
-
   def index
     @events = Event.displayed.page(params[:page]).per(params[:per_page] || 15)
     @event_locations = EventLocation.displayed

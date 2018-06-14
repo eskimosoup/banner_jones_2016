@@ -1,8 +1,6 @@
 class ContactsController < ApplicationController
   before_action :load_modules
 
-  layout 'landing_page_design'
-
   def new
     @contact = Contact.new
   end

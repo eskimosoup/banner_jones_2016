@@ -9,7 +9,7 @@ module Extensions
       multisearchable against: %i[title summary content],
                       if: :searchable?
 
-      LAYOUTS = %w(application wealth_management wealth_management_2018 notary notary_2018 landing_page_design).freeze
+      LAYOUTS = %w(application wealth_management_2018 notary_2018).freeze
       STYLES = %w(basic chatbot service_large).freeze
     end
 

@@ -3,7 +3,7 @@
 
   <% if menu_item_presenter.sub_menu_items.present? %>
     <%= content_tag :ul, class: "large-content-aside-navigation large-content-aside-navigation--without-icon large-content-aside-navigation--nested depth-#{ depth }" do %>
-      <%= page_sidebar_menu_items(menu_items: menu_item_presenter.sub_menu_items, depth: depth + 1, landing_page_design: true) %>
+      <%= page_sidebar_menu_items(menu_items: menu_item_presenter.sub_menu_items, depth: depth + 1) %>
     <% end %>
   <% end %>
 </li>

@@ -1,6 +1,4 @@
 class TestimonialsController < ApplicationController
-  layout 'landing_page_design'
-
   def index
     @service_ids = Services::Testimonial.select(:service_id).distinct.pluck(:service_id)
     @audiences = Audience.displayed

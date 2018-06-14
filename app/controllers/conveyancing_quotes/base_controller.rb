@@ -1,7 +1,6 @@
 module ConveyancingQuotes
   class BaseController < ::ApplicationController
     before_action :set_service
-    layout 'landing_page_design'
 
     private
 

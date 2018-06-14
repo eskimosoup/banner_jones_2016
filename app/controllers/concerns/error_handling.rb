@@ -18,8 +18,7 @@ module ErrorHandling
     respond_to do |format|
       format.html do
         render "errors/#{status}",
-               locals: { status: status, error: error },
-               layout: 'landing_page_design'
+               locals: { status: status, error: error }
       end
 
       format.all { head status }

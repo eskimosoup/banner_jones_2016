@@ -1,6 +1,4 @@
 class PaymentsController < ApplicationController
-  layout 'landing_page_design'
-
   def new
     @payment = Payment.new
   end

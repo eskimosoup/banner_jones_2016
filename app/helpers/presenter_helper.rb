@@ -21,10 +21,10 @@ module PresenterHelper
     end.join.html_safe
   end
 
-  def page_sidebar_menu_items(menu_items: , depth: 0, landing_page_design: false)
+  def page_sidebar_menu_items(menu_items: , depth: 0)
     menu_items.map do |menu_item, sub_menu_items|
       render(
-        partial: (landing_page_design ? "pages/shared/navigation_link" : "pages/shared/menu_item"),
+        partial: "pages/shared/navigation_link",
         locals: {
           menu_item_presenter: MenuItemPresenter.new(object: menu_item, view_template: self, descendants_hash: sub_menu_items),
           depth: depth,

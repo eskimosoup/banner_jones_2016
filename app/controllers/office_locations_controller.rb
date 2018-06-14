@@ -1,6 +1,4 @@
 class OfficeLocationsController < ApplicationController
-  layout 'landing_page_design'
-
   def show
     @office_location = find_office_location
     @offices = @office_location.offices.displayed
