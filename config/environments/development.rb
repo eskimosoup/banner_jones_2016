@@ -1,23 +1,28 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.action_mailer.delivery_method = :letter_opener
 
   Rails.application.routes.default_url_options[:host] = 'localhost.ssl:3000'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
 
   config.action_mailer.default_url_options = {
     host: Rails.application.routes.default_url_options[:host],
-    protocol: 'https'
+    protocol: Rails.application.routes.default_url_options[:protocol]
   }
 
   config.action_mailer.asset_host = [
-    'https://',
+    Rails.application.routes.default_url_options[:protocol],
+    '://',
     Rails.application.routes.default_url_options[:host]
   ].join
 
-  # config.action_controller.asset_host = [
-  #   'https://',
-  #   Rails.application.routes.default_url_options[:host]
-  # ].join
+  config.action_controller.asset_host = [
+    Rails.application.routes.default_url_options[:protocol],
+    '://',
+    Rails.application.routes.default_url_options[:host]
+  ].join
 
   config.web_console.whitelisted_ips = '192.168.0.0/16'
 

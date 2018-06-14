@@ -8,7 +8,7 @@ namespace :preload do
         with rails_env: fetch(:rails_env) do
           execute :rails,
                   :runner,
-                  '"Rails.application.routes.default_url_options[:host].present? ? exec(\"wget --spider --tries 1 --timeout=30 --no-verbose --user-agent=\'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0\' -O /dev/null #{Rails.application.routes.default_url_options[:host]}\") : puts(\"Rails.application.routes.default_url_options[:host] is missing\")"'
+                  '"Rails.application.routes.default_url_options.all? {|s| hash.key? s}[:host].present? ? exec(\"wget --spider --tries 1 --timeout=30 --no-verbose --user-agent=\'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0\' -O /dev/null #{Rails.application.routes.default_url_options[:host]}\") : puts(\"Rails.application.routes.default_url_options[:host] is missing\")"'
         end
       end
     end
