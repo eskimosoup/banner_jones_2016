@@ -1,6 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
+  config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880) # 5 MB
 
   Rails.application.routes.default_url_options[:host] = 'www.bannerjones.co.uk'
   Rails.application.routes.default_url_options[:protocol] = 'https'
