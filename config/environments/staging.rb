@@ -2,8 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
   config.logger = Logger.new(config.paths['log'].first, 3, 5_242_880)
 
-  Rails.application.routes.default_url_options[:host] = 'bannerjones.ludo5.co.uk'
-  Rails.application.routes.default_url_options[:protocol] = 'http'
+  Rails.application.routes.default_url_options[:host] = 'bannerjones.co.uk'
+  Rails.application.routes.default_url_options[:protocol] = 'https'
 
   config.action_mailer.default_url_options = {
     host: Rails.application.routes.default_url_options[:host],

@@ -37,7 +37,7 @@
         </span>
         <% if yield(:custom_telephone).present? %>
           <% phone = yield(:custom_telephone) %>
-        <% elsif !defined?(phone) %>
+        <% elsif !defined?(phone) || phone.blank? %>
           <% phone = global_site_settings['Phone'] %>
         <% end %>
 
