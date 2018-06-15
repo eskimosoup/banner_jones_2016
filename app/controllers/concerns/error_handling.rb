@@ -16,7 +16,7 @@ module ErrorHandling
     message = error_message(status, error)
     responders(status, error)
     error_handling_logger.error(message)
-    ExceptionHandling.new('.error_reporting', message).call # if status == 500
+    ExceptionHandling.new('.error_reporting', message, status).call # if status == 500
   end
 
   def responders(status, error)
@@ -57,9 +57,10 @@ module ErrorHandling
   class ExceptionHandling
     require 'digest/md5'
 
-    def initialize(log_file, message)
+    def initialize(log_file, message, status)
       @log_file = log_file
       @message = message
+      @status = status
       return unless exception_handling_email?
     end
 
@@ -71,7 +72,7 @@ module ErrorHandling
 
     private
 
-    attr_reader :log_file, :message
+    attr_reader :log_file, :message, :status
 
     def repeat_error?
       File.exist?(log_file_path) &&
@@ -105,13 +106,12 @@ module ErrorHandling
     def email_subject
       [
         'EXCEPTION CAUGHT',
+        status,
         Rails.application
              .config
              .session_options[:key]
              .sub(/^_/, '')
              .sub(/_session/, '')
-             .humanize
-             .titleize
       ].join(' ')
     end
 
