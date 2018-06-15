@@ -134,6 +134,7 @@ body {
 
 @media screen and (min-width: 1024px) {
   div#chat-trigger {
-    left:30px
+    left: 30px;
+    max-width: 352px;
   }
 }
