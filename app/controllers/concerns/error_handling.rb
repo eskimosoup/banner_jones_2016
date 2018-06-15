@@ -120,7 +120,7 @@ module ErrorHandling
     end
 
     def custom_logger
-      @custom_logger ||= ActiveSupport::Logger.new(log_file_path, 0, 500)
+      @custom_logger ||= ActiveSupport::Logger.new(log_file_path, 0, 2_097_152) # 2MB
     end
   end
 end
