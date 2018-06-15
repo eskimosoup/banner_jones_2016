@@ -36,7 +36,7 @@
     <div class="offices-index-map" id="map-canvas" data-locations="<%= @offices.to_json %>">
       <%= image_tag 'components/icons/loading.gif', alt: 'Loading...' %>
     </div>
-    <% cache @office.services.map(&:updated_at).max do %>
+    <% cache [@office, @office.services.map(&:updated_at).max] do %>
       <section class="large-content-element">
         <div class="large-content-element__container">
           <div class="large-content-inner">
