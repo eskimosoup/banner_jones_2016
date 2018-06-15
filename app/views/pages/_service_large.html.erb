@@ -1,3 +1,5 @@
+<%= content_for :custom_telephone do global_site_settings['Phone - Wealth Management'] end if @page.layout == 'wealth_management' %>
+
 <div class="<%= @side_menus.blank? ? 'content-area' : 'large-content' %>">
   <% if @side_menus.present? %>
     <% cache @side_menus do %>
@@ -43,9 +45,8 @@
                                 event_action: 'Click',
                                 event_label:  'Phone'
                               } do %>
-                    <span class="calltracks_bannerjonescouk-main">
-                      <%= @page.layout != 'wealth_management' ? global_site_settings['Phone'] : global_site_settings['Phone - Wealth Management'] %>
-                    </span>
+
+                    <%= @page.layout != 'wealth_management' ? (tag.span global_site_settings['Phone'], class: 'calltracks_bannerjonescouk-main') : global_site_settings['Phone - Wealth Management'] %>
                   <% end %>
                 </p>
 

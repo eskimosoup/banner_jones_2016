@@ -1,3 +1,5 @@
+<%= content_for :custom_telephone do global_site_settings['Phone - Wealth Management'] end if @service.layout == 'wealth_management' %>
+
 <%= render 'services/shared/service_large/colours',
             colour: @service.colour,
             text_colour: @service.text_colour %>
@@ -50,9 +52,7 @@
                                 event_action: 'Click',
                                 event_label:  'Phone'
                               } do %>
-                    <span class="calltracks_bannerjonescouk-main">
-                      <%= @service.layout != 'wealth_management' ? global_site_settings['Phone'] : global_site_settings['Phone - Wealth Management'] %>
-                    </span>
+                    <%= @service.layout != 'wealth_management' ? (tag.span global_site_settings['Phone'], class: 'calltracks_bannerjonescouk-main') : global_site_settings['Phone - Wealth Management'] %>
                   <% end %>
                 </p>
 
