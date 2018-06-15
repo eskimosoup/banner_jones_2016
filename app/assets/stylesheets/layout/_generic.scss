@@ -132,3 +132,8 @@ body {
           transition: opacity .1s ease-in-out;
 }
 
+@media screen and (min-width: 1024px) {
+  div#chat-trigger {
+    left:30px
+  }
+}
