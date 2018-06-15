@@ -5,10 +5,19 @@ namespace :ping_host do
   task request: :environment do
     require 'net/http'
     include Rails.application.routes.url_helpers
-    url = URI(root_url)
-    Net::HTTP.start(url.host, url.port, read_timeout: 30) do |http|
-      response = http.head('/', 'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0')
-      puts [url, response.code].join(' ')
+    uri = URI(root_url)
+    Net::HTTP.start(
+      uri.host,
+      uri.port,
+      read_timeout: 10,
+      use_ssl: (uri.scheme == 'https')
+    ) do |http|
+      response = http.head(
+        '/',
+        'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.8; rv:21.0) Gecko/20100101 Firefox/21.0'
+      )
+      puts [uri, response.code].join(' ')
+      puts response
     end
   rescue StandardError => e
     puts e
