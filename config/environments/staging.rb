@@ -16,11 +16,12 @@ Rails.application.configure do
     Rails.application.routes.default_url_options[:host]
   ].join
 
-  config.action_controller.asset_host = [
-    Rails.application.routes.default_url_options[:protocol],
-    '://',
-    Rails.application.routes.default_url_options[:host]
-  ].join
+  # Re-add after crawl
+  #config.action_controller.asset_host = [
+  #  Rails.application.routes.default_url_options[:protocol],
+  #  '://',
+  #  Rails.application.routes.default_url_options[:host]
+  #].join
 
   # config.action_mailer.delivery_method = :sendmail
   # config.action_mailer.sendmail_settings = {
