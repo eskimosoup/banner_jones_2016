@@ -16,7 +16,7 @@ module ErrorHandling
     message = error_message(status, error)
     responders(status, error)
     error_handling_logger.error(message)
-    ExceptionHandling.new('.error_reporting', message).call # if status == 500
+    ExceptionHandling.new('.error_reporting', message, status).call # if status == 500
   end
 
   def responders(status, error)
