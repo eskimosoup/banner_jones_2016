@@ -14,9 +14,9 @@ $(document).on('click', '.ga-event:not(.remote-form-submit)', function(e) {
       eventLabel: eventLabel,
       transport: 'beacon',
       // eventValue: eventValue,
-      // hitCallback: function() {
-      //   console.log('ga Event, category: "' + eventCategory + '", action: "' + eventAction + '", label: "' + eventLabel + '"');
-      // }
+       hitCallback: function() {
+         console.log('ga Event, category: "' + eventCategory + '", action: "' + eventAction + '", label: "' + eventLabel + '"');
+       }
     });
   }
 });
