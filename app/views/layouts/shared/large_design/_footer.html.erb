@@ -42,7 +42,8 @@
         <% end %>
 
         <% if phone.present? %>
-          <%= link_to "tel:#{phone.tr(' ', '')}" do %>
+          <%= link_to "tel:#{phone.tr(' ', '')}", class: 'ga-event',r
+                    data: { event_category: 'Footer', event_action: 'Click', event_label: 'Offline contact' } do %>
             <span class="<%= 'calltracks_bannerjonescouk-main' unless yield(:custom_telephone).present? %>">
               <%= phone %>
             </span>
