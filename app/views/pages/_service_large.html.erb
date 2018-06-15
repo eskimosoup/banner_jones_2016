@@ -34,7 +34,7 @@
                 <p>
                   Talk to our team today on:<br />
 
-                  <%= link_to "tel:#{global_site_settings['Phone'].tr(' ', '')}",
+                  <%= link_to "tel:#{(@page.layout != 'wealth_management' ? global_site_settings['Phone'] : global_site_settings['Phone - Wealth Management']).tr(' ', '')}",
                               class: 'conveyancing-call-to-action
                                       service-team-member__phone
                                       ga-event',
@@ -44,7 +44,7 @@
                                 event_label:  'Phone'
                               } do %>
                     <span class="calltracks_bannerjonescouk-main">
-                      <%= global_site_settings['Phone'] %>
+                      <%= @page.layout != 'wealth_management' ? global_site_settings['Phone'] : global_site_settings['Phone - Wealth Management'] %>
                     </span>
                   <% end %>
                 </p>
