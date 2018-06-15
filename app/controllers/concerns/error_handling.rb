@@ -35,7 +35,7 @@ module ErrorHandling
     message = [full_request]
     message << ['Referrer', request.referrer].join(' ') if request.referrer
     message << error.message
-    message << error.backtrace.join("\n") if status == 500
+    message << error.backtrace.join("\n") # if status == 500
     message.join("\n")
   end
 
